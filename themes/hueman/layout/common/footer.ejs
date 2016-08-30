@@ -1,0 +1,14 @@
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="<%- url_for() %>" class="logo"></a>
+                </h1>
+                <p>Copyright &copy; 2016-<%= date(new Date(), 'YYYY') %> Vincent's Corner All rights reserved</p>
+                <p>Website Author: <%= config.author || config.title %></p>
+            </div>
+        </div>
+    </div>
+</footer>
