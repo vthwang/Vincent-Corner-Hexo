@@ -23,6 +23,7 @@ public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
+image_dir: images
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
@@ -44,7 +45,7 @@ highlight:
   tab_replace:
 
 # Category & Tag
-default_category: lifeessay
+default_category: 生活隨筆
 category_map:
 tag_map:
 
