@@ -6,7 +6,7 @@ tags:
 thumbnail:
   - /blogs/images/Connection.jpg
 ---
-
+<img src="/blogs/images/Connection.jpg">
 &emsp;&emsp;In the past, people were separated by the distant ocean, they got each others’ message need a long time through letters. Nowadays, we just need to sign in the account through internet, we can chat with each other. Not only that, we can use video to see each other as truly communication. It’s much more convenient than before, but this feature doesn’t make the interpersonal networks closely than before. We increased our quality of life, but also decreased our humanity. I’m so curious what happened in nowadays world?
 
 &emsp;&emsp;Surfing on internet and open Facebook, a piece of photos and so many short words which are expressing someone’s feelings. You can see all of current situations of your friends and relatives. Even you have had a friend which lost contact for ten years, you still can use the various search method and “catch the line” with that friend. If you are lucky, you can contact with overseas people through these convenient networks and become the friends. Furthermore, you will be the member of internationalization. All steps sound like just need one finger. It seems like you caught a mouse and you caught the corner of interpersonal network. All of connections naturally become the “object of hand”, you can play it as you want between the hands.
