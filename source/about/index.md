@@ -25,5 +25,9 @@ Department of Foreign Languages and Literature, B.A. （外國語文學系）
 ***
 
 #### _聯繫我（Contact Ｍe）_
-可以寫信給我：<dtvgood202@gmail.com>
-可以Facebook私訊敲我：[Facebook個人頁面](https://www.facebook.com/dtvgood202)
+| 成為WeChat的好友：  | 成為LINE的好友： |
+|:-------------: |:---------------:|
+| <img src="/blogs/images/wechat.png"> | <img src="/blogs/images/line.jpg"> |
+
+寫信給我：<dtvgood202@gmail.com>
+Facebook私訊敲我：[Facebook個人頁面](https://www.facebook.com/dtvgood202)
