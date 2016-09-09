@@ -11,11 +11,9 @@ thumbnail:
 > 「如果說我看得比別人遠，那是因為我站在巨人的肩上。」
 > <div style="float:right">– 牛頓</div>
 
-<br/>
-***
-
 <img src="/blogs/images/hellojs.jpg" alt="HelloJS全端開發即戰力班">
-***
+
+---
 
 ### 序
 &emsp;&emsp;2016年暑假，我在[創科資訊(Trunk Studio)](https://www.facebook.com/trunk.studio.tw)學習JS的部署與開發，在上課之前，我只學過html、CSS、jQuery，還有一些很偷懶的黑魔法，像是Bootstrap、WordPress theme。然而，很早之前就聽過JS的開發才是主流，苦於不知道如何開始，這次很開心能來上這樣的課程，除了認識很多很棒的人(未來有機會的合作夥伴們)，當然最重要的是能站在一堆超級講師們的肩膀上學習，我想用獲益良多來形容著實是不夠形容這種程式能力的提升，只可會意，不可言喻。
