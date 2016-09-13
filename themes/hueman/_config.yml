@@ -53,7 +53,7 @@ share: default # options: jiathis, bdshare, addtoany, default
 plugins:
     fancybox: true # options: true, false
     scrollLoading: true # options: true, false
-    google_analytics: # enter the tracking ID for your Google Analytics
+    google_analytics: UA-84065024-1 # enter the tracking ID for your Google Analytics
     baidu_analytics: # enter Baidu Analytics hash key
     lightgallery: true
 
