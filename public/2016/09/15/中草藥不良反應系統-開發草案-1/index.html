@@ -3,35 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>在hexo使用emoji | Vincent&#39;s Corner</title>
+    <title>中草藥不良反應系統 開發草案 #1 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="" />
     
-    <meta name="description" content="修改渲染器
-123cd /workspace/blogs/   //跳轉到hexo的目錄npm un hexo-renderer-marked --savenpm i hexo-renderer-markdown-it --save
-下載markdown-it-emoji插件：
-1npm install markdown-it-emoji --save
-編輯Hexo的最上層的配置文件_conf">
-<meta property="og:type" content="article">
-<meta property="og:title" content="在hexo使用emoji">
-<meta property="og:url" content="https://tingsyuanwang.github.io/blogs/2016/09/11/在hexo使用emoji/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="中草藥不良反應系統 開發草案 #1">
+<meta property="og:url" content="https://tingsyuanwang.github.io/blogs/2016/09/15/中草藥不良反應系統-開發草案-1/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="修改渲染器
-123cd /workspace/blogs/   //跳轉到hexo的目錄npm un hexo-renderer-marked --savenpm i hexo-renderer-markdown-it --save
-下載markdown-it-emoji插件：
-1npm install markdown-it-emoji --save
-編輯Hexo的最上層的配置文件_conf">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/blogs/images/emoji.png">
-<meta property="og:updated_time" content="2016-09-14T10:48:10.000Z">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/blogs/images/tcmadr.png">
+<meta property="og:updated_time" content="2016-09-16T06:41:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在hexo使用emoji">
-<meta name="twitter:description" content="修改渲染器
-123cd /workspace/blogs/   //跳轉到hexo的目錄npm un hexo-renderer-marked --savenpm i hexo-renderer-markdown-it --save
-下載markdown-it-emoji插件：
-1npm install markdown-it-emoji --save
-編輯Hexo的最上層的配置文件_conf">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/blogs/images/emoji.png">
+<meta name="twitter:title" content="中草藥不良反應系統 開發草案 #1">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/blogs/images/tcmadr.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -153,19 +138,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/blogs/categories/技術分享/">技術分享</a>
+    未分類
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-在hexo使用emoji" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-中草藥不良反應系統-開發草案-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        在hexo使用emoji
+        中草藥不良反應系統 開發草案 #1
         </h1>
     
 
@@ -173,22 +158,16 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2016/09/11/在hexo使用emoji/" class="article-date">
-    <time datetime="2016-09-11T02:15:30.000Z" itemprop="datePublished">2016-09-11</time>
+                <a href="/blogs/2016/09/15/中草藥不良反應系統-開發草案-1/" class="article-date">
+    <time datetime="2016-09-15T06:11:35.000Z" itemprop="datePublished">2016-09-15</time>
 </a>
                 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/emoji.png">
+            <img src="/blogs/images/tcmadr.png">
 <hr>
-<h2>修改渲染器</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /workspace/blogs/   //跳轉到hexo的目錄</div><div class="line">npm un hexo-renderer-marked --save</div><div class="line">npm i hexo-renderer-markdown-it --save</div></pre></td></tr></table></figure>
-<h2>下載markdown-it-emoji插件：</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install markdown-it-emoji --save</div></pre></td></tr></table></figure>
-<h2>編輯Hexo的最上層的配置文件_config.yml來配置markdown渲染器</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">markdown:</div><div class="line">  render:</div><div class="line">    html: true</div><div class="line">    xhtmlOut: false</div><div class="line">    breaks: true  //這邊我改成true直接在.md裡面enter就換行</div><div class="line">    linkify: true</div><div class="line">    typographer: true</div><div class="line">    quotes: &apos;“”‘’&apos;</div><div class="line">  plugins:</div><div class="line">    - markdown-it-footnote</div><div class="line">    - markdown-it-sup</div><div class="line">    - markdown-it-sub</div><div class="line">    - markdown-it-abbr</div><div class="line">    - markdown-it-emoji</div></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -196,7 +175,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/blogs/2016/09/11/在hexo使用emoji/" data-id="cit6jk89b000g7q0amrrfp6rs" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/blogs/2016/09/15/中草藥不良反應系統-開發草案-1/" data-id="cit6jk88w000c7q0amkt4ojos" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -324,20 +303,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2016/09/14/分子醫學-1/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            分子醫學 #1
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2016/09/10/Train-to-Busan-屍速列車-劇透/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2016/09/14/分子醫學-1/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Train to Busan (屍速列車) - 劇透</p>
+        <p class="article-nav-title">分子醫學 #1</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -526,7 +495,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'vincents-corner';
     
     
-    var disqus_url = 'https://tingsyuanwang.github.io/blogs/blogs/2016/09/11/在hexo使用emoji/';
+    var disqus_url = 'https://tingsyuanwang.github.io/blogs/blogs/2016/09/15/中草藥不良反應系統-開發草案-1/';
     
     (function() {
     var dsq = document.createElement('script');
