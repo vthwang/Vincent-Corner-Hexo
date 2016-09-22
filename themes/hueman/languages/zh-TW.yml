@@ -22,7 +22,7 @@ sidebar:
     tags: '標籤'
     tag_cloud: '標籤雲'
 article:
-    comments: '留言'
+    comments: '則留言'
     share: '分享到'
 insight:
     hint: '想要搜尋什麼...'
