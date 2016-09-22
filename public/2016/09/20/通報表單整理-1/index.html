@@ -3,52 +3,106 @@
 <head>
     <meta charset="utf-8">
     
-    <title>中草藥不良反應系統 開發草案 #1 | Vincent&#39;s Corner</title>
+    <title>通報表單整理 #1 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="" />
     
-    <meta name="description" content="目的
-(1)	大幅簡化舊系統的流程與架構，新系統將採用結構化的資料存放方式，以及實現資料庫欄位的歸類，使系統更易維護，或是進一步的開發。
-(2)	使用者畫面簡化及使用者體驗提升。
+    <meta name="description" content="通報表相同部分 (不良品分開討論)
+Part I (通報基本資料)
 
-系統使用的語言
-(1)	前端語言：ReactJS
-(2)	後端語言：NodeJS，目前也考慮使用sails的框架
-(3)	資料庫：MongoDB
+通報當天日期
+案件發生日期
+通報者獲知日期
+通報者資料
 
-系統規格要求
-(1)	目前紙本通報有六種通報表，新系統會將所有分類">
+姓名
+電話
+服務機構
+電子郵件信箱
+地址
+通報者職稱
+
+
+藥品不良反應獲知來源
+
+Part II (病人基本資料)
+
+識別代號 (有用嗎？)
+性別
+身高
+體重
+出生日期(或年齡) &amp;gt; 可自動計算年齡
+
+Part III (不良反應導致的問題)
+
+通報案件描述">
 <meta property="og:type" content="article">
-<meta property="og:title" content="中草藥不良反應系統 開發草案 #1">
-<meta property="og:url" content="https://tingsyuanwang.github.io/blogs/2016/09/15/中草藥不良反應系統-開發草案-1/index.html">
+<meta property="og:title" content="通報表單整理 #1">
+<meta property="og:url" content="https://tingsyuanwang.github.io/blogs/2016/09/20/通報表單整理-1/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="目的
-(1)	大幅簡化舊系統的流程與架構，新系統將採用結構化的資料存放方式，以及實現資料庫欄位的歸類，使系統更易維護，或是進一步的開發。
-(2)	使用者畫面簡化及使用者體驗提升。
+<meta property="og:description" content="通報表相同部分 (不良品分開討論)
+Part I (通報基本資料)
 
-系統使用的語言
-(1)	前端語言：ReactJS
-(2)	後端語言：NodeJS，目前也考慮使用sails的框架
-(3)	資料庫：MongoDB
+通報當天日期
+案件發生日期
+通報者獲知日期
+通報者資料
 
-系統規格要求
-(1)	目前紙本通報有六種通報表，新系統會將所有分類">
+姓名
+電話
+服務機構
+電子郵件信箱
+地址
+通報者職稱
+
+
+藥品不良反應獲知來源
+
+Part II (病人基本資料)
+
+識別代號 (有用嗎？)
+性別
+身高
+體重
+出生日期(或年齡) &amp;gt; 可自動計算年齡
+
+Part III (不良反應導致的問題)
+
+通報案件描述">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/blogs/images/tcmadr.png">
-<meta property="og:updated_time" content="2016-09-19T11:45:51.000Z">
+<meta property="og:updated_time" content="2016-09-21T03:02:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="中草藥不良反應系統 開發草案 #1">
-<meta name="twitter:description" content="目的
-(1)	大幅簡化舊系統的流程與架構，新系統將採用結構化的資料存放方式，以及實現資料庫欄位的歸類，使系統更易維護，或是進一步的開發。
-(2)	使用者畫面簡化及使用者體驗提升。
+<meta name="twitter:title" content="通報表單整理 #1">
+<meta name="twitter:description" content="通報表相同部分 (不良品分開討論)
+Part I (通報基本資料)
 
-系統使用的語言
-(1)	前端語言：ReactJS
-(2)	後端語言：NodeJS，目前也考慮使用sails的框架
-(3)	資料庫：MongoDB
+通報當天日期
+案件發生日期
+通報者獲知日期
+通報者資料
 
-系統規格要求
-(1)	目前紙本通報有六種通報表，新系統會將所有分類">
+姓名
+電話
+服務機構
+電子郵件信箱
+地址
+通報者職稱
+
+
+藥品不良反應獲知來源
+
+Part II (病人基本資料)
+
+識別代號 (有用嗎？)
+性別
+身高
+體重
+出生日期(或年齡) &amp;gt; 可自動計算年齡
+
+Part III (不良反應導致的問題)
+
+通報案件描述">
 <meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/blogs/images/tcmadr.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
@@ -176,14 +230,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-中草藥不良反應系統-開發草案-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-通報表單整理-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        中草藥不良反應系統 開發草案 #1
+        通報表單整理 #1
         </h1>
     
 
@@ -191,8 +245,8 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2016/09/15/中草藥不良反應系統-開發草案-1/" class="article-date">
-    <time datetime="2016-09-15T06:11:35.000Z" itemprop="datePublished">2016-09-15</time>
+                <a href="/blogs/2016/09/20/通報表單整理-1/" class="article-date">
+    <time datetime="2016-09-20T09:22:11.000Z" itemprop="datePublished">2016-09-20</time>
 </a>
                 
             </div>
@@ -201,59 +255,300 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <img src="/blogs/images/tcmadr.png">
 <hr>
-<h2>目的</h2>
-<p>(1)	大幅簡化舊系統的流程與架構，新系統將採用結構化的資料存放方式，以及實現資料庫欄位的歸類，使系統更易維護，或是進一步的開發。<br>
-(2)	使用者畫面簡化及使用者體驗提升。</p>
-<hr>
-<h2>系統使用的語言</h2>
-<p>(1)	前端語言：ReactJS<br>
-(2)	後端語言：NodeJS，目前也考慮使用sails的框架<br>
-(3)	資料庫：MongoDB</p>
-<hr>
-<h2>系統規格要求</h2>
-<p>(1)	目前紙本通報有六種通報表，新系統會將所有分類納入其中。<br>
-(2)	新系統會有暫存檔案的功能。<br>
-(3)	新系統將會改善資料庫結構，簡化未來分析的流程。<br>
-(4)	欄位輸入採用「自動完成」(輸入關鍵字即出現選項)，本來使用js檔案丟在一起，新系統會使用JSON來簡化資料格式，然搜尋速度更快速。<br>
-(5)	舊系統需要人工編碼，新系統將採用自動編碼及自動分派。<br>
-(6)	只能一個人審核，新系統將採用兩人審核，第一個審核者可以決定是否再請第二個人審核或直接完成審核。<br>
-(7)	完成通報之後，不能自動生成PDF檔案，新系統將加入。<br>
-(8)	新系統將在通報完成後，寫信通知通報者、評估者審核完畢時，也會寫信通知通報者，友善E-mail通知。<br>
-(9)	新系統網址將ID改完UID，避免修改網址即可看其他使用者的資訊。</p>
-<hr>
-<h2>系統架構</h2>
-<ul>
-<li>新系統規劃：
+<h1>通報表相同部分 (不良品分開討論)</h1>
+<h3>Part I (通報基本資料)</h3>
 <ol>
-<li>流程設計：<br>
-<br><br>
-<img src="/blogs/images/tcmadr_procedure.png" alt="流程設計"><br>
-<br></li>
-<li>畫面設計：</li>
-</ol>
+<li>通報當天日期</li>
+<li>案件發生日期</li>
+<li>通報者獲知日期</li>
+<li>通報者資料
 <ul>
-<li>首先進去的就是登入介面，支援使用facebook登入，個人檔案自行編輯。<br>
-<br><br>
-<img src="/blogs/images/tcmadr_login_page.png" alt="登入介面"><br>
-<br></li>
-<li>登入之後的畫面：<br>
-<br><br>
-<img src="/blogs/images/tcmadr_inside_page.png" alt="登入之後的畫面規劃"><br>
-<br></li>
+<li>姓名</li>
+<li>電話</li>
+<li>服務機構</li>
+<li>電子郵件信箱</li>
+<li>地址</li>
+<li>通報者職稱</li>
 </ul>
-<ol start="3">
-<li>資料庫結構優化：目前此部分尚需與廠商討論。</li>
-</ol>
 </li>
+<li>藥品不良反應獲知來源</li>
+</ol>
+<h3>Part II (病人基本資料)</h3>
+<ol>
+<li>識別代號 (<strong>有用嗎？</strong>)</li>
+<li>性別</li>
+<li>身高</li>
+<li>體重</li>
+<li>出生日期(或年齡) &gt; 可自動計算年齡</li>
+</ol>
+<h3>Part III (不良反應導致的問題)</h3>
+<ol>
+<li>通報案件描述
+<ul>
+<li>不良反應症狀部位/症狀 (<strong>請提供選項</strong>)</li>
+<li>處置方式 (<strong>是否可標準化填寫方式</strong>)</li>
+<li>文獻來源</li>
+<li>資料來源</li>
 </ul>
+</li>
+<li>其他相關資料</li>
+<li>相關檢查及檢驗數據</li>
+</ol>
 <hr>
-<h2>未來展望</h2>
-<p>A.	新系統將採用Reactjs為前端程式語言，目前相關語言React Native正在發展，Web端若完成，可望直接轉譯為手機app原生語言。</p>
+<h1>通報表不同的部分</h1>
+<h2>一般藥品通報 &amp; 臨床試驗通報 &amp; 不明成份通報</h2>
+<h3>Part III (不良反應導致的問題)</h3>
+<ol>
+<li>不良反應結果</li>
+</ol>
+<h3>Part IV (懷疑藥品)</h3>
+<ol>
+<li>可疑藥品或處方
+<ul>
+<li>許可證字號</li>
+<li>中文品名</li>
+<li>英文品名</li>
+<li>劑型 (<strong>請提供類別，是否可以參考不良品</strong>)</li>
+<li>給藥途徑 (<strong>請提供類別</strong>)</li>
+<li>劑量/頻率</li>
+<li>開始服用日期</li>
+<li>結束服用日期</li>
+<li>取得來源</li>
+<li>廠牌/批號</li>
+<li>用藥原因</li>
+<li>有效日期</li>
+</ul>
+</li>
+<li>併用產品
+<ul>
+<li>許可證字號</li>
+<li>中文品名</li>
+<li>英文品名</li>
+<li>劑型 (<strong>請提供類別，是否可以參考不良品</strong>)</li>
+<li>給藥途徑 (<strong>請提供類別</strong>)</li>
+<li>劑量/頻率</li>
+<li>開始服用日期</li>
+<li>結束服用日期</li>
+<li>取得來源</li>
+<li>廠牌/批號</li>
+<li>用藥原因</li>
+<li>有效日期</li>
+</ul>
+</li>
+</ol>
+<h3>Part V (併用的醫療器材)</h3>
+<ol>
+<li>是否併用醫療器材</li>
+<li>商品名</li>
+<li>器材類別</li>
+<li>廠商資料
+<ul>
+<li>製造廠</li>
+<li>供應廠</li>
+</ul>
+</li>
+<li>規格
+<ul>
+<li>型號</li>
+<li>序號</li>
+<li>批號</li>
+<li>製造日期</li>
+<li>效期</li>
+</ul>
+</li>
+<li>醫療器材操作者</li>
+<li>使用情形
+<ul>
+<li>使用日期</li>
+<li>停用日期</li>
+<li>使用原因</li>
+</ul>
+</li>
+<li>是否可提供器材做評估</li>
+</ol>
+<h3>Part VI (用藥相關資料)</h3>
+<ol>
+<li>有無他人使用相同藥品，發生不良反應？</li>
+<li>曾使用同類藥品經驗？</li>
+<li>案件發生後的處置？</li>
+<li>停藥後不良反應是否減輕？</li>
+<li>再投藥是否發生同樣反應？</li>
+</ol>
 <hr>
-<h2>行銷規劃</h2>
-<p>(1)	發行LINE貼圖<br>
-(2)	粉絲團送禮物<br>
-(3) 加入LINE@生活圈</p>
+<h2>臨床試驗通報</h2>
+<h3>Part VII (臨床試驗資料)</h3>
+<ol>
+<li>報告來源</li>
+<li>試驗名稱</li>
+<li>試驗案號</li>
+<li>廠商試驗編號</li>
+<li>醫藥品查驗中心案號</li>
+<li>報告類別</li>
+<li>廠商試驗目的</li>
+</ol>
+<h2>醫療器材不良事件通報表</h2>
+<h3>Part III  (不良反應導致的問題)</h3>
+<ol>
+<li>通報案件類別</li>
+</ol>
+<h3>Part IV (懷疑的醫療器材)</h3>
+<ol>
+<li>懷疑的醫療器材
+<ul>
+<li>許可證字號 (<strong>醫療器材是否有許可證字號？</strong>)</li>
+<li>中文品名</li>
+<li>英文品名</li>
+<li>器材種類 (<strong>請提供類別</strong>)</li>
+<li>製造商/供應商 (<strong>請提供類別</strong>)</li>
+<li>型號</li>
+<li>序號</li>
+<li>批號</li>
+<li>製造日期</li>
+<li>有效日期 (<strong>器材有有效日期？</strong>)</li>
+<li>使用原因</li>
+</ul>
+</li>
+</ol>
+<h3>Part V (併用的醫療器材與藥物)</h3>
+<ol>
+<li>併用的醫療器材
+<ul>
+<li>許可證字號 (<strong>醫療器材是否有許可證字號？</strong>)</li>
+<li>中文品名</li>
+<li>英文品名</li>
+<li>器材種類 (<strong>請提供類別</strong>)</li>
+<li>製造商/供應商 (<strong>請提供類別</strong>)</li>
+<li>型號</li>
+<li>序號</li>
+<li>批號</li>
+<li>製造日期</li>
+<li>有效日期 (<strong>器材有有效日期？</strong>)</li>
+<li>使用原因</li>
+</ul>
+</li>
+<li>併用產品 (紙本表單順序有問題)
+<ul>
+<li>許可證字號</li>
+<li>中文品名</li>
+<li>英文品名</li>
+<li>劑型 (<strong>請提供類別</strong>)</li>
+<li>給藥途徑 (<strong>請提供類別</strong>)</li>
+<li>劑量/頻率</li>
+<li>開始服用日期</li>
+<li>結束服用日期</li>
+<li>取得來源</li>
+<li>廠牌/批號</li>
+<li>用藥原因</li>
+<li>有效日期</li>
+</ul>
+</li>
+</ol>
+<h3>Part VI (用藥相關資料)</h3>
+<ol>
+<li>曾使用同類藥材之經驗</li>
+<li>停用後不良事件是否減輕</li>
+<li>再使用是否出現同樣反應</li>
+</ol>
+<hr>
+<h2>醫療作業和民俗調理不良事件</h2>
+<h3>Part III  (不良反應導致的問題)</h3>
+<ol>
+<li>通報案件類別</li>
+</ol>
+<h3>Part IV (醫療作業操作者)</h3>
+<ol>
+<li>醫療作業或民俗調理操作者</li>
+</ol>
+<h3>Part V (懷疑的醫療作業或民俗調理行為)</h3>
+<ol>
+<li>懷疑的醫療行為
+<ul>
+<li>醫療行為 部位/穴位/手法</li>
+<li>發生日期</li>
+<li>發生時間</li>
+<li>用餐前後</li>
+<li>治療原因</li>
+</ul>
+</li>
+<li>懷疑的民俗調理行為
+<ul>
+<li>醫療行為 部位/穴位/手法</li>
+<li>發生日期</li>
+<li>發生時間</li>
+<li>用餐前後</li>
+<li>治療原因</li>
+</ul>
+</li>
+</ol>
+<h3>Part VI (相關資料)</h3>
+<ol>
+<li>病人患有疾病</li>
+<li>服用藥物</li>
+<li>案件發生後處置</li>
+<li>停止醫療作業或民俗調理行為後，不良反應是否減輕</li>
+<li>再次進行是否發生同樣反應</li>
+</ol>
+<hr>
+<h2>不良品</h2>
+<h3>Part II (不良品相關資料)</h3>
+<ol>
+<li>不良藥品相關資料
+<ul>
+<li>藥品/商品名</li>
+<li>許可證字號</li>
+<li>劑型</li>
+<li>包裝形式</li>
+<li>藥商</li>
+<li>製造商</li>
+<li>製造批號</li>
+<li>製造日期</li>
+<li>保存期限</li>
+<li>購買/接受/調劑日期</li>
+<li>儲存環境</li>
+<li>類別</li>
+<li>是否可提用藥品</li>
+<li>取得來源</li>
+<li>本次通報是否為單一個案</li>
+<li>是否拆封即發現缺陷</li>
+<li>是否為病人使用後發現，向醫療人員反應</li>
+</ul>
+</li>
+<li>藥品危害
+<ul>
+<li>是否對人體造成危害？</li>
+<li>危害程度</li>
+<li>相關檢查數據</li>
+<li>其他與藥品相關資料</li>
+</ul>
+</li>
+<li>不良品後續處理情形
+<ul>
+<li>已聯絡廠商</li>
+<li>不良品後續處理</li>
+<li>處理後是否再度發生</li>
+<li>同意提供個人資料給廠商或通報中心進行後續調查</li>
+</ul>
+</li>
+<li>不良品缺陷之描述
+<ul>
+<li>外觀異常</li>
+<li>雜質/異物</li>
+<li>藥品標示</li>
+<li>產品包裝</li>
+<li>摻入其他藥品</li>
+<li>其他</li>
+<li>未達預期效果</li>
+<li>補充說明</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1>評估表</h1>
+<ol>
+<li>提供通報資訊</li>
+<li>WHO 評估標準</li>
+<li>評估結果</li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -261,7 +556,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/blogs/2016/09/15/中草藥不良反應系統-開發草案-1/" data-id="citdwxgvq000g160a0txhfquj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/blogs/2016/09/20/通報表單整理-1/" data-id="citdwxgw6000s160ab3kan45y" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -389,20 +684,20 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2016/09/19/中草藥不良反應系統-開發會議-1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/blogs/2016/09/21/中草藥不良反應系統-開發草案-2/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            中草藥不良反應系統 開發會議 #1
+            中草藥不良反應系統 開發草案 #2
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/blogs/2016/09/14/分子醫學-1/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2016/09/19/中草藥不良反應系統-開發會議-1/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">分子醫學 #1</p>
+        <p class="article-nav-title">中草藥不良反應系統 開發會議 #1</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -591,7 +886,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'vincents-corner';
     
     
-    var disqus_url = 'https://tingsyuanwang.github.io/blogs/blogs/2016/09/15/中草藥不良反應系統-開發草案-1/';
+    var disqus_url = 'https://tingsyuanwang.github.io/blogs/blogs/2016/09/20/通報表單整理-1/';
     
     (function() {
     var dsq = document.createElement('script');
