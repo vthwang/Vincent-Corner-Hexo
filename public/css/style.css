@@ -336,7 +336,7 @@ code {
   clear: both;
 }
 #header {
-  background-image: url("../images/header_background_grey.jpg");
+  background: url("../images/header_background_grey.jpg");
   padding-bottom: 60px;
   position: relative;
 }
@@ -1139,9 +1139,6 @@ a.article-title:hover {
 .article-entry a:hover {
   text-decoration: underline;
 }
-.article-entry a.fancybox {
-  display: block !important;
-}
 .article-entry ul,
 .article-entry ol,
 .article-entry dl {
@@ -1404,6 +1401,52 @@ a.article-title:hover {
   display: block;
   max-width: 100%;
   margin: 0 auto;
+}
+.article-gallery {
+  overflow: hidden;
+  background: #000;
+  position: relative;
+  text-align: center;
+  margin: 1.6em 0;
+}
+.article-gallery .gallery-item {
+  display: none;
+  max-width: 100%;
+}
+.article-gallery .gallery-item:before,
+.article-gallery .gallery-item:after {
+  top: 50%;
+  width: 40px;
+  height: 36px;
+  font-size: 36px;
+  line-height: 36px;
+  margin-top: -18px;
+  position: absolute;
+  font-family: FontAwesome;
+  color: rgba(255,255,255,0.5);
+}
+.article-gallery .gallery-item:hover:before,
+.article-gallery .gallery-item:hover:after {
+  color: rgba(255,255,255,0.8);
+}
+.article-gallery .gallery-item:before {
+  left: 0;
+  content: "\f104";
+}
+.article-gallery .gallery-item:after {
+  right: 0;
+  content: "\f105";
+}
+.article-gallery .gallery-item:first-child {
+  display: block;
+}
+.article-gallery .gallery-item img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.lg-outer .lg-thumb-item {
+  border-radius: 0 !important;
 }
 #comments {
   padding: 30px 30px 20px;
