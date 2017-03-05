@@ -42,9 +42,15 @@ search:
 
 # Comment
 comment:
-    disqus: vincents-corner # enter disqus shortname here
+    disqus: vincents-corner #enter disqus shortname here
     duoshuo: # enter duoshuo shortname here
     youyan: # enter youyan uid here
+    facebook: # enter true to enable
+        # language: zh_TW
+        # comment_count: 20
+        # comment_colorscheme: light
+    isso: # enter the domain name of your own comment isso server eg. comments.example.com
+
 
 # Share
 share: default # options: jiathis, bdshare, addtoany, default
