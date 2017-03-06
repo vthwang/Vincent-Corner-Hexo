@@ -12,9 +12,9 @@ tags: React
 1. Reactjs 和 Redux 有 Library 可以使用。
 2. 瀏覽器尚未支援 ES6。
 3. 完成的檔案用 webpack + babel 來 transpile 變成網頁。
-  - index.html
-  - application.js
-  - style.css
+    - index.html
+    - application.js
+    - style.css
 
 ***
 起手專案(boilerplate)：React + Youtube API
@@ -23,8 +23,8 @@ tags: React
 2. 使用 const 取變數，代表不改變的值；用 var 取變數，代表會改變的值。
 3. JSX 是一種 JavaScript 的類別，允許我們可以寫 HTML 在 JavaScript 裡面。
 4. 寫 index.js 的邏輯
-  - 創建一個元件，元件應該可以產生 HTML。
-  - 把創建好的元件產生 HTML，然後放到頁面上(這個動作叫做 Render)。
+    - 創建一個元件，元件應該可以產生 HTML。
+    - 把創建好的元件產生 HTML，然後放到頁面上(這個動作叫做 Render)。
 
 ***
 JSX 轉換範例(使用[babel轉換工具](https://babeljs.io/repl))
