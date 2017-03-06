@@ -556,7 +556,10 @@ code {
   display: none;
 }
 #sidebar .sidebar-top {
-  background: #d35;
+  background: -webkit-linear-gradient(left, #ff5858, #f857a6);
+  background: -moz-linear-gradient(left, #ff5858, #f857a6);
+  background: -ms-linear-gradient(left, #ff5858, #f857a6);
+  background: linear-gradient(to right, #ff5858, #f857a6);
   padding: 15px 30px;
 }
 #sidebar .sidebar-top:before,
