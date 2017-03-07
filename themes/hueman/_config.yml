@@ -42,10 +42,10 @@ search:
 
 # Comment
 comment:
-    disqus: vincents-corner #enter disqus shortname here
+    disqus: #vincents-corner #enter disqus shortname here
     duoshuo: # enter duoshuo shortname here
     youyan: # enter youyan uid here
-    facebook: # enter true to enable
+    facebook: true # enter true to enable
         # language: zh_TW
         # comment_count: 20
         # comment_colorscheme: light
