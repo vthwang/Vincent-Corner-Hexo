@@ -23,7 +23,7 @@ function()可以簡化為() =&amp;gt;。
 React 處理 List 的時候，不要使用 for 迴圈，用 map 來取代。
 React 會辨識變數是否為 List 或是 Array">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/reactday3.png">
-<meta property="og:updated_time" content="2017-03-07T16:38:34.000Z">
+<meta property="og:updated_time" content="2017-03-08T07:35:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React快速學習自我挑戰 Day3">
 <meta name="twitter:description" content="在 React 中，只有最上層的元件需要從 API 或 flux 取得資料。
@@ -192,7 +192,22 @@ ga('send', 'pageview');
 <li>React 處理 List 的時候，不要使用 for 迴圈，用 map 來取代。</li>
 <li>React 會辨識變數是否為 List 或是 Array of Component。</li>
 <li>在處理 List 的時候，React會要求給每個 element 一個 ID。</li>
-<li></li>
+<li>以下兩行一樣，下面為 ES6 語法。
+<ul>
+<li><code>const VideoListItem = (props) =&gt; { const video = props.video;</code></li>
+<li><code>const VideoListItem = ({video}) =&gt; {</code></li>
+</ul>
+</li>
+<li>以下兩行一樣，下面為 ES6 語法。(string interpolation)
+<ul>
+<li><code>const url = 'https://www.youtube.com/embed/' + videoId;</code></li>
+<li><code>const url = `https://www.youtube.com/embed/${videoId}`;</code></li>
+</ul>
+</li>
+<li>降低 callback function 執行速度的套件 <code>lodash</code> 。</li>
+<li>在 class based component，我們將 state 設定在 constructor 裡面。</li>
+<li>範例中，四個元件用了兩個 callback function，我們要用 redux 來讓 callback 更乾淨。</li>
+<li>在 react 中用的 state 屬於 Component level，而在 redux 上面使用的則是 application level。</li>
 </ol>
 
         </div>
@@ -201,7 +216,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/03/07/React快速學習自我挑戰-Day3/" data-id="cizzrw83y000d110andm7dyyn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/03/07/React快速學習自我挑戰-Day3/" data-id="cj00ngwar000dkp0ad0bqd5gd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
