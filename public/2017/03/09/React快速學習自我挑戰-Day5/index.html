@@ -3,18 +3,35 @@
 <head>
     <meta charset="utf-8">
     
-    <title>分類：技術分享 | Vincent&#39;s Corner</title>
+    <title>React快速學習自我挑戰 Day5 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Who knows what fantastic things around Vincent&apos;s corner?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vincent's Corner">
-<meta property="og:url" content="https://tingsyuanwang.github.io/categories/技術分享/index.html">
+        <meta name="keywords" content="React" />
+    
+    <meta name="description" content="Reducer 是一個 function 用來 return piece of the application state。
+Reducer 產出 state 的值。
+在檔名的命名中，應該在前面加前綴，例如：reducer_books.js。(不是一定要，作者提供的方法)
+Container 是 react component，對 Redux 所管理的 state 有直接的連結。
+有一個 L">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React快速學習自我挑戰 Day5">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/03/09/React快速學習自我挑戰-Day5/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta property="og:description" content="Reducer 是一個 function 用來 return piece of the application state。
+Reducer 產出 state 的值。
+在檔名的命名中，應該在前面加前綴，例如：reducer_books.js。(不是一定要，作者提供的方法)
+Container 是 react component，對 Redux 所管理的 state 有直接的連結。
+有一個 L">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/reactday5.jpg">
+<meta property="og:updated_time" content="2017-03-09T14:02:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vincent's Corner">
-<meta name="twitter:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta name="twitter:title" content="React快速學習自我挑戰 Day5">
+<meta name="twitter:description" content="Reducer 是一個 function 用來 return piece of the application state。
+Reducer 產出 state 的值。
+在檔名的命名中，應該在前面加前綴，例如：reducer_books.js。(不是一定要，作者提供的方法)
+Container 是 react component，對 Redux 所管理的 state 有直接的連結。
+有一個 L">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/reactday5.jpg">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -136,414 +153,135 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-folder-open"></i>分類：<em class="page-title-link">技術分享</em>
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
+                            <article id="post-React快速學習自我挑戰-Day5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        React快速學習自我挑戰 Day5
+        </h1>
+    
 
-    
-    
+            </header>
         
         
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/blogs/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
+            <div class="article-subtitle">
+                <a href="/blogs/2017/03/09/React快速學習自我挑戰-Day5/" class="article-date">
+    <time datetime="2017-03-09T03:01:39.000Z" itemprop="datePublished">2017-03-09</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/React/">React</a></li></ul>
+
             </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/blogs/2017/03/04/Wordpress-處理中文檔名上傳/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/wordpress.png)" alt="Wordpress 處理中文檔名上傳" class="thumbnail-image"></span>
-    
-    
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/04/Wordpress-處理中文檔名上傳/">0</span> 則評論
-    
-</span>
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/reactday5.jpg">
+<hr>
+<ol>
+<li>Reducer 是一個 function 用來 return piece of the application state。</li>
+<li>Reducer 產出 state 的值。</li>
+<li>在檔名的命名中，應該在前面加前綴，例如：<code>reducer_books.js</code>。(不是一定要，作者提供的方法)</li>
+<li>Container 是 react component，對 Redux 所管理的 state 有直接的連結。</li>
+<li>有一個 Library 叫做 React-Redux，負責 React 和 Redux 的溝通橋樑。(本身 React 和 Redux 是完全分開的 Library)</li>
+<li>Container 在 Redux 的官方文件中叫做 Smart Component。</li>
+<li>以整體來說，整個 App 並不在乎任何 state，而是由各個元件去在乎個別需要在乎的 state(所以 App 被稱為 dumb component)。</li>
+<li>mapStateToProps 以陣列的形式得到 application state。</li>
+<li>Redux 建構 application state，React 提供 View 來顯示 State，這兩個是不同的 Library，唯有透過 React-Redux 才能將這兩個連結。</li>
+<li>如果 application state 改變，Container 也會跟著 rerender。</li>
+<li>按按鈕 =&gt; 呼叫 action creator =&gt; action automatically sent to all reducers =&gt; reducer 可以選擇根據 action 來 return 不同的 state，然後將 state pipe into application =&gt; application state 會 pump back into React application，然後所有的 components 就會 rerender。
+<ul>
+<li>action creator 會 return 物件。</li>
+<li>在所有不同的 reducer 裡面，我們會設置一個 switch statement。</li>
+</ul>
+</li>
+</ol>
 
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2017-03-04T08:29:52.000Z" itemprop="datePublished">2017-03-04</time></p>
         </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/04/Wordpress-處理中文檔名上傳/">Wordpress 處理中文檔名上傳</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
+        <footer class="article-footer">
             
 
 
-修改  wp-admin\includes\file.php
-找：
 
-1$filename = wp_unique_filename( $uploads[&apos;path&apos;], $file[&apos;name&apos;], $unique_filename_callback );
-在其後加上：
-1234$fileTypeNameArr =explode(&quot;.&qu
-        </p>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/03/09/React快速學習自我挑戰-Day5/" data-id="cj02grwz3000iwu0aiuv5904y" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
-    
 
+    <section id="comments">
     
-    
-        
-            </div></section>
-        
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/blogs/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/php_mysql_array.jpg)" alt="PHP multiple select 寫入資料庫的方法" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/">0</span> 則評論
-    
-</span>
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/03/09/React快速學習自我挑戰-Day5/" data-num-posts="5"></div>
 
 
     
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-12-01T05:48:23.000Z" itemprop="datePublished">2016-12-01</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/">PHP multiple select 寫入資料庫的方法</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-填入文字的頁面需要用陣列的方式傳遞資料 name=&quot;item[]&quot;
-
-123456&lt;label for=&quot;item[]&quot; class=&quot;formTitle&quot;&gt;選擇項目&lt;/label&gt;&lt;select name=&quot;item[]&quot; class=&quot;form-control sele
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/github.jpg)" alt="Github Pushed Commit Delete (Redraw)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-11-17T06:47:14.000Z" itemprop="datePublished">2016-11-17</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/">Github Pushed Commit Delete (Redraw)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-如果 Commit 之後並 Push 到遠端，想要在本地端用 CI 去 Delete/Redraw，就可以用以下方法。
-
-如果要刪除倒數第一個 Commit，用以下方法。
-
-12git reset --hard HEAD^git push -f
-
-如果要刪除倒數二個 Commit，用以下方法。
-
-12git reset --hard HEAD^^git push -f
-
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/javascript.jpg)" alt="JavaScript用AJAX的方式獲得時間" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-11-05T15:22:31.000Z" itemprop="datePublished">2016-11-05</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/">JavaScript用AJAX的方式獲得時間</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-新增一個js的檔案，將以下程式碼複製貼上
-
-1234567891011121314151617181920212223242526272829var xmlHttp;function srvTime()&#123;try &#123;  //FF, Opera, Safari, Chrome  xmlHttp = new XMLHttpRequest();&#125;catch (err1)
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/11/在hexo使用emoji/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/emoji.png)" alt="在hexo使用emoji" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/11/在hexo使用emoji/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-09-11T02:15:30.000Z" itemprop="datePublished">2016-09-11</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/11/在hexo使用emoji/">在hexo使用emoji</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-修改渲染器
-123cd /workspace/blogs/   //跳轉到hexo的目錄npm un hexo-renderer-marked --savenpm i hexo-renderer-markdown-it --save
-下載markdown-it-emoji插件：
-1npm install markdown-it-emoji --save
-編輯Hexo的最上層的配置文件_conf
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/04/華碩Win8電腦USB開機/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/asus.png)" alt="華碩Win8電腦USB開機" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/04/華碩Win8電腦USB開機/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-09-03T19:30:18.000Z" itemprop="datePublished">2016-09-04</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/04/華碩Win8電腦USB開機/">華碩Win8電腦USB開機</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-(1) 開機連按Del進入BIOS之後，切換到「Security」選單，將「Secure Boot Control」設定成「Disabled」，重新開機。
-(2) 重新開機後繼續連按Del進入BIOS，切換到「Boot」選單，將「Lunch CSM」設定成「Enabled」，重新開機。
-(3) 重新開機後繼續連按Del進入BIOS，切換到「Exit」選單，就可以找到USB進行重灌囉！
-
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/08/29/hello-world/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/hello_world.png)" alt="Hello World" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/08/29/hello-world/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-08-29T02:47:36.000Z" itemprop="datePublished">2016-08-29</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/08/29/hello-world/">Hello World</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qui
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
-
-
+    </section>
 
 
                         </div>
@@ -596,6 +334,19 @@ Qui
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/03/08/React快速學習自我挑戰-Day4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">React快速學習自我挑戰 Day4</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
