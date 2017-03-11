@@ -3,32 +3,32 @@
 <head>
     <meta charset="utf-8">
     
-    <title>HelloJS專案開發提議 | Vincent&#39;s Corner</title>
+    <title>React快速學習自我挑戰 Day7 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="React" />
     
-    <meta name="description" content="(1) PokeHunt
-最近看到新聞，很多人玩寶可夢掉下懸崖、誤觸地雷區、甚至是在路上被車撞，我覺得我們是不是可以做一個偵測系統？大家有什麼方法可以提供一下？目前暫時只是概念性的解決問題，如果大家決定做這個就來討論一下細節。
-(2) 翻轉文學聊天室
-在我大學時期有做一個翻轉文學的網站，我想說來做一點延伸，就是做聊天室、有全體的，還有同學個別對個別的，還有像是github issue一樣的討論區">
+    <meta name="description" content="React Component 只負責顯示 data，而 Redux 則負責提取 data。
+設計一個元件的時候，記得要先問自己該元件是 Container 還是 Component。
+基本上需要跟 Redux 溝通的就是 Container。
+下面範例中，this (就是 SearchBar) 有一個 function 叫做 onInputChange，然後把這個 function bin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HelloJS專案開發提議">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2016/08/30/HelloJS專案開發提議/index.html">
+<meta property="og:title" content="React快速學習自我挑戰 Day7">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/03/11/React快速學習自我挑戰-Day7/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="(1) PokeHunt
-最近看到新聞，很多人玩寶可夢掉下懸崖、誤觸地雷區、甚至是在路上被車撞，我覺得我們是不是可以做一個偵測系統？大家有什麼方法可以提供一下？目前暫時只是概念性的解決問題，如果大家決定做這個就來討論一下細節。
-(2) 翻轉文學聊天室
-在我大學時期有做一個翻轉文學的網站，我想說來做一點延伸，就是做聊天室、有全體的，還有同學個別對個別的，還有像是github issue一樣的討論區">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/hellojs.jpg">
-<meta property="og:updated_time" content="2016-09-06T21:42:52.000Z">
+<meta property="og:description" content="React Component 只負責顯示 data，而 Redux 則負責提取 data。
+設計一個元件的時候，記得要先問自己該元件是 Container 還是 Component。
+基本上需要跟 Redux 溝通的就是 Container。
+下面範例中，this (就是 SearchBar) 有一個 function 叫做 onInputChange，然後把這個 function bin">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/reactday7.png">
+<meta property="og:updated_time" content="2017-03-11T14:13:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HelloJS專案開發提議">
-<meta name="twitter:description" content="(1) PokeHunt
-最近看到新聞，很多人玩寶可夢掉下懸崖、誤觸地雷區、甚至是在路上被車撞，我覺得我們是不是可以做一個偵測系統？大家有什麼方法可以提供一下？目前暫時只是概念性的解決問題，如果大家決定做這個就來討論一下細節。
-(2) 翻轉文學聊天室
-在我大學時期有做一個翻轉文學的網站，我想說來做一點延伸，就是做聊天室、有全體的，還有同學個別對個別的，還有像是github issue一樣的討論區">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/hellojs.jpg">
+<meta name="twitter:title" content="React快速學習自我挑戰 Day7">
+<meta name="twitter:description" content="React Component 只負責顯示 data，而 Redux 則負責提取 data。
+設計一個元件的時候，記得要先問自己該元件是 Container 還是 Component。
+基本上需要跟 Redux 溝通的就是 Container。
+下面範例中，this (就是 SearchBar) 有一個 function 叫做 onInputChange，然後把這個 function bin">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/reactday7.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -150,19 +150,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/blogs/categories/生活記事/">生活記事</a>
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-HelloJS專案開發提議" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-React快速學習自我挑戰-Day7" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        HelloJS專案開發提議
+        React快速學習自我挑戰 Day7
         </h1>
     
 
@@ -170,22 +170,34 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2016/08/30/HelloJS專案開發提議/" class="article-date">
-    <time datetime="2016-08-30T12:55:48.000Z" itemprop="datePublished">2016-08-30</time>
+                <a href="/blogs/2017/03/11/React快速學習自我挑戰-Day7/" class="article-date">
+    <time datetime="2017-03-11T12:15:40.000Z" itemprop="datePublished">2017-03-11</time>
 </a>
                 
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/React/">React</a></li></ul>
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/hellojs.jpg">
-(1) PokeHunt
-最近看到新聞，很多人玩寶可夢掉下懸崖、誤觸地雷區、甚至是在路上被車撞，我覺得我們是不是可以做一個偵測系統？大家有什麼方法可以提供一下？目前暫時只是概念性的解決問題，如果大家決定做這個就來討論一下細節。
-<p>(2) 翻轉文學聊天室<br>
-在我大學時期有做一個<a href="http://flipliterature.tw" target="_blank" rel="external">翻轉文學的網站</a>，我想說來做一點延伸，就是做聊天室、有全體的，還有同學個別對個別的，還有像是github issue一樣的討論區塊，這個我目前有些規劃，如果大家對即時條天有興趣我們可以做這個，這個的架構我就比較清楚要怎麼做，較好上手。</p>
-<p>(3) 中草藥不良反應通報系統<br>
-這是目前我在中國醫藥大學想做的專案，現在有很多中草藥的通報系統，但是目前卻沒有手機板的，而且填寫複雜，架構基本上已經定案，因為他有固定格式。<br>
-因為我們學校跟衛生福利部的關係非常好，如果這個App有開發完成，我會盡力爭取上線，未來如果順利上線，可以跟政府申請一筆經費，看能不能跟大家來做大的？</p>
+            <img src="/blogs/images/reactday7.png">
+<hr>
+<ol>
+<li>React Component 只負責顯示 data，而 Redux 則負責提取 data。</li>
+<li>設計一個元件的時候，記得要先問自己該元件是 Container 還是 Component。</li>
+<li>基本上需要跟 Redux 溝通的就是 Container。</li>
+<li>下面範例中，this (就是 SearchBar) 有一個 function 叫做 onInputChange，然後把這個 function bind 到 this，然後把得到值放到下方的 onInputChange 裡面。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">constructor(props) &#123;</div><div class="line">        super(props);</div><div class="line"></div><div class="line">        this.state = &#123; term: &apos;&apos; &#125;;</div><div class="line"></div><div class="line">        this.onInputChange = this.onInputChange.bind(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    onInputChange(event) &#123;</div><div class="line">        this.setState(&#123; term: event.target.value &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>如果不希望 User 一直重新整理頁面，我們可以加 event handler。</li>
+<li><a href="http://openweathermap.org/forecast5" target="_blank" rel="external">open weather API</a>。
+<ul>
+<li>sign up 之後，進入 API Key 的頁面，就可以拿到 API key 囉！</li>
+</ul>
+</li>
+<li><a href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related" target="_blank" rel="external">JSON Formatter (chrome 外掛)</a>。</li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -193,7 +205,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2016/08/30/HelloJS專案開發提議/" data-id="cj05c122n0005i30a5mno9tt2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/03/11/React快速學習自我挑戰-Day7/" data-id="cj05c123v000pi30abiri6o24" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -260,7 +272,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2016/08/30/HelloJS專案開發提議/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/03/11/React快速學習自我挑戰-Day7/" data-num-posts="5"></div>
 
 
     
@@ -321,20 +333,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2016/09/03/The-connection-of-people-in-the-age-of-information/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            The connection of people in the age of information
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2016/08/29/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/03/10/React快速學習自我挑戰-Day6/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Hello World</p>
+        <p class="article-nav-title">React快速學習自我挑戰 Day6</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
