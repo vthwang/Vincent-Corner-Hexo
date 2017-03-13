@@ -16,7 +16,7 @@ tags: React
 5. 每個檔案都只能有一個元件。
 6. Youtube API 的使用。
     - 註冊 Youtube API Key。
-        * 前往[Goolge開發者界面](console.developers.google.com)。
+        * 前往[Goolge開發者界面](https://console.developers.google.com)。
         * 點選左方選單的 Library。
         * 搜尋 Youtube，並選擇「YouTube Data API v3」。
         * Enable 該套件。
