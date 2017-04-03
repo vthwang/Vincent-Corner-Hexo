@@ -3,38 +3,18 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Wordpress 處理中文檔名上傳 | Vincent&#39;s Corner</title>
+    <title>彙整：: 2017/4 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="" />
-    
-    <meta name="description" content="修改  wp-admin\includes\file.php
-找：
-
-1$filename = wp_unique_filename( $uploads[&amp;apos;path&amp;apos;], $file[&amp;apos;name&amp;apos;], $unique_filename_callback );
-在其後加上：
-1234$fileTypeNameArr =explode(&amp;quot;.&amp;qu">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Wordpress 處理中文檔名上傳">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/03/04/Wordpress-處理中文檔名上傳/index.html">
+    <meta name="description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vincent's Corner">
+<meta property="og:url" content="https://tingsyuanwang.github.io/archives/2017/04/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="修改  wp-admin\includes\file.php
-找：
-
-1$filename = wp_unique_filename( $uploads[&amp;apos;path&amp;apos;], $file[&amp;apos;name&amp;apos;], $unique_filename_callback );
-在其後加上：
-1234$fileTypeNameArr =explode(&amp;quot;.&amp;qu">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/wordpress.png">
-<meta property="og:updated_time" content="2017-03-04T08:32:59.000Z">
+<meta property="og:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wordpress 處理中文檔名上傳">
-<meta name="twitter:description" content="修改  wp-admin\includes\file.php
-找：
-
-1$filename = wp_unique_filename( $uploads[&amp;apos;path&amp;apos;], $file[&amp;apos;name&amp;apos;], $unique_filename_callback );
-在其後加上：
-1234$fileTypeNameArr =explode(&amp;quot;.&amp;qu">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/wordpress.png">
+<meta name="twitter:title" content="Vincent's Corner">
+<meta name="twitter:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -156,125 +136,78 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/blogs/categories/技術分享/">技術分享</a>
+    <i class="icon fa fa-archive"></i>彙整：: 2017/4
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Wordpress-處理中文檔名上傳" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/blogs/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/blogs/2017/04/03/React快速學習自我挑戰-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/reactday12.jpg)" alt="React快速學習自我挑戰 Day12" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/04/03/React快速學習自我挑戰-Day12/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-04-03T06:41:19.000Z" itemprop="datePublished">2017-04-03</time></p>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        Wordpress 處理中文檔名上傳
+        <a href="/blogs/2017/04/03/React快速學習自我挑戰-Day12/">React快速學習自我挑戰 Day12</a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-subtitle">
-                <a href="/blogs/2017/03/04/Wordpress-處理中文檔名上傳/" class="article-date">
-    <time datetime="2017-03-04T08:29:52.000Z" itemprop="datePublished">2017-03-04</time>
-</a>
-                
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/wordpress.png">
-<hr>
-<ol>
-<li>修改  wp-admin\includes\file.php<br>
-找：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$filename = wp_unique_filename( $uploads[&apos;path&apos;], $file[&apos;name&apos;], $unique_filename_callback );</div></pre></td></tr></table></figure>
-<p>在其後加上：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$fileTypeNameArr =explode(&quot;.&quot; , $filename);</div><div class="line">$countNum=count($fileTypeNameArr)-1;</div><div class="line">$fileExt = $fileTypeNameArr[$countNum]; //取得所上傳文件後綴名</div><div class="line">$filename = time().&apos;-&apos;.rand(0,999999999).&apos;.&apos;.$fileExt;//將文件由原名改為時間戳</div></pre></td></tr></table></figure>
-<p>這樣上傳的文件會以時間戳為名稱儲存。<br>
-上傳中文名的文件後，依然能夠將原中文文件名作為文件的標題。<br>
-在後台管理界面顯示的是中文標題，因此對於使用沒有影響。</p>
-
-        </div>
-        <footer class="article-footer">
+        <p class="article-excerpt">
             
 
 
-
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/03/04/Wordpress-處理中文檔名上傳/" data-id="cj12irydq001h7u0a7xqjs3km" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
+{title.touched ? title.error : ''}，如果 title.touched 是  true，顯示 title.error，如果不是，什麼都不要顯示。
+{`form-group ${title.touched &amp;&amp; title.invalid ? 'has-danger' : ''}`}，如果 title 被 touched，而且 title 是 i
+        </p>
     </div>
 </article>
-
-    <section id="comments">
     
-      
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/03/04/Wordpress-處理中文檔名上傳/" data-num-posts="5"></div>
-
-
+        </div>
     
-    </section>
+
+
+    </div></section>
+
 
 
                         </div>
@@ -327,29 +260,6 @@ ga('send', 'pageview');
             
         </ul>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/blogs/2017/03/05/React快速學習自我挑戰-Day1/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            React快速學習自我挑戰 Day1
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/blogs/2017/01/13/筆記規則-重點摘要/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">筆記規則 重點摘要</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
     
     <div class="widgets-container">
         
