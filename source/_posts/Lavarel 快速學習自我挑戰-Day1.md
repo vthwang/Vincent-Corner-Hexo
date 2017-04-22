@@ -75,7 +75,6 @@ NameVirtualHost *:80
 
 ### 用 PhpStorm 打開專案
 1. 點選 open，選擇 laravel 專案目錄。
-2. 
 
 ### 觀念摘錄
 1. MVC 架構 Model (Deals with Databse), View (Deals with the HTML), Controller (The middle-man)。
