@@ -9,7 +9,7 @@ tags: Laravel
 <img src="/blogs/images/learning/laravel/laravelday5.jpeg">
 
 ***
-### Eloquent Relationship
+### Eloquent Relationship - [Eloquent Relationship 設定官方文件](https://laravel.com/docs/5.2/eloquent-relationships)
 1. One to One Relationship
     - 新增 user_id 到 migration
     `$table->integer('user_id')->unsigned();`
@@ -79,4 +79,80 @@ Route::get('/user/pivot', function(){
 
 });
 ```
-6. 
+6. Has Many Through Relation
+    - 新增一個 model
+    `php artisan make:model Country -m`
+    - 新增一個 migration
+    `php artisan make:migration add_country_id_column_to_users --table=users`
+    - 到 add\_country\_id\_column\_to_users.php 的 up function 新增
+    `$table->integer('country_id');`
+    - 到 add\_country\_id\_column\_to_users.php 的 down function 新增
+    `$table->dropColumn('country_id');`
+    - 到 create\_countries_table 新增
+    `$table->string('name');`
+    - 匯入資料庫
+    `php artisan migrate`
+    - 在 Country Model 新增 function
+    `public function posts(){return $this->hasManyThrough('App\Post', 'App\User');}`
+    - 在 routes 引入 Model
+    `use App\Country`
+    - 新增 routes
+```
+Route::get('/user/country', function(){
+
+$country = Country::find(4);
+
+foreach ($country->posts as $post){
+
+    return $post->title;;
+
+}
+
+});
+```
+7. Polymorphic Relation
+    - 新增 photo 的 Model
+    `php artisan make:model Photo -m`
+    - 在 create\_photos_table 新增以下欄位
+    `$table->string('path');`
+    `$table->integer('imageable_id');`
+    `$table->string('imageable_type');`
+    - 匯入資料庫
+    `php artisan migrate`
+    -  不需要 user\_id，在 create\_post_talbe 移除並更新
+    `$table->integer('user_id')->unsigned();`
+    `php artisan migrate:refresh`
+    - 在 Photo.php 新增一個 function
+    `public function imageable() {return $this->morphTo();}`
+    - 在 Post.php 和 User.php 各新增一個 function
+    `public function photos(){return $this->morphMany('App\Photo', 'imageable');}`
+    - 新增 routes
+```
+Route::get('post/{id}/photos', function($id){
+
+    $post = Post::find($id);
+
+        foreach($post->photos as $photo){
+
+            echo $photo->path . "<br>";
+
+        }
+
+});
+```
+8. Reverse Polymorphic Relation
+    - 在 routes 引入 Model
+    `use App\Photo;`
+    - 新增 routes
+```
+Route::get('photo/{id}/post', function($id){
+
+    $photo = Photo::findOrFail($id);
+
+    return $photo->imageable;
+
+});
+```
+9. 
+
+
