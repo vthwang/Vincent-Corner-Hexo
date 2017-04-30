@@ -153,6 +153,39 @@ Route::get('photo/{id}/post', function($id){
 
 });
 ```
-9. 
+9. Many to Many Polymorphic Relation
+    - 新增三個 model
+    `php artisan make:model Video -m`
+    `php artisan make:model Tag -m`
+    `php artisan make:model Taggable -m`
+    - 在 create\_videos\_table 和 create\_tags\_table 建立 name 的 table
+    `$table->string('name');`
+    - 在 create_taggables_table 建立以下 table
+    `$table->integer('tag_id');`
+    `$table->integer('taggable_id');`
+    `$table->string('taggable_type');`
+    - 在 Post.php 新增 morphToMany function
+    `public function tags(){return $this->morphToMany('App\Tag', 'taggable');}`
+    - 在 Tag.php  新增 morphedByMany function
+    `public function posts(){ return $this->morphedByMany('App\Post', 'taggable');}`
+    `public function videos(){return $this->morphedByMany('App\Video', 'taggable');}`
+    - 匯入 migrate
+    `php artisan migrate`
+    - 新增 routes
+    `Route::get('/post/tag', function(){`
+        `$post = Post::find(1);`
+        `foreach ($post->tags as $tag){`
+            `echo $tag->name;`
+        `}`
+    `});`
+    - import Tag model
+    `use App\Tag;`
+    - 新增 routes
+    `Route::get('/tag/post', function(){`
+    `$tag = Tag::find(2);`
+    `foreach($tag->posts as $post){`
+        `return $post->title;`
+    `}`
+    `});`
 
 

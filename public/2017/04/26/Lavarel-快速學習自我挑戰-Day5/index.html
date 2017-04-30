@@ -3,35 +3,44 @@
 <head>
     <meta charset="utf-8">
     
-    <title>React快速學習自我挑戰 Day10 | Vincent&#39;s Corner</title>
+    <title>Lavarel 快速學習自我挑戰 Day5 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="React" />
+        <meta name="keywords" content="Laravel" />
     
-    <meta name="description" content="Redux Blog Post API Reference。
-Postman 是一個 HTTP client 的 API。
-npm install --save react-router@2.0.0-rc5，安裝 react router。
-React-Router 套件有 History 的子套件，用來管理網頁的 URL，監控改變並隨著時間更新。
-History 對 URL 互動，並將更新">
+    <meta name="description" content="Eloquent Relationship - Eloquent Relationship 設定官方文件
+
+One to One Relationship
+
+新增 user_id 到 migration
+$table-&amp;gt;integer(&apos;user_id&apos;)-&amp;gt;unsigned();
+新增一個 function 到 User.php
+public function post(){re">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React快速學習自我挑戰 Day10">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/03/22/React快速學習自我挑戰-Day10/index.html">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day5">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/04/26/Lavarel-快速學習自我挑戰-Day5/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Redux Blog Post API Reference。
-Postman 是一個 HTTP client 的 API。
-npm install --save react-router@2.0.0-rc5，安裝 react router。
-React-Router 套件有 History 的子套件，用來管理網頁的 URL，監控改變並隨著時間更新。
-History 對 URL 互動，並將更新">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/reactday10.jpg">
-<meta property="og:updated_time" content="2017-03-26T14:06:22.000Z">
+<meta property="og:description" content="Eloquent Relationship - Eloquent Relationship 設定官方文件
+
+One to One Relationship
+
+新增 user_id 到 migration
+$table-&amp;gt;integer(&apos;user_id&apos;)-&amp;gt;unsigned();
+新增一個 function 到 User.php
+public function post(){re">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday5.jpeg">
+<meta property="og:updated_time" content="2017-04-30T03:28:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React快速學習自我挑戰 Day10">
-<meta name="twitter:description" content="Redux Blog Post API Reference。
-Postman 是一個 HTTP client 的 API。
-npm install --save react-router@2.0.0-rc5，安裝 react router。
-React-Router 套件有 History 的子套件，用來管理網頁的 URL，監控改變並隨著時間更新。
-History 對 URL 互動，並將更新">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/reactday10.jpg">
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day5">
+<meta name="twitter:description" content="Eloquent Relationship - Eloquent Relationship 設定官方文件
+
+One to One Relationship
+
+新增 user_id 到 migration
+$table-&amp;gt;integer(&apos;user_id&apos;)-&amp;gt;unsigned();
+新增一個 function 到 User.php
+public function post(){re">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday5.jpeg">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -158,14 +167,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-React快速學習自我挑戰-Day10" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day5" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        React快速學習自我挑戰 Day10
+        Lavarel 快速學習自我挑戰 Day5
         </h1>
     
 
@@ -173,28 +182,178 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/03/22/React快速學習自我挑戰-Day10/" class="article-date">
-    <time datetime="2017-03-22T02:16:50.000Z" itemprop="datePublished">2017-03-22</time>
+                <a href="/blogs/2017/04/26/Lavarel-快速學習自我挑戰-Day5/" class="article-date">
+    <time datetime="2017-04-26T02:19:30.000Z" itemprop="datePublished">2017-04-26</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/React/">React</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/reactday10.jpg">
+            <img src="/blogs/images/learning/laravel/laravelday5.jpeg">
 <hr>
+<h3>Eloquent Relationship - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="external">Eloquent Relationship 設定官方文件</a></h3>
 <ol>
-<li><a href="http://reduxblog.herokuapp.com/" target="_blank" rel="external">Redux Blog Post API Reference</a>。</li>
-<li>Postman 是一個 HTTP client 的 API。</li>
-<li><code>npm install --save react-router@2.0.0-rc5</code>，安裝 react router。</li>
-<li>React-Router 套件有 History 的子套件，用來管理網頁的 URL，監控改變並隨著時間更新。</li>
-<li>History 對 URL 互動，並將更新傳送給 React-Router，React-Router 拿到 URL 之後並根據 URL 決定哪個 React Component 需要更新。</li>
-<li>Router 是一個當 URL 改變時，我們需要決定哪個 React Component 需要重新 render 的物件。</li>
-<li>browserHistory 是一個告訴 React-Router 如何 interpret URL changes 物件。</li>
-<li>History 有 browserHistory、hashHistory、memoryHistory 可以使用。</li>
-<li>IndexRoute 是一個做起來像是 Route，但是當 URL 符合我們所定義的 parent path 才會出現的 helper。</li>
+<li>One to One Relationship
+<ul>
+<li>新增 user_id 到 migration<br>
+<code>$table-&gt;integer('user_id')-&gt;unsigned();</code></li>
+<li>新增一個 function 到 User.php<br>
+<code>public function post(){return $this-&gt;hasOne('App\Post');}</code></li>
+<li>新增 routes<br>
+<code>Route::get('/user/{id}/post', function($id){return User::find($id)-&gt;post-&gt;title;});</code></li>
+</ul>
+</li>
+<li>Reverse One to One Relationship (Inverse Relationship)
+<ul>
+<li>新增一個 function 到 Post.php<br>
+<code>public function user(){return $this-&gt;belongsTo('App\User');}</code></li>
+<li>新增 routes<br>
+<code>Route::get('/user/{id}/post', function($id){return User::find($id)-&gt;post-&gt;content;});</code></li>
+</ul>
+</li>
+<li>One to Many Relationship
+<ul>
+<li>新增一個 function 到  User.php<br>
+<code>public function posts(){return $this-&gt;hasMany('App\Post');}</code></li>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">    Route::get(&apos;/posts&apos;, function()&#123;</div><div class="line"></div><div class="line">    $user = User::find(1);</div><div class="line"></div><div class="line">    foreach ($user-&gt;posts as $post) &#123;</div><div class="line"></div><div class="line">        echo $post-&gt;title .&quot;&lt;br&gt;&quot;; (不要使用 return，return 只能傳回一個內容)</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>Many to Many Relationship
+<ul>
+<li>新增一個 model<br>
+<code>php artisan make:model Role -m</code></li>
+<li>新增一個 migration<br>
+<code>php artisan make:migration create_users_roles_table --create=role_user</code></li>
+<li>在 create_roles_table 新增姓名<br>
+<code>$table-&gt;string('name');</code></li>
+<li>在 create_users_roles_table 新增 user_id 和 role_id<br>
+<code>$table-&gt;integer('user_id');</code><br>
+<code>$table-&gt;integer('role_id');</code></li>
+<li>在 User.php 新增一個 function<br>
+<code>public function roles(){return $this-&gt;belongsToMany('App\Role');}</code></li>
+<li>新增 routes (1)<br>
+<code>Route::get('/user/{id}/role', function($id){</code><br>
+<code>$user = User::find($id);</code><br>
+<code>foreach ($user-&gt;roles as $role) {return $role-&gt;name;}});</code></li>
+<li>新增 routes (2)<br>
+<code>Route::get('/user/{id}/role', function($id){</code><br>
+<code>$user = User::find($id)-&gt;roles()-&gt;orderBy('id', 'desc')-&gt;get();</code><br>
+<code>return $user;</code><br>
+<code>});</code></li>
+</ul>
+</li>
+<li>取得 Intermediate table
+<ul>
+<li>在  Role.php 新增 belongsToMany<br>
+<code>public function users(){return $this-&gt;belongsToMany('App\User');}</code></li>
+<li>在 User.php 的 roles function 新增 withPivot<br>
+<code>return $this-&gt;belongsToMany('App\Role')-&gt;withPivot('created_at');</code></li>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/user/pivot&apos;, function()&#123;</div><div class="line"></div><div class="line">    $user = User::find(1);</div><div class="line"></div><div class="line">    foreach($user-&gt;roles as $role)&#123;</div><div class="line"></div><div class="line">        return $role-&gt;pivot-&gt;created_at;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>Has Many Through Relation
+<ul>
+<li>新增一個 model<br>
+<code>php artisan make:model Country -m</code></li>
+<li>新增一個 migration<br>
+<code>php artisan make:migration add_country_id_column_to_users --table=users</code></li>
+<li>到 add_country_id_column_to_users.php 的 up function 新增<br>
+<code>$table-&gt;integer('country_id');</code></li>
+<li>到 add_country_id_column_to_users.php 的 down function 新增<br>
+<code>$table-&gt;dropColumn('country_id');</code></li>
+<li>到 create_countries_table 新增<br>
+<code>$table-&gt;string('name');</code></li>
+<li>匯入資料庫<br>
+<code>php artisan migrate</code></li>
+<li>在 Country Model 新增 function<br>
+<code>public function posts(){return $this-&gt;hasManyThrough('App\Post', 'App\User');}</code></li>
+<li>在 routes 引入 Model<br>
+<code>use App\Country</code></li>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/user/country&apos;, function()&#123;</div><div class="line"></div><div class="line">$country = Country::find(4);</div><div class="line"></div><div class="line">foreach ($country-&gt;posts as $post)&#123;</div><div class="line"></div><div class="line">    return $post-&gt;title;;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>Polymorphic Relation
+<ul>
+<li>新增 photo 的 Model<br>
+<code>php artisan make:model Photo -m</code></li>
+<li>在 create_photos_table 新增以下欄位<br>
+<code>$table-&gt;string('path');</code><br>
+<code>$table-&gt;integer('imageable_id');</code><br>
+<code>$table-&gt;string('imageable_type');</code></li>
+<li>匯入資料庫<br>
+<code>php artisan migrate</code></li>
+<li>不需要 user_id，在 create_post_talbe 移除並更新<br>
+<code>$table-&gt;integer('user_id')-&gt;unsigned();</code><br>
+<code>php artisan migrate:refresh</code></li>
+<li>在 Photo.php 新增一個 function<br>
+<code>public function imageable() {return $this-&gt;morphTo();}</code></li>
+<li>在 Post.php 和 User.php 各新增一個 function<br>
+<code>public function photos(){return $this-&gt;morphMany('App\Photo', 'imageable');}</code></li>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;post/&#123;id&#125;/photos&apos;, function($id)&#123;</div><div class="line"></div><div class="line">    $post = Post::find($id);</div><div class="line"></div><div class="line">        foreach($post-&gt;photos as $photo)&#123;</div><div class="line"></div><div class="line">            echo $photo-&gt;path . &quot;&lt;br&gt;&quot;;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="8">
+<li>Reverse Polymorphic Relation
+<ul>
+<li>在 routes 引入 Model<br>
+<code>use App\Photo;</code></li>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;photo/&#123;id&#125;/post&apos;, function($id)&#123;</div><div class="line"></div><div class="line">    $photo = Photo::findOrFail($id);</div><div class="line"></div><div class="line">    return $photo-&gt;imageable;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="9">
+<li>Many to Many Polymorphic Relation
+<ul>
+<li>新增三個 model<br>
+<code>php artisan make:model Video -m</code><br>
+<code>php artisan make:model Tag -m</code><br>
+<code>php artisan make:model Taggable -m</code></li>
+<li>在 create_videos_table 和 create_tags_table 建立 name 的 table<br>
+<code>$table-&gt;string('name');</code></li>
+<li>在 create_taggables_table 建立以下 table<br>
+<code>$table-&gt;integer('tag_id');</code><br>
+<code>$table-&gt;integer('taggable_id');</code><br>
+<code>$table-&gt;string('taggable_type');</code></li>
+<li>在 Post.php 新增 morphToMany function<br>
+<code>public function tags(){return $this-&gt;morphToMany('App\Tag', 'taggable');}</code></li>
+<li>在 Tag.php  新增 morphedByMany function<br>
+<code>public function posts(){ return $this-&gt;morphedByMany('App\Post', 'taggable');}</code><br>
+<code>public function videos(){return $this-&gt;morphedByMany('App\Video', 'taggable');}</code></li>
+<li>匯入 migrate<br>
+<code>php artisan migrate</code></li>
+<li>新增 routes<br>
+<code>Route::get('/post/tag', function(){</code><br>
+<code>$post = Post::find(1);</code><br>
+<code>foreach ($post-&gt;tags as $tag){</code><br>
+<code>echo $tag-&gt;name;</code><br>
+<code>}</code><br>
+<code>});</code></li>
+<li>import Tag model<br>
+<code>use App\Tag;</code></li>
+<li>新增 routes<br>
+<code>Route::get('/tag/post', function(){</code><br>
+<code>$tag = Tag::find(2);</code><br>
+<code>foreach($tag-&gt;posts as $post){</code><br>
+<code>return $post-&gt;title;</code><br>
+<code>}</code><br>
+<code>});</code></li>
+</ul>
+</li>
 </ol>
 
         </div>
@@ -203,7 +362,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/03/22/React快速學習自我挑戰-Day10/" data-id="cj2450zsd000pu30aze8c8org" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/04/26/Lavarel-快速學習自我挑戰-Day5/" data-id="cj2450zrs000fu30asg8qhc8t" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -270,7 +429,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/03/22/React快速學習自我挑戰-Day10/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/04/26/Lavarel-快速學習自我挑戰-Day5/" data-num-posts="5"></div>
 
 
     
@@ -331,20 +490,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/03/30/React快速學習自我挑戰-Day11/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            React快速學習自我挑戰 Day11
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/03/14/React快速學習自我挑戰-Day9/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/04/25/Lavarel-快速學習自我挑戰-Day4/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">React快速學習自我挑戰 Day9</p>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day4</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
