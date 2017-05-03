@@ -3,18 +3,56 @@
 <head>
     <meta charset="utf-8">
     
-    <title>彙整：: 2016/8 | Vincent&#39;s Corner</title>
+    <title>Lavarel 快速學習自我挑戰 Day8 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Who knows what fantastic things around Vincent&apos;s corner?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vincent's Corner">
-<meta property="og:url" content="https://tingsyuanwang.github.io/archives/2016/08/index.html">
+        <meta name="keywords" content="Laravel" />
+    
+    <meta name="description" content="Polymorphic Relationship (CRUD) - Eloquent Relationship 設定官方文件
+
+安裝＋設定
+
+新增一個專案
+composer create-project --prefer-dist laravel/laravel polymorphic 5.2.29
+建立資料庫 &amp;amp; 設定 .env
+
+
+資料庫設定和 migration
+
+新增 三個mo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day8">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/04/29/Lavarel-快速學習自我挑戰-Day8/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta property="og:description" content="Polymorphic Relationship (CRUD) - Eloquent Relationship 設定官方文件
+
+安裝＋設定
+
+新增一個專案
+composer create-project --prefer-dist laravel/laravel polymorphic 5.2.29
+建立資料庫 &amp;amp; 設定 .env
+
+
+資料庫設定和 migration
+
+新增 三個mo">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday8.png">
+<meta property="og:updated_time" content="2017-05-03T08:08:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vincent's Corner">
-<meta name="twitter:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day8">
+<meta name="twitter:description" content="Polymorphic Relationship (CRUD) - Eloquent Relationship 設定官方文件
+
+安裝＋設定
+
+新增一個專案
+composer create-project --prefer-dist laravel/laravel polymorphic 5.2.29
+建立資料庫 &amp;amp; 設定 .env
+
+
+資料庫設定和 migration
+
+新增 三個mo">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday8.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -136,127 +174,266 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>彙整：: 2016/8
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
+                            <article id="post-Lavarel-快速學習自我挑戰-Day8" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Lavarel 快速學習自我挑戰 Day8
+        </h1>
+    
 
-    
-    
+            </header>
         
         
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/blogs/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
+            <div class="article-subtitle">
+                <a href="/blogs/2017/04/29/Lavarel-快速學習自我挑戰-Day8/" class="article-date">
+    <time datetime="2017-04-29T15:21:35.000Z" itemprop="datePublished">2017-04-29</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
+
             </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/blogs/2016/08/30/HelloJS專案開發提議/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/hellojs.jpg)" alt="HelloJS專案開發提議" class="thumbnail-image"></span>
-    
-    
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/08/30/HelloJS專案開發提議/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/生活記事/">生活記事</a>
-            </p>
-            <p class="date"><time datetime="2016-08-30T12:55:48.000Z" itemprop="datePublished">2016-08-30</time></p>
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/laravel/laravelday8.png">
+<hr>
+<h3>Polymorphic Relationship (CRUD) - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="external">Eloquent Relationship 設定官方文件</a></h3>
+<ol>
+<li>安裝＋設定
+<ul>
+<li>新增一個專案<br>
+<code>composer create-project --prefer-dist laravel/laravel polymorphic 5.2.29</code></li>
+<li>建立資料庫 &amp; 設定 .env</li>
+</ul>
+</li>
+<li>資料庫設定和 migration
+<ul>
+<li>新增 三個model<br>
+<code>php artisan make:model Staff -m</code><br>
+<code>php artisan make:model Product -m</code><br>
+<code>php artisan make:model Photo -m</code></li>
+<li>新增 Staff 和 Product migration 欄位<br>
+<code>$table-&gt;string('name');</code></li>
+<li>新增 Photo migration 欄位<br>
+<code>$table-&gt;string('path');</code><br>
+<code>$table-&gt;integer('imageable_id');</code><br>
+<code>$table-&gt;string('imageable_type');</code></li>
+<li>進行 migrate<br>
+<code>php artisan migrate</code></li>
+</ul>
+</li>
+<li>設定 Relation 和 mass assignment
+<ul>
+<li>在 Photo.php 設定 Relation<br>
+<code>public function imageable(){return $this-&gt;morphTo();}</code></li>
+<li>在 Photo.php 新增 protected，讓資料可填入<br>
+<code>protected $fillable = ['path'];</code></li>
+<li>在 Staff.php 和 Product.php 設定 Relation<br>
+<code>public function photos(){return $this-&gt;morphMany('App\Photo', 'imageable');}</code></li>
+<li>在 Staff.php 新增 protected，讓資料可填入<br>
+<code>protected $fillable = ['name'];</code></li>
+</ul>
+</li>
+<li>新增資料
+<ul>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">use App\Staff;</div><div class="line"></div><div class="line">Route::get(&apos;/create&apos;, function()&#123;</div><div class="line"></div><div class="line">    $staff = Staff::find(1);</div><div class="line"></div><div class="line">    $staff-&gt;photos()-&gt;create([&apos;path&apos;=&gt;&apos;example.jpg&apos;]);</div><div class="line"></div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>讀取資料
+<ul>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/read&apos;, function()&#123;</div><div class="line"></div><div class="line">    $staff = Staff::findOrFail(1);</div><div class="line"></div><div class="line">    foreach($staff-&gt;photos as $photo)&#123;</div><div class="line"></div><div class="line">        return $photo-&gt;path;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>更新資料
+<ul>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/update&apos;, function()&#123;</div><div class="line"></div><div class="line">    $staff = Staff::findOrFail(1);</div><div class="line"></div><div class="line">    $photo = $staff-&gt;photos()-&gt;whereId(1)-&gt;first();</div><div class="line"></div><div class="line">    $photo-&gt;path = &quot;Update example.jpg&quot;;</div><div class="line"></div><div class="line">    $photo-&gt;save();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>刪除資料
+<ul>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/delete&apos;, function()&#123;</div><div class="line"></div><div class="line">    $staff = Staff::findOrFail(1);</div><div class="line"></div><div class="line">    $staff-&gt;photos()-&gt;whereId(1)-&gt;delete();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="8">
+<li>Assign &amp; Unassign
+<ul>
+<li>assign<br>
+<code>Route::get('/assign', function(){</code><br>
+<code>$staff = Staff::findOrFail(1);</code><br>
+<code>$photo = Photo::findOrFail(4);</code><br>
+<code>$staff-&gt;photos()-&gt;save($photo);</code><br>
+<code>});</code></li>
+<li>unassign<br>
+<code>Route::get('/un-assign', function(){</code><br>
+<code>$staff = Staff::findOrFail(1);</code><br>
+<code>$staff-&gt;photos()-&gt;whereId(4)-&gt;update(['imageable_id'=&gt;'', 'imageable_type'=&gt;'']);</code><br>
+<code>});</code></li>
+</ul>
+</li>
+</ol>
+<h3>Polymorphic Many to Many Relationship (CRUD) - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="external">Eloquent Relationship 設定官方文件</a></h3>
+<ol>
+<li>安裝＋設定
+<ul>
+<li>新增一個專案<br>
+<code>composer create-project --prefer-dist laravel/laravel polymorphicmanytomany 5.2.29</code></li>
+<li>建立資料庫 &amp; 設定 .env</li>
+</ul>
+</li>
+<li>資料庫設定和 migration
+<ul>
+<li>新增 三個model<br>
+<code>php artisan make:model Post -m</code><br>
+<code>php artisan make:model Video -m</code><br>
+<code>php artisan make:model Tag -m</code><br>
+<code>php artisan make:model Taggable -m</code></li>
+<li>新增 Post、Video 和 Tag migration 欄位<br>
+<code>$table-&gt;string('name');</code></li>
+<li>新增 Taggable migration 欄位<br>
+<code>$table-&gt;integer('tag_id');</code><br>
+<code>$table-&gt;integer('taggable_id');</code><br>
+<code>$table-&gt;string('taggable_type');</code></li>
+<li>進行 migrate<br>
+<code>php artisan migrate</code></li>
+</ul>
+</li>
+<li>設定 Relation 和 mass assignment
+<ul>
+<li>在 Post.php 和 Video.php 設定 Relation<br>
+<code>public function tags(){return $this-&gt;morphToMany('App\Tag', 'taggable');}</code></li>
+<li>在 Post.php、Video.php 和 Tag.php 新增 protected，讓資料可填入<br>
+<code>protected $fillable = ['name'];;</code></li>
+</ul>
+</li>
+<li>新增資料
+<ul>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/create&apos;, function()&#123;</div><div class="line"></div><div class="line">    $post = Post::create([&apos;name&apos;=&gt;&apos;My first post 1&apos;]);</div><div class="line"></div><div class="line">    $tag1 = Tag::find(1);</div><div class="line"></div><div class="line">    $post-&gt;tags()-&gt;save($tag1);</div><div class="line"></div><div class="line">    $video = Video::create([&apos;name&apos;=&gt;&apos;Video.mov&apos;]);</div><div class="line"></div><div class="line">    $tag2 = Tag::find(2);</div><div class="line"></div><div class="line">    $video-&gt;tags()-&gt;save($tag2);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>讀取資料
+<ul>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/read&apos;, function()&#123;</div><div class="line"></div><div class="line">    $post = Post::findOrFail(1);</div><div class="line"></div><div class="line">    foreach ($post-&gt;tags as $tag)&#123;</div><div class="line"></div><div class="line">        echo $tag;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>更新資料
+<ul>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/update&apos;, function()&#123;</div><div class="line"></div><div class="line">//    $post = Post::findOrFail(1);</div><div class="line">//</div><div class="line">//    foreach ($post-&gt;tags as $tag)&#123;</div><div class="line">//</div><div class="line">//        return $tag-&gt;whereName(&apos;PHP&apos;)-&gt;update([&apos;name&apos;=&gt;&apos;Updated PHP&apos;]);</div><div class="line">//</div><div class="line">//    &#125;</div><div class="line"></div><div class="line">    $post = Post::findOrFail(1);</div><div class="line"></div><div class="line">    $tag = Tag::find(2);</div><div class="line"></div><div class="line">    $post-&gt;tags()-&gt;save($tag);</div><div class="line"></div><div class="line">//    $post-&gt;tags()-&gt;attach($tag);</div><div class="line">//</div><div class="line">//    $post-&gt;tags()-&gt;sync([1,2]);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>刪除資料
+<ul>
+<li>新增 routes</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/delete&apos;, function()&#123;</div><div class="line"></div><div class="line">    $post = Post::find(2);</div><div class="line"></div><div class="line">    foreach ($post-&gt;tags as $tag)&#123;</div><div class="line"></div><div class="line">        $tag-&gt;whereId(4)-&gt;delete();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
         </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/08/30/HelloJS專案開發提議/">HelloJS專案開發提議</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
+        <footer class="article-footer">
             
-(1) PokeHunt
-最近看到新聞，很多人玩寶可夢掉下懸崖、誤觸地雷區、甚至是在路上被車撞，我覺得我們是不是可以做一個偵測系統？大家有什麼方法可以提供一下？目前暫時只是概念性的解決問題，如果大家決定做這個就來討論一下細節。
-(2) 翻轉文學聊天室
-在我大學時期有做一個翻轉文學的網站，我想說來做一點延伸，就是做聊天室、有全體的，還有同學個別對個別的，還有像是github issue一樣的討論區
-        </p>
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/04/29/Lavarel-快速學習自我挑戰-Day8/" data-id="cj28pc460000vk40aghoqd3y6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
-    
 
+    <section id="comments">
     
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/08/29/hello-world/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/hello_world.png)" alt="Hello World" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/08/29/hello-world/">0</span> 則評論
-    
-</span>
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/04/29/Lavarel-快速學習自我挑戰-Day8/" data-num-posts="5"></div>
 
 
     
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-08-29T02:47:36.000Z" itemprop="datePublished">2016-08-29</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/08/29/hello-world/">Hello World</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qui
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
-
+    </section>
 
 
                         </div>
@@ -309,6 +486,19 @@ Qui
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/04/28/Lavarel-快速學習自我挑戰-Day7/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day7</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
