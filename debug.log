@@ -1,0 +1,36 @@
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Hexo version: \u001b[35m3.2.2\u001b[39m","time":"2017-05-03T21:15:55.136Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Working directory: \u001b[35m~/Dropbox/Mac/Apps/blogs/\u001b[39m","time":"2017-05-03T21:15:55.141Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Config loaded: \u001b[35m~/Dropbox/Mac/Apps/blogs/_config.yml\u001b[39m","time":"2017-05-03T21:15:55.370Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Script loaded: \u001b[35mthemes/hueman/scripts/excerpt.js\u001b[39m","time":"2017-05-03T21:15:55.393Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Script loaded: \u001b[35mthemes/hueman/scripts/meta.js\u001b[39m","time":"2017-05-03T21:15:55.393Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Script loaded: \u001b[35mthemes/hueman/scripts/thumbnail.js\u001b[39m","time":"2017-05-03T21:15:55.394Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-featured-image\u001b[39m","time":"2017-05-03T21:15:55.398Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-archive\u001b[39m","time":"2017-05-03T21:15:55.404Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-deployer-git\u001b[39m","time":"2017-05-03T21:15:55.407Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-category\u001b[39m","time":"2017-05-03T21:15:55.410Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-index\u001b[39m","time":"2017-05-03T21:15:55.415Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-json-content\u001b[39m","time":"2017-05-03T21:15:55.481Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-tag\u001b[39m","time":"2017-05-03T21:15:55.489Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-ejs\u001b[39m","time":"2017-05-03T21:15:55.495Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-markdown-it\u001b[39m","time":"2017-05-03T21:15:55.496Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-stylus\u001b[39m","time":"2017-05-03T21:15:55.498Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-server\u001b[39m","time":"2017-05-03T21:15:55.614Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20267,"level":20,"msg":"Database saved","time":"2017-05-03T21:15:55.623Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Hexo version: \u001b[35m3.2.2\u001b[39m","time":"2017-05-03T21:17:18.219Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Working directory: \u001b[35m~/Dropbox/Mac/Apps/blogs/\u001b[39m","time":"2017-05-03T21:17:18.223Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Config loaded: \u001b[35m~/Dropbox/Mac/Apps/blogs/_config.yml\u001b[39m","time":"2017-05-03T21:17:18.327Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Script loaded: \u001b[35mthemes/hueman/scripts/excerpt.js\u001b[39m","time":"2017-05-03T21:17:18.342Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Script loaded: \u001b[35mthemes/hueman/scripts/meta.js\u001b[39m","time":"2017-05-03T21:17:18.343Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Script loaded: \u001b[35mthemes/hueman/scripts/thumbnail.js\u001b[39m","time":"2017-05-03T21:17:18.343Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-deployer-git\u001b[39m","time":"2017-05-03T21:17:18.346Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-archive\u001b[39m","time":"2017-05-03T21:17:18.350Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-featured-image\u001b[39m","time":"2017-05-03T21:17:18.352Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-category\u001b[39m","time":"2017-05-03T21:17:18.353Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-index\u001b[39m","time":"2017-05-03T21:17:18.357Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-json-content\u001b[39m","time":"2017-05-03T21:17:18.387Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-tag\u001b[39m","time":"2017-05-03T21:17:18.389Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-ejs\u001b[39m","time":"2017-05-03T21:17:18.395Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-stylus\u001b[39m","time":"2017-05-03T21:17:18.397Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-markdown-it\u001b[39m","time":"2017-05-03T21:17:18.398Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-server\u001b[39m","time":"2017-05-03T21:17:18.470Z","v":0}
+{"name":"hexo","hostname":"Vincentde-MacBook-Air.local","pid":20373,"level":20,"msg":"Database saved","time":"2017-05-03T21:17:18.476Z","v":0}

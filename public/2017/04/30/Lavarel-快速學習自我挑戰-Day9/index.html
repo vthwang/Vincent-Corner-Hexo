@@ -3,32 +3,59 @@
 <head>
     <meta charset="utf-8">
     
-    <title>React快速學習自我挑戰 Day7 | Vincent&#39;s Corner</title>
+    <title>Lavarel 快速學習自我挑戰 Day9 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="React" />
+        <meta name="keywords" content="Laravel" />
     
-    <meta name="description" content="React Component 只負責顯示 data，而 Redux 則負責提取 data。
-設計一個元件的時候，記得要先問自己該元件是 Container 還是 Component。
-基本上需要跟 Redux 溝通的就是 Container。
-下面範例中，this (就是 SearchBar) 有一個 function 叫做 onInputChange，然後把這個 function bin">
+    <meta name="description" content="Form and Validation
+
+設定 Migration &amp;amp; Relations
+
+在 create_posts_table.php 新增 user_id
+$table-&amp;gt;integer(&apos;user_id&apos;)-&amp;gt;unsigned();
+重新將資料匯入資料庫
+php artisan migrate:refresh
+
+
+設定 Views &amp;amp; Routes
+
+設">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React快速學習自我挑戰 Day7">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/03/11/React快速學習自我挑戰-Day7/index.html">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day9">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/04/30/Lavarel-快速學習自我挑戰-Day9/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="React Component 只負責顯示 data，而 Redux 則負責提取 data。
-設計一個元件的時候，記得要先問自己該元件是 Container 還是 Component。
-基本上需要跟 Redux 溝通的就是 Container。
-下面範例中，this (就是 SearchBar) 有一個 function 叫做 onInputChange，然後把這個 function bin">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/reactday7.png">
-<meta property="og:updated_time" content="2017-03-11T14:13:54.000Z">
+<meta property="og:description" content="Form and Validation
+
+設定 Migration &amp;amp; Relations
+
+在 create_posts_table.php 新增 user_id
+$table-&amp;gt;integer(&apos;user_id&apos;)-&amp;gt;unsigned();
+重新將資料匯入資料庫
+php artisan migrate:refresh
+
+
+設定 Views &amp;amp; Routes
+
+設">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday9.png">
+<meta property="og:updated_time" content="2017-05-04T08:16:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React快速學習自我挑戰 Day7">
-<meta name="twitter:description" content="React Component 只負責顯示 data，而 Redux 則負責提取 data。
-設計一個元件的時候，記得要先問自己該元件是 Container 還是 Component。
-基本上需要跟 Redux 溝通的就是 Container。
-下面範例中，this (就是 SearchBar) 有一個 function 叫做 onInputChange，然後把這個 function bin">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/reactday7.png">
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day9">
+<meta name="twitter:description" content="Form and Validation
+
+設定 Migration &amp;amp; Relations
+
+在 create_posts_table.php 新增 user_id
+$table-&amp;gt;integer(&apos;user_id&apos;)-&amp;gt;unsigned();
+重新將資料匯入資料庫
+php artisan migrate:refresh
+
+
+設定 Views &amp;amp; Routes
+
+設">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday9.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -155,14 +182,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-React快速學習自我挑戰-Day7" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day9" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        React快速學習自我挑戰 Day7
+        Lavarel 快速學習自我挑戰 Day9
         </h1>
     
 
@@ -170,33 +197,187 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/03/11/React快速學習自我挑戰-Day7/" class="article-date">
-    <time datetime="2017-03-11T12:15:40.000Z" itemprop="datePublished">2017-03-11</time>
+                <a href="/blogs/2017/04/30/Lavarel-快速學習自我挑戰-Day9/" class="article-date">
+    <time datetime="2017-04-30T15:21:35.000Z" itemprop="datePublished">2017-04-30</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/React/">React</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/reactday7.png">
+            <img src="/blogs/images/learning/laravel/laravelday9.png">
 <hr>
+<h3>Form and Validation</h3>
 <ol>
-<li>React Component 只負責顯示 data，而 Redux 則負責提取 data。</li>
-<li>設計一個元件的時候，記得要先問自己該元件是 Container 還是 Component。</li>
-<li>基本上需要跟 Redux 溝通的就是 Container。</li>
-<li>下面範例中，this (就是 SearchBar) 有一個 function 叫做 onInputChange，然後把這個 function bind 到 this，然後把得到值放到下方的 onInputChange 裡面。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">constructor(props) &#123;</div><div class="line">        super(props);</div><div class="line"></div><div class="line">        this.state = &#123; term: &apos;&apos; &#125;;</div><div class="line"></div><div class="line">        this.onInputChange = this.onInputChange.bind(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    onInputChange(event) &#123;</div><div class="line">        this.setState(&#123; term: event.target.value &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>如果不希望 User 一直重新整理頁面，我們可以加 event handler。</li>
-<li><a href="http://openweathermap.org/forecast5" target="_blank" rel="external">open weather API</a>。
+<li>設定 Migration &amp; Relations
 <ul>
-<li>sign up 之後，進入 API Key 的頁面，就可以拿到 API key 囉！</li>
+<li>在 create_posts_table.php 新增 user_id<br>
+<code>$table-&gt;integer('user_id')-&gt;unsigned();</code></li>
+<li>重新將資料匯入資料庫<br>
+<code>php artisan migrate:refresh</code></li>
 </ul>
 </li>
-<li><a href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related" target="_blank" rel="external">JSON Formatter (chrome 外掛)</a>。</li>
+<li>設定 Views &amp; Routes
+<ul>
+<li>設定 Controller Route<br>
+<code>Route::resource('/posts', 'PostsController');</code></li>
+<li>在 resources/views 底下新增 posts，新增 index、edit、create、show 的 blade.php View 模板</li>
+</ul>
+</li>
+<li>設定 create 的 markup</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.app&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;form method=&quot;post&quot; action=&quot;/posts&quot;&gt;</div><div class="line"></div><div class="line">        &lt;input type=&quot;text&quot; name=&quot;title&quot; placeholder=&quot;Enter title&quot;&gt;</div><div class="line"></div><div class="line">        // 避免 TokenMismatchException Error</div><div class="line">        &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">        &lt;input type=&quot;submit&quot; name=&quot;submit&quot;&gt;</div><div class="line"></div><div class="line">    &lt;/form&gt;</div><div class="line"></div><div class="line">@stop</div><div class="line"></div><div class="line">@yield(&apos;footer&apos;)</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>設定 Controller &amp; View
+<ul>
+<li>在 PostsController 的 create 新增 View<br>
+<code>public function create(){return view('posts.create');}</code></li>
+<li>在 PostsController 的 store 回傳資料<br>
+<code>public function store(Request $request){return $request-&gt;all();}</code></li>
+</ul>
+</li>
+<li>將資料傳送到資料庫
+<ul>
+<li>修改 PostsController 的 store function</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">    public function store(Request $request)</div><div class="line">    &#123;</div><div class="line"></div><div class="line">//        return $request-&gt;all();</div><div class="line"></div><div class="line">        // First method</div><div class="line">        </div><div class="line">        Post::create($request-&gt;all());</div><div class="line">        </div><div class="line">          // second method</div><div class="line"></div><div class="line">//        $input = $request-&gt;all();</div><div class="line">//</div><div class="line">//        $input[&apos;title&apos;] = $request-&gt;title;</div><div class="line">//</div><div class="line">//        Post::create($request-&gt;all());</div><div class="line"></div><div class="line">          // third method</div><div class="line"></div><div class="line">//        $post = new Post;</div><div class="line">//</div><div class="line">//        $post-&gt;title = $request-&gt;title;</div><div class="line">//</div><div class="line">//        $post-&gt;save();</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>讀取資料
+<ul>
+<li>在 PostsController 的 store 新增導向函式<br>
+<code>return redirect('/posts')</code></li>
+<li>在 PostsController 的 index 讀取所有的 post 並傳送給 index 的 View 去呈現<br>
+<code>$posts = Post::all();</code><br>
+<code>return view('posts.index', compact('posts'));</code></li>
+<li>修改 index.blade.php</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.app&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;ul&gt;</div><div class="line">        @foreach($posts as $post)</div><div class="line">            &lt;li&gt;&#123;&#123;$post-&gt;title&#125;&#125;&lt;/li&gt;</div><div class="line">        @endforeach</div><div class="line">    &lt;/ul&gt;</div><div class="line"></div><div class="line">@endsection</div><div class="line"></div><div class="line">@yield(&apos;footer&apos;)</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>顯示單一貼文並修改
+<ul>
+<li>在 PostsController 的 show 讀取特定 id 的 post 並傳送給 show 的 View 去呈現<br>
+<code>$post = Post::findOrFail($id);</code><br>
+<code>return view('posts.show', compact('post'));</code></li>
+<li>修改 show.blade.php<br>
+<code>&lt;h1&gt;{{$post->title}}&lt;/h1&gt;</code></li>
+<li>讓 index.blade.php 可以超連結<br>
+<code>&lt;li&gt;&lt;a href=&quot;{{route('posts.show', $post->id)}}&quot;&gt; {{$post->title}}}&lt;/a&gt;&lt;/li&gt;</code></li>
+</ul>
+</li>
+<li>edit 頁面製作
+<ul>
+<li>在 PostsController 的 edit 讀取特定 id 的 post 並傳送給 edit 的 View 使用<br>
+<code>$post = Post::findOrFail($id);</code><br>
+<code>return view('posts.edit', compact('post'));</code></li>
+<li>修改 edit.blade.php</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.app&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Edit Post&lt;/h1&gt;</div><div class="line"></div><div class="line">    &lt;form method=&quot;post&quot; action=&quot;/posts/&#123;&#123;$post-&gt;id&#125;&#125;&#125;&quot;&gt;</div><div class="line"></div><div class="line">        //取得 Token</div><div class="line">        &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">        &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;PUT&quot;&gt;</div><div class="line"></div><div class="line">        &lt;input type=&quot;text&quot; name=&quot;title&quot; placeholder=&quot;Enter title&quot; value=&quot;&#123;&#123;$post-&gt;title&#125;&#125;&quot;&gt;</div><div class="line"></div><div class="line">        &lt;input type=&quot;submit&quot; name=&quot;submit&quot;&gt;</div><div class="line"></div><div class="line">    &lt;/form&gt;</div><div class="line"></div><div class="line">@endsection</div><div class="line"></div><div class="line">@yield(&apos;footer&apos;)</div></pre></td></tr></table></figure>
+<ol start="9">
+<li>編輯紀錄並重新導向
+<ul>
+<li>修改 PostsController 的 update function<br>
+<code>$post = Post::findOrFail($id);</code><br>
+<code>$post-&gt;update($request-&gt;all());</code><br>
+<code>return redirect('/posts');</code></li>
+<li>在 show.blade.php 新增超連結到編輯<br>
+<code>&lt;h1&gt;&lt;a href=&quot;{{route('posts.edit', $post->id)}}&quot;&gt;{{$post->title}}&lt;/a&gt;&lt;/h1&gt;</code></li>
+</ul>
+</li>
+<li>刪除貼文
+<ul>
+<li>修改 PostsController 的 delete function<br>
+<code>$post = Post::whereId($id)-&gt;delete();</code><br>
+<code>return redirect('/posts');</code></li>
+<li>新增 delete button edit.blade.php</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;form method=&quot;post&quot; action=&quot;/posts/&#123;&#123;$post-&gt;id&#125;&#125;&quot;&gt;</div><div class="line"></div><div class="line">        &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">        &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;DELETE&quot;&gt;</div><div class="line"></div><div class="line">        &lt;input type=&quot;submit&quot; value=&quot;DELETE&quot;&gt;</div><div class="line"></div><div class="line">    &lt;/form&gt;</div></pre></td></tr></table></figure>
+<h3>Forms - Package and Validation - <a href="https://laravelcollective.com/docs/5.2/html" target="_blank" rel="external">Forms &amp; HTML 設定官方文件</a></h3>
+<h3><a href="https://laravel.com/docs/5.2/validation" target="_blank" rel="external">Validation 設定官方文件</a></h3>
+<ol>
+<li>安裝套件 &amp; 測試
+<ul>
+<li>在 composer.json 的 require 新增套件<br>
+<code>&quot;laravelcollective/html&quot;:&quot;^5.2.0&quot;</code></li>
+<li>更新套件<br>
+<code>composer update</code></li>
+<li>在 config/app.php 的 provider 新增<br>
+<code>Collective\Html\HtmlServiceProvider::class,</code></li>
+<li>在 config/app.php 的 aliases 新增<br>
+<code>'Form' =&gt; Collective\Html\FormFacade::class,</code><br>
+<code>'Html' =&gt; Collective\Html\HtmlFacade::class,</code></li>
+<li>在 create.blade.php 將 <code>&lt;form method=&quot;post&quot; action=&quot;/posts&quot;&gt;</code> 取代來測試套件<br>
+<code>{!! Form::open() !!}</code></li>
+</ul>
+</li>
+<li>修改 form 套件的內容
+<ul>
+<li>修改 form package 的傳遞方式<br>
+<code>{!! Form::open(['method'=&gt;'POST', 'action'=&gt;'PostsController@store']) !!}</code><br>
+<code>{!! Form::close() !!}</code></li>
+<li>將表單改為 form package 的形式，並使用 Bootstrap 的 class</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;form-group&quot;&gt;</div><div class="line"></div><div class="line">            &#123;!! Form::label(&apos;title&apos;, &apos;Title:&apos;) !!&#125;</div><div class="line">            &#123;!! Form::text(&apos;title&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line"></div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">        &lt;div class=&quot;form-group&quot;&gt;</div><div class="line"></div><div class="line">            &#123;!! Form::submit(&apos;Create Post&apos;, [&apos;class&apos;=&gt;&apos;btn btn-primary&apos;]) !!&#125;</div><div class="line"></div><div class="line">        &lt;/div&gt;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>Update &amp; Delete
+<ul>
+<li>修改 edit.blade.php</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&#123;!! Form::model($post, [&apos;method&apos;=&gt;&apos;PATCH&apos;, &apos;action&apos;=&gt;[&apos;PostsController@update&apos;, $post-&gt;id]]) !!&#125;</div><div class="line"></div><div class="line">        &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">        &#123;!! Form::label(&apos;title&apos;, &apos;Title:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::text(&apos;title&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line"></div><div class="line">        &#123;!! Form::submit(&apos;Update Post&apos;, [&apos;class&apos;=&gt;&apos;btn btn-info&apos;]) !!&#125;</div><div class="line"></div><div class="line">    &#123;!! Form::close() !!&#125;</div><div class="line"></div><div class="line">    &#123;!! Form::open([&apos;method&apos;=&gt;&apos;DELETE&apos;, &apos;action&apos;=&gt;[&apos;PostsController@destroy&apos;, $post-&gt;id]]) !!&#125;</div><div class="line"></div><div class="line">        &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">    &#123;!! Form::submit(&apos;Delete Post&apos;, [&apos;class&apos;=&gt;&apos;btn btn-danger&apos;]) !!&#125;</div><div class="line"></div><div class="line">    &#123;!! Form::close() !!&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>Validation
+<ul>
+<li>將 validate function 新增到 PostsController 的 store function</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$this-&gt;validate($request, [</div><div class="line"></div><div class="line">            &apos;title&apos;=&gt; &apos;required&apos;,</div><div class="line">            &apos;content&apos;=&gt; &apos;required&apos;</div><div class="line"></div><div class="line">        ]);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>顯示錯誤
+<ul>
+<li>修改 validation<br>
+<code>$this-&gt;validate($request, [</code><br>
+<code>'title'=&gt; 'required|max:4'</code><br>
+<code>]);</code></li>
+<li>在 create.blade.php 新增 error display</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@if(count($errors) &gt; 0)</div><div class="line"></div><div class="line">    &lt;div class=&quot;alert alert-danger&quot;&gt;</div><div class="line"></div><div class="line">        &lt;ul&gt;</div><div class="line"></div><div class="line">            @foreach($errors-&gt;all() as $error)</div><div class="line"></div><div class="line">                &lt;li&gt;&#123;&#123;$error&#125;&#125;&lt;/li&gt;</div><div class="line"></div><div class="line">            @endforeach</div><div class="line"></div><div class="line">        &lt;/ul&gt;</div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">@endif</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>advanced validation
+<ul>
+<li>新增一個 request<br>
+<code>php artisan make:request CreatePostRequest</code></li>
+<li>修改 PostsController 的 store function，並 import Request<br>
+<code>public function store(Requests\CreatePostRequest $request)</code></li>
+<li>修改 CreatePostRequest.php 的 authorize 為 <code>true</code></li>
+<li>修改 CreatePostRequest.php 的 rules 為 required (validation的效果)<br>
+<code>'title' =&gt; 'required'</code></li>
+<li>將 validation 註解掉<br>
+<code>$this-&gt;validate($request, [</code><br>
+<code>'title'=&gt; 'required|max:4'</code><br>
+<code>]);</code></li>
+</ul>
+</li>
+<li>PhpStorm snippet
+<ul>
+<li>PhpStorm-&gt;Preferences-&gt;Editor-&gt;Live template</li>
+</ul>
+</li>
 </ol>
 
         </div>
@@ -205,7 +386,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/03/11/React快速學習自我挑戰-Day7/" data-id="cj2a5ml8i00232g0a58bxpslo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/04/30/Lavarel-快速學習自我挑戰-Day9/" data-id="cj2a5ml6h000x2g0aqp28q02p" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -272,7 +453,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/03/11/React快速學習自我挑戰-Day7/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/04/30/Lavarel-快速學習自我挑戰-Day9/" data-num-posts="5"></div>
 
 
     
@@ -333,20 +514,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/03/13/React快速學習自我挑戰-Day8/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            React快速學習自我挑戰 Day8
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/03/10/React快速學習自我挑戰-Day6/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/04/29/Lavarel-快速學習自我挑戰-Day8/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">React快速學習自我挑戰 Day6</p>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day8</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
