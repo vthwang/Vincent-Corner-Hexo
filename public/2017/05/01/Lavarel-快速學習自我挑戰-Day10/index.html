@@ -3,29 +3,44 @@
 <head>
     <meta charset="utf-8">
     
-    <title>PHP multiple select 寫入資料庫的方法 | Vincent&#39;s Corner</title>
+    <title>Lavarel 快速學習自我挑戰 Day10 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="Laravel" />
     
-    <meta name="description" content="填入文字的頁面需要用陣列的方式傳遞資料 name=&amp;quot;item[]&amp;quot;
+    <meta name="description" content="Model Manipulation
+Dates
 
-123456&amp;lt;label for=&amp;quot;item[]&amp;quot; class=&amp;quot;formTitle&amp;quot;&amp;gt;選擇項目&amp;lt;/label&amp;gt;&amp;lt;select name=&amp;quot;item[]&amp;quot; class=&amp;quot;form-control sele">
+搜尋套件 composer search carbon
+引用套件 use Carbon\Carbon;
+新增 routes
+
+12345678910111213141516171819Route::get(&amp;apos;/dates&amp;apos;, function()&amp;#123;   $date = new DateTime(&amp;apos;+1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP multiple select 寫入資料庫的方法">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2016/12/01/PHP-multiple-select-寫入資料庫的方法/index.html">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day10">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/01/Lavarel-快速學習自我挑戰-Day10/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="填入文字的頁面需要用陣列的方式傳遞資料 name=&amp;quot;item[]&amp;quot;
+<meta property="og:description" content="Model Manipulation
+Dates
 
-123456&amp;lt;label for=&amp;quot;item[]&amp;quot; class=&amp;quot;formTitle&amp;quot;&amp;gt;選擇項目&amp;lt;/label&amp;gt;&amp;lt;select name=&amp;quot;item[]&amp;quot; class=&amp;quot;form-control sele">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/php_mysql_array.jpg">
-<meta property="og:updated_time" content="2016-12-01T05:55:35.000Z">
+搜尋套件 composer search carbon
+引用套件 use Carbon\Carbon;
+新增 routes
+
+12345678910111213141516171819Route::get(&amp;apos;/dates&amp;apos;, function()&amp;#123;   $date = new DateTime(&amp;apos;+1">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday10.png">
+<meta property="og:updated_time" content="2017-05-05T19:24:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP multiple select 寫入資料庫的方法">
-<meta name="twitter:description" content="填入文字的頁面需要用陣列的方式傳遞資料 name=&amp;quot;item[]&amp;quot;
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day10">
+<meta name="twitter:description" content="Model Manipulation
+Dates
 
-123456&amp;lt;label for=&amp;quot;item[]&amp;quot; class=&amp;quot;formTitle&amp;quot;&amp;gt;選擇項目&amp;lt;/label&amp;gt;&amp;lt;select name=&amp;quot;item[]&amp;quot; class=&amp;quot;form-control sele">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/php_mysql_array.jpg">
+搜尋套件 composer search carbon
+引用套件 use Carbon\Carbon;
+新增 routes
+
+12345678910111213141516171819Route::get(&amp;apos;/dates&amp;apos;, function()&amp;#123;   $date = new DateTime(&amp;apos;+1">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday10.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -147,19 +162,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/blogs/categories/技術分享/">技術分享</a>
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-PHP-multiple-select-寫入資料庫的方法" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day10" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        PHP multiple select 寫入資料庫的方法
+        Lavarel 快速學習自我挑戰 Day10
         </h1>
     
 
@@ -167,36 +182,93 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/" class="article-date">
-    <time datetime="2016-12-01T05:48:23.000Z" itemprop="datePublished">2016-12-01</time>
+                <a href="/blogs/2017/05/01/Lavarel-快速學習自我挑戰-Day10/" class="article-date">
+    <time datetime="2017-05-01T15:21:35.000Z" itemprop="datePublished">2017-05-01</time>
 </a>
                 
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/php_mysql_array.jpg">
+            <img src="/blogs/images/learning/laravel/laravelday10.png">
 <hr>
+<h3>Model Manipulation</h3>
+<h4>Dates</h4>
 <ol>
-<li>填入文字的頁面需要用陣列的方式傳遞資料 <code>name=&quot;item[]&quot;</code></li>
+<li>搜尋套件 <code>composer search carbon</code></li>
+<li>引用套件 <code>use Carbon\Carbon;</code></li>
+<li>新增 routes</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;label for=&quot;item[]&quot; class=&quot;formTitle&quot;&gt;選擇項目&lt;/label&gt;</div><div class="line">&lt;select name=&quot;item[]&quot; class=&quot;form-control selectpicker&quot; multiple&gt;</div><div class="line">  &lt;option&gt;項目一&lt;/option&gt;</div><div class="line">  &lt;option&gt;項目二&lt;/option&gt;</div><div class="line">  &lt;option&gt;項目三&lt;/option&gt;</div><div class="line">&lt;/select&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/dates&apos;, function()&#123;</div><div class="line"></div><div class="line">   $date = new DateTime(&apos;+1 week&apos;);</div><div class="line"></div><div class="line">   echo $date-&gt;format(&apos;m-d-Y&apos;);</div><div class="line"></div><div class="line">   echo &apos;&lt;br&gt;&apos;;</div><div class="line"></div><div class="line">   echo Carbon::now()-&gt;addDays(10)-&gt;diffForHumans();</div><div class="line"></div><div class="line">   echo &apos;&lt;br&gt;&apos;;</div><div class="line"></div><div class="line">   echo Carbon::now()-&gt;subMonth(5)-&gt;diffForHumans();</div><div class="line"></div><div class="line">   echo &apos;&lt;br&gt;&apos;;</div><div class="line"></div><div class="line">   echo Carbon::now()-&gt;yesterday()-&gt;diffForHumans();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>Accessors (pull data out of database)</h4>
+<ol>
+<li>修改 model</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public function getNameAttribute($value)&#123;</div><div class="line"></div><div class="line">//        return ucfirst($value); //第一個字大寫</div><div class="line">        return strtoupper($value); //全部變成大寫</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <ol start="2">
-<li>在取得值之前，要先將取得的陣列用文字的方式顯示。</li>
+<li>修改 routes</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 得到 item 的值</div><div class="line">$item= $_POST[&quot;item&quot;];</div><div class="line">// 將取得的陣列用「、」分開</div><div class="line">$itemArray= implode(&quot;、&quot;, $item);</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>將得到的值寫入 DataTable 資料表內的 DataColumn 欄位，值為剛剛取得的陣列值 <code>$itemarray</code></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/getname&apos;, function()&#123;</div><div class="line"></div><div class="line">    $user = User::find(1);</div><div class="line"></div><div class="line">    echo $user-&gt;name;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>Mutators - <a href="https://laravel.com/docs/5.2/eloquent-mutators" target="_blank" rel="external">Mutators 設定官方文件</a></h4>
+<ol>
+<li>修改 model</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sql_query = INSERT INTO DataTable (`DataColumn`) VALUES (&apos;$itemarray&apos;);</div></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public function setNameAttribute($value)&#123;</div><div class="line"></div><div class="line">        $this-&gt;attributes[&apos;name&apos;] = strtoupper($value);</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 routes</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/setname&apos;, function()&#123;</div><div class="line"></div><div class="line">    $user = User::find(1);</div><div class="line"></div><div class="line">    $user-&gt;name= &quot;william&quot;;</div><div class="line"></div><div class="line">    $user-&gt;save();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>Query Scopes - <a href="https://laravel.com/docs/5.2/eloquent#query-scopes" target="_blank" rel="external">Query Scopes 設定官方文件</a></h4>
+<ol>
+<li>修改 PostsController</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public function index()</div><div class="line">    &#123;</div><div class="line">        $posts = Post::latest();</div><div class="line"></div><div class="line">        return view(&apos;posts.index&apos;, compact(&apos;posts&apos;));</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 Post model</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static function scopeLatest($query)&#123;</div><div class="line"></div><div class="line">        return $query-&gt;orderBy(&apos;id&apos;, &apos;asc&apos;)-&gt;get();</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3>上傳檔案</h3>
+<h4>新增 Views</h4>
+<ol>
+<li>修改第三個參數 <code>'files'=&gt;true</code> 來新增 enctype ，並加入上傳的 input</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;!! Form::open([&apos;method&apos;=&gt;&apos;POST&apos;, &apos;action&apos;=&gt;&apos;PostsController@store&apos;, &apos;files&apos;=&gt;true]) !!&#125;</div><div class="line"></div><div class="line"></div><div class="line">        &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">            &#123;!! Form::label(&apos;title&apos;, &apos;Title:&apos;) !!&#125;</div><div class="line">            &#123;!! Form::text(&apos;title&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">        &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">            &#123;!! Form::file(&apos;file&apos;, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line"></div><div class="line">        &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">            &#123;!! Form::submit(&apos;Create Post&apos;, [&apos;class&apos;=&gt;&apos;btn btn-primary&apos;]) !!&#125;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &#123;!! Form::close() !!&#125;</div></pre></td></tr></table></figure>
+<h4>取得上傳檔案資訊</h4>
+<ol>
+<li>修改 PostsController</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public function store(CreatePostRequest $request)</div><div class="line">    &#123;</div><div class="line">        $file = $request-&gt;file(&apos;file&apos;); //取得檔案，會以暫存檔(temp)呈現</div><div class="line"></div><div class="line">        echo &quot;&lt;br&gt;&quot;;</div><div class="line"></div><div class="line">        echo $file-&gt;getClientOriginalName(); //取得原始名稱</div><div class="line"></div><div class="line">        echo &quot;&lt;br&gt;&quot;;</div><div class="line"></div><div class="line">        echo $file-&gt;getClientSize(); //取得檔案大小</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4>將上傳的檔案寫入資料庫 (persist file data into database)</h4>
+<ol>
+<li>新增一個 migration 並關聯到 posts<br>
+<code>php artisan make:migration add_path_column_to_posts --table=posts</code></li>
+<li>新增 migration 到資料庫<br>
+<code>php artisan migrate</code></li>
+<li>讓 path 欄位可寫入<br>
+<code>protected $fillable = ['path'];</code></li>
+<li>設定 PostsController 讓檔案可以寫入資料庫</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public function store(CreatePostRequest $request)</div><div class="line">    &#123;</div><div class="line">        $input = $request-&gt;all();</div><div class="line"></div><div class="line">        if($file = $request-&gt;file(&apos;file&apos;))&#123;</div><div class="line"></div><div class="line">            $name = $file-&gt;getClientOriginalName();</div><div class="line"></div><div class="line">            $file-&gt;move(&apos;images&apos;, $name);</div><div class="line"></div><div class="line">            $input[&apos;path&apos;] = $name;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Post::create($input);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4>顯示上傳的圖片</h4>
+<ol>
+<li>新增 image-container 到 index.blade.php</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;image-container&quot;&gt;</div><div class="line"></div><div class="line">    &lt;img height=&quot;100&quot; src=&quot;&#123;&#123;$post-&gt;path&#125;&#125;&quot; alt=&quot;&quot;&gt;</div><div class="line">    </div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>新增目錄到 Post model<br>
+<code>public $directory = '/images/';</code></li>
+<li>用 Accessors 新增圖片路徑</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public function getPathAttribute($value)&#123;</div><div class="line"></div><div class="line">        return $this-&gt;directory . $value;</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/" data-id="cj2c8cs6x00177v0ap4izhqzg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/01/Lavarel-快速學習自我挑戰-Day10/" data-id="cj2c8cs4q00067v0aab5hnvrk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -263,7 +335,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/01/Lavarel-快速學習自我挑戰-Day10/" data-num-posts="5"></div>
 
 
     
@@ -324,20 +396,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/01/13/筆記規則-重點摘要/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            筆記規則 重點摘要
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/04/30/Lavarel-快速學習自我挑戰-Day9/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Github Pushed Commit Delete (Redraw)</p>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day9</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
