@@ -23,7 +23,7 @@
 新增 enctype (&apos;type&apos;=&amp;gt;true) {!! Form::open([&apos;method&apos;=&amp;gt;&apos;POST&apos;, &apos;action&apos;=&amp;gt;&apos;AdminUsersController@store&apos;, &apos;files&apos;=&amp;gt;true]) !!}
 新增 migration php artisan make:migration add_ph">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday14.jpg">
-<meta property="og:updated_time" content="2017-05-15T03:04:34.000Z">
+<meta property="og:updated_time" content="2017-05-15T19:36:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day14">
 <meta name="twitter:description" content="Application 2
@@ -299,15 +299,13 @@ ga('send', 'pageview');
 <li>修改 destroy function</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public function destroy($id)</div><div class="line">&#123;</div><div class="line">    $user = User::findOrfail($id);</div><div class="line"></div><div class="line">    unlink(public_path() . $user-&gt;photo-&gt;file);</div><div class="line"></div><div class="line">    $user-&gt;delete();</div><div class="line"></div><div class="line">    Session::flash(&apos;deleted_user&apos;, &quot;The user has been deleted&quot;);</div><div class="line"></div><div class="line">    return redirect(&apos;/admin/users&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>@General23323456</p>
-
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" data-id="cj2q9qrvr000o0w0a5py8295n" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" data-id="cj2qj5nrq000df40a835o2hn6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

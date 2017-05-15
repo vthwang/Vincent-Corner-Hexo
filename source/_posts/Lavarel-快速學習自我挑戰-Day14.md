@@ -327,4 +327,3 @@ public function destroy($id)
     return redirect('/admin/users');
 }
 ```
-@General23323456
