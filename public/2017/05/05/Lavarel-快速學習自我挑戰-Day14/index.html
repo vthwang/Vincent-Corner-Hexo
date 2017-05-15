@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Lavarel 快速學習自我挑戰 Day14 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Laravel" />
+    
+    <meta name="description" content="Application 2
+上傳功能
+
+新增 enctype (&apos;type&apos;=&amp;gt;true) {!! Form::open([&apos;method&apos;=&amp;gt;&apos;POST&apos;, &apos;action&apos;=&amp;gt;&apos;AdminUsersController@store&apos;, &apos;files&apos;=&amp;gt;true]) !!}
+新增 migration php artisan make:migration add_ph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day14">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/05/Lavarel-快速學習自我挑戰-Day14/index.html">
+<meta property="og:site_name" content="Vincent's Corner">
+<meta property="og:description" content="Application 2
+上傳功能
+
+新增 enctype (&apos;type&apos;=&amp;gt;true) {!! Form::open([&apos;method&apos;=&amp;gt;&apos;POST&apos;, &apos;action&apos;=&amp;gt;&apos;AdminUsersController@store&apos;, &apos;files&apos;=&amp;gt;true]) !!}
+新增 migration php artisan make:migration add_ph">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday14.jpg">
+<meta property="og:updated_time" content="2017-05-15T03:04:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day14">
+<meta name="twitter:description" content="Application 2
+上傳功能
+
+新增 enctype (&apos;type&apos;=&amp;gt;true) {!! Form::open([&apos;method&apos;=&amp;gt;&apos;POST&apos;, &apos;action&apos;=&amp;gt;&apos;AdminUsersController@store&apos;, &apos;files&apos;=&amp;gt;true]) !!}
+新增 migration php artisan make:migration add_ph">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday14.jpg">
+<meta property="fb:admins" content="dtvgood202">
+<meta property="fb:app_id" content="176717762750155">
+    
+
+    
+
+    
+        <link rel="icon" href="/blogs/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/blogs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blogs/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blogs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blogs/css/style.css">
+
+    <script src="/blogs/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blogs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blogs/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/中醫典藏/">中醫典藏</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blogs/',
+        CONTENT_URL: '/blogs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blogs/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day14" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Lavarel 快速學習自我挑戰 Day14
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" class="article-date">
+    <time datetime="2017-05-04T16:06:02.000Z" itemprop="datePublished">2017-05-05</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/laravel/laravelday14.jpg">
+<hr>
+<h3>Application 2</h3>
+<h4>上傳功能</h4>
+<ol>
+<li>新增 enctype (<code>'type'=&gt;true</code>) <code>{!! Form::open(['method'=&gt;'POST', 'action'=&gt;'AdminUsersController@store', 'files'=&gt;true]) !!}</code></li>
+<li>新增 migration <code>php artisan make:migration add_photo_id_to_users --table=users</code></li>
+<li>修改 add_photo_id_to_users_table</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public function up()</div><div class="line">&#123;</div><div class="line">    Schema::table(&apos;users&apos;, function (Blueprint $table) &#123;</div><div class="line"></div><div class="line">        $table-&gt;string(&apos;photo_id&apos;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">public function down()</div><div class="line">&#123;</div><div class="line">    Schema::table(&apos;users&apos;, function (Blueprint $table) &#123;</div><div class="line"></div><div class="line">        $table-&gt;dropColumn(&apos;photo_id&apos;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 Create Page 新增 upload 欄位</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;form-group&quot;&gt;</div><div class="line">    &#123;!! Form::label(&apos;file&apos;, &apos;Title:&apos;) !!&#125;</div><div class="line">    &#123;!! Form::file(&apos;file&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 User model 讓欄位可寫入 <code>protected $fillable = ['name', 'email', 'password', 'role_id', 'is_active', 'photo_id']</code></li>
+<li>修改 AdminUsersController 的 store function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public function store(UsersRequest $request)</div><div class="line">&#123;</div><div class="line">    User::create($request-&gt;all());</div><div class="line"></div><div class="line">    return redirect(&apos;/admin/users&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>新增 Model 和 migration <code>php artisan make:model Photo -m</code></li>
+<li>在 create_photos_table 新增欄位 <code>$table-&gt;string('file');</code></li>
+<li>在 Photo model 讓 file 可寫入 <code>protected $fillable = ['file'];</code></li>
+<li>在 User model 新增 relationship <code>public function photo(){return $this-&gt;belongsTo('App\Photo');}</code></li>
+</ol>
+<h4>新增連結</h4>
+<ol>
+<li>在 layouts/admin.blade.php 新增 route link</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;li&gt;</div><div class="line">    &lt;a href=&quot;&#123;&#123;route(&apos;admin.users.index&apos;)&#125;&#125;&quot;&gt;All Users&lt;/a&gt;</div><div class="line">&lt;/li&gt;</div><div class="line"></div><div class="line">&lt;li&gt;</div><div class="line">    &lt;a href=&quot;&#123;&#123;route(&apos;admin.users.create&apos;)&#125;&#125;&quot;&gt;Create User&lt;/a&gt;</div><div class="line">&lt;/li&gt;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 create page</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;form-group&quot;&gt;</div><div class="line">    &#123;!! Form::label(&apos;photo_id&apos;, &apos;Photo:&apos;) !!&#125;</div><div class="line">    &#123;!! Form::file(&apos;photo_id&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 AdminUsersController 的 store function 新增</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">if($file = $request-&gt;file(&apos;photo_id&apos;)) &#123;</div><div class="line"></div><div class="line">    $name = time() . $file-&gt;getClientOriginalName();</div><div class="line"></div><div class="line">    $file-&gt;move(&apos;images&apos;, $name);</div><div class="line"></div><div class="line">    $photo = Photo::create([&apos;file&apos;=&gt;$name]);</div><div class="line"></div><div class="line">    $input[&apos;photo_id&apos;] = $photo-&gt;id;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>繼續在 store function 將密碼加密後儲存所有檔案</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$input[&apos;password&apos;] = bcrypt($request-&gt;password);</div><div class="line"></div><div class="line">User::create($input);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>新增路徑資訊到 Photo model</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">protected $uploads = &apos;/images/&apos;;</div><div class="line"></div><div class="line">public function getFileAttribute($photo)&#123;</div><div class="line"></div><div class="line">    return $this-&gt;uploads . $photo;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>新增 photo 到 User index page<br>
+<code>&lt;td&gt;&lt;img height=&quot;50&quot; src=&quot;{{$user->photo ? $user->photo->file : 'no user photo'}}&quot; alt=&quot;&quot;&gt;&lt;/td&gt;</code></li>
+</ol>
+<h4>Edit page</h4>
+<ol>
+<li>修改 AdminUsersController 的 edit function (傳送 role 的資訊)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public function edit($id)</div><div class="line">    &#123;</div><div class="line">        $user = User::findOrFail($id);</div><div class="line"></div><div class="line">        $roles = Role::lists(&apos;name&apos;, &apos;id&apos;)-&gt;all();</div><div class="line"></div><div class="line">        return view(&apos;admin.users.edit&apos;, compact(&apos;user&apos;, &apos;roles&apos;));</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 edit page (先從 create page 複製頁面，將 form 連結 model)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.admin&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Edit User&lt;/h1&gt;</div><div class="line"></div><div class="line">    &#123;!! Form::model($user, [&apos;method&apos;=&gt;&apos;PATCH&apos;, &apos;action&apos;=&gt;[&apos;AdminUsersController@update&apos;, $user-&gt;id], &apos;files&apos;=&gt;true]) !!&#125;</div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;name&apos;, &apos;Name:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::text(&apos;name&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;email&apos;, &apos;Email:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::email(&apos;email&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;role_id&apos;, &apos;Role:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::select(&apos;role_id&apos;, $roles , null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;is_active&apos;, &apos;Status:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::select(&apos;is_active&apos;, array(1 =&gt; &apos;Active&apos;, 0 =&gt; &apos;No Active&apos;), 0, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;photo_id&apos;, &apos;Photo:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::file(&apos;photo_id&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;password&apos;, &apos;Password:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::password(&apos;password&apos;, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::submit(&apos;Create User&apos;, [&apos;class&apos;=&gt;&apos;btn btn-primary&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &#123;!! Form::close() !!&#125;</div><div class="line"></div><div class="line">    @include(&apos;includes.form_error&apos;)</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 edit page 新增圖片</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;col-sm-3&quot;&gt;</div><div class="line"></div><div class="line">    &lt;img src=&quot;&#123;&#123;$user-&gt;photo ? $user-&gt;photo-&gt;file : &apos;http://placehold.it/400x400&apos;&#125;&#125;&quot; alt=&quot;&quot; class=&quot;img-responsive img-rounded&quot;&gt;</div><div class="line">    </div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;div class=&quot;col-sm-9&quot;&gt;</div><div class="line"></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>將 users/index view 的圖片改成若無圖片，顯示 sample 圖片<br>
+<code>&lt;td&gt;&lt;img height=&quot;50&quot; src=&quot;{{$user->photo ? $user->photo->file : 'http://placehold.it/400x400'}}&quot; alt=&quot;&quot;&gt;&lt;/td&gt;</code></li>
+<li>將 AdminUsersController 的 update function 改用 UsersRequest 來做 validation<br>
+<code>public function update(UsersRequest $request, $id){}</code></li>
+<li>修改 AdminUsersController 的 update function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public function update(UsersRequest $request, $id)</div><div class="line">&#123;</div><div class="line">    $user = User::findOrFail($id);</div><div class="line"></div><div class="line">    $input = $request-&gt;all();</div><div class="line"></div><div class="line">    if($file = $request-&gt;file(&apos;photo_id&apos;)) &#123;</div><div class="line"></div><div class="line">        $name = time() . $file-&gt;getClientOriginalName();</div><div class="line"></div><div class="line">        $file-&gt;move(&apos;images&apos;, $name);</div><div class="line"></div><div class="line">        $photo = Photo::create([&apos;file&apos; =&gt; $name]);</div><div class="line"></div><div class="line">        $input[&apos;photo_id&apos;] = $photo-&gt;id;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $user-&gt;update($input);</div><div class="line"></div><div class="line">    return redirect(&apos;/admin/users&apos;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>新增新的 Request <code>php artisan make:request UsersEditRequest</code></li>
+<li>修改 Request<br>
+<code>public function authorize(){return true;}</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public function rules()</div><div class="line">    &#123;</div><div class="line">        return [</div><div class="line">            &apos;name&apos; =&gt; &apos;required&apos;,</div><div class="line">            &apos;email&apos; =&gt; &apos;required&apos;,</div><div class="line">            &apos;role_id&apos; =&gt; &apos;required&apos;,</div><div class="line">            &apos;is_active&apos; =&gt; &apos;required&apos;,</div><div class="line">        ];</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ol start="9">
+<li>修改 AdminUsersController 的 create 和 update function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">if(trim($request-&gt;password) == &apos;&apos;)&#123;</div><div class="line"></div><div class="line">    $input = $request-&gt;except(&apos;password&apos;);</div><div class="line"></div><div class="line">&#125; else &#123;</div><div class="line"></div><div class="line">    $input = $request-&gt;all();</div><div class="line"></div><div class="line">    $input[&apos;password&apos;] = bcrypt($request-&gt;password);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="10">
+<li>Mutator</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public function setPasswordAttribute($password)&#123;</div><div class="line"></div><div class="line">    if(!empty($password))&#123;</div><div class="line"></div><div class="line">        $this-&gt;attributes[&apos;password&apos;] = bcrypt($password);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>Middleware</h4>
+<ol>
+<li>新增一個 middleware <code>php artisan make:middleware Admin</code></li>
+<li>在 app\kernel.php 註冊 middleware (routemiddleware)<br>
+<code>'admin' =&gt; \App\Http\Middleware\Admin::class,</code></li>
+<li>新增 404 頁面 resources\views\errors\404.blade.php</li>
+<li>在 User model 新增一個 function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public function isAdmin()&#123;</div><div class="line"></div><div class="line">    if($this-&gt;role-&gt;name == &quot;administrator&quot;)&#123;</div><div class="line"></div><div class="line">        return true;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return false;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改 Admin middleware</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public function handle($request, Closure $next)</div><div class="line">&#123;</div><div class="line"></div><div class="line">    if(Auth::check())&#123;</div><div class="line"></div><div class="line">        if(Auth::user()-&gt;isAdmin())&#123;</div><div class="line"></div><div class="line">            return $next($request);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return redirect(&apos;/&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>Delete User</h4>
+<ol>
+<li>新增 form 到 Users/edit view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;!! Form::open([&apos;method&apos;=&gt;&apos;DELETE&apos;, &apos;action&apos;=&gt;[&apos;AdminUsersController@destroy&apos;, $user-&gt;id]]) !!&#125;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::submit(&apos;Delete User&apos;, [&apos;class&apos;=&gt;&apos;btn btn-danger&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">&#123;!! Form::close() !!&#125;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 AdminUsersController 新增 destroy function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public function destroy($id)</div><div class="line">&#123;</div><div class="line">    User::findOrfail($id)-&gt;delete();</div><div class="line"></div><div class="line">    Session::flash(&apos;deleted_user&apos;, &quot;The user has been deleted&quot;);</div><div class="line"></div><div class="line">    return redirect(&apos;/admin/users&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>將讀取到的 session 顯示在 Users/index view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@if(Session::has(&apos;deleted_user&apos;))</div><div class="line"></div><div class="line">    &lt;p class=&quot;bg-danger&quot;&gt;&#123;&#123;session(&apos;deleted_user&apos;)&#125;&#125;&lt;/p&gt;</div><div class="line"></div><div class="line">@endif</div></pre></td></tr></table></figure>
+<h4>在目錄刪除圖片</h4>
+<ol>
+<li>修改 destroy function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public function destroy($id)</div><div class="line">&#123;</div><div class="line">    $user = User::findOrfail($id);</div><div class="line"></div><div class="line">    unlink(public_path() . $user-&gt;photo-&gt;file);</div><div class="line"></div><div class="line">    $user-&gt;delete();</div><div class="line"></div><div class="line">    Session::flash(&apos;deleted_user&apos;, &quot;The user has been deleted&quot;);</div><div class="line"></div><div class="line">    return redirect(&apos;/admin/users&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>@General23323456</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" data-id="cj2q9qrvr000o0w0a5py8295n" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hdtvgood202" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/05/04/Lavarel-快速學習自我挑戰-Day13/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day13</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday14.jpg)" alt="Lavarel 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" class="title">Lavarel 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T16:06:02.000Z" itemprop="datePublished">2017-05-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/04/Lavarel-快速學習自我挑戰-Day13/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday13.jpg)" alt="Lavarel 快速學習自我挑戰 Day13" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/04/Lavarel-快速學習自我挑戰-Day13/" class="title">Lavarel 快速學習自我挑戰 Day13</a></p>
+                            <p class="item-date"><time datetime="2017-05-03T19:07:21.000Z" itemprop="datePublished">2017-05-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/03/Lavarel-快速學習自我挑戰-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday12.png)" alt="Lavarel 快速學習自我挑戰 Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/03/Lavarel-快速學習自我挑戰-Day12/" class="title">Lavarel 快速學習自我挑戰 Day12</a></p>
+                            <p class="item-date"><time datetime="2017-05-02T21:44:13.000Z" itemprop="datePublished">2017-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/02/Lavarel-快速學習自我挑戰-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday11.jpg)" alt="Lavarel 快速學習自我挑戰 Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/02/Lavarel-快速學習自我挑戰-Day11/" class="title">Lavarel 快速學習自我挑戰 Day11</a></p>
+                            <p class="item-date"><time datetime="2017-05-01T19:43:56.000Z" itemprop="datePublished">2017-05-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/01/Lavarel-快速學習自我挑戰-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday10.png)" alt="Lavarel 快速學習自我挑戰 Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/01/Lavarel-快速學習自我挑戰-Day10/" class="title">Lavarel 快速學習自我挑戰 Day10</a></p>
+                            <p class="item-date"><time datetime="2017-05-01T15:21:35.000Z" itemprop="datePublished">2017-05-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/中醫典藏/">中醫典藏</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">26</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/React/" style="font-size: 10px;">React</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/dtvgood202">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/blogs/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=176717762750155";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/blogs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/blogs/js/main.js"></script>
+
+    </div>
+</body>
+</html>
