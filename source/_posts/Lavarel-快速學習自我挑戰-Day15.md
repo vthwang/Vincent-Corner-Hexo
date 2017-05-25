@@ -249,7 +249,7 @@ $user->posts()->create($input);
 return redirect('/admin/posts');
 ```
 2. 修改 Post index view 來顯示圖片
-`<img height="100" src="{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}" alt="">`
+`<img height="100" src="{{ "{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'" }}}}" alt="">`
 
 
 

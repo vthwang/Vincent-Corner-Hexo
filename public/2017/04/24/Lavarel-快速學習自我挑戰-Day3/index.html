@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Lavarel 快速學習自我挑戰 Day3 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Laravel" />
+    
+    <meta name="description" content="Views - Views 設定官方文件
+路徑：/resources/views
+
+在 Controller 新增一個 function
+public function contact(){return view(&apos;contact&apos;);}
+新增一個 view (檔名為xxx.blade.php)
+
+可以將 view 的檔案設定在子目錄下。例：新增一個 pages/contact.php，路由部">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day3">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/04/24/Lavarel-快速學習自我挑戰-Day3/index.html">
+<meta property="og:site_name" content="Vincent's Corner">
+<meta property="og:description" content="Views - Views 設定官方文件
+路徑：/resources/views
+
+在 Controller 新增一個 function
+public function contact(){return view(&apos;contact&apos;);}
+新增一個 view (檔名為xxx.blade.php)
+
+可以將 view 的檔案設定在子目錄下。例：新增一個 pages/contact.php，路由部">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday3.jpg">
+<meta property="og:updated_time" content="2017-04-24T19:52:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day3">
+<meta name="twitter:description" content="Views - Views 設定官方文件
+路徑：/resources/views
+
+在 Controller 新增一個 function
+public function contact(){return view(&apos;contact&apos;);}
+新增一個 view (檔名為xxx.blade.php)
+
+可以將 view 的檔案設定在子目錄下。例：新增一個 pages/contact.php，路由部">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday3.jpg">
+<meta property="fb:admins" content="dtvgood202">
+<meta property="fb:app_id" content="176717762750155">
+    
+
+    
+
+    
+        <link rel="icon" href="/blogs/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/blogs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blogs/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blogs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blogs/css/style.css">
+
+    <script src="/blogs/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blogs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blogs/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/中醫典藏/">中醫典藏</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blogs/',
+        CONTENT_URL: '/blogs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blogs/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Lavarel 快速學習自我挑戰 Day3
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/blogs/2017/04/24/Lavarel-快速學習自我挑戰-Day3/" class="article-date">
+    <time datetime="2017-04-24T07:12:12.000Z" itemprop="datePublished">2017-04-24</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/laravel/laravelday3.jpg">
+<hr>
+<h3>Views - <a href="https://laravel.com/docs/5.2/views" target="_blank" rel="external">Views 設定官方文件</a></h3>
+<p>路徑：/resources/views</p>
+<ol>
+<li>在 Controller 新增一個 function<br>
+<code>public function contact(){return view('contact');}</code></li>
+<li>新增一個 view (檔名為xxx.blade.php)
+<ul>
+<li>可以將 view 的檔案設定在子目錄下。例：新增一個 pages/contact.php，路由部分則要設定為 <code>view(page/contact(或是page.contact)')</code></li>
+</ul>
+</li>
+<li>Routes 設定<br>
+<code>Route::get('/contact', 'PostsController@contact');</code></li>
+</ol>
+<h3>傳送 data 到 Views</h3>
+<ol>
+<li>設定 Routes<br>
+<code>Route::get('post/{id}', 'PostsController@show_post');</code></li>
+<li>在 Controller 新增一個 function<br>
+<code>public function show_post($id){return view('post')-&gt;with('id',$id);}</code></li>
+<li>在 View 裡面使用 data <code>{{$id}}</code></li>
+</ol>
+<h3>傳送多 data 到 Views</h3>
+<ol>
+<li>設定 Routes<br>
+<code>Route::get('post/{id}/{name}/{password}', 'PostsController@show_post');</code></li>
+<li>在 Controller 使用 compact function<br>
+<code>public function show_post($id, $name, $password){return view('post', compact('id','name','password'));}</code></li>
+<li>在 View 裡面使用 data</li>
+</ol>
+<h3>blade (PHP模板引擎) - <a href="https://laravel.com/docs/5.2/blade" target="_blank" rel="external">blade 設定官方文件</a></h3>
+<p><code>!</code> + <code>tab</code> =&gt; html 模板<br>
+<code>div.container</code> + <code>tab</code> =&gt; class 為 container 的 div 容器<br>
+<code>@yield('content')</code> =&gt; 產生一個內容的區塊<br>
+<code>@extends('layouts.app')</code> =&gt; 使用 layouts.app 裡面的內容<br>
+<code>@section('content')</code> =&gt; 產生自定義內容</p>
+<p>blade 使用範例：</p>
+<ol>
+<li>在 PostsController 裡的 Contact 新增人名 array，並傳送 data<br>
+<code>$people = ['Edwin', 'Jose', 'James', 'Peter', 'Maria'];</code><br>
+<code>return view('contact', compact('people'));</code></li>
+<li>在 contact.blade.php 裡面列出人名 (blade 的函式皆以 @ 開頭)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@if (count($people))</div><div class="line">  &lt;ul&gt;</div><div class="line">  @foreach($people as $person)</div><div class="line">      &lt;li&gt;&#123;&#123;$person&#125;&#125;&lt;/li&gt;</div><div class="line">  @endforeach</div><div class="line">  &lt;/ul&gt;</div><div class="line">@endif</div></pre></td></tr></table></figure>
+<h3>Database Migration - <a href="https://laravel.com/docs/5.2/migrations" target="_blank" rel="external">Migration 設定官方文件</a></h3>
+<p>sqlite：file based database，資料庫內容儲存於檔案裡，應用於小專案。</p>
+<ol>
+<li>先設定 .env</li>
+<li><code>php artisan migrate</code> (將資料庫設定檔自動移入資料庫)</li>
+</ol>
+<p>自定義 migration</p>
+<ol>
+<li>自行創建一個 migration 檔案：<code>php artisan make:migration (migration_NAME) (FLAG)</code><br>
+範例：<code>php artisan make:migration create_posts_table --create=&quot;posts&quot;</code></li>
+<li>在 migration 裡面新增 table 項目。(<code>$table-&gt;string('title');</code>)</li>
+</ol>
+<p>撤回上一步完成的 migration：<code>php artisan migrate:rollback</code>。</p>
+<h3>新增 column 到存在的 table</h3>
+<ol>
+<li>新增一個 migration：<code>php artisan make:migration add_is_admin_column_to_posts_tables --table=&quot;posts&quot;(定義相關table)</code></li>
+<li>在新增的 migration 檔案的 up 新增 <code>$table-&gt;integer('is_admin')-&gt;unsigned();</code></li>
+<li>在新增的 migration 檔案的 down 新增 <code>$table-&gt;dropColumn('is_admin');</code></li>
+</ol>
+<h3>Migration 命令</h3>
+<p>刪除所有資料庫內容：<code>php artisan migrate:reset</code><br>
+更新資料庫內容(刪除資料庫再重新新增):<code>php artisan migrate:refresh</code><br>
+確認 migration 狀態：<code>php artisan migrate:status</code></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/04/24/Lavarel-快速學習自我挑戰-Day3/" data-id="cj34nuci20010wo0as8ycx0g7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/04/24/Lavarel-快速學習自我挑戰-Day3/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hdtvgood202" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/blogs/2017/04/25/Lavarel-快速學習自我挑戰-Day4/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Lavarel 快速學習自我挑戰 Day4
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/blogs/2017/04/23/Lavarel-快速學習自我挑戰-Day2/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day2</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday15.png)" alt="Lavarel 快速學習自我挑戰 Day15" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" class="title">Lavarel 快速學習自我挑戰 Day15</a></p>
+                            <p class="item-date"><time datetime="2017-05-25T12:10:35.000Z" itemprop="datePublished">2017-05-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday14.jpg)" alt="Lavarel 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" class="title">Lavarel 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T16:06:02.000Z" itemprop="datePublished">2017-05-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/04/Lavarel-快速學習自我挑戰-Day13/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday13.jpg)" alt="Lavarel 快速學習自我挑戰 Day13" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/04/Lavarel-快速學習自我挑戰-Day13/" class="title">Lavarel 快速學習自我挑戰 Day13</a></p>
+                            <p class="item-date"><time datetime="2017-05-03T19:07:21.000Z" itemprop="datePublished">2017-05-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/03/Lavarel-快速學習自我挑戰-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday12.png)" alt="Lavarel 快速學習自我挑戰 Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/03/Lavarel-快速學習自我挑戰-Day12/" class="title">Lavarel 快速學習自我挑戰 Day12</a></p>
+                            <p class="item-date"><time datetime="2017-05-02T21:44:13.000Z" itemprop="datePublished">2017-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/02/Lavarel-快速學習自我挑戰-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday11.jpg)" alt="Lavarel 快速學習自我挑戰 Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/02/Lavarel-快速學習自我挑戰-Day11/" class="title">Lavarel 快速學習自我挑戰 Day11</a></p>
+                            <p class="item-date"><time datetime="2017-05-01T19:43:56.000Z" itemprop="datePublished">2017-05-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/中醫典藏/">中醫典藏</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/React/" style="font-size: 10px;">React</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/dtvgood202">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/blogs/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=176717762750155";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/blogs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/blogs/js/main.js"></script>
+
+    </div>
+</body>
+</html>
