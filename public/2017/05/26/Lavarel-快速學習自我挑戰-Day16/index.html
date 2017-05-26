@@ -3,38 +3,41 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Lavarel 快速學習自我挑戰 Day15 | Vincent&#39;s Corner</title>
+    <title>Lavarel 快速學習自我挑戰 Day16 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="Laravel" />
     
-    <meta name="description" content="Application Post Part I
-設定 routes
+    <meta name="description" content="Application Post Part II
+對貼文分類新增 model 和 migration
 
-設定 404 page view
-
-1234567@extends(&amp;apos;layouts.app&amp;apos;)@section(&amp;apos;content&amp;apos;)    &amp;lt;h1 class=&amp;quot;text-center&amp;quot;&amp;gt;Opps no page available&amp;lt;/h1&amp;gt">
+新增 model php artisan make:model Category -m
+在 category 的 model 處理 mass assignment
+protected $fillable = [&apos;name&apos;];
+在 create_categories_table 新增欄位 $">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day15">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/25/Lavarel-快速學習自我挑戰-Day15/index.html">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day16">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/26/Lavarel-快速學習自我挑戰-Day16/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Application Post Part I
-設定 routes
+<meta property="og:description" content="Application Post Part II
+對貼文分類新增 model 和 migration
 
-設定 404 page view
-
-1234567@extends(&amp;apos;layouts.app&amp;apos;)@section(&amp;apos;content&amp;apos;)    &amp;lt;h1 class=&amp;quot;text-center&amp;quot;&amp;gt;Opps no page available&amp;lt;/h1&amp;gt">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday15.png">
-<meta property="og:updated_time" content="2017-05-25T16:55:48.000Z">
+新增 model php artisan make:model Category -m
+在 category 的 model 處理 mass assignment
+protected $fillable = [&apos;name&apos;];
+在 create_categories_table 新增欄位 $">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday16.jpg">
+<meta property="og:updated_time" content="2017-05-26T09:08:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day15">
-<meta name="twitter:description" content="Application Post Part I
-設定 routes
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day16">
+<meta name="twitter:description" content="Application Post Part II
+對貼文分類新增 model 和 migration
 
-設定 404 page view
-
-1234567@extends(&amp;apos;layouts.app&amp;apos;)@section(&amp;apos;content&amp;apos;)    &amp;lt;h1 class=&amp;quot;text-center&amp;quot;&amp;gt;Opps no page available&amp;lt;/h1&amp;gt">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday15.png">
+新增 model php artisan make:model Category -m
+在 category 的 model 處理 mass assignment
+protected $fillable = [&apos;name&apos;];
+在 create_categories_table 新增欄位 $">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday16.jpg">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -161,14 +164,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Lavarel-快速學習自我挑戰-Day15" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day16" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Lavarel 快速學習自我挑戰 Day15
+        Lavarel 快速學習自我挑戰 Day16
         </h1>
     
 
@@ -176,8 +179,8 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" class="article-date">
-    <time datetime="2017-05-25T12:10:35.000Z" itemprop="datePublished">2017-05-25</time>
+                <a href="/blogs/2017/05/26/Lavarel-快速學習自我挑戰-Day16/" class="article-date">
+    <time datetime="2017-05-26T04:23:31.000Z" itemprop="datePublished">2017-05-26</time>
 </a>
                 
     <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
@@ -186,111 +189,120 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/learning/laravel/laravelday15.png">
+            <img src="/blogs/images/learning/laravel/laravelday16.jpg">
 <hr>
-<h3>Application Post Part I</h3>
-<h4>設定 routes</h4>
+<h3>Application Post Part II</h3>
+<h4>對貼文分類新增 model 和 migration</h4>
 <ol>
-<li>設定 404 page view</li>
+<li>新增 model <code>php artisan make:model Category -m</code></li>
+<li>在 category 的 model 處理 mass assignment<br>
+<code>protected $fillable = ['name'];</code></li>
+<li>在 create_categories_table 新增欄位 <code>$table-&gt;string('name');</code></li>
+<li>將欄位寫入資料庫 <code>php artisan migrate</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.app&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1 class=&quot;text-center&quot;&gt;Opps no page available&lt;/h1&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
+<h4>與貼文分類顯示或創建貼文</h4>
+<ol>
+<li>修改 posts 的 index view<br>
+<code>&lt;td&gt; {{$post->category ? $post->category->name : 'Uncategorized'}}&lt;/td&gt;</code></li>
+<li>修改 AdminPostsController 的 create function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$categories = Category::lists(&apos;name&apos;,&apos;id&apos;)-&gt;all();</div><div class="line">return view(&apos;admin.posts.create&apos;, compact(&apos;categories&apos;));</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>修改 Post create view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;form-group&quot;&gt;</div><div class="line">    &#123;!! Form::label(&apos;category_id&apos;, &apos;Category:&apos;) !!&#125;</div><div class="line">    &#123;!! Form::select(&apos;category_id&apos;, [&apos;&apos;=&gt;&apos;Choose Categories&apos;] + $categories, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h4>編輯貼文</h4>
+<ol>
+<li>修改 AdminPostsController 的 edit function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$post = Post::findOrFail($id);</div><div class="line">$categories = Category::lists(&apos;name&apos;, &apos;id&apos;)-&gt;all();</div><div class="line">return view(&apos;admin.posts.edit&apos;, compact(&apos;post&apos;, &apos;categories&apos;));</div></pre></td></tr></table></figure>
 <ol start="2">
-<li>新增 routes 在 admin group 裡面<br>
-<code>Route::resource('admin/posts', 'AdminPostsController');</code></li>
-<li>新增 Controller<br>
-<code>php artisan make:controller --resource AdminPostsController</code></li>
-<li>在 Controller 的 index<br>
-<code>return view('admin.posts.index');</code></li>
-<li>新增 /views/admin/posts/index.blade.php</li>
+<li>複製 create view 到 edit view 並修改 form<br>
+<code>{!! Form::model($post, ['method'=&gt;'PATCH', 'action'=&gt;['AdminPostsController@update', $post-&gt;id], 'files'=&gt;true]) !!}</code></li>
+<li>在 posts index view 的名字新增超連結<br>
+<code>&lt;td&gt;&lt;a href=&quot; {{route('admin.posts.edit', $post->id)}}&quot;&gt; {{$post->user->name}}&lt;/a&gt;&lt;/td&gt;</code></li>
+<li>修改 post edit view 的 category<br>
+<code>{!! Form::select('category_id', $categories, null, ['class'=&gt;'form-control']) !!}</code></li>
+<li>修改 AdminPostsController 的 update function</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.admin&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Posts&lt;/h1&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$input = $request-&gt;all();</div><div class="line"></div><div class="line">if($file = $request-&gt;file(&apos;photo_id&apos;))&#123;</div><div class="line"></div><div class="line">    $name = time() . $file-&gt;getClientOriginalName();</div><div class="line"></div><div class="line">    $file-&gt;move(&apos;images&apos;, $name);</div><div class="line"></div><div class="line">    $photo = Photo::create([&apos;file&apos;=&gt;$name]);</div><div class="line"></div><div class="line">    $input[&apos;photo_id&apos;] = $photo-&gt;id;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">Auth::user()-&gt;posts()-&gt;whereId($id)-&gt;first()-&gt;update($input);</div><div class="line"></div><div class="line">return redirect(&apos;/admin/posts&apos;);</div></pre></td></tr></table></figure>
 <ol start="6">
-<li>修改 layouts 的連結<br>
-All Posts -&gt; <code> {{route('admin.posts.index')}}</code><br>
-Create Post -&gt; <code> {{route('admin.posts.create')}}</code></li>
-<li>修改 Create 和 Edit 的 view</li>
+<li>在 post index view 縮短字的長度 <code> {{str_limit($post->body, 30)}}</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.admin&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Create Post&lt;/h1&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.admin&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Edit Post&lt;/h1&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
-<ol start="8">
-<li>修改 Controller 的 create<br>
-<code>return view('admin.posts.create');</code></li>
-</ol>
-<h4>Migration</h4>
+<h4>刪除貼文</h4>
 <ol>
-<li>新增 model<br>
-<code>php artisan make:model Post -m</code></li>
-<li>在 create_posts_table 新增欄位</li>
+<li>在 post edit view 新增 delete button</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$table-&gt;integer(&apos;user_id&apos;)-&gt;unsigned()-&gt;index();</div><div class="line">$table-&gt;integer(&apos;category_id&apos;)-&gt;unsigned()-&gt;index();</div><div class="line">$table-&gt;integer(&apos;photo_id&apos;)-&gt;unsigned()-&gt;inex();</div><div class="line">$table-&gt;string(&apos;title&apos;);</div><div class="line">$table-&gt;text(&apos;body&apos;);</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>寫入資料庫 <code>php artisan migrate</code></li>
-</ol>
-<h4>顯示貼文</h4>
-<ol>
-<li>在 Post model 處理 mass assignment</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">protected $fillable = [</div><div class="line"></div><div class="line">    &apos;category_id&apos;,</div><div class="line">    &apos;photo_id&apos;,</div><div class="line">    &apos;title&apos;,</div><div class="line">    &apos;body&apos;</div><div class="line"></div><div class="line">];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;!! Form::open([&apos;method&apos;=&gt;&apos;DELETE&apos;, &apos;action&apos;=&gt;[&apos;AdminPostsController@destroy&apos;, $post-&gt;id]]) !!&#125;</div><div class="line"></div><div class="line">    &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::submit(&apos;Delete Post&apos;, [&apos;class&apos;=&gt;&apos;btn btn-danger col-sm-6&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">&#123;!! Form::close() !!&#125;</div></pre></td></tr></table></figure>
 <ol start="2">
-<li>進入 tinker 模式新增資料庫內容 <code>php artisan tinker</code></li>
-<li>新增一行資料 <code>$post = App\Post::create(['title'=&gt;'my first post', 'body'=&gt;'I love laravel with Edwin Diaz']);</code></li>
-<li>修改 Controller 的 Index function</li>
+<li>修改 AdminPostsController 的 destroy function</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$posts = Post::all();</div><div class="line">return view(&apos;admin.posts.index&apos;, compact(&apos;posts&apos;));</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>在 Post index view 新增一個 table 讀取資料庫資料</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;table class=&quot;table&quot;&gt;</div><div class="line">    &lt;thead&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;th&gt;Id&lt;/th&gt;</div><div class="line">        &lt;th&gt;User&lt;/th&gt;</div><div class="line">        &lt;th&gt;Category&lt;/th&gt;</div><div class="line">        &lt;th&gt;Photo&lt;/th&gt;</div><div class="line">        &lt;th&gt;Title&lt;/th&gt;</div><div class="line">        &lt;th&gt;body&lt;/th&gt;</div><div class="line">        &lt;th&gt;Created&lt;/th&gt;</div><div class="line">        &lt;th&gt;Updated&lt;/th&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;/thead&gt;</div><div class="line">    &lt;tbody&gt;</div><div class="line"></div><div class="line">    @if($posts)</div><div class="line"></div><div class="line">        @foreach($posts as $post)</div><div class="line"></div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;id&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;user_id&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;category_id&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;photo_id&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;title&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;body&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;created_at-&gt;diffForHumans()&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;updated_at-&gt;diffForHumans()&#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line"></div><div class="line">        @endforeach</div><div class="line"></div><div class="line">    @endif</div><div class="line">    &lt;/tbody&gt;</div><div class="line">&lt;/table&gt;</div></pre></td></tr></table></figure>
-<h4>Relationship 設定</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$post = Post::findOrfail($id);</div><div class="line"></div><div class="line">unlink(public_path() . $post-&gt;photo-&gt;file);</div><div class="line"></div><div class="line">$post-&gt;delete();</div><div class="line"></div><div class="line">return redirect(&apos;/admin/posts&apos;);</div></pre></td></tr></table></figure>
+<h4>刪除使用者時也刪除貼文</h4>
 <ol>
-<li>在 User model 新增 posts function</li>
+<li>修改 create_posts_table<br>
+<code>$table-&gt;foreign('user_id')-&gt;references('id')-&gt;on('users')-&gt;onDelete('cascade');</code></li>
+<li>更新資料庫 <code>php artisan migrate:refresh</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public function posts()&#123;</div><div class="line"></div><div class="line">    return $this-&gt;hasMany(&apos;App\Post&apos;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>在 Post model 新增 user function</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public function user()&#123;</div><div class="line"></div><div class="line">    return $this-&gt;belongsTo(&apos;App\User&apos;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>修改 index view 的 user 欄位 <code>{{$post->user->name}}</code></li>
-<li>在 Post model 新增 photo 和 category function</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public function photo()&#123;</div><div class="line">        </div><div class="line">    return $this-&gt;belongsTo(&apos;App\Photo&apos;);</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">public function category()&#123;</div><div class="line">    </div><div class="line">    return $this-&gt;belongsTo(&apos;App\Category&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>在 Role model 讓 name 可寫入</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected $fillable = [</div><div class="line"></div><div class="line">    &apos;name&apos;</div><div class="line"></div><div class="line">];</div></pre></td></tr></table></figure>
-<h4>創建表單</h4>
+<h4>在編輯貼文時顯示圖片</h4>
 <ol>
-<li>新增 create view 表單</li>
+<li>修改 post edit view</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&#123;!! Form::open([&apos;method&apos;=&gt;&apos;POST&apos;, &apos;action&apos;=&gt;&apos;AdminPostsController@store&apos;, &apos;files&apos;=&gt;true]) !!&#125;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;title&apos;, &apos;Title:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::text(&apos;title&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;category_id&apos;, &apos;Category:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::select(&apos;category_id&apos;, array(&apos;&apos;=&gt;&apos;options&apos;), null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;photo_id&apos;, &apos;Photo:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::file(&apos;photo_id&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;body&apos;, &apos;Description:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::textarea(&apos;body&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;, &apos;rows&apos;=&gt;3]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::submit(&apos;Create Post&apos;, [&apos;class&apos;=&gt;&apos;btn btn-primary&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">&#123;!! Form::close() !!&#125;</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>新增 Request<br>
-<code>php artisan make:request PostsCreateRequest</code></li>
-<li>修改 PostscreateRequest</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;col-sm-3&quot;&gt;</div><div class="line"></div><div class="line">    &lt;img src=&quot;&#123;&#123;$post-&gt;photo-&gt;file&#125;&#125;&quot; alt=&quot;&quot; class=&quot;img-responsive&quot;&gt;</div><div class="line"></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h4>設定分類</h4>
+<ol>
+<li>新增 Controller<br>
+<code>php artisan make:controller --resource AdminCategoriesController</code></li>
+<li>新增 routes<br>
+<code>Route::resource('admin/categories', 'AdminCategoriesController');</code></li>
+<li>新增 categories index view</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public function authorize()</div><div class="line">    &#123;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">public function rules()</div><div class="line">    &#123;</div><div class="line">        return [</div><div class="line"></div><div class="line">            &apos;title&apos;         =&gt;&apos;required&apos;,</div><div class="line">            &apos;category_id&apos;   =&gt;&apos;required&apos;,</div><div class="line">            &apos;photo_id&apos;      =&gt;&apos;required&apos;,</div><div class="line">            &apos;body&apos;          =&gt;&apos;required&apos;</div><div class="line"></div><div class="line">        ];</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.admin&apos;);</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Categories&lt;/h1&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
 <ol start="4">
-<li>在 create post view include error message<br>
-<code>@include('includes.form_error')</code></li>
+<li>修改 layout.admin 的 routes</li>
 </ol>
-<h4>創建貼文</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;li&gt;</div><div class="line">    &lt;a href=&quot;&#123;&#123;route(&apos;admin.categories.index&apos;)&#125;&#125;&quot;&gt;All Categories&lt;/a&gt;</div><div class="line">&lt;/li&gt;</div><div class="line"></div><div class="line">&lt;li&gt;</div><div class="line">    &lt;a href=&quot;&#123;&#123;route(&apos;admin.categories.create&apos;)&#125;&#125;&quot;&gt;Create Category&lt;/a&gt;</div><div class="line">&lt;/li&gt;</div></pre></td></tr></table></figure>
+<h4>創建分類</h4>
 <ol>
-<li>更新 Controller 的 store function</li>
+<li>修改 AdminCategoriesController 的 index</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$input = $request-&gt;all();</div><div class="line"></div><div class="line">$user = Auth::user();</div><div class="line"></div><div class="line">if($file = $request-&gt;file(&apos;photo_id&apos;))&#123;</div><div class="line"></div><div class="line">    $name = time() . $file-&gt;getClientOriginalName();</div><div class="line">    </div><div class="line">    $file-&gt;move(&apos;images&apos;, $name);</div><div class="line">    </div><div class="line">    $photo = Photo::create([&apos;file&apos;=&gt;$name]);</div><div class="line">    </div><div class="line">    $input[&apos;photo_id&apos;] = $photo-&gt;id;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">$user-&gt;posts()-&gt;create($input);</div><div class="line"></div><div class="line">return redirect(&apos;/admin/posts&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$categories = Category::all();</div><div class="line"></div><div class="line">return view(&apos;admin.categories.index&apos;, compact(&apos;categories&apos;));</div></pre></td></tr></table></figure>
 <ol start="2">
-<li>修改 Post index view 來顯示圖片<br>
-<code>&lt;img height=&quot;100&quot; src=&quot;{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}&quot; alt=&quot;&quot;&gt;</code></li>
+<li>修改 categories index view</li>
 </ol>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.admin&apos;);</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Categories&lt;/h1&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;col-sm-6&quot;&gt;</div><div class="line"></div><div class="line">        &#123;!! Form::open([&apos;method&apos;=&gt;&apos;POST&apos;, &apos;action&apos;=&gt;&apos;AdminCategoriesController@store&apos;]) !!&#125;</div><div class="line"></div><div class="line">            &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">                &#123;!! Form::label(&apos;name&apos;, &apos;Name:&apos;) !!&#125;</div><div class="line">                &#123;!! Form::text(&apos;name&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">            &lt;/div&gt;</div><div class="line"></div><div class="line">            &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">            &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">                &#123;!! Form::submit(&apos;Create Category&apos;, [&apos;class&apos;=&gt;&apos;btn btn-primary&apos;]) !!&#125;</div><div class="line">            &lt;/div&gt;</div><div class="line"></div><div class="line">        &#123;!! Form::close() !!&#125;</div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;col-sm-6&quot;&gt;</div><div class="line"></div><div class="line">        @if($categories)</div><div class="line"></div><div class="line">        &lt;table class=&quot;table&quot;&gt;</div><div class="line">            &lt;thead&gt;</div><div class="line">            &lt;tr&gt;</div><div class="line">                &lt;th&gt;id&lt;/th&gt;</div><div class="line">                &lt;th&gt;Name&lt;/th&gt;</div><div class="line">                &lt;th&gt;Created date&lt;/th&gt;</div><div class="line">            &lt;/tr&gt;</div><div class="line">            &lt;/thead&gt;</div><div class="line">            &lt;tbody&gt;</div><div class="line"></div><div class="line">            @foreach($categories as $category)</div><div class="line">            &lt;tr&gt;</div><div class="line">                &lt;td&gt;&#123;&#123;$category-&gt;id&#125;&#125;&lt;/td&gt;</div><div class="line">                &lt;td&gt;&#123;&#123;$category-&gt;name&#125;&#125;&lt;/td&gt;</div><div class="line">                &lt;td&gt;&#123;&#123;$category-&gt;created_at ? $category-&gt;created_at-&gt;diffForHumans() : &apos;No date&apos;&#125;&#125;&lt;/td&gt;</div><div class="line">            &lt;/tr&gt;</div><div class="line">            @endforeach</div><div class="line">        &lt;/table&gt;</div><div class="line"></div><div class="line">        @endif</div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 AdminCategoriesController store function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Category::create($request-&gt;all());</div><div class="line">return redirect(&apos;admin/categories&apos;);</div></pre></td></tr></table></figure>
+<h4>更新和刪除分類</h4>
+<ol>
+<li>修改 category edit view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.admin&apos;);</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Categories&lt;/h1&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;col-sm-6&quot;&gt;</div><div class="line"></div><div class="line">        &#123;!! Form::model($category, [&apos;method&apos;=&gt;&apos;PATCH&apos;, &apos;action&apos;=&gt;[&apos;AdminCategoriesController@update&apos;, $category-&gt;id]]) !!&#125;</div><div class="line"></div><div class="line">        &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">            &#123;!! Form::label(&apos;name&apos;, &apos;Name:&apos;) !!&#125;</div><div class="line">            &#123;!! Form::text(&apos;name&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">        &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">            &#123;!! Form::submit(&apos;Update Category&apos;, [&apos;class&apos;=&gt;&apos;btn btn-primary&apos;]) !!&#125;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &#123;!! Form::close() !!&#125;</div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;col-sm-6&quot;&gt;</div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 AdminCategoriesController 的 edit function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$category = Category::findOrFail($id);</div><div class="line">return view(&apos;admin.categories&apos;, compact(&apos;category&apos;));</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 category edit view 新增 delete button</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;!! Form::open([&apos;method&apos;=&gt;&apos;DELETE&apos;, &apos;action&apos;=&gt;[&apos;AdminCategoriesController@destroy&apos;, $category-&gt;id]]) !!&#125;</div><div class="line"></div><div class="line">&#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">&lt;div class=&quot;form-group&quot;&gt;</div><div class="line">    &#123;!! Form::submit(&apos;Delete Category&apos;, [&apos;class&apos;=&gt;&apos;btn btn-danger col-sm-6&apos;]) !!&#125;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&#123;!! Form::close() !!&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>修改 AdminCategoriesController 的 destroy function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Category::findOrFail($id)-&gt;delete();</div><div class="line">return redirect(&apos;/admin/categories&apos;);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改 AdminCategoriesController 的 update function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$category = Category::findOrFail($id);</div><div class="line">$category-&gt;update($request-&gt;all());</div><div class="line">return redirect(&apos;/admin/categories&apos;);</div></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" data-id="cj35mlfnk000pwv0a3uk8o6cw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/26/Lavarel-快速學習自我挑戰-Day16/" data-id="cj35mlfnn000swv0avk0va2qy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -357,7 +369,7 @@ Create Post -&gt; <code> {{route('admin.posts.create')}}</code></li>
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/26/Lavarel-快速學習自我挑戰-Day16/" data-num-posts="5"></div>
 
 
     
@@ -418,20 +430,10 @@ Create Post -&gt; <code> {{route('admin.posts.create')}}</code></li>
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/05/26/Lavarel-快速學習自我挑戰-Day16/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Lavarel 快速學習自我挑戰 Day16
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day14</p>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day15</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
