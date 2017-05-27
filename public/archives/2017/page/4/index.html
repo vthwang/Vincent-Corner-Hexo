@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     
-    <title>標籤：Laravel | Vincent&#39;s Corner</title>
+    <title>彙整：: 2017 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="description" content="Who knows what fantastic things around Vincent&apos;s corner?">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vincent's Corner">
-<meta property="og:url" content="https://tingsyuanwang.github.io/tags/Laravel/page/2/index.html">
+<meta property="og:url" content="https://tingsyuanwang.github.io/archives/2017/page/4/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
 <meta property="og:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
 <meta name="twitter:card" content="summary">
@@ -136,7 +136,7 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>標籤：<em>Laravel</em>
+    <i class="icon fa fa-archive"></i>彙整：: 2017
     </h1>
 </div>
 
@@ -160,17 +160,17 @@ ga('send', 'pageview');
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/blogs/2017/04/28/Lavarel-快速學習自我挑戰-Day7/" class="thumbnail">
+        <a href="/blogs/2017/01/13/筆記規則-重點摘要/" class="thumbnail">
     
     
-        <span style="background-image:url(/blogs/images/learning/laravel/laravelday7.jpeg)" alt="Lavarel 快速學習自我挑戰 Day7" class="thumbnail-image"></span>
+        <span style="background-image:url(/blogs/images/notebook.jpeg)" alt="筆記規則 重點摘要" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/04/28/Lavarel-快速學習自我挑戰-Day7/">0</span> 則評論
+        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/01/13/筆記規則-重點摘要/">0</span> 則評論
     
 </span>
 
@@ -181,382 +181,38 @@ ga('send', 'pageview');
         
         <div class="article-meta">
             <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+            <a class="article-category-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a>
             </p>
-            <p class="date"><time datetime="2017-04-28T15:21:35.000Z" itemprop="datePublished">2017-04-28</time></p>
+            <p class="date"><time datetime="2017-01-13T02:22:47.000Z" itemprop="datePublished">2017-01-13</time></p>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/04/28/Lavarel-快速學習自我挑戰-Day7/">Lavarel 快速學習自我挑戰 Day7</a>
+        <a href="/blogs/2017/01/13/筆記規則-重點摘要/">筆記規則 重點摘要</a>
         </h1>
     
 
         <p class="article-excerpt">
             
 
-One to Many Relationship (CRUD) - Eloquent Relationship 設定官方文件
 
-安裝＋設定
+為每一天重要的事情，下一個大標題。
+把實際開始和結束的時間用螢光筆框起來，紀錄行程是否太滿。
+用一些自己專屬的記號。
+多色規則：我喜歡五色原則(加上自己的顏色)。
 
-新增一個專案
-composer create-project --prefer-dist laravel/laravel onetomany 5.2.29
-建立資料庫 &amp; 設定 .env
-
-
-資料庫設定和 migration
-
-新增 model
-
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/04/27/Lavarel-快速學習自我挑戰-Day6/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/laravel/laravelday6.jpg)" alt="Lavarel 快速學習自我挑戰 Day6" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/04/27/Lavarel-快速學習自我挑戰-Day6/">0</span> 則評論
-    
-</span>
+紅色：重要事項。
+藍色：工作相關。
+黑色：日常私事、每日固定工作(包含記帳)。
+綠色：非日常私事。
+粉紅色：朝夢想前進的行動。
 
 
-    
-</a>
+專案管理的方法。
 
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-04-27T02:19:30.000Z" itemprop="datePublished">2017-04-27</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/04/27/Lavarel-快速學習自我挑戰-Day6/">Lavarel 快速學習自我挑戰 Day6</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Tinker
-
-使用 Tinker 建立資料
-
-進入 Tinker 模式
-php artisan tinker
-建立資料
-$post = App\Post::create(['title'=&gt;'PHP post from tinker','content'=&gt;'PHP content from tinker']);
-再看一次資料
-$post
-創建物件
-$post = new App
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/04/26/Lavarel-快速學習自我挑戰-Day5/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/laravel/laravelday5.jpeg)" alt="Lavarel 快速學習自我挑戰 Day5" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/04/26/Lavarel-快速學習自我挑戰-Day5/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-04-26T02:19:30.000Z" itemprop="datePublished">2017-04-26</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/04/26/Lavarel-快速學習自我挑戰-Day5/">Lavarel 快速學習自我挑戰 Day5</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Eloquent Relationship - Eloquent Relationship 設定官方文件
-
-One to One Relationship
-
-新增 user_id 到 migration
-$table-&gt;integer('user_id')-&gt;unsigned();
-新增一個 function 到 User.php
-public function post(){re
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/04/25/Lavarel-快速學習自我挑戰-Day4/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/laravel/laravelday4.jpg)" alt="Lavarel 快速學習自我挑戰 Day4" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/04/25/Lavarel-快速學習自我挑戰-Day4/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-04-25T05:12:19.000Z" itemprop="datePublished">2017-04-25</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/04/25/Lavarel-快速學習自我挑戰-Day4/">Lavarel 快速學習自我挑戰 Day4</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Raw SQL Queries - Database 設定官方文件
-
-insert data (直接在 Routes.php 設定)
-
-123Route::get(&apos;/insert&apos;, function()&#123;    DB::insert(&apos;insert into posts(title, content) values(?, ?)&apos;, [&ap
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/04/24/Lavarel-快速學習自我挑戰-Day3/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/laravel/laravelday3.jpg)" alt="Lavarel 快速學習自我挑戰 Day3" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/04/24/Lavarel-快速學習自我挑戰-Day3/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-04-24T07:12:12.000Z" itemprop="datePublished">2017-04-24</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/04/24/Lavarel-快速學習自我挑戰-Day3/">Lavarel 快速學習自我挑戰 Day3</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Views - Views 設定官方文件
-路徑：/resources/views
-
-在 Controller 新增一個 function
-public function contact(){return view('contact');}
-新增一個 view (檔名為xxx.blade.php)
-
-可以將 view 的檔案設定在子目錄下。例：新增一個 pages/contact.php，路由部
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/04/23/Lavarel-快速學習自我挑戰-Day2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/laravel/laravelday2.png)" alt="Lavarel 快速學習自我挑戰 Day2" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/04/23/Lavarel-快速學習自我挑戰-Day2/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-04-23T08:15:17.000Z" itemprop="datePublished">2017-04-23</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/04/23/Lavarel-快速學習自我挑戰-Day2/">Lavarel 快速學習自我挑戰 Day2</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Laravel 目錄結構
-/app/Http/Controllers：make request、routes 設定。
-/config： 註冊外掛進入 packages、database 連線 (但是連線資訊都設定在根目錄的 .env)、mail 連線。
-/database/migration：透過檔案建立資料，會非常常用。
-/public：css folder、javascript folde
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/04/22/Lavarel-快速學習自我挑戰-Day1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/laravel/laravelday1.jpg)" alt="Lavarel 快速學習自我挑戰 Day1" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/04/22/Lavarel-快速學習自我挑戰-Day1/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-04-21T19:00:35.000Z" itemprop="datePublished">2017-04-22</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/04/22/Lavarel-快速學習自我挑戰-Day1/">Lavarel 快速學習自我挑戰 Day1</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-安裝 PHP 環境
-
-安裝 XAMPP，選 PHP 最新版本。
-啟動 XAMPP，網址列輸入 localhost，可以看到 XAMPP 的最新畫面。
-
-安裝 IDE (PhpStorm)
-
-官方網站。
-學生免費。
-下載 IDE。
-
-Install Composer (相依套件管理器)
-
-Composer官方網站。
-找套件的網站：packagist。
-Download Composer。
-按照程
+設定專案目標，寫下要做的事情。
+用便利貼，為目標訂出細部的具體任務。
+用甘特
         </p>
     </div>
 </article>
@@ -569,8 +225,8 @@ Download Composer。
 
 
     <nav id="page-nav">
-        <span class="pages">第 2 頁，共 2 頁</span>
-        <a class="extend prev" rel="prev" href="/blogs/tags/Laravel/">&laquo;</a><a class="page-number" href="/blogs/tags/Laravel/">1</a><span class="page-number current">2</span>
+        <span class="pages">第 4 頁，共 4 頁</span>
+        <a class="extend prev" rel="prev" href="/blogs/archives/2017/page/3/">&laquo;</a><a class="page-number" href="/blogs/archives/2017/">1</a><a class="page-number" href="/blogs/archives/2017/page/2/">2</a><a class="page-number" href="/blogs/archives/2017/page/3/">3</a><span class="page-number current">4</span>
     </nav>
 
 
