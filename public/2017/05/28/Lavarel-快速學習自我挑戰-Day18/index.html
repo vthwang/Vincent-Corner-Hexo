@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Lavarel 快速學習自我挑戰 Day18 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Laravel" />
+    
+    <meta name="description" content="Application 留言功能 Part I
+設定環境
+
+新增 views/admin/comments/index.blade.php 和 views/admin/comments/replies/index.blade.php
+新增 routes
+
+12Route::resource(&amp;apos;admin/comments&amp;apos;, &amp;apos;PostCommentsContro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day18">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/28/Lavarel-快速學習自我挑戰-Day18/index.html">
+<meta property="og:site_name" content="Vincent's Corner">
+<meta property="og:description" content="Application 留言功能 Part I
+設定環境
+
+新增 views/admin/comments/index.blade.php 和 views/admin/comments/replies/index.blade.php
+新增 routes
+
+12Route::resource(&amp;apos;admin/comments&amp;apos;, &amp;apos;PostCommentsContro">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday18.png">
+<meta property="og:updated_time" content="2017-05-29T16:54:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day18">
+<meta name="twitter:description" content="Application 留言功能 Part I
+設定環境
+
+新增 views/admin/comments/index.blade.php 和 views/admin/comments/replies/index.blade.php
+新增 routes
+
+12Route::resource(&amp;apos;admin/comments&amp;apos;, &amp;apos;PostCommentsContro">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday18.png">
+<meta property="fb:admins" content="dtvgood202">
+<meta property="fb:app_id" content="176717762750155">
+    
+
+    
+
+    
+        <link rel="icon" href="/blogs/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/blogs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blogs/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blogs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blogs/css/style.css">
+
+    <script src="/blogs/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blogs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blogs/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blogs/',
+        CONTENT_URL: '/blogs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blogs/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day18" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Lavarel 快速學習自我挑戰 Day18
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/blogs/2017/05/28/Lavarel-快速學習自我挑戰-Day18/" class="article-date">
+    <time datetime="2017-05-28T08:02:04.000Z" itemprop="datePublished">2017-05-28</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/laravel/laravelday18.png">
+<hr>
+<h3>Application 留言功能 Part I</h3>
+<h4>設定環境</h4>
+<ol>
+<li>新增 views/admin/comments/index.blade.php 和 views/admin/comments/replies/index.blade.php</li>
+<li>新增 routes</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Route::resource(&apos;admin/comments&apos;, &apos;PostCommentsController&apos;);</div><div class="line">Route::resource(&apos;admin/comments/replies&apos;, &apos;CommentRepliesController&apos;);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>新增 model<br>
+<code>php artisan make:model Comment -m</code><br>
+<code>php artisan make:model CommentReply -m</code></li>
+<li>新增欄位到 create_comments_table</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Schema::create(&apos;comments&apos;, function (Blueprint $table) &#123;</div><div class="line">    $table-&gt;increments(&apos;id&apos;);</div><div class="line">    $table-&gt;integer(&apos;post_id&apos;)-&gt;unsigned()-&gt;index();</div><div class="line">    $table-&gt;integer(&apos;is_active&apos;)-&gt;default(0);</div><div class="line">    $table-&gt;string(&apos;author&apos;);</div><div class="line">    $table-&gt;string(&apos;photo&apos;);</div><div class="line">    $table-&gt;string(&apos;email&apos;);</div><div class="line">    $table-&gt;text(&apos;body&apos;);</div><div class="line">    $table-&gt;timestamps();</div><div class="line"></div><div class="line"></div><div class="line">    $table-&gt;foreign(&apos;post_id&apos;)-&gt;references(&apos;id&apos;)-&gt;on(&apos;posts&apos;)-&gt;onDelete(&apos;cascade&apos;);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>新增欄位到 create_comment_replies_table</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Schema::create(&apos;comment_replies&apos;, function (Blueprint $table) &#123;</div><div class="line">    $table-&gt;increments(&apos;id&apos;);</div><div class="line">    $table-&gt;integer(&apos;comment_id&apos;)-&gt;unsigned()-&gt;index();</div><div class="line">    $table-&gt;integer(&apos;is_active&apos;)-&gt;default(0);</div><div class="line">    $table-&gt;string(&apos;author&apos;);</div><div class="line">    $table-&gt;string(&apos;photo&apos;);</div><div class="line">    $table-&gt;string(&apos;email&apos;);</div><div class="line">    $table-&gt;text(&apos;body&apos;);</div><div class="line">    $table-&gt;timestamps();</div><div class="line"></div><div class="line"></div><div class="line">    $table-&gt;foreign(&apos;comment_id&apos;)-&gt;references(&apos;id&apos;)-&gt;on(&apos;comments&apos;)-&gt;onDelete(&apos;cascade&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>匯入資料庫 <code>php artisan migrate</code></li>
+</ol>
+<h4>Relationship &amp; Mass Assignment</h4>
+<ol>
+<li>在 Post model 新增</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public function comments()&#123;</div><div class="line">        </div><div class="line">    return $this-&gt;hasMany(&apos;App\Post&apos;);</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 Comment model 新增</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">protected $fillable = [</div><div class="line"></div><div class="line">    &apos;post_id&apos;,</div><div class="line">    &apos;author&apos;,</div><div class="line">    &apos;email&apos;,</div><div class="line">    &apos;body&apos;,</div><div class="line">    &apos;is_active&apos;</div><div class="line"></div><div class="line">];</div><div class="line"></div><div class="line">public function replies()&#123;</div><div class="line"></div><div class="line">    return $this-&gt;hasMany(&apos;App\CommentReply&apos;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 CommentReply 新增</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">protected $fillable = [</div><div class="line"></div><div class="line">    &apos;comment_id&apos;,</div><div class="line">    &apos;author&apos;,</div><div class="line">    &apos;email&apos;,</div><div class="line">    &apos;body&apos;,</div><div class="line">    &apos;is_active&apos;</div><div class="line"></div><div class="line">];</div><div class="line"></div><div class="line">public function comment()&#123;</div><div class="line"></div><div class="line">    return $this-&gt;belongsTo(&apos;App\Comment&apos;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>新增 Controller<br>
+<code>php artisan make:controller --resource PostCommentsController</code><br>
+<code>php artisan make:controller --resource CommentRepliesController</code></li>
+</ol>
+<h4>設定 views</h4>
+<ol>
+<li>新增 layouts/blog-home.blade.php 和 layouts/blog-post.blade.php view</li>
+<li>新增 layouts/blog.blade.php</li>
+</ol>
+<h4>創建貼文</h4>
+<ol>
+<li>將 admin route 移到 group 裡面</li>
+<li>新增 routes<br>
+<code>Route::get('/post/{id}', ['as'=&gt;'home.post', 'uses'=&gt;'AdminPostsController@post']);</code></li>
+<li>新增 post function 到 AdminPostsController</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public function post($id)&#123;</div><div class="line"></div><div class="line">    $post = Post::findOrFail($id);</div><div class="line"></div><div class="line">    return view(&apos;post&apos;, compact(&apos;post&apos;));</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>將 view 的 tilte 改為動態產生 <code> {{$post->title}}</code></li>
+<li>修改作者、時間、圖片、內文
+<ul>
+<li><code> {{$post->user->name}}</code></li>
+<li><code> {{$post->created_at->diffForHumans()}}</code></li>
+<li><code> {{$post->photo->file}}</code></li>
+<li><code> {{$post->body}}</code></li>
+</ul>
+</li>
+</ol>
+<h4>創建留言</h4>
+<ol>
+<li>把 post view 的留言區改為 open form</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;well&quot;&gt;</div><div class="line">    &lt;h4&gt;Leave a Comment:&lt;/h4&gt;</div><div class="line"></div><div class="line">    &#123;!! Form::open([&apos;method&apos;=&gt;&apos;POST&apos;, &apos;action&apos;=&gt;&apos;PostCommentsController@store&apos;]) !!&#125;</div><div class="line"></div><div class="line">    &lt;input type=&quot;hidden&quot; name=&quot;post_id&quot; value=&quot;&#123;&#123;$post-&gt;id&#125;&#125;&quot;&gt;</div><div class="line"></div><div class="line">        &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">            &#123;!! Form::label(&apos;body&apos;, &apos;Body:&apos;) !!&#125;</div><div class="line">            &#123;!! Form::textarea(&apos;body&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;, &apos;rows&apos;=&gt;3]) !!&#125;</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">        &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">            &#123;!! Form::submit(&apos;Submit comment&apos;, [&apos;class&apos;=&gt;&apos;btn btn-primary&apos;]) !!&#125;</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">    &#123;!! Form::close() !!&#125;</div><div class="line"></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 PostCommentsController 的 store function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public function store(Request $request)</div><div class="line">    &#123;</div><div class="line">    $user = Auth::user();</div><div class="line"></div><div class="line">    $data = [</div><div class="line"></div><div class="line">        &apos;post_id&apos; =&gt; $request-&gt;post_id,</div><div class="line">        &apos;author&apos; =&gt; $user-&gt;name,</div><div class="line">        &apos;email&apos; =&gt; $user-&gt;email,</div><div class="line">        &apos;photo&apos; =&gt; $user-&gt;photo-&gt;file,</div><div class="line">        &apos;body&apos; =&gt; $request-&gt;body</div><div class="line"></div><div class="line">    ];</div><div class="line"></div><div class="line">    Comment::create($data);</div><div class="line"></div><div class="line">    $request-&gt;session()-&gt;flash(&apos;comment message&apos;, &apos;Your message has been submitted and is waiting moderation&apos;);</div><div class="line"></div><div class="line">    return redirect()-&gt;back();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>顯示訊息，修改 post view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@if(Session::has(&apos;comment message&apos;))</div><div class="line"></div><div class="line">    &#123;&#123;session(&apos;comment message&apos;)&#125;&#125;</div><div class="line"></div><div class="line">@endif</div></pre></td></tr></table></figure>
+<h4>顯示貼文</h4>
+<ol>
+<li>修改 PostCommentsController 的 index function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$comments = Comment::all();</div><div class="line">return view(&apos;admin.comments.index&apos;, compact(&apos;comments&apos;));</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 Comment model</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public function post()&#123;</div><div class="line"></div><div class="line">    return $this-&gt;belongsTo(&apos;App\Post&apos;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>修改  comments/index view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">@if(count($comments) &gt; 0)</div><div class="line"></div><div class="line">&lt;h1&gt;Comments&lt;/h1&gt;</div><div class="line"></div><div class="line">&lt;table class=&quot;table&quot;&gt;</div><div class="line">    &lt;thead&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;th&gt;id&lt;/th&gt;</div><div class="line">        &lt;th&gt;Author&lt;/th&gt;</div><div class="line">        &lt;th&gt;Email&lt;/th&gt;</div><div class="line">        &lt;th&gt;Body&lt;/th&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;/thead&gt;</div><div class="line">    &lt;tbody&gt;</div><div class="line"></div><div class="line">    @foreach($comments as $comment)</div><div class="line"></div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$comment-&gt;id&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$comment-&gt;author&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$comment-&gt;email&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$comment-&gt;body&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&lt;a href=&quot;&#123;&#123;route(&apos;home.post&apos;, $comment-&gt;post-&gt;id)&#125;&#125;&quot;&gt;View Post&lt;/a&gt;&lt;/td&gt;</div><div class="line"></div><div class="line">    &lt;/tr&gt;</div><div class="line"></div><div class="line">    @endforeach</div><div class="line">    &lt;/tbody&gt;</div><div class="line">&lt;/table&gt;</div><div class="line"></div><div class="line">    @else</div><div class="line"></div><div class="line">    &lt;h1 class=&quot;text-center&quot;&gt;No Comments&lt;/h1&gt;</div><div class="line"></div><div class="line">@endif</div></pre></td></tr></table></figure>
+<h4>審核和刪除貼文</h4>
+<ol>
+<li>在 comments/index view 新增審核按鈕</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt;</div><div class="line"></div><div class="line">    @if($comment-&gt;is_active == 1)</div><div class="line"></div><div class="line">        &#123;!! Form::open([&apos;method&apos;=&gt;&apos;PATCH&apos;, &apos;action&apos;=&gt; [&apos;PostCommentsController@update&apos;, $comment-&gt;id]]) !!&#125;</div><div class="line"></div><div class="line">            &lt;input type=&quot;hidden&quot; name=&quot;is_active&quot; value=&quot;0&quot;&gt;</div><div class="line"></div><div class="line">            &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">            &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">                &#123;!! Form::submit(&apos;Un-approve&apos;, [&apos;class&apos;=&gt;&apos;btn btn-success&apos;]) !!&#125;</div><div class="line">            &lt;/div&gt;</div><div class="line"></div><div class="line">        &#123;!! Form::close() !!&#125;</div><div class="line"></div><div class="line">        @else</div><div class="line"></div><div class="line">        &#123;!! Form::open([&apos;method&apos;=&gt;&apos;PATCH&apos;, &apos;action&apos;=&gt; [&apos;PostCommentsController@update&apos;, $comment-&gt;id]]) !!&#125;</div><div class="line"></div><div class="line">        &lt;input type=&quot;hidden&quot; name=&quot;is_active&quot; value=&quot;1&quot;&gt;</div><div class="line"></div><div class="line">        &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">        &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">            &#123;!! Form::submit(&apos;Approve&apos;, [&apos;class&apos;=&gt;&apos;btn btn-info&apos;]) !!&#125;</div><div class="line">        &lt;/div&gt;</div><div class="line"></div><div class="line">        &#123;!! Form::close() !!&#125;</div><div class="line"></div><div class="line"></div><div class="line">    @endif</div><div class="line"></div><div class="line">&lt;/td&gt;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 comments/index view 新增刪除按鈕</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt;</div><div class="line"></div><div class="line">    &#123;!! Form::open([&apos;method&apos;=&gt;&apos;DELETE&apos;, &apos;action&apos;=&gt; [&apos;PostCommentsController@destroy&apos;, $comment-&gt;id]]) !!&#125;</div><div class="line"></div><div class="line">    &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::submit(&apos;Delete&apos;, [&apos;class&apos;=&gt;&apos;btn btn-danger&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &#123;!! Form::close() !!&#125;</div><div class="line"></div><div class="line">&lt;/td&gt;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>修改 PostCommentsController 的 update function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Comment::findOrFail($id)-&gt;update($request-&gt;all());</div><div class="line"></div><div class="line">return redirect(&apos;/admin/comments&apos;);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>修改 PostCommentsController 的 delete function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Comment::findOrFail($id)-&gt;delete();</div><div class="line"></div><div class="line">return redirect()-&gt;back();</div></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/28/Lavarel-快速學習自我挑戰-Day18/" data-id="cj3adkki8000p000a2ot7ov6e" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/28/Lavarel-快速學習自我挑戰-Day18/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hdtvgood202" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/05/27/Lavarel-快速學習自我挑戰-Day17/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day17</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/28/Lavarel-快速學習自我挑戰-Day18/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday18.png)" alt="Lavarel 快速學習自我挑戰 Day18" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/28/Lavarel-快速學習自我挑戰-Day18/" class="title">Lavarel 快速學習自我挑戰 Day18</a></p>
+                            <p class="item-date"><time datetime="2017-05-28T08:02:04.000Z" itemprop="datePublished">2017-05-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/27/Lavarel-快速學習自我挑戰-Day17/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday17.png)" alt="Lavarel 快速學習自我挑戰 Day17" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/27/Lavarel-快速學習自我挑戰-Day17/" class="title">Lavarel 快速學習自我挑戰 Day17</a></p>
+                            <p class="item-date"><time datetime="2017-05-26T17:21:27.000Z" itemprop="datePublished">2017-05-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/26/Lavarel-快速學習自我挑戰-Day16/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday16.jpg)" alt="Lavarel 快速學習自我挑戰 Day16" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/26/Lavarel-快速學習自我挑戰-Day16/" class="title">Lavarel 快速學習自我挑戰 Day16</a></p>
+                            <p class="item-date"><time datetime="2017-05-26T04:23:31.000Z" itemprop="datePublished">2017-05-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday15.png)" alt="Lavarel 快速學習自我挑戰 Day15" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" class="title">Lavarel 快速學習自我挑戰 Day15</a></p>
+                            <p class="item-date"><time datetime="2017-05-25T12:10:35.000Z" itemprop="datePublished">2017-05-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/laravel/laravelday14.jpg)" alt="Lavarel 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" class="title">Lavarel 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T16:06:02.000Z" itemprop="datePublished">2017-05-05</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/React/" style="font-size: 10px;">React</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/dtvgood202">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/blogs/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=176717762750155";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/blogs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/blogs/js/main.js"></script>
+
+    </div>
+</body>
+</html>
