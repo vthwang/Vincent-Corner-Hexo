@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     
-    <title>分類：技術分享 | Vincent&#39;s Corner</title>
+    <title>分類：學習歷程 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="description" content="Who knows what fantastic things around Vincent&apos;s corner?">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vincent's Corner">
-<meta property="og:url" content="https://tingsyuanwang.github.io/categories/技術分享/index.html">
+<meta property="og:url" content="https://tingsyuanwang.github.io/categories/學習歷程/page/4/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
 <meta property="og:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
 <meta name="twitter:card" content="summary">
@@ -136,7 +136,7 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-folder-open"></i>分類：<em class="page-title-link">技術分享</em>
+    <i class="icon fa fa-folder-open"></i>分類：<em class="page-title-link">學習歷程</em>
     </h1>
 </div>
 
@@ -160,17 +160,17 @@ ga('send', 'pageview');
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/blogs/2017/03/04/Wordpress-處理中文檔名上傳/" class="thumbnail">
+        <a href="/blogs/2017/03/05/React快速學習自我挑戰-Day1/" class="thumbnail">
     
     
-        <span style="background-image:url(/blogs/images/wordpress.png)" alt="Wordpress 處理中文檔名上傳" class="thumbnail-image"></span>
+        <span style="background-image:url(/blogs/images/react.png)" alt="React快速學習自我挑戰 Day1" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/04/Wordpress-處理中文檔名上傳/">0</span> 則評論
+        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/05/React快速學習自我挑戰-Day1/">0</span> 則評論
     
 </span>
 
@@ -181,14 +181,14 @@ ga('send', 'pageview');
         
         <div class="article-meta">
             <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
+            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
             </p>
-            <p class="date"><time datetime="2017-03-04T08:29:52.000Z" itemprop="datePublished">2017-03-04</time></p>
+            <p class="date"><time datetime="2017-03-05T13:00:59.000Z" itemprop="datePublished">2017-03-05</time></p>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/04/Wordpress-處理中文檔名上傳/">Wordpress 處理中文檔名上傳</a>
+        <a href="/blogs/2017/03/05/React快速學習自我挑戰-Day1/">React快速學習自我挑戰 Day1</a>
         </h1>
     
 
@@ -196,343 +196,20 @@ ga('send', 'pageview');
             
 
 
-修改  wp-admin\includes\file.php
-找：
+Reactjs 和 Redux 有 Library 可以使用。
+瀏覽器尚未支援 ES6。
+完成的檔案用 webpack + babel 來 transpile 變成網頁。
 
-1$filename = wp_unique_filename( $uploads[&apos;path&apos;], $file[&apos;name&apos;], $unique_filename_callback );
-在其後加上：
-1234$fileTypeNameArr =explode(&quot;.&qu
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-        
-            </div></section>
-        
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/blogs/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/php_mysql_array.jpg)" alt="PHP multiple select 寫入資料庫的方法" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/">0</span> 則評論
-    
-</span>
+index.html
+application.js
+style.css
 
 
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-12-01T05:48:23.000Z" itemprop="datePublished">2016-12-01</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/">PHP multiple select 寫入資料庫的方法</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
 
 
-填入文字的頁面需要用陣列的方式傳遞資料 name=&quot;item[]&quot;
+起手專案(boilerplate)：React + Youtube API
+直接在 Command line 開 atom： atom .
 
-123456&lt;label for=&quot;item[]&quot; class=&quot;formTitle&quot;&gt;選擇項目&lt;/label&gt;&lt;select name=&quot;item[]&quot; class=&quot;form-control sele
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/github.jpg)" alt="Github Pushed Commit Delete (Redraw)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-11-17T06:47:14.000Z" itemprop="datePublished">2016-11-17</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/">Github Pushed Commit Delete (Redraw)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-如果 Commit 之後並 Push 到遠端，想要在本地端用 CI 去 Delete/Redraw，就可以用以下方法。
-
-如果要刪除倒數第一個 Commit，用以下方法。
-
-12git reset --hard HEAD^git push -f
-
-如果要刪除倒數二個 Commit，用以下方法。
-
-12git reset --hard HEAD^^git push -f
-
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/javascript.jpg)" alt="JavaScript用AJAX的方式獲得時間" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-11-05T15:22:31.000Z" itemprop="datePublished">2016-11-05</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/">JavaScript用AJAX的方式獲得時間</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-新增一個js的檔案，將以下程式碼複製貼上
-
-1234567891011121314151617181920212223242526272829var xmlHttp;function srvTime()&#123;try &#123;  //FF, Opera, Safari, Chrome  xmlHttp = new XMLHttpRequest();&#125;catch (err1)
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/11/在hexo使用emoji/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/emoji.png)" alt="在hexo使用emoji" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/11/在hexo使用emoji/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-09-11T02:15:30.000Z" itemprop="datePublished">2016-09-11</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/11/在hexo使用emoji/">在hexo使用emoji</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-修改渲染器
-123cd /workspace/blogs/   //跳轉到hexo的目錄npm un hexo-renderer-marked --savenpm i hexo-renderer-markdown-it --save
-下載markdown-it-emoji插件：
-1npm install markdown-it-emoji --save
-編輯Hexo的最上層的配置文件_conf
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/04/華碩Win8電腦USB開機/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/asus.png)" alt="華碩Win8電腦USB開機" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/04/華碩Win8電腦USB開機/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-09-03T19:30:18.000Z" itemprop="datePublished">2016-09-04</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/04/華碩Win8電腦USB開機/">華碩Win8電腦USB開機</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-(1) 開機連按Del進入BIOS之後，切換到「Security」選單，將「Secure Boot Control」設定成「Disabled」，重新開機。
-(2) 重新開機後繼續連按Del進入BIOS，切換到「Boot」選單，將「Lunch CSM」設定成「Enabled」，重新開機。
-(3) 重新開機後繼續連按Del進入BIOS，切換到「Exit」選單，就可以找到USB進行重灌囉！
-
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/08/29/hello-world/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/hello_world.png)" alt="Hello World" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/08/29/hello-world/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-08-29T02:47:36.000Z" itemprop="datePublished">2016-08-29</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/08/29/hello-world/">Hello World</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qui
         </p>
     </div>
 </article>
@@ -543,6 +220,11 @@ Qui
 
     </div></section>
 
+
+    <nav id="page-nav">
+        <span class="pages">第 4 頁，共 4 頁</span>
+        <a class="extend prev" rel="prev" href="/blogs/categories/學習歷程/page/3/">&laquo;</a><a class="page-number" href="/blogs/categories/學習歷程/">1</a><a class="page-number" href="/blogs/categories/學習歷程/page/2/">2</a><a class="page-number" href="/blogs/categories/學習歷程/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
 
 
 

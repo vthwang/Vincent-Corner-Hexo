@@ -3,26 +3,41 @@
 <head>
     <meta charset="utf-8">
     
-    <title>React快速學習自我挑戰 Day12 | Vincent&#39;s Corner</title>
+    <title>Lavarel 快速學習自我挑戰 Day19 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="React" />
+        <meta name="keywords" content="Laravel" />
     
-    <meta name="description" content="{title.touched ? title.error : &apos;&apos;}，如果 title.touched 是  true，顯示 title.error，如果不是，什麼都不要顯示。
-{`form-group ${title.touched &amp;amp;&amp;amp; title.invalid ? &apos;has-danger&apos; : &apos;&apos;}`}，如果 title 被 touched，而且 title 是 i">
+    <meta name="description" content="Application 留言功能 Part II
+顯示留言
+
+在 admin/posts/index view 新增文章連結
+&amp;lt;td&amp;gt;&amp;lt;a href=&amp;quot; {{route(&apos;home.post&apos;, $post-&amp;gt;id)}}&amp;quot;&amp;gt;view post&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+在 admin/posts/index view 新增評論連結
+&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React快速學習自我挑戰 Day12">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/04/03/React快速學習自我挑戰-Day12/index.html">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day19">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/29/Lavarel-快速學習自我挑戰-Day19/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="{title.touched ? title.error : &apos;&apos;}，如果 title.touched 是  true，顯示 title.error，如果不是，什麼都不要顯示。
-{`form-group ${title.touched &amp;amp;&amp;amp; title.invalid ? &apos;has-danger&apos; : &apos;&apos;}`}，如果 title 被 touched，而且 title 是 i">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/reactday12.jpg">
-<meta property="og:updated_time" content="2017-04-03T19:39:14.000Z">
+<meta property="og:description" content="Application 留言功能 Part II
+顯示留言
+
+在 admin/posts/index view 新增文章連結
+&amp;lt;td&amp;gt;&amp;lt;a href=&amp;quot; {{route(&apos;home.post&apos;, $post-&amp;gt;id)}}&amp;quot;&amp;gt;view post&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+在 admin/posts/index view 新增評論連結
+&amp;">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday19.jpg">
+<meta property="og:updated_time" content="2017-05-31T07:44:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React快速學習自我挑戰 Day12">
-<meta name="twitter:description" content="{title.touched ? title.error : &apos;&apos;}，如果 title.touched 是  true，顯示 title.error，如果不是，什麼都不要顯示。
-{`form-group ${title.touched &amp;amp;&amp;amp; title.invalid ? &apos;has-danger&apos; : &apos;&apos;}`}，如果 title 被 touched，而且 title 是 i">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/reactday12.jpg">
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day19">
+<meta name="twitter:description" content="Application 留言功能 Part II
+顯示留言
+
+在 admin/posts/index view 新增文章連結
+&amp;lt;td&amp;gt;&amp;lt;a href=&amp;quot; {{route(&apos;home.post&apos;, $post-&amp;gt;id)}}&amp;quot;&amp;gt;view post&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
+在 admin/posts/index view 新增評論連結
+&amp;">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday19.jpg">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -149,14 +164,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-React快速學習自我挑戰-Day12" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day19" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        React快速學習自我挑戰 Day12
+        Lavarel 快速學習自我挑戰 Day19
         </h1>
     
 
@@ -164,37 +179,98 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/04/03/React快速學習自我挑戰-Day12/" class="article-date">
-    <time datetime="2017-04-03T06:41:19.000Z" itemprop="datePublished">2017-04-03</time>
+                <a href="/blogs/2017/05/29/Lavarel-快速學習自我挑戰-Day19/" class="article-date">
+    <time datetime="2017-05-28T16:58:12.000Z" itemprop="datePublished">2017-05-29</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/React/">React</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/reactday12.jpg">
+            <img src="/blogs/images/learning/laravel/laravelday19.jpg">
 <hr>
+<h3>Application 留言功能 Part II</h3>
+<h4>顯示留言</h4>
 <ol>
-<li><code>{title.touched ? title.error : ''}</code>，如果 title.touched 是  true，顯示 title.error，如果不是，什麼都不要顯示。</li>
-<li><code>{`form-group ${title.touched &amp;&amp; title.invalid ? 'has-danger' : ''}`}</code>，如果 title 被 touched，而且 title 是 invalid，顯示 className “has-danger”，否則顯示空白 string。</li>
-<li>盡量避免使用 context。只有在我們使用 react-router 的時候再使用 context。</li>
-<li>Create Post 是一個 action creator，action creator 可以創造一個 promise 當作他自己的 payload。當我們呼叫 action creator，就會產生一個當作 payload 的 promise，所以當 promise 解決以後，就等同於我們順利創建一個 post 了。</li>
-<li>要存取 react-router，我們必須定義 contextTypes。這告訴 react 我想要從 parent component 存取這個 property。</li>
-<li><a href="http://www.lipsum.com/" target="_blank" rel="external">Lorem Ipsum 產生器</a>。</li>
-<li>redux thunk 是用來處理非同步的 action creator。</li>
-<li>dispatch method 是 redux store 的一部份，包含了 application state。</li>
-<li><a href="https://www.firebase.com/docs/web/libraries/react/" target="_blank" rel="external">Firebase react library</a>。</li>
+<li>在 admin/posts/index view 新增文章連結<br>
+<code>&lt;td&gt;&lt;a href=&quot; {{route('home.post', $post->id)}}&quot;&gt;view post&lt;/a&gt;&lt;/td&gt;</code></li>
+<li>在 admin/posts/index view 新增評論連結<br>
+<code>&lt;td&gt;&lt;a href=&quot; {{route('admin.comments.show', $post->id)}}&quot;&gt;View Comments&lt;/a&gt;&lt;/td&gt;</code></li>
+<li>新增 admin/comments/show view</li>
+<li>在 PostCommentsController 新增 show function</li>
 </ol>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public function show($id)</div><div class="line">&#123;   </div><div class="line">    $post = POST::findOrfail($id);</div><div class="line">    </div><div class="line">    $comments = $post-&gt;comments;</div><div class="line">    </div><div class="line">    return view(&apos;admin.comments.show&apos;, compact(&apos;comments&apos;));   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改 Post model</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public function comments()&#123;</div><div class="line"></div><div class="line">    return $this-&gt;hasMany(&apos;App\Comment&apos;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>在文章中顯示留言</h4>
+<ol>
+<li>新增 Auth 到留言區塊，讓登入的使用者才可以留言</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@if(Auth::check())</div><div class="line">@endif</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 AdminPostsController 的 post function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public function post($id)&#123;</div><div class="line"></div><div class="line">    $post = Post::findOrFail($id);</div><div class="line"></div><div class="line">    $comments = $post-&gt;comments()-&gt;whereIsActive(1)-&gt;get();</div><div class="line"></div><div class="line">    return view(&apos;post&apos;, compact(&apos;post&apos;, &apos;comments&apos;));</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>新增 posted comments 到 post view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@if(count($comments) &gt; 0)</div><div class="line">    @foreach($comments as $comment)</div><div class="line">        &lt;div class=&quot;media&quot;&gt;</div><div class="line">            &lt;a class=&quot;pull-left&quot; href=&quot;#&quot;&gt;</div><div class="line">                &lt;img height=&quot;64&quot; class=&quot;media-object&quot; src=&quot;&#123;&#123;$comment-&gt;photo&#125;&#125;&quot; alt=&quot;&quot;&gt;</div><div class="line">            &lt;/a&gt;</div><div class="line">            &lt;div class=&quot;media-body&quot;&gt;</div><div class="line">                &lt;h4 class=&quot;media-heading&quot;&gt;&#123;&#123;$comment-&gt;author&#125;&#125;</div><div class="line">                    &lt;small&gt;&#123;&#123;$comment-&gt;created_at-&gt;diffForHumans()&#125;&#125;&lt;/small&gt;</div><div class="line">                &lt;/h4&gt;</div><div class="line">            &#123;&#123;$comment-&gt;body&#125;&#125;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    @endforeach</div><div class="line">@endif</div></pre></td></tr></table></figure>
+<h4>回覆留言功能</h4>
+<ol>
+<li>新增 routes</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Route::group([&apos;middleware&apos;=&gt;&apos;auth&apos;], function() &#123;</div><div class="line">    </div><div class="line">    Route::post(&apos;comment/reply&apos;, &apos;CommentRepliesController@createdReply&apos;);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 CommentRepliesController 新增 CreateReply function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public function createReply(Request $request)&#123;</div><div class="line"></div><div class="line">    $user = Auth::user();</div><div class="line"></div><div class="line">    $data = [</div><div class="line"></div><div class="line">        &apos;post_id&apos; =&gt; $request-&gt;post_id,</div><div class="line">        &apos;author&apos; =&gt; $user-&gt;name,</div><div class="line">        &apos;email&apos; =&gt; $user-&gt;email,</div><div class="line">        &apos;photo&apos; =&gt; $user-&gt;photo-&gt;file,</div><div class="line">        &apos;body&apos; =&gt; $request-&gt;body</div><div class="line"></div><div class="line">    ];</div><div class="line"></div><div class="line"></div><div class="line">    CommentReply::create($data);</div><div class="line"></div><div class="line">    $request-&gt;session()-&gt;flash(&apos;reply_message&apos;, &apos;Your reply has been submitted and is waiting moderation&apos;);</div><div class="line"></div><div class="line">    return redirect()-&gt;back();</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 CommentReply model 新增 <code>'photo'</code> 讓欄位可寫入</li>
+<li>新增 reply comment 到 post view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">@if(count($comment-&gt;replies) &gt; 0)</div><div class="line"></div><div class="line">    @foreach($comment-&gt;replies as $reply)</div><div class="line"></div><div class="line">            &lt;!-- Nested Comment --&gt;</div><div class="line">            &lt;div class=&quot;media&quot;&gt;</div><div class="line">                &lt;a class=&quot;pull-left&quot; href=&quot;#&quot;&gt;</div><div class="line">                    &lt;img height=&quot;64&quot; class=&quot;media-object&quot; src=&quot;&#123;&#123;$reply-&gt;photo&#125;&#125;&quot; alt=&quot;&quot;&gt;</div><div class="line">                &lt;/a&gt;</div><div class="line">                &lt;div class=&quot;media-body&quot;&gt;</div><div class="line">                    &lt;h4 class=&quot;media-heading&quot;&gt;&#123;&#123;$reply-&gt;author&#125;&#125;</div><div class="line">                        &lt;small&gt;&#123;&#123;$reply-&gt;created_at-&gt;diffForHumans()&#125;&#125;&lt;/small&gt;</div><div class="line">                    &lt;/h4&gt;</div><div class="line">                    &lt;p&gt;&#123;&#123;$reply-&gt;body&#125;&#125;&lt;/p&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line"></div><div class="line">                &#123;!! Form::open([&apos;method&apos;=&gt;&apos;POST&apos;, &apos;action&apos;=&gt;&apos;CommentRepliesController@createReply&apos;]) !!&#125;</div><div class="line"></div><div class="line">                    &lt;input type=&quot;hidden&quot; name=&quot;comment_id&quot; value=&quot;&#123;&#123;$comment-&gt;id&#125;&#125;&quot;&gt;</div><div class="line"></div><div class="line">                    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">                        &#123;!! Form::label(&apos;body&apos;, &apos;Body:&apos;) !!&#125;</div><div class="line">                        &#123;!! Form::text(&apos;body&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;, &apos;rows&apos;=&gt;1]) !!&#125;</div><div class="line">                    &lt;/div&gt;</div><div class="line"></div><div class="line">                    &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">                    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">                        &#123;!! Form::submit(&apos;submit&apos;, [&apos;class&apos;=&gt;&apos;btn btn-primary&apos;]) !!&#125;</div><div class="line">                    &lt;/div&gt;</div><div class="line"></div><div class="line">                &#123;!! Form::close() !!&#125;</div><div class="line"></div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;!-- End Nested Comment --&gt;</div><div class="line"></div><div class="line">    @endforeach</div><div class="line"></div><div class="line">@endif</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 layouts.blog-post view 生成 script 區塊<br>
+<code>@yield('scripts')</code></li>
+<li>新增 div</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;comment-reply-container&quot;&gt;</div><div class="line"></div><div class="line">    &lt;button class=&quot;toggle-reply btn btn-primary pull-right&quot;&gt;Reply&lt;/button&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;comment-reply&quot;&gt;</div><div class="line">    /* Nested Comment*/</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>在 resources/assets/scss/app.css 修改樣式，新增 <code>.comment-reply {display: none;}</code>，並用<code>gulp</code>編譯。</li>
+<li>新增 scripts 區塊</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@section(&apos;scripts&apos;)</div><div class="line"></div><div class="line">    &lt;script&gt;</div><div class="line"></div><div class="line">        $(&quot;.comment-reply-container .toggle-reply&quot;).click(function()&#123;</div><div class="line"></div><div class="line">            $(this).next().slideToggle(&quot;slow&quot;);</div><div class="line"></div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
+<h4>在主管理介面顯示回覆</h4>
+<ol>
+<li>複製 comments/show view 到 comments/replies/show view，將 comment 改為 reply。</li>
+<li>在 admin/comments/index view 新增<br>
+<code>&lt;td&gt;&lt;a href=&quot; {{route('admin.comments.replies.show', $comment->id)}}&quot;&gt;View Replies&lt;/a&gt;&lt;/td&gt;</code></li>
+<li>在 CommentRepliesController 新增 show function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public function show($id)</div><div class="line">&#123;</div><div class="line">    $comment = Comment::findOrFail($id);</div><div class="line"></div><div class="line">    $replies = $comment-&gt;replies;</div><div class="line"></div><div class="line">    return view(&apos;admin.comments.replies.show&apos;, compact(&apos;replies&apos;));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 CommentRepliesController 新增 update function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public function update(Request $request, $id)</div><div class="line">&#123;</div><div class="line">    CommentReply::findOrFail($id)-&gt;update($request-&gt;all());</div><div class="line"></div><div class="line">    return redirect()-&gt;back();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改 post view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@if($reply-&gt;is_active == 1)</div><div class="line">    /*nested comment*/</div><div class="line">    @else</div><div class="line">    &lt;h1 class=&quot;text-center&quot;&gt;No Relies&lt;/h1&gt;</div><div class="line">@endif</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 CommentRepliesController 新增 destroy function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public function destroy($id)</div><div class="line">&#123;</div><div class="line">    CommentReply::findOrFail($id)-&gt;delete();</div><div class="line">    </div><div class="line">    redirect()-&gt;back();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/04/03/React快速學習自我挑戰-Day12/" data-id="cj3corpo000296j0aprkqjkyb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/29/Lavarel-快速學習自我挑戰-Day19/" data-id="cj3corpmu00126j0ax2yhpz5x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -261,7 +337,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/04/03/React快速學習自我挑戰-Day12/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/29/Lavarel-快速學習自我挑戰-Day19/" data-num-posts="5"></div>
 
 
     
@@ -322,20 +398,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/04/22/Lavarel-快速學習自我挑戰-Day1/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Lavarel 快速學習自我挑戰 Day1
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/03/30/React快速學習自我挑戰-Day11/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/05/28/Lavarel-快速學習自我挑戰-Day18/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">React快速學習自我挑戰 Day11</p>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day18</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
