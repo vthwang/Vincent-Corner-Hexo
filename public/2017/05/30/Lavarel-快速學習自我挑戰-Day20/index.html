@@ -3,35 +3,47 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Lavarel 快速學習自我挑戰 Day4 | Vincent&#39;s Corner</title>
+    <title>Lavarel 快速學習自我挑戰 Day20 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="Laravel" />
     
-    <meta name="description" content="Raw SQL Queries - Database 設定官方文件
+    <meta name="description" content="Pretty URL
 
-insert data (直接在 Routes.php 設定)
+eloquent-sluggable 套件說明書
+require 套件 composer require cviebrock/eloquent-sluggable 4.1
+在 config/app.php 新增 provider
+Cviebrock\EloquentSluggable\ServiceProvider::class,
+在 Post model 新增
 
-123Route::get(&amp;apos;/insert&amp;apos;, function()&amp;#123;    DB::insert(&amp;apos;insert into posts(title, content) values(?, ?)&amp;apos;, [&amp;ap">
+12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day4">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/04/25/Lavarel-快速學習自我挑戰-Day4/index.html">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day20">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/30/Lavarel-快速學習自我挑戰-Day20/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Raw SQL Queries - Database 設定官方文件
+<meta property="og:description" content="Pretty URL
 
-insert data (直接在 Routes.php 設定)
+eloquent-sluggable 套件說明書
+require 套件 composer require cviebrock/eloquent-sluggable 4.1
+在 config/app.php 新增 provider
+Cviebrock\EloquentSluggable\ServiceProvider::class,
+在 Post model 新增
 
-123Route::get(&amp;apos;/insert&amp;apos;, function()&amp;#123;    DB::insert(&amp;apos;insert into posts(title, content) values(?, ?)&amp;apos;, [&amp;ap">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday4.jpg">
-<meta property="og:updated_time" content="2017-04-25T19:32:53.000Z">
+12">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday20.png">
+<meta property="og:updated_time" content="2017-06-01T08:56:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day4">
-<meta name="twitter:description" content="Raw SQL Queries - Database 設定官方文件
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day20">
+<meta name="twitter:description" content="Pretty URL
 
-insert data (直接在 Routes.php 設定)
+eloquent-sluggable 套件說明書
+require 套件 composer require cviebrock/eloquent-sluggable 4.1
+在 config/app.php 新增 provider
+Cviebrock\EloquentSluggable\ServiceProvider::class,
+在 Post model 新增
 
-123Route::get(&amp;apos;/insert&amp;apos;, function()&amp;#123;    DB::insert(&amp;apos;insert into posts(title, content) values(?, ?)&amp;apos;, [&amp;ap">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday4.jpg">
+12">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday20.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -158,14 +170,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Lavarel-快速學習自我挑戰-Day4" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day20" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Lavarel 快速學習自我挑戰 Day4
+        Lavarel 快速學習自我挑戰 Day20
         </h1>
     
 
@@ -173,8 +185,8 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/04/25/Lavarel-快速學習自我挑戰-Day4/" class="article-date">
-    <time datetime="2017-04-25T05:12:19.000Z" itemprop="datePublished">2017-04-25</time>
+                <a href="/blogs/2017/05/30/Lavarel-快速學習自我挑戰-Day20/" class="article-date">
+    <time datetime="2017-05-30T07:46:47.000Z" itemprop="datePublished">2017-05-30</time>
 </a>
                 
     <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
@@ -183,110 +195,88 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/learning/laravel/laravelday4.jpg">
+            <img src="/blogs/images/learning/laravel/laravelday20.png">
 <hr>
-<h3>Raw SQL Queries - <a href="https://laravel.com/docs/5.2/database" target="_blank" rel="external">Database 設定官方文件</a></h3>
+<h3>Pretty URL</h3>
 <ol>
-<li>insert data (直接在 Routes.php 設定)</li>
+<li><a href="https://github.com/cviebrock/eloquent-sluggable" target="_blank" rel="external">eloquent-sluggable 套件說明書</a></li>
+<li>require 套件 <code>composer require cviebrock/eloquent-sluggable 4.1</code></li>
+<li>在 config/app.php 新增 provider<br>
+<code>Cviebrock\EloquentSluggable\ServiceProvider::class,</code></li>
+<li>在 Post model 新增</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/insert&apos;, function()&#123;</div><div class="line">    DB::insert(&apos;insert into posts(title, content) values(?, ?)&apos;, [&apos;PHP with Laravel&apos;, &apos;Laravel is the best thing that has happened to PHP&apos;]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>read data</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/read&apos;, function() &#123;</div><div class="line">    $results = DB::select(&apos;select * from posts where id = ?&apos;, [1]);</div><div class="line"></div><div class="line">    return $results; (傳回陣列)</div><div class="line"></div><div class="line">//    return var_dump($results); (傳回值的詳細資料)</div><div class="line">//    foreach($results as $post)&#123;</div><div class="line">//</div><div class="line">//        return $post-&gt;title;</div><div class="line">//</div><div class="line">//    &#125;(傳回單一項目)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>update data</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/update&apos;, function()&#123;</div><div class="line">    $updated = DB::update(&apos;update posts set title = &quot;update title&quot; where id = ?&apos;, [1]);</div><div class="line">    return $updated;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="4">
-<li>delete data</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/delete&apos;, function()&#123;</div><div class="line">    $deleted = DB::delete(&apos;delete from posts where id = ?&apos;, [1]);</div><div class="line">    return $deleted;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3>Eloquent / ORM - <a href="https://laravel.com/docs/5.2/eloquent" target="_blank" rel="external">Eloquent 設定官方文件</a></h3>
-<ul>
-<li>創建一個 model：<code>php artisan make:model</code></li>
-<li>在 model 的 class 宣告 table 名稱：<code>protected $table = 'posts';</code></li>
-<li>在 Routes 引入 class：<code>use App\Post;</code></li>
-</ul>
-<ol>
-<li>用 model 的方式讀取所有資料</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/find&apos;, function()&#123;</div><div class="line"></div><div class="line">    $posts = Post::all(); // 加入 Post 的所有紀錄</div><div class="line"></div><div class="line">    foreach($posts as $post) &#123;</div><div class="line">        return $post-&gt;title;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>用 model 的方式讀取單一資料</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/find&apos;, function()&#123;</div><div class="line"></div><div class="line">    $post = Post::find(1);</div><div class="line">    return $post-&gt;title;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>用 eloquent 的方式取得資料：<code>$posts = Post::where('id', 1)-&gt;orderBy('id', 'desc')-&gt;take(1)-&gt;get();</code>
-<ul>
-<li>eloquent -&gt; 取得或失敗：<code>$posts = Post::findOrFail(2);</code></li>
-</ul>
-</li>
-<li>save data</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/basicinsert&apos;, function()&#123;</div><div class="line"></div><div class="line">    $post = new Post;</div><div class="line"></div><div class="line">    $post-&gt;title = &apos;new Eloquent title insert&apos;;</div><div class="line">    $post-&gt;content = &apos;Wow eloquent is really cool, look at this content&apos;;</div><div class="line"></div><div class="line">    $post-&gt;save();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">use Cviebrock\EloquentSluggable\Sluggable;</div><div class="line"></div><div class="line">class Post extends Model</div><div class="line">&#123;</div><div class="line">    use Sluggable;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Return the sluggable configuration array for this model.</div><div class="line">     *</div><div class="line">     * @return array</div><div class="line">     */</div><div class="line">    public function sluggable()</div><div class="line">    &#123;</div><div class="line">        return [</div><div class="line">            &apos;slug&apos; =&gt; [</div><div class="line">                &apos;source&apos; =&gt; &apos;title&apos;</div><div class="line">            ]</div><div class="line">        ];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol start="5">
-<li>修改 data</li>
+<li>新增 migration <code>php artisan make:migration add_slug_to_posts_table --create=posts</code></li>
+<li>修改 add_slug_to_posts_table</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/basicinsert1&apos;, function()&#123;</div><div class="line"></div><div class="line">    $post = Post::find(1);</div><div class="line"></div><div class="line">    $post-&gt;title = &apos;new Eloquent title insert 1&apos;;</div><div class="line">    $post-&gt;content = &apos;Wow eloquent is really cool, look at this content 1&apos;;</div><div class="line"></div><div class="line">    $post-&gt;save();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class AddSlugToPostsTable extends Migration</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function up()</div><div class="line">    &#123;</div><div class="line">        Schema::table(&apos;posts&apos;, function (Blueprint $table) &#123;</div><div class="line">            $table-&gt;string(&apos;slug&apos;)-&gt;nullable();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function down()</div><div class="line">    &#123;</div><div class="line">        Schema::table(&apos;posts&apos;, function (Blueprint $table) &#123;</div><div class="line">            $table-&gt;dropColumn(&apos;slug&apos;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>將資料匯入資料庫 <code>php artisan migrate</code></li>
+<li>修改 admin/posts/index view 的檢視貼文欄位<br>
+<code>&lt;td&gt;&lt;a href=&quot; {{route('home.post', $post->slug)}}&quot;&gt;View post&lt;/a&gt;&lt;/td&gt;</code></li>
+<li>修改 AdminPostsController 的 post function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public function post($slug)&#123;</div><div class="line"></div><div class="line">    $post = Post::where(&apos;slug&apos;, $slug)-&gt;first() ?: Post::findOrFail((int)$slug);</div><div class="line"></div><div class="line">    $comments = $post-&gt;comments()-&gt;whereIsActive(1)-&gt;get();</div><div class="line"></div><div class="line">    return view(&apos;post&apos;, compact(&apos;post&apos;, &apos;comments&apos;));</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3>Pagination (<a href="https://laravel.com/docs/5.2/pagination" target="_blank" rel="external">Pagination 官方文件</a>)</h3>
+<ol>
+<li>修改 AdminPostsController 的 index function<br>
+<code>$posts = Post::all();</code>=&gt;<code>$posts = Post::paginate(2);</code></li>
+<li>在 admin/posts/index view 新增</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;row&quot;&gt;</div><div class="line">    &lt;div class=&quot;col-sm-6 col-sm-offset-5&quot;&gt;</div><div class="line"></div><div class="line">        &#123;&#123;$posts-&gt;render()&#125;&#125;</div><div class="line">        </div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h3>從 gravatar 拿大頭貼</h3>
+<ol>
+<li>在 User model 新增 getGravatarAttribute function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public function getGravatarAttribute()&#123;</div><div class="line"></div><div class="line">    $hash = md5(strtolower(trim($this-&gt;attributes[&apos;email&apos;])));</div><div class="line"></div><div class="line">    return &quot;http://www.gravatar.com/avatar/$hash&quot;;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>取得大頭貼<br>
+<code>src=&quot; {{Auth::user()->gravatar}}&quot;</code></li>
+</ol>
+<h3>升級到 Laravel 5.3 Part I</h3>
+<h4>升級</h4>
+<ol>
+<li><a href="https://laravel-news.com/look-whats-coming-laravel-5-3" target="_blank" rel="external">更新內容</a></li>
+<li>檢查版本 <code>php artisan --version</code></li>
+<li>修改 composer.json<br>
+<code>&quot;laravel/framework&quot;: &quot;5.3.*&quot;,</code>=&gt;<code>&quot;laravel/framework&quot;: &quot;5.3.*&quot;,</code></li>
+<li>更新資料 <code>composer update</code></li>
+<li>把 app/Providers/EventServiceProvider 的 boot function 的變數拿掉</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public function boot()</div><div class="line">&#123;</div><div class="line">    parent::boot();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol start="6">
-<li>Mass Assignment
-<ul>
-<li>在路由用 create 來新增 model<br>
-<code>Post::create(['title'=&gt;'the create method', 'content'=&gt; 'WOW I\'m learning a lot with Edwin Diaz']);</code></li>
-<li>在 model 裡面設定 protected<br>
-<code>protected $fillable = ['title', 'content'];</code></li>
-</ul>
-</li>
-<li>update data<br>
-<code>Post::where('id', 2)-&gt;where('is_admin', 0)-&gt;update(['title'=&gt;'NEW PHP TITLE', 'content'=&gt;'I love my instructor Edwin']);</code></li>
-<li>delete data</li>
+<li>把 app/Providers/RouteServiceProvider 的 boot, map, mapWebRoutes function 的變數拿掉</li>
 </ol>
-<ul>
-<li>方法 1</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/delete&apos;, function()&#123;</div><div class="line"></div><div class="line">    $post = Post::find(1);</div><div class="line"></div><div class="line">    $post-&gt;delete();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ul>
-<li>方法 2</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/delete2&apos;, function()&#123;</div><div class="line"></div><div class="line">    Post::destroy(2);</div><div class="line">    // Post::destroy([4,5]); //刪除多筆資料</div><div class="line">    // Post::where(&apos;is_admin&apos;, 0)-&gt;delete(); //加上條件的刪除法</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="9">
-<li>Soft delete / trashing
-<ul>
-<li>在 model 引入 softdelete<br>
-<code>use Illuminate\Database\Eloquent\SoftDeletes;</code></li>
-<li>在 model 使用 protected<br>
-<code>protected $dates = ['deleted_at'];</code></li>
-<li>建立新的 model<br>
-<code>php artisan make:migration add_deleted_at_column_to_posts_tables --table=posts</code></li>
-<li>設定新的 model
-<ul>
-<li>up 的部分：<code>$table-&gt;softDeletes();</code></li>
-<li>down 的部分：<code>$table-&gt;dropColumn('deleted_at');</code></li>
-</ul>
-</li>
-<li><strong>提醒：在刪除 model 之前要先 reset 才不會造成資料庫錯誤</strong></li>
-<li>直接在 Routes 進行刪除：<code>Post::find(3)-&gt;delete();</code></li>
-</ul>
-</li>
-<li>取得 deleted / trashed 紀錄</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public function boot()</div><div class="line">&#123;</div><div class="line">    parent::boot();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public function map()</div><div class="line">&#123;</div><div class="line">    $this-&gt;mapWebRoutes();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">protected function mapWebRoutes()</div><div class="line">&#123;</div><div class="line">    Route::group([</div><div class="line">        &apos;namespace&apos; =&gt; $this-&gt;namespace, &apos;middleware&apos; =&gt; &apos;web&apos;,</div><div class="line">    ], function ($router) &#123;</div><div class="line">        require app_path(&apos;Http/routes.php&apos;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>接上面的步驟，將 <code>use Illuminate\Routing\Router;</code>移除</li>
+<li>修改 mapWebRoutes function 的 path</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;resoftdelete&apos;, function()&#123;</div><div class="line"></div><div class="line">// 取得單一紀錄</div><div class="line">//    $post = Post::find(3);</div><div class="line">//    return $post;</div><div class="line"></div><div class="line">// 取得包含丟到回收桶的紀錄</div><div class="line">//    $post = Post::withTrashed()-&gt;where(&apos;is_admin&apos;, 0)-&gt;get();</div><div class="line">//    return $post;</div><div class="line"></div><div class="line">// 只取得丟到回收桶的紀錄</div><div class="line">//    $post = Post::onlyTrashed()-&gt;where(&apos;is_admin&apos;, 0)-&gt;get();</div><div class="line">//    return $post;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="11">
-<li>恢復  deleted / trashed 紀錄</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">protected function mapWebRoutes()</div><div class="line">&#123;</div><div class="line">    Route::group([</div><div class="line">        &apos;namespace&apos; =&gt; $this-&gt;namespace, &apos;middleware&apos; =&gt; &apos;web&apos;,</div><div class="line">    ], function ($router) &#123;</div><div class="line">        require base_path(&apos;routes/web.php&apos;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>更新 routes</h4>
+<ol>
+<li>在 app/Http/Controllers/Controller.php 刪除 <code>AuthorizesResources,</code></li>
+<li><a href="https://github.com/laravel/laravel/tree/5.3/app/Http/Controllers/Auth" target="_blank" rel="external">更新 routes 檔案</a></li>
+<li>將更新檔案複製到 app/Http/Controllers/Auth 目錄底下</li>
+<li>新增以下兩行到 routes/web.php</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/restore&apos;, function()&#123;</div><div class="line"></div><div class="line">    Post::withTrashed()-&gt;where(&apos;is_admin&apos;, 0)-&gt;restore();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="12">
-<li>永久移除紀錄</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Auth::routes();</div><div class="line">Route::get(&apos;/logout&apos;, &apos;Auth\LoginController@logout&apos;);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改 LoginController 將目錄導向 admin<br>
+<code>protected $redirectTo = '/admin';</code></li>
+<li>客製化 routes 來符合舊的路由設定</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/forcedelete&apos;, function()&#123;</div><div class="line"></div><div class="line">    Post::onlyTrashed()-&gt;where(&apos;is_admin&apos;, 0)-&gt;forceDelete();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">Route::group([&apos;middleware&apos;=&gt;&apos;admin&apos;], function()&#123;</div><div class="line"></div><div class="line">    Route::get(&apos;/admin&apos;, function()&#123;</div><div class="line"></div><div class="line">        return view(&apos;admin.index&apos;);</div><div class="line"></div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    Route::resource(&apos;admin/users&apos;, &apos;AdminUsersController&apos;, [&apos;names&apos;=&gt;[</div><div class="line"></div><div class="line">        &apos;index&apos;=&gt;&apos;admin.users.index&apos;,</div><div class="line">        &apos;create&apos;=&gt;&apos;admin.users.create&apos;,</div><div class="line">        &apos;store&apos;=&gt;&apos;admin.users.store&apos;,</div><div class="line">        &apos;edit&apos;=&gt;&apos;admin.users.edit&apos;</div><div class="line"></div><div class="line">    ]]);</div><div class="line"></div><div class="line">    Route::resource(&apos;admin/posts&apos;, &apos;AdminPostsController&apos;, [&apos;names&apos;=&gt;[</div><div class="line"></div><div class="line">        &apos;index&apos;=&gt;&apos;admin.posts.index&apos;,</div><div class="line">        &apos;create&apos;=&gt;&apos;admin.posts.create&apos;,</div><div class="line">        &apos;store&apos;=&gt;&apos;admin.posts.store&apos;,</div><div class="line">        &apos;edit&apos;=&gt;&apos;admin.posts.edit&apos;</div><div class="line"></div><div class="line">    ]]);</div><div class="line"></div><div class="line">    Route::resource(&apos;admin/categories&apos;, &apos;AdminCategoriesController&apos;, [&apos;names&apos;=&gt;[</div><div class="line"></div><div class="line">        &apos;index&apos;=&gt;&apos;admin.categories.index&apos;,</div><div class="line">        &apos;create&apos;=&gt;&apos;admin.categories.create&apos;,</div><div class="line">        &apos;store&apos;=&gt;&apos;admin.categories.store&apos;,</div><div class="line">        &apos;edit&apos;=&gt;&apos;admin.categories.edit&apos;</div><div class="line"></div><div class="line">    ]]);</div><div class="line"></div><div class="line">    Route::resource(&apos;admin/comments&apos;, &apos;PostCommentsController&apos;, [&apos;names&apos;=&gt;[</div><div class="line"></div><div class="line">        &apos;index&apos;=&gt;&apos;admin.comments.index&apos;,</div><div class="line">        &apos;create&apos;=&gt;&apos;admin.comments.create&apos;,</div><div class="line">        &apos;store&apos;=&gt;&apos;admin.comments.store&apos;,</div><div class="line">        &apos;edit&apos;=&gt;&apos;admin.comments.edit&apos;</div><div class="line"></div><div class="line">    ]]);</div><div class="line"></div><div class="line">    Route::resource(&apos;admin/comments/replies&apos;, &apos;CommentRepliesController&apos;, [&apos;names&apos;=&gt;[</div><div class="line"></div><div class="line">        &apos;index&apos;=&gt;&apos;admin.comments.replies.index&apos;,</div><div class="line">        &apos;create&apos;=&gt;&apos;admin.comments.replies.create&apos;,</div><div class="line">        &apos;store&apos;=&gt;&apos;admin.comments.replies.store&apos;,</div><div class="line">        &apos;edit&apos;=&gt;&apos;admin.comments.replies.edit&apos;</div><div class="line"></div><div class="line">    ]]);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/04/25/Lavarel-快速學習自我挑戰-Day4/" data-id="cj3e6t5au001h0x0a98tdw86k" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/30/Lavarel-快速學習自我挑戰-Day20/" data-id="cj3e6t58v000z0x0alst4y3ji" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -353,7 +343,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/04/25/Lavarel-快速學習自我挑戰-Day4/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/30/Lavarel-快速學習自我挑戰-Day20/" data-num-posts="5"></div>
 
 
     
@@ -414,20 +404,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/04/26/Lavarel-快速學習自我挑戰-Day5/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Lavarel 快速學習自我挑戰 Day5
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/04/24/Lavarel-快速學習自我挑戰-Day3/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/05/29/Lavarel-快速學習自我挑戰-Day19/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day3</p>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day19</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
