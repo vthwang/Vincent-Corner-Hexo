@@ -116,6 +116,14 @@ public function create(){
 @stop
 ```
 4. 在 layouts admin view 新增 yield 才能使用 section `@yield('styles')` `@yield('scripts')`
+5. 新增上傳區塊
+```
+{!! Form::open(['method'=>'POST', 'action'=>'AdminMediasController@store', 'class'=>'dropzone']) !!}
+    
+    {{csrf_field()}}
+
+{!! Form::close() !!}
+```
 #### 上傳檔案
 1. 在 AdminMediasController 新增 store function
 ```

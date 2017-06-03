@@ -27,7 +27,7 @@
 
 12345678910111213141516171819202122232425262728293031323334@extends(&amp;apos;layouts.admin&amp;apos;)@section(&amp;apos;content">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday17.png">
-<meta property="og:updated_time" content="2017-05-27T19:09:15.000Z">
+<meta property="og:updated_time" content="2017-06-01T16:57:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day17">
 <meta name="twitter:description" content="Application Media
@@ -237,7 +237,9 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@section(&apos;styles&apos;)</div><div class="line"></div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css&quot;&gt;</div><div class="line">    </div><div class="line">@stop</div></pre></td></tr></table></figure>
 <ol start="4">
 <li>在 layouts admin view 新增 yield 才能使用 section <code>@yield('styles')</code> <code>@yield('scripts')</code></li>
+<li>新增上傳區塊</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;!! Form::open([&apos;method&apos;=&gt;&apos;POST&apos;, &apos;action&apos;=&gt;&apos;AdminMediasController@store&apos;, &apos;class&apos;=&gt;&apos;dropzone&apos;]) !!&#125;</div><div class="line">    </div><div class="line">    &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">&#123;!! Form::close() !!&#125;</div></pre></td></tr></table></figure>
 <h4>上傳檔案</h4>
 <ol>
 <li>在 AdminMediasController 新增 store function</li>
@@ -258,7 +260,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/27/Lavarel-快速學習自我挑戰-Day17/" data-id="cj3e6t586000p0x0axl6ytyk6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/27/Lavarel-快速學習自我挑戰-Day17/" data-id="cj3h0npts000zxq0akbfyqyu6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
