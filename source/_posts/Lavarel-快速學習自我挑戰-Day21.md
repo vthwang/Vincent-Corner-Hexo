@@ -95,14 +95,101 @@ tags: Laravel
 `<p>{!! $post->body !!}</p>`
 4. 將編輯器也引入 admin/posts/edit view
 `@include('includes.tinyeditor')`
+### Disqus system
+1. 進入[網站首頁](https://disqus.com/)，選擇安裝程式碼到我的網站上面。
+2. 新增新的網站，按照步驟做即可。
+### 大量刪除媒體
+1. 新增 form 到 admin/media/index view
+```
+<form action="/delete/media/" method="get" class="form-inline">
+    {{csrf_field()}}        
+    {{method_field('delete')}}
+    <div class="form-group">
+        <select name="checkBoxArray" id="" class="form-control">
+            <option value="delete">Delete</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn-primary">
+    </div>
+        /*table code*/
+</form>
+```
+2. 新增 routes
+`Route::get('/delete/media', 'AdminMediasController@deleteMedia');`
+3. 將 Delete button 的 form 修改為
+```
+<input type="hidden" name="photo" value="{{$photo->id}}">
 
+<div class="form-group">
+    <input type="submit" name="delete_single" value="Delete" class="btn btn-danger">
+</div>
+```
+4. 在 AdminMediasController 新增 deleteMedia function
+```
+public function deleteMedia(Request $request){
 
+    if(isset($request->delete_single)){
 
+        $this->destroy($request->photo);
 
+        return redirect()->back();
 
+    }
 
+    if(isset($request->delete_all) && !empty($request->checkBoxArray)){
 
+        $photos = Photo::findOrFail($request->checkBoxArray);
 
+        foreach ($photos as $photo) {
 
+            $photo->delete();
 
+        }
 
+        return redirect()->back();
+
+    } else {
+
+        return redirect()->back();
+
+    }
+
+}
+```
+5. 新增 script section 到 media/index view，讓全選功能完成。
+```
+@section('scripts')
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('#options').click(function(){
+
+                if(this.checked){
+
+                    $('.checkBoxes').each(function(){
+
+                       this.checked = true;
+
+                    });
+
+                } else {
+
+                    $('.checkBoxes').each(function(){
+
+                        this.checked = false;
+
+                    });
+
+                }
+                
+            })
+
+        });
+
+    </script>
+
+@stop
+```

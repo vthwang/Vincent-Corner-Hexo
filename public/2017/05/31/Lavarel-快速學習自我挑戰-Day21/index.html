@@ -3,47 +3,50 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Lavarel 快速學習自我挑戰 Day20 | Vincent&#39;s Corner</title>
+    <title>Lavarel 快速學習自我挑戰 Day21 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="Laravel" />
     
-    <meta name="description" content="Pretty URL
+    <meta name="description" content="升級到 Laravel 5.3 Part II
+升級 users
 
-eloquent-sluggable 套件說明書
-require 套件 composer require cviebrock/eloquent-sluggable 4.1
-在 config/app.php 新增 provider
-Cviebrock\EloquentSluggable\ServiceProvider::class,
-在 Post model 新增
+把 AdminUsersController 的 lists 全部改為 pluck
 
-12">
+升級 posts
+
+新增到 routes/web.php
+Route::get(&apos;/post/{id}&apos;, [&apos;as&apos;=&amp;gt;&apos;home.post&apos;, &apos;uses&apos;=&amp;gt;&apos;AdminPostsController@post&apos;]);
+新增">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day20">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/30/Lavarel-快速學習自我挑戰-Day20/index.html">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day21">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/31/Lavarel-快速學習自我挑戰-Day21/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Pretty URL
+<meta property="og:description" content="升級到 Laravel 5.3 Part II
+升級 users
 
-eloquent-sluggable 套件說明書
-require 套件 composer require cviebrock/eloquent-sluggable 4.1
-在 config/app.php 新增 provider
-Cviebrock\EloquentSluggable\ServiceProvider::class,
-在 Post model 新增
+把 AdminUsersController 的 lists 全部改為 pluck
 
-12">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday20.png">
-<meta property="og:updated_time" content="2017-06-01T08:56:39.000Z">
+升級 posts
+
+新增到 routes/web.php
+Route::get(&apos;/post/{id}&apos;, [&apos;as&apos;=&amp;gt;&apos;home.post&apos;, &apos;uses&apos;=&amp;gt;&apos;AdminPostsController@post&apos;]);
+新增">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday21.png">
+<meta property="og:updated_time" content="2017-06-05T07:01:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day20">
-<meta name="twitter:description" content="Pretty URL
+<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day21">
+<meta name="twitter:description" content="升級到 Laravel 5.3 Part II
+升級 users
 
-eloquent-sluggable 套件說明書
-require 套件 composer require cviebrock/eloquent-sluggable 4.1
-在 config/app.php 新增 provider
-Cviebrock\EloquentSluggable\ServiceProvider::class,
-在 Post model 新增
+把 AdminUsersController 的 lists 全部改為 pluck
 
-12">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday20.png">
+升級 posts
+
+新增到 routes/web.php
+Route::get(&apos;/post/{id}&apos;, [&apos;as&apos;=&amp;gt;&apos;home.post&apos;, &apos;uses&apos;=&amp;gt;&apos;AdminPostsController@post&apos;]);
+新增">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday21.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -170,14 +173,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Lavarel-快速學習自我挑戰-Day20" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day21" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Lavarel 快速學習自我挑戰 Day20
+        Lavarel 快速學習自我挑戰 Day21
         </h1>
     
 
@@ -185,8 +188,8 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/05/30/Lavarel-快速學習自我挑戰-Day20/" class="article-date">
-    <time datetime="2017-05-30T07:46:47.000Z" itemprop="datePublished">2017-05-30</time>
+                <a href="/blogs/2017/05/31/Lavarel-快速學習自我挑戰-Day21/" class="article-date">
+    <time datetime="2017-05-31T08:58:07.000Z" itemprop="datePublished">2017-05-31</time>
 </a>
                 
     <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
@@ -195,88 +198,98 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/learning/laravel/laravelday20.png">
+            <img src="/blogs/images/learning/laravel/laravelday21.png">
 <hr>
-<h3>Pretty URL</h3>
+<h3>升級到 Laravel 5.3 Part II</h3>
+<h4>升級 users</h4>
 <ol>
-<li><a href="https://github.com/cviebrock/eloquent-sluggable" target="_blank" rel="external">eloquent-sluggable 套件說明書</a></li>
-<li>require 套件 <code>composer require cviebrock/eloquent-sluggable 4.1</code></li>
-<li>在 config/app.php 新增 provider<br>
-<code>Cviebrock\EloquentSluggable\ServiceProvider::class,</code></li>
-<li>在 Post model 新增</li>
+<li>把 AdminUsersController 的 <code>lists</code> 全部改為 <code>pluck</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">use Cviebrock\EloquentSluggable\Sluggable;</div><div class="line"></div><div class="line">class Post extends Model</div><div class="line">&#123;</div><div class="line">    use Sluggable;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Return the sluggable configuration array for this model.</div><div class="line">     *</div><div class="line">     * @return array</div><div class="line">     */</div><div class="line">    public function sluggable()</div><div class="line">    &#123;</div><div class="line">        return [</div><div class="line">            &apos;slug&apos; =&gt; [</div><div class="line">                &apos;source&apos; =&gt; &apos;title&apos;</div><div class="line">            ]</div><div class="line">        ];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>新增 migration <code>php artisan make:migration add_slug_to_posts_table --create=posts</code></li>
-<li>修改 add_slug_to_posts_table</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class AddSlugToPostsTable extends Migration</div><div class="line">&#123;</div><div class="line">    /**</div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function up()</div><div class="line">    &#123;</div><div class="line">        Schema::table(&apos;posts&apos;, function (Blueprint $table) &#123;</div><div class="line">            $table-&gt;string(&apos;slug&apos;)-&gt;nullable();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    public function down()</div><div class="line">    &#123;</div><div class="line">        Schema::table(&apos;posts&apos;, function (Blueprint $table) &#123;</div><div class="line">            $table-&gt;dropColumn(&apos;slug&apos;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="7">
-<li>將資料匯入資料庫 <code>php artisan migrate</code></li>
-<li>修改 admin/posts/index view 的檢視貼文欄位<br>
-<code>&lt;td&gt;&lt;a href=&quot; {{route('home.post', $post->slug)}}&quot;&gt;View post&lt;/a&gt;&lt;/td&gt;</code></li>
-<li>修改 AdminPostsController 的 post function</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public function post($slug)&#123;</div><div class="line"></div><div class="line">    $post = Post::where(&apos;slug&apos;, $slug)-&gt;first() ?: Post::findOrFail((int)$slug);</div><div class="line"></div><div class="line">    $comments = $post-&gt;comments()-&gt;whereIsActive(1)-&gt;get();</div><div class="line"></div><div class="line">    return view(&apos;post&apos;, compact(&apos;post&apos;, &apos;comments&apos;));</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3>Pagination (<a href="https://laravel.com/docs/5.2/pagination" target="_blank" rel="external">Pagination 官方文件</a>)</h3>
+<h4>升級 posts</h4>
 <ol>
-<li>修改 AdminPostsController 的 index function<br>
-<code>$posts = Post::all();</code>=&gt;<code>$posts = Post::paginate(2);</code></li>
-<li>在 admin/posts/index view 新增</li>
+<li>新增到 routes/web.php<br>
+<code>Route::get('/post/{id}', ['as'=&gt;'home.post', 'uses'=&gt;'AdminPostsController@post']);</code></li>
+<li>新增 comment routes<br>
+<code>'show'=&gt;'admin.comments.show'</code></li>
+<li>把 AdminPostsController 的 <code>lists</code> 全部改為 <code>pluck</code></li>
+<li>在 composer.json 升級套件 <code>&quot;laravelcollective/html&quot;: &quot;5.3.*&quot;,</code>，並使用 <code>composer update</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;row&quot;&gt;</div><div class="line">    &lt;div class=&quot;col-sm-6 col-sm-offset-5&quot;&gt;</div><div class="line"></div><div class="line">        &#123;&#123;$posts-&gt;render()&#125;&#125;</div><div class="line">        </div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<h3>從 gravatar 拿大頭貼</h3>
+<h4>升級 middleware</h4>
 <ol>
-<li>在 User model 新增 getGravatarAttribute function</li>
+<li>修改 kernel.php 的 $routeMiddleware<br>
+<code>'can' =&gt; \Illuminate\Auth\Middleware\Authorize::class,</code></li>
+<li>新增 kernel.php 的 $middlewareGroups<br>
+<code>\Illuminate\Routing\Middleware\SubstituteBindings::class,</code></li>
+<li>新增 kernel.php 的 $routeMiddleware<br>
+<code>'bindings' =&gt; \Illuminate\Routing\Middleware\SubstituteBindings::class,</code></li>
+<li>新增 kernel.php 的 api<br>
+<code>'bindings',</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public function getGravatarAttribute()&#123;</div><div class="line"></div><div class="line">    $hash = md5(strtolower(trim($this-&gt;attributes[&apos;email&apos;])));</div><div class="line"></div><div class="line">    return &quot;http://www.gravatar.com/avatar/$hash&quot;;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3>WYSIWYG and file installing editor</h3>
+<h4>下載套件 &amp; 安裝編輯器</h4>
+<ol>
+<li><a href="https://www.tinymce.com/" target="_blank" rel="external">TinyMCE 官方網站</a></li>
+<li>新增 includes/tinyeditor.blade.php view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;https://cloud.tinymce.com/stable/tinymce.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;tinymce.init(&#123; selector:&apos;textarea&apos; &#125;);&lt;/script&gt;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 admin/posts/create view 新增 <code>@include('includes.tinyeditor')</code></li>
+<li><a href="https://github.com/UniSharp/laravel-filemanager" target="_blank" rel="external">FileManager Github</a></li>
+<li>安裝套件 <code>composer require unisharp/laravel-filemanager</code></li>
+<li><a href="http://image.intervention.io/" target="_blank" rel="external">laravel intervention 官方網站</a></li>
+<li>安裝 intervention <code>composer require intervention/image</code></li>
+<li>將 class 加到 config/app.php provider<br>
+<code>Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,</code><br>
+<code>Intervention\Image\ImageServiceProvider::class,</code></li>
+<li>將 class 加到 config/app.php alias<br>
+<code>'Image' =&gt; Intervention\Image\Facades\Image::class,</code></li>
+<li>Publish the package’s config and assets<br>
+<code>php artisan vendor:publish --tag=lfm_config</code><br>
+<code>php artisan vendor:publish --tag=lfm_public</code></li>
+</ol>
+<h4>創建資料夾和上傳檔案</h4>
+<ol>
+<li>修改 includes/tinyeditor.blade.php view</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;https://cloud.tinymce.com/stable/tinymce.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var editor_config = &#123;</div><div class="line">        path_absolute : &quot;/&quot;,</div><div class="line">        selector: &quot;textarea.my-editor&quot;,</div><div class="line">        plugins: [</div><div class="line">            &quot;advlist autolink lists link image charmap print preview hr anchor pagebreak&quot;,</div><div class="line">            &quot;searchreplace wordcount visualblocks visualchars code fullscreen&quot;,</div><div class="line">            &quot;insertdatetime media nonbreaking save table contextmenu directionality&quot;,</div><div class="line">            &quot;emoticons template paste textcolor colorpicker textpattern&quot;</div><div class="line">        ],</div><div class="line">        toolbar: &quot;insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media&quot;,</div><div class="line">        relative_urls: false,</div><div class="line">        file_browser_callback : function(field_name, url, type, win) &#123;</div><div class="line">            var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName(&apos;body&apos;)[0].clientWidth;</div><div class="line">            var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName(&apos;body&apos;)[0].clientHeight;</div><div class="line"></div><div class="line">            var cmsURL = editor_config.path_absolute + &apos;laravel-filemanager?field_name=&apos; + field_name;</div><div class="line">            if (type == &apos;image&apos;) &#123;</div><div class="line">                cmsURL = cmsURL + &quot;&amp;type=Images&quot;;</div><div class="line">            &#125; else &#123;</div><div class="line">                cmsURL = cmsURL + &quot;&amp;type=Files&quot;;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            tinyMCE.activeEditor.windowManager.open(&#123;</div><div class="line">                file : cmsURL,</div><div class="line">                title : &apos;Filemanager&apos;,</div><div class="line">                width : x * 0.8,</div><div class="line">                height : y * 0.8,</div><div class="line">                resizable : &quot;yes&quot;,</div><div class="line">                close_previous : &quot;no&quot;</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    tinymce.init(editor_config);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <ol start="2">
-<li>取得大頭貼<br>
-<code>src=&quot; {{Auth::user()->gravatar}}&quot;</code></li>
+<li>在 admin/posts/create view 的 textarea 加上 <code>my-editor</code> 的 class</li>
+<li>修改 post view，強制顯示圖片<br>
+<code>&lt;p&gt;{!! $post-&gt;body !!}&lt;/p&gt;</code></li>
+<li>將編輯器也引入 admin/posts/edit view<br>
+<code>@include('includes.tinyeditor')</code></li>
 </ol>
-<h3>升級到 Laravel 5.3 Part I</h3>
-<h4>升級</h4>
+<h3>Disqus system</h3>
 <ol>
-<li><a href="https://laravel-news.com/look-whats-coming-laravel-5-3" target="_blank" rel="external">更新內容</a></li>
-<li>檢查版本 <code>php artisan --version</code></li>
-<li>修改 composer.json<br>
-<code>&quot;laravel/framework&quot;: &quot;5.3.*&quot;,</code>=&gt;<code>&quot;laravel/framework&quot;: &quot;5.3.*&quot;,</code></li>
-<li>更新資料 <code>composer update</code></li>
-<li>把 app/Providers/EventServiceProvider 的 boot function 的變數拿掉</li>
+<li>進入<a href="https://disqus.com/" target="_blank" rel="external">網站首頁</a>，選擇安裝程式碼到我的網站上面。</li>
+<li>新增新的網站，按照步驟做即可。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public function boot()</div><div class="line">&#123;</div><div class="line">    parent::boot();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="6">
-<li>把 app/Providers/RouteServiceProvider 的 boot, map, mapWebRoutes function 的變數拿掉</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public function boot()</div><div class="line">&#123;</div><div class="line">    parent::boot();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public function map()</div><div class="line">&#123;</div><div class="line">    $this-&gt;mapWebRoutes();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">protected function mapWebRoutes()</div><div class="line">&#123;</div><div class="line">    Route::group([</div><div class="line">        &apos;namespace&apos; =&gt; $this-&gt;namespace, &apos;middleware&apos; =&gt; &apos;web&apos;,</div><div class="line">    ], function ($router) &#123;</div><div class="line">        require app_path(&apos;Http/routes.php&apos;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="7">
-<li>接上面的步驟，將 <code>use Illuminate\Routing\Router;</code>移除</li>
-<li>修改 mapWebRoutes function 的 path</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">protected function mapWebRoutes()</div><div class="line">&#123;</div><div class="line">    Route::group([</div><div class="line">        &apos;namespace&apos; =&gt; $this-&gt;namespace, &apos;middleware&apos; =&gt; &apos;web&apos;,</div><div class="line">    ], function ($router) &#123;</div><div class="line">        require base_path(&apos;routes/web.php&apos;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4>更新 routes</h4>
+<h3>大量刪除媒體</h3>
 <ol>
-<li>在 app/Http/Controllers/Controller.php 刪除 <code>AuthorizesResources,</code></li>
-<li><a href="https://github.com/laravel/laravel/tree/5.3/app/Http/Controllers/Auth" target="_blank" rel="external">更新 routes 檔案</a></li>
-<li>將更新檔案複製到 app/Http/Controllers/Auth 目錄底下</li>
-<li>新增以下兩行到 routes/web.php</li>
+<li>新增 form 到 admin/media/index view</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Auth::routes();</div><div class="line">Route::get(&apos;/logout&apos;, &apos;Auth\LoginController@logout&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;/delete/media/&quot; method=&quot;get&quot; class=&quot;form-inline&quot;&gt;</div><div class="line">    &#123;&#123;csrf_field()&#125;&#125;        </div><div class="line">    &#123;&#123;method_field(&apos;delete&apos;)&#125;&#125;</div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &lt;select name=&quot;checkBoxArray&quot; id=&quot;&quot; class=&quot;form-control&quot;&gt;</div><div class="line">            &lt;option value=&quot;delete&quot;&gt;Delete&lt;/option&gt;</div><div class="line">        &lt;/select&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &lt;input type=&quot;submit&quot; class=&quot;btn-primary&quot;&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">        /*table code*/</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>新增 routes<br>
+<code>Route::get('/delete/media', 'AdminMediasController@deleteMedia');</code></li>
+<li>將 Delete button 的 form 修改為</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;hidden&quot; name=&quot;photo&quot; value=&quot;&#123;&#123;$photo-&gt;id&#125;&#125;&quot;&gt;</div><div class="line"></div><div class="line">&lt;div class=&quot;form-group&quot;&gt;</div><div class="line">    &lt;input type=&quot;submit&quot; name=&quot;delete_single&quot; value=&quot;Delete&quot; class=&quot;btn btn-danger&quot;&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 AdminMediasController 新增 deleteMedia function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public function deleteMedia(Request $request)&#123;</div><div class="line"></div><div class="line">    if(isset($request-&gt;delete_single))&#123;</div><div class="line"></div><div class="line">        $this-&gt;destroy($request-&gt;photo);</div><div class="line"></div><div class="line">        return redirect()-&gt;back();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(isset($request-&gt;delete_all) &amp;&amp; !empty($request-&gt;checkBoxArray))&#123;</div><div class="line"></div><div class="line">        $photos = Photo::findOrFail($request-&gt;checkBoxArray);</div><div class="line"></div><div class="line">        foreach ($photos as $photo) &#123;</div><div class="line"></div><div class="line">            $photo-&gt;delete();</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return redirect()-&gt;back();</div><div class="line"></div><div class="line">    &#125; else &#123;</div><div class="line"></div><div class="line">        return redirect()-&gt;back();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol start="5">
-<li>修改 LoginController 將目錄導向 admin<br>
-<code>protected $redirectTo = '/admin';</code></li>
-<li>客製化 routes 來符合舊的路由設定</li>
+<li>新增 script section 到 media/index view，讓全選功能完成。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">Route::group([&apos;middleware&apos;=&gt;&apos;admin&apos;], function()&#123;</div><div class="line"></div><div class="line">    Route::get(&apos;/admin&apos;, function()&#123;</div><div class="line"></div><div class="line">        return view(&apos;admin.index&apos;);</div><div class="line"></div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    Route::resource(&apos;admin/users&apos;, &apos;AdminUsersController&apos;, [&apos;names&apos;=&gt;[</div><div class="line"></div><div class="line">        &apos;index&apos;=&gt;&apos;admin.users.index&apos;,</div><div class="line">        &apos;create&apos;=&gt;&apos;admin.users.create&apos;,</div><div class="line">        &apos;store&apos;=&gt;&apos;admin.users.store&apos;,</div><div class="line">        &apos;edit&apos;=&gt;&apos;admin.users.edit&apos;</div><div class="line"></div><div class="line">    ]]);</div><div class="line"></div><div class="line">    Route::resource(&apos;admin/posts&apos;, &apos;AdminPostsController&apos;, [&apos;names&apos;=&gt;[</div><div class="line"></div><div class="line">        &apos;index&apos;=&gt;&apos;admin.posts.index&apos;,</div><div class="line">        &apos;create&apos;=&gt;&apos;admin.posts.create&apos;,</div><div class="line">        &apos;store&apos;=&gt;&apos;admin.posts.store&apos;,</div><div class="line">        &apos;edit&apos;=&gt;&apos;admin.posts.edit&apos;</div><div class="line"></div><div class="line">    ]]);</div><div class="line"></div><div class="line">    Route::resource(&apos;admin/categories&apos;, &apos;AdminCategoriesController&apos;, [&apos;names&apos;=&gt;[</div><div class="line"></div><div class="line">        &apos;index&apos;=&gt;&apos;admin.categories.index&apos;,</div><div class="line">        &apos;create&apos;=&gt;&apos;admin.categories.create&apos;,</div><div class="line">        &apos;store&apos;=&gt;&apos;admin.categories.store&apos;,</div><div class="line">        &apos;edit&apos;=&gt;&apos;admin.categories.edit&apos;</div><div class="line"></div><div class="line">    ]]);</div><div class="line"></div><div class="line">    Route::resource(&apos;admin/comments&apos;, &apos;PostCommentsController&apos;, [&apos;names&apos;=&gt;[</div><div class="line"></div><div class="line">        &apos;index&apos;=&gt;&apos;admin.comments.index&apos;,</div><div class="line">        &apos;create&apos;=&gt;&apos;admin.comments.create&apos;,</div><div class="line">        &apos;store&apos;=&gt;&apos;admin.comments.store&apos;,</div><div class="line">        &apos;edit&apos;=&gt;&apos;admin.comments.edit&apos;</div><div class="line"></div><div class="line">    ]]);</div><div class="line"></div><div class="line">    Route::resource(&apos;admin/comments/replies&apos;, &apos;CommentRepliesController&apos;, [&apos;names&apos;=&gt;[</div><div class="line"></div><div class="line">        &apos;index&apos;=&gt;&apos;admin.comments.replies.index&apos;,</div><div class="line">        &apos;create&apos;=&gt;&apos;admin.comments.replies.create&apos;,</div><div class="line">        &apos;store&apos;=&gt;&apos;admin.comments.replies.store&apos;,</div><div class="line">        &apos;edit&apos;=&gt;&apos;admin.comments.replies.edit&apos;</div><div class="line"></div><div class="line">    ]]);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">@section(&apos;scripts&apos;)</div><div class="line"></div><div class="line">    &lt;script&gt;</div><div class="line"></div><div class="line">        $(document).ready(function()&#123;</div><div class="line"></div><div class="line">            $(&apos;#options&apos;).click(function()&#123;</div><div class="line"></div><div class="line">                if(this.checked)&#123;</div><div class="line"></div><div class="line">                    $(&apos;.checkBoxes&apos;).each(function()&#123;</div><div class="line"></div><div class="line">                       this.checked = true;</div><div class="line"></div><div class="line">                    &#125;);</div><div class="line"></div><div class="line">                &#125; else &#123;</div><div class="line"></div><div class="line">                    $(&apos;.checkBoxes&apos;).each(function()&#123;</div><div class="line"></div><div class="line">                        this.checked = false;</div><div class="line"></div><div class="line">                    &#125;);</div><div class="line"></div><div class="line">                &#125;</div><div class="line">                </div><div class="line">            &#125;)</div><div class="line"></div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/30/Lavarel-快速學習自我挑戰-Day20/" data-id="cj3jsgjs00018ji0a9wd3ltyb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/31/Lavarel-快速學習自我挑戰-Day21/" data-id="cj3jsgjsg001bji0anbdxsqcn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -343,7 +356,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/30/Lavarel-快速學習自我挑戰-Day20/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/31/Lavarel-快速學習自我挑戰-Day21/" data-num-posts="5"></div>
 
 
     
@@ -404,20 +417,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/05/31/Lavarel-快速學習自我挑戰-Day21/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Lavarel 快速學習自我挑戰 Day21
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/05/29/Lavarel-快速學習自我挑戰-Day19/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/05/30/Lavarel-快速學習自我挑戰-Day20/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day19</p>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day20</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
