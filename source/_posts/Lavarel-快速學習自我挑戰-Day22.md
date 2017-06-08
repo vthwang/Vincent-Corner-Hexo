@@ -108,3 +108,5 @@ mix.scripts([
 9. 安裝相依套件 `npm install`
 10. 執行 webpack `npm run dev`
 11. 監控 webpack 任何變化 `npm run watch`
+### 完成課程結業證書
+<img src="/blogs/images/learning/laravel/EdwinDiaz_Laravel.jpg">
