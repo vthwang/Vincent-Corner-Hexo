@@ -3,38 +3,47 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Lavarel 快速學習自我挑戰 Day15 | Vincent&#39;s Corner</title>
+    <title>Nodejs 快速學習自我挑戰 Day1 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Laravel" />
+        <meta name="keywords" content="Nodejs" />
     
-    <meta name="description" content="Application Post Part I
-設定 routes
+    <meta name="description" content="環境設定
+安裝
 
-設定 404 page view
+安裝 node
 
-1234567@extends(&amp;apos;layouts.app&amp;apos;)@section(&amp;apos;content&amp;apos;)    &amp;lt;h1 class=&amp;quot;text-center&amp;quot;&amp;gt;Opps no page available&amp;lt;/h1&amp;gt">
+什麼是 Node
+
+JavaScript 本來是用於瀏覽器的，現在可以用在 Server 端，node 是一套用 JavaScript Syntax 且可以用來建立程式、檔案系統，還可以直接跟資料庫溝通，甚至可以直接用 node 來建立伺服器。
+Node 和 JavaScript 在瀏覽器裡執行都是使用同個引擎，叫做 JavaScript V8 runtim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day15">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/25/Lavarel-快速學習自我挑戰-Day15/index.html">
+<meta property="og:title" content="Nodejs 快速學習自我挑戰 Day1">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/06/10/Nodejs-快速學習自我挑戰-Day1/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Application Post Part I
-設定 routes
+<meta property="og:description" content="環境設定
+安裝
 
-設定 404 page view
+安裝 node
 
-1234567@extends(&amp;apos;layouts.app&amp;apos;)@section(&amp;apos;content&amp;apos;)    &amp;lt;h1 class=&amp;quot;text-center&amp;quot;&amp;gt;Opps no page available&amp;lt;/h1&amp;gt">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday15.png">
-<meta property="og:updated_time" content="2017-05-25T16:55:48.000Z">
+什麼是 Node
+
+JavaScript 本來是用於瀏覽器的，現在可以用在 Server 端，node 是一套用 JavaScript Syntax 且可以用來建立程式、檔案系統，還可以直接跟資料庫溝通，甚至可以直接用 node 來建立伺服器。
+Node 和 JavaScript 在瀏覽器裡執行都是使用同個引擎，叫做 JavaScript V8 runtim">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday1.png">
+<meta property="og:updated_time" content="2017-06-11T14:04:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day15">
-<meta name="twitter:description" content="Application Post Part I
-設定 routes
+<meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day1">
+<meta name="twitter:description" content="環境設定
+安裝
 
-設定 404 page view
+安裝 node
 
-1234567@extends(&amp;apos;layouts.app&amp;apos;)@section(&amp;apos;content&amp;apos;)    &amp;lt;h1 class=&amp;quot;text-center&amp;quot;&amp;gt;Opps no page available&amp;lt;/h1&amp;gt">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday15.png">
+什麼是 Node
+
+JavaScript 本來是用於瀏覽器的，現在可以用在 Server 端，node 是一套用 JavaScript Syntax 且可以用來建立程式、檔案系統，還可以直接跟資料庫溝通，甚至可以直接用 node 來建立伺服器。
+Node 和 JavaScript 在瀏覽器裡執行都是使用同個引擎，叫做 JavaScript V8 runtim">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday1.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -161,14 +170,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Lavarel-快速學習自我挑戰-Day15" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Nodejs-快速學習自我挑戰-Day1" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Lavarel 快速學習自我挑戰 Day15
+        Nodejs 快速學習自我挑戰 Day1
         </h1>
     
 
@@ -176,121 +185,143 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" class="article-date">
-    <time datetime="2017-05-25T12:10:35.000Z" itemprop="datePublished">2017-05-25</time>
+                <a href="/blogs/2017/06/10/Nodejs-快速學習自我挑戰-Day1/" class="article-date">
+    <time datetime="2017-06-10T15:32:55.000Z" itemprop="datePublished">2017-06-10</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/learning/laravel/laravelday15.png">
+            <img src="/blogs/images/learning/nodejs/nodejsday1.png">
 <hr>
-<h3>Application Post Part I</h3>
-<h4>設定 routes</h4>
+<h3>環境設定</h3>
+<h4>安裝</h4>
 <ol>
-<li>設定 404 page view</li>
+<li>安裝 <a href="https://nodejs.org/en/" target="_blank" rel="external">node</a></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.app&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1 class=&quot;text-center&quot;&gt;Opps no page available&lt;/h1&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>新增 routes 在 admin group 裡面<br>
-<code>Route::resource('admin/posts', 'AdminPostsController');</code></li>
-<li>新增 Controller<br>
-<code>php artisan make:controller --resource AdminPostsController</code></li>
-<li>在 Controller 的 index<br>
-<code>return view('admin.posts.index');</code></li>
-<li>新增 /views/admin/posts/index.blade.php</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.admin&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Posts&lt;/h1&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
-<ol start="6">
-<li>修改 layouts 的連結<br>
-All Posts -&gt; <code> {{route('admin.posts.index')}}</code><br>
-Create Post -&gt; <code> {{route('admin.posts.create')}}</code></li>
-<li>修改 Create 和 Edit 的 view</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.admin&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Create Post&lt;/h1&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@extends(&apos;layouts.admin&apos;)</div><div class="line"></div><div class="line">@section(&apos;content&apos;)</div><div class="line"></div><div class="line">    &lt;h1&gt;Edit Post&lt;/h1&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
-<ol start="8">
-<li>修改 Controller 的 create<br>
-<code>return view('admin.posts.create');</code></li>
-</ol>
-<h4>Migration</h4>
+<h4>什麼是 Node</h4>
 <ol>
-<li>新增 model<br>
-<code>php artisan make:model Post -m</code></li>
-<li>在 create_posts_table 新增欄位</li>
+<li>JavaScript 本來是用於瀏覽器的，現在可以用在 Server 端，node 是一套用 JavaScript Syntax 且可以用來建立程式、檔案系統，還可以直接跟資料庫溝通，甚至可以直接用 node 來建立伺服器。</li>
+<li>Node 和 JavaScript 在瀏覽器裡執行都是使用同個引擎，叫做 JavaScript V8 runtime engine，這是一個開源軟體，將 JavaScript 的程式編譯成較快的機器語言，機器語言是低階語言，電腦可以直接執行不需經過轉譯，少了必須轉譯的動作，電腦只能執行特定程式碼，舉例來說，機器可以執行 JavaScript 程式碼、PHP 程式碼不需要轉譯成機器本來就知道的東西，因為 V8 引擎做得很好，Node 非常的快，使用 V8 引擎，我們可以將 JavaScript 程式碼編譯成較快速的機器語言，然後執行它，V8 引擎是用 C++ 寫的，所以如果想拓展 Node 語言，就要學用 C++。</li>
+<li>Node 有檔案系統的功能，瀏覽器則控制什麼出現在視窗裡面。瀏覽器使用 <code>window</code> 呼叫指令，Node 用 <code>global</code>。</li>
+<li>瀏覽器使用 <code>document</code> 顯示 DOM，Node 使用 <code>process</code> 顯示進程。<code>process.exit(0);</code> 離開執行狀態(或用兩次 ctrl+C 也可以)。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$table-&gt;integer(&apos;user_id&apos;)-&gt;unsigned()-&gt;index();</div><div class="line">$table-&gt;integer(&apos;category_id&apos;)-&gt;unsigned()-&gt;index();</div><div class="line">$table-&gt;integer(&apos;photo_id&apos;)-&gt;unsigned()-&gt;inex();</div><div class="line">$table-&gt;string(&apos;title&apos;);</div><div class="line">$table-&gt;text(&apos;body&apos;);</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>寫入資料庫 <code>php artisan migrate</code></li>
-</ol>
-<h4>顯示貼文</h4>
+<h4>為什麼使用 Nodejs</h4>
 <ol>
-<li>在 Post model 處理 mass assignment</li>
+<li>Nodejs 使用事件驅動、非阻塞式 I/O 模型讓它非常輕量而且高效。I/O 是電腦非常常做的事情，當資料讀取或是寫入資料庫，就是 I/O，也稱為輸入和輸出，這是一個用來溝通物聯網和應用程式的東西，包含資料庫讀取或寫入 request，或是改變檔案系統裡的檔案，或者是傳送 http request 到伺服器，例如：Google API 取得用戶的位置。至於非阻塞式 (non-blocking) 是當有用戶從Google request URL，另外一個用戶可以讀取資料庫的資料而不需等待其他用戶的 request 完成。</li>
+<li>Nodejs 套件的生態系系統 <a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a> ，是世界上最大的開源資料庫生態系統。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">protected $fillable = [</div><div class="line"></div><div class="line">    &apos;category_id&apos;,</div><div class="line">    &apos;photo_id&apos;,</div><div class="line">    &apos;title&apos;,</div><div class="line">    &apos;body&apos;</div><div class="line"></div><div class="line">];</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>進入 tinker 模式新增資料庫內容 <code>php artisan tinker</code></li>
-<li>新增一行資料 <code>$post = App\Post::create(['title'=&gt;'my first post', 'body'=&gt;'I love laravel with Edwin Diaz']);</code></li>
-<li>修改 Controller 的 Index function</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$posts = Post::all();</div><div class="line">return view(&apos;admin.posts.index&apos;, compact(&apos;posts&apos;));</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>在 Post index view 新增一個 table 讀取資料庫資料</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;table class=&quot;table&quot;&gt;</div><div class="line">    &lt;thead&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;th&gt;Id&lt;/th&gt;</div><div class="line">        &lt;th&gt;User&lt;/th&gt;</div><div class="line">        &lt;th&gt;Category&lt;/th&gt;</div><div class="line">        &lt;th&gt;Photo&lt;/th&gt;</div><div class="line">        &lt;th&gt;Title&lt;/th&gt;</div><div class="line">        &lt;th&gt;body&lt;/th&gt;</div><div class="line">        &lt;th&gt;Created&lt;/th&gt;</div><div class="line">        &lt;th&gt;Updated&lt;/th&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;/thead&gt;</div><div class="line">    &lt;tbody&gt;</div><div class="line"></div><div class="line">    @if($posts)</div><div class="line"></div><div class="line">        @foreach($posts as $post)</div><div class="line"></div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;id&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;user_id&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;category_id&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;photo_id&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;title&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;body&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;created_at-&gt;diffForHumans()&#125;&#125;&lt;/td&gt;</div><div class="line">        &lt;td&gt;&#123;&#123;$post-&gt;updated_at-&gt;diffForHumans()&#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line"></div><div class="line">        @endforeach</div><div class="line"></div><div class="line">    @endif</div><div class="line">    &lt;/tbody&gt;</div><div class="line">&lt;/table&gt;</div></pre></td></tr></table></figure>
-<h4>Relationship 設定</h4>
+<h3>Note App</h3>
+<h4>Using Require</h4>
 <ol>
-<li>在 User model 新增 posts function</li>
+<li>Module 是單元功能，Require 是用來取用單元功能的 Node 函式。</li>
+<li><a href="https://nodejs.org/api/" target="_blank" rel="external">Modules</a></li>
+<li>新增根目錄檔案 <code>app.js</code></li>
+<li>先 console.log <code>console.log('Starting app.');</code></li>
+<li>引入 filesystem <code>const fs = require('fs');</code></li>
+<li>使用函式庫新增檔案 <code>fs.appendFile('greeting.txt', 'Hello world!');</code></li>
+<li>如果使用函式庫新增檔案出現錯誤，有其他兩種解法</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public function posts()&#123;</div><div class="line"></div><div class="line">    return $this-&gt;hasMany(&apos;App\Post&apos;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>在 Post model 新增 user function</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Option1</div><div class="line">fs.appendFile(&apos;greeting.txt&apos;, &apos;Hello world!&apos;, function (err) &#123;</div><div class="line">   if (err) &#123;</div><div class="line">        console.log(&apos;Unable to write to file&apos;);</div><div class="line">   &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Option2</div><div class="line">fs.appendFileSync(&apos;greeting.txt&apos;, &apos;Hello world!&apos;);</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>引入 os <code>const os = require('os');</code></li>
+<li>使用函式庫調出 user 資料 <code>var user = os.userInfo();</code></li>
+<li>ES5 輸出資料 <code>fs.appendFile('greeting.txt', 'Hello ' + user.username + '!');</code></li>
+<li>ES6 輸出資料</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public function user()&#123;</div><div class="line"></div><div class="line">    return $this-&gt;belongsTo(&apos;App\User&apos;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>修改 index view 的 user 欄位 <code>{{$post->user->name}}</code></li>
-<li>在 Post model 新增 photo 和 category function</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public function photo()&#123;</div><div class="line">        </div><div class="line">    return $this-&gt;belongsTo(&apos;App\Photo&apos;);</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">public function category()&#123;</div><div class="line">    </div><div class="line">    return $this-&gt;belongsTo(&apos;App\Category&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>在 Role model 讓 name 可寫入</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">protected $fillable = [</div><div class="line"></div><div class="line">    &apos;name&apos;</div><div class="line"></div><div class="line">];</div></pre></td></tr></table></figure>
-<h4>創建表單</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fs.appendFile(&apos;greeting.txt&apos;, `Hello $&#123;user.username&#125;!`);</div></pre></td></tr></table></figure>
+<h4>Require 自己的檔案</h4>
 <ol>
-<li>新增 create view 表單</li>
+<li>新增根目錄檔案 notes.js 加入一行 <code>console.log('Starting notes.js')</code></li>
+<li>在 app.js require 檔案 <code>const notes = require('./notes.js');</code></li>
+<li>在 notes.js 新增 addNote function</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&#123;!! Form::open([&apos;method&apos;=&gt;&apos;POST&apos;, &apos;action&apos;=&gt;&apos;AdminPostsController@store&apos;, &apos;files&apos;=&gt;true]) !!&#125;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;title&apos;, &apos;Title:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::text(&apos;title&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;category_id&apos;, &apos;Category:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::select(&apos;category_id&apos;, array(&apos;&apos;=&gt;&apos;options&apos;), null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;photo_id&apos;, &apos;Photo:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::file(&apos;photo_id&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::label(&apos;body&apos;, &apos;Description:&apos;) !!&#125;</div><div class="line">        &#123;!! Form::textarea(&apos;body&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;, &apos;rows&apos;=&gt;3]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">        &#123;!! Form::submit(&apos;Create Post&apos;, [&apos;class&apos;=&gt;&apos;btn btn-primary&apos;]) !!&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">&#123;!! Form::close() !!&#125;</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>新增 Request<br>
-<code>php artisan make:request PostsCreateRequest</code></li>
-<li>修改 PostscreateRequest</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public function authorize()</div><div class="line">    &#123;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">public function rules()</div><div class="line">    &#123;</div><div class="line">        return [</div><div class="line"></div><div class="line">            &apos;title&apos;         =&gt;&apos;required&apos;,</div><div class="line">            &apos;category_id&apos;   =&gt;&apos;required&apos;,</div><div class="line">            &apos;photo_id&apos;      =&gt;&apos;required&apos;,</div><div class="line">            &apos;body&apos;          =&gt;&apos;required&apos;</div><div class="line"></div><div class="line">        ];</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">module.exports.addNote = () =&gt; &#123;</div><div class="line">    console.log(&apos;addNote&apos;);</div><div class="line">    return &apos;New note&apos;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <ol start="4">
-<li>在 create post view include error message<br>
-<code>@include('includes.form_error')</code></li>
+<li>在 app.js 使用 function</li>
 </ol>
-<h4>創建貼文</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var res = notes.addNote();</div><div class="line">console.log(res);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 notes.js 新增 add function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">module.exports.add = (a, b) =&gt; &#123;</div><div class="line">    return a + b;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 app.js 使用 function<br>
+<code>console.log('Result:', notes.add(9, -2));</code></li>
+</ol>
+<h4>使用第三方套件</h4>
 <ol>
-<li>更新 Controller 的 store function</li>
+<li>啟動 npm 專案 <code>npm init</code></li>
+<li>安裝 lodash <code>npm install lodash --save</code></li>
+<li>Require module 到 app.js <code>const _ = requrie('lodash');</code></li>
+<li>使用 lodash function 去除陣列中一樣的內容</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$input = $request-&gt;all();</div><div class="line"></div><div class="line">$user = Auth::user();</div><div class="line"></div><div class="line">if($file = $request-&gt;file(&apos;photo_id&apos;))&#123;</div><div class="line"></div><div class="line">    $name = time() . $file-&gt;getClientOriginalName();</div><div class="line">    </div><div class="line">    $file-&gt;move(&apos;images&apos;, $name);</div><div class="line">    </div><div class="line">    $photo = Photo::create([&apos;file&apos;=&gt;$name]);</div><div class="line">    </div><div class="line">    $input[&apos;photo_id&apos;] = $photo-&gt;id;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">$user-&gt;posts()-&gt;create($input);</div><div class="line"></div><div class="line">return redirect(&apos;/admin/posts&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var filteredArray = _.uniq([&apos;Vincent&apos;, 1, &apos;Vincent&apos;, 1, 2, 3, 4]);</div><div class="line">console.log(filteredArray);</div></pre></td></tr></table></figure>
+<h4>使用 Nodemon 開始專案</h4>
+<ol>
+<li>安裝 Nodemon <code>npm install nodemon -g</code></li>
+<li>啟動 Nodemon 來監控專案 <code>nodemon app.js</code></li>
+</ol>
+<h4>從使用者取得 input</h4>
+<ol>
+<li>在 app.js 新增 process.argv 監控 command</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var command = process.argv[2];</div><div class="line">console.log(&apos;Command:&apos;, command);</div><div class="line">console.log(process.argv);</div></pre></td></tr></table></figure>
 <ol start="2">
-<li>修改 Post index view 來顯示圖片<br>
-<code>&lt;img height=&quot;100&quot; src=&quot;{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}&quot; alt=&quot;&quot;&gt;</code></li>
+<li>在 app.js 新增 if else function 給不同的 command 不同 output</li>
 </ol>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">if (command === &apos;add&apos;) &#123;</div><div class="line">    console.log(&apos;Adding new note&apos;);</div><div class="line">&#125; else if (command === &apos;list&apos;) &#123;</div><div class="line">    console.log(&apos;Listing all notes&apos;);</div><div class="line">&#125; else if (command === &apos;read&apos;) &#123;</div><div class="line">    console.log(&apos;Reading note&apos;);</div><div class="line">&#125; else if (command === &apos;remove&apos;) &#123;</div><div class="line">    console.log(&apos;Removing note&apos;);</div><div class="line">&#125; else &#123;</div><div class="line">    console.log(&apos;Command not recognized&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>檢查 command <code>node app.js remove</code></li>
+</ol>
+<h3>使用 Yargs 簡化 input</h3>
+<ol>
+<li>安裝 Yargs <code>npm install yargs@4.7.1 --save</code></li>
+<li>Require Yargs <code>const yargs = require('yargs');</code></li>
+<li>修改 app.js 的 if function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">if (command === &apos;add&apos;) &#123;</div><div class="line">    notes.addNote(argv.title, argv.body);</div><div class="line">&#125; else if (command === &apos;list&apos;) &#123;</div><div class="line">    notes.getAll();</div><div class="line">&#125; else if (command === &apos;read&apos;) &#123;</div><div class="line">    notes.getNote(argv.title);</div><div class="line">&#125; else if (command === &apos;remove&apos;) &#123;</div><div class="line">    notes.removeNote(argv.title);</div><div class="line">&#125; else &#123;</div><div class="line">    console.log(&apos;Command not recognized&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 notes.js 新增 addNote, getAll, getNote, removeNote function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var addNote = (title, body) =&gt; &#123;</div><div class="line">    console.log(&apos;Adding note&apos;, title, body);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var getAll = () =&gt; &#123;</div><div class="line">    console.log(&apos;Getting all notes&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var getNote = (title) =&gt; &#123;</div><div class="line">    console.log(&apos;Getting note&apos;, title);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var removeNote = (title) =&gt; &#123;</div><div class="line">    console.log(&apos;Removing note&apos;, title);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 notes.js 輸出 function (ES6)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">    addNote,</div><div class="line">    getAll,</div><div class="line">    getNote,</div><div class="line">    removeNote</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4>使用 JSON</h4>
+<ol>
+<li>先引入 fileSystem，然後用 originalNote 新增 JSON 物件，新增一個變數 originalNoteString 用 stringify 將 originalNote 轉為 String，然後再新增一個變數 note 將 originalNoteString parse 回 JSON 物件。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">const fs = require(&apos;fs&apos;);</div><div class="line"></div><div class="line">var originalNote = &#123;</div><div class="line">    title: &apos;Some title&apos;,</div><div class="line">    body: &apos;Some body&apos;</div><div class="line">&#125;;</div><div class="line">var originalNoteString = JSON.stringify(originalNote);</div><div class="line">fs.writeFileSync(&apos;notes.json&apos;, originalNoteString);</div><div class="line"></div><div class="line">var noteString = fs.readFileSync(&apos;notes.json&apos;);</div><div class="line">var note = JSON.parse(originalNoteString);</div><div class="line">console.log(typeof note);</div><div class="line">console.log(note.title);</div></pre></td></tr></table></figure>
+<h4>新增和儲存 Notes</h4>
+<ol>
+<li>首先在 addNote 傳入 title 和 body 兩個變數，然後用 notes.push 把得到的兩個變數傳進去 notes 陣列裡面，最後用 String 的方式寫入 notes-data.json。過程中，為了避免資料重複，用 notesString 取得檔案內的所有 note，然後用 notes.filter 檢查 title 是不是一樣，最後，如果不一樣，再將檔案寫入 notes-data.json。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var addNote = (title, body) =&gt; &#123;</div><div class="line">    var notes = [];</div><div class="line">    var note = &#123;</div><div class="line">        title,</div><div class="line">        body</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    try &#123;</div><div class="line">        var notesString = fs.readFileSync(&apos;notes-data.json&apos;);</div><div class="line">        notes = JSON.parse(notesString);</div><div class="line">    &#125; catch (e) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var duplicateNotes = notes.filter((note) =&gt; note.title === title);</div><div class="line"></div><div class="line">    if (duplicateNotes.length === 0) &#123;</div><div class="line">        notes.push(note);</div><div class="line">        fs.writeFileSync(&apos;notes-data.json&apos;, JSON.stringify(notes));</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4>重複使用 function</h4>
+<ol>
+<li>將本來在 addNote 的 fucntion 移出來</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var fetchNotes = () =&gt; &#123;</div><div class="line">    try &#123;</div><div class="line">        var notesString = fs.readFileSync(&apos;notes-data.json&apos;);</div><div class="line">        return JSON.parse(notesString);</div><div class="line">    &#125; catch (e) &#123;</div><div class="line">        return [];</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var saveNotes = (notes) =&gt; &#123;</div><div class="line">    fs.writeFileSync(&apos;notes-data.json&apos;, JSON.stringify(notes));</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>addNote function 移出來的 function 用 fetchNotes 和 saveNotes 取代</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var addNote = (title, body) =&gt; &#123;</div><div class="line">    var notes = fetchNotes();</div><div class="line">    var note = &#123;</div><div class="line">        title,</div><div class="line">        body</div><div class="line">    &#125;;</div><div class="line">    var duplicateNotes = notes.filter((note) =&gt; note.title === title);</div><div class="line"></div><div class="line">    if (duplicateNotes.length === 0) &#123;</div><div class="line">        notes.push(note);</div><div class="line">        saveNotes(notes);</div><div class="line">        return note;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>將從 notes.js return 出來的 note 用 if else function 來顯示是否完成新增 notes 的動作</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">if (command === &apos;add&apos;) &#123;</div><div class="line">    var note = notes.addNote(argv.title, argv.body);</div><div class="line">    if (note) &#123;</div><div class="line">        console.log(&apos;Note created&apos;);</div><div class="line">        console.log(&apos;--&apos;);</div><div class="line">        console.log(`Title: $&#123;note.title&#125;`);</div><div class="line">        console.log(`Body: $&#123;note.body&#125;`);</div><div class="line">    &#125; else &#123;</div><div class="line">        console.log(&apos;Note title taken&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" data-id="cj3ss7teo000omn0a9br78v1v" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/06/10/Nodejs-快速學習自我挑戰-Day1/" data-id="cj3ss7tgp0020mn0au26hcaz5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -357,7 +388,7 @@ Create Post -&gt; <code> {{route('admin.posts.create')}}</code></li>
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/06/10/Nodejs-快速學習自我挑戰-Day1/" data-num-posts="5"></div>
 
 
     
@@ -418,20 +449,10 @@ Create Post -&gt; <code> {{route('admin.posts.create')}}</code></li>
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/05/26/Lavarel-快速學習自我挑戰-Day16/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Lavarel 快速學習自我挑戰 Day16
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/06/01/Lavarel-快速學習自我挑戰-Day22/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day14</p>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day22</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
