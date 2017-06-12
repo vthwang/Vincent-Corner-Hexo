@@ -136,8 +136,52 @@ var user = {
 user.sayHiAlt(1, 2, 3);
 ```
 ### Weather App
+#### Async
+1. 下列的程式，會依照下列順序執行 `Starting app` => `Finishing up` => `Second setTimeout` => `Inside of callback`
+```
+console.log('Starting app');
+
+setTimeout(() => {
+    console.log('Inside of callback');
+}, 2000);
+
+setTimeout(() => {
+    console.log('Second setTimeout');
+}, 0);
 
 
+console.log('Finishing up');
+```
+#### callback Function & APIs
+1. Callback 範例，最後會輸出 `{ id: 31, name: 'Vikram' }`
+```
+var getUser = (id, callback) => {
+    var user = {
+        id: id,
+        name: 'Vikram'
+    };
 
+    setTimeout(() => {
+        callback(user);
+    }, 3000);
+};
 
+getUser(31, (userObject) => {
+    console.log(userObject);
+});
+```
+2. [第三方 request 插件](https://www.npmjs.com/package/request)
+3. 啟動 npm 專案 `npm init`
+4. 安裝 request 套件 `npm install request@2.73.0 --save`
+5. 在根目錄新增 app.js 開始專案
+6. 先 require request 套件，然後從 google api 擷取 json 資訊
+```
+const request = require('request');
 
+request ({
+    url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1301%20lombard%20street%20philadelphia',
+    json: true
+}, (error, response, body) => {
+    console.log(body);
+});
+```

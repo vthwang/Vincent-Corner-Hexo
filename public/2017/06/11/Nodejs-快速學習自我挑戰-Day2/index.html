@@ -3,29 +3,38 @@
 <head>
     <meta charset="utf-8">
     
-    <title>華碩Win8電腦USB開機 | Vincent&#39;s Corner</title>
+    <title>Nodejs 快速學習自我挑戰 Day2 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="Nodejs" />
     
-    <meta name="description" content="(1) 開機連按Del進入BIOS之後，切換到「Security」選單，將「Secure Boot Control」設定成「Disabled」，重新開機。
-(2) 重新開機後繼續連按Del進入BIOS，切換到「Boot」選單，將「Lunch CSM」設定成「Enabled」，重新開機。
-(3) 重新開機後繼續連按Del進入BIOS，切換到「Exit」選單，就可以找到USB進行重灌囉！">
+    <meta name="description" content="Note App
+刪除 Note
+
+修改 removeNote function，先取得所有 notes，然後把跟標題不一樣的 title 取出來，然後存起來，所以選定的 title 就被刪除了
+
+12345var removeNote = (title) =&amp;gt; &amp;#123;    var notes = fetchNotes();    var filteredNotes = note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="華碩Win8電腦USB開機">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2016/09/04/華碩Win8電腦USB開機/index.html">
+<meta property="og:title" content="Nodejs 快速學習自我挑戰 Day2">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/06/11/Nodejs-快速學習自我挑戰-Day2/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="(1) 開機連按Del進入BIOS之後，切換到「Security」選單，將「Secure Boot Control」設定成「Disabled」，重新開機。
-(2) 重新開機後繼續連按Del進入BIOS，切換到「Boot」選單，將「Lunch CSM」設定成「Enabled」，重新開機。
-(3) 重新開機後繼續連按Del進入BIOS，切換到「Exit」選單，就可以找到USB進行重灌囉！">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/asus.png">
-<meta property="og:updated_time" content="2016-09-13T12:33:56.000Z">
+<meta property="og:description" content="Note App
+刪除 Note
+
+修改 removeNote function，先取得所有 notes，然後把跟標題不一樣的 title 取出來，然後存起來，所以選定的 title 就被刪除了
+
+12345var removeNote = (title) =&amp;gt; &amp;#123;    var notes = fetchNotes();    var filteredNotes = note">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday2.jpg">
+<meta property="og:updated_time" content="2017-06-12T21:22:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="華碩Win8電腦USB開機">
-<meta name="twitter:description" content="(1) 開機連按Del進入BIOS之後，切換到「Security」選單，將「Secure Boot Control」設定成「Disabled」，重新開機。
-(2) 重新開機後繼續連按Del進入BIOS，切換到「Boot」選單，將「Lunch CSM」設定成「Enabled」，重新開機。
-(3) 重新開機後繼續連按Del進入BIOS，切換到「Exit」選單，就可以找到USB進行重灌囉！">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/asus.png">
+<meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day2">
+<meta name="twitter:description" content="Note App
+刪除 Note
+
+修改 removeNote function，先取得所有 notes，然後把跟標題不一樣的 title 取出來，然後存起來，所以選定的 title 就被刪除了
+
+12345var removeNote = (title) =&amp;gt; &amp;#123;    var notes = fetchNotes();    var filteredNotes = note">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday2.jpg">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -147,19 +156,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/blogs/categories/技術分享/">技術分享</a>
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-華碩Win8電腦USB開機" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Nodejs-快速學習自我挑戰-Day2" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        華碩Win8電腦USB開機
+        Nodejs 快速學習自我挑戰 Day2
         </h1>
     
 
@@ -167,27 +176,99 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2016/09/04/華碩Win8電腦USB開機/" class="article-date">
-    <time datetime="2016-09-03T19:30:18.000Z" itemprop="datePublished">2016-09-04</time>
+                <a href="/blogs/2017/06/11/Nodejs-快速學習自我挑戰-Day2/" class="article-date">
+    <time datetime="2017-06-11T14:07:05.000Z" itemprop="datePublished">2017-06-11</time>
 </a>
                 
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a></li></ul>
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/asus.png">
+            <img src="/blogs/images/learning/nodejs/nodejsday2.jpg">
 <hr>
-<p>(1) 開機連按Del進入BIOS之後，切換到「Security」選單，將「Secure Boot Control」設定成「Disabled」，重新開機。<br>
-(2) 重新開機後繼續連按Del進入BIOS，切換到「Boot」選單，將「Lunch CSM」設定成「Enabled」，重新開機。<br>
-(3) 重新開機後繼續連按Del進入BIOS，切換到「Exit」選單，就可以找到USB進行重灌囉！</p>
-
+<h3>Note App</h3>
+<h4>刪除 Note</h4>
+<ol>
+<li>修改 removeNote function，先取得所有 notes，然後把跟標題不一樣的 title 取出來，然後存起來，所以選定的 title 就被刪除了</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var removeNote = (title) =&gt; &#123;</div><div class="line">    var notes = fetchNotes();</div><div class="line">    var filteredNotes = notes.filter((note) =&gt; note.title !== title);</div><div class="line">    saveNotes(filteredNotes);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 removeNote function 傳回 true 或 false，如果長度不一樣為 true，代表資料刪除，反之亦然。<br>
+<code>return notes.length !== filteredNotes.length;</code></li>
+<li>在 app.js 用 noteRemoved 這個變數取得剛剛傳回來的值，如果 true，就顯示「 Note was removed」，false 的話，顯示「 Note not found 」</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">else if (command === &apos;remove&apos;) &#123;</div><div class="line">    var noteRemoved = notes.removeNote(argv.title);</div><div class="line">    var message = noteRemoved ? &apos;Note was removed&apos; : &apos;Note not found&apos;;</div><div class="line">    console.log(message);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>閱讀 Note</h4>
+<ol>
+<li>修改 getNote function，先取得所有的 notes，然後把標題一樣的取出來，最後 return 陣列 0 (就是取出來的資料)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var getNote = (title) =&gt; &#123;</div><div class="line">    var notes = fetchNotes();</div><div class="line">    var filteredNotes = notes.filter((note) =&gt; note.title === title);</div><div class="line">    return filteredNotes[0];</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>將傳來回的物件用 note 取得，如果存在，顯示資料</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var note = notes.getNote(argv.title);</div><div class="line">    if (note) &#123;</div><div class="line">        console.log(&apos;Note found&apos;);</div><div class="line">        console.log(&apos;--&apos;);</div><div class="line">        console.log(`Title: $&#123;note.title&#125;`);</div><div class="line">        console.log(`Body: $&#123;note.body&#125;`);</div><div class="line">    &#125; else &#123;</div><div class="line">        console.log(&apos;Note not found&apos;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>為了簡化重複的部分，將重複的部分移到 notes.js，並用 function 包裝，還要記得把 logNote export 出去</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var logNote = (note) =&gt; &#123;</div><div class="line">    console.log(&apos;--&apos;);</div><div class="line">    console.log(`Title: $&#123;note.title&#125;`);</div><div class="line">    console.log(`Body: $&#123;note.body&#125;`);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">    /* 其它 note function */</div><div class="line">    logNote</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>剛剛重複的部分，用 function 取代 <code>notes.logNote(note);</code></li>
+</ol>
+<h4>Note.js 應用除錯</h4>
+<ol>
+<li>使用 <code>node debug</code> 除錯，<code>n</code> 跳到下一個錯誤，<code>c</code> 直接跳到結果或是 <code>debugger</code> 處，<code>repl</code> 可以輸入指令看相關變數</li>
+</ol>
+<h4>list Notes</h4>
+<ol>
+<li>直接 return 取得的所有資料</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var getAll = () =&gt; &#123;</div><div class="line">    return fetchNotes();</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>用 forEach 列出取得的所有 notes</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">else if (command === &apos;list&apos;) &#123;</div><div class="line">    var allNotes = notes.getAll();</div><div class="line">    console.log(`Printing $&#123;allNotes.length&#125; note(s).`);</div><div class="line">    allNotes.forEach((note) =&gt; notes.logNote(note));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>進階 Yargs</h4>
+<ol>
+<li>用 yargs .command 來編寫 help 命令的內容</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">const titleOptions = &#123;</div><div class="line">    describe: &apos;Title of note&apos;,</div><div class="line">        demand: true,</div><div class="line">        alias: &apos;t&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">const bodyOptions = &#123;</div><div class="line">    describe: &apos;Body of note&apos;,</div><div class="line">        demand: true,</div><div class="line">        alias: &apos;b&apos;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const argv = yargs</div><div class="line">    .command(&apos;add&apos;, &apos;Add a new note&apos;, &#123;</div><div class="line">        title: titleOptions,</div><div class="line">        body: bodyOptions</div><div class="line">    &#125;)</div><div class="line">    .command(&apos;list&apos;, &apos;List all notes&apos;)</div><div class="line">    .command(&apos;read&apos;, &apos;Read a note&apos;, &#123;</div><div class="line">        title: titleOptions</div><div class="line">    &#125;)</div><div class="line">    .command(&apos;remove&apos;, &apos;Remove a note&apos;, &#123;</div><div class="line">        title: titleOptions</div><div class="line">    &#125;)</div><div class="line">    .help()</div><div class="line">    .argv;</div></pre></td></tr></table></figure>
+<h4>Arrow function</h4>
+<ol>
+<li>如果只有一個變數，()可以省略，另外，<code>var square = x =&gt; x * x;</code> 等於</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var square = (x) =&gt; &#123;</div><div class="line">    var result = x * x;</div><div class="line">    return result;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用 Arrow function 的時候，argument 和 <a href="http://this.name" target="_blank" rel="external">this.name</a> 不能使用 (所以這邊的 sayHi 是讀不出來的)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var user = &#123;</div><div class="line">    name: &apos;Vincent&apos;,</div><div class="line">    sayHi: () =&gt; &#123;</div><div class="line">        console.log(arguments);</div><div class="line">        console.log(`Hi. I&apos;m $&#123;this.name&#125;`);</div><div class="line">    &#125;,</div><div class="line">    sayHiAlt () &#123;</div><div class="line">        console.log(arguments);</div><div class="line">        console.log(`Hi. I&apos;m $&#123;this.name&#125;`);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">user.sayHiAlt(1, 2, 3);</div></pre></td></tr></table></figure>
+<h3>Weather App</h3>
+<h4>Async</h4>
+<ol>
+<li>下列的程式，會依照下列順序執行 <code>Starting app</code> =&gt; <code>Finishing up</code> =&gt; <code>Second setTimeout</code> =&gt; <code>Inside of callback</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;Starting app&apos;);</div><div class="line"></div><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">    console.log(&apos;Inside of callback&apos;);</div><div class="line">&#125;, 2000);</div><div class="line"></div><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">    console.log(&apos;Second setTimeout&apos;);</div><div class="line">&#125;, 0);</div><div class="line"></div><div class="line"></div><div class="line">console.log(&apos;Finishing up&apos;);</div></pre></td></tr></table></figure>
+<h4>callback Function &amp; APIs</h4>
+<ol>
+<li>Callback 範例，最後會輸出 <code>{ id: 31, name: 'Vikram' }</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var getUser = (id, callback) =&gt; &#123;</div><div class="line">    var user = &#123;</div><div class="line">        id: id,</div><div class="line">        name: &apos;Vikram&apos;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    setTimeout(() =&gt; &#123;</div><div class="line">        callback(user);</div><div class="line">    &#125;, 3000);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">getUser(31, (userObject) =&gt; &#123;</div><div class="line">    console.log(userObject);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li><a href="https://www.npmjs.com/package/request" target="_blank" rel="external">第三方 request 插件</a></li>
+<li>啟動 npm 專案 <code>npm init</code></li>
+<li>安裝 request 套件 <code>npm install request@2.73.0 --save</code></li>
+<li>在根目錄新增 app.js 開始專案</li>
+<li>先 require request 套件，然後從 google api 擷取 json 資訊</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const request = require(&apos;request&apos;);</div><div class="line"></div><div class="line">request (&#123;</div><div class="line">    url: &apos;https://maps.googleapis.com/maps/api/geocode/json?address=1301%20lombard%20street%20philadelphia&apos;,</div><div class="line">    json: true</div><div class="line">&#125;, (error, response, body) =&gt; &#123;</div><div class="line">    console.log(body);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2016/09/04/華碩Win8電腦USB開機/" data-id="cj3unb9wi003zte0amkiqz5yu" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/06/11/Nodejs-快速學習自我挑戰-Day2/" data-id="cj3unb9p90023te0ae7x3q4n4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -254,7 +335,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2016/09/04/華碩Win8電腦USB開機/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/06/11/Nodejs-快速學習自我挑戰-Day2/" data-num-posts="5"></div>
 
 
     
@@ -315,20 +396,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2016/09/06/Hello-JS-從零開始的React-Native開發/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Hello! JS! - 從零開始的React Native開發
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2016/09/03/The-connection-of-people-in-the-age-of-information/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/06/10/Nodejs-快速學習自我挑戰-Day1/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">The connection of people in the age of information</p>
+        <p class="article-nav-title">Nodejs 快速學習自我挑戰 Day1</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
