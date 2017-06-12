@@ -31,7 +31,7 @@ Node 和 JavaScript 在瀏覽器裡執行都是使用同個引擎，叫做 JavaS
 JavaScript 本來是用於瀏覽器的，現在可以用在 Server 端，node 是一套用 JavaScript Syntax 且可以用來建立程式、檔案系統，還可以直接跟資料庫溝通，甚至可以直接用 node 來建立伺服器。
 Node 和 JavaScript 在瀏覽器裡執行都是使用同個引擎，叫做 JavaScript V8 runtim">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday1.png">
-<meta property="og:updated_time" content="2017-06-11T14:04:56.000Z">
+<meta property="og:updated_time" content="2017-06-11T20:39:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day1">
 <meta name="twitter:description" content="環境設定
@@ -297,7 +297,7 @@ ga('send', 'pageview');
 <li>先引入 fileSystem，然後用 originalNote 新增 JSON 物件，新增一個變數 originalNoteString 用 stringify 將 originalNote 轉為 String，然後再新增一個變數 note 將 originalNoteString parse 回 JSON 物件。</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">const fs = require(&apos;fs&apos;);</div><div class="line"></div><div class="line">var originalNote = &#123;</div><div class="line">    title: &apos;Some title&apos;,</div><div class="line">    body: &apos;Some body&apos;</div><div class="line">&#125;;</div><div class="line">var originalNoteString = JSON.stringify(originalNote);</div><div class="line">fs.writeFileSync(&apos;notes.json&apos;, originalNoteString);</div><div class="line"></div><div class="line">var noteString = fs.readFileSync(&apos;notes.json&apos;);</div><div class="line">var note = JSON.parse(originalNoteString);</div><div class="line">console.log(typeof note);</div><div class="line">console.log(note.title);</div></pre></td></tr></table></figure>
-<h4>新增和儲存 Notes</h4>
+<h4>新增和儲存 Note</h4>
 <ol>
 <li>首先在 addNote 傳入 title 和 body 兩個變數，然後用 notes.push 把得到的兩個變數傳進去 notes 陣列裡面，最後用 String 的方式寫入 notes-data.json。過程中，為了避免資料重複，用 notesString 取得檔案內的所有 note，然後用 notes.filter 檢查 title 是不是一樣，最後，如果不一樣，再將檔案寫入 notes-data.json。</li>
 </ol>
@@ -321,7 +321,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/06/10/Nodejs-快速學習自我挑戰-Day1/" data-id="cj3ss7tgp0020mn0au26hcaz5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/06/10/Nodejs-快速學習自我挑戰-Day1/" data-id="cj3u6i9nz0026st0ax1w218n5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

@@ -165,7 +165,7 @@ var note = JSON.parse(originalNoteString);
 console.log(typeof note);
 console.log(note.title);
 ```
-#### 新增和儲存 Notes
+#### 新增和儲存 Note
 1. 首先在 addNote 傳入 title 和 body 兩個變數，然後用 notes.push 把得到的兩個變數傳進去 notes 陣列裡面，最後用 String 的方式寫入 notes-data.json。過程中，為了避免資料重複，用 notesString 取得檔案內的所有 note，然後用 notes.filter 檢查 title 是不是一樣，最後，如果不一樣，再將檔案寫入 notes-data.json。
 ```
 var addNote = (title, body) => {
