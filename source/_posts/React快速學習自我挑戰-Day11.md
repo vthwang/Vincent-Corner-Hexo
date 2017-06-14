@@ -1,12 +1,12 @@
 ---
 title: React快速學習自我挑戰 Day11
 thumbnail:
-  - /blogs/images/reactday11.png
+  - /blogs/images/learning/react/reactday11.png
 date: 2017-03-30 14:35:46
 categories: 學習歷程
 tags: React
 ---
-<img src="/blogs/images/reactday11.png">
+<img src="/blogs/images/learning/react/reactday11.png">
 
 ***
 1. React Lifecycle method 是一個 React Component class 的 function，用來被 React 自動呼叫。

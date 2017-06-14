@@ -1,12 +1,12 @@
 ---
 title: React快速學習自我挑戰 Day6
 thumbnail:
-  - /blogs/images/reactday6.png
+  - /blogs/images/learning/react/reactday6.png
 date: 2017-03-10 13:02:52
 categories: 學習歷程
 tags: React
 ---
-<img src="/blogs/images/reactday6.png">
+<img src="/blogs/images/learning/react/reactday6.png">
 
 ***
 1. 當知道 action creactor 將要呼叫(但不知道什麼時候)，當被呼叫的時候，我想要確定 flow 的結果能夠經過 dispatch function，然後這個 dispatch function 會像是漏斗般的接收這些 actions，最後再把 actions 分別送回不同的 reducers。

@@ -1,12 +1,12 @@
 ---
 title: React快速學習自我挑戰 Day12
 thumbnail:
-  - /blogs/images/reactday12.jpg
+  - /blogs/images/learning/react/reactday12.jpg
 date: 2017-04-03 14:41:19
 categories: 學習歷程
 tags: React
 ---
-<img src="/blogs/images/reactday12.jpg">
+<img src="/blogs/images/learning/react/reactday12.jpg">
 
 ***
 1. `{title.touched ? title.error : ''}`，如果 title.touched 是  true，顯示 title.error，如果不是，什麼都不要顯示。
