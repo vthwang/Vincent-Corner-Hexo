@@ -24,12 +24,10 @@ date: 2016-08-30 19:17:58
 ***
 
 #### _學歷（Educational Background）_
-National Taichung University of Science and Technology ( 國立臺中科技大學 )
-Computer Science and Information Engineering, M.S. ( 資訊工程研究所 )
-China Medical University （ 中國醫藥大學 ）
-Department of Traditional Chinese Medicine, M.S. （ 中國醫學研究所 ）
-Asia University （ 亞洲大學 ）
-Department of Foreign Languages and Literature, B.A. （ 外國語文學系 ）
+National Taichung University of Science and Technology (國立臺中科技大學)
+Computer Science and Information Engineering, M.S. (資訊工程研究所)
+Asia University（亞洲大學）
+Department of Foreign Languages and Literature, B.A.（外國語文學系）
 ***
 
 #### _聯繫我（Contact Ｍe）_
