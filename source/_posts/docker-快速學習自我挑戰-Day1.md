@@ -99,7 +99,6 @@ Client 的版本是 Command Line 的版本，Server 則被稱為 docker engine�
 - `ps aux | grep mongo` 搜尋 mongo 的服務
 - `docker stop mongo` 關閉 mongo，檢視和搜尋都會找不到該服務
 - `docker start mongo` 再次打開 mongo，檢視和搜尋都又會再找到該服務
-#### Windows Container：Docker 不再只能在 Linux 上面執行
 
 
 
