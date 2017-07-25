@@ -3,38 +3,47 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Nodejs 快速學習自我挑戰 Day4 | Vincent&#39;s Corner</title>
+    <title>docker 快速學習自我挑戰 Day2 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Nodejs" />
+        <meta name="keywords" content="Docker" />
     
-    <meta name="description" content="Weather App
-進階 Promise
+    <meta name="description" content="安裝與版本
+Windows Container：Docker 不再只能在 Linux 上面執行
 
-新增 asyncAdd function，用 new Promise 新增 promise，然後再用 .then 輸出結果，最後用 .catch 把錯誤一次輸出(避免第二次 errorMessage 跑的是 success function)
+目前 17 版已經可以在 windows 上執行 docker，但有些功能不能使用，包括 Swarm Overlay、Secret…等等
+可以參考以下影片
 
-1234567891011121314151617181920var asyncAdd = (a, b">
+
+Windows Containers and Docker: 101
+Beyond \ - the path to Windows and">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nodejs 快速學習自我挑戰 Day4">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/06/13/Nodejs-快速學習自我挑戰-Day4/index.html">
+<meta property="og:title" content="docker 快速學習自我挑戰 Day2">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/07/24/docker-快速學習自我挑戰-Day2/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Weather App
-進階 Promise
+<meta property="og:description" content="安裝與版本
+Windows Container：Docker 不再只能在 Linux 上面執行
 
-新增 asyncAdd function，用 new Promise 新增 promise，然後再用 .then 輸出結果，最後用 .catch 把錯誤一次輸出(避免第二次 errorMessage 跑的是 success function)
+目前 17 版已經可以在 windows 上執行 docker，但有些功能不能使用，包括 Swarm Overlay、Secret…等等
+可以參考以下影片
 
-1234567891011121314151617181920var asyncAdd = (a, b">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday4.jpg">
-<meta property="og:updated_time" content="2017-06-14T03:21:58.000Z">
+
+Windows Containers and Docker: 101
+Beyond \ - the path to Windows and">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday2.png">
+<meta property="og:updated_time" content="2017-07-25T13:30:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day4">
-<meta name="twitter:description" content="Weather App
-進階 Promise
+<meta name="twitter:title" content="docker 快速學習自我挑戰 Day2">
+<meta name="twitter:description" content="安裝與版本
+Windows Container：Docker 不再只能在 Linux 上面執行
 
-新增 asyncAdd function，用 new Promise 新增 promise，然後再用 .then 輸出結果，最後用 .catch 把錯誤一次輸出(避免第二次 errorMessage 跑的是 success function)
+目前 17 版已經可以在 windows 上執行 docker，但有些功能不能使用，包括 Swarm Overlay、Secret…等等
+可以參考以下影片
 
-1234567891011121314151617181920var asyncAdd = (a, b">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday4.jpg">
+
+Windows Containers and Docker: 101
+Beyond \ - the path to Windows and">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday2.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -161,14 +170,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Nodejs-快速學習自我挑戰-Day4" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-docker-快速學習自我挑戰-Day2" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Nodejs 快速學習自我挑戰 Day4
+        docker 快速學習自我挑戰 Day2
         </h1>
     
 
@@ -176,87 +185,165 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/06/13/Nodejs-快速學習自我挑戰-Day4/" class="article-date">
-    <time datetime="2017-06-13T12:46:04.000Z" itemprop="datePublished">2017-06-13</time>
+                <a href="/blogs/2017/07/24/docker-快速學習自我挑戰-Day2/" class="article-date">
+    <time datetime="2017-07-24T07:09:19.000Z" itemprop="datePublished">2017-07-24</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Docker/">Docker</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/learning/nodejs/nodejsday4.jpg">
+            <img src="/blogs/images/learning/docker/dockerday2.png">
 <hr>
-<h3>Weather App</h3>
-<h4>進階 Promise</h4>
+<h3>安裝與版本</h3>
+<h4>Windows Container：Docker 不再只能在 Linux 上面執行</h4>
 <ol>
-<li>新增 asyncAdd function，用 new Promise 新增 promise，然後再用 .then 輸出結果，最後用 .catch 把錯誤一次輸出(避免第二次 errorMessage 跑的是 success function)</li>
+<li>目前 17 版已經可以在 windows 上執行 docker，但有些功能不能使用，包括 Swarm Overlay、Secret…等等</li>
+<li>可以參考以下影片</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var asyncAdd = (a, b) =&gt; &#123;</div><div class="line">    return new Promise((resolve, reject) =&gt; &#123;</div><div class="line">        setTimeout(() =&gt; &#123;</div><div class="line">            if (typeof a === &apos;number&apos; &amp;&amp; typeof b === &apos;number&apos;) &#123;</div><div class="line">                resolve(a + b);</div><div class="line">            &#125; else &#123;</div><div class="line">                reject(&apos;Arguments must be numbers&apos;);</div><div class="line">            &#125;</div><div class="line">        &#125;, 1500);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">asyncAdd(5, &apos;7&apos;).then((res) =&gt; &#123;</div><div class="line">    console.log(&apos;Results: &apos;, res);</div><div class="line">    return asyncAdd(res, 33);</div><div class="line">&#125;).then((res) =&gt; &#123;</div><div class="line">    console.log(&apos;Should be 45&apos;, res);</div><div class="line">&#125;).catch((errorMessage) =&gt; &#123;</div><div class="line">    console.log(errorMessage);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=066-9yw8-7c" target="_blank" rel="external">Windows Containers and Docker: 101</a></li>
+<li><a href="https://www.youtube.com/watch?v=4ZY_4OeyJsw" target="_blank" rel="external">Beyond \ - the path to Windows and Linux parity in Docker</a></li>
+<li><a href="https://www.youtube.com/watch?v=QASAqcuuzgI" target="_blank" rel="external">Docker + Microsoft - Investing in the Future of your Applications</a></li>
+</ul>
+<h4>作業 - 管理多個 container</h4>
+<ol>
+<li>Docker 小幫手 (1) <a href="https://docs.docker.com/" target="_blank" rel="external">官方文件</a> (2) <code>--help</code></li>
+<li>運行 nginx、MySQL、httpd(apache) server</li>
+<li>運行以上軟體，並使用 <code>--detached</code> (或 <code>-d</code>)，並用 <code>--name</code> 命名</li>
+<li>nginx 要使用 80:80，httpd 用 8080:80，MySQL 用 3306:3306</li>
+<li>當執行 MySQL，使用 --environment (或 <code>-e</code>) 將 <code>MYSQL_RANDOM_ROOT_PASSWORD=yes</code> 參數傳進去 container</li>
+<li>在 MySQL 使用 <code>docker container logs</code> 來找到創建時所產生的隨機密碼</li>
+<li>使用 <code>docker container stop</code> 和 <code>docker container rm</code> 將全部的資料清除</li>
+<li>在清除之前，使用 <code>docker container ls</code> 確定資料的狀態是否正確</li>
+<li>可以使用 <code>curl localhost</code> 會出現網頁 index 的檔案</li>
+</ol>
+<h4>Container 裡面發生了什麼事情呢？CLI 進程監控</h4>
+<ol>
+<li><code>docker container top</code> 某一個 container 的進程清單</li>
+<li><code>docker container inspect</code> 某一個 container 的設定細節</li>
+<li><code>docker container stats</code> 所有 container 的效能統計</li>
+</ol>
+<h4>在 Container 裡面取得 Shell：不需要使用 SSH</h4>
+<ol>
+<li><code>docker container run -it</code> 以交互方式開啟新的 container</li>
+<li><code>docker container exec -it</code> 在已存在的 container 執行額外的 command</li>
+<li>在眾多 container 裡面有不同的 Linux 發行版本</li>
+<li><code>docker container run -it --name proxy nginx bash</code> 進去 container 裡面</li>
+<li><code>docker container run -it --name ubuntu ubuntu</code> 直接執行，不需加 bash 結果會一樣，因為預設就是 bash</li>
+<li><code>docker container start -ai ubuntu</code> 如果要重新開機，可以使用這個指令</li>
+<li>Alpine Linux：一個小型且以安全為目的的 Linux 分支 <code>docker pull alpine</code> 下載最新的 alpine</li>
+<li><code>docker container run -it alpine sh</code> 因為沒有 bash，所以用 sh</li>
+<li><a href="https://www.digitalocean.com/community/tutorials/package-management-basics-apt-yum-dnf-pkg" target="_blank" rel="external">套件管理基本</a></li>
+</ol>
+<h4>Docker 網路：眾多 Container 裡面的私有和公有網路的溝通觀念</h4>
+<ol>
+<li>觀念</li>
+</ol>
+<ul>
+<li><code>docker container run -p</code> p 就是你機器上的 port</li>
+<li>對於本地端的開發/測試，網路通常『只是堪用』</li>
+<li><code>docker container port &lt;container&gt;</code> 這個指令可以快速輸出哪一個 port 為這個 container 開啟</li>
+<li>學習 Docker 網路、虛擬網路和封包如何傳遞</li>
+<li>了解網路封包如何在 Docker 之間移動</li>
+</ul>
 <ol start="2">
-<li>使用 Promise 取代 callback 整合 geocode</li>
+<li>預設 Docker 網路</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">const request = require(&apos;request&apos;);</div><div class="line"></div><div class="line">var geocodeAddress = (address) =&gt; &#123;</div><div class="line">    return new Promise((resolve, reject) =&gt; &#123;</div><div class="line">        var encodedAddress = encodeURIComponent(address);</div><div class="line"></div><div class="line">        request (&#123;</div><div class="line">            url: `https://maps.googleapis.com/maps/api/geocode/json?address=$&#123;encodedAddress&#125;`,</div><div class="line">            json: true</div><div class="line">        &#125;, (error, response, body) =&gt; &#123;</div><div class="line">            if (error) &#123;</div><div class="line">                reject(&apos;Unable to connect to Google servers&apos;);</div><div class="line">            &#125; else if (body.status === &apos;ZERO_RESULTS&apos;) &#123;</div><div class="line">                reject(&apos;Unable to find that address&apos;);</div><div class="line">            &#125; else if (body.status === &apos;OK&apos;) &#123;</div><div class="line">                resolve(&#123;</div><div class="line">                    address: body.results[0].formatted_address,</div><div class="line">                    latitude: body.results[0].geometry.location.lat,</div><div class="line">                    longitude: body.results[0].geometry.location.lng,</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">geocodeAddress(&apos;19146&apos;).then((location) =&gt; &#123;</div><div class="line">    console.log(JSON.stringify(location, undefined, 2));</div><div class="line">&#125;, (errorMessage) =&gt; &#123;</div><div class="line">    console.log(errorMessage);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h4>讓 Weather App 使用 Promise</h4>
+<ul>
+<li>每一個 container 都會連接到虛擬網路 「橋(bridge)」</li>
+<li>每一個虛擬網路路由都會透過 NAT 防火牆轉址到 host IP</li>
+<li>在虛擬網路上所有的 container 都可以互相溝通，而不需要 <code>-p</code></li>
+<li>最好的練習就是對個別的 app 新增虛擬網路
+<ul>
+<li>MySQL 和 php/apache 用「my_web_app」網路</li>
+<li>Mongo 和 nodejs 用 「my_api」網路</li>
+</ul>
+</li>
+<li>「含電池，但可拆卸 (battery included, But Removable)」
+<ul>
+<li>在多數情況下，預設會運行的很好，但很容易換掉客製化的 ports</li>
+</ul>
+</li>
+<li>新建虛擬網路</li>
+<li>連結 container 們到大於1(或者沒有)的虛擬網路</li>
+<li>省略虛擬網路且使用 host IP (–net=host)</li>
+<li>使用不同的 Docker 網路驅動來取得新的能力</li>
+</ul>
+<h4>錯誤修改：Nginx 官方 image 移除 Ping 功能</h4>
 <ol>
-<li><a href="https://www.npmjs.com/package/axios" target="_blank" rel="external">axios 套件</a></li>
-<li>安裝 axios <code>npm install axios@0.13.1 --save</code></li>
-<li>使用 axios，先使用 .then 取得地址，然後再用一次 .then 取得溫度，最後用 .catch 處理錯誤的出現</li>
+<li>因為最新 2017 官方修改 ping 功能，所以把 <code>docker container run &lt;stuff&gt; nginx</code>，要把 <code>nginx</code> 取代為 <code>nginx:alpine</code>，這樣就可以繼續使用 ping 的 command</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">var encodedAddress = encodeURIComponent(argv.address);</div><div class="line">var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=$&#123;encodedAddress&#125;`;</div><div class="line"></div><div class="line">axios.get(geocodeUrl).then((response) =&gt; &#123;</div><div class="line">    if (response.data.status === &apos;ZERO_RESULTS&apos;) &#123;</div><div class="line">        throw new Error(&apos;Unable to find that address.&apos;);</div><div class="line">    &#125;</div><div class="line">    var lat = response.data.results[0].geometry.location.lat;</div><div class="line">    var lng = response.data.results[0].geometry.location.lng;</div><div class="line">    var weatherUrl = `https://api.darksky.net/forecast/key/$&#123;lat&#125;, $&#123;lng&#125;`;</div><div class="line">    console.log(response.data.results[0].formatted_address);</div><div class="line">    return axios.get(weatherUrl);</div><div class="line">&#125;).then((response) =&gt; &#123;</div><div class="line">    var temperature = response.data.currently.temperature;</div><div class="line">    var apparentTemperature = response.data.currently.apparentTemperature;</div><div class="line">    console.log(`It&apos;s currently $&#123;temperature&#125;, It feels like $&#123;apparentTemperature&#125;.`);</div><div class="line">&#125;).catch((e) =&gt; &#123;</div><div class="line">    if (e.code === &apos;ENOTFOUND&apos;) &#123;</div><div class="line">        console.log(&apos;Unable to connect to API servers.&apos;);</div><div class="line">    &#125; else &#123;</div><div class="line">        console.log(e.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h4>Weather App 額外的功能 (思路)</h4>
+<h4>Docker 網路：虛擬網路的 CLI 管理</h4>
 <ol>
-<li>除了 Current Temperature 之外，可以從 Weather API 讀取更多資訊</li>
-<li>如果讀不到位置，可以使用預設的地點</li>
-<li>搜尋完的結果用 filesystem 寫入檔案</li>
+<li><code>docker network ls</code> 顯示所有網路</li>
+<li><code>docker network inspect</code> 檢查特定網路</li>
+<li><code>docker network create --driver</code> 創建一個網路</li>
+<li><code>docker network connect</code> 連結一個網路到 container</li>
+<li><code>docker network disconnect</code> 從 container 移除一個網路</li>
+<li>在同個 Docker 網路創建前端/後端應用，這樣他們之間的溝通就不會留給 host</li>
+<li>所有的在外部暴露的 port 預設會關閉，需要手動使用 <code>-p</code> 打開，這樣才有更好的預設安全</li>
+<li>接下來後面要提到的 Swarm 和 Overlay 網路更好</li>
 </ol>
-<h3>網頁伺服器及應用程式部署</h3>
-<h4>Hello Express</h4>
+<h4>Docker 網路：DNS 和 container 如何找到彼此</h4>
 <ol>
-<li><a href="http://expressjs.com/" target="_blank" rel="external">Express 官方網站</a></li>
-<li>安裝 express <code>npm install express@4.14.0 --save</code></li>
-<li>在根目錄新增 server.js</li>
+<li>了解 DNS 是如何成為容易交互溝通的關鍵</li>
+<li>觀察客製化的網路預設是如何運作的</li>
+<li>學習如何使用 <code>--link</code> 來讓 DNS 在預設橋接網路生效</li>
+<li>請遺忘 IP：固定 ip 和使用 ip 來讓 container 之間溝通是一種反面模式，盡可能地避免這樣的事情發生</li>
+<li>Docker DNS：Docker daemon 有內建的 DNS server，而Container 會預設使用它</li>
+<li>DNS 預設名稱：Docker 預設 hostname 到 container 的名字，但是還是可以設定 aliases</li>
+<li>如果使用客製網路，友善的 DNS 名稱是內建的</li>
+<li>這些使用 Docker Compose 都會更簡單</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">const express = require(&apos;express&apos;);</div><div class="line"></div><div class="line">var app = express();</div><div class="line"></div><div class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</div><div class="line">    // res.send(&apos;&lt;h1&gt;Hello Express!&lt;/h1&gt;&apos;);</div><div class="line">    res.send(&#123;</div><div class="line">        name: &apos;Andrew&apos;,</div><div class="line">        likes: [</div><div class="line">            &apos;Biking&apos;,</div><div class="line">            &apos;Cities&apos;</div><div class="line">        ]</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(&apos;/about&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.send(&apos;About Page&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// /bad - send back json with errorMessage</div><div class="line">app.get(&apos;/bad&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.send(&#123;</div><div class="line">        errorMessage: &apos;Unable to handle request&apos;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(3000);</div></pre></td></tr></table></figure>
-<h4>創建網頁伺服器</h4>
+<h4>作業：使用 container 做 CLI testing</h4>
 <ol>
-<li>新增 public/help.html</li>
+<li>知道如何使用 -it 在 container 裡面使用 shell</li>
+<li>了解基本的 linux distribution，像是 Ubuntu 和 CentOS</li>
+<li>了解如何執行 container</li>
+<li>作業</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">    &lt;title&gt;Help Page&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;h1&gt;Help Page&lt;/h1&gt;</div><div class="line">    &lt;p&gt;Some text here&lt;/p&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>使用 app.use 指定 public 目錄<br>
-<code>app.use(express.static(__dirname + '/public'));</code></li>
-<li>當伺服器啟動，傳送訊息</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.listen(3000, () =&gt; &#123;</div><div class="line">    console.log(&apos;Server is up on port 3000&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h4>呈現 template 和 data</h4>
+<ul>
+<li>使用不同的 distro container 來檢查 curl cli 工具版本</li>
+<li>使用兩個不同的終端視窗來開啟 bash，使用 -it 來啟動 <strong>centos:7</strong> 和 <strong>ubuntu:14.04</strong></li>
+<li>學習 <code>docker container --rm</code> 選項，這樣可以 save cleanup</li>
+<li>確定最新版本的 curl 有安裝在相對應的 distro
+<ul>
+<li>ubuntu: <code>apt-get update &amp;&amp; apt-get install curl</code></li>
+<li>centos: <code>yum update curl</code></li>
+</ul>
+</li>
+<li>檢查 <code>curl --version</code></li>
+</ul>
+<h4>作業：DNS Round Robin 測試</h4>
 <ol>
-<li><a href="http://handlebarsjs.com/" target="_blank" rel="external">handlebars.js</a></li>
-<li>安裝 handlebars.js <code>npm install hbs@4.0.0 --save</code></li>
-<li>設定 view engine <code>app.set('view engine', 'hbs');</code></li>
-<li>新增 views/about.hbs</li>
+<li>了解如何使用 <code>-it</code> 在 container 裡面使用 shell</li>
+<li>了解基本的 linux distribution，像是 Ubuntu 和 CentOS</li>
+<li>了解如何執行 container</li>
+<li>了解 DNS 紀錄的基礎</li>
+<li>從 Docker Engine 1.11 之後，我們可以創建很多 container 到一個網路且傳遞到相關的 DNS 位址</li>
+<li>創建一個新的虛擬網路(預設 bridge driver)</li>
+<li>從 <code>elasticsearch:2</code> 的 image 創建兩個 container</li>
+<li>搜尋和使用 <code>--net-alias search</code>，當我們創建 container 的時候，同時給他們額外的 DNS name 去響應</li>
+<li>執行 <code>alpine nslookup search</code> 並加上 <code>--net</code> 來觀察兩個使用相同 DNS 名稱的 container 列表</li>
+<li>多次執行 <code>centos curl -s search:9200</code> 並加上 <code>--net</code>，直到觀察到<strong>名稱</strong>欄位出現</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">    &lt;title&gt;Help Page&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;h1&gt;About Page&lt;/h1&gt;</div><div class="line">    &lt;p&gt;Some text here&lt;/p&gt;</div><div class="line"></div><div class="line">    &lt;footer&gt;</div><div class="line">        &lt;p&gt;Copyright 2017&lt;/p&gt;</div><div class="line">    &lt;/footer&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>使用 render 取得頁面</li>
+<h4>完成作業</h4>
+<ol>
+<li>執行兩次 <code>docker container run -d --net dude --net-alias search elasticsearch:2</code>，開啟兩個 container</li>
+<li><code>docker container run --rm --net dude alpine nslookup search</code> 觀察兩個使用相同 DNS 名稱的 container 列表</li>
+<li><code>docker container run --rm --net dude centos curl -s search:9200</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.get(&apos;/about&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.render(&apos;about.hbs&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="6">
-<li>動態存取資料，傳送值到 view</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.get(&apos;/about&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.render(&apos;about.hbs&apos;, &#123;</div><div class="line">        pageTitle: &apos;About Page&apos;,</div><div class="line">        currentYear: new Date().getFullYear()</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="7">
-<li>在 view 取得值</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;&#123;&#123;pageTitle&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;p&gt;Some text here&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;footer&gt;</div><div class="line">    &lt;p&gt;Copyright &#123;&#123;currentYear&#125;&#125;&lt;/p&gt;</div><div class="line">&lt;/footer&gt;</div></pre></td></tr></table></figure>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/06/13/Nodejs-快速學習自我挑戰-Day4/" data-id="cj5jmdmih002mya0a0u2zvnr2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/07/24/docker-快速學習自我挑戰-Day2/" data-id="cj5jmdmm1004cya0ad74u36y9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -323,7 +410,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/06/13/Nodejs-快速學習自我挑戰-Day4/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/07/24/docker-快速學習自我挑戰-Day2/" data-num-posts="5"></div>
 
 
     
@@ -384,20 +471,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/07/23/docker-快速學習自我挑戰-Day1/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            docker 快速學習自我挑戰 Day1
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/06/12/Nodejs-快速學習自我挑戰-Day3/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/07/23/docker-快速學習自我挑戰-Day1/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Nodejs 快速學習自我挑戰 Day3</p>
+        <p class="article-nav-title">docker 快速學習自我挑戰 Day1</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
