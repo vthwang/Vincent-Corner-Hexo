@@ -3,41 +3,59 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Lavarel 快速學習自我挑戰 Day19 | Vincent&#39;s Corner</title>
+    <title>docker 快速學習自我挑戰 Day4 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Laravel" />
+        <meta name="keywords" content="Docker" />
     
-    <meta name="description" content="Application 留言功能 Part II
-顯示留言
+    <meta name="description" content="Container 生命週期和持久性數據：Volumes, Volumes, Volumes
+Container 生命週期和持久性數據
+學習重點
 
-在 admin/posts/index view 新增文章連結
-&amp;lt;td&amp;gt;&amp;lt;a href=&amp;quot; {{route(&apos;home.post&apos;, $post-&amp;gt;id)}}&amp;quot;&amp;gt;view post&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
-在 admin/posts/index view 新增評論連結
-&amp;">
+定義持久性數據的問題
+Container 的關鍵觀念：immutable，ephemeral
+學習使用 Data Volumes
+學習使用 Bind Mounts
+作業
+
+觀念
+
+Container 通常是 immutable 而且 ephemer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day19">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/05/29/Lavarel-快速學習自我挑戰-Day19/index.html">
+<meta property="og:title" content="docker 快速學習自我挑戰 Day4">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/07/28/docker-快速學習自我挑戰-Day4/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Application 留言功能 Part II
-顯示留言
+<meta property="og:description" content="Container 生命週期和持久性數據：Volumes, Volumes, Volumes
+Container 生命週期和持久性數據
+學習重點
 
-在 admin/posts/index view 新增文章連結
-&amp;lt;td&amp;gt;&amp;lt;a href=&amp;quot; {{route(&apos;home.post&apos;, $post-&amp;gt;id)}}&amp;quot;&amp;gt;view post&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
-在 admin/posts/index view 新增評論連結
-&amp;">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday19.jpg">
-<meta property="og:updated_time" content="2017-05-31T07:44:02.000Z">
+定義持久性數據的問題
+Container 的關鍵觀念：immutable，ephemeral
+學習使用 Data Volumes
+學習使用 Bind Mounts
+作業
+
+觀念
+
+Container 通常是 immutable 而且 ephemer">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday4.png">
+<meta property="og:updated_time" content="2017-07-28T12:02:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day19">
-<meta name="twitter:description" content="Application 留言功能 Part II
-顯示留言
+<meta name="twitter:title" content="docker 快速學習自我挑戰 Day4">
+<meta name="twitter:description" content="Container 生命週期和持久性數據：Volumes, Volumes, Volumes
+Container 生命週期和持久性數據
+學習重點
 
-在 admin/posts/index view 新增文章連結
-&amp;lt;td&amp;gt;&amp;lt;a href=&amp;quot; {{route(&apos;home.post&apos;, $post-&amp;gt;id)}}&amp;quot;&amp;gt;view post&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
-在 admin/posts/index view 新增評論連結
-&amp;">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday19.jpg">
+定義持久性數據的問題
+Container 的關鍵觀念：immutable，ephemeral
+學習使用 Data Volumes
+學習使用 Bind Mounts
+作業
+
+觀念
+
+Container 通常是 immutable 而且 ephemer">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday4.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -164,14 +182,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Lavarel-快速學習自我挑戰-Day19" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-docker-快速學習自我挑戰-Day4" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Lavarel 快速學習自我挑戰 Day19
+        docker 快速學習自我挑戰 Day4
         </h1>
     
 
@@ -179,98 +197,106 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/05/29/Lavarel-快速學習自我挑戰-Day19/" class="article-date">
-    <time datetime="2017-05-28T16:58:12.000Z" itemprop="datePublished">2017-05-29</time>
+                <a href="/blogs/2017/07/28/docker-快速學習自我挑戰-Day4/" class="article-date">
+    <time datetime="2017-07-28T07:32:17.000Z" itemprop="datePublished">2017-07-28</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Docker/">Docker</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/learning/laravel/laravelday19.jpg">
+            <img src="/blogs/images/learning/docker/dockerday4.png">
 <hr>
-<h3>Application 留言功能 Part II</h3>
-<h4>顯示留言</h4>
+<h3>Container 生命週期和持久性數據：Volumes, Volumes, Volumes</h3>
+<h4>Container 生命週期和持久性數據</h4>
+<h5>學習重點</h5>
 <ol>
-<li>在 admin/posts/index view 新增文章連結<br>
-<code>&lt;td&gt;&lt;a href=&quot; {{route('home.post', $post->id)}}&quot;&gt;view post&lt;/a&gt;&lt;/td&gt;</code></li>
-<li>在 admin/posts/index view 新增評論連結<br>
-<code>&lt;td&gt;&lt;a href=&quot; {{route('admin.comments.show', $post->id)}}&quot;&gt;View Comments&lt;/a&gt;&lt;/td&gt;</code></li>
-<li>新增 admin/comments/show view</li>
-<li>在 PostCommentsController 新增 show function</li>
+<li>定義持久性數據的問題</li>
+<li>Container 的關鍵觀念：immutable，ephemeral</li>
+<li>學習使用 Data Volumes</li>
+<li>學習使用 Bind Mounts</li>
+<li>作業</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public function show($id)</div><div class="line">&#123;   </div><div class="line">    $post = POST::findOrfail($id);</div><div class="line">    </div><div class="line">    $comments = $post-&gt;comments;</div><div class="line">    </div><div class="line">    return view(&apos;admin.comments.show&apos;, compact(&apos;comments&apos;));   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>修改 Post model</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public function comments()&#123;</div><div class="line"></div><div class="line">    return $this-&gt;hasMany(&apos;App\Comment&apos;);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4>在文章中顯示留言</h4>
+<h5>觀念</h5>
 <ol>
-<li>新增 Auth 到留言區塊，讓登入的使用者才可以留言</li>
+<li>Container <strong>通常</strong>是 immutable 而且 ephemeral</li>
+<li>「immutable infrastructure」：只重新部署 container，從來都不改變</li>
+<li>這些都是理想的情境，但是 databases 或 unique data 呢？</li>
+<li>Docker 給我們一些特色來確保這些「separation of concerns」</li>
+<li>這些被稱為「persistent data」</li>
+<li>兩種方法：Volumes 和 Bind Mounts</li>
+<li>Volumes：製作一個特別的地點在 container UFS(Unit File System) 之外</li>
+<li>Bind Mounts：連結 container 路徑到 host 路徑</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@if(Auth::check())</div><div class="line">@endif</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>修改 AdminPostsController 的 post function</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public function post($id)&#123;</div><div class="line"></div><div class="line">    $post = Post::findOrFail($id);</div><div class="line"></div><div class="line">    $comments = $post-&gt;comments()-&gt;whereIsActive(1)-&gt;get();</div><div class="line"></div><div class="line">    return view(&apos;post&apos;, compact(&apos;post&apos;, &apos;comments&apos;));</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>新增 posted comments 到 post view</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@if(count($comments) &gt; 0)</div><div class="line">    @foreach($comments as $comment)</div><div class="line">        &lt;div class=&quot;media&quot;&gt;</div><div class="line">            &lt;a class=&quot;pull-left&quot; href=&quot;#&quot;&gt;</div><div class="line">                &lt;img height=&quot;64&quot; class=&quot;media-object&quot; src=&quot;&#123;&#123;$comment-&gt;photo&#125;&#125;&quot; alt=&quot;&quot;&gt;</div><div class="line">            &lt;/a&gt;</div><div class="line">            &lt;div class=&quot;media-body&quot;&gt;</div><div class="line">                &lt;h4 class=&quot;media-heading&quot;&gt;&#123;&#123;$comment-&gt;author&#125;&#125;</div><div class="line">                    &lt;small&gt;&#123;&#123;$comment-&gt;created_at-&gt;diffForHumans()&#125;&#125;&lt;/small&gt;</div><div class="line">                &lt;/h4&gt;</div><div class="line">            &#123;&#123;$comment-&gt;body&#125;&#125;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    @endforeach</div><div class="line">@endif</div></pre></td></tr></table></figure>
-<h4>回覆留言功能</h4>
+<h4>持久性數據：Data Volumes</h4>
 <ol>
-<li>新增 routes</li>
+<li>Dockerfile 裡面的 <code>VOLUME</code> 命令</li>
+<li><code>docker volume prune</code> 可以清除未使用的 volume</li>
+<li><code>docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True mysql</code> 使用 mysql 的 image 開啟一個 container</li>
+<li><code>docker container inspect mysql</code> 查看 mysql 狀態，<code>Mounts</code> 可以看到路徑</li>
+<li><code>docker volume inspect {Volume Name}</code> 可以看到 Mountpoint 路徑</li>
+<li><code>docker container rm {container name}</code> 將 container 都刪除之後，使用 <code>docker volume ls</code> 觀察，會發現 Volume 都還會在</li>
+<li><code>docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql</code> <code>-v</code> 的指令在這邊表示外接 volume，volume 的名稱為 mysql-db</li>
+<li><code>docker volume create</code> 必須要在 <code>docker container run</code> 之前執行，這樣才能選擇自訂的 drives 和 labels</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Route::group([&apos;middleware&apos;=&gt;&apos;auth&apos;], function() &#123;</div><div class="line">    </div><div class="line">    Route::post(&apos;comment/reply&apos;, &apos;CommentRepliesController@createdReply&apos;);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ol start="2">
-<li>在 CommentRepliesController 新增 CreateReply function</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public function createReply(Request $request)&#123;</div><div class="line"></div><div class="line">    $user = Auth::user();</div><div class="line"></div><div class="line">    $data = [</div><div class="line"></div><div class="line">        &apos;post_id&apos; =&gt; $request-&gt;post_id,</div><div class="line">        &apos;author&apos; =&gt; $user-&gt;name,</div><div class="line">        &apos;email&apos; =&gt; $user-&gt;email,</div><div class="line">        &apos;photo&apos; =&gt; $user-&gt;photo-&gt;file,</div><div class="line">        &apos;body&apos; =&gt; $request-&gt;body</div><div class="line"></div><div class="line">    ];</div><div class="line"></div><div class="line"></div><div class="line">    CommentReply::create($data);</div><div class="line"></div><div class="line">    $request-&gt;session()-&gt;flash(&apos;reply_message&apos;, &apos;Your reply has been submitted and is waiting moderation&apos;);</div><div class="line"></div><div class="line">    return redirect()-&gt;back();</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="3">
-<li>在 CommentReply model 新增 <code>'photo'</code> 讓欄位可寫入</li>
-<li>新增 reply comment 到 post view</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">@if(count($comment-&gt;replies) &gt; 0)</div><div class="line"></div><div class="line">    @foreach($comment-&gt;replies as $reply)</div><div class="line"></div><div class="line">            &lt;!-- Nested Comment --&gt;</div><div class="line">            &lt;div class=&quot;media&quot;&gt;</div><div class="line">                &lt;a class=&quot;pull-left&quot; href=&quot;#&quot;&gt;</div><div class="line">                    &lt;img height=&quot;64&quot; class=&quot;media-object&quot; src=&quot;&#123;&#123;$reply-&gt;photo&#125;&#125;&quot; alt=&quot;&quot;&gt;</div><div class="line">                &lt;/a&gt;</div><div class="line">                &lt;div class=&quot;media-body&quot;&gt;</div><div class="line">                    &lt;h4 class=&quot;media-heading&quot;&gt;&#123;&#123;$reply-&gt;author&#125;&#125;</div><div class="line">                        &lt;small&gt;&#123;&#123;$reply-&gt;created_at-&gt;diffForHumans()&#125;&#125;&lt;/small&gt;</div><div class="line">                    &lt;/h4&gt;</div><div class="line">                    &lt;p&gt;&#123;&#123;$reply-&gt;body&#125;&#125;&lt;/p&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line"></div><div class="line">                &#123;!! Form::open([&apos;method&apos;=&gt;&apos;POST&apos;, &apos;action&apos;=&gt;&apos;CommentRepliesController@createReply&apos;]) !!&#125;</div><div class="line"></div><div class="line">                    &lt;input type=&quot;hidden&quot; name=&quot;comment_id&quot; value=&quot;&#123;&#123;$comment-&gt;id&#125;&#125;&quot;&gt;</div><div class="line"></div><div class="line">                    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">                        &#123;!! Form::label(&apos;body&apos;, &apos;Body:&apos;) !!&#125;</div><div class="line">                        &#123;!! Form::text(&apos;body&apos;, null, [&apos;class&apos;=&gt;&apos;form-control&apos;, &apos;rows&apos;=&gt;1]) !!&#125;</div><div class="line">                    &lt;/div&gt;</div><div class="line"></div><div class="line">                    &#123;&#123;csrf_field()&#125;&#125;</div><div class="line"></div><div class="line">                    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">                        &#123;!! Form::submit(&apos;submit&apos;, [&apos;class&apos;=&gt;&apos;btn btn-primary&apos;]) !!&#125;</div><div class="line">                    &lt;/div&gt;</div><div class="line"></div><div class="line">                &#123;!! Form::close() !!&#125;</div><div class="line"></div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;!-- End Nested Comment --&gt;</div><div class="line"></div><div class="line">    @endforeach</div><div class="line"></div><div class="line">@endif</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>在 layouts.blog-post view 生成 script 區塊<br>
-<code>@yield('scripts')</code></li>
-<li>新增 div</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;comment-reply-container&quot;&gt;</div><div class="line"></div><div class="line">    &lt;button class=&quot;toggle-reply btn btn-primary pull-right&quot;&gt;Reply&lt;/button&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;comment-reply&quot;&gt;</div><div class="line">    /* Nested Comment*/</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<ol start="7">
-<li>在 resources/assets/scss/app.css 修改樣式，新增 <code>.comment-reply {display: none;}</code>，並用<code>gulp</code>編譯。</li>
-<li>新增 scripts 區塊</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@section(&apos;scripts&apos;)</div><div class="line"></div><div class="line">    &lt;script&gt;</div><div class="line"></div><div class="line">        $(&quot;.comment-reply-container .toggle-reply&quot;).click(function()&#123;</div><div class="line"></div><div class="line">            $(this).next().slideToggle(&quot;slow&quot;);</div><div class="line"></div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line"></div><div class="line">@stop</div></pre></td></tr></table></figure>
-<h4>在主管理介面顯示回覆</h4>
+<h4>持久性數據：Bind Mounting</h4>
 <ol>
-<li>複製 comments/show view 到 comments/replies/show view，將 comment 改為 reply。</li>
-<li>在 admin/comments/index view 新增<br>
-<code>&lt;td&gt;&lt;a href=&quot; {{route('admin.comments.replies.show', $comment->id)}}&quot;&gt;View Replies&lt;/a&gt;&lt;/td&gt;</code></li>
-<li>在 CommentRepliesController 新增 show function</li>
+<li>Map host 檔案或目錄到 container 的檔案或目錄</li>
+<li>基本上只有兩個位址會指定到相同的檔案</li>
+<li>省略 UFS 和 host 檔案覆寫任何 container 裡的東西</li>
+<li>不能在 Dockerfile 使用，必須在 <code>container run</code> 的時候使用</li>
+<li><code>... run -v /Users/vincent/stuff:/path/container</code> (Mac/Linux)</li>
+<li><code>... run -v //c/Users/vincent/stuff:/path/container</code> (Windows)</li>
+<li><code>docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx</code> 新增一個 container 並指定 volume 到現在的路徑 $(pwd)</li>
+<li><code>docker container run -d --name nginx2 -p 8080:80 nginx</code> 再新增一個 container 做比較</li>
+<li><code>docker container exec -it nginx bash</code> 用 bash 連進去 nginx</li>
+<li><code>touch testme.txt</code> 在本來的目錄新增檔案，最後檔案會出現在 container 裡面，因為目錄是共用的</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public function show($id)</div><div class="line">&#123;</div><div class="line">    $comment = Comment::findOrFail($id);</div><div class="line"></div><div class="line">    $replies = $comment-&gt;replies;</div><div class="line"></div><div class="line">    return view(&apos;admin.comments.replies.show&apos;, compact(&apos;replies&apos;));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="4">
-<li>在 CommentRepliesController 新增 update function</li>
+<h4>作業：Database 與命名好的 Volume 一起升級</h4>
+<ol>
+<li>讓 database 跟 container 一起升級</li>
+<li>創建一個 <strong>postgres</strong> container 並將 volume 命名為 psql-data，且使用版本 <strong>9.6.1</strong></li>
+<li>使用 Docker Hub 學習 <strong>VOLUME</strong> 必要路徑和版本，然後運行它</li>
+<li>檢查 logs 並停止 container</li>
+<li>再創建一個 <strong>postgres</strong> container 並使用同個 volume 名稱，且使用版本 <strong>9.6.2</strong></li>
+<li>透過檢查 logs 來驗證</li>
+<li>(這些只在 patch 版本能運作，大部分 SQL 資料庫需要手動設定指令來升級資料庫到主要/次要版本，換言之，這是資料庫的限制，而非 container 的限制)</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public function update(Request $request, $id)</div><div class="line">&#123;</div><div class="line">    CommentReply::findOrFail($id)-&gt;update($request-&gt;all());</div><div class="line"></div><div class="line">    return redirect()-&gt;back();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol start="5">
-<li>修改 post view</li>
+<h4>答案：Database 與命名好的 Volume 一起升級</h4>
+<ol>
+<li><code>docker container run -d --name psql -v psql:/var/lib/postgresql/data postgres:9.6.1</code></li>
+<li><code>docker container logs -f psql</code> <code>-f</code> 代表持續 follow</li>
+<li><code>docker container stop psql</code></li>
+<li><code>docker container run -d --name psql2 -v psql:/var/lib/postgresql/data postgres:9.6.2</code></li>
+<li><code>docker container logs psql2</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@if($reply-&gt;is_active == 1)</div><div class="line">    /*nested comment*/</div><div class="line">    @else</div><div class="line">    &lt;h1 class=&quot;text-center&quot;&gt;No Relies&lt;/h1&gt;</div><div class="line">@endif</div></pre></td></tr></table></figure>
-<ol start="6">
-<li>在 CommentRepliesController 新增 destroy function</li>
+<h4>作業：編輯與 Bind Mounts 一起運行的 container 的程式碼</h4>
+<ol>
+<li>使用 Jekyll 「靜態網頁生成器」來啟動本地端的 web server</li>
+<li>不一定要成為 web 開發者：這是一個橋接在本地檔案存取和運行在 container 的 apps 間的 gap 的範例</li>
+<li>來源程式碼在 <strong>bindmount-sample-1</strong> 的課程 repo 裡面</li>
+<li>我們會用 host 上的原生工具當作編輯器來編輯檔案</li>
+<li>Container 偵測到 host 端檔案改變，會到 web server 更新</li>
+<li>使用 <code>docker run -p 80:4000 -v $(pwd):/site bretfisher/jekyll-serve</code> 開啟 container</li>
+<li>重整瀏覽器來觀察變化</li>
+<li>修改 <strong>_posts\</strong> 且重整瀏覽器來觀察變化</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public function destroy($id)</div><div class="line">&#123;</div><div class="line">    CommentReply::findOrFail($id)-&gt;delete();</div><div class="line">    </div><div class="line">    redirect()-&gt;back();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>答案：編輯與 Bind Mounts 一起運行的 container 的程式碼</h4>
+<ol>
+<li>使用 <code>docker run -p 80:4000 -v $(pwd):/site bretfisher/jekyll-serve</code> 開啟 container</li>
+<li>直接編輯目錄底下的 <strong>_posts\</strong> 並重整瀏覽器，網站就會直接修改</li>
+<li><a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll 靜態網頁生成器</a></li>
+</ol>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/05/29/Lavarel-快速學習自我挑戰-Day19/" data-id="cj5ntj14200123d0ayea72ts7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/07/28/docker-快速學習自我挑戰-Day4/" data-id="cj5ntj17m004a3d0auldib85o" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -337,7 +363,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/05/29/Lavarel-快速學習自我挑戰-Day19/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/07/28/docker-快速學習自我挑戰-Day4/" data-num-posts="5"></div>
 
 
     
@@ -398,20 +424,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/05/30/Lavarel-快速學習自我挑戰-Day20/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Lavarel 快速學習自我挑戰 Day20
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/05/28/Lavarel-快速學習自我挑戰-Day18/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/07/26/docker-快速學習自我挑戰-Day3/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day18</p>
+        <p class="article-nav-title">docker 快速學習自我挑戰 Day3</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
