@@ -49,7 +49,7 @@ Part III
 Use Docker Hub
 Make Dock">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday1.png">
-<meta property="og:updated_time" content="2017-07-24T07:08:24.000Z">
+<meta property="og:updated_time" content="2017-07-29T05:07:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 快速學習自我挑戰 Day1">
 <meta name="twitter:description" content="課程 Roadmap
@@ -295,15 +295,14 @@ Client 的版本是 Command Line 的版本，Server 則被稱為 docker engine�
 <li>Image 是我們想要跑的應用程式</li>
 <li>Container 是 image 所產生的 instance，並用進程的方式執行</li>
 <li>可以使用同個 image 來產生很多 Container</li>
-<li><code>docker container run --publish 80:80 nginx</code> 新建 ngix server，執行完成之後可以直接用瀏覽器看到 nginx，語法背後執行的邏輯如下：</li>
-</ol>
+<li><code>docker container run --publish 80:80 nginx</code> 新建 ngix server，執行完成之後可以直接用瀏覽器看到 nginx，語法背後執行的邏輯如下：
 <ul>
 <li>從 Docker Hub 下載「nginx」的 image</li>
 <li>從這個 image 開始一個新的 container</li>
 <li>開啟本機端的 80 port</li>
 <li>將 80 port 路由到 container 的 80 port</li>
 </ul>
-<ol start="5">
+</li>
 <li><code>docker container run --publish 80:80 --detach nginx</code> 加上 detach 可以讓 docker 在背景執行，這個指令會 echo 出 container ID</li>
 <li><code>docker container ls</code> 列出所有的 container</li>
 <li><code>docker container stop 889</code> 停止某個 container，stop 後面加上 id 前三碼 (只要是唯一即可，若三碼非唯一，則用四碼，後面以此類推)</li>
@@ -324,25 +323,24 @@ Client 的版本是 Command Line 的版本，Server 則被稱為 docker engine�
 <li>在 docker engine 裡面給 container 私有網路上的虛擬 ip</li>
 <li>開啟 host 端的 80 port 並轉址到 container 的 80 port，如果沒有使用 <code>--publish</code> 則不會打開任何 port</li>
 <li>藉由使用 image Dockerfile 裡的 <strong>CMD</strong> 開啟 container</li>
-<li><code>docker container run --publish 8080:80 --name webhost -d nginx:1.11 nginx -T</code></li>
-</ol>
+<li><code>docker container run --publish 8080:80 --name webhost -d nginx:1.11 nginx -T</code>
 <ul>
 <li>host port 可以改為 8080</li>
 <li>可修改 nginx 的版本為 1.11</li>
 <li><code>nginx -T</code> 修改開啟時的 CMD</li>
 </ul>
+</li>
+</ol>
 <h4>Container VS. VM</h4>
 <ol>
-<li>Container 不是縮小版的 VM</li>
-</ol>
+<li>Container 不是縮小版的 VM
 <ul>
 <li>Container 只是 Process</li>
 <li>Container 能夠存取的資源有限</li>
 <li>當 Process 暫停的時候離開</li>
 </ul>
-<ol start="2">
-<li>用命令提示字元了解更多</li>
-</ol>
+</li>
+<li>用命令提示字元了解更多
 <ul>
 <li><code>docker run --name mongo -d mongo</code> 新建一個 mongo DB 的 container 並在背景執行</li>
 <li><code>ps aux</code> 檢視所有正在執行的程式，<code>docker top mongo</code> 檢視服務的狀態</li>
@@ -350,6 +348,8 @@ Client 的版本是 Command Line 的版本，Server 則被稱為 docker engine�
 <li><code>docker stop mongo</code> 關閉 mongo，檢視和搜尋都會找不到該服務</li>
 <li><code>docker start mongo</code> 再次打開 mongo，檢視和搜尋都又會再找到該服務</li>
 </ul>
+</li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -357,7 +357,7 @@ Client 的版本是 Command Line 的版本，Server 則被稱為 docker engine�
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/07/23/docker-快速學習自我挑戰-Day1/" data-id="cj5ntj17f00413d0a4b4v6sor" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/07/23/docker-快速學習自我挑戰-Day1/" data-id="cj5pfoco70041z30auk6vg8tv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -689,7 +689,7 @@ Client 的版本是 Command Line 的版本，Server 則被稱為 docker engine�
                 <h1 class="logo-wrap">
                     <a href="/blogs/" class="logo"></a>
                 </h1>
-                <p>&copy; 2017 Vincent Ting Syuan Wang</p>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
         </div>

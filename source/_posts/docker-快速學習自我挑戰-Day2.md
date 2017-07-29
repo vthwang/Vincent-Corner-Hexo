@@ -13,9 +13,9 @@ tags: Docker
 #### Windows Container：Docker 不再只能在 Linux 上面執行
 1. 目前 17 版已經可以在 windows 上執行 docker，但有些功能不能使用，包括 Swarm Overlay、Secret...等等
 2. 可以參考以下影片
-- [Windows Containers and Docker: 101](https://www.youtube.com/watch?v=066-9yw8-7c)
-- [Beyond \ - the path to Windows and Linux parity in Docker](https://www.youtube.com/watch?v=4ZY_4OeyJsw)
-- [Docker + Microsoft - Investing in the Future of your Applications](https://www.youtube.com/watch?v=QASAqcuuzgI)
+    - [Windows Containers and Docker: 101](https://www.youtube.com/watch?v=066-9yw8-7c)
+    - [Beyond \ - the path to Windows and Linux parity in Docker](https://www.youtube.com/watch?v=4ZY_4OeyJsw)
+    - [Docker + Microsoft - Investing in the Future of your Applications](https://www.youtube.com/watch?v=QASAqcuuzgI)
 #### 作業 - 管理多個 container
 1. Docker 小幫手 (1) [官方文件](https://docs.docker.com/) (2) `--help`
 2. 運行 nginx、MySQL、httpd(apache) server
@@ -42,24 +42,24 @@ tags: Docker
 9. [套件管理基本](https://www.digitalocean.com/community/tutorials/package-management-basics-apt-yum-dnf-pkg)
 #### Docker 網路：眾多 Container 裡面的私有和公有網路的溝通觀念
 1. 觀念
-- `docker container run -p` p 就是你機器上的 port
-- 對於本地端的開發/測試，網路通常『只是堪用』
-- `docker container port <container>` 這個指令可以快速輸出哪一個 port 為這個 container 開啟
-- 學習 Docker 網路、虛擬網路和封包如何傳遞
-- 了解網路封包如何在 Docker 之間移動
+    - `docker container run -p` p 就是你機器上的 port
+    - 對於本地端的開發/測試，網路通常『只是堪用』
+    - `docker container port <container>` 這個指令可以快速輸出哪一個 port 為這個 container 開啟
+    - 學習 Docker 網路、虛擬網路和封包如何傳遞
+    - 了解網路封包如何在 Docker 之間移動
 2. 預設 Docker 網路
-- 每一個 container 都會連接到虛擬網路 「橋(bridge)」
-- 每一個虛擬網路路由都會透過 NAT 防火牆轉址到 host IP
-- 在虛擬網路上所有的 container 都可以互相溝通，而不需要 `-p`
-- 最好的練習就是對個別的 app 新增虛擬網路
-  * MySQL 和 php/apache 用「my\_web_app」網路
-  * Mongo 和 nodejs 用 「my_api」網路
-- 「含電池，但可拆卸 (battery included, But Removable)」
-  * 在多數情況下，預設會運行的很好，但很容易換掉客製化的 ports
-- 新建虛擬網路
-- 連結 container 們到大於1(或者沒有)的虛擬網路
-- 省略虛擬網路且使用 host IP (--net=host)
-- 使用不同的 Docker 網路驅動來取得新的能力
+    - 每一個 container 都會連接到虛擬網路 「橋(bridge)」
+    - 每一個虛擬網路路由都會透過 NAT 防火牆轉址到 host IP
+    - 在虛擬網路上所有的 container 都可以互相溝通，而不需要 `-p`
+    - 最好的練習就是對個別的 app 新增虛擬網路
+        * MySQL 和 php/apache 用「my\_web_app」網路
+        * Mongo 和 nodejs 用 「my_api」網路
+    - 「含電池，但可拆卸 (battery included, But Removable)」
+        * 在多數情況下，預設會運行的很好，但很容易換掉客製化的 ports
+    - 新建虛擬網路
+    - 連結 container 們到大於1(或者沒有)的虛擬網路
+    - 省略虛擬網路且使用 host IP (--net=host)
+    - 使用不同的 Docker 網路驅動來取得新的能力
 #### 錯誤修改：Nginx 官方 image 移除 Ping 功能
 1. 因為最新 2017 官方修改 ping 功能，所以把 `docker container run <stuff> nginx`，要把 `nginx` 取代為 `nginx:alpine`，這樣就可以繼續使用 ping 的 command
 #### Docker 網路：虛擬網路的 CLI 管理
@@ -85,13 +85,13 @@ tags: Docker
 2. 了解基本的 linux distribution，像是 Ubuntu 和 CentOS
 3. 了解如何執行 container
 4. 作業
-- 使用不同的 distro container 來檢查 curl cli 工具版本
-- 使用兩個不同的終端視窗來開啟 bash，使用 -it 來啟動 **centos:7** 和 **ubuntu:14.04**
-- 學習 `docker container --rm` 選項，這樣可以 save cleanup
-- 確定最新版本的 curl 有安裝在相對應的 distro
-  * ubuntu: `apt-get update && apt-get install curl`
-  * centos: `yum update curl`
-- 檢查 `curl --version`
+    - 使用不同的 distro container 來檢查 curl cli 工具版本
+    - 使用兩個不同的終端視窗來開啟 bash，使用 -it 來啟動 **centos:7** 和 **ubuntu:14.04**
+    - 學習 `docker container --rm` 選項，這樣可以 save cleanup
+    - 確定最新版本的 curl 有安裝在相對應的 distro
+        * ubuntu: `apt-get update && apt-get install curl`
+        * centos: `yum update curl`
+    - 檢查 `curl --version`
 #### 作業：DNS Round Robin 測試
 1. 了解如何使用 `-it` 在 container 裡面使用 shell
 2. 了解基本的 linux distribution，像是 Ubuntu 和 CentOS

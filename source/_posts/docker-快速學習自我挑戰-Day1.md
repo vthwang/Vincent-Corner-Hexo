@@ -62,10 +62,10 @@ Client 的版本是 Command Line 的版本，Server 則被稱為 docker engine�
 2. Container 是 image 所產生的 instance，並用進程的方式執行
 3. 可以使用同個 image 來產生很多 Container
 4. `docker container run --publish 80:80 nginx` 新建 ngix server，執行完成之後可以直接用瀏覽器看到 nginx，語法背後執行的邏輯如下：
-- 從 Docker Hub 下載「nginx」的 image
-- 從這個 image 開始一個新的 container
-- 開啟本機端的 80 port
-- 將 80 port 路由到 container 的 80 port
+    - 從 Docker Hub 下載「nginx」的 image
+    - 從這個 image 開始一個新的 container
+    - 開啟本機端的 80 port
+    - 將 80 port 路由到 container 的 80 port
 5. `docker container run --publish 80:80 --detach nginx` 加上 detach 可以讓 docker 在背景執行，這個指令會 echo 出 container ID
 6. `docker container ls` 列出所有的 container
 7. `docker container stop 889` 停止某個 container，stop 後面加上 id 前三碼 (只要是唯一即可，若三碼非唯一，則用四碼，後面以此類推)
@@ -85,25 +85,17 @@ Client 的版本是 Command Line 的版本，Server 則被稱為 docker engine�
 6. 開啟 host 端的 80 port 並轉址到 container 的 80 port，如果沒有使用 `--publish` 則不會打開任何 port
 7. 藉由使用 image Dockerfile 裡的 **CMD** 開啟 container
 8. `docker container run --publish 8080:80 --name webhost -d nginx:1.11 nginx -T`
-- host port 可以改為 8080
-- 可修改 nginx 的版本為 1.11  
-- `nginx -T` 修改開啟時的 CMD
+    - host port 可以改為 8080
+    - 可修改 nginx 的版本為 1.11  
+    - `nginx -T` 修改開啟時的 CMD
 #### Container VS. VM
 1. Container 不是縮小版的 VM
-- Container 只是 Process
-- Container 能夠存取的資源有限
-- 當 Process 暫停的時候離開
+    - Container 只是 Process
+    - Container 能夠存取的資源有限
+    - 當 Process 暫停的時候離開
 2. 用命令提示字元了解更多
-- `docker run --name mongo -d mongo` 新建一個 mongo DB 的 container 並在背景執行
-- `ps aux` 檢視所有正在執行的程式，`docker top mongo` 檢視服務的狀態
-- `ps aux | grep mongo` 搜尋 mongo 的服務
-- `docker stop mongo` 關閉 mongo，檢視和搜尋都會找不到該服務
-- `docker start mongo` 再次打開 mongo，檢視和搜尋都又會再找到該服務
-
-
-
-
-
-
-
-
+    - `docker run --name mongo -d mongo` 新建一個 mongo DB 的 container 並在背景執行
+    - `ps aux` 檢視所有正在執行的程式，`docker top mongo` 檢視服務的狀態
+    - `ps aux | grep mongo` 搜尋 mongo 的服務
+    - `docker stop mongo` 關閉 mongo，檢視和搜尋都會找不到該服務
+    - `docker start mongo` 再次打開 mongo，檢視和搜尋都又會再找到該服務

@@ -44,25 +44,25 @@ tags: Docker
 9. `docker image history` 和 `inspect` 可以幫助我們了解這些資訊
 #### Image Tagging 和推送到 Docker Hub
 1. 學習前必須要會的：
-- 了解 container 和 image
-- 了解 image layer 的基礎
-- 了解 Docker Hub 的基礎
+    - 了解 container 和 image
+    - 了解 image layer 的基礎
+    - 了解 Docker Hub 的基礎
 2. 這個章節要學的
-- 都在講 image tags
-- 如何上傳到 Docker Hub
-- Image ID vs. Tag
+    - 都在講 image tags
+    - 如何上傳到 Docker Hub
+    - Image ID vs. Tag
 3. `cat .docker/config.json` 確認已認證登入
 4. `docker image tag nginx tingsyuanwang/nginx` 給 image tag 到 Docker Hub 的帳戶
 5. `docker image push tingsyuanwang/nginx` 推送到自己的 Docker Hub
 6. `docker image tag tingsyuanwang/nginx tingsyuanwang/nginx:testing` 給定名為 testing 的 tag
 7. `docker image push tingsyuanwang/nginx:testing` 上傳 image，實際上不會全部上傳，只上傳 tag
 8. 回顧
-- 適時的 tagging images
-- 給 image tag 是為了要上傳到 Docker Hub
-- Tagging 是如何和 image ID 做關聯的
-- Latest Tag 只是預設標籤，並不代表最新
-- 從 Docker cli 登入 Docker Hub
-- 如何創建私有的 Docker Hub images
+    - 適時的 tagging images
+    - 給 image tag 是為了要上傳到 Docker Hub
+    - Tagging 是如何和 image ID 做關聯的
+    - Latest Tag 只是預設標籤，並不代表最新
+    - 從 Docker cli 登入 Docker Hub
+    - 如何創建私有的 Docker Hub images
 #### 建立 images：Dockerfile 的基礎
 1. `docker build -f some-dockerfile` 創建 Dockerfile
 2. `ENV NGINX_VERSION 1.13.1-1~stretch` 這邊的 ENV 是用來設定環境變數，這是對建立或運行 container 去設定 key 和 value 的主要方法

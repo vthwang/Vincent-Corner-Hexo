@@ -41,7 +41,7 @@ image data">
 App binaries and dependencies
 image data">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday3.png">
-<meta property="og:updated_time" content="2017-07-28T05:16:17.000Z">
+<meta property="og:updated_time" content="2017-07-29T05:05:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 快速學習自我挑戰 Day3">
 <meta name="twitter:description" content="如何找到且使用 container images
@@ -255,29 +255,26 @@ ga('send', 'pageview');
 </ol>
 <h4>Image Tagging 和推送到 Docker Hub</h4>
 <ol>
-<li>學習前必須要會的：</li>
-</ol>
+<li>學習前必須要會的：
 <ul>
 <li>了解 container 和 image</li>
 <li>了解 image layer 的基礎</li>
 <li>了解 Docker Hub 的基礎</li>
 </ul>
-<ol start="2">
-<li>這個章節要學的</li>
-</ol>
+</li>
+<li>這個章節要學的
 <ul>
 <li>都在講 image tags</li>
 <li>如何上傳到 Docker Hub</li>
 <li>Image ID vs. Tag</li>
 </ul>
-<ol start="3">
+</li>
 <li><code>cat .docker/config.json</code> 確認已認證登入</li>
 <li><code>docker image tag nginx tingsyuanwang/nginx</code> 給 image tag 到 Docker Hub 的帳戶</li>
 <li><code>docker image push tingsyuanwang/nginx</code> 推送到自己的 Docker Hub</li>
 <li><code>docker image tag tingsyuanwang/nginx tingsyuanwang/nginx:testing</code> 給定名為 testing 的 tag</li>
 <li><code>docker image push tingsyuanwang/nginx:testing</code> 上傳 image，實際上不會全部上傳，只上傳 tag</li>
-<li>回顧</li>
-</ol>
+<li>回顧
 <ul>
 <li>適時的 tagging images</li>
 <li>給 image tag 是為了要上傳到 Docker Hub</li>
@@ -286,6 +283,8 @@ ga('send', 'pageview');
 <li>從 Docker cli 登入 Docker Hub</li>
 <li>如何創建私有的 Docker Hub images</li>
 </ul>
+</li>
+</ol>
 <h4>建立 images：Dockerfile 的基礎</h4>
 <ol>
 <li><code>docker build -f some-dockerfile</code> 創建 Dockerfile</li>
@@ -339,7 +338,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/07/26/docker-快速學習自我挑戰-Day3/" data-id="cj5ntj17k00483d0ayfjtoljt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/07/26/docker-快速學習自我挑戰-Day3/" data-id="cj5pfocob0048z30a5utr6ryt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -671,7 +670,7 @@ ga('send', 'pageview');
                 <h1 class="logo-wrap">
                     <a href="/blogs/" class="logo"></a>
                 </h1>
-                <p>&copy; 2017 Vincent Ting Syuan Wang</p>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
         </div>

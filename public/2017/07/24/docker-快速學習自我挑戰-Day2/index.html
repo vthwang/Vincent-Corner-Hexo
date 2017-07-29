@@ -14,7 +14,6 @@ Windows Container：Docker 不再只能在 Linux 上面執行
 目前 17 版已經可以在 windows 上執行 docker，但有些功能不能使用，包括 Swarm Overlay、Secret…等等
 可以參考以下影片
 
-
 Windows Containers and Docker: 101
 Beyond \ - the path to Windows and">
 <meta property="og:type" content="article">
@@ -27,11 +26,10 @@ Windows Container：Docker 不再只能在 Linux 上面執行
 目前 17 版已經可以在 windows 上執行 docker，但有些功能不能使用，包括 Swarm Overlay、Secret…等等
 可以參考以下影片
 
-
 Windows Containers and Docker: 101
 Beyond \ - the path to Windows and">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday2.png">
-<meta property="og:updated_time" content="2017-07-25T13:30:37.000Z">
+<meta property="og:updated_time" content="2017-07-29T05:06:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 快速學習自我挑戰 Day2">
 <meta name="twitter:description" content="安裝與版本
@@ -39,7 +37,6 @@ Windows Container：Docker 不再只能在 Linux 上面執行
 
 目前 17 版已經可以在 windows 上執行 docker，但有些功能不能使用，包括 Swarm Overlay、Secret…等等
 可以參考以下影片
-
 
 Windows Containers and Docker: 101
 Beyond \ - the path to Windows and">
@@ -201,13 +198,14 @@ ga('send', 'pageview');
 <h4>Windows Container：Docker 不再只能在 Linux 上面執行</h4>
 <ol>
 <li>目前 17 版已經可以在 windows 上執行 docker，但有些功能不能使用，包括 Swarm Overlay、Secret…等等</li>
-<li>可以參考以下影片</li>
-</ol>
+<li>可以參考以下影片
 <ul>
 <li><a href="https://www.youtube.com/watch?v=066-9yw8-7c" target="_blank" rel="external">Windows Containers and Docker: 101</a></li>
 <li><a href="https://www.youtube.com/watch?v=4ZY_4OeyJsw" target="_blank" rel="external">Beyond \ - the path to Windows and Linux parity in Docker</a></li>
 <li><a href="https://www.youtube.com/watch?v=QASAqcuuzgI" target="_blank" rel="external">Docker + Microsoft - Investing in the Future of your Applications</a></li>
 </ul>
+</li>
+</ol>
 <h4>作業 - 管理多個 container</h4>
 <ol>
 <li>Docker 小幫手 (1) <a href="https://docs.docker.com/" target="_blank" rel="external">官方文件</a> (2) <code>--help</code></li>
@@ -240,8 +238,7 @@ ga('send', 'pageview');
 </ol>
 <h4>Docker 網路：眾多 Container 裡面的私有和公有網路的溝通觀念</h4>
 <ol>
-<li>觀念</li>
-</ol>
+<li>觀念
 <ul>
 <li><code>docker container run -p</code> p 就是你機器上的 port</li>
 <li>對於本地端的開發/測試，網路通常『只是堪用』</li>
@@ -249,9 +246,8 @@ ga('send', 'pageview');
 <li>學習 Docker 網路、虛擬網路和封包如何傳遞</li>
 <li>了解網路封包如何在 Docker 之間移動</li>
 </ul>
-<ol start="2">
-<li>預設 Docker 網路</li>
-</ol>
+</li>
+<li>預設 Docker 網路
 <ul>
 <li>每一個 container 都會連接到虛擬網路 「橋(bridge)」</li>
 <li>每一個虛擬網路路由都會透過 NAT 防火牆轉址到 host IP</li>
@@ -272,6 +268,8 @@ ga('send', 'pageview');
 <li>省略虛擬網路且使用 host IP (–net=host)</li>
 <li>使用不同的 Docker 網路驅動來取得新的能力</li>
 </ul>
+</li>
+</ol>
 <h4>錯誤修改：Nginx 官方 image 移除 Ping 功能</h4>
 <ol>
 <li>因為最新 2017 官方修改 ping 功能，所以把 <code>docker container run &lt;stuff&gt; nginx</code>，要把 <code>nginx</code> 取代為 <code>nginx:alpine</code>，這樣就可以繼續使用 ping 的 command</li>
@@ -303,8 +301,7 @@ ga('send', 'pageview');
 <li>知道如何使用 -it 在 container 裡面使用 shell</li>
 <li>了解基本的 linux distribution，像是 Ubuntu 和 CentOS</li>
 <li>了解如何執行 container</li>
-<li>作業</li>
-</ol>
+<li>作業
 <ul>
 <li>使用不同的 distro container 來檢查 curl cli 工具版本</li>
 <li>使用兩個不同的終端視窗來開啟 bash，使用 -it 來啟動 <strong>centos:7</strong> 和 <strong>ubuntu:14.04</strong></li>
@@ -317,6 +314,8 @@ ga('send', 'pageview');
 </li>
 <li>檢查 <code>curl --version</code></li>
 </ul>
+</li>
+</ol>
 <h4>作業：DNS Round Robin 測試</h4>
 <ol>
 <li>了解如何使用 <code>-it</code> 在 container 裡面使用 shell</li>
@@ -343,7 +342,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/07/24/docker-快速學習自我挑戰-Day2/" data-id="cj5ntj17h00443d0aaba55esv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/07/24/docker-快速學習自我挑戰-Day2/" data-id="cj5pfocoa0044z30acqsg1kyk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -675,7 +674,7 @@ ga('send', 'pageview');
                 <h1 class="logo-wrap">
                     <a href="/blogs/" class="logo"></a>
                 </h1>
-                <p>&copy; 2017 Vincent Ting Syuan Wang</p>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
         </div>
