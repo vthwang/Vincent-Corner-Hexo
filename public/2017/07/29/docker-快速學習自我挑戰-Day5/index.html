@@ -3,18 +3,50 @@
 <head>
     <meta charset="utf-8">
     
-    <title>彙整： | Vincent&#39;s Corner</title>
+    <title>docker 快速學習自我挑戰 Day5 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Who knows what fantastic things around Vincent&apos;s corner?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vincent's Corner">
-<meta property="og:url" content="https://tingsyuanwang.github.io/archives/page/5/index.html">
+        <meta name="keywords" content="Docker" />
+    
+    <meta name="description" content="讓 Docker Compose 更簡單：Multi-Container 工具
+Docker Compose 和 The docker-compose.yml
+Docker Compose
+
+為什麼：搞清楚 container 之間的關係
+為什麼：將 Docker container 的運行設定存成易讀取的檔案
+為什麼：一線開發者環境啟動
+可以分成兩個相關的事情
+
+YAML 格式描述我們的解決">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker 快速學習自我挑戰 Day5">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/07/29/docker-快速學習自我挑戰-Day5/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta property="og:description" content="讓 Docker Compose 更簡單：Multi-Container 工具
+Docker Compose 和 The docker-compose.yml
+Docker Compose
+
+為什麼：搞清楚 container 之間的關係
+為什麼：將 Docker container 的運行設定存成易讀取的檔案
+為什麼：一線開發者環境啟動
+可以分成兩個相關的事情
+
+YAML 格式描述我們的解決">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday5.jpg">
+<meta property="og:updated_time" content="2017-07-29T20:30:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vincent's Corner">
-<meta name="twitter:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta name="twitter:title" content="docker 快速學習自我挑戰 Day5">
+<meta name="twitter:description" content="讓 Docker Compose 更簡單：Multi-Container 工具
+Docker Compose 和 The docker-compose.yml
+Docker Compose
+
+為什麼：搞清楚 container 之間的關係
+為什麼：將 Docker container 的運行設定存成易讀取的檔案
+為什麼：一線開發者環境啟動
+可以分成兩個相關的事情
+
+YAML 格式描述我們的解決">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday5.jpg">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -136,604 +168,214 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>彙整：
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
+                            <article id="post-docker-快速學習自我挑戰-Day5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        docker 快速學習自我挑戰 Day5
+        </h1>
+    
 
-    
-    
+            </header>
         
         
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/blogs/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
+            <div class="article-subtitle">
+                <a href="/blogs/2017/07/29/docker-快速學習自我挑戰-Day5/" class="article-date">
+    <time datetime="2017-07-29T04:37:49.000Z" itemprop="datePublished">2017-07-29</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Docker/">Docker</a></li></ul>
+
             </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/blogs/2017/03/07/React快速學習自我挑戰-Day3/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/react/reactday3.png)" alt="React快速學習自我挑戰 Day3" class="thumbnail-image"></span>
-    
-    
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/07/React快速學習自我挑戰-Day3/">0</span> 則評論
-    
-</span>
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/docker/dockerday5.jpg">
+<hr>
+<h3>讓 Docker Compose 更簡單：Multi-Container 工具</h3>
+<h4>Docker Compose 和 The docker-compose.yml</h4>
+<h5>Docker Compose</h5>
+<ol>
+<li>為什麼：搞清楚 container 之間的關係</li>
+<li>為什麼：將 Docker container 的運行設定存成易讀取的檔案</li>
+<li>為什麼：一線開發者環境啟動</li>
+<li>可以分成兩個相關的事情
+<ul>
+<li>YAML 格式描述我們的解決方案選項：containers、networks、volumes</li>
+<li>CLI 工具 <strong>docker-compose</strong> 被用在開發/測試自動化且使用 YAML 檔案</li>
+</ul>
+</li>
+</ol>
+<h5>docker-compose.yml</h5>
+<ol>
+<li>Compose YAML 格式有自己的版本：1、2、2.1、3、3.1</li>
+<li>YAML 檔案可以被用於本地 docker 自動化或…的 <strong>docker-compose</strong> 命令</li>
+<li><strong>docker</strong> 已經直接被產品化，叫做 Swarm (從 v.1.13 開始)</li>
+<li><code>docker-compose --help</code></li>
+<li><strong>docker-compose.yml</strong> 是預設名稱，但是<code>docker-compose -f</code>可以任何使用喜歡的名稱</li>
+</ol>
+<h4>測試基本 Compose 命令</h4>
+<ol>
+<li>Docker 的 CLI 工具有 Windows/Mac 版本，但是 Linux 需要分開下載</li>
+<li>不是一個產品化等級的工具，但是對在本地端開發和測試是理想的</li>
+<li>最常使用的兩個命令是
+<ul>
+<li><code>docker-compose up</code> # 設定 volumes/networks 和開啟所有的 containers</li>
+<li><code>docker-compose down</code> # 停止所有的 containers 和移除 cont/vol/net</li>
+</ul>
+</li>
+<li>如果你的所有專案都有 <strong>Dockerfile</strong> 和 <strong>docker-compose.yml</strong>，那「新的開發者」應該要
+<ul>
+<li><code>git clone github.com/some/software</code></li>
+<li><code>docker-compose up</code></li>
+</ul>
+</li>
+<li>進入超級管理員模式 <code>sudo -i</code></li>
+<li>安裝 docker-compose <a href="https://github.com/docker/compose/releases" target="_blank" rel="external">最新版本</a> <code>curl -L https://github.com/docker/compose/releases/download/1.15.0/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</code></li>
+</ol>
+<h4>作業：為 Multi-Container 服務建立一個 Compose File</h4>
+<ol>
+<li>建立一個基本的 compose file 用於 Drupal CMS 網站，Docker Hub 是你的好朋友</li>
+<li>使用 <strong>Drupal</strong> image 並與 <strong>postgres</strong> imgae 一起使用</li>
+<li>使用 <strong>ports</strong> 使 Drupal 運行在 8080，如此一來可以透過 localhost:8080 來存取網頁</li>
+<li>確定有設定 postgres 的 <strong>POSTGRES_PASSWORD</strong></li>
+<li>用瀏覽器來設定 Drupal</li>
+<li>秘訣：Drupal 假定 DB 是 localhost，但是資料庫在另外一個 container，要在 Drupal 設定讓它跟 Docker network 溝通</li>
+<li>額外加分：使用 volumes 來儲存 Drupal 的 unique data</li>
+</ol>
+<h4>答案：為 Multi-Container 服務建立一個 Compose File</h4>
+<ol>
+<li>建立一個 docker-compose.yml</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">version: &apos;2&apos;</div><div class="line"></div><div class="line">services:</div><div class="line">  drupal:</div><div class="line">    image: drupal</div><div class="line">    ports:</div><div class="line">      - &quot;8080:80&quot;</div><div class="line">    volumes:</div><div class="line">      - drupal-modules:/var/www/html/modules \</div><div class="line">      - drupal-profiles:/var/www/html/profiles \</div><div class="line">      - drupal-sites:/var/www/html/sites \</div><div class="line">      - drupal-themes:/var/www/html/themes</div><div class="line">  postgres:</div><div class="line">    image: postgres</div><div class="line">    environment:</div><div class="line">      - POSTGRES_PASSWORD=mypassword</div></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>docker-compose up</code> 啟動專案</li>
+<li><code>docker-compose down -v</code> 刪除專案</li>
+</ol>
+<h4>新增 Image Building 到 Compose Files</h4>
+<h5>使用 Compose 來 Build</h5>
+<ol>
+<li>Compose 也可以建立你自己的客製化 images</li>
+<li>如果在 cache 沒有找到，會在 <code>docker-compose up</code> 的時候建立起來</li>
+<li>也可以透過 <code>docker-compose build</code> 或 <code>docker-compose up --build</code> 重建</li>
+<li>對複雜的 builds 非常好，因為它會有很多 vars 或 build args</li>
+</ol>
+<h5>實作</h5>
+<ol>
+<li>建立一個 docker-compose.yml，如果找不到 nginx-custom 的 image，則會執行 build 裡的 Dockerfile</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">version: &apos;2&apos;</div><div class="line"></div><div class="line"># based off compose-sample-2, only we build nginx.conf into image</div><div class="line"># uses sample site from https://startbootstrap.com/template-overviews/agency/</div><div class="line"></div><div class="line">services:</div><div class="line">  proxy:</div><div class="line">    build:</div><div class="line">      context: .</div><div class="line">      dockerfile: nginx.Dockerfile</div><div class="line">    image: nginx-custom</div><div class="line">    ports:</div><div class="line">      - &apos;80:80&apos;</div><div class="line">  web:</div><div class="line">    image: httpd</div><div class="line">    volumes:</div><div class="line">      - ./html:/usr/local/apache2/htdocs/</div></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>docker-compose up</code></li>
+<li><code>docker-compose down</code></li>
+<li><code>docker-compose down --rmi local</code> 在關閉的時候同時刪除 image</li>
+</ol>
+<h4>作業：Run-Time Image Building 和 Multi-Container 開發的 Compose</h4>
+<ol>
+<li>為本地端測試建立一個客製化的 <strong>drupal</strong> image</li>
+<li>Compose 並不是只有給開發者使用，測試 apps 是很簡單/有趣的</li>
+<li>或許你在學習成為 Drupal 的管理者，或者是軟體測試者</li>
+<li>從上一次的作業開始 Compose file</li>
+<li>在目錄 <strong>compose-assignment-2</strong> 建立你自己的 <strong>Dockerfile</strong> 和 <strong>docker-compose.yml</strong></li>
+<li>使用 <strong>drupal</strong> image 並與 <strong>postgres</strong> image 一起使用，就像之前一樣</li>
+<li>使用目錄裡的 <a href="https://github.com/BretFisher/udemy-docker-mastery/tree/master/compose-assignment-2" target="_blank" rel="external"><strong>README.md</strong></a> 取得更多細節</li>
+</ol>
+<h4>答案：Run-Time Image Building 和 Multi-Container 開發的 Compose</h4>
+<ol>
+<li>建立 Dockerfile</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">FROM drupal:8.2</div><div class="line"></div><div class="line">RUN apt-get update &amp;&amp; apt-get install -y git \</div><div class="line">    &amp;&amp; rm -rf /var/lib/apt/lists/*</div><div class="line"></div><div class="line">WORKDIR /var/www/html/themes</div><div class="line"></div><div class="line">RUN git clone --branch 8.x-3.x --single-branch --depth 1 https://git.drupal.org/project/bootstrap.git \</div><div class="line">    &amp;&amp; chown -R www-data:www-data bootstrap</div><div class="line"></div><div class="line">WORKDIR /var/www/html</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>建立 docker-compose.yml</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">version: &apos;2&apos;</div><div class="line"></div><div class="line">services:</div><div class="line">  drupal:</div><div class="line">    image: custom-drupal</div><div class="line">    build: .</div><div class="line">    ports:</div><div class="line">      - &quot;8080:80&quot;</div><div class="line">    volumes:</div><div class="line">      - drupal-modules:/var/www/html/modules \</div><div class="line">      - drupal-profiles:/var/www/html/profiles \</div><div class="line">      - drupal-sites:/var/www/html/sites \</div><div class="line">      - drupal-themes:/var/www/html/themes</div><div class="line">  postgres:</div><div class="line">    image: postgres:9.6</div><div class="line">    environment:</div><div class="line">      - POSTGRES_PASSWORD=mypassword</div><div class="line">    volumes:</div><div class="line">      - drupal-data:/var/lib/postgresql/data</div><div class="line"></div><div class="line">volumes:</div><div class="line">  drupal-data:</div><div class="line">  drupal-modules:</div><div class="line">  drupal-profiles:</div><div class="line">  drupal-sites:</div><div class="line">  drupal-themes:</div></pre></td></tr></table></figure>
 
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-03-07T14:13:59.000Z" itemprop="datePublished">2017-03-07</time></p>
         </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/07/React快速學習自我挑戰-Day3/">React快速學習自我挑戰 Day3</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
+        <footer class="article-footer">
             
 
 
-在 React 中，只有最上層的元件需要從 API 或 flux 取得資料。
-用 className 來當作平常在 html 看到的 class，以跟 class based function 做區別。
-function()可以簡化為() =&gt;。
-React 處理 List 的時候，不要使用 for 迴圈，用 map 來取代。
-React 會辨識變數是否為 List 或是 Array 
-        </p>
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/07/29/docker-快速學習自我挑戰-Day5/" data-id="cj5prou2e004djn0aehe12nj5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/03/06/React快速學習自我挑戰-Day2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/react/reactday2.png)" alt="React快速學習自我挑戰 Day2" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/06/React快速學習自我挑戰-Day2/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-03-06T02:13:59.000Z" itemprop="datePublished">2017-03-06</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/06/React快速學習自我挑戰-Day2/">React快速學習自我挑戰 Day2</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-從 node modules 呼叫 react：import React from 'react';。
-從 node modules 呼叫 react-dom：import ReactDOM from 'react-dom';。
-React Render 要用元件方式包裝：&lt;App /&gt;。
-指定 Render 的地方：document.querySelector('.contai
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/03/05/React快速學習自我挑戰-Day1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/react/react.png)" alt="React快速學習自我挑戰 Day1" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/05/React快速學習自我挑戰-Day1/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-03-05T13:00:59.000Z" itemprop="datePublished">2017-03-05</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/05/React快速學習自我挑戰-Day1/">React快速學習自我挑戰 Day1</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-Reactjs 和 Redux 有 Library 可以使用。
-瀏覽器尚未支援 ES6。
-完成的檔案用 webpack + babel 來 transpile 變成網頁。
-
-index.html
-application.js
-style.css
-
-
-
-
-起手專案(boilerplate)：React + Youtube API
-直接在 Command line 開 atom： atom .
-
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/03/04/Wordpress-處理中文檔名上傳/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/wordpress.png)" alt="Wordpress 處理中文檔名上傳" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/04/Wordpress-處理中文檔名上傳/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2017-03-04T08:29:52.000Z" itemprop="datePublished">2017-03-04</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/04/Wordpress-處理中文檔名上傳/">Wordpress 處理中文檔名上傳</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-修改  wp-admin\includes\file.php
-找：
-
-1$filename = wp_unique_filename( $uploads[&apos;path&apos;], $file[&apos;name&apos;], $unique_filename_callback );
-在其後加上：
-1234$fileTypeNameArr =explode(&quot;.&qu
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/01/13/筆記規則-重點摘要/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/notebook.jpeg)" alt="筆記規則 重點摘要" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/01/13/筆記規則-重點摘要/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a>
-            </p>
-            <p class="date"><time datetime="2017-01-13T02:22:47.000Z" itemprop="datePublished">2017-01-13</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/01/13/筆記規則-重點摘要/">筆記規則 重點摘要</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-為每一天重要的事情，下一個大標題。
-把實際開始和結束的時間用螢光筆框起來，紀錄行程是否太滿。
-用一些自己專屬的記號。
-多色規則：我喜歡五色原則(加上自己的顏色)。
-
-紅色：重要事項。
-藍色：工作相關。
-黑色：日常私事、每日固定工作(包含記帳)。
-綠色：非日常私事。
-粉紅色：朝夢想前進的行動。
-
-
-專案管理的方法。
-
-設定專案目標，寫下要做的事情。
-用便利貼，為目標訂出細部的具體任務。
-用甘特
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-        
-            </div></section>
-        
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/blogs/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/php_mysql_array.jpg)" alt="PHP multiple select 寫入資料庫的方法" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-12-01T05:48:23.000Z" itemprop="datePublished">2016-12-01</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/">PHP multiple select 寫入資料庫的方法</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-填入文字的頁面需要用陣列的方式傳遞資料 name=&quot;item[]&quot;
-
-123456&lt;label for=&quot;item[]&quot; class=&quot;formTitle&quot;&gt;選擇項目&lt;/label&gt;&lt;select name=&quot;item[]&quot; class=&quot;form-control sele
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/github.jpg)" alt="Github Pushed Commit Delete (Redraw)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-11-17T06:47:14.000Z" itemprop="datePublished">2016-11-17</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/">Github Pushed Commit Delete (Redraw)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-如果 Commit 之後並 Push 到遠端，想要在本地端用 CI 去 Delete/Redraw，就可以用以下方法。
-
-如果要刪除倒數第一個 Commit，用以下方法。
-
-12git reset --hard HEAD^git push -f
-
-如果要刪除倒數二個 Commit，用以下方法。
-
-12git reset --hard HEAD^^git push -f
-
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/javascript.jpg)" alt="JavaScript用AJAX的方式獲得時間" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-11-05T15:22:31.000Z" itemprop="datePublished">2016-11-05</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/">JavaScript用AJAX的方式獲得時間</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-新增一個js的檔案，將以下程式碼複製貼上
-
-1234567891011121314151617181920212223242526272829var xmlHttp;function srvTime()&#123;try &#123;  //FF, Opera, Safari, Chrome  xmlHttp = new XMLHttpRequest();&#125;catch (err1)
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/17/In-fact-life-is-a-kind-of-strong/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/PottedPlant.jpg)" alt="In fact, life is a kind of strong" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/17/In-fact-life-is-a-kind-of-strong/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
 
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/英文寫作/">英文寫作</a>
-            </p>
-            <p class="date"><time datetime="2016-09-17T05:45:46.000Z" itemprop="datePublished">2016-09-17</time></p>
-        </div>
-        
+    <section id="comments">
     
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/17/In-fact-life-is-a-kind-of-strong/">In fact, life is a kind of strong</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-  Because of the rainy days, I didn’t go to visit the potted plants on the balcony for several days. Today, I went out to look and I feel surprised. One of them had been in critical conditions and l
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/11/在hexo使用emoji/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/emoji.png)" alt="在hexo使用emoji" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/11/在hexo使用emoji/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/07/29/docker-快速學習自我挑戰-Day5/" data-num-posts="5"></div>
 
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-09-11T02:15:30.000Z" itemprop="datePublished">2016-09-11</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/11/在hexo使用emoji/">在hexo使用emoji</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
 
-修改渲染器
-123cd /workspace/blogs/   //跳轉到hexo的目錄npm un hexo-renderer-marked --savenpm i hexo-renderer-markdown-it --save
-下載markdown-it-emoji插件：
-1npm install markdown-it-emoji --save
-編輯Hexo的最上層的配置文件_conf
-        </p>
-    </div>
-</article>
     
-
-
-    </div></section>
-
-
-    <nav id="page-nav">
-        <span class="pages">第 5 頁，共 6 頁</span>
-        <a class="extend prev" rel="prev" href="/blogs/archives/page/4/">&laquo;</a><a class="page-number" href="/blogs/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blogs/archives/page/3/">3</a><a class="page-number" href="/blogs/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/blogs/archives/page/6/">6</a><a class="extend next" rel="next" href="/blogs/archives/page/6/">&raquo;</a>
-    </nav>
+    </section>
 
 
                         </div>
@@ -786,6 +428,19 @@ style.css
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/07/28/docker-快速學習自我挑戰-Day4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">docker 快速學習自我挑戰 Day4</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
