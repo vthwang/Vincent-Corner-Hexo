@@ -3,32 +3,44 @@
 <head>
     <meta charset="utf-8">
     
-    <title>React快速學習自我挑戰 Day9 | Vincent&#39;s Corner</title>
+    <title>docker 快速學習自我挑戰 Day6 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="React" />
+        <meta name="keywords" content="Docker" />
     
-    <meta name="description" content="React Sparkline(畫圖工具)。
-class based component：有變數傳遞。 function based component：無變數傳遞。
-action type 用 const 定義，這樣才能在 action 和 reducer 裡面指定 action type。
-在本專案中用的 middleware 就是 redux promise，我們用 redux pro">
+    <meta name="description" content="Docker 服務和 Swarm 的威力： Build-In Orchestration
+Swarm 模式：Build-In Orchestration
+到處都有 container = 新問題
+
+我們如何自動化 container 生命週期？
+我們如何簡單的 scale out/in/up/down？
+我們如何確保我們的 container 在失敗的情況下會自動重建？
+我們如何取代 cont">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React快速學習自我挑戰 Day9">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/03/14/React快速學習自我挑戰-Day9/index.html">
+<meta property="og:title" content="docker 快速學習自我挑戰 Day6">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/07/30/docker-快速學習自我挑戰-Day6/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="React Sparkline(畫圖工具)。
-class based component：有變數傳遞。 function based component：無變數傳遞。
-action type 用 const 定義，這樣才能在 action 和 reducer 裡面指定 action type。
-在本專案中用的 middleware 就是 redux promise，我們用 redux pro">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/react/reactday9.jpg">
-<meta property="og:updated_time" content="2017-06-14T03:28:19.000Z">
+<meta property="og:description" content="Docker 服務和 Swarm 的威力： Build-In Orchestration
+Swarm 模式：Build-In Orchestration
+到處都有 container = 新問題
+
+我們如何自動化 container 生命週期？
+我們如何簡單的 scale out/in/up/down？
+我們如何確保我們的 container 在失敗的情況下會自動重建？
+我們如何取代 cont">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday6.png">
+<meta property="og:updated_time" content="2017-07-30T10:36:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React快速學習自我挑戰 Day9">
-<meta name="twitter:description" content="React Sparkline(畫圖工具)。
-class based component：有變數傳遞。 function based component：無變數傳遞。
-action type 用 const 定義，這樣才能在 action 和 reducer 裡面指定 action type。
-在本專案中用的 middleware 就是 redux promise，我們用 redux pro">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/react/reactday9.jpg">
+<meta name="twitter:title" content="docker 快速學習自我挑戰 Day6">
+<meta name="twitter:description" content="Docker 服務和 Swarm 的威力： Build-In Orchestration
+Swarm 模式：Build-In Orchestration
+到處都有 container = 新問題
+
+我們如何自動化 container 生命週期？
+我們如何簡單的 scale out/in/up/down？
+我們如何確保我們的 container 在失敗的情況下會自動重建？
+我們如何取代 cont">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday6.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -155,14 +167,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-React快速學習自我挑戰-Day9" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-docker-快速學習自我挑戰-Day6" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        React快速學習自我挑戰 Day9
+        docker 快速學習自我挑戰 Day6
         </h1>
     
 
@@ -170,25 +182,172 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/03/14/React快速學習自我挑戰-Day9/" class="article-date">
-    <time datetime="2017-03-14T12:17:57.000Z" itemprop="datePublished">2017-03-14</time>
+                <a href="/blogs/2017/07/30/docker-快速學習自我挑戰-Day6/" class="article-date">
+    <time datetime="2017-07-29T20:50:58.000Z" itemprop="datePublished">2017-07-30</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/React/">React</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Docker/">Docker</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/learning/react/reactday9.jpg">
+            <img src="/blogs/images/learning/docker/dockerday6.png">
 <hr>
+<h3>Docker 服務和 Swarm 的威力： Build-In Orchestration</h3>
+<h4>Swarm 模式：Build-In Orchestration</h4>
+<h5>到處都有 container = 新問題</h5>
 <ol>
-<li><a href="https://github.com/borisyankov/react-sparklines" target="_blank" rel="external">React Sparkline(畫圖工具)</a>。</li>
-<li>class based component：有變數傳遞。 function based component：無變數傳遞。</li>
-<li>action type 用 const 定義，這樣才能在 action 和 reducer 裡面指定 action type。</li>
-<li>在本專案中用的 middleware 就是 redux promise，我們用 redux promise 來處理收到的 promise，然後使用 axios 來產生 AJAX request，這個 middleware 會自動偵測我們提供的 promise 的 payload，middleware 會停止 action 並等到問題解決、promise 才會解決，middleware 就會從 request 把回傳的 data 拿來塞在 payload 這個 property，然後把 action 送到本專案的所有 reducer 中。</li>
-<li>雖然 Ajax request 本質上涉及非同步式語言，但我們完全不需要思考到非同步語言的部分。我們只要寫創造 action、然後流向 reducer，我們並不需要擔心任何 promise 或是 callback。</li>
-<li>我們從不做 state.weather.push 這樣的動作，不要直接修改 state，取而代之的是，我們 return 一個新物件來代替已經存在的 state。</li>
+<li>我們如何自動化 container 生命週期？</li>
+<li>我們如何簡單的 scale out/in/up/down？</li>
+<li>我們如何確保我們的 container 在失敗的情況下會自動重建？</li>
+<li>我們如何取代 container 且沒有任何停機時間(藍色/綠色部署)？</li>
+<li>我們如何控制/追蹤哪裡的 container 啟動了？</li>
+<li>我們如何創建 cross-node 虛擬網路？</li>
+<li>我們如何確保只有受信任的伺服器可以運行我們的 container？</li>
+<li>我們如何儲存 secrets、keys、passwords 且將它們放到正確的 container (或是只有那個 container)？</li>
+</ol>
+<h5>Swarm 模式：Build-In Orchestration</h5>
+<ol>
+<li>Swarm 模式是建立在 Docker 裡面的叢集解決方案</li>
+<li>跟早於 1.12 版本的 Swarm “classic” 沒有關係</li>
+<li>被 SwarmKit toolkit 新增到 1.12 (2016 年夏天)</li>
+<li>被 Stacks and Secrets 做改善後新增到 1.13 (2017 年 1 月)</li>
+<li>預設並沒有被啟動，一旦啟動會有以下新指令
+<ul>
+<li>docker swarm</li>
+<li>docker node</li>
+<li>docker service</li>
+<li>docker stack</li>
+<li>docker secret</li>
+</ul>
+</li>
+<li>Manager Node
+<ul>
+<li>API：從客戶端接受指令並創建服務 object</li>
+<li>Orchestrator：協調服務 object 和創建任務間的 loop</li>
+<li>Allocator：分配 IP 給任務</li>
+<li>Scheduler：分配 node 給任務</li>
+<li>Dispatcher：在 Worker Node 報到</li>
+</ul>
+</li>
+<li>Worker Node
+<ul>
+<li>Worker：連接 dispatcher 來檢查被分配的任務</li>
+<li>Executor：執行被分派到 Worker Node 的任務</li>
+</ul>
+</li>
+</ol>
+<h4>創建第一個服務且在本地端擴展它</h4>
+<ol>
+<li><code>docker info</code> 可以檢查 swarm 是否開啟</li>
+<li><code>docker swarm init --advertise-addr &lt;ip&gt;</code> 啟用 swarm</li>
+<li>docker swarm init：剛剛發生什麼事情了？
+<ul>
+<li>眾多 PKI 和安全自動化
+<ul>
+<li>用於 swarm 的 Root 登入認證被建立</li>
+<li>用於第一次的 Manager Node 認證被發佈</li>
+<li>Join tokens 被創建</li>
+</ul>
+</li>
+<li>Raft 資料庫被建立，並被用來儲存 root CA、config 和 secrets
+<ul>
+<li>在硬碟上預設被加密 (1.13+)</li>
+<li>不需要為了額外的 key/value 系統來保有 orchestration/secrets</li>
+<li>使用 mutual TLS 的 Managers 中的 Replicates logs 在「控制面板」中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>docker service create alpine ping 8.8.8.8</code></li>
+<li><code>docker service update eloquent_ride --replicas 3</code> 升級 replicas</li>
+<li><code>docker container rm -f &lt;container name&gt;</code> 刪除其中一個 container，他也會自動再產生，可以用 <code>docker service ps &lt;service name&gt;</code> 檢查紀錄</li>
+</ol>
+<h4>創建一個 3-Node Swarm 叢集</h4>
+<h5>創建一個 3-Node Swarm：Host 選項</h5>
+<ol>
+<li><a href="http://play-with-docker.com" target="_blank" rel="external">play-with-docker.com</a>
+<ul>
+<li>只需要瀏覽器，但是在四小時後會重置</li>
+</ul>
+</li>
+<li>Docker-machine + VirtualBox
+<ul>
+<li>本地端可以免費執行和運作，但是需要一台大於 8GB 記憶體的機器</li>
+</ul>
+</li>
+<li>Digital Ocean + Docker install
+<ul>
+<li>大部分很像產品化的設置，但是在學習時要花費 $5-10/node/mouth</li>
+</ul>
+</li>
+<li>註冊自己的
+<ul>
+<li>docker-machine 可以用在 Amazon、Azure、DO、Google…等等的配置機器</li>
+<li>使用 <a href="http://get.docker.com" target="_blank" rel="external">get.docker.com</a> 到處安裝 docker</li>
+</ul>
+</li>
+</ol>
+<h5>開始建立</h5>
+<ol>
+<li><a href="https://github.com/docker/machine/releases/" target="_blank" rel="external">安裝 Docker-machine</a></li>
+<li><a href="https://get.docker.com/" target="_blank" rel="external">下載指令稿</a></li>
+<li><code>docker swarm init --advertise-addr &lt;ip&gt;</code> 啟動 swarm</li>
+<li>啟動後會產生 join 的指令，把指令貼在其他兩台上面</li>
+<li><code>docker swarm join-token manager</code> 取得 manager 的 token</li>
+</ol>
+<h4>使用 Overlay Network 進行擴展</h4>
+<ol>
+<li>當創建網路的時候就選擇 <code>--driver overlay</code></li>
+<li>為了在單一 Swarm 裡面的 container-to-container traffic</li>
+<li>在網路建立的時候，選擇性使用的 IPSec (AES) 加密法</li>
+<li><code>docker network create --driver overlay mydrupal</code> 建立一個新網路</li>
+<li><code>docker service create --name psql --network mydrupal -e POSTGRES_PASSWORD=mypass postgres</code></li>
+<li><code>docker service create --name drupal --network mydrupal -p 80:80 drupal</code></li>
+<li>在瀏覽器隨便輸入其中一個 node 的 ip 都可以執行</li>
+</ol>
+<h4>使用 Routing Mesh 進行擴展</h4>
+<ol>
+<li>為了將服務分配到適當的任務的 Routes ingress(incoming) 封包</li>
+<li>在 Swarm 裡面 span 所有 nodes</li>
+<li>使用 Linux 核心裡面的 IPVS</li>
+<li>在任務間做 Swarm Services 的負載平衡</li>
+<li>兩個方法讓這樣的模式可以執行：
+<ul>
+<li>在 Overlay network 裡面運行 container-to-container (使用 VIP)</li>
+<li>外部 traffic 進入到 published ports (所有的 nodes listen)</li>
+</ul>
+</li>
+<li><code>docker service create --name search --replicas 3 -p 9200:9200 elasticsearch:2</code></li>
+<li><code>curl localhost:9200</code> 檢查狀態</li>
+<li>這是無狀態的負載平衡</li>
+<li>這個負載平衡(LB)位在 OSI 第三層 (TCP)，不是第四層 (DNS)</li>
+<li>以上兩種限制都可以透過以下來克服：
+<ul>
+<li>Nginx 或 HAProxy LB proxy</li>
+<li>Docker Enterprise Edition，它內建 L4 web proxy</li>
+</ul>
+</li>
+</ol>
+<h4>作業：建立一個 Multi-Service Multi-Node Web App</h4>
+<ol>
+<li>使用 Docker 分散式投票 App</li>
+<li>使用課程倉庫裡面的 <a href="https://github.com/BretFisher/udemy-docker-mastery/tree/master/swarm-app-1" target="_blank" rel="external"><strong>swarm-app-1</strong></a> 目錄來完成需求</li>
+<li>需要 1 volumes, 2 networks, 5 services</li>
+<li>建立需要的 commands，讓服務跑起來並測試 App</li>
+<li>所有的東西都使用 Docker Hub images，所以在 Swarm 上面不需要任何 data</li>
+<li>像很多電腦的東西，這是一半藝術一半科學</li>
+</ol>
+<h4>答案：建立一個 Multi-Service Multi-Node Web App</h4>
+<ol>
+<li><code>docker network create -d overlay backend</code></li>
+<li><code>docker network create -d overlay frontend</code></li>
+<li>Vote App：<code>docker service create --name vote -p 80:80 --network frontend --replicas 2 dockersamples/examplevotingapp_vote:before</code></li>
+<li>Redis：<code>docker service create --name redis --network frontend redis:3.2</code></li>
+<li>Worker：<code>docker service create --name worker --network frontend --network backend dockersamples/examplevotingapp_worker</code></li>
+<li>Postgres：<code>docker service create --name db --network backend --mount type=volume,source=db-data,target=/var/lib/postgresql/data postgres:9.4</code></li>
+<li>Result：<code>docker service create --name result --network backend -p 5001:80 dockersamples/examplevotingapp_result:before</code></li>
 </ol>
 
         </div>
@@ -197,7 +356,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/03/14/React快速學習自我挑戰-Day9/" data-id="cj5qld1ha003tru0as5xmhhw5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/07/30/docker-快速學習自我挑戰-Day6/" data-id="cj5qld1hr0049ru0aram98x8v" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -264,7 +423,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/03/14/React快速學習自我挑戰-Day9/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/07/30/docker-快速學習自我挑戰-Day6/" data-num-posts="5"></div>
 
 
     
@@ -325,20 +484,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/03/22/React快速學習自我挑戰-Day10/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            React快速學習自我挑戰 Day10
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/03/13/React快速學習自我挑戰-Day8/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/07/29/docker-快速學習自我挑戰-Day5/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">React快速學習自我挑戰 Day8</p>
+        <p class="article-nav-title">docker 快速學習自我挑戰 Day5</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
