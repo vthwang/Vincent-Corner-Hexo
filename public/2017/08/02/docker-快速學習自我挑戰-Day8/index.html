@@ -3,18 +3,41 @@
 <head>
     <meta charset="utf-8">
     
-    <title>彙整： | Vincent&#39;s Corner</title>
+    <title>docker 快速學習自我挑戰 Day8 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Who knows what fantastic things around Vincent&apos;s corner?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vincent's Corner">
-<meta property="og:url" content="https://tingsyuanwang.github.io/archives/page/5/index.html">
+        <meta name="keywords" content="Docker" />
+    
+    <meta name="description" content="Container Registry：Image Storage and Distribution
+Docker Hub：探尋的更深入
+Container Registries
+
+你的 Container plan 需要有 Image Registry 成為 plan 的一部分
+更多 Docker Hub 的細節，包含 auto-build
+Docker Store 是怎麼樣跟 Hub 不一樣">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker 快速學習自我挑戰 Day8">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/08/02/docker-快速學習自我挑戰-Day8/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta property="og:description" content="Container Registry：Image Storage and Distribution
+Docker Hub：探尋的更深入
+Container Registries
+
+你的 Container plan 需要有 Image Registry 成為 plan 的一部分
+更多 Docker Hub 的細節，包含 auto-build
+Docker Store 是怎麼樣跟 Hub 不一樣">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday8.png">
+<meta property="og:updated_time" content="2017-08-02T20:36:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vincent's Corner">
-<meta name="twitter:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta name="twitter:title" content="docker 快速學習自我挑戰 Day8">
+<meta name="twitter:description" content="Container Registry：Image Storage and Distribution
+Docker Hub：探尋的更深入
+Container Registries
+
+你的 Container plan 需要有 Image Registry 成為 plan 的一部分
+更多 Docker Hub 的細節，包含 auto-build
+Docker Store 是怎麼樣跟 Hub 不一樣">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/docker/dockerday8.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -136,610 +159,251 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>彙整：
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
+                            <article id="post-docker-快速學習自我挑戰-Day8" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        docker 快速學習自我挑戰 Day8
+        </h1>
+    
 
-    
-    
+            </header>
         
         
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/blogs/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
+            <div class="article-subtitle">
+                <a href="/blogs/2017/08/02/docker-快速學習自我挑戰-Day8/" class="article-date">
+    <time datetime="2017-08-02T05:54:52.000Z" itemprop="datePublished">2017-08-02</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Docker/">Docker</a></li></ul>
+
             </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/blogs/2017/03/10/React快速學習自我挑戰-Day6/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/react/reactday6.png)" alt="React快速學習自我挑戰 Day6" class="thumbnail-image"></span>
-    
-    
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/10/React快速學習自我挑戰-Day6/">0</span> 則評論
-    
-</span>
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/docker/dockerday8.png">
+<hr>
+<h3>Container Registry：Image Storage and Distribution</h3>
+<h4>Docker Hub：探尋的更深入</h4>
+<h5>Container Registries</h5>
+<ol>
+<li>你的 Container plan 需要有 Image Registry 成為 plan 的一部分</li>
+<li>更多 Docker Hub 的細節，包含 auto-build</li>
+<li>Docker Store 是怎麼樣跟 Hub 不一樣</li>
+<li>Docker Cloud 是怎麼樣跟 Hub 不一樣</li>
+<li>使用 Cloud 的新 Swarm 功能來讓 Mac/Win 跟 Swarm 連線</li>
+<li>安裝和使用 Docker Registry，且當作 private image store</li>
+<li>第三方 registry 套件選項</li>
+</ol>
+<h5>Docker Hub：探尋的更深入</h5>
+<ol>
+<li>最有名的 public image registry</li>
+<li>它是真的 Docker Registry 而且最輕量的 image building</li>
+<li>讓我們探索更多 Docker Hub 的功能</li>
+<li>連結 GitHub/BitBucket 到 Hub 而且自動建立 images commit</li>
+<li>將 image building 串連在一起</li>
+</ol>
+<h4>Docker Store：它可以做什麼？</h4>
+<ol>
+<li>下載 Docker “Editions”</li>
+<li>找到認證過的 Docker/Swarm 外掛和商業認證的 images</li>
+</ol>
+<h4>Docker Cloud：CI/CD 和 Server Ops</h4>
+<ol>
+<li>Web based Docker Swarm 創建/管理</li>
+<li>使用有名的雲端主機商和自建式伺服器</li>
+<li>自動化的 image building、測試和部署</li>
+<li>跟 Docker Hub 免費的東西相比更進階</li>
+<li>包含 image 安全掃描服務</li>
+</ol>
+<h4>使用 Docker Cloud 來做簡單的遠端 Swarm 管理</h4>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=VJmbCioYKGg" target="_blank" rel="external">觀看此影片</a></li>
+</ol>
+<h4>了解 Docker Registry</h4>
+<ol>
+<li>一個提供給你的網路的私有 image registry</li>
+<li>Docker/Distribution Github Repo 的一部分</li>
+<li>事實上在私有的 container registry</li>
+<li>不像完整功能的 Hub 或其它東西，它沒有完整的網頁介面，只有基本的認證</li>
+<li>在核心的部分：一個網頁的 API 和儲存系統，用 Go 語言撰寫</li>
+<li>儲存系統支援 local、S3/Azure/Alibaba/Google 雲，還有 OpenStack Swift</li>
+<li>查看以下資源：
+<ul>
+<li><a href="https://docs.docker.com/registry/configuration/" target="_blank" rel="external">使用 TLS 加密你的 Registry</a></li>
+<li><a href="https://docs.docker.com/registry/garbage-collection/" target="_blank" rel="external">透過 Garbage Collection 來進行儲存清理</a></li>
+<li><a href="https://docs.docker.com/registry/recipes/mirror/" target="_blank" rel="external">透過 “–registry-mirror” 開啟 Hub caching</a></li>
+</ul>
+</li>
+</ol>
+<h4>運行一個私有的 Docker Registry</h4>
+<ol>
+<li>運行 registry image 在預設 port 5000</li>
+<li>Re-tag 已存在的 image，且推送它到你的新 registry</li>
+<li>從本地端 cache 移除 image，且從新的 registry pull 下來</li>
+<li>使用 bind mount 來 Re-create registry，且觀察它如何儲存資料</li>
+</ol>
+<h5>Registry 和適合的 TLS</h5>
+<ol>
+<li>「預設加密」：Docker 不會用沒有 HTTPS 的方式跟 registry 溝通，除了 localhost (127.0.0.0/8)</li>
+<li>對於遠端自行登入的 TLS，要再引擎啟動 「insecure-registry」</li>
+<li>運行私有 registry image
+<ul>
+<li><code>docker container run -d -p 5000:5000 --name registry registry</code></li>
+</ul>
+</li>
+<li><code>docker pull hello-world</code> 下載很輕量的 image 來測試</li>
+<li>Re-tag 已存在的 image，且推送它到你的新 registry
+<ul>
+<li><code>docker tag hello-world 127.0.0.1:5000/hello-world</code></li>
+<li><code>docker push 127.0.0.1:5000/hello-world</code></li>
+</ul>
+</li>
+<li>從本地端 cache 移除 image，且從新的 registry pull 下來
+<ul>
+<li><code>docker image remove hello-world</code></li>
+<li><code>docker image remove 127.0.0.1:5000/hello-world</code></li>
+<li><code>docker pull 127.0.0.1:5000/hello-world</code></li>
+</ul>
+</li>
+<li><code>docker container kill registry</code></li>
+<li><code>docker container rm registry</code></li>
+<li>使用 bind mount 來 Re-create registry，且觀察它如何儲存資料
+<ul>
+<li><code>docker container run -d -p 5000:5000 --name registry -v $(pwd)/registry-data:/var/lib/registry registry</code></li>
+<li><code>docker push 127.0.0.1:5000/hello-world</code></li>
+<li><code>tree registry-data</code></li>
+</ul>
+</li>
+</ol>
+<h4>安裝 Docker 自動完成</h4>
+<ol>
+<li><a href="https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/docker" target="_blank" rel="external">Oh-my-zsh</a></li>
+<li><a href="https://github.com/felixr/docker-zsh-completion" target="_blank" rel="external">docker-zsh-completion</a></li>
+</ol>
+<h4>作業：使用 TLS 和認證加密 Docker Registry</h4>
+<ol>
+<li>透過創建給 HTTPS 的 self-signed 認證和啟動 <strong>htpasswd</strong> 認證可以學習到基礎</li>
+<li>會使用 Play With Docker 來完成這個作業</li>
+<li>建議使用 <a href="http://training.play-with-docker.com/linux-registry-part2/" target="_blank" rel="external">Part 2 and 3 of &quot;Docker Registry for Linux</a> 來完成作業，或是跳回 <a href="http://training.play-with-docker.com/linux-registry-part1/" target="_blank" rel="external">Part 1</a> 且在他們的 infrastructure 上運行 container，使用他們的實際 Docker Engine 的 web-based 介面學習 <strong>PWD</strong> 怎麼運作的</li>
+<li>更多實驗請參考：<a href="http://training.play-with-docker.com/" target="_blank" rel="external">點此</a></li>
+</ol>
+<h4>跟 Swarm 一起使用 Registry</h4>
+<ol>
+<li>跟 localhost 用一樣的方式</li>
+<li>由於 Routing Mesh，所有的節點可以在 127.0.0.1:5000 被看到</li>
+<li>記得決定如何儲存 image (volume driver)</li>
+<li>筆記：所有的 nodes 都要可以存取 images</li>
+<li>專業的技巧：如果可以的話，使用 hosted SaaS registry</li>
+</ol>
+<h5>使用 <a href="http://play-with-docker.com" target="_blank" rel="external">play-with-docker.com</a></h5>
+<ol>
+<li><code>docker service create --name registry --publish 5000:5000 registry</code></li>
+<li>在 5000 port 的 console 後面加上 v2/_catalog 可以看到 json 格式的紀錄</li>
+<li><code>docker pull hello-world</code></li>
+<li><code>docker tag hello-world 127.0.0.1:5000/hello-world</code></li>
+<li><code>docker push 127.0.0.1:5000/hello-world</code></li>
+<li>在 5000 port 的 console 後面加上 v2/_catalog 可以看到 <code>{&quot;repositories&quot;:[&quot;hello-world&quot;]}</code></li>
+<li><code>docker pull nginx</code></li>
+<li><code>docker tag nginx 127.0.0.1:5000/nginx</code></li>
+<li><code>docker push 127.0.0.1:5000/nginx</code></li>
+<li><code>docker service create --name nginx -p 80:80 --replicas 5 --detach=false 127.0.0.1:5000/nginx</code></li>
+<li><code>docker service ps nginx</code> 就可以看到它使用的是本機端的 image <strong>(127.0.0.1:5000/nginx:latest)</strong></li>
+</ol>
+<h4>Docker 的第三方套件</h4>
+<ol>
+<li>最流行的是：<a href="https://quay.io/" target="_blank" rel="external">Quay.io</a></li>
+<li>如果使用 <a href="https://www.docker.com/enterprise-edition#/container_management" target="_blank" rel="external">AWS</a>、<a href="https://azure.microsoft.com/en-us/services/container-registry/" target="_blank" rel="external">Azure</a>、<a href="https://cloud.google.com/container-registry/" target="_blank" rel="external">Google Cloud</a>，他們都有自己專屬的 registry</li>
+<li>如果是自建式主機，<a href="https://www.docker.com/enterprise-edition#/container_management" target="_blank" rel="external">Docker EE</a>、<a href="https://quay.io/plans/?tab=enterprise" target="_blank" rel="external">Quay Enterprise</a>、<a href="https://about.gitlab.com/2016/05/23/gitlab-container-registry/" target="_blank" rel="external">GitLab</a></li>
+<li>更多詳細的 <a href="https://github.com/veggiemonk/awesome-docker#hosting-images-registries" target="_blank" rel="external">registry 清單</a></li>
+</ol>
 
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-03-10T05:02:52.000Z" itemprop="datePublished">2017-03-10</time></p>
         </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/10/React快速學習自我挑戰-Day6/">React快速學習自我挑戰 Day6</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
+        <footer class="article-footer">
             
 
 
-當知道 action creactor 將要呼叫(但不知道什麼時候)，當被呼叫的時候，我想要確定 flow 的結果能夠經過 dispatch function，然後這個 dispatch function 會像是漏斗般的接收這些 actions，最後再把 actions 分別送回不同的 reducers。
-action 通常有兩種值：type 和 payload。
-不管 action 有沒有
-        </p>
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/02/docker-快速學習自我挑戰-Day8/" data-id="cj5vh37jc004dpn0arx7ujnz2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/03/09/React快速學習自我挑戰-Day5/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/react/reactday5.jpg)" alt="React快速學習自我挑戰 Day5" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/09/React快速學習自我挑戰-Day5/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-03-09T03:01:39.000Z" itemprop="datePublished">2017-03-09</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/09/React快速學習自我挑戰-Day5/">React快速學習自我挑戰 Day5</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-Reducer 是一個 function 用來 return piece of the application state。
-Reducer 產出 state 的值。
-在檔名的命名中，應該在前面加前綴，例如：reducer_books.js。(不是一定要，作者提供的方法)
-Container 是 react component，對 Redux 所管理的 state 有直接的連結。
-有一個 L
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/03/08/React快速學習自我挑戰-Day4/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/react/reactday4.jpg)" alt="React快速學習自我挑戰 Day4" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/08/React快速學習自我挑戰-Day4/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-03-08T14:10:00.000Z" itemprop="datePublished">2017-03-08</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/08/React快速學習自我挑戰-Day4/">React快速學習自我挑戰 Day4</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-Redux 參考資料。
-學習完 Redux 之後，還要學 webpack、Redux Router、Redux Promise、Redux Thunk、Hot Reloading。
-Redux 是一個針對 JS application 的可預測 state container。
-Redux 處理 data 的部分，React 處理 View 的部分。
-React 和其他框架不同的地方就是將所
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/03/07/React快速學習自我挑戰-Day3/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/react/reactday3.png)" alt="React快速學習自我挑戰 Day3" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/07/React快速學習自我挑戰-Day3/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-03-07T14:13:59.000Z" itemprop="datePublished">2017-03-07</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/07/React快速學習自我挑戰-Day3/">React快速學習自我挑戰 Day3</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-在 React 中，只有最上層的元件需要從 API 或 flux 取得資料。
-用 className 來當作平常在 html 看到的 class，以跟 class based function 做區別。
-function()可以簡化為() =&gt;。
-React 處理 List 的時候，不要使用 for 迴圈，用 map 來取代。
-React 會辨識變數是否為 List 或是 Array 
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/03/06/React快速學習自我挑戰-Day2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/react/reactday2.png)" alt="React快速學習自我挑戰 Day2" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/06/React快速學習自我挑戰-Day2/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-03-06T02:13:59.000Z" itemprop="datePublished">2017-03-06</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/06/React快速學習自我挑戰-Day2/">React快速學習自我挑戰 Day2</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-從 node modules 呼叫 react：import React from 'react';。
-從 node modules 呼叫 react-dom：import ReactDOM from 'react-dom';。
-React Render 要用元件方式包裝：&lt;App /&gt;。
-指定 Render 的地方：document.querySelector('.contai
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/03/05/React快速學習自我挑戰-Day1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/learning/react/react.png)" alt="React快速學習自我挑戰 Day1" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/05/React快速學習自我挑戰-Day1/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-03-05T13:00:59.000Z" itemprop="datePublished">2017-03-05</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/05/React快速學習自我挑戰-Day1/">React快速學習自我挑戰 Day1</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
 
-
-Reactjs 和 Redux 有 Library 可以使用。
-瀏覽器尚未支援 ES6。
-完成的檔案用 webpack + babel 來 transpile 變成網頁。
-
-index.html
-application.js
-style.css
-
-
-
-
-起手專案(boilerplate)：React + Youtube API
-直接在 Command line 開 atom： atom .
-
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/03/04/Wordpress-處理中文檔名上傳/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/wordpress.png)" alt="Wordpress 處理中文檔名上傳" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/03/04/Wordpress-處理中文檔名上傳/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2017-03-04T08:29:52.000Z" itemprop="datePublished">2017-03-04</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/03/04/Wordpress-處理中文檔名上傳/">Wordpress 處理中文檔名上傳</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-修改  wp-admin\includes\file.php
-找：
-
-1$filename = wp_unique_filename( $uploads[&apos;path&apos;], $file[&apos;name&apos;], $unique_filename_callback );
-在其後加上：
-1234$fileTypeNameArr =explode(&quot;.&qu
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2017/01/13/筆記規則-重點摘要/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/notebook.jpeg)" alt="筆記規則 重點摘要" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2017/01/13/筆記規則-重點摘要/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a>
-            </p>
-            <p class="date"><time datetime="2017-01-13T02:22:47.000Z" itemprop="datePublished">2017-01-13</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2017/01/13/筆記規則-重點摘要/">筆記規則 重點摘要</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-為每一天重要的事情，下一個大標題。
-把實際開始和結束的時間用螢光筆框起來，紀錄行程是否太滿。
-用一些自己專屬的記號。
-多色規則：我喜歡五色原則(加上自己的顏色)。
-
-紅色：重要事項。
-藍色：工作相關。
-黑色：日常私事、每日固定工作(包含記帳)。
-綠色：非日常私事。
-粉紅色：朝夢想前進的行動。
-
-
-專案管理的方法。
-
-設定專案目標，寫下要做的事情。
-用便利貼，為目標訂出細部的具體任務。
-用甘特
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-        
-            </div></section>
-        
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/blogs/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/php_mysql_array.jpg)" alt="PHP multiple select 寫入資料庫的方法" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-12-01T05:48:23.000Z" itemprop="datePublished">2016-12-01</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/">PHP multiple select 寫入資料庫的方法</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-填入文字的頁面需要用陣列的方式傳遞資料 name=&quot;item[]&quot;
-
-123456&lt;label for=&quot;item[]&quot; class=&quot;formTitle&quot;&gt;選擇項目&lt;/label&gt;&lt;select name=&quot;item[]&quot; class=&quot;form-control sele
-        </p>
-    </div>
-</article>
+    <section id="comments">
     
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/08/02/docker-快速學習自我挑戰-Day8/" data-num-posts="5"></div>
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/github.jpg)" alt="Github Pushed Commit Delete (Redraw)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
 
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-11-17T06:47:14.000Z" itemprop="datePublished">2016-11-17</time></p>
-        </div>
-        
     
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/">Github Pushed Commit Delete (Redraw)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-如果 Commit 之後並 Push 到遠端，想要在本地端用 CI 去 Delete/Redraw，就可以用以下方法。
-
-如果要刪除倒數第一個 Commit，用以下方法。
-
-12git reset --hard HEAD^git push -f
-
-如果要刪除倒數二個 Commit，用以下方法。
-
-12git reset --hard HEAD^^git push -f
-
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
-
-
-    <nav id="page-nav">
-        <span class="pages">第 5 頁，共 6 頁</span>
-        <a class="extend prev" rel="prev" href="/blogs/archives/page/4/">&laquo;</a><a class="page-number" href="/blogs/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blogs/archives/page/3/">3</a><a class="page-number" href="/blogs/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/blogs/archives/page/6/">6</a><a class="extend next" rel="next" href="/blogs/archives/page/6/">&raquo;</a>
-    </nav>
+    </section>
 
 
                         </div>
@@ -792,6 +456,19 @@ style.css
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/08/01/docker-快速學習自我挑戰-Day7/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">docker 快速學習自我挑戰 Day7</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
