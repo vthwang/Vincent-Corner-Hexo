@@ -102,3 +102,20 @@ tags: Docker
 2. 如果使用 [AWS](https://www.docker.com/enterprise-edition#/container_management)、[Azure](https://azure.microsoft.com/en-us/services/container-registry/)、[Google Cloud](https://cloud.google.com/container-registry/)，他們都有自己專屬的 registry
 3. 如果是自建式主機，[Docker EE](https://www.docker.com/enterprise-edition#/container_management)、[Quay Enterprise](https://quay.io/plans/?tab=enterprise)、[GitLab](https://about.gitlab.com/2016/05/23/gitlab-container-registry/)
 4. 更多詳細的 [registry 清單](https://github.com/veggiemonk/awesome-docker#hosting-images-registries)
+### 額外的課程
+1. [Journey to Docker Production: Evolving Your Infrastructure and Processes](https://www.youtube.com/watch?v=ZdUcKtg84T8)
+    - What host OS should I use?
+    - What base FROM images should I use?
+    - How should my Swarm node design look?
+    - What common issues do people have when starting a production docker project?
+    - How to limit the project from trying to change too much at once.
+    - How to speed up the project by outsourcing small pieces of solution to existing products.
+    - How Docker's Enterprise/Cloud products can help.
+2. [Everything You Thought You Already Knew About Orchestration](https://www.youtube.com/watch?v=Qsv-q8WbIZY)
+3. [Docker tip: docker system prune and df](https://www.youtube.com/watch?v=_4QzP7uwtvI)
+4. [Docker 17.06 Community Edition](https://www.youtube.com/watch?v=-NeaXUGEK_g)
+    - [更詳細的 changelog](https://github.com/docker/docker-ce/releases)
+
+***
+### 完成課程
+<img src="/blogs/images/learning/docker/Bret Fisher_Docker.jpg">
