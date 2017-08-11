@@ -29,7 +29,7 @@ Kubernetes 是一個開源的 orchestration system (編排系統)，提供給 Do
 你可以在一台機器上面跑很多 containers
 你可以運行 long running services (像是網頁應用">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/kubernetes/kubernetesday1.png">
-<meta property="og:updated_time" content="2017-08-11T18:21:00.000Z">
+<meta property="og:updated_time" content="2017-08-11T18:59:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes 快速學習自我挑戰 Day1">
 <meta name="twitter:description" content="Kubernetes 觀念簡介
@@ -356,7 +356,11 @@ ga('send', 'pageview');
 <li><code>chmod +x kops-linux-amd64</code> 新增執行權限</li>
 <li><code>mv kops-linux-amd64 /usr/local/bin/kops</code> 移動 kops</li>
 <li><code>apt-get update &amp;&amp; apt-get install python-pip -y</code></li>
-<li><code>pip install awscli</code></li>
+<li><code>pip install awscli</code>
+<ul>
+<li>MacOS 上的 bug 處理 <code>sudo -H pip install awscli --upgrade --ignore-installed six</code></li>
+</ul>
+</li>
 <li>進入 AWS，選擇服務 IAM (Identity and Access Management)，選擇左列選單 Users，選擇 Add User，命名為 kops，下面選項 Programmatic access 要打勾，下個步驟選擇 AdministratorAccess，完成設定。</li>
 <li><code>aws configure</code></li>
 <li><code>ls -ahl ~/.aws/</code> 檢視 aws credentials</li>
@@ -377,8 +381,9 @@ ga('send', 'pageview');
 <li><code>kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080</code></li>
 <li><code>kubectl expose deployment hello-minikube --type=NodePort</code></li>
 <li><code>kubectl get service</code>，檢查 port</li>
-<li>開啟 Services 的 VPC，點選 Security Groups，點選 master.&lt;自己的 domain&gt;，點選 Inbound Rules，新增 Custom TCP rule，將剛剛取得的 port 貼上、source 設定為 0.0.0.0。</li>
+<li>開啟 Services 的 VPC，點選 Security Groups，點選 master.&lt;自己的 domain&gt;，點選 Inbound Rules，新增 Custom TCP rule，將剛剛取得的 port 貼上、source 設定為 0.0.0.0/0。</li>
 <li>進去 api.kubernetes.&lt;自己的 domain&gt;：剛剛的 port，就可以看到內容了</li>
+<li>如果要刪除 instance <code>kops delete cluster --name kubernetes.appsoliloquy.com --state=s3://kops-state-b429d</code></li>
 </ol>
 
         </div>
@@ -387,7 +392,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/10/Kubernetes-快速學習自我挑戰-Day1/" data-id="cj68789bt00081l0anrk9vf90" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/10/Kubernetes-快速學習自我挑戰-Day1/" data-id="cj688oacc0008ee0axhwu9tmx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
