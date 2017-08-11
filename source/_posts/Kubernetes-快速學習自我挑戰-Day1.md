@@ -44,7 +44,7 @@ tags: Kubernetes
     - 同樣也允許你線上**建立 docker** images
 ##### Docker 的優點
 1. **獨立**：使用所有的 dependencies 來 ship binary
-    - 不需要裕行在自己的機器上，不過不能用在產品化
+    - 不需要運行在自己的機器上，不過不能用在產品化
 2. 在 Dev、QA和產品化環境更加**接近**，因為使用同樣的 binary
 3. Docker 讓開發團隊可以**更加快速**的 ship
 4. 你可以運行完全一樣的 docker image 在筆電、資料中心虛擬機和雲端主機供應商
