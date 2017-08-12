@@ -3,18 +3,50 @@
 <head>
     <meta charset="utf-8">
     
-    <title>彙整：: 2016 | Vincent&#39;s Corner</title>
+    <title>Kubernetes 快速學習自我挑戰 Day2 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Who knows what fantastic things around Vincent&apos;s corner?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vincent's Corner">
-<meta property="og:url" content="https://tingsyuanwang.github.io/archives/2016/index.html">
+        <meta name="keywords" content="Kubernetes" />
+    
+    <meta name="description" content="Kubernetes 觀念簡介
+建立 docker containers
+
+建立 container，可以使用 Docker Engine
+建立 Dockerfile 來執行就可以快速建立需要的 container
+Docker build 可以手動執行，也可以透過像是 jenkins 的 CI/CD 軟體
+
+在 Kubernetes 上面運行應用程式
+
+運行新建立的應用在新的 Kuberne">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kubernetes 快速學習自我挑戰 Day2">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/08/11/Kubernetes-快速學習自我挑戰-Day2/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta property="og:description" content="Kubernetes 觀念簡介
+建立 docker containers
+
+建立 container，可以使用 Docker Engine
+建立 Dockerfile 來執行就可以快速建立需要的 container
+Docker build 可以手動執行，也可以透過像是 jenkins 的 CI/CD 軟體
+
+在 Kubernetes 上面運行應用程式
+
+運行新建立的應用在新的 Kuberne">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/kubernetes/kubernetesday2.png">
+<meta property="og:updated_time" content="2017-08-12T20:44:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vincent's Corner">
-<meta name="twitter:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta name="twitter:title" content="Kubernetes 快速學習自我挑戰 Day2">
+<meta name="twitter:description" content="Kubernetes 觀念簡介
+建立 docker containers
+
+建立 container，可以使用 Docker Engine
+建立 Dockerfile 來執行就可以快速建立需要的 container
+Docker build 可以手動執行，也可以透過像是 jenkins 的 CI/CD 軟體
+
+在 Kubernetes 上面運行應用程式
+
+運行新建立的應用在新的 Kuberne">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/kubernetes/kubernetesday2.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -136,568 +168,324 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>彙整：: 2016
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
+                            <article id="post-Kubernetes-快速學習自我挑戰-Day2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Kubernetes 快速學習自我挑戰 Day2
+        </h1>
+    
 
-    
-    
+            </header>
         
         
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/blogs/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
+            <div class="article-subtitle">
+                <a href="/blogs/2017/08/11/Kubernetes-快速學習自我挑戰-Day2/" class="article-date">
+    <time datetime="2017-08-10T20:42:43.000Z" itemprop="datePublished">2017-08-11</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a></li></ul>
+
             </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/php_mysql_array.jpg)" alt="PHP multiple select 寫入資料庫的方法" class="thumbnail-image"></span>
-    
-    
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/">0</span> 則評論
-    
-</span>
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/kubernetes/kubernetesday2.png">
+<hr>
+<h3>Kubernetes 觀念簡介</h3>
+<h4>建立 docker containers</h4>
+<ol>
+<li>建立 container，可以使用 Docker Engine</li>
+<li>建立 Dockerfile 來執行就可以快速建立需要的 container</li>
+<li>Docker build 可以手動執行，也可以透過像是 <strong>jenkins</strong> 的 CI/CD 軟體</li>
+</ol>
+<h4>在 Kubernetes 上面運行應用程式</h4>
+<ol>
+<li>運行<strong>新建立</strong>的應用在新的 Kubernetes cluster</li>
+<li>在我們要運行基於 image 之上的 container，我們需要創建 <strong>pod definition</strong>
+<ul>
+<li><strong>一個 pod</strong> 就是一個應用運行在 Kubernetes 上面</li>
+<li>一個 pod 包含<strong>一個或多個緊密耦合的容器</strong>，如此一來可以形成一個應用
+<ul>
+<li>這些應用們可以輕易的使用本地 <strong>port number</strong> 跟其它應用溝通</li>
+</ul>
+</li>
+<li>我們的應用只包含一個 container</li>
+</ul>
+</li>
+<li>創建一個 pod
+<ul>
+<li>創建一個 pod-helloworld.yml 的檔案</li>
+<li>使用 kubectl 在 kubernetes cluster 上面創建 pod</li>
+</ul>
+</li>
+<li>有用的命令
+<ul>
+<li>kubectl get pod：取得所有在運行的 pods 的資訊</li>
+<li>kubectl describe pod <pod>：描述一個 pod</pod></li>
+<li>kubectl expose pod <pod> --port=444 --name=fronted：公開一個 pod 的 port (創建一個新服務)</pod></li>
+<li>kubectl port-forward <pod> 8080：Port 傳送公開的 pod port 到自己的本地機器</pod></li>
+<li>kubectl attach <podname> -i：連接到特定 pod</podname></li>
+<li>kubectl exec <pod> --command：執行一個命令在 pod 上面</pod></li>
+<li>kubectl label pods <pod> myloable=awesome：新增一個標籤到 pod 上面</pod></li>
+<li>kubectl run -i --tty busybox --image=busybox --restart=Never – sh：在 pod 裡面運行一個 sh - 對除錯非常有用</li>
+</ul>
+</li>
+<li>先用 <code>minikube start</code> 運行 minikube，再用 <code>kubectl create -f first-app/helloworld.yml</code> 創建 pod</li>
+<li><code>kubectl describe pod nodehelloworld.example.com</code></li>
+<li><code>kubectl port-forward nodehelloworld.example.com 8081:3000</code></li>
+<li><code>curl localhost:8081</code> 就可以看到服務運行了</li>
+<li><code>kubectl expose pod nodehelloworld.example.com --type=NodePort --name nodehelloworld-service</code></li>
+<li><code>minikube service &lt;Service Name&gt; --url</code> 即可以取得服務的 url</li>
+</ol>
+<h4>有用的 kubectl commands</h4>
+<ol>
+<li><code>kubectl attach nodehelloworld.example.com</code> 連接 <a href="http://nodehelloworld.example.com" target="_blank" rel="external">nodehelloworld.example.com</a></li>
+<li><code>kubectl exec nodehelloworld.example.com -- ls /app</code> 在應用裡面執行命令</li>
+<li><code>kubectl exec nodehelloworld.example.com -- touch /app/test.txt</code></li>
+<li><code>kubectl exec nodehelloworld.example.com -- ls /app</code></li>
+<li><code>kubectl describe service nodehelloworld-service</code></li>
+<li><code>kubectl run -i --tty busybox --image=busybox --restart=Never -- sh</code> 新增一個 box 來和 nodehellowrold-service 進行連線
+<ul>
+<li><code>telnet 172.17.0.4 3000</code></li>
+<li><code>GET /</code></li>
+</ul>
+</li>
+</ol>
+<h4>負載平衡服務</h4>
+<ol>
+<li>在真實的世界裡面，必須要可以從 cluster 的<strong>外部</strong>連線到應用</li>
+<li>在 AWS 上面，可以輕鬆的新增 <strong>外部負載平衡器(external Load Balancer)</strong></li>
+<li>這個 AWS Load Balancer 將會路由到正確的 Kubernetes pod</li>
+<li>其它雲端服務商沒有 Load Balancer，但是仍有其它解決方案
+<ul>
+<li>擁有 <strong>haproxy/nginx</strong> load balancer 在 cluster 之前</li>
+<li>或是可以直接將 ports 公開</li>
+</ul>
+</li>
+</ol>
+<h4>AWS ELB LoadBalancer 服務</h4>
+<ol>
+<li><code>kops create cluster --name=kubernetes.appsoliloquy.com --state=s3://kops-state-b429d --zones=ap-northeast-1a --node-count=2 --node-size=t2.micro --master-size=t2.micro --dns-zone=kubernetes.appsoliloquy.com</code></li>
+<li><code>kops update cluster kubernetes.appsoliloquy.com --yes --state=s3://kops-state-b429d</code></li>
+<li><code>kubectl create -f first-app/helloworld.yml</code></li>
+<li><code>kubectl create -f first-app/helloworld-service.yml</code></li>
+<li>進去 EC2 的 Load Balancer，確認資料狀態。</li>
+<li>進入 Route 53，新增 record，名稱設為 helloworld，Alias 設為 yes，Alias Target 設為 Loadbalancer，點選 create。</li>
+<li>進入 <a href="http://helloworld.kubernetes.appsoliloquy.com" target="_blank" rel="external">helloworld.kubernetes.appsoliloquy.com</a>. 就可以看到結果了</li>
+</ol>
+<h3>Kubernetes 基礎</h3>
+<h4>Node 架構</h4>
+<ol>
+<li>Docker 裡面裝有 Pods，Pods 裡面裝有 containers</li>
+<li>container 之間可以簡單地互相溝通</li>
+<li>kubelet 用來管理 pods，在 container 之外，kube-proxy 負責和 iptable 溝通，如果 pod 有問題，它會更新 iptable 的規則</li>
+</ol>
+<h4>Replication Controller</h4>
+<ol>
+<li>如果應用是 <strong>stateless</strong>，可以橫向的擴展
+<ul>
+<li>Stateless 就是應用沒有 <strong>state</strong>，不需要<strong>寫入</strong>任何<strong>本地檔案</strong>/保存本地 sessions</li>
+<li>所有傳統的資料庫(MySQL、Postgres)都是 <strong>stateful</strong>，它們都有資料庫檔案且不能分到多個 instances</li>
+</ul>
+</li>
+<li>大部分的<strong>網頁應用</strong>可以做成 stateless
+<ul>
+<li><strong>Session 管理</strong> 必須要在 container 之外完成</li>
+<li>任何檔案需要被儲存的<strong>都不能儲存在 container 的本機</strong></li>
+</ul>
+</li>
+<li>我們的範例應用是 <strong>stateless</strong>，如果相同的應用執行很多次，也不會改變它的 state</li>
+<li>更多關於練習的資訊，請看 <a href="https://12factor.net/" target="_blank" rel="external">12factor.net</a>
+<ul>
+<li>或是看 <strong>Learn DevOps</strong>: Continuously delivering better software/scalig apps on-premise and in the cloud</li>
+</ul>
+</li>
+<li>後面會解釋如何使用 <strong>volumes</strong> 來運行 stateful 應用
+<ul>
+<li>這些 stateful 應用不能橫向擴展，但是可以在單一 container 裡面運行它們且<strong>縱向擴展</strong> (分配更多 CPU/記憶體/硬碟)</li>
+</ul>
+</li>
+<li>Kubernetes 的擴展可以透過使用 <strong>Replication Controller</strong> 來完成</li>
+<li>Replication Controller 可以<strong>確保</strong>指定數量的 <strong>pod relicas</strong> 將會隨時運行</li>
+<li>如果被 relica controller 創建出來的 pod 運行失敗、被刪除或是被終止，那麼 pod 就會自動被取代</li>
+<li>如果你只想確保<strong>一個 pod</strong>是永遠運行的，甚至在重新開機之後，那麼使用 Replication Controller 是被推薦的
+<ul>
+<li>可以只與<strong>一個 replica</strong> 運行一個 Replication Controller</li>
+<li>這樣可以確保 pod 總是處於運行狀態</li>
+</ul>
+</li>
+<li>在 YAML 裡面設定 kind 為 ReplicationController、spec 裡面的 replicas 設為 2，即可複製應用兩次</li>
+</ol>
+<h4>Demo：Replication Controller</h4>
+<ol>
+<li><code>kubectl create -f replication-controller/helloworld-repl-controller.yml</code></li>
+<li><code>kubectl describe pod helloworld-controller-cwbbn</code> 複製其中的 controller 檢查狀態</li>
+<li><code>kubectl scale --replicas=4 -f replication-controller/helloworld-repl-controller.yml</code> 擴展服務</li>
+<li><code>kubectl get rc</code></li>
+<li><code>kubectl scale --replicas=1 rc/helloworld-controller</code></li>
+<li><code>kubectl delete rc/helloworld-controller</code></li>
+</ol>
+<h4>部署</h4>
+<ol>
+<li><strong>Replication Set</strong> 是 Replication Controller 的下個世代</li>
+<li>它支援一種新的 selector，這個 selector 可以做基於<strong>過濾</strong>的 selection，而<strong>過濾</strong>是根據 <strong>sets of values</strong>
+<ul>
+<li>例如：“environment” 不是 “dev” 就是 “qa”</li>
+<li>不只根據 equality，就像是 Replication Controlller
+<ul>
+<li>例如 “environment” == “dev”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>跟 Replication Controller 相比，<strong>Replica Set</strong> 是使用 Deployment object</li>
+<li>Kubernetes 裡的部署聲明允許讓應用做<strong>部署</strong>和<strong>更新</strong></li>
+<li>當使用 deployment object，你就定義了你的應用的 state
+<ul>
+<li>Kubernetes 將會確保 clusters 符合你的 <strong>desired</strong> state</li>
+</ul>
+</li>
+<li>只使用 <strong>replication controller</strong> 或 <strong>replication set</strong> 可能會在部署應用的時候<strong>很麻煩</strong>
+<ul>
+<li><strong>Deployment Obeject</strong> 比較容易使用且有更多可能性</li>
+</ul>
+</li>
+<li>有 deployment object，你可以：
+<ul>
+<li><strong>創建</strong>一個 deployment(例如：部署一個應用)</li>
+<li><strong>更新</strong>一個 deployment(例如：部署一個新版本)</li>
+<li>可以做 <strong>rolling updates</strong>(零停機時間部署)</li>
+<li><strong>Roll back</strong> 到上一版本</li>
+<li><strong>停止/恢復</strong>一個 deployment(例如：只推出部分比例)</li>
+</ul>
+</li>
+<li>在 YAML 裡面設定 kind 為 Deployment</li>
+<li>非常有用的命令：
+<ul>
+<li><code>kubectl get deployments</code>：取得現有的 deployments 資訊</li>
+<li><code>kubectl get rs</code>：取得 replica sets 的資訊</li>
+<li><code>kubectl get pods --show-labels</code>：取得 pods 且顯示連結到這些 pods 的 labels</li>
+<li><code>kubectl rollout status deployment/helloworld-deployment</code>：取得 deployment 狀態</li>
+<li><code>kubectl set image deployment/helloworld-deployment k8s-demo=k8s-demo:2</code>：運行 image label version 2 的 k8s-demo</li>
+<li><code>kubectl edit deployment/helloworld-deployment</code>：編輯 deployment object</li>
+<li><code>kubectl rollout status deployment/hellowrold-deployment</code>：取得 rollout 的狀態</li>
+<li><code>kubectl rollout history deployment/helloworld-deployment</code>：取得 rollout 的歷史</li>
+<li><code>kubectl rollout undo deployment/helloworld-deployment</code>：Rollback 到上一版本</li>
+<li><code>kubectl rollout undo deployment/helloworld-deployment --to-revision=n</code>：Rollback 到任何版本</li>
+</ul>
+</li>
+</ol>
+<h4>Demo：部署</h4>
+<ol>
+<li><code>kubectl create -f deployment/helloworld.yml</code></li>
+<li><code>kubectl get deployments</code></li>
+<li><code>kubectl get rs</code></li>
+<li><code>kubectl get pods</code></li>
+<li><code>kubectl get pods --show-labels</code></li>
+<li><code>kubectl rollout status deployment/helloworld-deployment</code></li>
+<li><code>kubectl expose deployment helloworld-deployment --type=NodePort</code></li>
+<li><code>kubectl describe service helloworld-deployment</code></li>
+<li><code>minikube service helloworld-deployment --url</code></li>
+<li><code>kubectl set image deployment/helloworld-deployment k8s-demo=wardviaene/k8s-demo:2</code></li>
+<li><code>kubectl rollout status deployment/helloworld-deployment</code></li>
+<li><code>curl http://192.168.99.100:32635</code> curl 剛剛取得的 ip，就會發現變成 Helloworld v2</li>
+<li><code>kubectl rollout history deployment/helloworld-deployment</code></li>
+<li><code>kubectl rollout undo deployment/helloworld-deployment</code></li>
+<li><code>kubectl rollout status deployment/helloworld-deployment</code></li>
+<li><code>kubectl edit deployment/helloworld-deployment</code>，在 spec 的 replica 下面新增 <code>revisionHistoryLimit: 100</code></li>
+<li><code>kubectl set image deployment/helloworld-deployment k8s-demo=wardviaene/k8s-demo:2</code></li>
+<li><code>kubectl rollout history deployment/helloworld-deployment</code></li>
+<li><code>kubectl rollout undo deployment/helloworld-deployment --to-revision=8</code></li>
+<li><code>kubectl rollout history deployment/helloworld-deployment</code></li>
+</ol>
 
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-12-01T05:48:23.000Z" itemprop="datePublished">2016-12-01</time></p>
         </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/12/01/PHP-multiple-select-寫入資料庫的方法/">PHP multiple select 寫入資料庫的方法</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
+        <footer class="article-footer">
             
 
 
-填入文字的頁面需要用陣列的方式傳遞資料 name=&quot;item[]&quot;
 
-123456&lt;label for=&quot;item[]&quot; class=&quot;formTitle&quot;&gt;選擇項目&lt;/label&gt;&lt;select name=&quot;item[]&quot; class=&quot;form-control sele
-        </p>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/11/Kubernetes-快速學習自我挑戰-Day2/" data-id="cj69rs0yu0005u50aqlzirigq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/github.jpg)" alt="Github Pushed Commit Delete (Redraw)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-11-17T06:47:14.000Z" itemprop="datePublished">2016-11-17</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/11/17/Github-Pushed-Commit-Delete-Redraw/">Github Pushed Commit Delete (Redraw)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-如果 Commit 之後並 Push 到遠端，想要在本地端用 CI 去 Delete/Redraw，就可以用以下方法。
-
-如果要刪除倒數第一個 Commit，用以下方法。
-
-12git reset --hard HEAD^git push -f
-
-如果要刪除倒數二個 Commit，用以下方法。
-
-12git reset --hard HEAD^^git push -f
-
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/javascript.jpg)" alt="JavaScript用AJAX的方式獲得時間" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-11-05T15:22:31.000Z" itemprop="datePublished">2016-11-05</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/">JavaScript用AJAX的方式獲得時間</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-
-新增一個js的檔案，將以下程式碼複製貼上
-
-1234567891011121314151617181920212223242526272829var xmlHttp;function srvTime()&#123;try &#123;  //FF, Opera, Safari, Chrome  xmlHttp = new XMLHttpRequest();&#125;catch (err1)
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/17/In-fact-life-is-a-kind-of-strong/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/PottedPlant.jpg)" alt="In fact, life is a kind of strong" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/17/In-fact-life-is-a-kind-of-strong/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/英文寫作/">英文寫作</a>
-            </p>
-            <p class="date"><time datetime="2016-09-17T05:45:46.000Z" itemprop="datePublished">2016-09-17</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/17/In-fact-life-is-a-kind-of-strong/">In fact, life is a kind of strong</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-  Because of the rainy days, I didn’t go to visit the potted plants on the balcony for several days. Today, I went out to look and I feel surprised. One of them had been in critical conditions and l
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/11/在hexo使用emoji/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/emoji.png)" alt="在hexo使用emoji" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/11/在hexo使用emoji/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-09-11T02:15:30.000Z" itemprop="datePublished">2016-09-11</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/11/在hexo使用emoji/">在hexo使用emoji</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-修改渲染器
-123cd /workspace/blogs/   //跳轉到hexo的目錄npm un hexo-renderer-marked --savenpm i hexo-renderer-markdown-it --save
-下載markdown-it-emoji插件：
-1npm install markdown-it-emoji --save
-編輯Hexo的最上層的配置文件_conf
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/10/Train-to-Busan-屍速列車-劇透/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/train_to_busan.jpg)" alt="Train to Busan (屍速列車) - 劇透" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/10/Train-to-Busan-屍速列車-劇透/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a>
-            </p>
-            <p class="date"><time datetime="2016-09-10T02:59:31.000Z" itemprop="datePublished">2016-09-10</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/10/Train-to-Busan-屍速列車-劇透/">Train to Busan (屍速列車) - 劇透</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-評價分數（滿分十分）：⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️
-地點：台中新時代威秀影城
-陪看：豪豪、毛董、柏勳
-
-劇情簡介：
-  劇情一開始，有位不知名的大叔開著車回家(應該是回家？)，前方有安檢人員消毒說前方洩漏了一點東西，不知名大叔抱怨說不知道這是第幾次了，進入之後，他為了接電話不小心撞死一隻小鹿，不知名大叔下車看了一下，覺得運氣很背的把車開走，結果，小鹿竟然站起來變成喪屍，病毒就這樣開始了
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/09/Mechanic: Resurrection (極速秒殺2) - 劇透/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/Mechanic＿Resurrection.jpg)" alt="Mechanic: Resurrection (極速秒殺2) - 劇透" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/09/Mechanic: Resurrection (極速秒殺2) - 劇透/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a>
-            </p>
-            <p class="date"><time datetime="2016-09-09T02:27:45.000Z" itemprop="datePublished">2016-09-09</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/09/Mechanic: Resurrection (極速秒殺2) - 劇透/">Mechanic: Resurrection (極速秒殺2) - 劇透</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-評價分數（滿分十分）：⭐️⭐️⭐️⭐️⭐️⭐️
-地點：台中新時代威秀影城
-陪看：豪豪
-
-劇情簡介：
-  男主角Bishop在一場假死之後住在里約熱內盧，過著愉快的隱居生活，突然有一位女性出現，表示他的老闆要他去殺死三個人，而且這三個人得死得像是意外，結果當然男主角不領情，拍一張她的照片之後逃走。後來，男主角為了躲避追擊逃到泰國的秘密基地，而他的朋友Mae正是男主角守護這個地方的人，男主角在秘密
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/06/Hello-JS-從零開始的React-Native開發/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/hellojs.jpg)" alt="Hello! JS! - 從零開始的React Native開發" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/06/Hello-JS-從零開始的React-Native開發/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
 
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/生活記事/">生活記事</a>
-            </p>
-            <p class="date"><time datetime="2016-09-06T02:48:13.000Z" itemprop="datePublished">2016-09-06</time></p>
-        </div>
-        
+    <section id="comments">
     
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/06/Hello-JS-從零開始的React-Native開發/">Hello! JS! - 從零開始的React Native開發</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-“If I have seen further it is by standing on the shoulders of giants.&quot;
--Issac Newton
-「如果說我看得比別人遠，那是因為我站在巨人的肩上。」
-– 牛頓
-
-
-
-序
-  2016年暑假，我在創科資訊(Trunk Studio)學習JS的部署與開發，在上課之前，我只學過html、CSS、jQuery，還有一些很
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/04/華碩Win8電腦USB開機/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/asus.png)" alt="華碩Win8電腦USB開機" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/04/華碩Win8電腦USB開機/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-09-03T19:30:18.000Z" itemprop="datePublished">2016-09-04</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/04/華碩Win8電腦USB開機/">華碩Win8電腦USB開機</a>
-        </h1>
-    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/08/11/Kubernetes-快速學習自我挑戰-Day2/" data-num-posts="5"></div>
 
-        <p class="article-excerpt">
-            
 
-(1) 開機連按Del進入BIOS之後，切換到「Security」選單，將「Secure Boot Control」設定成「Disabled」，重新開機。
-(2) 重新開機後繼續連按Del進入BIOS，切換到「Boot」選單，將「Lunch CSM」設定成「Enabled」，重新開機。
-(3) 重新開機後繼續連按Del進入BIOS，切換到「Exit」選單，就可以找到USB進行重灌囉！
-
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/09/03/The-connection-of-people-in-the-age-of-information/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/Connection.jpg)" alt="The connection of people in the age of information" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/09/03/The-connection-of-people-in-the-age-of-information/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/英文寫作/">英文寫作</a>
-            </p>
-            <p class="date"><time datetime="2016-09-03T08:40:08.000Z" itemprop="datePublished">2016-09-03</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/09/03/The-connection-of-people-in-the-age-of-information/">The connection of people in the age of information</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-  In the past, people were separated by the distant ocean, they got each others’ message need a long time through letters. Nowadays, we just need to sign in the account through internet, we can chat
-        </p>
-    </div>
-</article>
-    
-        </div>
     
-
-
-    </div></section>
-
-
-    <nav id="page-nav">
-        <span class="pages">第 1 頁，共 2 頁</span>
-        <span class="page-number current">1</span><a class="page-number" href="/blogs/archives/2016/page/2/">2</a><a class="extend next" rel="next" href="/blogs/archives/2016/page/2/">&raquo;</a>
-    </nav>
+    </section>
 
 
                         </div>
@@ -750,6 +538,19 @@ ga('send', 'pageview');
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/08/10/Kubernetes-快速學習自我挑戰-Day1/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Kubernetes 快速學習自我挑戰 Day1</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
