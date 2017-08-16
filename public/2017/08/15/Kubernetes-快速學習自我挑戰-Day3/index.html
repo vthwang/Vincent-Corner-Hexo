@@ -3,18 +3,50 @@
 <head>
     <meta charset="utf-8">
     
-    <title>彙整：: 2016 | Vincent&#39;s Corner</title>
+    <title>Kubernetes 快速學習自我挑戰 Day3 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Who knows what fantastic things around Vincent&apos;s corner?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vincent's Corner">
-<meta property="og:url" content="https://tingsyuanwang.github.io/archives/2016/page/2/index.html">
+        <meta name="keywords" content="Kubernetes" />
+    
+    <meta name="description" content="Kubernetes 觀念簡介
+Service
+
+Pods 是非常動態的，它們在 Kubernetes 上面是來去自如的
+
+當使用 Replication Controller，pods 在擴展的操作時是被終止的且再被創建的
+當使用 Deployments，且在更新 image 版本的時候，pods 會被終止且創建一個新的 pods 取代舊的
+
+
+這就是為什麼 pods 不應該被直接存取，而是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kubernetes 快速學習自我挑戰 Day3">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/08/15/Kubernetes-快速學習自我挑戰-Day3/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta property="og:description" content="Kubernetes 觀念簡介
+Service
+
+Pods 是非常動態的，它們在 Kubernetes 上面是來去自如的
+
+當使用 Replication Controller，pods 在擴展的操作時是被終止的且再被創建的
+當使用 Deployments，且在更新 image 版本的時候，pods 會被終止且創建一個新的 pods 取代舊的
+
+
+這就是為什麼 pods 不應該被直接存取，而是">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/kubernetes/kubernetesday3.png">
+<meta property="og:updated_time" content="2017-08-16T14:39:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vincent's Corner">
-<meta name="twitter:description" content="Who knows what fantastic things around Vincent&apos;s corner?">
+<meta name="twitter:title" content="Kubernetes 快速學習自我挑戰 Day3">
+<meta name="twitter:description" content="Kubernetes 觀念簡介
+Service
+
+Pods 是非常動態的，它們在 Kubernetes 上面是來去自如的
+
+當使用 Replication Controller，pods 在擴展的操作時是被終止的且再被創建的
+當使用 Deployments，且在更新 image 版本的時候，pods 會被終止且創建一個新的 pods 取代舊的
+
+
+這就是為什麼 pods 不應該被直接存取，而是">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/kubernetes/kubernetesday3.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -136,132 +168,325 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>彙整：: 2016
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
+                            <article id="post-Kubernetes-快速學習自我挑戰-Day3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Kubernetes 快速學習自我挑戰 Day3
+        </h1>
+    
 
-    
-    
+            </header>
         
         
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/blogs/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
+            <div class="article-subtitle">
+                <a href="/blogs/2017/08/15/Kubernetes-快速學習自我挑戰-Day3/" class="article-date">
+    <time datetime="2017-08-15T08:47:58.000Z" itemprop="datePublished">2017-08-15</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a></li></ul>
+
             </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/blogs/2016/08/30/HelloJS專案開發提議/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/hellojs.jpg)" alt="HelloJS專案開發提議" class="thumbnail-image"></span>
-    
-    
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/08/30/HelloJS專案開發提議/">0</span> 則評論
-    
-</span>
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/kubernetes/kubernetesday3.png">
+<hr>
+<h3>Kubernetes 觀念簡介</h3>
+<h4>Service</h4>
+<ol>
+<li><strong>Pods</strong> 是非常<strong>動態的</strong>，它們在 Kubernetes 上面是來去自如的
+<ul>
+<li>當使用 <strong>Replication Controller</strong>，pods 在擴展的操作時是<strong>被終止的</strong>且再被創建的</li>
+<li>當使用 <strong>Deployments</strong>，且在<strong>更新</strong> image 版本的時候，pods 會<strong>被終止</strong>且創建一個新的 pods 取代舊的</li>
+</ul>
+</li>
+<li>這就是為什麼 pods 不應該被直接存取，而是透過 <strong>Service</strong></li>
+<li>一個服務是在 “mortal” pods 和其它 <strong>services</strong> 或<strong>終端使用者</strong>之間的<strong>邏輯橋樑</strong></li>
+<li>當使用 “kubectl expose” 命令，就會為 pod 創建一個新的服務，如此一來它就可以被外部存取</li>
+<li>創建一個服務會為 pod(s) 創建一個 endpoint
+<ul>
+<li><strong>ClusterIP</strong>：一個虛擬 ip 位址只能從 cluster 裡面被存取(這是預設)</li>
+<li><strong>NodePort</strong>：在每一個 node 都使用一樣的 port，而且可以被外部存取</li>
+<li><strong>LoadBalancer</strong>：LoadBalance 是由<strong>雲端主機商</strong>建立的，它會路由外部網路到每一個在 NodePort 上的 node (AWS 上的 ELB 服務)</li>
+</ul>
+</li>
+<li>以上所提到的選項可以使用的只有創建 <strong>虛擬 IPs</strong> 或 <strong>ports</strong></li>
+<li>它還有使用 <strong>DNS 名稱</strong>的可能性
+<ul>
+<li><strong>ExternalName</strong> 可以為 service 提供 DNS 名稱</li>
+<li>例如：為 service discovery 使用 DNS</li>
+<li>它只有在 <strong>DNS add-on</strong> 啟動的時候可以使用</li>
+</ul>
+</li>
+<li>筆記：預設的服務只能運行在 30000-32767 port 之間，但是可以在 kube-apiserver 的命令 argument 加上 --service-node-port-range= 來改變這種特性 (在 init scripts)</li>
+</ol>
+<h4>Demo：Service</h4>
+<ol>
+<li><code>kubectl create -f first-app/helloworld.yml</code></li>
+<li><code>kubectl describe pod nodehelloworld.example.com</code></li>
+<li><code>cat first-app/helloworld-nodeport-service.yml</code></li>
+<li><code>kubectl create -f first-app/helloworld-nodeport-service.yml</code></li>
+<li><code>minikube service helloworld-service --url</code></li>
+<li><code>curl http://192.168.99.100:31001</code></li>
+<li><code>kubectl describe svc helloworld-service</code></li>
+<li><code>kubectl get svc</code></li>
+<li><code>kubectl delete svc helloworld-service</code></li>
+<li><code>kubectl create -f first-app/helloworld-nodeport-service.yml</code></li>
+<li><code>kubectl describe svc helloworld-service</code>，會發現 ip 不一樣了</li>
+</ol>
+<h4>Labels</h4>
+<ol>
+<li>Labels 是 key/value pairs，而且可以連接到 objects
+<ul>
+<li>Labels 在 AWS 或其它雲端服務商裡就像 <strong>tags</strong> ，且用來標籤 resource</li>
+</ul>
+</li>
+<li>可以 <strong>label</strong> objects，例如 pod，要跟隨以下組織架構
+<ul>
+<li><strong>Key</strong>：environment - <strong>Value</strong>：dev/staging/qa/prod</li>
+<li><strong>Key</strong>：department - <strong>Value</strong>：engineering/finance/marketing</li>
+</ul>
+</li>
+<li>在上一個範例，已經使用 label 來標籤 pods 了</li>
+<li>Labels <strong>不是獨一無二</strong>且可以增加<strong>多重標籤</strong>到一個 object 上面</li>
+<li>一旦 labels 連結到 objects，就可以使用過濾器來縮小結果
+<ul>
+<li>這叫做 <strong>Label Selectors</strong></li>
+</ul>
+</li>
+<li>使用 Label Selector 可以使用 <strong>matching expressions</strong> 來匹配 labels
+<ul>
+<li>例如：特定的 pod 只能運行在「environment」標籤上的 node 等同於 「development」</li>
+<li>更複雜的匹配：「environment」必須要是「development」或「qa」</li>
+</ul>
+</li>
+<li>也可以用 labels 來標籤 <strong>nodes</strong></li>
+<li>一旦 nodes 被標籤，就可以使用 <strong>label selector</strong> 來讓 pods 只能運行在 <strong>特定 nodes</strong></li>
+<li>在特定設置的 nodes 上運行一個 pod 有必要的<strong>兩步驟</strong>
+<ul>
+<li>第一步驟要<strong>標籤</strong> node</li>
+<li>第二步驟要新增一個 <strong>nodeSelector</strong> 到 pod 組態設定</li>
+</ul>
+</li>
+<li>第一步驟：新增一個或是多數 labels 到 nodes 上<br>
+<code>kubectl label nodes node1 hardware=high-spec</code><br>
+<code>kubectl label nodes node2 hardware=low-spec</code></li>
+<li>第二步驟：新增一個使用這些 labels 的 pod</li>
+</ol>
+<h4>Demo：使用 labels 的 Node Selector</h4>
+<ol>
+<li><code>cat deployment/helloworld-nodeselector.yml</code></li>
+<li><code>kubectl get nodes --show-labels</code></li>
+<li><code>kubectl create -f deployment/helloworld-nodeselector.yml</code></li>
+<li><code>kubectl get deployments</code>，這邊會發現新增出來的東西沒有 available</li>
+<li><code>kubectl get pods</code>，會發現都在 pending</li>
+<li><code>kubectl describe pod helloworld-deployment-4129182270-70sdz</code>，隨便選一個在 pending 的看內容，會發現錯誤在 MatchNodeSelector (1).</li>
+<li><code>kubectl label nodes minikube hardware=high-spec</code></li>
+<li><code>kubectl get nodes --show-labels</code>，檢查是否有 hight-spec 的標籤</li>
+<li><code>kubectl get pods</code>，就會發現全部啟動了</li>
+<li><code>kubectl describe pod helloworld-deployment-4129182270-70sdz</code>，會看到 log 檔，發現啟動失敗，後來就可以啟動了</li>
+</ol>
+<h4>Health checks</h4>
+<ol>
+<li>如果應用<strong>壞掉了</strong>，pod 和 container 仍然繼續運行，應用可能已經沒有再繼續運作了</li>
+<li>如果要<strong>偵測</strong>和<strong>解決</strong>應用的問題，可以運行<strong>health checks</strong></li>
+<li>有以下兩種 health checks 可以執行
+<ul>
+<li>在 container <strong>定期</strong>執行 <strong>command</strong></li>
+<li>在 <strong>URL</strong> (HTTP)上定期檢查</li>
+</ul>
+</li>
+<li>在 Load balancer 後的典型的產品化應用應該要總是有用某種方法執行的 <strong>health checks</strong> 來確保應用的<strong>可用性</strong>和<strong>彈性</strong></li>
+<li>以下為 health checks 的範例</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">livenessProbe:</div><div class="line">    httpGet:</div><div class="line">        paht: /</div><div class="line">        port: 3000</div><div class="line">    initailDelaySeconds: 15</div><div class="line">    timeoutSeconds: 30</div></pre></td></tr></table></figure>
+<h4>Demo：Health checks</h4>
+<ol>
+<li><code>kubectl create -f deployment/helloworld-healthcheck.yml</code></li>
+<li><code>kubectl get pods</code></li>
+<li><code>kubectl describe pod helloworld-deployment-583969349-0m0p8</code>，會發現裡面有一個 Liveness 的選項</li>
+<li><code>kubectl edit deployment/helloworld-deployment</code>，進去會看到 livenessProbe，可以進行編輯</li>
+</ol>
+<h4>Secrets</h4>
+<ol>
+<li>Secrets 提供一種在 Kubernetes 的方法，可以分配 <strong>credentials</strong>、<strong>keys</strong>、<strong>passwords</strong> 和 <strong>“secret” data</strong> 給 pods</li>
+<li>Kubernetes 自己本身也使用 Secrets 機制來提供 credentials 以存取內部 API</li>
+<li>也可以使用<strong>同樣的機制</strong>來提供 secrets 給應用</li>
+<li>Secrets 是一種提供 secrets 的方法，Kubernetes 原生的
+<ul>
+<li>如果不想使用 Secrets，還是有<strong>其它方法</strong>可以讓 container 取得它的 secrets(例如：在應用裡使用 <strong>external vault services</strong>)</li>
+</ul>
+</li>
+<li>Secrets 可以使用以下方式來使用
+<ul>
+<li>以<strong>環境變數</strong>的方法使用 Secrets</li>
+<li>在 pod 裡以<strong>檔案</strong>的方式使用 Secrets
+<ul>
+<li>這個設定 <strong>volumes</strong> 一定要被掛接在 container 裡</li>
+<li>在這個 volume 有<strong>檔案</strong></li>
+<li>可以被使用在 <strong>dotenv</strong> 檔案或應用可以直接閱讀檔案</li>
+</ul>
+</li>
+<li>使用 <strong>external image</strong> 來 pull secrets (從<strong>private image registry</strong>)</li>
+</ul>
+</li>
+<li>使用檔案來產生 secrets<br>
+<code>echo -n &quot;root&quot; &gt; ./username.txt</code><br>
+<code>echo -n &quot;password&quot; &gt; ./password.txt</code><br>
+<code>kubectl create secret generic db-user-pass --from-file=./usernmae.txt --from-file=./password.txt</code></li>
+<li>secreat 可以是 SSH key 或是 SSL 憑證<br>
+<code>kubectl create secret generic ssl-certificate --from-file=ssh-privatekey=~/.ssh/id_rsa --ssl-cert=ssl-cert=mysslcert.crt</code></li>
+<li>使用 YAML 產生 secrets
+<ul>
+<li>使用 base64 產生 password 和 username<br>
+<code>echo -n &quot;root&quot; | base64</code></li>
+</ul>
+</li>
+<li>完成創建 YAML 檔案，可以直接使用 kubectl 創建<br>
+<code>kubectl create -f secrets-db-secret.yml</code></li>
+<li>可以創建 pods 並且 expose secrets 為環境變數<br>
+<code>name: SECRET_USERNAME</code></li>
+<li>或者，也可以在檔案內提供 secrets</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">volumeMount:</div><div class="line">-name: credvolume</div><div class="line"> mountPath: /etc/creds</div><div class="line"> readOnly: true</div><div class="line">volumes:</div><div class="line">-name: credvolume</div><div class="line">secret:</div><div class="line"> secretName: db-secrets</div></pre></td></tr></table></figure>
+<h4>Demo：使用 Volumes 的 Credentails</h4>
+<ol>
+<li><code>cat deployment/helloworld-secrets.yml</code></li>
+<li><code>kubectl create -f deployment/helloworld-secrets.yml</code></li>
+<li><code>cat deployment/helloworld-secrets-volumes.yml</code></li>
+<li><code>kubectl create -f deployment/helloworld-secrets-volumes.yml</code></li>
+<li><code>kubectl describe pod helloworld-deployment-292348803-34dq4</code></li>
+<li><code>kubectl exec helloworld-deployment-292348803-34dq4 -i -t -- /bin/bash</code></li>
+<li><code>cat /etc/creds/username</code></li>
+<li><code>cat /etc/creds/password</code></li>
+<li><code>mount</code></li>
+</ol>
+<h4>Demo：在 kubernetes 上運行 WordPress</h4>
+<ol>
+<li><code>cat wordpress/wordpress-secrets.yml</code></li>
+<li><code>cat wordpress/wordpress-single-deployment-no-volumes.yml</code></li>
+<li><code>kubectl create -f wordpress/wordpress-secrets.yml</code></li>
+<li><code>kubectl create -f wordpress/wordpress-single-deployment-no-volumes.yml</code></li>
+<li><code>kubectl get pods</code></li>
+<li><code>kubectl describe pod wordpress-deployment-2401615361-1j6rw</code></li>
+<li><code>cat wordpress/wordpress-service.yml</code></li>
+<li><code>kubectl create -f wordpress/wordpress-service.yml</code></li>
+<li><code>minikube service wordpress-service --url</code></li>
+<li><code>kubectl delete pod/wordpress-deployment-2401615361-1j6rw</code></li>
+<li><code>kubectl get pods</code>，刪除之後會發現 pod 依然還在</li>
+</ol>
+<h4>Web UI</h4>
+<ol>
+<li>Kubernetes 自帶 <strong>Web UI</strong>，可以取代 kubectl 指令</li>
+<li>它可以用來
+<ul>
+<li>cluster 上運行的應用<strong>總覽</strong></li>
+<li><strong>創建</strong>和<strong>修改</strong>個別 Kubernetes <strong>資源</strong>和<strong>工作量</strong>(像是 kubectl create 和 delete)</li>
+<li>取得<strong>資源狀態</strong>的資訊(像是 kubectl describe pod)</li>
+</ul>
+</li>
+<li>一般來說，可以用 https://<kubernetes0master>/ui 來存取 kubernetes Web UI</kubernetes0master></li>
+<li>如果不能存取(例如：部署類型沒有啟動功能)，可以手動安裝：<br>
+<code>kubectl create -f https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml</code></li>
+<li>如果被詢問密碼，可以用以下方式取得密碼<br>
+<code>kubectl config view</code></li>
+<li>如果使用 minikube 可以使用下列命令啟動 dashboard<br>
+<code>minikube dashboard</code></li>
+<li>如果想要知道 url<br>
+<code>minikube dashboard --url</code></li>
+</ol>
+<h4>Demo：Web UI</h4>
+<ol>
+<li><code>minikube dashboard --url</code></li>
+</ol>
 
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/生活記事/">生活記事</a>
-            </p>
-            <p class="date"><time datetime="2016-08-31T00:55:48.000Z" itemprop="datePublished">2016-08-30</time></p>
         </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/08/30/HelloJS專案開發提議/">HelloJS專案開發提議</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
+        <footer class="article-footer">
             
-(1) PokeHunt
-最近看到新聞，很多人玩寶可夢掉下懸崖、誤觸地雷區、甚至是在路上被車撞，我覺得我們是不是可以做一個偵測系統？大家有什麼方法可以提供一下？目前暫時只是概念性的解決問題，如果大家決定做這個就來討論一下細節。
-(2) 翻轉文學聊天室
-在我大學時期有做一個翻轉文學的網站，我想說來做一點延伸，就是做聊天室、有全體的，還有同學個別對個別的，還有像是github issue一樣的討論區
-        </p>
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/15/Kubernetes-快速學習自我挑戰-Day3/" data-id="cj6f4mmdj0008x50a6mmd5e5t" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
-    
 
+    <section id="comments">
     
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/blogs/2016/08/28/hello-world/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/hello_world.png)" alt="Hello World" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://tingsyuanwang.github.io/blogs/2016/08/28/hello-world/">0</span> 則評論
-    
-</span>
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/08/15/Kubernetes-快速學習自我挑戰-Day3/" data-num-posts="5"></div>
 
 
     
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a>
-            </p>
-            <p class="date"><time datetime="2016-08-29T02:47:36.000Z" itemprop="datePublished">2016-08-28</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/blogs/2016/08/28/hello-world/">Hello World</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qui
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
-
-
-    <nav id="page-nav">
-        <span class="pages">第 2 頁，共 2 頁</span>
-        <a class="extend prev" rel="prev" href="/blogs/archives/2016/">&laquo;</a><a class="page-number" href="/blogs/archives/2016/">1</a><span class="page-number current">2</span>
-    </nav>
+    </section>
 
 
                         </div>
@@ -314,6 +539,19 @@ Qui
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/08/11/Kubernetes-快速學習自我挑戰-Day2/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Kubernetes 快速學習自我挑戰 Day2</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
