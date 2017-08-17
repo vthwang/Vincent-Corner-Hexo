@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>React Native 快速學習自我挑戰 Day4 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="React-Native" />
+    
+    <meta name="description" content="使用 Firebase 進行認證
+前置作業
+
+新增新的專案 react-native init auth
+新增 src/app.js
+
+1234567891011121314import React, &amp;#123; Component &amp;#125; from &amp;apos;react&amp;apos;;import &amp;#123; View, Text &amp;#125; from &amp;apos;react-n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native 快速學習自我挑戰 Day4">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/08/16/React-Native-快速學習自我挑戰-Day4/index.html">
+<meta property="og:site_name" content="Vincent's Corner">
+<meta property="og:description" content="使用 Firebase 進行認證
+前置作業
+
+新增新的專案 react-native init auth
+新增 src/app.js
+
+1234567891011121314import React, &amp;#123; Component &amp;#125; from &amp;apos;react&amp;apos;;import &amp;#123; View, Text &amp;#125; from &amp;apos;react-n">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/reactNative/reactnativeday4.jpg">
+<meta property="og:updated_time" content="2017-08-17T03:21:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Native 快速學習自我挑戰 Day4">
+<meta name="twitter:description" content="使用 Firebase 進行認證
+前置作業
+
+新增新的專案 react-native init auth
+新增 src/app.js
+
+1234567891011121314import React, &amp;#123; Component &amp;#125; from &amp;apos;react&amp;apos;;import &amp;#123; View, Text &amp;#125; from &amp;apos;react-n">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/reactNative/reactnativeday4.jpg">
+<meta property="fb:admins" content="dtvgood202">
+<meta property="fb:app_id" content="176717762750155">
+    
+
+    
+
+    
+        <link rel="icon" href="/blogs/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/blogs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blogs/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blogs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blogs/css/style.css">
+
+    <script src="/blogs/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blogs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blogs/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blogs/',
+        CONTENT_URL: '/blogs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blogs/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-React-Native-快速學習自我挑戰-Day4" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        React Native 快速學習自我挑戰 Day4
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/blogs/2017/08/16/React-Native-快速學習自我挑戰-Day4/" class="article-date">
+    <time datetime="2017-08-15T21:41:09.000Z" itemprop="datePublished">2017-08-16</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/React-Native/">React-Native</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/reactNative/reactnativeday4.jpg">
+<hr>
+<h3>使用 Firebase 進行認證</h3>
+<h4>前置作業</h4>
+<ol>
+<li>新增新的專案 <code>react-native init auth</code></li>
+<li>新增 src/app.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line">import &#123; View, Text &#125; from &apos;react-native&apos;;</div><div class="line"></div><div class="line">class App extends Component &#123;</div><div class="line">    render() &#123;</div><div class="line">        return (</div><div class="line">            &lt;View&gt;</div><div class="line">                &lt;Text&gt;An App!&lt;/Text&gt;</div><div class="line">            &lt;/View&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default App;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 ios.index.js 把 app.js 放進來</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import &#123; AppRegistry &#125; from &apos;react-native&apos;;</div><div class="line">import App from &apos;./src/app&apos;;</div><div class="line"></div><div class="line">AppRegistry.registerComponent(&apos;auth&apos;, () =&gt; App);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>將 Album 專案的 src/components/Button.js Card.js CardSection.js header.js 複製到新專案目錄的 src/components/common/ 底下</li>
+<li>在 src/components/common 底下新增 index.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export * from &apos;./BUtton&apos;;</div><div class="line">export * from &apos;./Card&apos;;</div><div class="line">export * from &apos;./CardSection&apos;;</div><div class="line">export * from &apos;./Header&apos;;</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>在個別檔案用元件的方式輸出<br>
+<code>export { Button };</code><br>
+<code>export { Card };</code><br>
+<code>export { CardSection };</code><br>
+<code>export { Header };</code></li>
+</ol>
+<h4>Firebase</h4>
+<ol>
+<li><a href="https://firebase.google.com/" target="_blank" rel="external">Firebase</a></li>
+<li>在專案目錄下安裝 firebase <code>npm install --save firebase</code></li>
+<li>Import firebase，且在 app.js 的 component 下新增 componentWillMount<br>
+<code>import firebase from 'firebase';</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">componentWillMount() &#123;</div><div class="line">    firebase.initializeApp(&#123;</div><div class="line">        &#123;CONFIG CODE FROM FIREBASE&#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>新增 src/components/LoginForm.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line">import &#123; View &#125; from &apos;react-native&apos;;</div><div class="line">import &#123; Button, Card, CardSection &#125; from &quot;./common&quot;;</div><div class="line"></div><div class="line">class LoginForm extends Component &#123;</div><div class="line">    render() &#123;</div><div class="line">        return (</div><div class="line">            &lt;Card&gt;</div><div class="line">                &lt;CardSection /&gt;</div><div class="line">                &lt;CardSection /&gt;</div><div class="line">                &lt;CardSection&gt;</div><div class="line">                    &lt;Button&gt;</div><div class="line">                        Log in</div><div class="line">                    &lt;/Button&gt;</div><div class="line">                &lt;/CardSection&gt;</div><div class="line">            &lt;/Card&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default LoginForm;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 app.js 引用 LoginForm 且放到 View 裡面<br>
+<code>import LoginForm from './components/LoginForm';</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;View&gt;</div><div class="line">    &lt;Header headerText=&quot;Authentication&quot; /&gt;</div><div class="line">    &lt;LoginForm /&gt;</div><div class="line">&lt;/View&gt;</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 LoginForm.js 新增輸入欄位<br>
+<code>import { TextInput } from 'react-native';</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;CardSection&gt;</div><div class="line">    &lt;TextInput style=&#123;&#123; height: 20, width: 100 &#125;&#125; /&gt;</div><div class="line">&lt;/CardSection&gt;</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>產生 state<br>
+<code>state = { text: '' };</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;CardSection&gt;</div><div class="line">    &lt;TextInput</div><div class="line">        value=&#123;this.state.text&#125;</div><div class="line">        onChangeText=&#123;text =&gt; this.setState(&#123; text &#125;)&#125;</div><div class="line">        style=&#123;&#123; height: 20, width: 100 &#125;&#125;</div><div class="line">    /&gt;</div><div class="line">&lt;/CardSection&gt;</div></pre></td></tr></table></figure>
+<ol start="8">
+<li>Text input 流程：TextInput =&gt; 使用者輸入 text =&gt; OnChange 事件被呼叫 =&gt; 給新的文字 「setState」=&gt; 元件重新渲染</li>
+<li>新增 src/components/common/Input.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import &#123; TextInput, View, Text &#125; from &apos;react-native&apos;;</div><div class="line"></div><div class="line">const Input = (&#123; label &#125;) =&gt; &#123;</div><div class="line">    return (</div><div class="line">        &lt;View&gt;</div><div class="line">            &lt;Text&gt;&#123;label&#125;&lt;/Text&gt;</div><div class="line">        &lt;/View&gt;</div><div class="line">    );</div><div class="line">&#125;;</div><div class="line"></div><div class="line">export &#123; Input &#125;;</div></pre></td></tr></table></figure>
+<ol start="10">
+<li>在 common/index.js 加入 <code>export * from './Input';</code> 讓 input 可以到處存取</li>
+<li>修改 LoginForm.js，把 import react-native 刪除，新增 Input 到 common import</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;Input</div><div class="line">    value=&#123;this.state.text&#125;</div><div class="line">    onChangeText=&#123;text =&gt; this.setState(&#123; text &#125;)&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure>
+<ol start="12">
+<li>修改 Input.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">const Input = (&#123; label, value, onChangeText &#125;) =&gt; &#123;</div><div class="line">    return (</div><div class="line">        &lt;View&gt;</div><div class="line">            &lt;Text&gt;&#123;label&#125;&lt;/Text&gt;</div><div class="line">            &lt;TextInput</div><div class="line">                value=&#123;value&#125;</div><div class="line">                onChangeText=&#123;onChangeText&#125;</div><div class="line">                style=&#123;&#123; height: 20, width: 100 &#125;&#125;</div><div class="line">            /&gt;</div><div class="line">        &lt;/View&gt;</div><div class="line">    );</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="13">
+<li>在 Input.js 新增 styles</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">const styles = &#123;</div><div class="line">    inputStyle: &#123;</div><div class="line">        color: &apos;#000&apos;,</div><div class="line">        paddingRight: 5,</div><div class="line">        paddingLeft: 5,</div><div class="line">        fontSize: 18,</div><div class="line">        lineHight: 23,</div><div class="line">        flex: 2</div><div class="line">    &#125;,</div><div class="line">    labelStyle: &#123;</div><div class="line">        fontSize: 18,</div><div class="line">        paddingLeft: 20,</div><div class="line">        flex: 1</div><div class="line">    &#125;,</div><div class="line">    containerStyle: &#123;</div><div class="line">        height: 40,</div><div class="line">        flex: 1,</div><div class="line">        flexDirection: &apos;row&apos;,</div><div class="line">        alignItems: &apos;center&apos;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="14">
+<li>在元件中加入 styles</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">const Input = (&#123; label, value, onChangeText &#125;) =&gt; &#123;</div><div class="line">    const &#123; inputStyle, labelStyle, containerStyle &#125; = styles;</div><div class="line"></div><div class="line">    return (</div><div class="line">        &lt;View style=&#123;containerStyle&#125;&gt;</div><div class="line">            &lt;Text style=&#123;labelStyle&#125;&gt;&#123;label&#125;&lt;/Text&gt;</div><div class="line">            &lt;TextInput</div><div class="line">                style=&#123;inputStyle&#125;</div><div class="line">                value=&#123;value&#125;</div><div class="line">                onChangeText=&#123;onChangeText&#125;</div><div class="line">            /&gt;</div><div class="line">        &lt;/View&gt;</div><div class="line">    );</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="15">
+<li>在 LoginForm.js 加入 label</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;Input</div><div class="line">    label=&quot;Email&quot;</div><div class="line">    value=&#123;this.state.text&#125;</div><div class="line">    onChangeText=&#123;text =&gt; this.setState(&#123; text &#125;)&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure>
+<ol start="16">
+<li>在 Input.js 加入 autoCorrect 且改成 false，讓 apple 不自動選取文字，新增 placeholder 參數</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;TextInput</div><div class="line">    placeholder=&#123;placeholder&#125;</div><div class="line">    autoCorrect=&#123;false&#125;</div><div class="line">    style=&#123;inputStyle&#125;</div><div class="line">    value=&#123;value&#125;</div><div class="line">    onChangeText=&#123;onChangeText&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure>
+<ol start="17">
+<li>取得上一層傳遞的 placeholder<br>
+<code>const Input = ({ label, value, onChangeText, placeholder }) =&gt; {</code></li>
+<li>傳遞 placeholder 參數給 Input 元件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Input</div><div class="line">    placeholder=&quot;user@gmail.com&quot;</div><div class="line">    label=&quot;Email&quot;</div><div class="line">    value=&#123;this.state.text&#125;</div><div class="line">    onChangeText=&#123;text =&gt; this.setState(&#123; text &#125;)&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure>
+<ol start="19">
+<li>把 state 改為 email，避免重複使用參數</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">state = &#123; email: &apos;&apos; &#125;;</div><div class="line"></div><div class="line">&lt;CardSection&gt;</div><div class="line">    &lt;Input</div><div class="line">        placeholder=&quot;user@gmail.com&quot;</div><div class="line">        label=&quot;Email&quot;</div><div class="line">        value=&#123;this.state.email&#125;</div><div class="line">        onChangeText=&#123;email =&gt; this.setState(&#123; email &#125;)&#125;</div><div class="line">    /&gt;</div><div class="line">&lt;/CardSection&gt;</div></pre></td></tr></table></figure>
+<ol start="20">
+<li>新增 password 欄位</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">state = &#123; email: &apos;&apos;, password: &apos;&apos; &#125;;</div><div class="line"></div><div class="line">&lt;CardSection&gt;</div><div class="line">    &lt;Input</div><div class="line">        placeholder=&quot;password&quot;</div><div class="line">        label=&quot;Password&quot;</div><div class="line">        value=&#123;this.state.password&#125;</div><div class="line">        onChangeText=&#123;password =&gt; this.setState(&#123; password &#125;)&#125;</div><div class="line">    /&gt;</div><div class="line">&lt;/CardSection&gt;</div></pre></td></tr></table></figure>
+<ol start="21">
+<li>在 Input.js 加入 secureTextEntry</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">const Input = (&#123; label, value, onChangeText, placeholder, secureTextEntry &#125;) =&gt; &#123;</div><div class="line">    const &#123; inputStyle, labelStyle, containerStyle &#125; = styles;</div><div class="line"></div><div class="line">    return (</div><div class="line">        &lt;View style=&#123;containerStyle&#125;&gt;</div><div class="line">            &lt;Text style=&#123;labelStyle&#125;&gt;&#123;label&#125;&lt;/Text&gt;</div><div class="line">            &lt;TextInput</div><div class="line">                secureTextEntry=&#123;secureTextEntry&#125;</div><div class="line">                placeholder=&#123;placeholder&#125;</div><div class="line">                autoCorrect=&#123;false&#125;</div><div class="line">                style=&#123;inputStyle&#125;</div><div class="line">                value=&#123;value&#125;</div><div class="line">                onChangeText=&#123;onChangeText&#125;</div><div class="line">            /&gt;</div><div class="line">        &lt;/View&gt;</div><div class="line">    );</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="22">
+<li>直接加入 secureTextEntry，它就會知道是 true，如果沒有設定就是 undefined，在這邊跟 false 的意思一樣</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;CardSection&gt;</div><div class="line">    &lt;Input</div><div class="line">        secureTextEntry</div><div class="line">        placeholder=&quot;password&quot;</div><div class="line">        label=&quot;Password&quot;</div><div class="line">        value=&#123;this.state.password&#125;</div><div class="line">        onChangeText=&#123;password =&gt; this.setState(&#123; password &#125;)&#125;</div><div class="line">    /&gt;</div><div class="line">&lt;/CardSection&gt;</div></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/16/React-Native-快速學習自我挑戰-Day4/" data-id="cj6fvs1w90033090a94p5bcvi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/08/16/React-Native-快速學習自我挑戰-Day4/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hdtvgood202" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/08/15/Kubernetes-快速學習自我挑戰-Day3/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Kubernetes 快速學習自我挑戰 Day3</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/16/React-Native-快速學習自我挑戰-Day4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/reactNative/reactnativeday4.jpg)" alt="React Native 快速學習自我挑戰 Day4" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/16/React-Native-快速學習自我挑戰-Day4/" class="title">React Native 快速學習自我挑戰 Day4</a></p>
+                            <p class="item-date"><time datetime="2017-08-15T21:41:09.000Z" itemprop="datePublished">2017-08-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/15/Kubernetes-快速學習自我挑戰-Day3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/kubernetes/kubernetesday3.png)" alt="Kubernetes 快速學習自我挑戰 Day3" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/15/Kubernetes-快速學習自我挑戰-Day3/" class="title">Kubernetes 快速學習自我挑戰 Day3</a></p>
+                            <p class="item-date"><time datetime="2017-08-14T20:47:58.000Z" itemprop="datePublished">2017-08-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/11/Kubernetes-快速學習自我挑戰-Day2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/kubernetes/kubernetesday2.png)" alt="Kubernetes 快速學習自我挑戰 Day2" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/11/Kubernetes-快速學習自我挑戰-Day2/" class="title">Kubernetes 快速學習自我挑戰 Day2</a></p>
+                            <p class="item-date"><time datetime="2017-08-10T20:42:43.000Z" itemprop="datePublished">2017-08-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/10/Kubernetes-快速學習自我挑戰-Day1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/kubernetes/kubernetesday1.png)" alt="Kubernetes 快速學習自我挑戰 Day1" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/10/Kubernetes-快速學習自我挑戰-Day1/" class="title">Kubernetes 快速學習自我挑戰 Day1</a></p>
+                            <p class="item-date"><time datetime="2017-08-10T07:02:09.000Z" itemprop="datePublished">2017-08-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/08/React-Native-快速學習自我挑戰-Day3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/reactNative/reactnativeday3.jpg)" alt="React Native 快速學習自我挑戰 Day3" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/08/React-Native-快速學習自我挑戰-Day3/" class="title">React Native 快速學習自我挑戰 Day3</a></p>
+                            <p class="item-date"><time datetime="2017-08-08T09:41:08.000Z" itemprop="datePublished">2017-08-08</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/08/">八月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React-Native/">React-Native</a><span class="tag-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/blogs/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/blogs/tags/Kubernetes/" style="font-size: 10px;">Kubernetes</a> <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/Nodejs/" style="font-size: 12.5px;">Nodejs</a> <a href="/blogs/tags/React/" style="font-size: 17.5px;">React</a> <a href="/blogs/tags/React-Native/" style="font-size: 12.5px;">React-Native</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/dtvgood202">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/blogs/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=176717762750155";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/blogs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/blogs/js/main.js"></script>
+
+    </div>
+</body>
+</html>
