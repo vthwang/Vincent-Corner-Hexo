@@ -33,7 +33,7 @@ addon 在 master node 的 etc/kubernetes/addons 目錄
 DNS 服務可以在 pod 裡面被使用，且找到其它服務運行在相同的 cluster 上
 在一個 pod 中的很多 containers 的架構不需要這種">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/kubernetes/kubernetesday4.jpg">
-<meta property="og:updated_time" content="2017-08-23T15:28:26.000Z">
+<meta property="og:updated_time" content="2017-08-23T16:16:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes 快速學習自我挑戰 Day4">
 <meta name="twitter:description" content="進階的主題
@@ -364,7 +364,20 @@ ga('send', 'pageview');
 <ol>
 <li><code>aws ec2 create-volume --size 10 --region ap-northeast-1 --availability-zone ap-northeast-1a --volume-type gp2</code></li>
 <li>把剛剛拿到的 VolumeId 貼近去 <code>vim volumes/helloworld-with-volume.yml</code></li>
-<li></li>
+<li><code>kubectl create -f volumes/helloworld-with-volume.yml</code></li>
+<li><code>kubectl get pod</code></li>
+<li><code>kubectl describe pod helloworld-deployment-2277790027-3c1q2</code></li>
+<li><code>kubectl exec helloworld-deployment-2277790027-3c1q2 -i -t -- bash</code></li>
+<li><code>ls -ahl /myvol/</code></li>
+<li><code>echo 'test' &gt; /myvol/myvol.txt</code></li>
+<li><code>echo 'test2' &gt; /test.txt</code></li>
+<li><code>kubectl drain ip-172-20-49-46.ap-northeast-1.compute.internal --force</code></li>
+<li><code>kubectl get pod</code></li>
+<li><code>kubectl exec helloworld-deployment-2277790027-ll7w0 -i -t -- bash</code></li>
+<li><code>ls -ahl /myvol/myvol.txt</code></li>
+<li><code>ls -ahl /test.txt</code> =&gt; 這會找不到，因為沒有存在 volume，而是存在 container</li>
+<li><code>kubectl delete -f volumes/helloworld-with-volume.yml</code></li>
+<li><code>aws ec2 delete-volume --volume-id vol-0ae6788e2541f0252 --region ap-northeast-1</code></li>
 </ol>
 
         </div>
@@ -373,7 +386,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/20/Kubernetes-快速學習自我挑戰-Day4/" data-id="cj6p6i63x000fir0a5iuimfh0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/20/Kubernetes-快速學習自我挑戰-Day4/" data-id="cj6p8203n000mdy0a3b9sv2rw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

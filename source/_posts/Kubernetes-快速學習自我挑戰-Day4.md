@@ -191,16 +191,17 @@ spec:
 #### Demo：Volumes
 1. `aws ec2 create-volume --size 10 --region ap-northeast-1 --availability-zone ap-northeast-1a --volume-type gp2`
 2. 把剛剛拿到的 VolumeId 貼近去 `vim volumes/helloworld-with-volume.yml`
-3. 
-
-
-
-
-
-
-
-
-
-
-
-
+3. `kubectl create -f volumes/helloworld-with-volume.yml`
+4. `kubectl get pod`
+5. `kubectl describe pod helloworld-deployment-2277790027-3c1q2`
+6. `kubectl exec helloworld-deployment-2277790027-3c1q2 -i -t -- bash`
+7. `ls -ahl /myvol/`
+8. `echo 'test' > /myvol/myvol.txt`
+9. `echo 'test2' > /test.txt`
+10. `kubectl drain ip-172-20-49-46.ap-northeast-1.compute.internal --force`
+11. `kubectl get pod`
+12. `kubectl exec helloworld-deployment-2277790027-ll7w0 -i -t -- bash`
+13. `ls -ahl /myvol/myvol.txt`
+14. `ls -ahl /test.txt` => 這會找不到，因為沒有存在 volume，而是存在 container
+15. `kubectl delete -f volumes/helloworld-with-volume.yml`
+16. `aws ec2 delete-volume --volume-id vol-0ae6788e2541f0252 --region ap-northeast-1`
