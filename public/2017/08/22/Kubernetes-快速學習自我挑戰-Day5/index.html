@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Kubernetes 快速學習自我挑戰 Day5 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Kubernetes" />
+    
+    <meta name="description" content="進階的主題
+Volumes Autoprovisioning
+
+Kubernetes plugins 可以提供 storage
+AWS Plugin 可以藉由在 AWS 創建 volumes 來提供 storage，但是要在 volume 連接到 node 之前才能做
+這些可以使用 StorageClass object 來完成
+
+Documentation
+
+
+使用 auto provisi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kubernetes 快速學習自我挑戰 Day5">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/index.html">
+<meta property="og:site_name" content="Vincent's Corner">
+<meta property="og:description" content="進階的主題
+Volumes Autoprovisioning
+
+Kubernetes plugins 可以提供 storage
+AWS Plugin 可以藉由在 AWS 創建 volumes 來提供 storage，但是要在 volume 連接到 node 之前才能做
+這些可以使用 StorageClass object 來完成
+
+Documentation
+
+
+使用 auto provisi">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/kubernetes/kubernetesday5.png">
+<meta property="og:updated_time" content="2017-08-25T06:43:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kubernetes 快速學習自我挑戰 Day5">
+<meta name="twitter:description" content="進階的主題
+Volumes Autoprovisioning
+
+Kubernetes plugins 可以提供 storage
+AWS Plugin 可以藉由在 AWS 創建 volumes 來提供 storage，但是要在 volume 連接到 node 之前才能做
+這些可以使用 StorageClass object 來完成
+
+Documentation
+
+
+使用 auto provisi">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/kubernetes/kubernetesday5.png">
+<meta property="fb:admins" content="dtvgood202">
+<meta property="fb:app_id" content="176717762750155">
+    
+
+    
+
+    
+        <link rel="icon" href="/blogs/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/blogs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blogs/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blogs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blogs/css/style.css">
+
+    <script src="/blogs/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blogs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blogs/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blogs/',
+        CONTENT_URL: '/blogs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blogs/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Kubernetes-快速學習自我挑戰-Day5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Kubernetes 快速學習自我挑戰 Day5
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" class="article-date">
+    <time datetime="2017-08-21T16:46:53.000Z" itemprop="datePublished">2017-08-22</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/kubernetes/kubernetesday5.png">
+<hr>
+<h3>進階的主題</h3>
+<h4>Volumes Autoprovisioning</h4>
+<ol>
+<li>Kubernetes plugins 可以<strong>提供 storage</strong></li>
+<li><strong>AWS Plugin</strong> 可以藉由在 AWS 創建 volumes 來<strong>提供 storage</strong>，但是要在 volume 連接到 node 之前才能做</li>
+<li>這些可以使用 <strong>StorageClass object</strong> 來完成
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#storageclasses" target="_blank" rel="external">Documentation</a></li>
+</ul>
+</li>
+<li>使用 <strong>auto provisioned volumes</strong>，可以創建以下 yaml 檔案：
+<ul>
+<li>storage.yml</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">kind: StorageClass</div><div class="line">apiVersion: storage.k8s.io/v1beta1</div><div class="line">metadata:</div><div class="line">  name: standard</div><div class="line">provisioner: kubernetes.io/aws-ebs</div><div class="line">parameters:</div><div class="line">  type: gp2</div><div class="line">  zone: us-east-1</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>這樣可以創建 volume 並宣告使用 <strong>aws-ebs provisioner</strong></li>
+<li>Kubernetes 將會提供 type <strong>gp2</strong> 的 volume (一般用途 - SSD)</li>
+<li>接下來，可以創建 volume 並宣告和指定容量
+<ul>
+<li>my-volume.claim.yml</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">kind: PersistentVolumeClaim</div><div class="line">apiVersion: v1</div><div class="line">metadata:</div><div class="line">  name: myclaim</div><div class="line">  annotations:</div><div class="line">    volume.beta.kubernetes.io/storage-class: &quot;standard&quot;</div><div class="line">spec:</div><div class="line">  accessModes:</div><div class="line">    - ReadWriteOnce</div><div class="line">  resources:</div><div class="line">    requests:</div><div class="line">      storage: 8Gi</div></pre></td></tr></table></figure>
+<ol start="8">
+<li>最後，可以使用 volume 來啟動 pod
+<ul>
+<li>my-pod.yml</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">kind: Pod</div><div class="line">apiVersion: v1</div><div class="line">metadata:</div><div class="line">  name: mypod</div><div class="line">spec:</div><div class="line">  containers:</div><div class="line">    - name: myfrontend</div><div class="line">      image: nginx</div><div class="line">      volumeMounts:</div><div class="line">      - mountPath: &quot;/var/www/html&quot;</div><div class="line">        name: mypd</div><div class="line">  volumes:</div><div class="line">    - name: mypd</div><div class="line">      persistentVolumeClaim:</div><div class="line">        claimName: myclaim</div></pre></td></tr></table></figure>
+<h4>Demo：使用 Volumes 的 WordPress</h4>
+<ol>
+<li><code>cd wordpress-volumes</code></li>
+<li><code>cat storage.yml</code></li>
+<li><code>cat pv-claim.yml</code></li>
+<li><code>cat wordpress-db.yml</code></li>
+<li><code>cat wordpress-db-service.yml</code></li>
+<li><code>cat wordpress-secrets.yml</code></li>
+<li><code>cat wordpress-web.yml</code></li>
+<li><code>cat wordpress-web-service.yml</code></li>
+<li><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region" target="_blank" rel="external">查詢 AWS 服務區域</a><br>
+<code>aws efs create-file-system --creation-token 1 --region ap-southeast-2</code></li>
+<li>找尋 SubnetId 和 SecurityGroups<br>
+<code>aws ec2 describe-instances --region ap-southeast-2</code></li>
+<li><code>aws efs create-mount-target --file-system-id fs-518f6c68 --subnet-id subnet-5ed8c73a --security-groups sg-5154a737 --region ap-southeast-2</code></li>
+<li>修改倒數第二行的 server<br>
+<code>vim wordpress-web.yml</code></li>
+<li><code>kubectl create -f storage.yml</code></li>
+<li><code>kubectl create -f pv-claim.yml</code></li>
+<li><code>kubectl create -f wordpress-secrets.yml</code></li>
+<li><code>kubectl create -f wordpress-db.yml</code></li>
+<li><code>kubectl create -f wordpress-db-service.yml</code></li>
+<li><code>kubectl get pvc</code></li>
+<li><code>kubectl get pod</code></li>
+<li><code>kubectl describe pod wordpress-db-8n665</code></li>
+<li><code>kubectl create -f wordpress-web.yml</code></li>
+<li><code>kubectl create -f wordpress-web-service.yml</code></li>
+<li>去 Route53 新增一個 DNS record - wordpress.<domain>，在 alias 的地方打勾，選擇剛剛建立的 LoadBalancer</domain></li>
+<li><code>kubectl edit deployment/wordpress-deployment</code> 把以下五行加到 35 行之後，把後面 env 縮排進去並刪除 -，完成之後就發現 wordpress 可以上傳圖片了</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- command:</div><div class="line">  - bash</div><div class="line">  - -c</div><div class="line">  - chown www-data:www-data /var/www/html/wp-content/uploads &amp;&amp; docker-entrypoint.sh apache2-foreground</div><div class="line">  env: </div><div class="line">  - name:</div></pre></td></tr></table></figure>
+<ol start="25">
+<li><code>kubectl get pod</code></li>
+<li>刪除所有的 pod，就會發現會全部自動重啟<br>
+<code>kubectl delete pod wordpress-db-5cgvm</code><br>
+<code>kubectl delete pod/wordpress-deployment-1534735485-71kjs</code><br>
+<code>kubectl delete pod wordpress-deployment-1534735485-j74hb</code></li>
+<li><code>kubectl get pod</code>，再一次 get pod 就會發現 pod 全部重啟了</li>
+<li><code>kubectl logs wordpress-deployment-1534735485-0wtxq</code></li>
+<li><code>kubectl exec wordpress-deployment-1534735485-0wtxq -i -t -- bash</code></li>
+<li><code>ls -ahl -R wp-content/uploads/</code> 會發現檔案都還在</li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" data-id="cj6rk2o8c000bdc0a4ryx0fmc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hdtvgood202" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/08/20/Kubernetes-快速學習自我挑戰-Day4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Kubernetes 快速學習自我挑戰 Day4</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/kubernetes/kubernetesday5.png)" alt="Kubernetes 快速學習自我挑戰 Day5" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" class="title">Kubernetes 快速學習自我挑戰 Day5</a></p>
+                            <p class="item-date"><time datetime="2017-08-21T16:46:53.000Z" itemprop="datePublished">2017-08-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/20/Kubernetes-快速學習自我挑戰-Day4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/kubernetes/kubernetesday4.jpg)" alt="Kubernetes 快速學習自我挑戰 Day4" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/20/Kubernetes-快速學習自我挑戰-Day4/" class="title">Kubernetes 快速學習自我挑戰 Day4</a></p>
+                            <p class="item-date"><time datetime="2017-08-20T06:27:44.000Z" itemprop="datePublished">2017-08-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/18/React-Native-快速學習自我挑戰-Day6/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/reactNative/reactnativeday6.png)" alt="React Native 快速學習自我挑戰 Day6" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/18/React-Native-快速學習自我挑戰-Day6/" class="title">React Native 快速學習自我挑戰 Day6</a></p>
+                            <p class="item-date"><time datetime="2017-08-18T11:54:13.000Z" itemprop="datePublished">2017-08-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/17/React-Native-快速學習自我挑戰-Day5/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/reactNative/reactnativeday5.png)" alt="React Native 快速學習自我挑戰 Day5" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/17/React-Native-快速學習自我挑戰-Day5/" class="title">React Native 快速學習自我挑戰 Day5</a></p>
+                            <p class="item-date"><time datetime="2017-08-17T08:39:32.000Z" itemprop="datePublished">2017-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/16/React-Native-快速學習自我挑戰-Day4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/reactNative/reactnativeday4.jpg)" alt="React Native 快速學習自我挑戰 Day4" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/16/React-Native-快速學習自我挑戰-Day4/" class="title">React Native 快速學習自我挑戰 Day4</a></p>
+                            <p class="item-date"><time datetime="2017-08-15T21:41:09.000Z" itemprop="datePublished">2017-08-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">57</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/08/">八月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React-Native/">React-Native</a><span class="tag-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/blogs/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/blogs/tags/Kubernetes/" style="font-size: 12px;">Kubernetes</a> <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/Nodejs/" style="font-size: 10px;">Nodejs</a> <a href="/blogs/tags/React/" style="font-size: 18px;">React</a> <a href="/blogs/tags/React-Native/" style="font-size: 14px;">React-Native</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/dtvgood202">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/blogs/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=176717762750155";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/blogs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/blogs/js/main.js"></script>
+
+    </div>
+</body>
+</html>
