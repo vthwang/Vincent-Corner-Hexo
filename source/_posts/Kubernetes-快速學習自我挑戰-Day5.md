@@ -109,8 +109,56 @@ spec:
 28. `kubectl logs wordpress-deployment-1534735485-0wtxq`
 29. `kubectl exec wordpress-deployment-1534735485-0wtxq -i -t -- bash`
 30. `ls -ahl -R wp-content/uploads/` 會發現檔案都還在
-
-
+#### Pet Sets
+1. Pet Sets 是從 Kubernetes 1.3 之後開始的**新功能**
+2. 要執行 **stateful application** 需要：
+    - 一個**穩定的 pod hostname**(取代 podname-randomstring)
+        - 當一個 pod 有很多 instances，podname 需要有索引(例如：podname-1、podname-2、podname-3)
+    - 一個 **stateful app** 需要基於序號數(podname-**x**)或 hostname 的**多個**有 volumes 的 **pods**
+        - 目前**刪除**和/或**擴展**一個 **PetSet down**不會刪除跟 PetSet 有關連的 Volume
+3. 一個 PetSet 允許 stateful app 使用 **DNS** 找尋其它**同伴**
+    - Cassandra clusters、ElasticSearch clusters 使用 **DNS** 來找到其它 cluster 的 members
+    - 在 Pet Set 之中**一個**運行中的 **node** 叫做 **一個 Pet** (例如：Cassandra 中的一個 node)
+    - 舉例來說： 在 Kubernetes 上使用 Pet Sets 的五個 cassandra nodes，可以命名為 cassandra-1 到 cassandra-5
+    - 如果不使用 Pet Sets，可以用取得一個動態 hostname 的方式，而這個方式不能夠使用在設定檔，因為設定檔可以隨時修改名字
+4. 一個 PetSet 也允許 stateful app **排序啟動和關閉的 pets**：
+    - 取代隨機終止一個 Pet (app 中的一個 instance)，你會知道哪一個會不見
+    - 當在可以關閉之前，第一次需要從一個 node **倒出**資料的時候，這很有用
+5. 在 PetSets 依然還很多**未來工作**需要完成
+#### Daemon Sets
+1. Daemon Sets 確保 Kubernetes cluster 的**每一個 node** 運行相同的 pod 資源
+    - 如果你想要**確保**特定 pod 運行在每一個 Kubernetes node，這個非常有用
+2. 當一個 node **被新增**到 cluster，新的 pod 就會**自動**被啟動
+3. 同樣地，當一個 node **被移除**，pod 將不會在其它 node 進行**再排程**
+4. 典型的**應用例子**
+    - Logging aggregators
+    - Monitoring
+    - Load Balancers / Reverse Proxies / API Gateways
+    - 運行一個 daemon 在每一個 physical instance 只需要一個 instance
+#### 監控資源用量
+1. Heapster 能夠**監控 Container Cluster** 和**效能分析**
+2. 它提供了 Kubernetes 的監控平台
+3. 它是必要的，如果想要在 Kubernetes 使用 **pod auto-scaling**
+4. Heapster **透過 REST endpoint** 輸出 cluster metrics
+5. 可以與 Heapster 使用**不同的後端**
+    - 範例會使用 InfluxDB，但是其它像是 Google Cloud Monitoring/Logging 和 Kafka 也是可以的
+6. **Visualizations** (圖像) 可以使用 Grafana 表現
+    - Kubernetes 儀表板只要 monitoring 啟動就可以顯示圖表
+7. 所有的這些技術(Heapster、InfluxDB 和 Grafana)都可以在 pods 裡面啟動
+8. **YAML 檔案**可以在 [Heapster 的 github repository](https://github.com/kubernetes/heapster/tree/master/deploy/kube-config/influxdb) 被找到
+    - 在下載完 repository 之後，平台可以使用 addon system 或使用 kubectl create -f directory-with-yaml-files/ 來部署
+#### Demo：監控資源用量
+1. `git clone https://github.com/kubernetes/heapster.git`
+2. `cd heapster/deploy/kube-config/influxdb`
+3. `vim grafana.yaml`
+    - 把這行註解掉 `kubernetes.io/cluster-service: 'true'`
+4. `vim heapster.yaml`
+    - 把這行註解掉 `kubernetes.io/cluster-service: 'true'`
+5. `vim influxdb.yaml`
+    - 把這行註解掉 `kubernetes.io/cluster-service: 'true'`
+6. `cd ..`
+7. `kubectl create -f influxdb`
+8. `kubectl create -f kubernetes-course/deployment/helloworld.yml`
 
 
 

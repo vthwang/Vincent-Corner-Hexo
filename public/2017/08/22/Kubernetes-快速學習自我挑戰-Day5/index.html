@@ -35,7 +35,7 @@ Documentation
 
 使用 auto provisi">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/kubernetes/kubernetesday5.png">
-<meta property="og:updated_time" content="2017-08-25T06:43:13.000Z">
+<meta property="og:updated_time" content="2017-08-26T10:29:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes 快速學習自我挑戰 Day5">
 <meta name="twitter:description" content="進階的主題
@@ -280,6 +280,103 @@ ga('send', 'pageview');
 <li><code>kubectl exec wordpress-deployment-1534735485-0wtxq -i -t -- bash</code></li>
 <li><code>ls -ahl -R wp-content/uploads/</code> 會發現檔案都還在</li>
 </ol>
+<h4>Pet Sets</h4>
+<ol>
+<li>Pet Sets 是從 Kubernetes 1.3 之後開始的<strong>新功能</strong></li>
+<li>要執行 <strong>stateful application</strong> 需要：
+<ul>
+<li>一個<strong>穩定的 pod hostname</strong>(取代 podname-randomstring)
+<ul>
+<li>當一個 pod 有很多 instances，podname 需要有索引(例如：podname-1、podname-2、podname-3)</li>
+</ul>
+</li>
+<li>一個 <strong>stateful app</strong> 需要基於序號數(podname-<strong>x</strong>)或 hostname 的<strong>多個</strong>有 volumes 的 <strong>pods</strong>
+<ul>
+<li>目前<strong>刪除</strong>和/或<strong>擴展</strong>一個 <strong>PetSet down</strong>不會刪除跟 PetSet 有關連的 Volume</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一個 PetSet 允許 stateful app 使用 <strong>DNS</strong> 找尋其它<strong>同伴</strong>
+<ul>
+<li>Cassandra clusters、ElasticSearch clusters 使用 <strong>DNS</strong> 來找到其它 cluster 的 members</li>
+<li>在 Pet Set 之中<strong>一個</strong>運行中的 <strong>node</strong> 叫做 <strong>一個 Pet</strong> (例如：Cassandra 中的一個 node)</li>
+<li>舉例來說： 在 Kubernetes 上使用 Pet Sets 的五個 cassandra nodes，可以命名為 cassandra-1 到 cassandra-5</li>
+<li>如果不使用 Pet Sets，可以用取得一個動態 hostname 的方式，而這個方式不能夠使用在設定檔，因為設定檔可以隨時修改名字</li>
+</ul>
+</li>
+<li>一個 PetSet 也允許 stateful app <strong>排序啟動和關閉的 pets</strong>：
+<ul>
+<li>取代隨機終止一個 Pet (app 中的一個 instance)，你會知道哪一個會不見</li>
+<li>當在可以關閉之前，第一次需要從一個 node <strong>倒出</strong>資料的時候，這很有用</li>
+</ul>
+</li>
+<li>在 PetSets 依然還很多<strong>未來工作</strong>需要完成</li>
+</ol>
+<h4>Daemon Sets</h4>
+<ol>
+<li>Daemon Sets 確保 Kubernetes cluster 的<strong>每一個 node</strong> 運行相同的 pod 資源
+<ul>
+<li>如果你想要<strong>確保</strong>特定 pod 運行在每一個 Kubernetes node，這個非常有用</li>
+</ul>
+</li>
+<li>當一個 node <strong>被新增</strong>到 cluster，新的 pod 就會<strong>自動</strong>被啟動</li>
+<li>同樣地，當一個 node <strong>被移除</strong>，pod 將不會在其它 node 進行<strong>再排程</strong></li>
+<li>典型的<strong>應用例子</strong>
+<ul>
+<li>Logging aggregators</li>
+<li>Monitoring</li>
+<li>Load Balancers / Reverse Proxies / API Gateways</li>
+<li>運行一個 daemon 在每一個 physical instance 只需要一個 instance</li>
+</ul>
+</li>
+</ol>
+<h4>監控資源用量</h4>
+<ol>
+<li>Heapster 能夠<strong>監控 Container Cluster</strong> 和<strong>效能分析</strong></li>
+<li>它提供了 Kubernetes 的監控平台</li>
+<li>它是必要的，如果想要在 Kubernetes 使用 <strong>pod auto-scaling</strong></li>
+<li>Heapster <strong>透過 REST endpoint</strong> 輸出 cluster metrics</li>
+<li>可以與 Heapster 使用<strong>不同的後端</strong>
+<ul>
+<li>範例會使用 InfluxDB，但是其它像是 Google Cloud Monitoring/Logging 和 Kafka 也是可以的</li>
+</ul>
+</li>
+<li><strong>Visualizations</strong> (圖像) 可以使用 Grafana 表現
+<ul>
+<li>Kubernetes 儀表板只要 monitoring 啟動就可以顯示圖表</li>
+</ul>
+</li>
+<li>所有的這些技術(Heapster、InfluxDB 和 Grafana)都可以在 pods 裡面啟動</li>
+<li><strong>YAML 檔案</strong>可以在 <a href="https://github.com/kubernetes/heapster/tree/master/deploy/kube-config/influxdb" target="_blank" rel="external">Heapster 的 github repository</a> 被找到
+<ul>
+<li>在下載完 repository 之後，平台可以使用 addon system 或使用 kubectl create -f directory-with-yaml-files/ 來部署</li>
+</ul>
+</li>
+</ol>
+<h4>Demo：監控資源用量</h4>
+<ol>
+<li><code>git clone https://github.com/kubernetes/heapster.git</code></li>
+<li><code>cd heapster/deploy/kube-config/influxdb</code></li>
+<li><code>vim grafana.yaml</code>
+<ul>
+<li>把這行註解掉 <code>kubernetes.io/cluster-service: 'true'</code></li>
+</ul>
+</li>
+<li><code>vim heapster.yaml</code>
+<ul>
+<li>把這行註解掉 <code>kubernetes.io/cluster-service: 'true'</code></li>
+</ul>
+</li>
+<li><code>vim influxdb.yaml</code>
+<ul>
+<li>把這行註解掉 <code>kubernetes.io/cluster-service: 'true'</code></li>
+</ul>
+</li>
+<li><code>cd ..</code></li>
+<li><code>kubectl create -f influxdb</code></li>
+<li><code>kubectl create -f kubernetes-course/deployment/helloworld.yml</code></li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -287,7 +384,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" data-id="cj6rk2o8c000bdc0a4ryx0fmc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" data-id="cj6t5yyv0000iat0ae6ldcesx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
