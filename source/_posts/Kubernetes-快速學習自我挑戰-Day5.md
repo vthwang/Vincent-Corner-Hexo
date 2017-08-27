@@ -149,6 +149,7 @@ spec:
     - 在下載完 repository 之後，平台可以使用 addon system 或使用 kubectl create -f directory-with-yaml-files/ 來部署
 #### Demo：監控資源用量
 1. `git clone https://github.com/kubernetes/heapster.git`
+    - 後改用 [1.3 版本](https://github.com/kubernetes/heapster/releases)
 2. `cd heapster/deploy/kube-config/influxdb`
 3. `vim grafana.yaml`
     - 把這行註解掉 `kubernetes.io/cluster-service: 'true'`
@@ -157,12 +158,65 @@ spec:
 5. `vim influxdb.yaml`
     - 把這行註解掉 `kubernetes.io/cluster-service: 'true'`
 6. `cd ..`
-7. `kubectl create -f i`
+7. `kubectl create -f influxdb`
 8. `kubectl create -f kubernetes-course/deployment/helloworld.yml`
 9. `minikube service monitoring-grafana --namespace=kube-system --url`
-
-
-
+10. 進去 Grafana 之後，選擇左列選單，選擇 Sign In，然後就可以選擇 cluster 或是 pod 觀看目前的狀態
+#### Autoscaling
+1. Kubernetes 可以基於 metrics 來**自動 scale pods**
+2. Kubernetes 可以自動 scale 一個 Deployment、Replication Controller 或 ReplicaSet
+3. 在 Kubernetes 1.3 版本後，**根據 CPU 用量 scaling** 是可以使用的
+    - 有 alpha 的支持，基於 metrics 的 application 是可用的 (像是每秒取得或平均請求延遲)
+        - 要啟動這個，cluster 必須要設 env 變數裡面的 ENABLE\_CUSTOM_METRICS 為 true 來啟動
+4. Autoscaling 會對目標 pods **定期取得**用量
+    - **預設是 30 秒**，可以在啟動 controller-manager 使用 `--horizontal-pod-autoscaler-sync-period` 來修改
+5. Autoscaling 會使用監控工具 **heapster** 來收集它們的 metrics 和決定如何 scaling
+    - Heapster 必須要在 autoscaling work 之前安裝並運行
+6. **例子**
+    - 運行一個 **200m** 的 **CPU 資源**請求的 **pod** 並在 **pod** 運行一個 **deployment**
+    - 200m = 200 millicpu (或是 200 millicores)
+    - 200m = 0.2 也就是運行 node 的 CPU 核心的 20%
+        - 如果 node 是雙核心，它還是只有單核心的 20%
+    - 可以採用 CPU 用量為 50% 的 autoscaling (也就是 100m)
+    - 水平 Pod Autoscaling 可以增加/減少 pods 來維持目標 CPU 用量為 50%(或是 100m/在 pod 裡面一個核心10%)
+7. 測試 autoscaling
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hpa-example
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: hpa-example
+      spec:
+        containers:
+        - name: hpa-example
+          image: gcr.io/google_containers/hpa-example
+          ports:
+          - name: http-port
+            containerPort: 80
+          resources:
+            requests:
+              cpu: 200m
+```
+8. autoscaling specification 範例
+```
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-example-autoscaler
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: hpa-example
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 50
+```
 
 
 
