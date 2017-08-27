@@ -157,8 +157,9 @@ spec:
 5. `vim influxdb.yaml`
     - 把這行註解掉 `kubernetes.io/cluster-service: 'true'`
 6. `cd ..`
-7. `kubectl create -f influxdb`
+7. `kubectl create -f i`
 8. `kubectl create -f kubernetes-course/deployment/helloworld.yml`
+9. `minikube service monitoring-grafana --namespace=kube-system --url`
 
 
 
