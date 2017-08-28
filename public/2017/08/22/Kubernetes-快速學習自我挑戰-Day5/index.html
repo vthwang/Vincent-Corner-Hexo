@@ -35,7 +35,7 @@ Documentation
 
 使用 auto provisi">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/kubernetes/kubernetesday5.png">
-<meta property="og:updated_time" content="2017-08-28T16:20:51.000Z">
+<meta property="og:updated_time" content="2017-08-28T18:04:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes 快速學習自我挑戰 Day5">
 <meta name="twitter:description" content="進階的主題
@@ -426,6 +426,21 @@ ga('send', 'pageview');
 <li>autoscaling specification 範例</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">apiVersion: autoscaling/v1</div><div class="line">kind: HorizontalPodAutoscaler</div><div class="line">metadata:</div><div class="line">  name: hpa-example-autoscaler</div><div class="line">spec:</div><div class="line">  scaleTargetRef:</div><div class="line">    apiVersion: extensions/v1beta1</div><div class="line">    kind: Deployment</div><div class="line">    name: hpa-example</div><div class="line">  minReplicas: 1</div><div class="line">  maxReplicas: 10</div><div class="line">  targetCPUUtilizationPercentage: 50</div></pre></td></tr></table></figure>
+<h4>Demo：Autoscaling</h4>
+<ol>
+<li><code>cat autoscaling/hpa-example.yml</code></li>
+<li><code>minikube stop</code></li>
+<li><code>minikube start --extra-config kubelet.EnableCustomMetrics=true</code></li>
+<li><code>kubectl create -f autoscaling/hpa-example.yml</code></li>
+<li><code>kubectl get hpa</code></li>
+<li><code>kubectl run -i --tty load-generator --image=busybox /bin/sh</code></li>
+<li><code>wget http://hpa-example.default.svc.cluster.local:31001</code></li>
+<li><code>cat index.html</code></li>
+<li><code>rm index.html</code></li>
+<li><code>while true; do wget -q -O- http://hpa-example.default.svc.cluster.local:31001; done</code></li>
+<li><code>kubectl get pod</code>，這時候可以看出他會建立很多個</li>
+<li><code>kubectl get hpa</code> 觀看使用狀態</li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -433,7 +448,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" data-id="cj6uxzrku000fwf0amtjnsm3k" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" data-id="cj6wh451j000diu0a3cf76up9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

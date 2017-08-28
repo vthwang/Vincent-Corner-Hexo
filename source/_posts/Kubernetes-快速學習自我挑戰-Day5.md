@@ -217,15 +217,16 @@ spec:
   maxReplicas: 10
   targetCPUUtilizationPercentage: 50
 ```
-
-
-
-
-
-
-
-
-
-
-
-
+#### Demo：Autoscaling
+1. `cat autoscaling/hpa-example.yml`
+2. `minikube stop`
+3. `minikube start --extra-config kubelet.EnableCustomMetrics=true`
+4. `kubectl create -f autoscaling/hpa-example.yml`
+5. `kubectl get hpa`
+6. `kubectl run -i --tty load-generator --image=busybox /bin/sh`
+7. `wget http://hpa-example.default.svc.cluster.local:31001`
+8. `cat index.html`
+9. `rm index.html`
+10. `while true; do wget -q -O- http://hpa-example.default.svc.cluster.local:31001; done`
+11. `kubectl get pod`，這時候可以看出他會建立很多個
+12. `kubectl get hpa` 觀看使用狀態
