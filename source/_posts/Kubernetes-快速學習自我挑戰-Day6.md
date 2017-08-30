@@ -242,3 +242,6 @@ spec:
 2. `kops edit ig --name=kubernetes.appsoliloquy.com nodes --state=s3://kops-state-qq123`
 3. `kops edit ig --name=kubernetes.appsoliloquy.com master-ap-southeast-2a --state=s3://kops-state-qq123`
 4. `kops edit ig --name=kubernetes.appsoliloquy.com master-ap-southeast-2b --state=s3://kops-state-qq123`
+***
+### 完成課程
+<img src="/blogs/images/learning/kubernetes/Edward Viaene_Kubernetes.jpg">
