@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Jenkins 快速學習自我挑戰 Day1 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Jenkins" />
+    
+    <meta name="description" content="介紹 Jenkins
+課程介紹
+
+目標
+
+了解關鍵知識
+使用 Jenkins 來設置自動建立
+熟悉基礎 Jenkins
+強烈的起始點
+
+
+課程簡介
+
+介紹 &amp;amp; 核心觀念
+快速安裝
+Jenkins UI 概覽
+Jenkins 基礎 (自由型式工作)
+Maven 專案
+超越基礎
+結論 / Bonus
+
+
+
+課程重點和方法
+
+課程重點
+
+Mac OS X
+初學者
+Java / Maven
+G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins 快速學習自我挑戰 Day1">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/09/02/Jenkins-快速學習自我挑戰-Day1/index.html">
+<meta property="og:site_name" content="Vincent's Corner">
+<meta property="og:description" content="介紹 Jenkins
+課程介紹
+
+目標
+
+了解關鍵知識
+使用 Jenkins 來設置自動建立
+熟悉基礎 Jenkins
+強烈的起始點
+
+
+課程簡介
+
+介紹 &amp;amp; 核心觀念
+快速安裝
+Jenkins UI 概覽
+Jenkins 基礎 (自由型式工作)
+Maven 專案
+超越基礎
+結論 / Bonus
+
+
+
+課程重點和方法
+
+課程重點
+
+Mac OS X
+初學者
+Java / Maven
+G">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/jenkins/jenkinsday1.png">
+<meta property="og:updated_time" content="2017-09-02T17:47:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jenkins 快速學習自我挑戰 Day1">
+<meta name="twitter:description" content="介紹 Jenkins
+課程介紹
+
+目標
+
+了解關鍵知識
+使用 Jenkins 來設置自動建立
+熟悉基礎 Jenkins
+強烈的起始點
+
+
+課程簡介
+
+介紹 &amp;amp; 核心觀念
+快速安裝
+Jenkins UI 概覽
+Jenkins 基礎 (自由型式工作)
+Maven 專案
+超越基礎
+結論 / Bonus
+
+
+
+課程重點和方法
+
+課程重點
+
+Mac OS X
+初學者
+Java / Maven
+G">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/jenkins/jenkinsday1.png">
+<meta property="fb:admins" content="dtvgood202">
+<meta property="fb:app_id" content="176717762750155">
+    
+
+    
+
+    
+        <link rel="icon" href="/blogs/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/blogs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blogs/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blogs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blogs/css/style.css">
+
+    <script src="/blogs/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blogs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blogs/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blogs/',
+        CONTENT_URL: '/blogs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blogs/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Jenkins-快速學習自我挑戰-Day1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Jenkins 快速學習自我挑戰 Day1
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/blogs/2017/09/02/Jenkins-快速學習自我挑戰-Day1/" class="article-date">
+    <time datetime="2017-09-02T15:49:25.000Z" itemprop="datePublished">2017-09-02</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Jenkins/">Jenkins</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/jenkins/jenkinsday1.png">
+<hr>
+<h3>介紹 Jenkins</h3>
+<h4>課程介紹</h4>
+<ol>
+<li>目標
+<ul>
+<li>了解關鍵知識</li>
+<li>使用 Jenkins 來設置自動建立</li>
+<li>熟悉基礎 Jenkins</li>
+<li>強烈的起始點</li>
+</ul>
+</li>
+<li>課程簡介
+<ul>
+<li>介紹 &amp; 核心觀念</li>
+<li>快速安裝</li>
+<li>Jenkins UI 概覽</li>
+<li>Jenkins 基礎 (自由型式工作)</li>
+<li>Maven 專案</li>
+<li>超越基礎</li>
+<li>結論 / Bonus</li>
+</ul>
+</li>
+</ol>
+<h4>課程重點和方法</h4>
+<ol>
+<li>課程重點
+<ul>
+<li>Mac OS X</li>
+<li>初學者</li>
+<li>Java / Maven</li>
+<li>Git &amp; Github</li>
+<li>Jenkins
+<ul>
+<li>相同的系統</li>
+<li>簡單</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>課程方法
+<ul>
+<li>最少量的理論 / 核心觀念</li>
+<li>一步一步實際練習範例</li>
+<li>補充內容</li>
+<li>影片：短且針對重點</li>
+<li>暫停和跟隨</li>
+<li>加入討論</li>
+</ul>
+</li>
+</ol>
+<h4>什麼是 Jenkins？為什麼使用 Jenkins？</h4>
+<ol>
+<li>什麼是 Jenkins？
+<ul>
+<li>持續整合 / 建立 Server
+<ul>
+<li>自動軟體建立</li>
+<li>Orchestration</li>
+</ul>
+</li>
+<li>免費 (開源)
+<ul>
+<li>商業支援可用</li>
+</ul>
+</li>
+<li>Powered by Java / Jetty
+<ul>
+<li>WAR for Java Web Containers (像是 Tomcat)</li>
+</ul>
+</li>
+<li><a href="https://jenkins.io/" target="_blank" rel="external">Jenkins.io</a></li>
+</ul>
+</li>
+<li>為什麼使用 Jenkins？
+<ul>
+<li>剛開始
+<ul>
+<li>手動的</li>
+<li>每一個開發者</li>
+</ul>
+</li>
+<li>在自己的機器運作
+<ul>
+<li>不需要 Scale</li>
+<li>非常危險</li>
+</ul>
+</li>
+<li>建立 Servers
+<ul>
+<li>監控改變</li>
+<li>建立 code
+<ul>
+<li>自動地</li>
+<li>定期地</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Jenkins
+<ul>
+<li>非常熱門</li>
+<li>強大的</li>
+<li>強壯的社群支持</li>
+<li>極度有彈性的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4>Jenkins 架構</h4>
+<ol>
+<li>Host System 裡面會有用 Jetty (預設) 執行的 Container，Jetty 可以存取 JDK tools</li>
+<li>會有一個叫做 service 的程式，他負責啟動、停止和監控 Jetty</li>
+<li>而在 Container 裡面會執行 Jenkins，在 Jenkins 裡面則會放置 View (依照分組或目錄分類)，View 裡面會放置 Project，提供如何建立軟體的指引，Project 會把工作放到 View 外面的 Job Queue，最後由 Executor 來協助 Job Queue 完成</li>
+</ol>
+<h3>快速安裝</h3>
+<h4>快速安裝概覽</h4>
+<ol>
+<li>安裝流程
+<ul>
+<li>支援多個技能等級</li>
+<li>快速安裝流程 (這一部分)</li>
+<li>完整安裝流程 (Bonus)</li>
+</ul>
+</li>
+<li>Mac OS X 或 mac OS
+<ul>
+<li>應該支援部多數最新版本</li>
+</ul>
+</li>
+<li>Git
+<ul>
+<li>Apple - Command Line Tools</li>
+</ul>
+</li>
+<li>任意文字編輯器
+<ul>
+<li>TextMate 2 (包含教學)</li>
+<li>Atom</li>
+<li>Sublime</li>
+</ul>
+</li>
+<li>Java Software Development Kit (JDK)</li>
+<li>Apache Maven 3</li>
+<li>Jenkins 2</li>
+<li>Mac OS Launch Daemon Service
+<ul>
+<li>啟動 / 暫停 / 重新啟動 Jenkins</li>
+</ul>
+</li>
+<li>安裝流程的文字教程
+<ul>
+<li>有些人比較喜歡這個方法</li>
+</ul>
+</li>
+</ol>
+<h4>Jenkins 快速安裝</h4>
+<ol>
+<li>安裝 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">JDK</a></li>
+<li>在 .zshrc 加上這一行</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=`/usr/libexec/java_home`</div></pre></td></tr></table></figure>
+<ol start="3">
+<li><a href="http://maven.apache.org/" target="_blank" rel="external">下載 Maven</a>，下載 tar.gz 版本</li>
+<li>使用 Command Line 解壓縮<br>
+<code>tar -xvzf apache-maven-3.5.0-bin.tar.gz</code></li>
+<li>在 .zshrc 加上這兩行</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">plugins=(mvn)</div><div class="line">export MAVEN_HOME=~/Development/maven</div><div class="line">export PATH=&quot;$&#123;PATH&#125;:$&#123;MAVEN_HOME&#125;/bin&quot;</div></pre></td></tr></table></figure>
+<ol start="6">
+<li><a href="https://jenkins.io/download/" target="_blank" rel="external">下載 LTS 版本</a>
+<ul>
+<li>安裝完成之後，可以在 <a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a> 看到</li>
+<li>Service Daemon</li>
+</ul>
+</li>
+</ol>
+<h4>MacOS 上的 Jenkins 服務</h4>
+<ol>
+<li>重新啟動 Jenkins<br>
+<code>http://localhost:8080/restart</code></li>
+<li>unload 移除組態設定<br>
+<code>sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist</code></li>
+<li>load 會重新載入組態設定<br>
+<code>sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist</code></li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/09/02/Jenkins-快速學習自我挑戰-Day1/" data-id="cj73lpew60005sn0a6xqgscsr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/09/02/Jenkins-快速學習自我挑戰-Day1/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hdtvgood202" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/08/31/提高生產效率：適應、改善、執行/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">提高生產效率：適應、改善、執行</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/02/Jenkins-快速學習自我挑戰-Day1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/jenkins/jenkinsday1.png)" alt="Jenkins 快速學習自我挑戰 Day1" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/02/Jenkins-快速學習自我挑戰-Day1/" class="title">Jenkins 快速學習自我挑戰 Day1</a></p>
+                            <p class="item-date"><time datetime="2017-09-02T15:49:25.000Z" itemprop="datePublished">2017-09-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/31/提高生產效率：適應、改善、執行/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/productivity/productivity.jpg)" alt="提高生產效率：適應、改善、執行" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/31/提高生產效率：適應、改善、執行/" class="title">提高生產效率：適應、改善、執行</a></p>
+                            <p class="item-date"><time datetime="2017-08-31T07:39:56.000Z" itemprop="datePublished">2017-08-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/29/Kubernetes-快速學習自我挑戰-Day6/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/kubernetes/kubernetesday6.png)" alt="Kubernetes 快速學習自我挑戰 Day6" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/29/Kubernetes-快速學習自我挑戰-Day6/" class="title">Kubernetes 快速學習自我挑戰 Day6</a></p>
+                            <p class="item-date"><time datetime="2017-08-29T01:40:46.000Z" itemprop="datePublished">2017-08-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/kubernetes/kubernetesday5.png)" alt="Kubernetes 快速學習自我挑戰 Day5" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" class="title">Kubernetes 快速學習自我挑戰 Day5</a></p>
+                            <p class="item-date"><time datetime="2017-08-21T16:46:53.000Z" itemprop="datePublished">2017-08-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/20/Kubernetes-快速學習自我挑戰-Day4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/kubernetes/kubernetesday4.jpg)" alt="Kubernetes 快速學習自我挑戰 Day4" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/20/Kubernetes-快速學習自我挑戰-Day4/" class="title">Kubernetes 快速學習自我挑戰 Day4</a></p>
+                            <p class="item-date"><time datetime="2017-08-20T06:27:44.000Z" itemprop="datePublished">2017-08-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">60</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React-Native/">React-Native</a><span class="tag-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/blogs/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/blogs/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/blogs/tags/Kubernetes/" style="font-size: 14px;">Kubernetes</a> <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/Nodejs/" style="font-size: 12px;">Nodejs</a> <a href="/blogs/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/blogs/tags/React/" style="font-size: 18px;">React</a> <a href="/blogs/tags/React-Native/" style="font-size: 14px;">React-Native</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/dtvgood202">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/blogs/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=176717762750155";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/blogs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/blogs/js/main.js"></script>
+
+    </div>
+</body>
+</html>
