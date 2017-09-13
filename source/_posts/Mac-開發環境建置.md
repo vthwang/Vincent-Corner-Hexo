@@ -51,6 +51,8 @@ tags: Mac
     - HTML Snippets
     - Material Icon Theme
     - Material Theme Kit
+#### 12. Enpass (密碼管理工具)
+[直接從官方網站下載應用](https://www.enpass.io/downloads/)
 
 ### 套件 & 指令
 #### 1. zsh
