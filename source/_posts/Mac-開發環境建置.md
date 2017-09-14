@@ -53,7 +53,6 @@ tags: Mac
     - HTML Snippets
     - Material Icon Theme
     - Material Theme Kit
-<<<<<<< HEAD
 2. 打開自動存檔 File => Auto Save
 3. 字體放大 Code => Preferences => Setting => "editor.fontSize": 16
 4. 修改佈景主題 Command+Shift+P => theme => Solarized Light
@@ -63,10 +62,6 @@ tags: Mac
 [直接從官方網站下載應用](https://apps.ankiweb.net/)
 #### 14. Slack
 [直接從官方網站下載應用](https://slack.com/downloads/osx)
-=======
-#### 12. Enpass (密碼管理工具)
-[直接從官方網站下載應用](https://www.enpass.io/downloads/)
->>>>>>> 68514286ad9edf575801261a9d72347a8b4cf6d0
 
 ### 套件 & 指令
 #### 1. zsh
