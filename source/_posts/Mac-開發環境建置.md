@@ -24,6 +24,8 @@ tags: Mac
     - iTerm2 => Preferences => Profiles => Text => Font => 20px
 2. 讓 iTerm2 可以無限的往回滾動
     - iTerm2 => Preferences => Profiles => Terminal => Scrollback Buffer => Unlimited scrollback
+3. 修改主題 - [下載 Dracula 主題](https://draculatheme.com/iterm/)
+    - iTerm2 => Preferences => Profiles => Color => 找到右下角的 Color Presets => Import => 選擇 Dracula
 #### 3. Wunderlist
 [直接從官方網站下載應用](https://www.wunderlist.com/)
 #### 4. Dropbox
@@ -33,7 +35,7 @@ tags: Mac
 #### 6. Filezilla
 [直接從官方網站下載應用](https://filezilla-project.org/download.php?type=client)
 #### 7. Zoom
-[直接從官方網站下載應用](https://zoom.us/client/latest/ZoomRooms.pkg)
+[直接從官方網站下載應用](https://zoom.us/download)
 #### 8. VirtualBox
 [直接從官方網站下載應用](https://www.virtualbox.org/wiki/Downloads)
 #### 9. WebStorm
@@ -51,6 +53,15 @@ tags: Mac
     - HTML Snippets
     - Material Icon Theme
     - Material Theme Kit
+2. 打開自動存檔 File => Auto Save
+3. 字體放大 Code => Preferences => Setting => "editor.fontSize": 16
+4. 修改佈景主題 Command+Shift+P => theme => Solarized Light
+#### 12. Enpass (密碼管理工具)
+[直接從官方網站下載應用](https://www.enpass.io/downloads/)
+#### 13. Anki
+[直接從官方網站下載應用](https://apps.ankiweb.net/)
+#### 14. Slack
+[直接從官方網站下載應用](https://slack.com/downloads/osx)
 
 ### 套件 & 指令
 #### 1. zsh
