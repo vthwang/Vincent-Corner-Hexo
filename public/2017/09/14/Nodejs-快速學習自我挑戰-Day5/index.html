@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Nodejs 快速學習自我挑戰 Day5 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Nodejs" />
+    
+    <meta name="description" content="網頁伺服器及應用程式部署
+進階 template
+
+註冊 partials
+hbs.registerPartials(__dirname + &apos;/views/partials&apos;)
+將 footer code 移到 views/partials/footer.hbs
+
+123&amp;lt;footer&amp;gt;    &amp;lt;p&amp;gt;Copyright &amp;#123;&amp;#123;currentYear&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs 快速學習自我挑戰 Day5">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/09/14/Nodejs-快速學習自我挑戰-Day5/index.html">
+<meta property="og:site_name" content="Vincent's Corner">
+<meta property="og:description" content="網頁伺服器及應用程式部署
+進階 template
+
+註冊 partials
+hbs.registerPartials(__dirname + &apos;/views/partials&apos;)
+將 footer code 移到 views/partials/footer.hbs
+
+123&amp;lt;footer&amp;gt;    &amp;lt;p&amp;gt;Copyright &amp;#123;&amp;#123;currentYear&amp;">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday5.jpg">
+<meta property="og:updated_time" content="2017-09-15T05:59:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day5">
+<meta name="twitter:description" content="網頁伺服器及應用程式部署
+進階 template
+
+註冊 partials
+hbs.registerPartials(__dirname + &apos;/views/partials&apos;)
+將 footer code 移到 views/partials/footer.hbs
+
+123&amp;lt;footer&amp;gt;    &amp;lt;p&amp;gt;Copyright &amp;#123;&amp;#123;currentYear&amp;">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday5.jpg">
+<meta property="fb:admins" content="dtvgood202">
+<meta property="fb:app_id" content="176717762750155">
+    
+
+    
+
+    
+        <link rel="icon" href="/blogs/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/blogs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blogs/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blogs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blogs/css/style.css">
+
+    <script src="/blogs/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blogs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blogs/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blogs/',
+        CONTENT_URL: '/blogs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blogs/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Nodejs-快速學習自我挑戰-Day5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Nodejs 快速學習自我挑戰 Day5
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/blogs/2017/09/14/Nodejs-快速學習自我挑戰-Day5/" class="article-date">
+    <time datetime="2017-09-14T03:24:09.000Z" itemprop="datePublished">2017-09-14</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/nodejs/nodejsday5.jpg">
+<hr>
+<h3>網頁伺服器及應用程式部署</h3>
+<h4>進階 template</h4>
+<ol>
+<li>註冊 partials<br>
+<code>hbs.registerPartials(__dirname + '/views/partials')</code></li>
+<li>將 footer code 移到 views/partials/footer.hbs</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;footer&gt;</div><div class="line">    &lt;p&gt;Copyright &#123;&#123;currentYear&#125;&#125;&lt;/p&gt;</div><div class="line">&lt;/footer&gt;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>本來 footer 的區塊用 <code> {{> footer}}</code> 取代</li>
+<li>nodemon 監控 js 和 hbs 檔案 <code>nodemon server.js -e js, hbs</code></li>
+<li>將 header code 移到 views/partials/header.hbs</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;header&gt;</div><div class="line">    &lt;h1&gt;&#123;&#123;pageTitle&#125;&#125;, 123&lt;/h1&gt;</div><div class="line">    &lt;p&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/p&gt;</div><div class="line">    &lt;p&gt;&lt;a href=&quot;/about&quot;&gt;About&lt;/a&gt;&lt;/p&gt;</div><div class="line">&lt;/header&gt;</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>本來 footer 的區塊用 <code> {{> header}}</code> 取代</li>
+<li>使用 hbs 的 Helper 來取得年份</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hbs.registerHelper(&apos;getCurrentYear&apos;, () =&gt; &#123;</div><div class="line">    return new Date().getFullYear();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="8">
+<li>本來 <code> {{currentYear}}</code> 用 <code> {{getCurrentYear}}</code> 取代</li>
+<li>使用 hbs 的 Helper 註冊 screamIt 然後將 text 變數送進去</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hbs.registerHelper(&apos;screamIt&apos;, (text) =&gt; &#123;</div><div class="line">    return text.toUpperCase();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="10">
+<li>使用 screamIt，text 變數設為 welcomeMessage<code> {{screamIt welcomeMessage}}</code></li>
+</ol>
+<h4>Express Middleware</h4>
+<ol>
+<li>註冊一個 middleware，然後 console 時間以及擷取的狀態</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.use((req, res, next) =&gt; &#123;</div><div class="line">    var now = new Date().toString();</div><div class="line"></div><div class="line">    console.log(`$&#123;now&#125;: $&#123;req.method&#125; $&#123;req.url&#125;`);</div><div class="line">    next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>新增 maintenance.hbs</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">    &lt;title&gt;Some Website&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;h1&gt;We&apos;ll be right back&lt;/h1&gt;</div><div class="line">    &lt;p&gt;</div><div class="line">        The site is currently being updated.</div><div class="line">    &lt;/p&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用 middleware 把頁面通通導向 maintenance</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.use((req, res ,next) =&gt; &#123;</div><div class="line">   res.render(&apos;maintenance&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>Git 版本控制</h4>
+<ol>
+<li><a href="https://git-scm.com/" target="_blank" rel="external">Git 官方網站</a></li>
+<li>啟動 git 專案 <code>git init</code></li>
+<li>新增檔案 <code>git add</code></li>
+<li>新增 .gitignore 讓部分檔案不上傳</li>
+<li>對新增的檔案做 commit <code>git commit -m 'Commit Content'</code></li>
+</ol>
+<h4>設置 ssh key</h4>
+<ol>
+<li>ssh key 目錄 <code>~/.ssh</code></li>
+<li>產生 ssh key <code>ssh-keygen -t rsa -b 4096 -C 'YOUR@EMAIL'</code></li>
+<li>設定完成會產生出 id_rsa(此為私密金鑰，不能給別人) 和 id_rsa_pub(此為公開金鑰，用於第三方軟件)</li>
+<li>開啟 ssh-agent <code>eval &quot;$(ssh-agent -s)&quot;</code></li>
+<li>將 ssh 私鑰加入 ssh-agent <code>ssh-add ~/.ssh/id_rsa</code></li>
+<li>將 ssh key 貼到 Github =&gt; Setting =&gt; SSH and GPG key <code>pbcopy &lt; ~/.ssh/id_rsa.pub</code></li>
+<li>跟 Github 進行連線 <code>ssh -T git@github.com</code></li>
+</ol>
+<h4>部署 apps</h4>
+<ol>
+<li><a href="https://www.heroku.com/" target="_blank" rel="external">heroku</a></li>
+<li>安裝 heroku cli <code>brew install heroku</code></li>
+<li>在本地端 cli 登入 heroku <code>heroku login</code></li>
+<li>新增 ssh key 到 keroku <code>heroku keys:add</code></li>
+<li>檢查在電腦上的 key <code>heroku keys</code></li>
+<li>跟 heroku 進行連線 <code>ssh -v git@heroku.com</code></li>
+<li>修改 server.js 讓 port 動態調整，先取得 env 的 PORT，如果不存在則使用預設的 3000 Port<br>
+<code>const port = process.env.PORT || 3000;</code></li>
+<li>修改 server.js 的 app.listen</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.listen(port, () =&gt; &#123;</div><div class="line">    console.log(`Server is up on port $&#123;port&#125;`);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="9">
+<li>在 package.json 的 script 新增 start，讓 server 知道要執行哪個檔案</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</div><div class="line">    &quot;start&quot;: &quot;node server.js&quot;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<ol start="10">
+<li>開啟 heroku 專案 <code>heroku create</code></li>
+<li>將專案推到 heroku <code>git push heroku</code></li>
+<li>用瀏覽器開啟 keroku 的專案<code>heroku open</code></li>
+</ol>
+<h3>測試 Apps</h3>
+<h4>Mocha 和基本測試</h4>
+<ol>
+<li><code>mkdir node-tests</code></li>
+<li><code>cd node-tests</code></li>
+<li><code>npm init</code>，全部直接使用預設值</li>
+<li>新增檔案 utils/utils.js<br>
+<code>module.exports.add = (a, b) =&gt; a + b;</code></li>
+<li><a href="https://mochajs.org/" target="_blank" rel="external">Mocha 官方網站</a></li>
+<li>安裝 mocha 且不在正式上線時使用，僅用於開發用途<br>
+<code>npm i mocha@3.0.0 --save-dev</code></li>
+<li>新增 utils/util.test.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const utils = require(&apos;./utils&apos;);</div><div class="line"></div><div class="line">it(&apos;should add two numbers&apos;, () =&gt; &#123;</div><div class="line">    var res = utils.add(33, 11);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="8">
+<li>修改 package.json，**搜尋所有資料夾</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">    &quot;test&quot;: &quot;mocha **/*.test.js&quot;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<ol start="9">
+<li><code>npm test</code> 執行測試</li>
+<li>加一行錯誤<br>
+<code>throw new Error('Value not correct!')</code></li>
+<li>再執行 <code>npm test</code>，就會發現錯誤了</li>
+<li>加 if statement，回傳得到的錯誤值</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (res !== 44) &#123;</div><div class="line">    throw new Error(`Expected 44, but got $&#123;res&#125;.`)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="13">
+<li>在 utils/utils.js 新增一個 module<br>
+<code>module.exports.square = (x) =&gt; x * x;</code></li>
+<li>在 utils.utils.test.js 多新增一個 test</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">it (&apos;should square a number&apos;, () =&gt; &#123;</div><div class="line">    var res = utils.square(3);</div><div class="line"></div><div class="line">    if (res !== 9) &#123;</div><div class="line">        throw new Error(`Expected 9, but got $&#123;res&#125;.`)</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>監控和自動重啟測試</h4>
+<ol>
+<li><code>nodemon --exec 'npm test'</code></li>
+<li>在 package.json 直接新增 command<br>
+<code>&quot;test-watch&quot;: &quot;nodemon --exec \&quot;npm test\&quot;&quot;</code></li>
+<li><code>npm run test-watch</code></li>
+</ol>
+<h4>使用 Assertion Library</h4>
+<ol>
+<li><a href="https://github.com/mjackson/expect" target="_blank" rel="external">Assertion Library</a></li>
+<li>安裝 expect <code>npm install expect@1.20.2 --save-dev</code></li>
+<li>用 expect 簡化函數</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">const expect = require(&apos;expect&apos;);</div><div class="line"></div><div class="line">const utils = require(&apos;./utils&apos;);</div><div class="line"></div><div class="line">it(&apos;should add two numbers&apos;, () =&gt; &#123;</div><div class="line">    var res = utils.add(33, 11);</div><div class="line"></div><div class="line">    expect(res).toBe(44).toBeA(&apos;number&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">it (&apos;should square a number&apos;, () =&gt; &#123;</div><div class="line">    var res = utils.square(3);</div><div class="line"></div><div class="line">    expect(res).toBe(9).toBeA(&apos;number&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">it (&apos;should expect some values&apos;, () =&gt; &#123;</div><div class="line">    expect(12).toNotBe(12);</div><div class="line">    expect(&#123;name: &apos;andrew&apos;&#125;).toNotEqual(&#123;name: &apos;Andrew&apos;&#125;);</div><div class="line">    expect([2, 3, 4]).toExclude(1);</div><div class="line">    expect(&#123;</div><div class="line">        name: &apos;Andrew&apos;,</div><div class="line">        age: 25,</div><div class="line">        location: &apos;Philadelphia&apos;</div><div class="line">    &#125;).toExclude(&#123;</div><div class="line">        age: 23</div><div class="line">    &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 utils/utils.js 新增 module</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">module.exports.setName = (user, fullName) =&gt; &#123;</div><div class="line">    var names = fullName.split(&apos; &apos;);</div><div class="line">    user.firstName = names[0];</div><div class="line">    user.lastName = names[1];</div><div class="line">    return user;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>用 expect 確認回傳的物件是正確值</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// should verify first and last names are set</div><div class="line">// assert it includes firstName and lastName with proper values</div><div class="line">it (&apos;should set firstName and lastName&apos;, () =&gt; &#123;</div><div class="line">    var user = &#123;location: &apos;Philadelphia&apos;, age: 25&#125;;</div><div class="line">    var res = utils.setName(user, &apos;Andrew Mead&apos;);</div><div class="line"></div><div class="line">    expect(res).toInclude(&#123;</div><div class="line">        firstName: &apos;Andrew&apos;,</div><div class="line">        lastName: &apos;Mead&apos;,</div><div class="line">        age: 25</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>測試非同步式程式碼</h4>
+<ol>
+<li>在 utils/utils.js 新增一個 asyncAdd</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">module.exports.asyncAdd = (a, b, callback) =&gt; &#123;</div><div class="line">    setTimeout(() =&gt; &#123;</div><div class="line">        callback(a + b);</div><div class="line">    &#125;, 1000);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 utils/utils.test.js 測試 asyncAdd，這邊一定要使用 done，這樣才知道他是非同步，會等完成再執行 expect</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">it(&apos;should async add two numbers&apos;, (done) =&gt; &#123;</div><div class="line">    utils.asyncAdd(4, 3, (sum) =&gt; &#123;</div><div class="line">        expect(sum).toBe(7).toBeA(&apos;number&apos;);</div><div class="line">        done();</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 utils/utils.js 新增一個 asyncSquare</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">module.exports.asyncSquare = (x, callback) =&gt; &#123;</div><div class="line">    setTimeout(() =&gt; &#123;</div><div class="line">        callback(x * x);</div><div class="line">    &#125;, 1000);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 utils/utils.test.js 測試 asyncSqure</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">it(&apos;should async square a number&apos;, (done) =&gt; &#123;</div><div class="line">    utils.asyncSquare(5, (res) =&gt; &#123;</div><div class="line">        expect(res).toBe(25).toBeA(&apos;number&apos;);</div><div class="line">        done();</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>測試 Express 應用</h4>
+<ol>
+<li>安裝 Express<br>
+<code>npm i express@4.14.0 --save</code></li>
+<li>新增 server/server.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">const express = require(&apos;express&apos;);</div><div class="line"></div><div class="line">var app = express();</div><div class="line"></div><div class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.send(&apos;Hello world!&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(3000);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>執行 server<br>
+<code>node server/server.js</code></li>
+<li>去瀏覽器輸入 <code>http://localhost:3000/</code> 就會看到 Hello world!</li>
+<li><a href="https://github.com/visionmedia/supertest" target="_blank" rel="external">SuperTest</a></li>
+<li><code>npm i supertest@2.0.0 --save-dev</code></li>
+<li>修改 server/server.js 輸出內容讓其它地方可用<br>
+<code>module.exports.app = app;</code></li>
+<li>新增 server/server.test.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const request = require(&apos;supertest&apos;);</div><div class="line"></div><div class="line">var app = require(&apos;./server&apos;).app;</div><div class="line"></div><div class="line">it(&apos;should return hello world response&apos;, (done) =&gt; &#123;</div><div class="line">    request(app)</div><div class="line">        .get(&apos;/&apos;)</div><div class="line">        .expect(&apos;Hello world!&apos;)</div><div class="line">        .end(done);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="9">
+<li>引入 expect，用 expect 客製化測試</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">const request = require(&apos;supertest&apos;);</div><div class="line">const expect = require(&apos;expect&apos;);</div><div class="line"></div><div class="line">var app = require(&apos;./server&apos;).app;</div><div class="line"></div><div class="line">it(&apos;should return hello world response&apos;, (done) =&gt; &#123;</div><div class="line">    request(app)</div><div class="line">        .get(&apos;/&apos;)</div><div class="line">        .expect(404)</div><div class="line">        .expect((res) =&gt; &#123;</div><div class="line">            expect(res.body).toInclude(&#123;</div><div class="line">                error: &apos;Page not found.&apos;</div><div class="line">            &#125;);</div><div class="line">        &#125;)</div><div class="line">        .end(done);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="10">
+<li>在 server/server.js 新增路由</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// GET /users</div><div class="line">// Give users a name prop and age prop</div><div class="line">app.get(&apos;/users&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.send([&#123;</div><div class="line">        name: &apos;Mike&apos;,</div><div class="line">        age: 27</div><div class="line">    &#125;, &#123;</div><div class="line">        name: &apos;Andrew&apos;,</div><div class="line">        age: 25</div><div class="line">    &#125;, &#123;</div><div class="line">        name: &apos;Jen&apos;,</div><div class="line">        age: 26</div><div class="line">    &#125;]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="11">
+<li>在 server/server.test.js 新增測試</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// Make a new test</div><div class="line">// assert 200</div><div class="line">// Assert that you exist in users array</div><div class="line">it(&apos;should return my user object&apos;, (done) =&gt; &#123;</div><div class="line">    request(app)</div><div class="line">        .get(&apos;/users&apos;)</div><div class="line">        .expect(200)</div><div class="line">        .expect((res) =&gt; &#123;</div><div class="line">            expect(res.body).toInclude(&#123;</div><div class="line">                name: &apos;Andrew&apos;,</div><div class="line">                age: 25</div><div class="line">            &#125;);</div><div class="line">        &#125;)</div><div class="line">        .end(done);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>使用 describe() 組織測試</h4>
+<ol>
+<li>修改 utils/utils.test.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">const expect = require(&apos;expect&apos;);</div><div class="line"></div><div class="line">const utils = require(&apos;./utils&apos;);</div><div class="line"></div><div class="line">describe(&apos;Utils&apos;, () =&gt; &#123;</div><div class="line"></div><div class="line">    describe(&apos;#add&apos;, () =&gt; &#123;</div><div class="line">        it(&apos;should add two numbers&apos;, () =&gt; &#123;</div><div class="line">            var res = utils.add(33, 11);</div><div class="line"></div><div class="line">            expect(res).toBe(44).toBeA(&apos;number&apos;);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        it(&apos;should async add two numbers&apos;, (done) =&gt; &#123;</div><div class="line">            utils.asyncAdd(4, 3, (sum) =&gt; &#123;</div><div class="line">                expect(sum).toBe(7).toBeA(&apos;number&apos;);</div><div class="line">                done();</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    it (&apos;should square a number&apos;, () =&gt; &#123;</div><div class="line">        var res = utils.square(3);</div><div class="line"></div><div class="line">        expect(res).toBe(9).toBeA(&apos;number&apos;);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    it(&apos;should async square a number&apos;, (done) =&gt; &#123;</div><div class="line">        utils.asyncSquare(5, (res) =&gt; &#123;</div><div class="line">            expect(res).toBe(25).toBeA(&apos;number&apos;);</div><div class="line">            done();</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// should verify first and last names are set</div><div class="line">// assert it includes firstName and lastName with proper values</div><div class="line">it (&apos;should set firstName and lastName&apos;, () =&gt; &#123;</div><div class="line">    var user = &#123;location: &apos;Philadelphia&apos;, age: 25&#125;;</div><div class="line">    var res = utils.setName(user, &apos;Andrew Mead&apos;);</div><div class="line"></div><div class="line">    expect(res).toInclude(&#123;</div><div class="line">        firstName: &apos;Andrew&apos;,</div><div class="line">        lastName: &apos;Mead&apos;,</div><div class="line">        age: 25</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// it (&apos;should expect some values&apos;, () =&gt; &#123;</div><div class="line">    // expect(12).toNotBe(12);</div><div class="line">    // expect(&#123;name: &apos;andrew&apos;&#125;).toNotEqual(&#123;name: &apos;Andrew&apos;&#125;);</div><div class="line">    // expect([2, 3, 4]).toExclude(1);</div><div class="line">    // expect(&#123;</div><div class="line">    //     name: &apos;Andrew&apos;,</div><div class="line">    //     age: 25,</div><div class="line">    //     location: &apos;Philadelphia&apos;</div><div class="line">    // &#125;).toExclude(&#123;</div><div class="line">    //     age: 23</div><div class="line">    // &#125;)</div><div class="line">// &#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 server/server.test.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">const request = require(&apos;supertest&apos;);</div><div class="line">const expect = require(&apos;expect&apos;);</div><div class="line"></div><div class="line">var app = require(&apos;./server&apos;).app;</div><div class="line"></div><div class="line">// Server</div><div class="line">    // GET /</div><div class="line">        // some test case</div><div class="line">    // GET /users</div><div class="line">        // some test case</div><div class="line"></div><div class="line">describe(&apos;Server&apos;, () =&gt; &#123;</div><div class="line"></div><div class="line">    describe(&apos;GET /&apos;, () =&gt; &#123;</div><div class="line">        it(&apos;should return hello world response&apos;, (done) =&gt; &#123;</div><div class="line">            request(app)</div><div class="line">                .get(&apos;/&apos;)</div><div class="line">                .expect(404)</div><div class="line">                .expect((res) =&gt; &#123;</div><div class="line">                    expect(res.body).toInclude(&#123;</div><div class="line">                        error: &apos;Page not found.&apos;</div><div class="line">                    &#125;);</div><div class="line">                &#125;)</div><div class="line">                .end(done);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    describe(&apos;GET /users&apos;, () =&gt; &#123;</div><div class="line">        // Make a new test</div><div class="line">        // assert 200</div><div class="line">        // Assert that you exist in users array</div><div class="line">        it(&apos;should return my user object&apos;, (done) =&gt; &#123;</div><div class="line">            request(app)</div><div class="line">                .get(&apos;/users&apos;)</div><div class="line">                .expect(200)</div><div class="line">                .expect((res) =&gt; &#123;</div><div class="line">                    expect(res.body).toInclude(&#123;</div><div class="line">                        name: &apos;Andrew&apos;,</div><div class="line">                        age: 25</div><div class="line">                    &#125;);</div><div class="line">                &#125;)</div><div class="line">                .end(done);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>Test Spies</h4>
+<ol>
+<li>新增 spies/db.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">module.exports.saveUser = (user) =&gt; &#123;</div><div class="line">    console.log(&apos;Saving the user&apos;, user);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>新增 spies/app.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var db = require(&apos;./db&apos;);</div><div class="line"></div><div class="line">module.exports.handleSignup = (email, password) =&gt; &#123;</div><div class="line">    // Check if email already exists</div><div class="line">    db.saveUser(&#123;email, password&#125;);</div><div class="line">    // Save the user to the database</div><div class="line">    // Send the welcome email</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>新增 spies/app.test.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">const expect = require(&apos;expect&apos;);</div><div class="line"></div><div class="line">describe(&apos;App&apos;, () =&gt; &#123;</div><div class="line"></div><div class="line">    it(&apos;should call the spy correctly&apos;, () =&gt; &#123;</div><div class="line">        var spy = expect.createSpy();</div><div class="line">        spy(&apos;Andrew&apos;, 25);</div><div class="line">        expect(spy).toHaveBeenCalledWith(&apos;Andrew&apos;, 25);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li><code>npm install rewire@2.5.2 --save-dev</code></li>
+<li>在 spies/app.test.js 使用 rewire 引入 app<br>
+<code>var app = rewire('./app');</code></li>
+<li>用 describe 將 rewire 單元測試分類在一起</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">describe(&apos;App&apos;, () =&gt; &#123;</div><div class="line">    var db = &#123;</div><div class="line">        saveUser: expect.createSpy()</div><div class="line">    &#125;;</div><div class="line">    app.__set__(&apos;db&apos;, db);</div><div class="line"></div><div class="line">    it(&apos;should call saveUser with user object&apos;, () =&gt; &#123;</div><div class="line">        var email = &apos;andrew@example.com&apos;;</div><div class="line">        var password = &apos;123abc&apos;;</div><div class="line"></div><div class="line">        app.handleSignup(email, password);</div><div class="line">        expect(db.saveUser).toHaveBeenCalledWith(&#123;email, password&#125;);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/09/14/Nodejs-快速學習自我挑戰-Day5/" data-id="cj7lh5jm6003b7y1vgygdat9g" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/09/14/Nodejs-快速學習自我挑戰-Day5/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hdtvgood202" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/09/13/Mac-開發環境建置/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Mac 開發環境建置</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/14/Nodejs-快速學習自我挑戰-Day5/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday5.jpg)" alt="Nodejs 快速學習自我挑戰 Day5" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/14/Nodejs-快速學習自我挑戰-Day5/" class="title">Nodejs 快速學習自我挑戰 Day5</a></p>
+                            <p class="item-date"><time datetime="2017-09-14T03:24:09.000Z" itemprop="datePublished">2017-09-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/13/Mac-開發環境建置/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/technique/MacEnvironment.jpg)" alt="Mac 開發環境建置" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/13/Mac-開發環境建置/" class="title">Mac 開發環境建置</a></p>
+                            <p class="item-date"><time datetime="2017-09-13T13:07:44.000Z" itemprop="datePublished">2017-09-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/02/Jenkins-快速學習自我挑戰-Day1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/jenkins/jenkinsday1.png)" alt="Jenkins 快速學習自我挑戰 Day1" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/02/Jenkins-快速學習自我挑戰-Day1/" class="title">Jenkins 快速學習自我挑戰 Day1</a></p>
+                            <p class="item-date"><time datetime="2017-09-02T15:49:25.000Z" itemprop="datePublished">2017-09-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/31/提高生產效率：適應、改善、執行/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/productivity/productivity.jpg)" alt="提高生產效率：適應、改善、執行" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/31/提高生產效率：適應、改善、執行/" class="title">提高生產效率：適應、改善、執行</a></p>
+                            <p class="item-date"><time datetime="2017-08-31T07:39:56.000Z" itemprop="datePublished">2017-08-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/08/29/Kubernetes-快速學習自我挑戰-Day6/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/kubernetes/kubernetesday6.png)" alt="Kubernetes 快速學習自我挑戰 Day6" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/08/29/Kubernetes-快速學習自我挑戰-Day6/" class="title">Kubernetes 快速學習自我挑戰 Day6</a></p>
+                            <p class="item-date"><time datetime="2017-08-29T01:40:46.000Z" itemprop="datePublished">2017-08-29</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">61</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React-Native/">React-Native</a><span class="tag-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/blogs/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/blogs/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/blogs/tags/Kubernetes/" style="font-size: 14px;">Kubernetes</a> <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/blogs/tags/Nodejs/" style="font-size: 12px;">Nodejs</a> <a href="/blogs/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/blogs/tags/React/" style="font-size: 18px;">React</a> <a href="/blogs/tags/React-Native/" style="font-size: 14px;">React-Native</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/dtvgood202">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/blogs/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=176717762750155";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/blogs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/blogs/js/main.js"></script>
+
+    </div>
+</body>
+</html>
