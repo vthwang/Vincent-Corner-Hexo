@@ -3,71 +3,47 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Lavarel 快速學習自我挑戰 Day1 | Vincent&#39;s Corner</title>
+    <title>Nodejs 快速學習自我挑戰 Day6 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Laravel" />
+        <meta name="keywords" content="Nodejs" />
     
-    <meta name="description" content="安裝 PHP 環境
+    <meta name="description" content="MongoDB，Mongoose 和 REST APIs (Todo API)
+安裝 MongoDB 和 Mongoose
 
-安裝 XAMPP，選 PHP 最新版本。
-啟動 XAMPP，網址列輸入 localhost，可以看到 XAMPP 的最新畫面。
-
-安裝 IDE (PhpStorm)
-
-官方網站。
-學生免費。
-下載 IDE。
-
-Install Composer (相依套件管理器)
-
-Composer官方網站。
-找套件的網站：packagist。
-Download Composer。
-按照程">
+下載 MongoDB
+將檔案解壓縮後，修改檔名為 mongo，然後移動到家目錄底下
+在家目錄新增 mongo-data 的資料夾
+啟動 server 並指定路徑./mongod --dbpath ~/mongo-data
+新開分頁，執行 ./mongo
+寫入資料庫 db">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day1">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2017/04/22/Lavarel-快速學習自我挑戰-Day1/index.html">
+<meta property="og:title" content="Nodejs 快速學習自我挑戰 Day6">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/09/15/Nodejs-快速學習自我挑戰-Day6/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="安裝 PHP 環境
+<meta property="og:description" content="MongoDB，Mongoose 和 REST APIs (Todo API)
+安裝 MongoDB 和 Mongoose
 
-安裝 XAMPP，選 PHP 最新版本。
-啟動 XAMPP，網址列輸入 localhost，可以看到 XAMPP 的最新畫面。
-
-安裝 IDE (PhpStorm)
-
-官方網站。
-學生免費。
-下載 IDE。
-
-Install Composer (相依套件管理器)
-
-Composer官方網站。
-找套件的網站：packagist。
-Download Composer。
-按照程">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday1.jpg">
-<meta property="og:updated_time" content="2017-04-23T15:38:00.000Z">
+下載 MongoDB
+將檔案解壓縮後，修改檔名為 mongo，然後移動到家目錄底下
+在家目錄新增 mongo-data 的資料夾
+啟動 server 並指定路徑./mongod --dbpath ~/mongo-data
+新開分頁，執行 ./mongo
+寫入資料庫 db">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday6.png">
+<meta property="og:updated_time" content="2017-09-17T11:54:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lavarel 快速學習自我挑戰 Day1">
-<meta name="twitter:description" content="安裝 PHP 環境
+<meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day6">
+<meta name="twitter:description" content="MongoDB，Mongoose 和 REST APIs (Todo API)
+安裝 MongoDB 和 Mongoose
 
-安裝 XAMPP，選 PHP 最新版本。
-啟動 XAMPP，網址列輸入 localhost，可以看到 XAMPP 的最新畫面。
-
-安裝 IDE (PhpStorm)
-
-官方網站。
-學生免費。
-下載 IDE。
-
-Install Composer (相依套件管理器)
-
-Composer官方網站。
-找套件的網站：packagist。
-Download Composer。
-按照程">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/laravel/laravelday1.jpg">
+下載 MongoDB
+將檔案解壓縮後，修改檔名為 mongo，然後移動到家目錄底下
+在家目錄新增 mongo-data 的資料夾
+啟動 server 並指定路徑./mongod --dbpath ~/mongo-data
+新開分頁，執行 ./mongo
+寫入資料庫 db">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday6.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -194,14 +170,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Lavarel-快速學習自我挑戰-Day1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Nodejs-快速學習自我挑戰-Day6" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Lavarel 快速學習自我挑戰 Day1
+        Nodejs 快速學習自我挑戰 Day6
         </h1>
     
 
@@ -209,74 +185,124 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2017/04/22/Lavarel-快速學習自我挑戰-Day1/" class="article-date">
-    <time datetime="2017-04-21T19:00:35.000Z" itemprop="datePublished">2017-04-22</time>
+                <a href="/blogs/2017/09/15/Nodejs-快速學習自我挑戰-Day6/" class="article-date">
+    <time datetime="2017-09-15T06:01:22.000Z" itemprop="datePublished">2017-09-15</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Laravel/">Laravel</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/learning/laravel/laravelday1.jpg">
+            <img src="/blogs/images/learning/nodejs/nodejsday6.png">
 <hr>
-<h3>安裝 PHP 環境</h3>
+<h3>MongoDB，Mongoose 和 REST APIs (Todo API)</h3>
+<h4>安裝 MongoDB 和 Mongoose</h4>
 <ol>
-<li>安裝 <a href="https://www.apachefriends.org/download.html" target="_blank" rel="external">XAMPP</a>，選 PHP 最新版本。</li>
-<li>啟動 XAMPP，網址列輸入 localhost，可以看到 XAMPP 的最新畫面。</li>
+<li><a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="external">下載 MongoDB</a></li>
+<li>將檔案解壓縮後，修改檔名為 mongo，然後移動到家目錄底下</li>
+<li>在家目錄新增 mongo-data 的資料夾</li>
+<li>啟動 server 並指定路徑<code>./mongod --dbpath ~/mongo-data</code></li>
+<li>新開分頁，執行 <code>./mongo</code></li>
+<li>寫入資料庫 <code>db.Todos.insert({text: 'File new node course'})</code></li>
+<li><code>db.Todos.find()</code> ，搜尋資料庫會發現剛剛輸入的資料</li>
+<li><a href="https://robomongo.org/" target="_blank" rel="external">Robomongo</a></li>
 </ol>
-<h3>安裝 IDE (PhpStorm)</h3>
+<h4>建立 NoSQL Vocabulary</h4>
 <ol>
-<li><a href="https://www.jetbrains.com/phpstorm/" target="_blank" rel="external">官方網站</a>。</li>
-<li><a href="https://www.jetbrains.com/phpstorm/buy/#edition=discounts" target="_blank" rel="external">學生免費</a>。</li>
-<li><a href="https://www.jetbrains.com/phpstorm/download/" target="_blank" rel="external">下載 IDE</a>。</li>
+<li>SQL 有 table 結構，NoSQL 則是使用物件的形式 (Collection)</li>
+<li>SQL 每一筆資料稱為 Row/Record，NoSQL 則稱為 Document</li>
+<li>SQL 每一個欄位稱為 Column，NoSQL 則稱為 Field</li>
 </ol>
-<h3>Install Composer (相依套件管理器)</h3>
+<h4>連接 MongoDB 並寫入資料</h4>
 <ol>
-<li><a href="https://getcomposer.org/" target="_blank" rel="external">Composer官方網站</a>。</li>
-<li>找套件的網站：<a href="https://packagist.org/" target="_blank" rel="external">packagist</a>。</li>
-<li><a href="https://getcomposer.org/download/" target="_blank" rel="external">Download Composer</a>。</li>
-<li>按照程式碼安裝之後，會產生一個 composer.phar，為了要在全域使用，在 .zshrc 裡面加上<code>export PATH=&quot;~/.composer/vendor/bin:$PATH&quot;</code>，在指令列用<code>source .zshrc</code>更新檔案。</li>
+<li><a href="https://github.com/mongodb/node-mongodb-native" target="_blank" rel="external">MongoDB native</a></li>
+<li><code>mkdir node-todo-api</code></li>
+<li><code>npm init</code></li>
+<li><code>npm install mongodb@2.2.5 --save</code></li>
+<li>新增 playground/mongodb-connect.js</li>
 </ol>
-<h3>啟動 laravel 專案</h3>
-<ol>
-<li><code>composer create-project --prefer-dist laravel/laravel cms 5.2.29</code></li>
-<li>更改讀取權限 <code>chmod -R o+w cms/storage</code>，就可以直接預覽了。</li>
-<li>如果不想修改權限，可以在修改 httpd 設定檔。<br>
-<code>vim /Applications/XAMPP/xamppfiles/etc/httpd.conf</code><br>
-將 <code>User daemon</code> 改成 <code>User 你的Username</code>。</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const MongoClient = require(&apos;mongodb&apos;).MongoClient;</div><div class="line"></div><div class="line">MongoClient.connect(&apos;mongodb://localhost:27017/TodoApp&apos;, (err, db) =&gt; &#123;</div><div class="line">    if (err) &#123;</div><div class="line">        return console.log(&apos;Unable to connect to MongoDB server&apos;);</div><div class="line">    &#125;</div><div class="line">    console.log(&apos;Connected to MongoDB server&apos;);</div><div class="line"></div><div class="line">    db.close();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li><code>node playground/mongodb-connect.js</code></li>
+<li>在 playground/mongodb-connect.js 插入一行</li>
 </ol>
-<h3>Virtual hosts</h3>
-<ol>
-<li>修改 httpd 設定檔<br>
-<code>vim /Applications/XAMPP/xamppfiles/etc/httpd.conf</code><br>
-把 Virtaul hosts include 進去 (將 # 移除)<br>
-<code>Include etc/extra/httpd-vhosts.conf</code></li>
-<li>修改 hosts 檔案<br>
-<code>vim /etc/hosts</code><br>
-加上 <code>127.0.0.1 cms.dev</code></li>
-<li>修改 vhosts 設定檔<br>
-<code>vim /Applications/XAMPP/etc/extra/httpd-vhosts.conf</code><br>
-將檔案修改為以下格式</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">db.collection(&apos;Todos&apos;).insertOne(&#123;</div><div class="line">        text: &apos;Something to do&apos;,</div><div class="line">        completed: false</div><div class="line">    &#125;, (err, result) =&gt; &#123;</div><div class="line">        if (err) &#123;</div><div class="line">            return console.log(&apos;Unable to insert todo&apos;, err);</div><div class="line">        &#125;</div><div class="line">        console.log(JSON.stringify(result.ops, undefined, 2));</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<ol start="8">
+<li><code>node playground/mongodb-connect.js</code></li>
+<li>在 playground/mongodb-connect.js 新增 Users 資料表，且新增 fields (name, age, location)</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"># &lt;URL:http://httpd.apache.org/docs/2.4/vhosts/&gt;</div><div class="line"># for further details before you try to setup virtual hosts.</div><div class="line">#</div><div class="line"># You may use the command line option &apos;-S&apos; to verify your virtual host</div><div class="line"># configuration.</div><div class="line"></div><div class="line">NameVirtualHost *:80</div><div class="line"></div><div class="line">#</div><div class="line"># VirtualHost example:</div><div class="line"># Almost any Apache directive may go into a VirtualHost container.</div><div class="line"># The first VirtualHost section is used for all requests that do not</div><div class="line"># match a ServerName or ServerAlias in any &lt;VirtualHost&gt; block.</div><div class="line">#</div><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">    ServerAdmin webmaster@dummy-host.example.com</div><div class="line">    DocumentRoot &quot;/Applications/XAMPP/xamppfiles/htdocs&quot;</div><div class="line">    ServerName localhost</div><div class="line">    ServerAlias www.localhost</div><div class="line">&lt;/VirtualHost&gt;</div><div class="line"></div><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">    ServerAdmin webmaster@dummy-host2.example.com</div><div class="line">    DocumentRoot &quot;/Applications/XAMPP/xamppfiles/htdocs/cms/public&quot;</div><div class="line">    ServerName cms.dev</div><div class="line">#    ErrorLog &quot;logs/dummy-host2.example.com-error_log&quot;</div><div class="line">#    CustomLog &quot;logs/dummy-host2.example.com-access_log&quot; common</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
-<h3>用 PhpStorm 打開專案</h3>
-<ol>
-<li>點選 open，選擇 laravel 專案目錄。</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// Insert new doc into Users (name, age, location)</div><div class="line">    db.collection(&apos;Users&apos;).insertOne(&#123;</div><div class="line">        name: &apos;Andrew&apos;,</div><div class="line">        age: 25,</div><div class="line">        location: &apos;Philadelphia&apos;</div><div class="line">    &#125;, (err, result) =&gt; &#123;</div><div class="line">        if (err) &#123;</div><div class="line">            return console.log(&apos;Unable to insert User&apos;, err);</div><div class="line">        &#125;</div><div class="line">        console.log(JSON.stringify(result.ops));</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<ol start="10">
+<li><code>node playground/mongodb-connect.js</code></li>
 </ol>
-<h3>觀念摘錄</h3>
+<h4>ObjectId</h4>
 <ol>
-<li>MVC 架構 Model (Deals with Databse), View (Deals with the HTML), Controller (The middle-man)。</li>
-<li>快捷鍵設定 — 加入 .zshrc<br>
-輸入 <code>desk</code> 直接跳到桌面<br>
-<code>alias desk=&quot;cd /Users/**USERNAME**/Desktop&quot;</code><br>
-輸入 <code>refzsh</code> 更新 .zshrc<br>
-<code>alias refzsh=&quot;source ~/.zshrc&quot;</code><br>
-輸入 <code>zsh</code> 編輯 .zshrc<br>
-<code>alias zsh=&quot;vim ~/.zshrc&quot;</code><br>
-輸入 <code>htdocs</code> 跳轉到 htdocs 目錄<br>
-<code>alias htdocs=&quot;cd /Applications/XAMPP/htdocs&quot;</code></li>
+<li>將 <code>const MongoClient = require('mongodb').MongoClient;</code> 取代為 <code>const { MongoClient, ObjectID } = require('mongodb');</code></li>
+</ol>
+<h4>取得資料</h4>
+<ol>
+<li>直接在 Robo 裡面的 Todos 新增 document</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  text: &quot;Walk the dog&quot;,</div><div class="line">  completed: false</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>複製 mongodb-connect.js 並新增為 mongodb-find.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">const &#123; MongoClient, ObjectID &#125;  = require(&apos;mongodb&apos;);</div><div class="line"></div><div class="line">MongoClient.connect(&apos;mongodb://localhost:27017/TodoApp&apos;, (err, db) =&gt; &#123;</div><div class="line">    if (err) &#123;</div><div class="line">        return console.log(&apos;Unable to connect to MongoDB server&apos;);</div><div class="line">    &#125;</div><div class="line">    console.log(&apos;Connected to MongoDB server&apos;);</div><div class="line"></div><div class="line">    db.collection(&apos;Todos&apos;).find().toArray().then((docs) =&gt; &#123;</div><div class="line">        console.log(&apos;Todos&apos;);</div><div class="line">        console.log(JSON.stringify(docs, undefined, 2));</div><div class="line">    &#125;, (err) =&gt; &#123;</div><div class="line">        console.log(&apos;Unable to fetch todos&apos;, err);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    // db.close();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li><code>node playground/mongodb-find.js</code></li>
+<li><code>db.collection('Todos').find({completed: false}).toArray().then((docs) =&gt; {</code></li>
+<li>這樣就只會出現 false 的選項了 <code>node playground/mongodb-find.js</code></li>
+<li><code>db.collection('Todos').find({_id: new ObjectID('59bb791adf952c24d5ae60b7')})</code></li>
+<li>也可以用 id 的方式搜尋 <code>node playground/mongodb-find.js</code></li>
+<li>用計數的方式算出東西</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection(&apos;Todos&apos;).find().count().then((count) =&gt; &#123;</div><div class="line">    console.log(`Todos count: $&#123;count&#125;`);</div><div class="line">&#125;, (err) =&gt; &#123;</div><div class="line">    console.log(&apos;Unable to fetch todos&apos;, err);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>Deleting Document</h4>
+<ol>
+<li>一次刪除很多 deleteMany</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection(&apos;Todos&apos;).deleteMany(&#123;text: &apos;Eat lunch&apos;&#125;).then((result) =&gt; &#123;</div><div class="line">    console.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>一次刪除一個 deleteOne</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection(&apos;Todos&apos;).deleteOne(&#123;text: &apos;Eat lunch&apos;&#125;).then((result) =&gt; &#123;</div><div class="line">    console.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>選擇一個然後刪除，如果有多個一樣的，會自動選擇第一筆找到的 findOneAndDelete</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection(&apos;Todos&apos;).findOneAndDelete(&#123;completed: false&#125;).then((result) =&gt; &#123;</div><div class="line">    console.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>更新資料</h4>
+<ol>
+<li>更新 Todos，set 改變值，returnOriginal 設為 false 就是回傳值的時候，傳回更新後的值，預設為 true</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">db.collection(&apos;Todos&apos;).findOneAndUpdate(&#123;</div><div class="line">    _id: new ObjectID(&apos;59bcaa59fd4847c2497a0104&apos;)</div><div class="line">&#125;, &#123;</div><div class="line">    $set: &#123;</div><div class="line">        completed: true</div><div class="line">    &#125;</div><div class="line">&#125;, &#123;</div><div class="line">    returnOriginal: false</div><div class="line">&#125;).then((result) =&gt; &#123;</div><div class="line">    console.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>更新 Users，inc 設為 1 就是把值增加 1</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">db.collection(&apos;Users&apos;).findOneAndUpdate(&#123;</div><div class="line">    _id: new ObjectID(&apos;59bb7a6630523c252369e2e4&apos;)</div><div class="line">&#125;, &#123;</div><div class="line">    $set: &#123;</div><div class="line">        name: &apos;Andrew&apos;</div><div class="line">    &#125;,</div><div class="line">    $inc: &#123;</div><div class="line">        age: 1</div><div class="line">    &#125;</div><div class="line">&#125;,&#123;</div><div class="line">    returnOriginal: false</div><div class="line">&#125;).then((result) =&gt; &#123;</div><div class="line">    console.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>設定 Mongoose</h4>
+<ol>
+<li><a href="http://mongoosejs.com/" target="_blank" rel="external">Mongoose 官方網站</a></li>
+<li><code>npm i mongoose@4.5.9 --save</code></li>
+<li>使用 Mongoose 寫入資料到 MongoDB</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">var mongoose = require(&apos;mongoose&apos;);</div><div class="line"></div><div class="line">mongoose.Promise = global.Promise;</div><div class="line">mongoose.connect(&apos;mongodb://localhost:27017/TodoApp&apos;);</div><div class="line"></div><div class="line">var Todo = mongoose.model(&apos;Todo&apos;, &#123;</div><div class="line">    text: &#123;</div><div class="line">        type: String</div><div class="line">    &#125;,</div><div class="line">    completed: &#123;</div><div class="line">        type: Boolean</div><div class="line">    &#125;,</div><div class="line">    completedAt: &#123;</div><div class="line">        type: Number</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var newTodo = new Todo(&#123;</div><div class="line">    text: &apos;Cook dinner&apos;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">newTodo.save().then((doc) =&gt; &#123;</div><div class="line">    console.log(&apos;Save todo&apos;, doc);</div><div class="line">&#125;, (e) =&gt; &#123;</div><div class="line">    console.log(&apos;Unable to save todo&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>再寫入別的資料</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var otherTodo = new Todo(&#123;</div><div class="line">    text: &apos;Feed the cat&apos;,</div><div class="line">    completed: true,</div><div class="line">    completedAt: 123</div><div class="line">&#125;);</div><div class="line"></div><div class="line">otherTodo.save().then((doc) =&gt; &#123;</div><div class="line">    console.log(JSON.stringify(doc, undefined, 2));</div><div class="line">&#125;, (e) =&gt; &#123;</div><div class="line">    console.log(&apos;Unable to save&apos;, e);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>Validators，Types 和 Defaults</h4>
+<ol>
+<li>修改 server/server.js，新增 model，並設定驗證</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var User = mongoose.model(&apos;User&apos;, &#123;</div><div class="line">    email: &#123;</div><div class="line">        type: String,</div><div class="line">        required: true,</div><div class="line">        trim: true,</div><div class="line">        minlength: 1</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>插入物件並儲存</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var user = new User(&#123;</div><div class="line">    email: &apos;andrew@example.com     &apos;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">user.save().then((doc) =&gt; &#123;</div><div class="line">    console.log(&apos;User saved&apos;, doc);</div><div class="line">&#125;, (e) =&gt; &#123;</div><div class="line">    console.log(&apos;Unable to save user&apos;, e);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>這個部分有一個很特別的地方，如果 type 設為 String，輸入數字或是布林值都會變成 text，並不會出錯。</li>
 </ol>
 
         </div>
@@ -285,7 +311,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/04/22/Lavarel-快速學習自我挑戰-Day1/" data-id="cj7oophrw000rg845b3kbs2yc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/09/15/Nodejs-快速學習自我挑戰-Day6/" data-id="cj7oopht30037g845e1pc84p8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -352,7 +378,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/04/22/Lavarel-快速學習自我挑戰-Day1/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/09/15/Nodejs-快速學習自我挑戰-Day6/" data-num-posts="5"></div>
 
 
     
@@ -413,20 +439,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2017/04/23/Lavarel-快速學習自我挑戰-Day2/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Lavarel 快速學習自我挑戰 Day2
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2017/04/03/React快速學習自我挑戰-Day12/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/09/14/Nodejs-快速學習自我挑戰-Day5/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">React快速學習自我挑戰 Day12</p>
+        <p class="article-nav-title">Nodejs 快速學習自我挑戰 Day5</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
