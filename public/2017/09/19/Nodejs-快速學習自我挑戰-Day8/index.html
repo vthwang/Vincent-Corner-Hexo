@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Nodejs 快速學習自我挑戰 Day8 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Nodejs" />
+    
+    <meta name="description" content="MongoDB，Mongoose 和 REST APIs (Todo API)
+部署 API 到 Heroku
+
+安裝 Heroku CLI
+brew install heroku/brew/heroku
+在 server/server.js 新增 port 的設定
+const port = process.env.PORT || 3000;
+修改 app.listen
+
+123app.lis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs 快速學習自我挑戰 Day8">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/09/19/Nodejs-快速學習自我挑戰-Day8/index.html">
+<meta property="og:site_name" content="Vincent's Corner">
+<meta property="og:description" content="MongoDB，Mongoose 和 REST APIs (Todo API)
+部署 API 到 Heroku
+
+安裝 Heroku CLI
+brew install heroku/brew/heroku
+在 server/server.js 新增 port 的設定
+const port = process.env.PORT || 3000;
+修改 app.listen
+
+123app.lis">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday8.png">
+<meta property="og:updated_time" content="2017-09-21T16:36:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day8">
+<meta name="twitter:description" content="MongoDB，Mongoose 和 REST APIs (Todo API)
+部署 API 到 Heroku
+
+安裝 Heroku CLI
+brew install heroku/brew/heroku
+在 server/server.js 新增 port 的設定
+const port = process.env.PORT || 3000;
+修改 app.listen
+
+123app.lis">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday8.png">
+<meta property="fb:admins" content="dtvgood202">
+<meta property="fb:app_id" content="176717762750155">
+    
+
+    
+
+    
+        <link rel="icon" href="/blogs/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/blogs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blogs/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blogs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blogs/css/style.css">
+
+    <script src="/blogs/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blogs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blogs/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blogs/',
+        CONTENT_URL: '/blogs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blogs/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Nodejs-快速學習自我挑戰-Day8" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Nodejs 快速學習自我挑戰 Day8
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/blogs/2017/09/19/Nodejs-快速學習自我挑戰-Day8/" class="article-date">
+    <time datetime="2017-09-18T17:30:30.000Z" itemprop="datePublished">2017-09-19</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/nodejs/nodejsday8.png">
+<hr>
+<h3>MongoDB，Mongoose 和 REST APIs (Todo API)</h3>
+<h4>部署 API 到 Heroku</h4>
+<ol>
+<li>安裝 Heroku CLI<br>
+<code>brew install heroku/brew/heroku</code></li>
+<li>在 server/server.js 新增 port 的設定<br>
+<code>const port = process.env.PORT || 3000;</code></li>
+<li>修改 app.listen</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.listen(port, () =&gt; &#123;</div><div class="line">    console.log(`Started up at port $&#123;port&#125;`);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 package.json 新增 start 指令，並新增 engine</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;node server/server.js&quot;,</div><div class="line">    &quot;test&quot;: &quot;mocha server/**/*.test.js&quot;,</div><div class="line">    &quot;test-watch&quot;: &quot;nodemon --exec &apos;npm test&apos;&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;engines&quot;: &#123;</div><div class="line">    &quot;node&quot;: &quot;6.11.3&quot;</div><div class="line">  &#125;,</div></pre></td></tr></table></figure>
+<ol start="5">
+<li><code>heroku create</code></li>
+<li><code>heroku addons:create mongolab:sandbox</code></li>
+<li>可以取得 MongoDB URI <code>heroku config</code></li>
+<li>修改 server/db/mongoose.js<br>
+<code>mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/TodoApp');</code></li>
+<li><code>git push heroku master</code></li>
+<li>如果應用發生問題，可以用以下指令確認 <code>heroku logs</code></li>
+</ol>
+<h4>Postman 環境</h4>
+<ol>
+<li>進去 Postman，右上角有 Management Environment，點進去之後，新增 Todo App Local 和 Todo App Heroku，分別設定 url 為 localhost:3000 和 Heroku 的網址</li>
+<li>然後將網址都改為  的變數代替</li>
+</ol>
+<h4>刪除 Resource - DELETE /todos/:id</h4>
+<ol>
+<li>新增 playground/mongoose-remove.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">const &#123;ObjectID&#125; = require(&apos;mongodb&apos;);</div><div class="line"></div><div class="line">const &#123;mongoose&#125; = require(&apos;./../server/db/mongoose&apos;);</div><div class="line">const &#123;Todo&#125; = require(&apos;./../server/models/todo&apos;);</div><div class="line">const &#123;User&#125; = require(&apos;./../server/models/user&apos;);</div><div class="line"></div><div class="line">// 移除全部</div><div class="line">Todo.remove(&#123;&#125;).then((result) =&gt; &#123;</div><div class="line">    console.log(result);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// Todo.findOneAndRemove</div><div class="line">Todo.findOneAndRemove(&#123;_id: &apos;59c0c37efd4847c2497a12a7&apos;&#125;).then((todo) =&gt; &#123;</div><div class="line">    console.log(todo);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// Todo.findByIdAndRemove</div><div class="line">Todo.findByIdAndRemove(&apos;59c0c37efd4847c2497a12a7&apos;).then((todo) =&gt; &#123;</div><div class="line">    console.log(todo);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 server/server.js 新增 delete route</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">app.delete(&apos;/todos/:id&apos;, (req, res) =&gt; &#123;</div><div class="line">    var id = req.params.id;</div><div class="line"></div><div class="line">    if (!ObjectID.isValid(id)) &#123;</div><div class="line">        return res.status(404).send();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Todo.findByIdAndRemove(id).then((todo) =&gt; &#123;</div><div class="line">        if (!todo) &#123;</div><div class="line">            return res.status(404).send();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        res.send(&#123;todo&#125;);</div><div class="line">    &#125;).catch((e) =&gt; &#123;</div><div class="line">        res.status(400).send();</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用 Postman 測試，並儲存</li>
+</ol>
+<h4>測試 DELETE /todos/:id</h4>
+<ol>
+<li>新增第一個測試，最後的部分是驗證資料是否被刪除</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">describe(&apos;DELETE /todos/:id&apos;, () =&gt; &#123;</div><div class="line">    it(&apos;should remove a todo&apos;, (done) =&gt; &#123;</div><div class="line">        var hexId = todos[1]._id.toHexString();</div><div class="line"></div><div class="line">        request(app)</div><div class="line">            .delete(`/todos/$&#123;hexId&#125;`)</div><div class="line">            .expect(200)</div><div class="line">            .expect((res) =&gt; &#123;</div><div class="line">                expect(res.body.todo._id).toBe(hexId)</div><div class="line">            &#125;)</div><div class="line">            .end((err, res) =&gt; &#123;</div><div class="line">                if (err) &#123;</div><div class="line">                    return done(err);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                Todo.findById(hexId).then((todo) =&gt; &#123;</div><div class="line">                    expect(todo).toNotExist();</div><div class="line">                    done();</div><div class="line">                &#125;).catch((e) =&gt; done(e));</div><div class="line">            &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>基本上做法跟 GET 差不多，複製 code，然後把 .get 改成 .delete 即可</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">it(&apos;should return 404 if todo not found&apos;, (done) =&gt; &#123;</div><div class="line">    var hexId = new ObjectID().toHexString();</div><div class="line"></div><div class="line">    request(app)</div><div class="line">        .delete(`/todos/$&#123;hexId&#125;`)</div><div class="line">        .expect(404)</div><div class="line">        .end(done);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">it(&apos;should return 404 if object id is invalid&apos;, (done) =&gt; &#123;</div><div class="line">    request(app)</div><div class="line">        .delete(&apos;/todos/123abc&apos;)</div><div class="line">        .expect(404)</div><div class="line">        .end(done);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>更新 Resource - PATCH /todos/:id</h4>
+<ol>
+<li><code>npm i --save lodash@4.15.0</code></li>
+<li>修改 server/server.js，引入 lodash，將其它引入的資料用 const。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const _ = require(&apos;lodash&apos;);</div><div class="line">const express = require(&apos;express&apos;);</div><div class="line">const bodyParser = require(&apos;body-parser&apos;);</div><div class="line">const &#123;ObjectID&#125; = require(&apos;mongodb&apos;);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>新增 patch，如果 completed = true，寫入日期，如果沒有，把 completed 設為 false 且 completedAt 設為 null</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">app.patch(&apos;/todos/:id&apos;, (req, res) =&gt; &#123;</div><div class="line">    var id = req.params.id;</div><div class="line">    var body = _.pick(req.body, [&apos;text&apos;, &apos;completed&apos;]);</div><div class="line"></div><div class="line">    if (!ObjectID.isValid(id)) &#123;</div><div class="line">        return res.status(404).send();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if (_.isBoolean(body.completed) &amp;&amp; body.completed ) &#123;</div><div class="line">        body.completedAt = new Date().getTime();</div><div class="line">    &#125; else &#123;</div><div class="line">        body.completed = false;</div><div class="line">        body.completedAt = null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Todo.findByIdAndUpdate(id, &#123;$set: body&#125;, &#123;new: true&#125;).then((todo) =&gt; &#123;</div><div class="line">        if (!todo) &#123;</div><div class="line">            return res.status(404).send();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        res.send(&#123;todo&#125;);</div><div class="line">    &#125;).catch((e) =&gt; &#123;</div><div class="line">        res.status(400).send();</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>用 Postman 測試，傳入 JSON，本地端測試完，再用 Heroku</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	&quot;completed&quot;: true,</div><div class="line">	&quot;text&quot;: &quot;update from postman&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>測試 PATCH /todos/:id</h4>
+<ol>
+<li>PATCH test 的設計邏輯</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">describe(&apos;PATCH /todos/:id&apos;, () =&gt; &#123;</div><div class="line">    it(&apos;should update the todo&apos;, (done) =&gt; &#123;</div><div class="line">        // grab id of first item</div><div class="line">        // update text, set completed true</div><div class="line">        // 200</div><div class="line">        // text is changed, completed is true, completedAt is a number .toBeA</div><div class="line">        </div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">    it(&apos;should clear completedAt when todo is not completed&apos;, (done) =&gt; &#123;</div><div class="line">        // grab id of second todo item</div><div class="line">        // update text, set completed to false</div><div class="line">        // 200</div><div class="line">        // text is changed, completed is false, completedAt is null .toNotExist</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>測試修改 completed 為 true</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">it(&apos;should update the todo&apos;, (done) =&gt; &#123;</div><div class="line">    var hexId = todos[0]._id.toHexString();</div><div class="line">    var text = &apos;This should be the new text&apos;;</div><div class="line"></div><div class="line">    request(app)</div><div class="line">        .patch(`/todos/$&#123;hexId&#125;`)</div><div class="line">        .send(&#123;</div><div class="line">            completed: true,</div><div class="line">            text</div><div class="line">        &#125;)</div><div class="line">        .expect(200)</div><div class="line">        .expect((res) =&gt; &#123;</div><div class="line">            expect(res.body.todo.text).toBe(text);</div><div class="line">            expect(res.body.todo.completed).toBe(true);</div><div class="line">            expect(res.body.todo.completedAt).toBeA(&apos;number&apos;);</div><div class="line">        &#125;)</div><div class="line">        .end(done);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>測試修改 completed 為 false</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">it(&apos;should clear completedAt when todo is not completed&apos;, (done) =&gt; &#123;</div><div class="line">    var hexId = todos[1]._id.toHexString();</div><div class="line">    var text = &apos;This should be the new text!!&apos;;</div><div class="line"></div><div class="line">    request(app)</div><div class="line">        .patch(`/todos/$&#123;hexId&#125;`)</div><div class="line">        .send(&#123;</div><div class="line">            completed: false,</div><div class="line">            text</div><div class="line">        &#125;)</div><div class="line">        .expect(200)</div><div class="line">        .expect((res) =&gt; &#123;</div><div class="line">            expect(res.body.todo.text).toBe(text);</div><div class="line">            expect(res.body.todo.completed).toBe(false);</div><div class="line">            expect(res.body.todo.completedAt).toNotExist();</div><div class="line">        &#125;)</div><div class="line">        .end(done);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>創建測試 Database</h4>
+<ol>
+<li>修改 package.json</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">  &quot;start&quot;: &quot;node server/server.js&quot;,</div><div class="line">  &quot;test&quot;: &quot;export NODE_ENV=test || \&quot;SET NODE_ENV=test\&quot; &amp;&amp; mocha server/**/*.test.js&quot;,</div><div class="line">  &quot;test-watch&quot;: &quot;nodemon --exec &apos;npm test&apos;&quot;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 server/db/mongoose.js<br>
+<code>mongoose.connect(process.env.MONGODB_URI);</code></li>
+<li>新增 server/config/config.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var env = process.env.NODE_ENV || &apos;development&apos;;</div><div class="line"></div><div class="line">if (env === &apos;development&apos;) &#123;</div><div class="line">    process.env.PORT = 3000;</div><div class="line">    process.env.MONGODB_URI = &apos;mongodb://localhost:27017/TodoApp&apos;;</div><div class="line">&#125; else if (env === &apos;test&apos;) &#123;</div><div class="line">    process.env.PORT = 3000;</div><div class="line">    process.env.MONGODB_URI = &apos;mongodb://localhost:27017/TodoAppTest&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 server/server.js 引入 config<br>
+<code>require('./config/config');</code></li>
+<li><code>node server/server.js</code>，會進入 development 環境</li>
+<li><code>npm test</code>，會進入 test 環境，會再新建一個資料庫</li>
+</ol>
+<h3>安全和認證</h3>
+<h4>建立 User Model</h4>
+<ol>
+<li><code>npm i validator@5.6.0 --save</code></li>
+<li>修改 server/models/user.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">const mongoose = require(&apos;mongoose&apos;);</div><div class="line">const validator = require(&apos;validator&apos;);</div><div class="line"></div><div class="line">var User = mongoose.model(&apos;User&apos;, &#123;</div><div class="line">    email: &#123;</div><div class="line">        type: String,</div><div class="line">        required: true,</div><div class="line">        trim: true,</div><div class="line">        minlength: 1,</div><div class="line">        unique: true,</div><div class="line">        validate: &#123;</div><div class="line">            validator: validator.isEmail,</div><div class="line">            message: &apos;&#123;VALUE&#125; is not a valid email&apos;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    password: &#123;</div><div class="line">        type: String,</div><div class="line">        require: true,</div><div class="line">        minlength: 6,</div><div class="line">    &#125;,</div><div class="line">    tokens: [&#123;</div><div class="line">        access: &#123;</div><div class="line">            type: String,</div><div class="line">            require: true</div><div class="line">        &#125;,</div><div class="line">        token: &#123;</div><div class="line">            type: String,</div><div class="line">            require: true</div><div class="line">        &#125;</div><div class="line">    &#125;]</div><div class="line">&#125;);</div><div class="line"></div><div class="line">module.exports = &#123;User&#125;;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>修改 server/server.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">app.post(&apos;/users&apos;, (req, res) =&gt; &#123;</div><div class="line">    var body = _.pick(req.body, [&apos;email&apos;, &apos;password&apos;]);</div><div class="line">    var user = new User(body);</div><div class="line"></div><div class="line">    user.save().then((user) =&gt; &#123;</div><div class="line">        res.send(user);</div><div class="line">    &#125;).catch((e) =&gt; &#123;</div><div class="line">        res.status(400).send(e);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>JWTs 和 Hashing</h4>
+<ol>
+<li><code>npm install crypto-js@3.1.6 --save</code></li>
+<li></li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/09/19/Nodejs-快速學習自我挑戰-Day8/" data-id="cj7vmoj9g0050dz454ld6astb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/09/19/Nodejs-快速學習自我挑戰-Day8/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hdtvgood202" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/09/17/Nodejs-快速學習自我挑戰-Day7/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Nodejs 快速學習自我挑戰 Day7</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/19/Nodejs-快速學習自我挑戰-Day8/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday8.png)" alt="Nodejs 快速學習自我挑戰 Day8" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/19/Nodejs-快速學習自我挑戰-Day8/" class="title">Nodejs 快速學習自我挑戰 Day8</a></p>
+                            <p class="item-date"><time datetime="2017-09-18T17:30:30.000Z" itemprop="datePublished">2017-09-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/17/Nodejs-快速學習自我挑戰-Day7/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday7.png)" alt="Nodejs 快速學習自我挑戰 Day7" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/17/Nodejs-快速學習自我挑戰-Day7/" class="title">Nodejs 快速學習自我挑戰 Day7</a></p>
+                            <p class="item-date"><time datetime="2017-09-17T11:56:53.000Z" itemprop="datePublished">2017-09-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/15/Nodejs-快速學習自我挑戰-Day6/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday6.png)" alt="Nodejs 快速學習自我挑戰 Day6" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/15/Nodejs-快速學習自我挑戰-Day6/" class="title">Nodejs 快速學習自我挑戰 Day6</a></p>
+                            <p class="item-date"><time datetime="2017-09-15T06:01:22.000Z" itemprop="datePublished">2017-09-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/14/Nodejs-快速學習自我挑戰-Day5/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday5.jpg)" alt="Nodejs 快速學習自我挑戰 Day5" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/14/Nodejs-快速學習自我挑戰-Day5/" class="title">Nodejs 快速學習自我挑戰 Day5</a></p>
+                            <p class="item-date"><time datetime="2017-09-14T03:24:09.000Z" itemprop="datePublished">2017-09-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/13/Mac-開發環境建置/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/technique/MacEnvironment.jpg)" alt="Mac 開發環境建置" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/13/Mac-開發環境建置/" class="title">Mac 開發環境建置</a></p>
+                            <p class="item-date"><time datetime="2017-09-13T13:07:44.000Z" itemprop="datePublished">2017-09-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">64</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/09/">九月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React-Native/">React-Native</a><span class="tag-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/blogs/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/blogs/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/blogs/tags/Kubernetes/" style="font-size: 12.5px;">Kubernetes</a> <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/blogs/tags/Nodejs/" style="font-size: 15px;">Nodejs</a> <a href="/blogs/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/blogs/tags/React/" style="font-size: 17.5px;">React</a> <a href="/blogs/tags/React-Native/" style="font-size: 12.5px;">React-Native</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/dtvgood202">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/blogs/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=176717762750155";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/blogs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/blogs/js/main.js"></script>
+
+    </div>
+</body>
+</html>
