@@ -318,19 +318,126 @@ app.post('/users', (req, res) => {
 ```
 #### JWTs 和 Hashing
 1. `npm install crypto-js@3.1.6 --save`
-2. 
+2. 新增 playground/hashing.js
+```
+const {SHA256} = require('crypto-js');
 
+var message = 'I am user number 3';
+var hash = SHA256(message).toString();
 
+console.log(`Message: ${message}`);
+console.log(`Hash: ${hash}`);
 
+var data = {
+    id: 4
+};
+var token = {
+    data,
+    hash: SHA256(JSON.stringify(data) + 'somesecret').toString()
+};
 
+var resultHash = SHA256(JSON.stringify(token.data) + 'somesecret').toString();
 
+if (resultHash === token.hash) {
+    console.log('Data was not changed');
+} else {
+    console.log('Data was changed. Do not trust!');
+}
+```
+3. 驗證 data 如果不同會跳出資料改變的訊息
+```
+token.data.id = 5;
+token.hash = SHA256(JSON.stringify(token.data)).toString();
+```
+4. `npm i jsonwebtoken@7.1.9 --save`
+5. [JWT 官方網站](https://jwt.io/)
+6. 使用 jwt 來進行驗證
+```
+const jwt = require('jsonwebtoken');
 
+var data = {
+    id: 10
+};
 
+var token = jwt.sign(data, '123abc');
+console.log(token);
 
+var decoded = jwt.verify(token, '123abc');
+console.log('decoded', decoded);
+```
+#### 產生 Auth Tokens 和 Setting Headers
+1. 修改 server/models/user.js
+```
+const mongoose = require('mongoose');
+const validator = require('validator');
+const jwt = require('jsonwebtoken');
+const _ = require('lodash');
 
+var UserSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 1,
+        unique: true,
+        validate: {
+            validator: validator.isEmail,
+            message: '{VALUE} is not a valid email'
+        }
+    },
+    password: {
+        type: String,
+        require: true,
+        minlength: 6,
+    },
+    tokens: [{
+        access: {
+            type: String,
+            require: true
+        },
+        token: {
+            type: String,
+            require: true
+        }
+    }]
+});
 
+UserSchema.methods.toJSON = function () {
+    var user = this;
+    var userObject = user.toObject();
 
+    return _.pick(userObject, ['_id', 'email']);
+};
 
+UserSchema.methods.generateAuthToken = function () {
+    var user = this;
+    var access = 'auth';
+    var token = jwt.sign({_id: user._id.toHexString(), access}, 'abc123').toString();
 
+    user.tokens.push({access, token});
 
+    return user.save().then(() => {
+        return token;
+    });
+};
 
+var User = mongoose.model('User', UserSchema);
+
+module.exports = {User};
+```
+2. 修改 server/server.js
+```
+// POST /users
+app.post('/users', (req, res) => {
+    var body = _.pick(req.body, ['email', 'password']);
+    var user = new User(body);
+
+    user.save().then((user) => {
+        return user.generateAuthToken();
+    }).then((token) => {
+        res.header('x-auth').send(user);
+    }).catch((e) => {
+        res.status(400).send(e);
+    });
+});
+```
