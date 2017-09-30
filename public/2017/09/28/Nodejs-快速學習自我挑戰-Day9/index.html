@@ -3,23 +3,38 @@
 <head>
     <meta charset="utf-8">
     
-    <title>In fact, life is a kind of strong | Vincent&#39;s Corner</title>
+    <title>Nodejs 快速學習自我挑戰 Day9 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="Nodejs" />
     
-    <meta name="description" content="Because of the rainy days, I didn’t go to visit the potted plants on the balcony for several days. Today, I went out to look and I feel surprised. One of them had been in critical conditions and l">
+    <meta name="description" content="安全和認證
+Private Routes 和 Auth Middleware
+
+在 server/server.js 新增 get
+
+1234567891011app.get(&amp;apos;/users/me&amp;apos;, (req, res) =&amp;gt; &amp;#123;    var token = req.header(&amp;apos;x-auth&amp;apos;);    User.findByTo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="In fact, life is a kind of strong">
-<meta property="og:url" content="https://tingsyuanwang.github.io/2016/09/17/In-fact-life-is-a-kind-of-strong/index.html">
+<meta property="og:title" content="Nodejs 快速學習自我挑戰 Day9">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/09/28/Nodejs-快速學習自我挑戰-Day9/index.html">
 <meta property="og:site_name" content="Vincent's Corner">
-<meta property="og:description" content="Because of the rainy days, I didn’t go to visit the potted plants on the balcony for several days. Today, I went out to look and I feel surprised. One of them had been in critical conditions and l">
-<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/PottedPlant.jpg">
-<meta property="og:updated_time" content="2016-09-22T07:35:24.000Z">
+<meta property="og:description" content="安全和認證
+Private Routes 和 Auth Middleware
+
+在 server/server.js 新增 get
+
+1234567891011app.get(&amp;apos;/users/me&amp;apos;, (req, res) =&amp;gt; &amp;#123;    var token = req.header(&amp;apos;x-auth&amp;apos;);    User.findByTo">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday9.png">
+<meta property="og:updated_time" content="2017-09-28T21:55:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="In fact, life is a kind of strong">
-<meta name="twitter:description" content="Because of the rainy days, I didn’t go to visit the potted plants on the balcony for several days. Today, I went out to look and I feel surprised. One of them had been in critical conditions and l">
-<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/PottedPlant.jpg">
+<meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day9">
+<meta name="twitter:description" content="安全和認證
+Private Routes 和 Auth Middleware
+
+在 server/server.js 新增 get
+
+1234567891011app.get(&amp;apos;/users/me&amp;apos;, (req, res) =&amp;gt; &amp;#123;    var token = req.header(&amp;apos;x-auth&amp;apos;);    User.findByTo">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday9.png">
 <meta property="fb:admins" content="dtvgood202">
 <meta property="fb:app_id" content="176717762750155">
     
@@ -141,19 +156,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/blogs/categories/英文寫作/">英文寫作</a>
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-In-fact-life-is-a-kind-of-strong" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Nodejs-快速學習自我挑戰-Day9" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        In fact, life is a kind of strong
+        Nodejs 快速學習自我挑戰 Day9
         </h1>
     
 
@@ -161,26 +176,89 @@ ga('send', 'pageview');
         
         
             <div class="article-subtitle">
-                <a href="/blogs/2016/09/17/In-fact-life-is-a-kind-of-strong/" class="article-date">
-    <time datetime="2016-09-17T05:45:46.000Z" itemprop="datePublished">2016-09-17</time>
+                <a href="/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" class="article-date">
+    <time datetime="2017-09-27T22:14:39.000Z" itemprop="datePublished">2017-09-28</time>
 </a>
                 
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a></li></ul>
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <img src="/blogs/images/PottedPlant.jpg">
+            <img src="/blogs/images/learning/nodejs/nodejsday9.png">
 <hr>
-<p>  Because of the rainy days, I didn’t go to visit the potted plants on the balcony for several days. Today, I went out to look and I feel surprised. One of them had been in critical conditions and leaves covered the ground. However, an unknown plant grow lush at it side and swayed proudly in the wind. One kind of sadness instantly came up from my mind. I blamed my carelessness, but also lamented the fragile of potted plants. I urgently watered the potted plants, but I don’t know why I couldn’t eradicate that unknown alien plant.<br>
-  What kind of conditions could make this life? Due to the lack of attention from me, my potted plants are gradually lost luster. However, it seized this gap and thrived itself. Yes, if I concerned in place, it might be removed when it was inconspicuous. After all, that is my potted plants world, this life didn’t belong to here will be eventually destroy the crafted beauty. But just a few days effort, it was no fear of lack of water and hold the opportunity to put itself look as tall as potted plants.<br>
-  I looked on the potted plants in the verge of death, but also looked at that unknown plant. I was suddenly enlightened in the sadness and moved emotion: In fact, life is a kind of strong.<br>
-  Isn’t it? Plant did it, life is also much better than this!<br>
-  Life can be born, because the mother and baby are all strong.<br>
-  Life comes from the strong. Life is inseparable from the strong.<br>
-  Every day we are dependent with the strong. I think, if you can choose, no one wants to have pain, willing to be sad, even to be toil. But from the birth, we are inevitably deal with some ailment or even illness. Everyone wants to expose under the sun when woke up every day, listen to songs and see the sights every day. However, we haven’t be willing to get up by parent’s call since we were in small age. Then do the things we need to do, reading or working. These all rely on the strong.<br>
-  There are no pure land on earth which can make us arbitrary. There is always a distance between dreams and realities. If the environment is unsatisfactory; if we are in sick and forsaken by lover; if life is too gloomy. Strong, it is the support of life.<br>
-  We must be use the strong to face the tedious every day and stimulate the neglected and injured soul. The strong is necessary in life. It is the pillar of the spirit and the faith to across obstacles.<br>
-  The unknown plant of the potted plants use the strong to touch me. I would leave it and have no regrets, because it let me understand thoroughly: in fact, life is a kind of strong.</p>
+<h3>安全和認證</h3>
+<h4>Private Routes 和 Auth Middleware</h4>
+<ol>
+<li>在 server/server.js 新增 get</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">app.get(&apos;/users/me&apos;, (req, res) =&gt; &#123;</div><div class="line">    var token = req.header(&apos;x-auth&apos;);</div><div class="line"></div><div class="line">    User.findByToken(token).then((user) =&gt; &#123;</div><div class="line">        if (!user) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        res.send(user);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 server/models/users.js 新增 findByToken</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">UserSchema.statics.findByToken = function (token) &#123;</div><div class="line">    var User = this;</div><div class="line">    var decoded;</div><div class="line"></div><div class="line">    try &#123;</div><div class="line">        decoded = jwt.verify(token, &apos;abc123&apos;)</div><div class="line">    &#125; catch (e) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return User.findOne(&#123;</div><div class="line">        &apos;_id&apos;: decoded._id,</div><div class="line">        &apos;tokens.token&apos;: token,</div><div class="line">        &apos;tokens.access&apos;: &apos;auth&apos;</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用 Postman 新增 user 並取得 x-auth，然後新增 GET /users/me，並在 Header 插入剛剛取得的 x-auth，就會順利取得 _id 和 email</li>
+<li>將 在 server/models/users.js 的 error 部分處理好</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">    decoded = jwt.verify(token, &apos;abc123&apos;)</div><div class="line">&#125; catch (e) &#123;</div><div class="line">    return Promise.reject();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>將 server/server.js 的 error 部分處理好</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">User.findByToken(token).then((user) =&gt; &#123;</div><div class="line">    if (!user) &#123;</div><div class="line">        return Promise.reject();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    res.send(user);</div><div class="line">&#125;).catch((e) =&gt; &#123;</div><div class="line">    res.status(401).send();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>新增 server/middleware/authenticate.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var &#123;User&#125; = require(&apos;./../models/user&apos;);</div><div class="line"></div><div class="line">var authenticate = (req, res, next) =&gt; &#123;</div><div class="line">    var token = req.header(&apos;x-auth&apos;);</div><div class="line"></div><div class="line">    User.findByToken(token).then((user) =&gt; &#123;</div><div class="line">        if (!user) &#123;</div><div class="line">            return Promise.reject();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        req.user = user;</div><div class="line">        req.token = token;</div><div class="line">        next();</div><div class="line">    &#125;).catch((e) =&gt; &#123;</div><div class="line">        res.status(401).send();</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">module.exports = &#123;authenticate&#125;;</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>在 server/server.js 引入 authenticate<br>
+<code>var {authenticate} = require('./middleware/authenticate');</code></li>
+<li>在 /users/me 的部分使用 authenticate</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.get(&apos;/users/me&apos;, authenticate, (req, res) =&gt; &#123;</div><div class="line">    res.send(req.user);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>Hashing Passwords</h4>
+<ol>
+<li>安裝 bcryptjs<br>
+<code>npm i bcryptjs@2.3.0 --save</code></li>
+<li><a href="https://www.npmjs.com/package/bcryptjs" target="_blank" rel="external">bcrypt 文件</a></li>
+<li>在 playground/hashing.js 新增 bcrypt function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">const &#123;SHA256&#125; = require(&apos;crypto-js&apos;);</div><div class="line">const jwt = require(&apos;jsonwebtoken&apos;);</div><div class="line">const bcrypt = require(&apos;bcryptjs&apos;);</div><div class="line"></div><div class="line">var password = &apos;123abc!&apos;;</div><div class="line"></div><div class="line">bcrypt.genSalt(10, (err, salt) =&gt; &#123;</div><div class="line">    bcrypt.hash(password, salt, (err, hash) =&gt; &#123;</div><div class="line">        console.log(hash);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li><code>node playground/hashing.js</code></li>
+<li>將產出的 hashing 和本來的 password 比較，如果 true 則等於相等</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var hashedPassword = &apos;$2a$10$.fiP4qt.xBk3w4CIZB1jN.x.WHFrexbi4Dk3Y/er/0MJASi8S1u1y&apos;;</div><div class="line"></div><div class="line">bcrypt.compare(password, hashedPassword, (err, res) =&gt; &#123;</div><div class="line">    console.log(res);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 server/models/user.js 新增 UserSchema.pre function，如果 password 修改則要重新 hash，如果沒有修改則不 hash，避免重複 hash 的情況發生</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">UserSchema.pre(&apos;save&apos;, function (next) &#123;</div><div class="line">    var user = this;</div><div class="line"></div><div class="line">    if (user.isModified(&apos;password&apos;)) &#123;</div><div class="line">        bcrypt.genSalt(10, (err, salt) =&gt; &#123;</div><div class="line">            bcrypt.hash(user.password, salt, (err, hash) =&gt; &#123;</div><div class="line">                user.password = hash;</div><div class="line">                next();</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125; else &#123;</div><div class="line">        next();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>與 Users 傳送測試資料庫</h4>
+<ol>
+<li>新增 server/tests/seed/seed.js，把 todos 物件從 server.test.js 移出來，然後新增 populateTodos</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">const &#123;ObjectID&#125; = require(&apos;mongodb&apos;);</div><div class="line"></div><div class="line">const &#123;Todo&#125; = require(&apos;./../../models/todo&apos;);</div><div class="line"></div><div class="line">const todos = [&#123;</div><div class="line">    _id: new ObjectID(),</div><div class="line">    text: &apos;First test todo&apos;</div><div class="line">&#125;, &#123;</div><div class="line">    _id: new ObjectID(),</div><div class="line">    text: &apos;Second test todo&apos;,</div><div class="line">    completed: true,</div><div class="line">    completedAt: 333</div><div class="line">&#125;];</div><div class="line"></div><div class="line">const populateTodos = (done) =&gt; &#123;</div><div class="line">    Todo.remove(&#123;&#125;).then(() =&gt; &#123;</div><div class="line">        return Todo.insertMany(todos);</div><div class="line">    &#125;).then(() =&gt; done());</div><div class="line">&#125;;</div><div class="line"></div><div class="line">module.exports = &#123;todos, populateTodos&#125;;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 server/tests/server.test.js 引入 seed</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const &#123;todos, populateTodos&#125; = require(&apos;./seed/seed&apos;);</div><div class="line"></div><div class="line">beforeEach(populateTodos);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 server/tests/seed/seed.js 新增 Users 物件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">const jwt = require(&apos;jsonwebtoken&apos;);</div><div class="line"></div><div class="line">const &#123;User&#125; = require(&apos;./../../models/user&apos;);</div><div class="line"></div><div class="line">const userOneId = new ObjectID();</div><div class="line">const userTwoId = new ObjectID();</div><div class="line">const users = [&#123;</div><div class="line">    _id: userOneId,</div><div class="line">    email: &apos;andrew@example.com&apos;,</div><div class="line">    password: &apos;userOnePass&apos;,</div><div class="line">    tokens: [&#123;</div><div class="line">        access: &apos;auth&apos;,</div><div class="line">        token: jwt.sign(&#123;_id: userOneId, access: &apos;auth&apos;&#125;, &apos;abc123&apos;).toString()</div><div class="line">    &#125;]</div><div class="line">&#125;, &#123;</div><div class="line">    _id:userTwoId,</div><div class="line">    email: &apos;jen@example.com&apos;,</div><div class="line">    password: &apos;userTwoPass&apos;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>新增 populateUsers 並匯出</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const populateUsers = (done) =&gt; &#123;</div><div class="line">    User.remove(&#123;&#125;).then(() =&gt; &#123;</div><div class="line">        var userOne = new User(users[0]).save();</div><div class="line">        var userTwo = new User(users[1]).save();</div><div class="line"></div><div class="line">        return Promise.all([userOne, userTwo])</div><div class="line">    &#125;).then(() =&gt; done());</div><div class="line">&#125;;</div><div class="line"></div><div class="line">module.exports = &#123;todos, populateTodos, users, populateUsers&#125;;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 在 server/tests/server.test.js 引入 populateUsers</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const &#123;todos, populateTodos, users, populateUsers&#125; = require(&apos;./seed/seed&apos;);</div><div class="line"></div><div class="line">beforeEach(populateUsers);</div></pre></td></tr></table></figure>
+<h4>測試 POST /users 和 GET /users/me</h4>
+<ol>
+<li></li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -188,7 +266,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2016/09/17/In-fact-life-is-a-kind-of-strong/" data-id="cj874mu550005qj453bq1ljyw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" data-id="cj874mu6x0042qj45nawbbcmd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -255,7 +333,7 @@ ga('send', 'pageview');
     <section id="comments">
     
       
-    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2016/09/17/In-fact-life-is-a-kind-of-strong/" data-num-posts="5"></div>
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" data-num-posts="5"></div>
 
 
     
@@ -316,20 +394,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/blogs/2016/11/05/JavaScript用AJAX的方式獲得時間/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            JavaScript用AJAX的方式獲得時間
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/blogs/2016/09/11/在hexo使用emoji/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blogs/2017/09/19/Nodejs-快速學習自我挑戰-Day8/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">在hexo使用emoji</p>
+        <p class="article-nav-title">Nodejs 快速學習自我挑戰 Day8</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     

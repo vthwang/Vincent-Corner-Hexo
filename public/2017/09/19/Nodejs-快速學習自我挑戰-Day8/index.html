@@ -33,7 +33,7 @@ const port = process.env.PORT || 3000;
 
 123app.lis">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday8.png">
-<meta property="og:updated_time" content="2017-09-27T22:13:18.000Z">
+<meta property="og:updated_time" content="2017-09-28T19:38:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day8">
 <meta name="twitter:description" content="MongoDB，Mongoose 和 REST APIs (Todo API)
@@ -328,14 +328,14 @@ ga('send', 'pageview');
 <ol start="2">
 <li>修改 server/server.js</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// POST /users</div><div class="line">app.post(&apos;/users&apos;, (req, res) =&gt; &#123;</div><div class="line">    var body = _.pick(req.body, [&apos;email&apos;, &apos;password&apos;]);</div><div class="line">    var user = new User(body);</div><div class="line"></div><div class="line">    user.save().then((user) =&gt; &#123;</div><div class="line">        return user.generateAuthToken();</div><div class="line">    &#125;).then((token) =&gt; &#123;</div><div class="line">        res.header(&apos;x-auth&apos;).send(user);</div><div class="line">    &#125;).catch((e) =&gt; &#123;</div><div class="line">        res.status(400).send(e);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// POST /users</div><div class="line">app.post(&apos;/users&apos;, (req, res) =&gt; &#123;</div><div class="line">    var body = _.pick(req.body, [&apos;email&apos;, &apos;password&apos;]);</div><div class="line">    var user = new User(body);</div><div class="line"></div><div class="line">    user.save().then((user) =&gt; &#123;</div><div class="line">        return user.generateAuthToken();</div><div class="line">    &#125;).then((token) =&gt; &#123;</div><div class="line">        res.header(&apos;x-auth&apos;, token).send(user);</div><div class="line">    &#125;).catch((e) =&gt; &#123;</div><div class="line">        res.status(400).send(e);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/09/19/Nodejs-快速學習自我挑戰-Day8/" data-id="cj83l8ezi003so945rqovccz1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/09/19/Nodejs-快速學習自我挑戰-Day8/" data-id="cj874mu6p003hqj45cp7ssvz6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -463,6 +463,16 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
+        <a href="/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Nodejs 快速學習自我挑戰 Day9
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
     
         <a href="/blogs/2017/09/17/Nodejs-快速學習自我挑戰-Day7/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
@@ -481,6 +491,26 @@ ga('send', 'pageview');
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday9.png)" alt="Nodejs 快速學習自我挑戰 Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" class="title">Nodejs 快速學習自我挑戰 Day9</a></p>
+                            <p class="item-date"><time datetime="2017-09-27T22:14:39.000Z" itemprop="datePublished">2017-09-28</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -562,26 +592,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/blogs/2017/09/13/Mac-開發環境建置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/blogs/images/technique/MacEnvironment.jpg)" alt="Mac 開發環境建置" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/技術分享/">技術分享</a></p>
-                            <p class="item-title"><a href="/blogs/2017/09/13/Mac-開發環境建置/" class="title">Mac 開發環境建置</a></p>
-                            <p class="item-date"><time datetime="2017-09-13T13:07:44.000Z" itemprop="datePublished">2017-09-13</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -591,7 +601,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分類</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">64</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">65</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -601,7 +611,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">彙整</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/09/">九月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/09/">九月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -611,7 +621,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">標籤</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React-Native/">React-Native</a><span class="tag-list-count">6</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React-Native/">React-Native</a><span class="tag-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -621,7 +631,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">標籤雲</h3>
         <div class="widget tagcloud">
-            <a href="/blogs/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/blogs/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/blogs/tags/Kubernetes/" style="font-size: 12.5px;">Kubernetes</a> <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/blogs/tags/Nodejs/" style="font-size: 15px;">Nodejs</a> <a href="/blogs/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/blogs/tags/React/" style="font-size: 17.5px;">React</a> <a href="/blogs/tags/React-Native/" style="font-size: 12.5px;">React-Native</a>
+            <a href="/blogs/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/blogs/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/blogs/tags/Kubernetes/" style="font-size: 12px;">Kubernetes</a> <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/blogs/tags/Nodejs/" style="font-size: 16px;">Nodejs</a> <a href="/blogs/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/blogs/tags/React/" style="font-size: 18px;">React</a> <a href="/blogs/tags/React-Native/" style="font-size: 12px;">React-Native</a>
         </div>
     </div>
 
