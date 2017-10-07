@@ -25,7 +25,7 @@ Private Routes 和 Auth Middleware
 
 1234567891011app.get(&amp;apos;/users/me&amp;apos;, (req, res) =&amp;gt; &amp;#123;    var token = req.header(&amp;apos;x-auth&amp;apos;);    User.findByTo">
 <meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday9.png">
-<meta property="og:updated_time" content="2017-10-04T08:08:40.000Z">
+<meta property="og:updated_time" content="2017-10-07T16:34:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day9">
 <meta name="twitter:description" content="安全和認證
@@ -293,14 +293,18 @@ ga('send', 'pageview');
 <li>在 server/models/user.js 新增 removeToken function</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">UserSchema.methods.removeToken = function (token) &#123;</div><div class="line">    var user = this;</div><div class="line"></div><div class="line">    return user.update(&#123;</div><div class="line">        $pull: &#123;</div><div class="line">            tokens: &#123;token&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
+<h4>測試 DELETE /users/me/token</h4>
+<ol>
+<li>在 server/tests/server.test.js 新增測試</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">describe(&apos;DELETE /users/me/token&apos;, () =&gt; &#123;</div><div class="line">    it(&apos;should remove auth token on logout&apos;, (done) =&gt; &#123;</div><div class="line">        request(app)</div><div class="line">            .delete(&apos;/users/me/token&apos;)</div><div class="line">            .set(&apos;x-auth&apos;, users[0].tokens[0].token)</div><div class="line">            .expect(200)</div><div class="line">            .end((err, res) =&gt; &#123;</div><div class="line">                if (err) &#123;</div><div class="line">                    return done(err);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                User.findById(users[0]._id).then((user) =&gt; &#123;</div><div class="line">                    expect(user.tokens.length).toBe(0);</div><div class="line">                    done();</div><div class="line">                &#125;).catch((e) =&gt; done(e));</div><div class="line">            &#125;)</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://tingsyuanwang.github.io/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" data-id="cj8h2mjwh003vw845r0xooiqx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" data-id="cj8hjl787003t16458fdc07wk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
