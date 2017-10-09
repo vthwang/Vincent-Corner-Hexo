@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Nodejs 快速學習自我挑戰 Day10 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Nodejs" />
+    
+    <meta name="description" content="安全和認證
+讓 Todo Routes Private
+
+修改 server/models/todo.js 新增 _creator
+
+1234_creator: &amp;#123;    type: mongoose.Schema.Types.ObjectId,    required: true,&amp;#125;
+
+修改 server/tests/seed/seed.js 新增 _creator
+
+1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs 快速學習自我挑戰 Day10">
+<meta property="og:url" content="https://tingsyuanwang.github.io/2017/10/08/Nodejs-快速學習自我挑戰-Day10/index.html">
+<meta property="og:site_name" content="Vincent's Corner">
+<meta property="og:description" content="安全和認證
+讓 Todo Routes Private
+
+修改 server/models/todo.js 新增 _creator
+
+1234_creator: &amp;#123;    type: mongoose.Schema.Types.ObjectId,    required: true,&amp;#125;
+
+修改 server/tests/seed/seed.js 新增 _creator
+
+1">
+<meta property="og:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday10.jpg">
+<meta property="og:updated_time" content="2017-10-09T23:11:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nodejs 快速學習自我挑戰 Day10">
+<meta name="twitter:description" content="安全和認證
+讓 Todo Routes Private
+
+修改 server/models/todo.js 新增 _creator
+
+1234_creator: &amp;#123;    type: mongoose.Schema.Types.ObjectId,    required: true,&amp;#125;
+
+修改 server/tests/seed/seed.js 新增 _creator
+
+1">
+<meta name="twitter:image" content="https://tingsyuanwang.github.io/blogs/images/learning/nodejs/nodejsday10.jpg">
+<meta property="fb:admins" content="dtvgood202">
+<meta property="fb:app_id" content="176717762750155">
+    
+
+    
+
+    
+        <link rel="icon" href="/blogs/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/blogs/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blogs/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/blogs/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/blogs/css/style.css">
+
+    <script src="/blogs/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/blogs/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/blogs/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/blogs/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blogs/',
+        CONTENT_URL: '/blogs/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/blogs/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/blogs/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Nodejs-快速學習自我挑戰-Day10" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Nodejs 快速學習自我挑戰 Day10
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/blogs/2017/10/08/Nodejs-快速學習自我挑戰-Day10/" class="article-date">
+    <time datetime="2017-10-07T16:37:59.000Z" itemprop="datePublished">2017-10-08</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/blogs/images/learning/nodejs/nodejsday10.jpg">
+<hr>
+<h3>安全和認證</h3>
+<h4>讓 Todo Routes Private</h4>
+<ol>
+<li>修改 server/models/todo.js 新增 _creator</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">_creator: &#123;</div><div class="line">    type: mongoose.Schema.Types.ObjectId,</div><div class="line">    required: true,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 server/tests/seed/seed.js 新增 _creator</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">const todos = [&#123;</div><div class="line">    _id: new ObjectID(),</div><div class="line">    text: &apos;First test todo&apos;,</div><div class="line">    _creator: userOneId</div><div class="line">&#125;, &#123;</div><div class="line">    _id: new ObjectID(),</div><div class="line">    text: &apos;Second test todo&apos;,</div><div class="line">    completed: true,</div><div class="line">    completedAt: 333,</div><div class="line">    _creator: userTwoId</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>修改 server/server.js，加入 authenticate，然後新增 _creator</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">app.post(&apos;/todos&apos;, authenticate, (req, res) =&gt; &#123;</div><div class="line">    var todo = new Todo(&#123;</div><div class="line">        text: req.body.text,</div><div class="line">        _creator: req.user._id</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    todo.save().then((doc) =&gt; &#123;</div><div class="line">        res.send(doc);</div><div class="line">    &#125;, (e) =&gt; &#123;</div><div class="line">        res.status(400).send(e);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(&apos;/todos&apos;, authenticate, (req, res) =&gt; &#123;</div><div class="line">    Todo.find(&#123;</div><div class="line">        _creator: req.user._id</div><div class="line">    &#125;).then((todos) =&gt; &#123;</div><div class="line">        res.send(&#123;todos&#125;);</div><div class="line">    &#125;, (e) =&gt; &#123;</div><div class="line">        res.status(400).send(e);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 server/tests/server.test.js 的 POST 部分設置 x-auth<br>
+<code>.set('x-auth', users[0].tokens[0].token)</code></li>
+<li>在 server/tests/server.test.js 的 GET 部分設置 x-auth，並在回送時設定長度為 1，因為設置了 creator，只會回傳一個 todo</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">describe(&apos;GET /todos&apos;, () =&gt; &#123;</div><div class="line">    it(&apos;should get all todos&apos;, (done) =&gt; &#123;</div><div class="line">        request(app)</div><div class="line">            .get(&apos;/todos&apos;)</div><div class="line">            .set(&apos;x-auth&apos;, users[0].tokens[0].token)</div><div class="line">            .expect(200)</div><div class="line">            .expect((res) =&gt; &#123;</div><div class="line">                expect(res.body.todos.length).toBe(1);</div><div class="line">            &#125;)</div><div class="line">            .end(done);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 server/server.js 修改 POST /users/login 的 token 為 1</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">expect(user.tokens[1]).toInclude(&#123;</div><div class="line">    access: &apos;auth&apos;,</div><div class="line">    token: res.headers[&apos;x-auth&apos;]</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>在 server/server.js 修改 GET /todos/:id’，新增 authenticate middleware，且修改 findById 成 findOne</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.get(&apos;/todos/:id&apos;, authenticate, (req, res) =&gt; &#123;</div><div class="line"></div><div class="line">Todo.findOne(&#123;</div><div class="line">    _id: id,</div><div class="line">    _creator: req.user._id</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="8">
+<li>在 server/tests/server.test.js 修改 GET /todos 和 GET /todo/:id 都加上 <code>.set('x-auth', users[0].tokens[0].token)</code></li>
+<li>在 server/server.js 修改 DELETE /todos/:id’，新增 authenticate middleware，且修改 findByIdAndRemove 成 findOneAndRemove</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.delete(&apos;/todos/:id&apos;, authenticate, (req, res) =&gt; &#123;</div><div class="line"></div><div class="line">Todo.findOneAndRemove(&#123;</div><div class="line">    _id: id,</div><div class="line">    _creator: req.user._id</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="10">
+<li>在 server/tests/server.test.js 的 describe(‘GET /todo/:id’) 加上一個測試，如果被其他使用者建立的 todo 則 404</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">it(&apos;should not return todo doc created by other user&apos;, (done) =&gt; &#123;</div><div class="line">    request(app)</div><div class="line">        .get(`/todos/$&#123;todos[1]._id.toHexString()&#125;`)</div><div class="line">        .set(&apos;x-auth&apos;, users[0].tokens[0].token)</div><div class="line">        .expect(404)</div><div class="line">        .end(done);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="11">
+<li>在 server/tests/server.test.js 的 DELETE /todos/:id 的每個測試都加上<br>
+<code>.set('x-auth', users[1].tokens[0].token)</code></li>
+<li>在新增一個測試，如果 todo 對不上 user 就回傳 404</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">it(&apos;should not remove a todo&apos;, (done) =&gt; &#123;</div><div class="line">    var hexId = todos[0]._id.toHexString();</div><div class="line"></div><div class="line">    request(app)</div><div class="line">        .delete(`/todos/$&#123;hexId&#125;`)</div><div class="line">        .set(&apos;x-auth&apos;, users[1].tokens[0].token)</div><div class="line">        .expect(404)</div><div class="line">        .end((err, res) =&gt; &#123;</div><div class="line">            if (err) &#123;</div><div class="line">                return done(err);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            Todo.findById(hexId).then((todo) =&gt; &#123;</div><div class="line">                expect(todo).toExist();</div><div class="line">                done();</div><div class="line">            &#125;).catch((e) =&gt; done(e));</div><div class="line">        &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="13">
+<li>在 server/server.js 修改 PATCH /todos/:id’，新增 authenticate middleware，且修改 findByIdAndUpdate 成 findOneAndUpdate</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.patch(&apos;/todos/:id&apos;, authenticate, (req, res) =&gt; &#123;</div><div class="line"></div><div class="line">Todo.findOneAndUpdate(&#123;_id: id, _creator: req.user._id&#125;, &#123;$set: body&#125;, &#123;new: true&#125;)</div></pre></td></tr></table></figure>
+<h4>改善 App 組態設定</h4>
+<ol>
+<li>在 server/config/config.js 修改成用 json 的方式讀取環境變數</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var env = process.env.NODE_ENV || &apos;development&apos;;</div><div class="line"></div><div class="line">if (env === &apos;development&apos; || env === &apos;test&apos;) &#123;</div><div class="line">    var config = require(&apos;./config.json&apos;);</div><div class="line">    var envConfig = config[env];</div><div class="line"></div><div class="line">    Object.keys(envConfig).forEach((key) =&gt; &#123;</div><div class="line">        process.env[key] = envConfig[key];</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>新增 server/config/config.json，把組態檔放進去</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;test&quot;: &#123;</div><div class="line">    &quot;PORT&quot;: 3000,</div><div class="line">    &quot;MONGODB_URI&quot;: &quot;mongodb://localhost:27017/TodoAppTest&quot;,</div><div class="line">    &quot;JWT_SECRET&quot;: &quot;fadskljfalkfwerlkmvvsfgreio3&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;development&quot;: &#123;</div><div class="line">    &quot;PORT&quot;: 3000,</div><div class="line">    &quot;MONGODB_URI&quot;: &quot;mongodb://localhost:27017/TodoApp&quot;,</div><div class="line">    &quot;JWT_SECRET&quot;: &quot;fadskljfa3kfwe345mvvsfgreio3&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 server/tests/seed/seed.js 的 jwt.sign 值都改為 <code>process.env.JWT_SECRET</code></li>
+<li>在 server/tests/seed/user.js 的 jwt.sign 和 jwt.verify 值都改為 <code>process.env.JWT_SECRET</code></li>
+<li>在 heroku 設定 JWT_SECRET<br>
+<code>heroku config:set JWT_SECRET=fadskljfa3kfwe345mvvs2g3eio3</code></li>
+</ol>
+<h4>部署到 Heroku</h4>
+<ol>
+<li>取得 MONGODB_URI<br>
+<code>heroku config:get MONGODB_URI</code></li>
+<li>取得值 - mongodb://帳號:密碼@連線網址:39994/資料庫名稱</li>
+<li>進入 Robo 3T 進行新的連線並測試</li>
+<li><code>git push master heroku</code></li>
+</ol>
+<h4>進階的 Postman</h4>
+<ol>
+<li>在 POST /users 和 /users/login 的 Test 選項寫入下面兩行，在送出時就會設定 x-auth 為全域的變數</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var token = postman.getResponseHeader(&apos;x-auth&apos;);</div><div class="line">postman.setEnvironmentVariable(&apos;x-auth&apos;, token);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在其他的 header 加上 {{x-auth}} 取得變數</li>
+<li>在 POST /todos 的 Test 選項寫入下面兩行，在送出時就會設定 todoId 為全域的變數</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var body = JSON.parse(responseBody);</div><div class="line">postman.setEnvironmentVariable(&apos;todoId&apos;, body._id);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在其他有 id 的 url 上面加上 {{todoId}}</li>
+</ol>
+<h4>升級 expect</h4>
+<ol>
+<li><code>npm install expect@21.2.1 --save-dev</code></li>
+<li>把 server/tests/server.test.js 的 toNotExist 改成 toBeFalsy，把 toExist 改成 toBeTruthy</li>
+<li>在 PATCH /todos/:id 的部份把 <code>expect(res.body.todo.completedAt).toBeA('number');</code> 取代為 <code>expect(typeof res.body.todo.completedAt).toBe('number');</code></li>
+<li>將 .toNotBe 改為 .not.toBe</li>
+<li>將 toInclude 改為 toMatchObject，toObject 會拋回原始的 user 資料<br>
+<code>expect(user.toObject().tokens[1]).toMatchObject({</code></li>
+</ol>
+<h3>使用 <a href="http://Socket.io" target="_blank" rel="external">Socket.io</a> 的即時 Web Apps</h3>
+<h4>創建一個專案</h4>
+<ol>
+<li><code>mkdir node-chat-app</code></li>
+<li><code>cd node-chat-app</code></li>
+<li><code>npm init</code></li>
+<li><code>git init</code></li>
+<li>新增 server/server.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">const path = require(&apos;path&apos;);</div><div class="line">const express = require(&apos;express&apos;);</div><div class="line"></div><div class="line">const publicPath = path.join(__dirname, &apos;../public&apos;);</div><div class="line">const port = process.env.PORT || 3000;</div><div class="line">var app = express();</div><div class="line"></div><div class="line">app.use(express.static(publicPath));</div><div class="line"></div><div class="line">app.listen(port, () =&gt; &#123;</div><div class="line">    console.log(`Server is up on $&#123;port&#125;`);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>新增 public/index.html</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">    &lt;meta name=&quot;viewport&quot;</div><div class="line">          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</div><div class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</div><div class="line">    &lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;p&gt;Welcome to the chat app&lt;/p&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<ol start="7">
+<li><code>npm i express --save</code></li>
+<li>推到 Github</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &apos;Init commit&apos;</div><div class="line">git remote add origin https://github.com/TingSyuanWang/node-chat-app.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+<ol start="9">
+<li>發佈到 heroku</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">heroku create</div><div class="line">git push heroku master</div></pre></td></tr></table></figure>
+<h4>增加 <a href="http://Socket.io" target="_blank" rel="external">Socket.io</a> 到 App</h4>
+<ol>
+<li><code>npm i socket.io --save</code></li>
+<li>新增 http 和 socketIO 到 server/server.js，</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">const http = require(&apos;http&apos;);</div><div class="line">const socketIO = require(&apos;socket.io&apos;);</div><div class="line"></div><div class="line">var server = http.createServer(app);</div><div class="line">var io = socketIO(server);</div><div class="line"></div><div class="line">io.on(&apos;connection&apos;, (socket) =&gt; &#123;</div><div class="line">    console.log(&apos;New user connected&apos;);</div><div class="line"></div><div class="line">    socket.on(&apos;disconnect&apos;, () =&gt; &#123;</div><div class="line">        console.log(&apos;User was disconnected&apos;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(port, () =&gt; &#123;</div><div class="line">    console.log(`Server is up on $&#123;port&#125;`);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>新增 <a href="http://socket.io" target="_blank" rel="external">socket.io</a> 到 index.html</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;/socket.io/socket.io.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var socket = io();</div><div class="line"></div><div class="line">    socket.on(&apos;connect&apos;, () =&gt; &#123;</div><div class="line">        console.log(&apos;Connected to server&apos;);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    socket.on(&apos;disconnect&apos;, () =&gt; &#123;</div><div class="line">        console.log(&apos;Disconnected from server&apos;);</div><div class="line">    &#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h4>Events 的 Emitting 和 Listening</h4>
+<ol>
+<li>新增 public/js/index.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var socket = io();</div><div class="line"></div><div class="line">socket.on(&apos;connect&apos;, function () &#123;</div><div class="line">    console.log(&apos;Connected to server&apos;);</div><div class="line"></div><div class="line">    socket.emit(&apos;createEmail&apos;, &#123;</div><div class="line">        to: &apos;jen@example.com&apos;,</div><div class="line">        text: &apos;Hey. This is Andrew.&apos;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">socket.on(&apos;disconnect&apos;, function () &#123;</div><div class="line">    console.log(&apos;Disconnected from server&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">socket.on(&apos;newEmail&apos;, function (email) &#123;</div><div class="line">    console.log(&apos;New email&apos;, email);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 public/index.html 引入 script<br>
+<code>&lt;script src=&quot;js/index.js&quot;&gt;&lt;/script&gt;</code></li>
+<li>在 server/server.js 在 connect 的時候，傳出 newEmail，然後等待接收 createEmail</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">socket.emit(&apos;newEmail&apos;, &#123;</div><div class="line">    from: &apos;mike@example.com&apos;,</div><div class="line">    text: &apos;Hey. What is going on&apos;,</div><div class="line">    createdAt: 123</div><div class="line">&#125;);</div><div class="line"></div><div class="line">socket.on(&apos;createEmail&apos;, (newEmail) =&gt; &#123;</div><div class="line">    console.log(&apos;createEmail&apos;, newEmail);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 public/js/index.js 新增 emit</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">socket.emit(&apos;createMessage&apos;, &#123;</div><div class="line">    from: &apos;Andrew&apos;,</div><div class="line">    text: &apos;Yup, that works for me.&apos;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 server/server.js 接收 client 的 emit</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">socket.on(&apos;createMessage&apos;, (message) =&gt; &#123;</div><div class="line">    console.log(&apos;createMessage&apos;, message);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 server/server.js 新增 emit</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">socket.emit(&apos;newMessage&apos;, &#123;</div><div class="line">    from: &apos;John&apos;,</div><div class="line">    text: &apos;See you then&apos;,</div><div class="line">    createdAt: 123123</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>在 public/js/index.js 把接收的 Message console 出來</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">socket.on(&apos;newMessage&apos;, function (message) &#123;</div><div class="line">    console.log(&apos;newMessage&apos;, message);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://tingsyuanwang.github.io/blogs/2017/10/08/Nodejs-快速學習自我挑戰-Day10/" data-id="cj8kslq22002tks45swtqkgn8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://tingsyuanwang.github.io/blogs/2017/10/08/Nodejs-快速學習自我挑戰-Day10/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/hdtvgood202" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Nodejs 快速學習自我挑戰 Day9</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/10/08/Nodejs-快速學習自我挑戰-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday10.jpg)" alt="Nodejs 快速學習自我挑戰 Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/10/08/Nodejs-快速學習自我挑戰-Day10/" class="title">Nodejs 快速學習自我挑戰 Day10</a></p>
+                            <p class="item-date"><time datetime="2017-10-07T16:37:59.000Z" itemprop="datePublished">2017-10-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday9.png)" alt="Nodejs 快速學習自我挑戰 Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/28/Nodejs-快速學習自我挑戰-Day9/" class="title">Nodejs 快速學習自我挑戰 Day9</a></p>
+                            <p class="item-date"><time datetime="2017-09-27T22:14:39.000Z" itemprop="datePublished">2017-09-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/19/Nodejs-快速學習自我挑戰-Day8/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday8.png)" alt="Nodejs 快速學習自我挑戰 Day8" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/19/Nodejs-快速學習自我挑戰-Day8/" class="title">Nodejs 快速學習自我挑戰 Day8</a></p>
+                            <p class="item-date"><time datetime="2017-09-18T17:30:30.000Z" itemprop="datePublished">2017-09-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/17/Nodejs-快速學習自我挑戰-Day7/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday7.png)" alt="Nodejs 快速學習自我挑戰 Day7" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/17/Nodejs-快速學習自我挑戰-Day7/" class="title">Nodejs 快速學習自我挑戰 Day7</a></p>
+                            <p class="item-date"><time datetime="2017-09-17T11:56:53.000Z" itemprop="datePublished">2017-09-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blogs/2017/09/15/Nodejs-快速學習自我挑戰-Day6/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/blogs/images/learning/nodejs/nodejsday6.png)" alt="Nodejs 快速學習自我挑戰 Day6" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blogs/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/blogs/2017/09/15/Nodejs-快速學習自我挑戰-Day6/" class="title">Nodejs 快速學習自我挑戰 Day6</a></p>
+                            <p class="item-date"><time datetime="2017-09-15T06:01:22.000Z" itemprop="datePublished">2017-09-15</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/學習歷程/">學習歷程</a><span class="category-list-count">66</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blogs/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/09/">九月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Nodejs/">Nodejs</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/React-Native/">React-Native</a><span class="tag-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/blogs/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/blogs/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/blogs/tags/Kubernetes/" style="font-size: 12px;">Kubernetes</a> <a href="/blogs/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/blogs/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/blogs/tags/Nodejs/" style="font-size: 16px;">Nodejs</a> <a href="/blogs/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/blogs/tags/React/" style="font-size: 18px;">React</a> <a href="/blogs/tags/React-Native/" style="font-size: 12px;">React-Native</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/dtvgood202">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/blogs/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=176717762750155";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/blogs/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/blogs/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/blogs/js/main.js"></script>
+
+    </div>
+</body>
+</html>
