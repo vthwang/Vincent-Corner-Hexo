@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day6
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday6.jpg
+  - /images/learning/laravel/laravelday6.jpg
 date: 2017-04-27 10:19:30
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday6.jpg">
+<img src="/images/learning/laravel/laravelday6.jpg">
 
 ***
 ### Tinker

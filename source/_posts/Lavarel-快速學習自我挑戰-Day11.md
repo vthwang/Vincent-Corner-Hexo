@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day11
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday11.jpg
+  - /images/learning/laravel/laravelday11.jpg
 date: 2017-05-02 03:43:56
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday11.jpg">
+<img src="/images/learning/laravel/laravelday11.jpg">
 
 ***
 ### Form Login - [Authentication 設定官方文件](https://laravel.com/docs/5.2/authentication)

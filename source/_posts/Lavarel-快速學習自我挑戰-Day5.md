@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day5
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday5.jpeg
+  - /images/learning/laravel/laravelday5.jpeg
 date: 2017-04-26 10:19:30
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday5.jpeg">
+<img src="/images/learning/laravel/laravelday5.jpeg">
 
 ***
 ### Eloquent Relationship - [Eloquent Relationship 設定官方文件](https://laravel.com/docs/5.2/eloquent-relationships)

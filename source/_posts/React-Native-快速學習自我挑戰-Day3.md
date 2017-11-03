@@ -1,12 +1,12 @@
 ---
 title: React Native 快速學習自我挑戰 Day3
 thumbnail:
-  - /blogs/images/learning/reactNative/reactnativeday3.jpg
+  - /images/learning/reactNative/reactnativeday3.jpg
 date: 2017-08-08 17:41:08
 categories: 學習歷程
 tags: React-Native
 ---
-<img src="/blogs/images/learning/reactNative/reactnativeday3.jpg">
+<img src="/images/learning/reactNative/reactnativeday3.jpg">
 
 ***
 ### 處理 Component 的排版

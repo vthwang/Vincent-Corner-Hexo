@@ -4,9 +4,9 @@ date: 2016-09-03 16:40:08
 categories: 英文寫作
 tags:
 thumbnail:
-  - /blogs/images/Connection.jpg
+  - /images/Connection.jpg
 ---
-<img src="/blogs/images/Connection.jpg">
+<img src="/images/Connection.jpg">
 
 ***
 &emsp;&emsp;In the past, people were separated by the distant ocean, they got each others’ message need a long time through letters. Nowadays, we just need to sign in the account through internet, we can chat with each other. Not only that, we can use video to see each other as truly communication. It’s much more convenient than before, but this feature doesn’t make the interpersonal networks closely than before. We increased our quality of life, but also decreased our humanity. I’m so curious what happened in nowadays world?

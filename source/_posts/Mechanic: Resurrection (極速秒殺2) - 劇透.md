@@ -4,9 +4,9 @@ date: 2016-09-09 10:27:45
 categories: 閱讀賞析
 tags:
 thumbnail:
-  - /blogs/images/Mechanic＿Resurrection.jpg
+  - /images/Mechanic＿Resurrection.jpg
 ---
-<img src="/blogs/images/Mechanic＿Resurrection.jpg">
+<img src="/images/Mechanic＿Resurrection.jpg">
 
 ***
 #### 評價分數（滿分十分）：:star::star::star::star::star::star:

@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day9
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday9.png
+  - /images/learning/laravel/laravelday9.png
 date: 2017-04-30 23:21:35
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday9.png">
+<img src="/images/learning/laravel/laravelday9.png">
 
 ***
 ### Form and Validation

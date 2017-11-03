@@ -1,12 +1,12 @@
 ---
 title: React快速學習自我挑戰 Day5
 thumbnail:
-  - /blogs/images/learning/react/reactday5.jpg
+  - /images/learning/react/reactday5.jpg
 date: 2017-03-09 11:01:39
 categories: 學習歷程
 tags: React
 ---
-<img src="/blogs/images/learning/react/reactday5.jpg">
+<img src="/images/learning/react/reactday5.jpg">
 
 ***
 1. Reducer 是一個 function 用來 return piece of the application state。

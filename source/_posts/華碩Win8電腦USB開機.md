@@ -4,9 +4,9 @@ date: 2016-09-04 03:30:18
 categories: 技術分享
 tags:
 thumbnail:
-  - /blogs/images/asus.png
+  - /images/asus.png
 ---
-<img src="/blogs/images/asus.png">
+<img src="/images/asus.png">
 
 ***
 (1) 開機連按Del進入BIOS之後，切換到「Security」選單，將「Secure Boot Control」設定成「Disabled」，重新開機。

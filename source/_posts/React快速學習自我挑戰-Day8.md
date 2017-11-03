@@ -1,12 +1,12 @@
 ---
 title: React快速學習自我挑戰 Day8
 thumbnail:
-  - /blogs/images/learning/react/reactday8.jpg
+  - /images/learning/react/reactday8.jpg
 date: 2017-03-13 22:56:31
 categories: 學習歷程
 tags: React
 ---
-<img src="/blogs/images/learning/react/reactday8.jpg">
+<img src="/images/learning/react/reactday8.jpg">
 
 ***
 1. Middleware 是一個 function，Middleware 可以選擇讓 action 通過，還可以操縱 action。

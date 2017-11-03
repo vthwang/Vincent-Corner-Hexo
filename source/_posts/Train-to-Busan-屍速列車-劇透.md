@@ -1,12 +1,12 @@
 ---
 title: Train to Busan (屍速列車) - 劇透
 thumbnail:
-  - /blogs/images/train_to_busan.jpg
+  - /images/train_to_busan.jpg
 date: 2016-09-10 10:59:31
 categories: 閱讀賞析
 tags:
 ---
-<img src="/blogs/images/train_to_busan.jpg">
+<img src="/images/train_to_busan.jpg">
 
 ***
 #### 評價分數（滿分十分）：:star::star::star::star::star::star::star::star::star:

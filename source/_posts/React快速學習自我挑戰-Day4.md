@@ -1,12 +1,12 @@
 ---
 title: React快速學習自我挑戰 Day4
 thumbnail:
-  - /blogs/images/learning/react/reactday4.jpg
+  - /images/learning/react/reactday4.jpg
 date: 2017-03-08 22:10:00
 categories: 學習歷程
 tags: React
 ---
-<img src="/blogs/images/learning/react/reactday4.jpg">
+<img src="/images/learning/react/reactday4.jpg">
 
 ***
 1. [Redux 參考資料](http://redux.js.org/)。

@@ -1,12 +1,12 @@
 ---
 title: Kubernetes 快速學習自我挑戰 Day3
 thumbnail:
-  - /blogs/images/learning/kubernetes/kubernetesday3.png
+  - /images/learning/kubernetes/kubernetesday3.png
 date: 2017-08-15 04:47:58
 categories: 學習歷程
 tags: Kubernetes
 ---
-<img src="/blogs/images/learning/kubernetes/kubernetesday3.png">
+<img src="/images/learning/kubernetes/kubernetesday3.png">
 
 ***
 ### Kubernetes 觀念簡介

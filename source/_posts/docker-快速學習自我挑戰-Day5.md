@@ -1,12 +1,12 @@
 ---
 title: docker 快速學習自我挑戰 Day5
 thumbnail:
-  - /blogs/images/learning/docker/dockerday5.jpg
+  - /images/learning/docker/dockerday5.jpg
 date: 2017-07-29 12:37:49
 categories: 學習歷程
 tags: Docker
 ---
-<img src="/blogs/images/learning/docker/dockerday5.jpg">
+<img src="/images/learning/docker/dockerday5.jpg">
 
 ***
 ### 讓 Docker Compose 更簡單：Multi-Container 工具

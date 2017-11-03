@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day4
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday4.jpg
+  - /images/learning/laravel/laravelday4.jpg
 date: 2017-04-25 13:12:19
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday4.jpg">
+<img src="/images/learning/laravel/laravelday4.jpg">
 
 ***
 ### Raw SQL Queries - [Database 設定官方文件](https://laravel.com/docs/5.2/database)

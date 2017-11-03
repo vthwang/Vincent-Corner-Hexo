@@ -1,12 +1,12 @@
 ---
 title: docker 快速學習自我挑戰 Day2
 thumbnail:
-  - /blogs/images/learning/docker/dockerday2.png
+  - /images/learning/docker/dockerday2.png
 date: 2017-07-24 15:09:19
 categories: 學習歷程
 tags: Docker
 ---
-<img src="/blogs/images/learning/docker/dockerday2.png">
+<img src="/images/learning/docker/dockerday2.png">
 
 ***
 ### 安裝與版本

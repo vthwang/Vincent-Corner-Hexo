@@ -1,12 +1,12 @@
 ---
 title: React快速學習自我挑戰 Day2
 thumbnail:
-  - /blogs/images/learning/react/reactday2.png
+  - /images/learning/react/reactday2.png
 date: 2017-03-06 10:13:59
 categories: 學習歷程
 tags: React
 ---
-<img src="/blogs/images/learning/react/reactday2.png">
+<img src="/images/learning/react/reactday2.png">
 
 ***
 1. 從 node modules 呼叫 react：`import React from 'react';`。

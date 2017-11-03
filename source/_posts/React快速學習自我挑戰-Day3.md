@@ -1,12 +1,12 @@
 ---
 title: React快速學習自我挑戰 Day3
 thumbnail:
-  - /blogs/images/learning/react/reactday3.png
+  - /images/learning/react/reactday3.png
 date: 2017-03-07 22:13:59
 categories: 學習歷程
 tags: React
 ---
-<img src="/blogs/images/learning/react/reactday3.png">
+<img src="/images/learning/react/reactday3.png">
 
 ***
 1. 在 React 中，只有最上層的元件需要從 API 或 flux 取得資料。

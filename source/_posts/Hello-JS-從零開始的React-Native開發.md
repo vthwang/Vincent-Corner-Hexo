@@ -4,14 +4,14 @@ date: 2016-09-06 10:48:13
 categories: 生活記事
 tags:
 thumbnail:
-  - /blogs/images/hellojs.jpg
+  - /images/hellojs.jpg
 ---
 > <strong>“If I have seen further it is by standing on the shoulders of giants."</strong>
 > <div style="float:right"><strong>-Issac Newton</strong></div>
 > 「如果說我看得比別人遠，那是因為我站在巨人的肩上。」
 > <div style="float:right">– 牛頓</div>
 
-<img src="/blogs/images/hellojs.jpg" alt="HelloJS全端開發即戰力班">
+<img src="/images/hellojs.jpg" alt="HelloJS全端開發即戰力班">
 
 ---
 
@@ -45,4 +45,4 @@ thumbnail:
 2. 很高興認識Kent、Max、一村、鄒大大、黑盒子...還有一堆叫不出名字但是卻很Nice的人（請原諒我的金魚腦XD）
 3. 最後的結訓證書！！！
 
-<img src="/blogs/images/HellojsCertification.jpg" alt="HelloJS結訓證書">
+<img src="/images/HellojsCertification.jpg" alt="HelloJS結訓證書">

@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day22
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday22.jpg
+  - /images/learning/laravel/laravelday22.jpg
 date: 2017-06-01 15:04:36
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday22.jpg">
+<img src="/images/learning/laravel/laravelday22.jpg">
 
 ***
 ### 部署 app 與共享主機
@@ -109,4 +109,4 @@ mix.scripts([
 10. 執行 webpack `npm run dev`
 11. 監控 webpack 任何變化 `npm run watch`
 ### 完成課程結業證書
-<img src="/blogs/images/learning/laravel/EdwinDiaz_Laravel.jpg">
+<img src="/images/learning/laravel/EdwinDiaz_Laravel.jpg">

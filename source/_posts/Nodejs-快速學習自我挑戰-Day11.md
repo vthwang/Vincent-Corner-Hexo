@@ -1,12 +1,12 @@
 ---
 title: Nodejs 快速學習自我挑戰 Day11
 thumbnail:
-  - /blogs/images/learning/nodejs/nodejsday11.jpeg
+  - /images/learning/nodejs/nodejsday11.jpeg
 date: 2017-10-10 07:12:56
 categories: 學習歷程
 tags: Nodejs
 ---
-<img src="/blogs/images/learning/nodejs/nodejsday11.jpeg">
+<img src="/images/learning/nodejs/nodejsday11.jpeg">
 
 ***
 ### 使用 Socket.io 的即時 Web Apps

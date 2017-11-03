@@ -1,12 +1,12 @@
 ---
 title: Nodejs 快速學習自我挑戰 Day1
 thumbnail:
-  - /blogs/images/learning/nodejs/nodejsday1.png
+  - /images/learning/nodejs/nodejsday1.png
 date: 2017-06-10 23:32:55
 categories: 學習歷程
 tags: Nodejs
 ---
-<img src="/blogs/images/learning/nodejs/nodejsday1.png">
+<img src="/images/learning/nodejs/nodejsday1.png">
 
 ***
 ### 環境設定

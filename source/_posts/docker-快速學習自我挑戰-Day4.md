@@ -1,12 +1,12 @@
 ---
 title: docker 快速學習自我挑戰 Day4
 thumbnail:
-  - /blogs/images/learning/docker/dockerday4.png
+  - /images/learning/docker/dockerday4.png
 date: 2017-07-28 15:32:17
 categories: 學習歷程
 tags: Docker
 ---
-<img src="/blogs/images/learning/docker/dockerday4.png">
+<img src="/images/learning/docker/dockerday4.png">
 
 ***
 ### Container 生命週期和持久性數據：Volumes, Volumes, Volumes

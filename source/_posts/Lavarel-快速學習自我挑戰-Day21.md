@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day21
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday21.png
+  - /images/learning/laravel/laravelday21.png
 date: 2017-05-31 16:58:07
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday21.png">
+<img src="/images/learning/laravel/laravelday21.png">
 
 ***
 ### 升級到 Laravel 5.3 Part II

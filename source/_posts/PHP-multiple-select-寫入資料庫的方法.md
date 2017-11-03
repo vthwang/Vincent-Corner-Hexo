@@ -1,12 +1,12 @@
 ---
 title: PHP multiple select 寫入資料庫的方法
 thumbnail:
-  - /blogs/images/php_mysql_array.jpg
+  - /images/php_mysql_array.jpg
 date: 2016-12-01 13:48:23
 categories: 技術分享
 tags:
 ---
-<img src="/blogs/images/php_mysql_array.jpg">
+<img src="/images/php_mysql_array.jpg">
 
 ***
 1. 填入文字的頁面需要用陣列的方式傳遞資料 `name="item[]"`

@@ -1,12 +1,12 @@
 ---
 title: Nodejs 快速學習自我挑戰 Day3
 thumbnail:
-  - /blogs/images/learning/nodejs/nodejsday3.jpg
+  - /images/learning/nodejs/nodejsday3.jpg
 date: 2017-06-12 05:25:35
 categories: 學習歷程
 tags: Nodejs
 ---
-<img src="/blogs/images/learning/nodejs/nodejsday3.jpg">
+<img src="/images/learning/nodejs/nodejsday3.jpg">
 
 ***
 ### Weather App

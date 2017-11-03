@@ -1,12 +1,12 @@
 ---
 title: React Native 快速學習自我挑戰 Day2
 thumbnail:
-  - /blogs/images/learning/reactNative/reactnativeday2.png
+  - /images/learning/reactNative/reactnativeday2.png
 date: 2017-08-05 00:43:27
 categories: 學習歷程
 tags: React-Native
 ---
-<img src="/blogs/images/learning/reactNative/reactnativeday2.png">
+<img src="/images/learning/reactNative/reactnativeday2.png">
 
 ***
 ### React Native 上的 HTTP 請求

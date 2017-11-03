@@ -1,12 +1,12 @@
 ---
 title: Wordpress 處理中文檔名上傳
 thumbnail:
-  - /blogs/images/wordpress.png
+  - /images/wordpress.png
 date: 2017-03-04 16:29:52
 categories: 技術分享
 tags:
 ---
-<img src="/blogs/images/wordpress.png">
+<img src="/images/wordpress.png">
 
 ***
 1. 修改  wp-admin\includes\file.php

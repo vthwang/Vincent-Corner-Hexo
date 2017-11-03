@@ -1,12 +1,12 @@
 ---
 title: Jenkins 快速學習自我挑戰 Day1
 thumbnail:
-  - /blogs/images/learning/jenkins/jenkinsday1.png
+  - /images/learning/jenkins/jenkinsday1.png
 date: 2017-09-02 23:49:25
 categories: 學習歷程
 tags: Jenkins
 ---
-<img src="/blogs/images/learning/jenkins/jenkinsday1.png">
+<img src="/images/learning/jenkins/jenkinsday1.png">
 
 ***
 ### 介紹 Jenkins

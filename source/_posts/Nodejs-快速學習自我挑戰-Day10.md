@@ -1,12 +1,12 @@
 ---
 title: Nodejs 快速學習自我挑戰 Day10
 thumbnail:
-  - /blogs/images/learning/nodejs/nodejsday10.jpg
+  - /images/learning/nodejs/nodejsday10.jpg
 date: 2017-10-08 00:37:59
 categories: 學習歷程
 tags: Nodejs
 ---
-<img src="/blogs/images/learning/nodejs/nodejsday10.jpg">
+<img src="/images/learning/nodejs/nodejsday10.jpg">
 
 ***
 ### 安全和認證

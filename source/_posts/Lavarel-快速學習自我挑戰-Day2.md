@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day2
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday2.png
+  - /images/learning/laravel/laravelday2.png
 date: 2017-04-23 16:15:17
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday2.png">
+<img src="/images/learning/laravel/laravelday2.png">
 
 ***
 ### Laravel 目錄結構

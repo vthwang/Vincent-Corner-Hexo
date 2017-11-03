@@ -1,12 +1,12 @@
 ---
 title: Mac 開發環境建置
 thumbnail:
-  - /blogs/images/technique/MacEnvironment.jpg
+  - /images/technique/MacEnvironment.jpg
 date: 2017-09-13 21:07:44
 categories: 技術分享
 tags: Mac
 ---
-<img src="/blogs/images/technique/MacEnvironment.jpg">
+<img src="/images/technique/MacEnvironment.jpg">
 
 ***
 ### 內建工具

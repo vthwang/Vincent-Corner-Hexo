@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day3
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday3.jpg
+  - /images/learning/laravel/laravelday3.jpg
 date: 2017-04-24 15:12:12
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday3.jpg">
+<img src="/images/learning/laravel/laravelday3.jpg">
 
 ***
 ### Views - [Views 設定官方文件](https://laravel.com/docs/5.2/views)

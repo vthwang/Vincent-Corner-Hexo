@@ -1,12 +1,12 @@
 ---
 title: React Native 快速學習自我挑戰 Day6
 thumbnail:
-  - /blogs/images/learning/reactNative/reactnativeday6.png
+  - /images/learning/reactNative/reactnativeday6.png
 date: 2017-08-18 19:54:13
 categories: 學習歷程
 tags: React-Native
 ---
-<img src="/blogs/images/learning/reactNative/reactnativeday6.png">
+<img src="/images/learning/reactNative/reactnativeday6.png">
 
 ***
 ### 深入了解 Redux

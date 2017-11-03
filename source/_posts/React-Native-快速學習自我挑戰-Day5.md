@@ -1,12 +1,12 @@
 ---
 title: React Native 快速學習自我挑戰 Day5
 thumbnail:
-  - /blogs/images/learning/reactNative/reactnativeday5.png
+  - /images/learning/reactNative/reactnativeday5.png
 date: 2017-08-17 16:39:32
 categories: 學習歷程
 tags: React-Native
 ---
-<img src="/blogs/images/learning/reactNative/reactnativeday5.png">
+<img src="/images/learning/reactNative/reactnativeday5.png">
 
 ***
 ### 處理 Authentication Credentials

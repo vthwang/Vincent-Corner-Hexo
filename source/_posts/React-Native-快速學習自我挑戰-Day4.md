@@ -1,12 +1,12 @@
 ---
 title: React Native 快速學習自我挑戰 Day4
 thumbnail:
-  - /blogs/images/learning/reactNative/reactnativeday4.jpg
+  - /images/learning/reactNative/reactnativeday4.jpg
 date: 2017-08-16 05:41:09
 categories: 學習歷程
 tags: React-Native
 ---
-<img src="/blogs/images/learning/reactNative/reactnativeday4.jpg">
+<img src="/images/learning/reactNative/reactnativeday4.jpg">
 
 ***
 ### 使用 Firebase 進行認證

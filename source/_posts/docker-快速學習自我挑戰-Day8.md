@@ -1,12 +1,12 @@
 ---
 title: docker 快速學習自我挑戰 Day8
 thumbnail:
-  - /blogs/images/learning/docker/dockerday8.png
+  - /images/learning/docker/dockerday8.png
 date: 2017-08-02 13:54:52
 categories: 學習歷程
 tags: Docker
 ---
-<img src="/blogs/images/learning/docker/dockerday8.png">
+<img src="/images/learning/docker/dockerday8.png">
 
 ***
 ### Container Registry：Image Storage and Distribution
@@ -118,4 +118,4 @@ tags: Docker
 
 ***
 ### 完成課程
-<img src="/blogs/images/learning/docker/Bret Fisher_Docker.jpg">
+<img src="/images/learning/docker/Bret Fisher_Docker.jpg">

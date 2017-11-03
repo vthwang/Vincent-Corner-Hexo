@@ -1,12 +1,12 @@
 ---
 title: docker 快速學習自我挑戰 Day6
 thumbnail:
-  - /blogs/images/learning/docker/dockerday6.png
+  - /images/learning/docker/dockerday6.png
 date: 2017-07-30 04:50:58
 categories: 學習歷程
 tags: Docker
 ---
-<img src="/blogs/images/learning/docker/dockerday6.png">
+<img src="/images/learning/docker/dockerday6.png">
 
 ***
 ### Docker 服務和 Swarm 的威力： Build-In Orchestration

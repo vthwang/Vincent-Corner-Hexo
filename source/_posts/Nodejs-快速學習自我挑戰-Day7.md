@@ -1,12 +1,12 @@
 ---
 title: Nodejs 快速學習自我挑戰 Day7
 thumbnail:
-  - /blogs/images/learning/nodejs/nodejsday7.png
+  - /images/learning/nodejs/nodejsday7.png
 date: 2017-09-17 19:56:53
 categories: 學習歷程
 tags: Nodejs
 ---
-<img src="/blogs/images/learning/nodejs/nodejsday7.png">
+<img src="/images/learning/nodejs/nodejsday7.png">
 
 ***
 ### MongoDB，Mongoose 和 REST APIs (Todo API)

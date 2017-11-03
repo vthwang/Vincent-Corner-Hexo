@@ -1,12 +1,12 @@
 ---
 title: React快速學習自我挑戰 Day9
 thumbnail:
-  - /blogs/images/learning/react/reactday9.jpg
+  - /images/learning/react/reactday9.jpg
 date: 2017-03-14 20:17:57
 categories: 學習歷程
 tags: React
 ---
-<img src="/blogs/images/learning/react/reactday9.jpg">
+<img src="/images/learning/react/reactday9.jpg">
 
 ***
 1. [React Sparkline(畫圖工具)](https://github.com/borisyankov/react-sparklines)。

@@ -1,12 +1,12 @@
 ---
 title: Kubernetes 快速學習自我挑戰 Day6
 thumbnail:
-  - /blogs/images/learning/kubernetes/kubernetesday6.png
+  - /images/learning/kubernetes/kubernetesday6.png
 date: 2017-08-29 09:40:46
 categories: 學習歷程
 tags: Kubernetes
 ---
-<img src="/blogs/images/learning/kubernetes/kubernetesday6.png">
+<img src="/images/learning/kubernetes/kubernetesday6.png">
 
 ***
 ### Kubernetes 管理
@@ -244,4 +244,4 @@ spec:
 4. `kops edit ig --name=kubernetes.appsoliloquy.com master-ap-southeast-2b --state=s3://kops-state-qq123`
 ***
 ### 完成課程
-<img src="/blogs/images/learning/kubernetes/Edward Viaene_Kubernetes.jpg">
+<img src="/images/learning/kubernetes/Edward Viaene_Kubernetes.jpg">

@@ -1,12 +1,12 @@
 ---
 title: React快速學習自我挑戰 Day7
 thumbnail:
-  - /blogs/images/learning/react/reactday7.png
+  - /images/learning/react/reactday7.png
 date: 2017-03-11 20:15:40
 categories: 學習歷程
 tags: React
 ---
-<img src="/blogs/images/learning/react/reactday7.png">
+<img src="/images/learning/react/reactday7.png">
 
 ***
 1. React Component 只負責顯示 data，而 Redux 則負責提取 data。

@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day12
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday12.png
+  - /images/learning/laravel/laravelday12.png
 date: 2017-05-03 05:44:13
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday12.png">
+<img src="/images/learning/laravel/laravelday12.png">
 
 ***
 ### Sessions - [Sessions 設定官方文件](https://laravel.com/docs/5.2/session)

@@ -1,12 +1,12 @@
 ---
 title: Kubernetes 快速學習自我挑戰 Day4
 thumbnail:
-  - /blogs/images/learning/kubernetes/kubernetesday4.jpg
+  - /images/learning/kubernetes/kubernetesday4.jpg
 date: 2017-08-20 14:27:44
 categories: 學習歷程
 tags: Kubernetes
 ---
-<img src="/blogs/images/learning/kubernetes/kubernetesday4.jpg">
+<img src="/images/learning/kubernetes/kubernetesday4.jpg">
 
 ***
 ### 進階的主題

@@ -1,12 +1,12 @@
 ---
 title: 在hexo使用emoji
 thumbnail:
-  - /blogs/images/emoji.png
+  - /images/emoji.png
 date: 2016-09-11 10:15:30
 categories: 技術分享
 tags:
 ---
-<img src="/blogs/images/emoji.png">
+<img src="/images/emoji.png">
 
 ***
 ## 修改渲染器

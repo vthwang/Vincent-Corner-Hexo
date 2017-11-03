@@ -4,9 +4,9 @@ date: 2016-08-30 20:55:48
 categories: 生活記事
 tags:
 thumbnail:
-  - /blogs/images/hellojs.jpg
+  - /images/hellojs.jpg
 ---
-<img src="/blogs/images/hellojs.jpg">
+<img src="/images/hellojs.jpg">
 (1) PokeHunt
 最近看到新聞，很多人玩寶可夢掉下懸崖、誤觸地雷區、甚至是在路上被車撞，我覺得我們是不是可以做一個偵測系統？大家有什麼方法可以提供一下？目前暫時只是概念性的解決問題，如果大家決定做這個就來討論一下細節。
 

@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day20
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday20.png
+  - /images/learning/laravel/laravelday20.png
 date: 2017-05-30 15:46:47
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday20.png">
+<img src="/images/learning/laravel/laravelday20.png">
 
 ***
 ### Pretty URL

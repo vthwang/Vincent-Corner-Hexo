@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day13
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday13.jpg
+  - /images/learning/laravel/laravelday13.jpg
 date: 2017-05-04 03:07:21
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday13.jpg">
+<img src="/images/learning/laravel/laravelday13.jpg">
 
 ***
 ### Application

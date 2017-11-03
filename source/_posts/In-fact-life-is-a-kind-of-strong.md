@@ -1,12 +1,12 @@
 ---
 title: 'In fact, life is a kind of strong'
 thumbnail:
-  - /blogs/images/PottedPlant.jpg
+  - /images/PottedPlant.jpg
 date: 2016-09-17 13:45:46
 categories: 英文寫作
 tags:
 ---
-<img src="/blogs/images/PottedPlant.jpg">
+<img src="/images/PottedPlant.jpg">
 
 ***
 &emsp;&emsp;Because of the rainy days, I didn’t go to visit the potted plants on the balcony for several days. Today, I went out to look and I feel surprised. One of them had been in critical conditions and leaves covered the ground. However, an unknown plant grow lush at it side and swayed proudly in the wind. One kind of sadness instantly came up from my mind. I blamed my carelessness, but also lamented the fragile of potted plants. I urgently watered the potted plants, but I don’t know why I couldn’t eradicate that unknown alien plant.

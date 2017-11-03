@@ -1,12 +1,12 @@
 ---
 title: JavaScript用AJAX的方式獲得時間
 thumbnail:
-  - /blogs/images/javascript.jpg
+  - /images/javascript.jpg
 date: 2016-11-05 23:22:31
 categories: 技術分享
 tags:
 ---
-<img src="/blogs/images/javascript.jpg">
+<img src="/images/javascript.jpg">
 
 ***
 1. 新增一個js的檔案，將以下程式碼複製貼上

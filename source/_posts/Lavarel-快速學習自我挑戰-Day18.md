@@ -1,12 +1,12 @@
 ---
 title: Lavarel 快速學習自我挑戰 Day18
 thumbnail:
-  - /blogs/images/learning/laravel/laravelday18.png
+  - /images/learning/laravel/laravelday18.png
 date: 2017-05-28 16:02:04
 categories: 學習歷程
 tags: Laravel
 ---
-<img src="/blogs/images/learning/laravel/laravelday18.png">
+<img src="/images/learning/laravel/laravelday18.png">
 
 ***
 ### Application 留言功能 Part I
