@@ -33,7 +33,7 @@ Department of Foreign Languages and Literature, B.A.（外國語文學系）
 #### _聯繫我（Contact Ｍe）_
 | WeChat的好友：  | LINE的好友： |
 |:-------------: |:---------------:|
-| <img src="/blogs/images/wechat.png"> | <img src="/blogs/images/line.jpg"> |
+| <img src="/images/wechat.png"> | <img src="/images/line.jpg"> |
 
 寫信給我：<dtvgood202@gmail.com>
-Facebook私訊敲我：[Facebook個人頁面](https://www.facebook.com/dtvgood202)
+Facebook私訊敲我：[Facebook個人頁面](https://www.facebook.com/VincentTingSyuanWang)
