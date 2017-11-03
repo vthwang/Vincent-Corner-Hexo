@@ -48,7 +48,7 @@ For this plugin to work correctly, you must set `url` to your URL in `_config.ym
     ...
 
 ### post_asset_folder
-This plugin works without configuration if you are using [post asset folders](https://hexo.io/docs/asset-folders.html), or you are storing your images in `source/images`.
+This plugin works without configuration if you are using absolute or relative URI's, [post asset folders](https://hexo.io/docs/asset-folders.html), or you are storing your images in `source/images`.
 
 If you are not using post asset folders, and you prefer to store your images somewhere else than in `source/images`, you must specify `image_dir` in `_config.yml` to wherever you store your images. To set your image directory to `source/assets`, you would set `image_dir: assets` in `_config.yml`. Example:
 

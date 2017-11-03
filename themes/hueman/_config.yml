@@ -18,8 +18,8 @@ customize:
     thumbnail: true # enable posts thumbnail, options: true, false
     favicon: images/vincent.ico
     social_links: # for more icons, please see http://fontawesome.io/icons/#brand
-        facebook-official: https://www.facebook.com/dtvgood202
-        instagram: https://www.instagram.com/hdtvgood202
+        facebook-official: https://www.facebook.com/VincentTingSyuanWang
+        instagram: https://www.facebook.com/VincentTingSyuanWang
         github: https://github.com/TingSyuanWang
         twitter: https://twitter.com/dtvgood202
         google-plus-official: https://plus.google.com/116113761236955456663
@@ -66,9 +66,9 @@ plugins:
 # Miscellaneous
 miscellaneous:
     open_graph: # see http://ogp.me
-        fb_app_id: 176717762750155
-        fb_admins: 'dtvgood202'
+        fb_app_id: 1958612367696881
+        fb_admins: 'VincentTingSyuanWang'
         twitter_id:
         google_plus:
     links:
-        Facebook: https://www.facebook.com/dtvgood202
+        Facebook: https://www.facebook.com/VincentTingSyuanWang
