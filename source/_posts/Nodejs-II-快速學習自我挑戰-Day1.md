@@ -80,10 +80,47 @@ tags: Nodejs
 1. [mLab](https://mlab.com/)
 #### 註冊 Heroku
 1. [Heroku](https://www.heroku.com/)
+### VidJot Project
+#### 介紹
+1. [VidJot](http://www.vidjot.tech/)
+#### 安裝和啟動 Express
+1. [Express 官方網站](http://expressjs.com/)
+2. 設定 npm 預設值
+    - `npm set init-author-name="Vincent Adler"`
+    - `npm set init-license="MIT"`
+3. 開新專案 `npm init`
+    - `description: App to create video ideas`
+    - `entry point: (index.js) app.js`
+4. 安裝 express `npm install express --save`
+5. 在根目錄新增 app.js
+```
+const express = require('express');
 
+const app = express();
 
+const port = 5000;
 
+app.listen(port, () => {
+    console.log(`Server started on Port ${port}`);
+});
+```
+#### 基礎路由和 Nodemon
+1. 在 app.js 新增路由
+```
+// Index Route
+app.get('/', (req, res) => {
+    res.send('INDEX');
+});
 
+// About Route
+app.get('/about', (req, res) => {
+    res.send('ABOUT')
+});
+```
+2. 安裝 nodemon `npm install -g nodemon`
+3. 檢查 npm 套件安裝位置 `npm root -g`
+4. 使用 nodemon `nodemon`
+#### Express Middleware
 
 
 

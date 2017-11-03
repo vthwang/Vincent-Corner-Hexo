@@ -37,5 +37,5 @@ Department of Foreign Languages and Literature, B.A.（外國語文學系）
 |:-------------: |:---------------:|
 | <img src="/images/wechat.png"> | <img src="/images/line.jpg"> |
 
-寫信給我：<dtvgood202@gmail.com>
+寫信給我：<vincent@fishboneapps.com>
 Facebook私訊敲我：[Facebook個人頁面](https://www.facebook.com/VincentTingSyuanWang)

@@ -17,7 +17,7 @@
 <meta property="og:description" content="課程簡介  課程內容  使用 Node/Express/Mongo 創建 Server Side Application 很多 node modules/packages 從手稿到專案部署 2 個有一步步解說的深度專案   課程內容沒有的  沒有 Nodejs 簡介 沒有簡單的 todo List 或 REST API 不會只告訴你讓你自己線上部署你自己的應用   課程的先備知識  HTML/">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/nodejsII/NodejsIIDay01.png">
-<meta property="og:updated_time" content="2017-11-03T14:58:17.000Z">
+<meta property="og:updated_time" content="2017-11-03T19:16:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nodejs II 快速學習自我挑戰 Day1">
 <meta name="twitter:description" content="課程簡介  課程內容  使用 Node/Express/Mongo 創建 Server Side Application 很多 node modules/packages 從手稿到專案部署 2 個有一步步解說的深度專案   課程內容沒有的  沒有 Nodejs 簡介 沒有簡單的 todo List 或 REST API 不會只告訴你讓你自己線上部署你自己的應用   課程的先備知識  HTML/">
@@ -285,6 +285,41 @@ ga('send', 'pageview');
 <ol>
 <li><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a></li>
 </ol>
+<h3>VidJot Project</h3>
+<h4>介紹</h4>
+<ol>
+<li><a href="http://www.vidjot.tech/" target="_blank" rel="external">VidJot</a></li>
+</ol>
+<h4>安裝和啟動 Express</h4>
+<ol>
+<li><a href="http://expressjs.com/" target="_blank" rel="external">Express 官方網站</a></li>
+<li>設定 npm 預設值
+<ul>
+<li><code>npm set init-author-name=&quot;Vincent Adler&quot;</code></li>
+<li><code>npm set init-license=&quot;MIT&quot;</code></li>
+</ul>
+</li>
+<li>開新專案 <code>npm init</code>
+<ul>
+<li><code>description: App to create video ideas</code></li>
+<li><code>entry point: (index.js) app.js</code></li>
+</ul>
+</li>
+<li>安裝 express <code>npm install express --save</code></li>
+<li>在根目錄新增 app.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">const express = require(&apos;express&apos;);</div><div class="line"></div><div class="line">const app = express();</div><div class="line"></div><div class="line">const port = 5000;</div><div class="line"></div><div class="line">app.listen(port, () =&gt; &#123;</div><div class="line">    console.log(`Server started on Port $&#123;port&#125;`);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>基礎路由和 Nodemon</h4>
+<ol>
+<li>在 app.js 新增路由</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// Index Route</div><div class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.send(&apos;INDEX&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// About Route</div><div class="line">app.get(&apos;/about&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.send(&apos;ABOUT&apos;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>安裝 nodemon <code>npm install -g nodemon</code></li>
+<li>檢查 npm 套件安裝位置 <code>npm root -g</code></li>
+<li>使用 nodemon <code>nodemon</code></li>
+</ol>
+<h4>Express Middleware</h4>
 
         </div>
         <footer class="article-footer">
@@ -292,7 +327,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/11/02/Nodejs-II-快速學習自我挑戰-Day1/" data-id="cj9k1w5hh0032v545wtxkyfzu" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/11/02/Nodejs-II-快速學習自我挑戰-Day1/" data-id="cj9ka6v7y0033vf45idypu71k" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
