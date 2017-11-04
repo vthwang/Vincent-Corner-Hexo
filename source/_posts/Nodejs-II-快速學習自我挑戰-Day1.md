@@ -121,6 +121,9 @@ app.get('/about', (req, res) => {
 3. 檢查 npm 套件安裝位置 `npm root -g`
 4. 使用 nodemon `nodemon`
 #### Express Middleware
+1. [Middleware 簡介](http://expressjs.com/en/guide/using-middleware.html)
+
+
 
 
 

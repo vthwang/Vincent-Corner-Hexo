@@ -62,6 +62,8 @@ tags: Mac
 [直接從官方網站下載應用](https://apps.ankiweb.net/)
 #### 14. Slack
 [直接從官方網站下載應用](https://slack.com/downloads/osx)
+#### 15. Karabiner (修改鍵盤工具)
+[直接從官方網站下載應用](https://pqrs.org/osx/karabiner/)
 
 ### 套件 & 指令
 #### 1. zsh

@@ -1,5 +1,6 @@
 ---
 title: Hello World
+date: 2016-09-02 16:36:32
 categories: 技術分享
 thumbnail:
   - /images/hello_world.png
