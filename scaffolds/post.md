@@ -4,5 +4,5 @@ date: {{ date }}
 categories: 
 tags:
 thumbnail:
-  - /blogs/images/
+  - /images/
 ---

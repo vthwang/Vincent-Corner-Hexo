@@ -122,16 +122,128 @@ app.get('/about', (req, res) => {
 4. 使用 nodemon `nodemon`
 #### Express Middleware
 1. [Middleware 簡介](http://expressjs.com/en/guide/using-middleware.html)
+2. 在 app.js 新增 middleware
+```
+app.use(function(req, res, next) {
+    console.log(Date.now());
+    next();
+});
+```
+3. 在 middleware 放入 req.name 可以在 app.get 取得
+```
+app.use(function(req, res, next) {
+    req.name = 'Vincent Adler';
+    next();
+});
+```
+```
+app.get('/', (req, res) => {
+    res.send(req.name);
+});
+```
+#### 使用模板
+1. [handlebars.js 官方網站](http://handlebarsjs.com/)
+2. [在 express 使用 handlebars](https://github.com/ericf/express-handlebars)
+3. [EJS](https://github.com/mde/ejs)
+4. 安裝 express-handlebars `npm install express-handlebars --save`
+5. 引入 express-handlebars
+`const exphbs  = require('express-handlebars');`
+6. 新增 handlebars middleware
+```
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main'
+}));
+app.set('view engine', 'handlebars');
+```
+7. 新增 views/index.handlebars `<h1>Welcome</h1>`
+8. 新增 views/layouts/main.handlebars，`{% raw %}{{{body}}}{% endraw %}` 會讀出被 render 的 view
+```
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VidJot</title>
+</head>
+<body>
+    {{{body}}}
+</body>
+</html>
+```
+9. 把 app.js route 的 send 都改成 render
+```
+app.get('/', (req, res) => {
+    res.render('index');
+});
 
+app.get('/about', (req, res) => {
+    res.render('about')
+});
+```
+10. 新增 views/about.handlebars `<h1>About</h1>`
+11. 讓讀取的資料變成動態
+```
+app.get('/', (req, res) => {
+    const title = 'Welcome';
+    res.render('index', {
+        title: title
+    });
+});
+```
+12. 修改 views/index.handlebars `<h1>{{"{{title"}}}}</h1>`
+#### Bootstrap 和 Partials
+1. [取得 Bootstrap 的 CDN](http://getbootstrap.com/docs/4.0/getting-started/introduction/)
+2. 在 views/layouts/main.handlebars 引入 CDN
+```
+// CSS
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-
-
-
-
-
-
-
-
-
-
-
+// JS
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+```
+3. 在 views/layouts/main.handlebars，body 用 container 包住
+```
+<div class="container">
+    {{{body}}}
+</div>
+```
+4. 新增 views/partials/_navbar.handlebars
+```
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="#">VidJot</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+```
+5. 在 views/layouts/main.handlebars 引入 navbar partial `{{"{{> _navbar"}}}}`
+6. 包裝一下 views/index.handlebars
+```
+<div class="jumbotron text-center">
+    <h1 class="display-3">{{title}}</h1>
+    <p class="lead">Jot down ideas for your next YouTube Videos</p>
+    <a href="/ideas/add" class="btn btn-dark btn-lg">Add Video Idea</a>
+</div>
+```
+7. 包裝一下 views/about.handlebars
+```
+<h1>About</h1>
+<p>This is a Node/Express app for jotting down ideas for future Youtube videos</p>
+<p>Version: 1.0.0</p>
+```
