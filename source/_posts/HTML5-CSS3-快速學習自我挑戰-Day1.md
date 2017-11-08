@@ -120,7 +120,7 @@ p {
 <img src="/images/learning/htmlcss/css-model.png">
 2. Box-sizing：CSS 同樣也可以定義整個 box width 和 Height，而不只有 Content
 <img src="/images/learning/htmlcss/box-sizing.png">
-3. 在 HTMTL，有 block 元素和 inline 元素，包含 Heading 和 Paragraph 都是 block 元素，而圖片，粗體和連結都屬於 inline 元素，inline 元素你只能設定它的 height 或是它的 width
+3. 在 HTML，有 block 元素和 inline 元素，包含 Heading 和 Paragraph 都是 block 元素，而圖片，粗體和連結都屬於 inline 元素，inline 元素你只能設定它的 height 或是它的 width
 4. 在 style.css 設定元素
 ```
 * {
