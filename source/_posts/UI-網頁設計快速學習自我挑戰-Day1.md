@@ -39,23 +39,14 @@ tags:
 5. 把所有的線框起來 => 刪掉
 6. 點選左邊選單的 Artboard，把左右兩邊邊界拉大
 7. Tablet 和 Mobile 步驟都跟上面一樣，但是 Tablet Column number 選擇 6，Mobile Column 選擇 2
-#### 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### 建立 Wireframe
+1. `Command + ;` 可以關閉和開啟 Guides
+2. 新增 Logo，左上角佔用 4 個 column
+3. 新增 Navigation，右上角佔用 6 個 column
+4. 新增 Hero box，放到 Logo 下方，佔用 12 個 column
+5. 在 Hero box 裡面的第二個 column 新增佔用 5 個 column 的文字
+6. `Command + .` 放大字體，`Command + ,` 縮小字體
+7. 全選文字 => 點選右方段落 => 取消勾選 Hyphenate
+8. 在文字下方新增佔用 3 個 column 的 button，文字打入 AMAZING CALL TO ACTION
+9. 在 Hero box 下方新增 4 個 column 的區塊，裡面要打上叉叉，先用 Line Segment Tool 新增一條斜線，再用 Object => Transform => Reflect，產生相反的線，用 Transform 對齊，最後把區塊和叉叉組合在一起 => Object => Group
+10. 最後複製三個 4 column 區塊，然後對齊，並間隔一個位置。
