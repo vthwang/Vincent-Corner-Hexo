@@ -45,8 +45,26 @@ tags:
 3. 新增 Navigation，右上角佔用 6 個 column
 4. 新增 Hero box，放到 Logo 下方，佔用 12 個 column
 5. 在 Hero box 裡面的第二個 column 新增佔用 5 個 column 的文字
-6. `Command + .` 放大字體，`Command + ,` 縮小字體
+6. `Command + Shift + .` 放大字體，`Command + Shift + ,` 縮小字體
 7. 全選文字 => 點選右方段落 => 取消勾選 Hyphenate
 8. 在文字下方新增佔用 3 個 column 的 button，文字打入 AMAZING CALL TO ACTION
 9. 在 Hero box 下方新增 4 個 column 的區塊，裡面要打上叉叉，先用 Line Segment Tool 新增一條斜線，再用 Object => Transform => Reflect，產生相反的線，用 Transform 對齊，最後把區塊和叉叉組合在一起 => Object => Group
 10. 最後複製三個 4 column 區塊，然後對齊，並間隔一個位置。
+#### 建立 Tablet 和 Mobile Wireframe
+1. 把 Guides 延長的方法：View => Guides => Unlock Guides => 把下面的線框起來 => 選擇 Direct Selection Tool => 把線拉長並按住 Shift (可以保持直線) => View => Guides => Lock Guides
+2. Mobile Hamburger Bar：用 Line Segment Tool 拉出直線 => 設定 Stroke 線為黑色且寬度設為 4px => 複製三個 => 用 transform 的 Vertical Distribute Center
+3. 剩下的按照位置移動，並調整大小即可。
+#### 網頁設計的靈感
+1. [AWWWARDS](https://www.awwwards.com/)
+#### 使用 Illustrator 模板開始網頁設計
+1. New => Web => TEMPLATES => 選擇需要的下載
+2. 打開 Creative Cloud => Assets => Market => 選擇需要的 => Add to Library
+#### 將 Vector Logo 放到版面編排
+1. 使用 svg 再放大也不會失真，所以最好使用 svg
+2. 用 Rectangle Tool 拉出背景，選擇黑色，透明度選擇 81%，把位置放到最後面 => 按滑鼠右鍵 => Arrange => Send to Back
+3. 放上 Navigation 文字 => ABOUT ME、CONTACT ME
+#### 使用 Adobe 顏色
+1. [Adobe 顏色選擇器](https://color.adobe.com/create/color-wheel/)
+2. 進去網頁之後 => 選擇 Explore => 選擇喜歡的色盤 => 按下 Save => 選擇要存入的 Library => 就可以在 Illustrator 看到了
+#### 使用 Adobe Illustrator 來對應品牌顏色
+1. 把 Google Logo 放到頁面裡面 => 使用 Eyedropper Tool 點需要的顏色 => 在畫面左上方顏色選擇器的地方選擇 New Swatch => 輸入名稱 => 儲存到 Library
