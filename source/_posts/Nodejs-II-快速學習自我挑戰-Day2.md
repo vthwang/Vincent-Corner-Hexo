@@ -312,12 +312,3 @@ app.use(function(req, res, next) {
 {{/if}}
 ```
 9. 在 views/layouts/main.handlebars 的 `{{"{{body"}}}}` 上方引入 `{{"{{> _msg"}}}}`
-
-
-
-
-
-
-
-
-
