@@ -302,12 +302,59 @@ h1 {
     color: #fff;
 }
 ```
+7. 在 index.html 的 body 下面新增 navigation
+```
+<nav>
+    <div class="row">
+        <img src="resources/img/logo-white.png" alt="Omnifood logo" class="logo">
+        <ul class="main-nav">
+            <li><a href="#">Food delivery</a></li>
+            <li><a href="#">How it works</a></li>
+            <li><a href="#">Our cities</a></li>
+            <li><a href="#">Sign up</a></li>
+        </ul>
+    </div>
+</nav>
+```
+8. 在 style.css 新增 navigation 樣式
+```
+.logo {
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
 
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 55px;
+}
 
+.main-nav li {
+    display: inline-block;
+    margin-left: 40px;
+}
 
+.main-nav li a:link,
+.main-nav li a:visited {
+    padding: 8px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+}
 
-
-
-
-
-
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #e67e22;
+}
+```
+9. 在 style.css 加上一些註解，註解的樣式如下
+```
+/* ----------------------------------------------------- */
+/* BASIC SETUP */
+/* ----------------------------------------------------- */
+```
