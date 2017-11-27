@@ -1674,3 +1674,25 @@
 {"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":18529,"level":20,"msg":"Database saved","time":"2017-11-04T17:34:33.937Z","v":0}
 {"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":18529,"level":30,"msg":"Catch you later","time":"2017-11-04T17:36:58.975Z","v":0}
 {"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":18529,"level":20,"msg":"Database saved","time":"2017-11-04T17:36:59.046Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Hexo version: \u001b[35m3.4.0\u001b[39m","time":"2017-11-27T06:13:12.983Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Working directory: \u001b[35m~/Dropbox/Mac/Apps/blogs/\u001b[39m","time":"2017-11-27T06:13:12.985Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Config loaded: \u001b[35m~/Dropbox/Mac/Apps/blogs/_config.yml\u001b[39m","time":"2017-11-27T06:13:13.052Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-deployer-ftpsync\u001b[39m","time":"2017-11-27T06:13:13.076Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-deployer-git\u001b[39m","time":"2017-11-27T06:13:13.089Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-featured-image\u001b[39m","time":"2017-11-27T06:13:13.090Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-fs\u001b[39m","time":"2017-11-27T06:13:13.093Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-archive\u001b[39m","time":"2017-11-27T06:13:13.094Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-category\u001b[39m","time":"2017-11-27T06:13:13.096Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-index\u001b[39m","time":"2017-11-27T06:13:13.097Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-json-content\u001b[39m","time":"2017-11-27T06:13:13.136Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-tag\u001b[39m","time":"2017-11-27T06:13:13.136Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-ejs\u001b[39m","time":"2017-11-27T06:13:13.138Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-markdown-it\u001b[39m","time":"2017-11-27T06:13:13.139Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-stylus\u001b[39m","time":"2017-11-27T06:13:13.140Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-server\u001b[39m","time":"2017-11-27T06:13:13.207Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Script loaded: \u001b[35mthemes/hueman/scripts/excerpt.js\u001b[39m","time":"2017-11-27T06:13:13.211Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Script loaded: \u001b[35mthemes/hueman/scripts/meta.js\u001b[39m","time":"2017-11-27T06:13:13.211Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Script loaded: \u001b[35mthemes/hueman/scripts/thumbnail.js\u001b[39m","time":"2017-11-27T06:13:13.211Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":30,"msg":"Deploying: \u001b[35mftpsync\u001b[39m","time":"2017-11-27T06:13:13.212Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":60,"err":{"message":"read ETIMEDOUT","name":"Error","stack":"Error: read ETIMEDOUT\n    at _errnoException (util.js:1024:11)\n    at TCP.onread (net.js:615:25)","code":"ETIMEDOUT"},"msg":"Something's wrong. Maybe you can find the solution here: \u001b[4mhttp://hexo.io/docs/troubleshooting.html\u001b[24m","time":"2017-11-27T06:14:48.459Z","v":0}
+{"name":"hexo","hostname":"TingSyuanWangs-MacBook-Pro.local","pid":7511,"level":20,"msg":"Database saved","time":"2017-11-27T06:14:48.461Z","v":0}

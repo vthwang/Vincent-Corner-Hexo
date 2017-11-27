@@ -161,463 +161,6 @@ ga('send', 'pageview');
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2017/06/01/Lavarel-快速學習自我挑戰-Day22/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/learning/laravel/laravelday22.jpg)" alt="Lavarel 快速學習自我挑戰 Day22" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/06/01/Lavarel-快速學習自我挑戰-Day22/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-06-01T07:04:36.000Z" itemprop="datePublished">2017-06-01</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/06/01/Lavarel-快速學習自我挑戰-Day22/">Lavarel 快速學習自我挑戰 Day22</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-部署 app 與共享主機
-主機相關
-
-申請 godaddy 主機(一元主機)
-啟用 ssh 連線並匯入金鑰 ssh -i ~/.ssh/id_rsa 帳號@ip
-Select PHP verion =&gt; 選擇 5.6 =&gt; 啟用 zip =&gt; 儲存
-
-Composer install
-
-預設就裝好了。
-如果沒有，使用 wget 或是 curl 取得 composer
-wget
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/31/Lavarel-快速學習自我挑戰-Day21/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/learning/laravel/laravelday21.png)" alt="Lavarel 快速學習自我挑戰 Day21" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/05/31/Lavarel-快速學習自我挑戰-Day21/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-05-31T08:58:07.000Z" itemprop="datePublished">2017-05-31</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/31/Lavarel-快速學習自我挑戰-Day21/">Lavarel 快速學習自我挑戰 Day21</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-升級到 Laravel 5.3 Part II
-升級 users
-
-把 AdminUsersController 的 lists 全部改為 pluck
-
-升級 posts
-
-新增到 routes/web.php
-Route::get('/post/{id}', ['as'=&gt;'home.post', 'uses'=&gt;'AdminPostsController@post']);
-新增
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/30/Lavarel-快速學習自我挑戰-Day20/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/learning/laravel/laravelday20.png)" alt="Lavarel 快速學習自我挑戰 Day20" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/05/30/Lavarel-快速學習自我挑戰-Day20/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-05-30T07:46:47.000Z" itemprop="datePublished">2017-05-30</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/30/Lavarel-快速學習自我挑戰-Day20/">Lavarel 快速學習自我挑戰 Day20</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Pretty URL
-
-eloquent-sluggable 套件說明書
-require 套件 composer require cviebrock/eloquent-sluggable 4.1
-在 config/app.php 新增 provider
-Cviebrock\EloquentSluggable\ServiceProvider::class,
-在 Post model 新增
-
-12
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/29/Lavarel-快速學習自我挑戰-Day19/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/learning/laravel/laravelday19.jpg)" alt="Lavarel 快速學習自我挑戰 Day19" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/05/29/Lavarel-快速學習自我挑戰-Day19/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-05-28T16:58:12.000Z" itemprop="datePublished">2017-05-29</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/29/Lavarel-快速學習自我挑戰-Day19/">Lavarel 快速學習自我挑戰 Day19</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Application 留言功能 Part II
-顯示留言
-
-在 admin/posts/index view 新增文章連結
-&lt;td&gt;&lt;a href=&quot; {{route('home.post', $post->id)}}&quot;&gt;view post&lt;/a&gt;&lt;/td&gt;
-在 admin/posts/index view 新增評論連結
-&
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/28/Lavarel-快速學習自我挑戰-Day18/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/learning/laravel/laravelday18.png)" alt="Lavarel 快速學習自我挑戰 Day18" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/05/28/Lavarel-快速學習自我挑戰-Day18/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-05-28T08:02:04.000Z" itemprop="datePublished">2017-05-28</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/28/Lavarel-快速學習自我挑戰-Day18/">Lavarel 快速學習自我挑戰 Day18</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Application 留言功能 Part I
-設定環境
-
-新增 views/admin/comments/index.blade.php 和 views/admin/comments/replies/index.blade.php
-新增 routes
-
-12Route::resource(&apos;admin/comments&apos;, &apos;PostCommentsContro
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/27/Lavarel-快速學習自我挑戰-Day17/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/learning/laravel/laravelday17.png)" alt="Lavarel 快速學習自我挑戰 Day17" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/05/27/Lavarel-快速學習自我挑戰-Day17/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-05-26T17:21:27.000Z" itemprop="datePublished">2017-05-27</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/27/Lavarel-快速學習自我挑戰-Day17/">Lavarel 快速學習自我挑戰 Day17</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Application Media
-設定和顯示
-
-新增 view views/media/index.blade.php
-設定 media index view
-
-12345678910111213141516171819202122232425262728293031323334@extends(&apos;layouts.admin&apos;)@section(&apos;content
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/26/Lavarel-快速學習自我挑戰-Day16/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/learning/laravel/laravelday16.jpg)" alt="Lavarel 快速學習自我挑戰 Day16" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/05/26/Lavarel-快速學習自我挑戰-Day16/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-05-26T04:23:31.000Z" itemprop="datePublished">2017-05-26</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/26/Lavarel-快速學習自我挑戰-Day16/">Lavarel 快速學習自我挑戰 Day16</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Application Post Part II
-對貼文分類新增 model 和 migration
-
-新增 model php artisan make:model Category -m
-在 category 的 model 處理 mass assignment
-protected $fillable = ['name'];
-在 create_categories_table 新增欄位 $
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/25/Lavarel-快速學習自我挑戰-Day15/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/learning/laravel/laravelday15.png)" alt="Lavarel 快速學習自我挑戰 Day15" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/05/25/Lavarel-快速學習自我挑戰-Day15/">0</span> 則評論
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
-            </p>
-            <p class="date"><time datetime="2017-05-25T12:10:35.000Z" itemprop="datePublished">2017-05-25</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/25/Lavarel-快速學習自我挑戰-Day15/">Lavarel 快速學習自我挑戰 Day15</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-
-Application Post Part I
-設定 routes
-
-設定 404 page view
-
-1234567@extends(&apos;layouts.app&apos;)@section(&apos;content&apos;)    &lt;h1 class=&quot;text-center&quot;&gt;Opps no page available&lt;/h1&gt
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
         <a href="/2017/05/05/Lavarel-快速學習自我挑戰-Day14/" class="thumbnail">
     
     
@@ -722,13 +265,600 @@ Application
         </div>
     
 
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/05/03/Lavarel-快速學習自我挑戰-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/laravel/laravelday12.png)" alt="Lavarel 快速學習自我挑戰 Day12" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/05/03/Lavarel-快速學習自我挑戰-Day12/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-05-02T21:44:13.000Z" itemprop="datePublished">2017-05-03</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/05/03/Lavarel-快速學習自我挑戰-Day12/">Lavarel 快速學習自我挑戰 Day12</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+
+Sessions - Sessions 設定官方文件
+Setting and Reading Sessions
+
+加到 HomeController
+
+1234$request-&gt;session()-&gt;put([&apos;edwin&apos;=&gt;&apos;master instructor&apos;]);//        session([&apos;peter&a
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/05/02/Lavarel-快速學習自我挑戰-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/laravel/laravelday11.jpg)" alt="Lavarel 快速學習自我挑戰 Day11" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/05/02/Lavarel-快速學習自我挑戰-Day11/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-05-01T19:43:56.000Z" itemprop="datePublished">2017-05-02</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/05/02/Lavarel-快速學習自我挑戰-Day11/">Lavarel 快速學習自我挑戰 Day11</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+
+Form Login - Authentication 設定官方文件
+安裝新的 Laravel
+
+composer create-project --prefer-dist laravel/laravel login 5.2.29
+設定 vhost
+
+Database 連線和 migration
+
+建立資料庫、設定 .env
+直接 migrate php artisan migrate
+
+建立
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/05/01/Lavarel-快速學習自我挑戰-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/laravel/laravelday10.png)" alt="Lavarel 快速學習自我挑戰 Day10" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/05/01/Lavarel-快速學習自我挑戰-Day10/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-05-01T15:21:35.000Z" itemprop="datePublished">2017-05-01</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/05/01/Lavarel-快速學習自我挑戰-Day10/">Lavarel 快速學習自我挑戰 Day10</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+
+Model Manipulation
+Dates
+
+搜尋套件 composer search carbon
+引用套件 use Carbon\Carbon;
+新增 routes
+
+12345678910111213141516171819Route::get(&apos;/dates&apos;, function()&#123;   $date = new DateTime(&apos;+1 
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/04/30/Lavarel-快速學習自我挑戰-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/laravel/laravelday9.png)" alt="Lavarel 快速學習自我挑戰 Day9" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/04/30/Lavarel-快速學習自我挑戰-Day9/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-04-30T15:21:35.000Z" itemprop="datePublished">2017-04-30</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/04/30/Lavarel-快速學習自我挑戰-Day9/">Lavarel 快速學習自我挑戰 Day9</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+
+Form and Validation
+
+設定 Migration &amp; Relations
+
+在 create_posts_table.php 新增 user_id
+$table-&gt;integer('user_id')-&gt;unsigned();
+重新將資料匯入資料庫
+php artisan migrate:refresh
+
+
+設定 Views &amp; Routes
+
+設
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/04/29/Lavarel-快速學習自我挑戰-Day8/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/laravel/laravelday8.png)" alt="Lavarel 快速學習自我挑戰 Day8" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/04/29/Lavarel-快速學習自我挑戰-Day8/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-04-29T15:21:35.000Z" itemprop="datePublished">2017-04-29</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/04/29/Lavarel-快速學習自我挑戰-Day8/">Lavarel 快速學習自我挑戰 Day8</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+
+Polymorphic Relationship (CRUD) - Eloquent Relationship 設定官方文件
+
+安裝＋設定
+
+新增一個專案
+composer create-project --prefer-dist laravel/laravel polymorphic 5.2.29
+建立資料庫 &amp; 設定 .env
+
+
+資料庫設定和 migration
+
+新增 三個mo
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/04/28/Lavarel-快速學習自我挑戰-Day7/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/laravel/laravelday7.jpeg)" alt="Lavarel 快速學習自我挑戰 Day7" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/04/28/Lavarel-快速學習自我挑戰-Day7/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-04-28T15:21:35.000Z" itemprop="datePublished">2017-04-28</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/04/28/Lavarel-快速學習自我挑戰-Day7/">Lavarel 快速學習自我挑戰 Day7</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+
+One to Many Relationship (CRUD) - Eloquent Relationship 設定官方文件
+
+安裝＋設定
+
+新增一個專案
+composer create-project --prefer-dist laravel/laravel onetomany 5.2.29
+建立資料庫 &amp; 設定 .env
+
+
+資料庫設定和 migration
+
+新增 model
+
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/04/27/Lavarel-快速學習自我挑戰-Day6/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/laravel/laravelday6.jpg)" alt="Lavarel 快速學習自我挑戰 Day6" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/04/27/Lavarel-快速學習自我挑戰-Day6/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-04-27T02:19:30.000Z" itemprop="datePublished">2017-04-27</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/04/27/Lavarel-快速學習自我挑戰-Day6/">Lavarel 快速學習自我挑戰 Day6</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+
+Tinker
+
+使用 Tinker 建立資料
+
+進入 Tinker 模式
+php artisan tinker
+建立資料
+$post = App\Post::create(['title'=&gt;'PHP post from tinker','content'=&gt;'PHP content from tinker']);
+再看一次資料
+$post
+創建物件
+$post = new App
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/04/26/Lavarel-快速學習自我挑戰-Day5/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/laravel/laravelday5.jpeg)" alt="Lavarel 快速學習自我挑戰 Day5" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/04/26/Lavarel-快速學習自我挑戰-Day5/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-04-26T02:19:30.000Z" itemprop="datePublished">2017-04-26</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/04/26/Lavarel-快速學習自我挑戰-Day5/">Lavarel 快速學習自我挑戰 Day5</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+
+Eloquent Relationship - Eloquent Relationship 設定官方文件
+
+One to One Relationship
+
+新增 user_id 到 migration
+$table-&gt;integer('user_id')-&gt;unsigned();
+新增一個 function 到 User.php
+public function post(){re
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/04/25/Lavarel-快速學習自我挑戰-Day4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/laravel/laravelday4.jpg)" alt="Lavarel 快速學習自我挑戰 Day4" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/04/25/Lavarel-快速學習自我挑戰-Day4/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-04-25T05:12:19.000Z" itemprop="datePublished">2017-04-25</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/04/25/Lavarel-快速學習自我挑戰-Day4/">Lavarel 快速學習自我挑戰 Day4</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+
+Raw SQL Queries - Database 設定官方文件
+
+insert data (直接在 Routes.php 設定)
+
+123Route::get(&apos;/insert&apos;, function()&#123;    DB::insert(&apos;insert into posts(title, content) values(?, ?)&apos;, [&ap
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/04/24/Lavarel-快速學習自我挑戰-Day3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/laravel/laravelday3.jpg)" alt="Lavarel 快速學習自我挑戰 Day3" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="fb-comments-count" data-href="https://vincent.fishboneapps.com/2017/04/24/Lavarel-快速學習自我挑戰-Day3/">0</span> 則評論
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/學習歷程/">學習歷程</a>
+            </p>
+            <p class="date"><time datetime="2017-04-24T07:12:12.000Z" itemprop="datePublished">2017-04-24</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/04/24/Lavarel-快速學習自我挑戰-Day3/">Lavarel 快速學習自我挑戰 Day3</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+
+Views - Views 設定官方文件
+路徑：/resources/views
+
+在 Controller 新增一個 function
+public function contact(){return view('contact');}
+新增一個 view (檔名為xxx.blade.php)
+
+可以將 view 的檔案設定在子目錄下。例：新增一個 pages/contact.php，路由部
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
 
     </div></section>
 
 
     <nav id="page-nav">
-        <span class="pages">第 5 頁，共 9 頁</span>
-        <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
+        <span class="pages">第 5 頁，共 8 頁</span>
+        <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
     </nav>
 
 
