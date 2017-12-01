@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>HTML5+CSS3 快速學習自我挑戰 Day3 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="HTML,CSS,UX" />
+    
+    <meta name="description" content="殺手級的網站 製作 Features Section  下載 icons，然後將 css 複製到 vendors/css、fonts 複製到 vendors/fonts 在 index.html 引入 ionicons &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;vendors/css/ion">
+<meta name="keywords" content="HTML,CSS,UX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5+CSS3 快速學習自我挑戰 Day3">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2017/11/30/HTML5-CSS3-快速學習自我挑戰-Day3/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="殺手級的網站 製作 Features Section  下載 icons，然後將 css 複製到 vendors/css、fonts 複製到 vendors/fonts 在 index.html 引入 ionicons &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;vendors/css/ion">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/htmlcss/HtmlCssDay3.png">
+<meta property="og:updated_time" content="2017-12-01T10:11:06.614Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5+CSS3 快速學習自我挑戰 Day3">
+<meta name="twitter:description" content="殺手級的網站 製作 Features Section  下載 icons，然後將 css 複製到 vendors/css、fonts 複製到 vendors/fonts 在 index.html 引入 ionicons &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;vendors/css/ion">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/htmlcss/HtmlCssDay3.png">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-HTML5-CSS3-快速學習自我挑戰-Day3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        HTML5+CSS3 快速學習自我挑戰 Day3
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2017/11/30/HTML5-CSS3-快速學習自我挑戰-Day3/" class="article-date">
+    <time datetime="2017-11-30T08:55:34.000Z" itemprop="datePublished">2017-11-30</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UX/">UX</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/images/learning/htmlcss/HtmlCssDay3.png">
+<hr>
+<h3>殺手級的網站</h3>
+<h4>製作 Features Section</h4>
+<ol>
+<li><a href="http://ionicons.com/" target="_blank" rel="external">下載 icons</a>，然後將 css 複製到 vendors/css、fonts 複製到 vendors/fonts</li>
+<li>在 index.html 引入 ionicons<br>
+<code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;vendors/css/ionicons.min.css&quot;&gt;</code></li>
+<li>在 header 下方加入 Feature Section</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">&lt;section class=&quot;section-features&quot;&gt;</div><div class="line">    &lt;div class=&quot;row&quot;&gt;</div><div class="line">        &lt;h2&gt;Get food fast &amp;mdash; not fast food.&lt;/h2&gt;</div><div class="line">        &lt;p class=&quot;long-copy&quot;&gt;</div><div class="line">            Hello, we&apos;re Omnifood, your new premium food delivery service. We know you&apos;re always busy. No time for cooking. So let us take care of that, we&apos;re really good at it, we promise!</div><div class="line">        &lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;row&quot;&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-4&quot;&gt;</div><div class="line">            &lt;i class=&quot;ion-ios-infinite-outline&quot;&gt;&lt;/i&gt;</div><div class="line">            &lt;h3&gt;Up to 365 days/year&lt;/h3&gt;</div><div class="line">            &lt;p&gt;</div><div class="line">                Never cook again! We really mean that. Our subscription plans include up to 365 days/year coverage. You can also choose to order more flexibly if that&apos;s your style.</div><div class="line">            &lt;/p&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-4&quot;&gt;</div><div class="line">            &lt;i class=&quot;ion-ios-stopwatch-outline&quot;&gt;&lt;/i&gt;</div><div class="line">            &lt;h3&gt;Ready in 20 minutes&lt;/h3&gt;</div><div class="line">            &lt;p&gt;</div><div class="line">                You&apos;re only twenty minutes away from your delicious and super healthy meals delivered right to your home. We work with the best chefs in each town to ensure that you&apos;re 100% happy.</div><div class="line">            &lt;/p&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-4&quot;&gt;</div><div class="line">            &lt;i class=&quot;ion-ios-nutrition-outline&quot;&gt;&lt;/i&gt;</div><div class="line">            &lt;h3&gt;100% organic&lt;/h3&gt;</div><div class="line">            &lt;p&gt;</div><div class="line">                All our vegetables are fresh, organic and local. Animals are raised without added hormones or antibiotics. Good for your health, the environment, and it also tastes better!</div><div class="line">            &lt;/p&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-4&quot;&gt;</div><div class="line">            &lt;i class=&quot;ion-ios-cart-outline&quot;&gt;&lt;/i&gt;</div><div class="line">            &lt;h3&gt;Order anything&lt;/h3&gt;</div><div class="line">            &lt;p&gt;</div><div class="line">                We don&apos;t limit your creativity, which means you can order whatever you feel like. You can also choose from our menu containing over 100 delicious meals. It&apos;s up to you!</div><div class="line">            &lt;/p&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/section&gt;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 index.html 的 col 部份新增 box 和 icon 部分新增 icon-big 的 class</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;col span-1-of-4 box&quot;&gt;</div><div class="line">  &lt;i class=&quot;ion-ios-infinite-outline icon-big&quot;&gt;&lt;/i&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 style.css 的 REUSABLE COMPONENT 新增 section 和 box</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">section &#123;</div><div class="line">    padding: 80px 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.box &#123;</div><div class="line">    padding: 1%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 style.css 的 HEADINGS 將共同的 css 取出來，並新增 h1 h2 h3</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">h1, h2, h3 &#123;</div><div class="line">    font-weight: 300;</div><div class="line">    text-transform: uppercase;</div><div class="line">&#125;</div><div class="line"></div><div class="line">h1 &#123;</div><div class="line">    margin-top: 0;</div><div class="line">    margin-bottom: 20px;</div><div class="line">    color: #fff;</div><div class="line">    font-size: 240%;</div><div class="line">    word-spacing: 4px;</div><div class="line">    letter-spacing: 1px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">h2 &#123;</div><div class="line">    font-size: 180%;</div><div class="line">    word-spacing: 2px;</div><div class="line">    text-align: center;</div><div class="line">    margin-bottom: 30px;</div><div class="line">    letter-spacing: 1px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">h3 &#123;</div><div class="line">    font-size: 110%;</div><div class="line">    margin-bottom: 15px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">h2:after &#123;</div><div class="line">    display: block;</div><div class="line">    height: 2px;</div><div class="line">    background-color: #e67e22;</div><div class="line">    content: &quot; &quot;;</div><div class="line">    width: 100px;</div><div class="line">    margin: 30px auto 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="7">
+<li>在 style.css 的 PARAGRAPHS 將共同的 css 取出來</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.long-copy &#123;</div><div class="line">    line-height: 145%;</div><div class="line">    width: 70%;</div><div class="line">    margin-left: 15%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.box p &#123;</div><div class="line">    font-size: 90%;</div><div class="line">    line-height: 145%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="8">
+<li>在 style.css 的 ICONS 新增 icon-big</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/* -------- ICONS -------- */</div><div class="line">.icon-big &#123;</div><div class="line">    font-size: 350%;</div><div class="line">    display: block;</div><div class="line">    color: #e67e22;</div><div class="line">    margin-bottom: 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>建立 Favorite Meals Section</h4>
+<ol>
+<li>在 index.html 新增一個 Favorite Meals Section</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">&lt;section class=&quot;section-meals&quot;&gt;</div><div class="line">    &lt;ul class=&quot;meals-showcase&quot;&gt;</div><div class="line">        &lt;li&gt;</div><div class="line">            &lt;figure class=&quot;meal-photo&quot;&gt;</div><div class="line">                &lt;img src=&quot;resources/img/1.jpg&quot; alt=&quot;Korean bibimbap with egg and vegetables&quot;&gt;</div><div class="line">            &lt;/figure&gt;</div><div class="line">        &lt;/li&gt;</div><div class="line">        &lt;li&gt;</div><div class="line">            &lt;figure class=&quot;meal-photo&quot;&gt;</div><div class="line">                &lt;img src=&quot;resources/img/2.jpg&quot; alt=&quot;Simple italian pizza with cherry tomatoes&quot;&gt;</div><div class="line">            &lt;/figure&gt;</div><div class="line">        &lt;/li&gt;</div><div class="line">        &lt;li&gt;</div><div class="line">            &lt;figure class=&quot;meal-photo&quot;&gt;</div><div class="line">                &lt;img src=&quot;resources/img/3.jpg&quot; alt=&quot;Chicken breast steak with vegetables&quot;&gt;</div><div class="line">            &lt;/figure&gt;</div><div class="line">        &lt;/li&gt;</div><div class="line">        &lt;li&gt;</div><div class="line">            &lt;figure class=&quot;meal-photo&quot;&gt;</div><div class="line">                &lt;img src=&quot;resources/img/4.jpg&quot; alt=&quot;Autumn pumpkin soup&quot;&gt;</div><div class="line">            &lt;/figure&gt;</div><div class="line">        &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    &lt;ul class=&quot;meals-showcase&quot;&gt;</div><div class="line">        &lt;li&gt;</div><div class="line">            &lt;figure class=&quot;meal-photo&quot;&gt;</div><div class="line">                &lt;img src=&quot;resources/img/5.jpg&quot; alt=&quot;Paleo beef steak with vegetables&quot;&gt;</div><div class="line">            &lt;/figure&gt;</div><div class="line">        &lt;/li&gt;</div><div class="line">        &lt;li&gt;</div><div class="line">            &lt;figure class=&quot;meal-photo&quot;&gt;</div><div class="line">                &lt;img src=&quot;resources/img/6.jpg&quot; alt=&quot;Healthy baguette with egg and vegetables&quot;&gt;</div><div class="line">            &lt;/figure&gt;</div><div class="line">        &lt;/li&gt;</div><div class="line">        &lt;li&gt;</div><div class="line">            &lt;figure class=&quot;meal-photo&quot;&gt;</div><div class="line">                &lt;img src=&quot;resources/img/7.jpg&quot; alt=&quot;Burger with cheddar and bacon&quot;&gt;</div><div class="line">            &lt;/figure&gt;</div><div class="line">        &lt;/li&gt;</div><div class="line">        &lt;li&gt;</div><div class="line">            &lt;figure class=&quot;meal-photo&quot;&gt;</div><div class="line">                &lt;img src=&quot;resources/img/8.jpg&quot; alt=&quot;Granola with cherries and strawberries&quot;&gt;</div><div class="line">            &lt;/figure&gt;</div><div class="line">        &lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/section&gt;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 style.css 的 MEALS 新增樣式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">.section-meals &#123;</div><div class="line">    padding: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.meals-showcase &#123;</div><div class="line">    list-style: none;</div><div class="line">    width: 100%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.meals-showcase li &#123;</div><div class="line">    display: block;</div><div class="line">    float: left;</div><div class="line">    width: 25%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.meal-photo &#123;</div><div class="line">    width: 100%;</div><div class="line">    margin: 0;</div><div class="line">    overflow: hidden;</div><div class="line">    background-color: #000;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.meal-photo img &#123;</div><div class="line">    opacity: 0.7;</div><div class="line">    width: 100%;</div><div class="line">    height: auto;</div><div class="line">    transform: scale(1.15);</div><div class="line">    transition: transform 0.5s, opacity 0.5s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.meal-photo img:hover &#123;</div><div class="line">    opacity: 1;</div><div class="line">    transform: scale(1.03);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 style.css 的 MEALS 讓中間文字說明和下方段落有間距</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.section-features .long-copy &#123;</div><div class="line">    margin-bottom: 40px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>建立 How-it-works Section</h4>
+<ol>
+<li>在 index.html 新增 How-it-works Section</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;section class=&quot;section-steps&quot;&gt;</div><div class="line">    &lt;div class=&quot;row&quot;&gt;</div><div class="line">        &lt;h2&gt;How it works - Simple as 1, 2, 3&lt;/h2&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;row&quot;&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-2 steps-box&quot;&gt;</div><div class="line">            &lt;img src=&quot;resources/img/app-iPhone.png&quot; alt=&quot;Omnifood app on iPhone&quot; class=&quot;app-screen&quot;&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-2 steps-box&quot;&gt;</div><div class="line">            &lt;div class=&quot;works-step&quot;&gt;</div><div class="line">                &lt;div&gt;1&lt;/div&gt;</div><div class="line">                &lt;p&gt;Choose the subscription plan that best fits your needs and sign up today.&lt;/p&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;works-step&quot;&gt;</div><div class="line">                &lt;div&gt;2&lt;/div&gt;</div><div class="line">                &lt;p&gt;Order your delicious meal using our mobile app or website. Or you can even call us!&lt;/p&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;works-step&quot;&gt;</div><div class="line">                &lt;div&gt;3&lt;/div&gt;</div><div class="line">                &lt;p&gt;Enjoy your meal after less than 20 minutes. See you the next time!&lt;/p&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line"></div><div class="line">            &lt;a href=&quot;#&quot; class=&quot;btn-app&quot;&gt;&lt;img src=&quot;resources/img/download-app.svg&quot; alt=&quot;App Store Button&quot;&gt;&lt;/a&gt;</div><div class="line">            &lt;a href=&quot;#&quot; class=&quot;btn-app&quot;&gt;&lt;img src=&quot;resources/img/google-play-badge.svg&quot; alt=&quot;Play Store Button&quot;&gt;&lt;/a&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/section&gt;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 style.css 的 HOW IT WORKS 新增樣式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">.section-steps &#123;</div><div class="line">    background-color: #f4f4f4;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.steps-box:first-child &#123;</div><div class="line">    text-align: right;</div><div class="line">    padding-right: 3%;</div><div class="line">    margin-top: 30px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.steps-box:last-child &#123;</div><div class="line">    padding-left: 3%;</div><div class="line">    margin-top: 70px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.app-screen &#123;</div><div class="line">    width: 40%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.works-step &#123;</div><div class="line">    margin-bottom: 50px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.works-step:last-of-type &#123;</div><div class="line">    margin-bottom: 80px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.works-step div &#123;</div><div class="line">    color: #e67e22;</div><div class="line">    border: 2px solid #e67e22;</div><div class="line">    display: inline-block;</div><div class="line">    border-radius: 50%;</div><div class="line">    height: 50px;</div><div class="line">    width: 50px;</div><div class="line">    text-align: center;</div><div class="line">    padding: 5px;</div><div class="line">    float: left;</div><div class="line">    font-size: 150%;</div><div class="line">    margin-right: 25px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.btn-app img &#123;</div><div class="line">    height: 50px;</div><div class="line">    width: auto;</div><div class="line">    margin-right: 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 style.css 的 BASIC SETUP 新增 clearfix</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.clearfix &#123;zoom: 1;&#125;</div><div class="line">.clearfix:after &#123;</div><div class="line">    content: &apos;.&apos;;</div><div class="line">    clear: both;</div><div class="line">    display: block;</div><div class="line">    height: 0;</div><div class="line">    visibility: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 index.html 的 meals-showcase 後面加上 clearfix <code>meals-showcase clearfix</code></li>
+</ol>
+<h4>建立 Cities Section</h4>
+<ol>
+<li>在 index.html 新增 Cities Section</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">&lt;section class=&quot;section-cities&quot;&gt;</div><div class="line">    &lt;div class=&quot;row&quot;&gt;</div><div class="line">        &lt;h2&gt;We&apos;re currently in these cities&lt;/h2&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;row&quot;&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-4 box&quot;&gt;</div><div class="line">            &lt;img src=&quot;resources/img/lisbon-3.jpg&quot; alt=&quot;lisbon&quot;&gt;</div><div class="line">            &lt;h3&gt;Lisbon&lt;/h3&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-ios-person icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                1600+ happy eaters</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-ios-star icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                60+ top chefs</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-social-twitter icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                &lt;a href=&quot;#&quot;&gt;@omnifood_lx&lt;/a&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-4 box&quot;&gt;</div><div class="line">            &lt;img src=&quot;resources/img/san-francisco.jpg&quot; alt=&quot;lisbon&quot;&gt;</div><div class="line">            &lt;h3&gt;San Francisco&lt;/h3&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-ios-person icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                3700+ happy eaters</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-ios-star icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                160+ top chefs</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-social-twitter icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                &lt;a href=&quot;#&quot;&gt;@omnifood_sf&lt;/a&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-4 box&quot;&gt;</div><div class="line">            &lt;img src=&quot;resources/img/berlin.jpg&quot; alt=&quot;lisbon&quot;&gt;</div><div class="line">            &lt;h3&gt;Berlin&lt;/h3&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-ios-person icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                2300+ happy eaters</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-ios-star icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                110+ top chefs</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-social-twitter icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                &lt;a href=&quot;#&quot;&gt;@omnifood_berlin&lt;/a&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-4 box&quot;&gt;</div><div class="line">            &lt;img src=&quot;resources/img/london.jpg&quot; alt=&quot;lisbon&quot;&gt;</div><div class="line">            &lt;h3&gt;London&lt;/h3&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-ios-person icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                1200+ happy eaters</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-ios-star icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                50+ top chefs</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;city-feature&quot;&gt;</div><div class="line">                &lt;i class=&quot;ion-social-twitter icon-small&quot;&gt;&lt;/i&gt;</div><div class="line">                &lt;a href=&quot;#&quot;&gt;@omnifood_london&lt;/a&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/section&gt;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 style.css 的 CITIES 新增樣式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.box img &#123;</div><div class="line">    width: 100%;</div><div class="line">    height: auto;</div><div class="line">    margin-bottom: 15px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.city-feature &#123;</div><div class="line">    margin-bottom: 5px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 style.css 的 ICONS 新增樣式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.icon-small &#123;</div><div class="line">    display: inline-block;</div><div class="line">    width: 30px;</div><div class="line">    text-align: center;</div><div class="line">    color: #e67e22;</div><div class="line">    font-size: 120%;</div><div class="line">    margin-right: 10px;</div><div class="line"></div><div class="line">    /*secrets to align text and icons*/</div><div class="line">    line-height: 120%;</div><div class="line">    vertical-align: middle;</div><div class="line">    margin-top: -5px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 style.css 的 LINKS 新增樣式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">a:link,</div><div class="line">a:visited &#123;</div><div class="line">    color: #e67e22;</div><div class="line">    text-decoration: none;</div><div class="line">    padding-bottom: 1px;</div><div class="line">    border-bottom: 1px solid #e67e22;</div><div class="line">    transition: border-bottom 0.2s, color 0.2s</div><div class="line">&#125;</div><div class="line"></div><div class="line">a:hover,</div><div class="line">a:active &#123;</div><div class="line">    color: #555;</div><div class="line">    border-bottom: 1px solid transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 style.css 的 HOW IT WORKS 把 LINKS 底線移除</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.btn-app:link,</div><div class="line">.btn-app:visited &#123;</div><div class="line">    border: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4>建立 Customer Testimonials Section</h4>
+<ol>
+<li>把 resources/img/back-customers.jpg 放到 resources/css/img/back-customers.jpg</li>
+<li>在 index.html 新增 Customer Testimonials Section</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;section class=&quot;section-testimonials&quot;&gt;</div><div class="line">    &lt;div class=&quot;row&quot;&gt;</div><div class="line">        &lt;h2&gt;Our customers can&apos;t live without us&lt;/h2&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;row&quot;&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-3&quot;&gt;</div><div class="line">            &lt;blockquote&gt;</div><div class="line">                Omnifood is just awesome! I just launched a startup which leaves me with no time for cooking, so Omnifood is a life-saver. Now that I got used to it, I couldn&apos;t live without my daily meals!</div><div class="line">                &lt;cite&gt;&lt;img src=&quot;resources/img/customer-1.jpg&quot; alt=&quot;&quot;&gt;Alberto Duncan&lt;/cite&gt;</div><div class="line">            &lt;/blockquote&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-3&quot;&gt;</div><div class="line">            &lt;blockquote&gt;</div><div class="line">                Inexpensive, healthy and great-tasting meals, delivered right to my home. We have lots of food delivery here in Lisbon, but no one comes even close to Omifood. Me and my family are so in love!</div><div class="line">                &lt;cite&gt;&lt;img src=&quot;resources/img/customer-2.jpg&quot; alt=&quot;&quot;&gt;Joana Silva&lt;/cite&gt;</div><div class="line">            &lt;/blockquote&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;col span-1-of-3&quot;&gt;</div><div class="line">            &lt;blockquote&gt;</div><div class="line">                I was looking for a quick and easy food delivery service in San Franciso. I tried a lot of them and ended up with Omnifood. Best food delivery service in the Bay Area. Keep up the great work!</div><div class="line">                &lt;cite&gt;&lt;img src=&quot;resources/img/customer-3.jpg&quot; alt=&quot;&quot;&gt;Milton Chapman&lt;/cite&gt;</div><div class="line">            &lt;/blockquote&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/section&gt;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 style.css 的 TESTIMONIALS 新增樣式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">.section-testimonials &#123;</div><div class="line">    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(&apos;img/back-customers.jpg&apos;);</div><div class="line">    background-size: cover;</div><div class="line">    color: #fff;</div><div class="line">    background-attachment: fixed;</div><div class="line">&#125;</div><div class="line"></div><div class="line">blockquote &#123;</div><div class="line">    padding: 2%;</div><div class="line">    font-style: italic;</div><div class="line">    line-height: 145%;</div><div class="line">    position: relative;</div><div class="line">    margin-top: 40px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">blockquote:before &#123;</div><div class="line">    content: &quot;\201C&quot;;</div><div class="line">    font-size: 500%;</div><div class="line">    display: block;</div><div class="line">    position: absolute;</div><div class="line">    top: -5px;</div><div class="line">    left: -3px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">cite &#123;</div><div class="line">    font-size: 90%;</div><div class="line">    margin-top: 25px;</div><div class="line">    display: block;</div><div class="line">&#125;</div><div class="line"></div><div class="line">cite img &#123;</div><div class="line">    height: 50px;</div><div class="line">    border-radius: 50%;</div><div class="line">    margin-right: 10px;</div><div class="line">    vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 style.css 的 <code>header</code> 新增 <code>background-attachment: fixed;</code>，讓圖片在背景部分靜止不動，做成視差捲軸</li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2017/11/30/HTML5-CSS3-快速學習自我挑戰-Day3/" data-id="cjanr1m1r0001gefayrm33jio" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2017/11/30/HTML5-CSS3-快速學習自我挑戰-Day3/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/VincentTingSyuanWang" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.facebook.com/VincentTingSyuanWang" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/11/19/HTML5-CSS3-快速學習自我挑戰-Day2/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">HTML5+CSS3 快速學習自我挑戰 Day2</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/30/HTML5-CSS3-快速學習自我挑戰-Day3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/htmlcss/HtmlCssDay3.png)" alt="HTML5+CSS3 快速學習自我挑戰 Day3" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2017/11/30/HTML5-CSS3-快速學習自我挑戰-Day3/" class="title">HTML5+CSS3 快速學習自我挑戰 Day3</a></p>
+                            <p class="item-date"><time datetime="2017-11-30T08:55:34.000Z" itemprop="datePublished">2017-11-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/19/HTML5-CSS3-快速學習自我挑戰-Day2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/htmlcss/HtmlCssDay2.jpg)" alt="HTML5+CSS3 快速學習自我挑戰 Day2" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2017/11/19/HTML5-CSS3-快速學習自我挑戰-Day2/" class="title">HTML5+CSS3 快速學習自我挑戰 Day2</a></p>
+                            <p class="item-date"><time datetime="2017-11-19T03:59:13.000Z" itemprop="datePublished">2017-11-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/10/Nodejs-II-快速學習自我挑戰-Day2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/nodejsII/NodejsIIDay02.png)" alt="Nodejs II 快速學習自我挑戰 Day2" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2017/11/10/Nodejs-II-快速學習自我挑戰-Day2/" class="title">Nodejs II 快速學習自我挑戰 Day2</a></p>
+                            <p class="item-date"><time datetime="2017-11-10T09:32:45.000Z" itemprop="datePublished">2017-11-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/09/UI-網頁設計快速學習自我挑戰-Day1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/ui/UIDay1.png)" alt="UI 網頁設計快速學習自我挑戰 Day1" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2017/11/09/UI-網頁設計快速學習自我挑戰-Day1/" class="title">UI 網頁設計快速學習自我挑戰 Day1</a></p>
+                            <p class="item-date"><time datetime="2017-11-09T09:30:02.000Z" itemprop="datePublished">2017-11-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/04/HTML5-CSS3-快速學習自我挑戰-Day1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/htmlcss/HtmlCssDay1.jpg)" alt="HTML5+CSS3 快速學習自我挑戰 Day1" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2017/11/04/HTML5-CSS3-快速學習自我挑戰-Day1/" class="title">HTML5+CSS3 快速學習自我挑戰 Day1</a></p>
+                            <p class="item-date"><time datetime="2017-11-03T21:39:50.000Z" itemprop="datePublished">2017-11-04</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/學習歷程/">學習歷程</a><span class="category-list-count">74</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React-Native</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/">UX</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CSS/" style="font-size: 12.86px;">CSS</a> <a href="/tags/Docker/" style="font-size: 15.71px;">Docker</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.29px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.57px;">Nodejs</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.14px;">React</a> <a href="/tags/React-Native/" style="font-size: 14.29px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UX/" style="font-size: 11.43px;">UX</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
