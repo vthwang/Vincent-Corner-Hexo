@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>HTML5+CSS3 快速學習自我挑戰 Day5 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="HTML,CSS,UX" />
+    
+    <meta name="description" content="增加一些特效吧！ jQuery 簡介  jQuery 是世界上最熱門的 JavaScript 函式庫 完全免費 jQuery 很容易  選擇和控制 HTML 元素 創建動畫 開發 Ajax 應用   Magnific Popup：響應式 lightbox TooltipSter：建立 ToolTip Mapplace.js：在網站內插入 google map Typer.js：顯示打字特效 O">
+<meta name="keywords" content="HTML,CSS,UX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5+CSS3 快速學習自我挑戰 Day5">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2017/12/03/HTML5-CSS3-快速學習自我挑戰-Day5/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="增加一些特效吧！ jQuery 簡介  jQuery 是世界上最熱門的 JavaScript 函式庫 完全免費 jQuery 很容易  選擇和控制 HTML 元素 創建動畫 開發 Ajax 應用   Magnific Popup：響應式 lightbox TooltipSter：建立 ToolTip Mapplace.js：在網站內插入 google map Typer.js：顯示打字特效 O">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/htmlcss/HtmlCssDay5.jpg">
+<meta property="og:updated_time" content="2017-12-04T16:27:41.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5+CSS3 快速學習自我挑戰 Day5">
+<meta name="twitter:description" content="增加一些特效吧！ jQuery 簡介  jQuery 是世界上最熱門的 JavaScript 函式庫 完全免費 jQuery 很容易  選擇和控制 HTML 元素 創建動畫 開發 Ajax 應用   Magnific Popup：響應式 lightbox TooltipSter：建立 ToolTip Mapplace.js：在網站內插入 google map Typer.js：顯示打字特效 O">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/htmlcss/HtmlCssDay5.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-HTML5-CSS3-快速學習自我挑戰-Day5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        HTML5+CSS3 快速學習自我挑戰 Day5
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2017/12/03/HTML5-CSS3-快速學習自我挑戰-Day5/" class="article-date">
+    <time datetime="2017-12-03T07:11:22.000Z" itemprop="datePublished">2017-12-03</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UX/">UX</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/images/learning/htmlcss/HtmlCssDay5.jpg">
+<hr>
+<h3>增加一些特效吧！</h3>
+<h4>jQuery 簡介</h4>
+<ol>
+<li>jQuery 是世界上最熱門的 JavaScript 函式庫</li>
+<li>完全免費</li>
+<li>jQuery 很容易
+<ul>
+<li>選擇和控制 HTML 元素</li>
+<li>創建動畫</li>
+<li>開發 Ajax 應用</li>
+</ul>
+</li>
+<li><a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank" rel="external">Magnific Popup：響應式 lightbox</a></li>
+<li><a href="http://iamceege.github.io/tooltipster/" target="_blank" rel="external">TooltipSter：建立 ToolTip</a></li>
+<li><a href="http://maplacejs.com/" target="_blank" rel="external">Mapplace.js：在網站內插入 google map</a></li>
+<li><a href="https://steven.codes/typerjs/" target="_blank" rel="external">Typer.js：顯示打字特效</a></li>
+<li><a href="http://www.thepetedesign.com/demos/onepage_scroll_demo.html" target="_blank" rel="external">One Page Scroll：滑動特效，一次只顯示一個區塊</a></li>
+<li><a href="https://developers.google.com/speed/libraries" target="_blank" rel="external">jQuery 函式庫 cdn</a></li>
+<li>在 index.html 引入 jQuery 函式庫<br>
+<code>&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js&quot;&gt;&lt;/script&gt;</code></li>
+<li>新增 resources/js/script.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function() &#123;</div><div class="line">    $(&apos;h1&apos;).click(function() &#123;</div><div class="line">        $(this).css(&apos;background-color&apos;, &apos;#ff0000&apos;)</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="12">
+<li>在 index.html 把 script.js 引入<br>
+<code>&lt;script src=&quot;resources/js/script.js&quot;&gt;&lt;/script&gt;</code></li>
+</ol>
+<h4>建立 sticky navigation</h4>
+<ol>
+<li>在 index.html 的 nav 新增 .sticky class <code>&lt;nav class=&quot;sticky&quot;&gt;</code>，並在本來的 logo 下面放入黑色的 logo<br>
+<code>&lt;img src=&quot;resources/img/logo.png&quot; alt=&quot;Omnifood logo&quot; class=&quot;logo-black&quot;&gt;</code></li>
+<li>在 style.css 新增 logo-black 和 sticky header 的 CSS</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">.logo-black &#123;</div><div class="line">    display: none;</div><div class="line">    height: 50px;</div><div class="line">    width: auto;</div><div class="line">    float: left;</div><div class="line">    margin: 5px 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* sticky navi*/</div><div class="line">.sticky &#123;</div><div class="line">    position: fixed;</div><div class="line">    top: 0;</div><div class="line">    left: 0;</div><div class="line">    width: 100%;</div><div class="line">    background: rgba(255, 255, 255, 0.98);</div><div class="line">    box-shadow: 0 2px 2px #efefef;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.sticky .main-nav &#123; margin-top: 18px; &#125;</div><div class="line"></div><div class="line">.sticky .main-nav li a:link,</div><div class="line">.sticky .main-nav li a:visited &#123;</div><div class="line">    padding: 16px 0;</div><div class="line">    color: #555;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.sticky .logo &#123; display: none; &#125;</div><div class="line">.sticky .logo-black &#123; display: block; &#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>下載 <a href="http://imakewebthings.com/waypoints/" target="_blank" rel="external">webpoints</a>，用來幫助滾動到 html element 的 function</li>
+<li>將下載好的檔案，儲存到 vendors/js/jquery.waypoints.min.js 並在 index.html 引入<br>
+<code>&lt;script src=&quot;vendors/js/jquery.waypoints.min.js&quot;&gt;&lt;/script&gt;</code></li>
+<li>在 script.js 控制如果超過 hero box 就顯示 sticky navigation</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function() &#123;</div><div class="line"></div><div class="line">    $(&apos;.js--section-features&apos;).waypoint(function(direction) &#123;</div><div class="line">        if (direction === &quot;down&quot;) &#123;</div><div class="line">            $(&apos;nav&apos;).addClass(&apos;sticky&apos;);</div><div class="line">        &#125; else &#123;</div><div class="line">            $(&apos;nav&apos;).removeClass(&apos;sticky&apos;);</div><div class="line">        &#125;</div><div class="line">    &#125;, &#123;</div><div class="line">        offset: &apos;60px;&apos;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>滾動到元素</h4>
+<ol>
+<li><a href="https://css-tricks.com/snippets/jquery/smooth-scrolling/" target="_blank" rel="external">Smooth Scrolling</a></li>
+<li>在 index.html 的主頁的兩個 buttons 新增兩個 class <code>js--scroll-to-plans</code> <code>js--scroll-to-start</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;a class=&quot;btn btn-full js--scroll-to-plans&quot; href=&quot;#&quot;&gt;I&apos;m hungry&lt;/a&gt;</div><div class="line">&lt;a class=&quot;btn btn-ghost js--scroll-to-start&quot; href=&quot;#&quot;&gt;Show me more&lt;/a&gt;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 index.html 的個別區塊新增專屬 js 的 class 和 id</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;section class=&quot;section-features js--section-features&quot; id=&quot;features&quot;&gt;</div><div class="line">&lt;section class=&quot;section-meals&quot; id=&quot;works&quot;&gt;</div><div class="line">&lt;section class=&quot;section-cities&quot; id=&quot;cities&quot;&gt;</div><div class="line">&lt;section class=&quot;section-plans js--section-plans&quot; id=&quot;plans&quot;&gt;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在選單新增 id 的連結</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;li&gt;&lt;a href=&quot;#features&quot;&gt;Food delivery&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;li&gt;&lt;a href=&quot;#works&quot;&gt;How it works&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;li&gt;&lt;a href=&quot;#cities&quot;&gt;Our cities&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;li&gt;&lt;a href=&quot;#plans&quot;&gt;Sign up&lt;/a&gt;&lt;/li&gt;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 index.html 新增事件當點擊按鈕時，移動到某個位置</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(&apos;.js--scroll-to-plans&apos;).click(function() &#123;</div><div class="line">    $(&apos;html, body&apos;).animate(&#123;scrollTop: $(&apos;.js--section-plans&apos;).offset().top&#125;, 1000);</div><div class="line">&#125;);</div><div class="line">$(&apos;.js--scroll-to-start&apos;).click(function() &#123;</div><div class="line">    $(&apos;html, body&apos;).animate(&#123;scrollTop: $(&apos;.js--section-features&apos;).offset().top&#125;, 1000);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>從 Smooth Scrolling 的網站複製 js 到 script.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">// Select all links with hashes</div><div class="line">$(&apos;a[href*=&quot;#&quot;]&apos;)</div><div class="line">// Remove links that don&apos;t actually link to anything</div><div class="line">    .not(&apos;[href=&quot;#&quot;]&apos;)</div><div class="line">    .not(&apos;[href=&quot;#0&quot;]&apos;)</div><div class="line">    .click(function(event) &#123;</div><div class="line">        // On-page links</div><div class="line">        if (</div><div class="line">            location.pathname.replace(/^\//, &apos;&apos;) == this.pathname.replace(/^\//, &apos;&apos;)</div><div class="line">            &amp;&amp;</div><div class="line">            location.hostname == this.hostname</div><div class="line">        ) &#123;</div><div class="line">            // Figure out element to scroll to</div><div class="line">            var target = $(this.hash);</div><div class="line">            target = target.length ? target : $(&apos;[name=&apos; + this.hash.slice(1) + &apos;]&apos;);</div><div class="line">            // Does a scroll target exist?</div><div class="line">            if (target.length) &#123;</div><div class="line">                // Only prevent default if animation is actually gonna happen</div><div class="line">                event.preventDefault();</div><div class="line">                $(&apos;html, body&apos;).animate(&#123;</div><div class="line">                    scrollTop: target.offset().top</div><div class="line">                &#125;, 1000, function() &#123;</div><div class="line">                    // Callback after animation</div><div class="line">                    // Must change focus!</div><div class="line">                    var $target = $(target);</div><div class="line">                    $target.focus();</div><div class="line">                    if ($target.is(&quot;:focus&quot;)) &#123; // Checking if the target was focused</div><div class="line">                        return false;</div><div class="line">                    &#125; else &#123;</div><div class="line">                        $target.attr(&apos;tabindex&apos;,&apos;-1&apos;); // Adding tabindex for elements not focusable</div><div class="line">                        $target.focus(); // Set focus again</div><div class="line">                    &#125;;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h4>在滾動的過程中增加動畫</h4>
+<ol>
+<li><a href="https://daneden.github.io/animate.css/" target="_blank" rel="external">Animate.css</a>，將檔案下載放置到 vendors/css/animate.css</li>
+<li>在 index.html 引入 Animate.css<br>
+<code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;vendors/css/animate.css&quot;&gt;</code></li>
+<li>在 index.html 要放置動畫區塊，新增 class</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// features 區塊</div><div class="line">&lt;div class=&quot;row js--wp-1&quot;&gt;</div><div class="line">&lt;img src=&quot;resources/img/app-iPhone.png&quot; alt=&quot;Omnifood app on iPhone&quot; class=&quot;app-screen js--wp-2&quot;&gt;</div><div class="line">// cities 區塊</div><div class="line">&lt;div class=&quot;row js--wp-3&quot;&gt;</div><div class="line">&lt;div class=&quot;plan-box js--wp-4&quot;&gt;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 style.css 的 ANIMATION 新增</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.js--wp-1,</div><div class="line">.js--wp-2,</div><div class="line">.js--wp-3 &#123;</div><div class="line">    opacity: 0;</div><div class="line">    -webkit-animation-duration: 1s;</div><div class="line">            animation-duration: 1s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.js--wp-4 &#123;</div><div class="line">    -webkit-animation-duration: 1s;</div><div class="line">            animation-duration: 1s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.js--wp-1.animated,</div><div class="line">.js--wp-2.animated,</div><div class="line">.js--wp-3.animated &#123;</div><div class="line">    opacity: 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 script.js 新增動畫</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$(&apos;.js--wp-1&apos;).waypoint(function(direction) &#123;</div><div class="line">    $(&apos;.js--wp-1&apos;).addClass(&apos;animated fadeIn&apos;);</div><div class="line">&#125;, &#123;</div><div class="line">    offset: &apos;50%&apos;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$(&apos;.js--wp-2&apos;).waypoint(function(direction) &#123;</div><div class="line">    $(&apos;.js--wp-2&apos;).addClass(&apos;animated fadeInUp&apos;);</div><div class="line">&#125;, &#123;</div><div class="line">    offset: &apos;50%&apos;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$(&apos;.js--wp-3&apos;).waypoint(function(direction) &#123;</div><div class="line">    $(&apos;.js--wp-3&apos;).addClass(&apos;animated fadeInUp&apos;);</div><div class="line">&#125;, &#123;</div><div class="line">    offset: &apos;50%&apos;</div><div class="line">&#125;);</div><div class="line">$(&apos;.js--wp-4&apos;).waypoint(function(direction) &#123;</div><div class="line">    $(&apos;.js--wp-4&apos;).addClass(&apos;animated pulse&apos;);</div><div class="line">&#125;, &#123;</div><div class="line">    offset: &apos;50%&apos;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4>讓 navigation 變成響應式</h4>
+<ol>
+<li>在 index.html 新增專屬 js 的 class</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;ul class=&quot;main-nav js--main-nav&quot;&gt;</div><div class="line">// 新增手機版 hamburger bar</div><div class="line">&lt;a class=&quot;mobile-nav-icon js--nav-icon&quot;&gt;&lt;i class=&quot;ion-navicon-round&quot;&gt;&lt;/i&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 style.css 新增手機版按鈕樣式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.mobile-nav-icon &#123;</div><div class="line">    float: right;</div><div class="line">    margin-top: 30px;</div><div class="line">    cursor: pointer;</div><div class="line">    display: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.mobile-nav-icon i &#123;</div><div class="line">    font-size: 200%;</div><div class="line">    color: #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 queries.css 新增選單響應式樣式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">.mobile-nav-icon &#123; display: inline-block; &#125;</div><div class="line"></div><div class="line">.main-nav &#123;</div><div class="line">    float: left;</div><div class="line">    margin-top: 35px;</div><div class="line">    margin-left: 25px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.main-nav li &#123;</div><div class="line">    display: block;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.main-nav li a:link,</div><div class="line">.main-nav li a:visited &#123;</div><div class="line">    display: block;</div><div class="line">    border: 0;</div><div class="line">    padding: 10px 0;</div><div class="line">    font-size: 100%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.sticky .main-nav &#123; margin-top: 10px; &#125;</div><div class="line"></div><div class="line">.sticky .main-nav li a:link,</div><div class="line">.sticky .main-nav li a:visited &#123; padding: 10px 0; &#125;</div><div class="line">.sticky .mobile-nav-icon &#123; margin-top: 10px; &#125;</div><div class="line">.sticky .mobile-nav-icon i &#123; color: #555; &#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 script.js 新增選單打開關閉效果</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$(&apos;.js--nav-icon&apos;).click(function() &#123;</div><div class="line">    var nav = $(&apos;.js--main-nav&apos;);</div><div class="line">    var icon = $(&apos;.js--nav-icon i&apos;);</div><div class="line"></div><div class="line">    nav.slideToggle(200);</div><div class="line">    if (icon.hasClass(&apos;ion-navicon-round&apos;)) &#123;</div><div class="line">        icon.addClass(&apos;ion-close-round&apos;);</div><div class="line">        icon.removeClass(&apos;ion-navicon-round&apos;);</div><div class="line">    &#125; else &#123;</div><div class="line">        icon.addClass(&apos;ion-navicon-round&apos;);</div><div class="line">        icon.removeClass(&apos;ion-close-round&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3>優化和發佈網站</h3>
+<h4>最後的調整：建立 favicon</h4>
+<ol>
+<li><a href="https://realfavicongenerator.net/" target="_blank" rel="external">favicon 產生器</a></li>
+<li>用產生器產生之後，將檔案放在 resources/favicons，然後在 index.html 引入</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;180x180&quot; href=&quot;resources/favicons/apple-touch-icon.png&quot;&gt;</div><div class="line">&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;32x32&quot; href=&quot;resources/favicons/favicon-32x32.png&quot;&gt;</div><div class="line">&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;16x16&quot; href=&quot;resources/favicons/favicon-16x16.png&quot;&gt;</div><div class="line">&lt;link rel=&quot;manifest&quot; href=&quot;resources/favicons/manifest.json&quot;&gt;</div><div class="line">&lt;link rel=&quot;mask-icon&quot; href=&quot;resources/favicons/safari-pinned-tab.svg&quot; color=&quot;#5bbad5&quot;&gt;</div><div class="line">&lt;link rel=&quot;shortcut icon&quot; href=&quot;resources/favicons/favicon.ico&quot;&gt;</div><div class="line">&lt;meta name=&quot;msapplication-config&quot; content=&quot;resources/favicons/browserconfig.xml&quot;&gt;</div><div class="line">&lt;meta name=&quot;theme-color&quot; content=&quot;#ffffff&quot;&gt;</div></pre></td></tr></table></figure>
+<h4>效能優化：網站速度</h4>
+<ol>
+<li>優化容量很大圖片</li>
+<li>壓縮 CSS 和 jQuery code</li>
+<li><a href="http://optimizilla.com/" target="_blank" rel="external">optimizilla：壓縮圖片工具</a></li>
+<li>壓縮完之後，在 style.css 更改圖片路徑</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">header &#123;</div><div class="line">    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(img/hero-min.jpg) center;</div><div class="line">    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero-min.jpg) center;</div><div class="line">    background-size: cover;</div><div class="line">    height: 100vh;</div><div class="line">    background-attachment: fixed;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.section-testimonials &#123;</div><div class="line">    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.8))), url(&apos;img/back-customers-min.jpg&apos;);</div><div class="line">    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(&apos;img/back-customers-min.jpg&apos;);</div><div class="line">    background-size: cover;</div><div class="line">    color: #fff;</div><div class="line">    background-attachment: fixed;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="5">
+<li><a href="https://cssminifier.com/" target="_blank" rel="external">CSS 壓縮工具</a></li>
+</ol>
+<h4>基礎 Search Engine Optimization (SEO)</h4>
+<ol>
+<li>Search Engine Optimization (SEO)：改善且提升網站訪問量的技術，讓網頁可以被搜尋引擎搜尋到</li>
+<li>META DESCRIPTION TAG：在 index.html 新增 Description meta<br>
+<code>&lt;meta name=&quot;description&quot; content=&quot;Omnifood is a premium food delivery service with the mission to bring affordable and healthy meals to as many people as possible&quot;&gt;</code></li>
+<li><a href="http://validator.w3.org/" target="_blank" rel="external">HTML VALIDATION</a></li>
+<li>CONTENT IS KING：網頁內容很重要，即使網站在搜尋的最上面，內容不好，你的使用者就會不想讀，另外，保持更新網站內容，如此一來，你的使用者就會更常回來觀看你的網站。</li>
+<li>KEYWORDS：不要過度使用關鍵字，搜尋引擎會認為是垃圾網站且封鎖你的網站</li>
+<li>BACKLINKS：讓其它網站引用你的網站，搜尋引擎會把這個項目列入計分項目</li>
+</ol>
+<h4>發佈我們的網站</h4>
+<ol>
+<li>三個簡單的步驟
+<ul>
+<li>選擇且買網域</li>
+<li>購買網站代管</li>
+<li>上傳我們的網站</li>
+</ul>
+</li>
+</ol>
+<h4>Google Analytics</h4>
+<ol>
+<li>網站維護
+<ul>
+<li>保持追蹤網站</li>
+<li>監控使用者行為</li>
+<li>如何：使用 Google Analytics!</li>
+<li>做調整，讓網站越來越好</li>
+</ul>
+</li>
+<li>將追蹤碼放置在 index.html 的所有 scripts 下方</li>
+</ol>
+<h4>完成課程</h4>
+<ol>
+<li>現在呢？
+<ul>
+<li>重新設計已經完成但是設計很差的網站，</li>
+<li>免費為當地慈善機構設計網站</li>
+<li>參加設計競賽</li>
+<li>開始作一些自由業工作，像是 freelancer.ocm、odesh 或 elance</li>
+</ul>
+</li>
+<li>別停止<strong>學習</strong></li>
+</ol>
+<h3>BONUS</h3>
+<h4>有效提升網站轉換率</h4>
+<ol>
+<li>對未來客戶建立信任感：可以提供免費的禮物給訪問者</li>
+<li>重複你的主要行動：可以在網站上面放置強烈的 call to action 按鈕，讓使用者想點擊</li>
+<li>抓住使用者的注意力：使用彈跳式視窗</li>
+<li>告訴使用者效益</li>
+<li>不要要求太多訊息</li>
+<li>使用社交證明：使用像是 testimonial 的區塊</li>
+<li>使用迫切性的效果：使用一些像是 now、hurry、instant 和 immediately 等字眼，讓使用者來點擊按鈕</li>
+<li>使用稀有性：告訴使用者產品已經缺貨或是要賣光了</li>
+</ol>
+<h4>新增地圖到 Omnifood 網站</h4>
+<ol>
+<li><a href="https://hpneo.github.io/gmaps/" target="_blank" rel="external">gmaps.js</a></li>
+<li>在 index.html 引入 gmaps.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;http://maps.google.com/maps/api/js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;resources/js/gmaps.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 index.html 的 form seciton 修改為兩個區塊，加入 google map</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;map-box&quot;&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;map&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;form-box&quot;&gt;</div><div class="line">        &lt;div class=&quot;row&quot;&gt;</div><div class="line">            &lt;h2&gt;We&apos;re happy to hear from you&lt;/h2&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;row&quot;&gt;</div><div class="line">            &lt;form method=&quot;post&quot; action=&quot;#&quot; class=&quot;contact-form&quot;&gt;</div><div class="line">                &lt;div class=&quot;row&quot;&gt;</div><div class="line">                    &lt;div class=&quot;col span-1-of-3&quot;&gt;</div><div class="line">                        &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                    &lt;div class=&quot;col span-2-of-3&quot;&gt;</div><div class="line">                        &lt;input type=&quot;text&quot; name=&quot;name&quot; id=&quot;name&quot; placeholder=&quot;Your name&quot; required&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">                &lt;div class=&quot;row&quot;&gt;</div><div class="line">                    &lt;div class=&quot;col span-1-of-3&quot;&gt;</div><div class="line">                        &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                    &lt;div class=&quot;col span-2-of-3&quot;&gt;</div><div class="line">                        &lt;input type=&quot;email&quot; name=&quot;email&quot; id=&quot;email&quot; placeholder=&quot;Your email&quot; required&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">                &lt;div class=&quot;row&quot;&gt;</div><div class="line">                    &lt;div class=&quot;col span-1-of-3&quot;&gt;</div><div class="line">                        &lt;label for=&quot;find-us&quot;&gt;How did you find us?&lt;/label&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                    &lt;div class=&quot;col span-2-of-3&quot;&gt;</div><div class="line">                        &lt;select name=&quot;find-us&quot; id=&quot;find-us&quot;&gt;</div><div class="line">                            &lt;option value=&quot;friends&quot;&gt;Friends&lt;/option&gt;</div><div class="line">                            &lt;option value=&quot;search&quot;&gt;Search Engine&lt;/option&gt;</div><div class="line">                            &lt;option value=&quot;ad&quot;&gt;Advertisement&lt;/option&gt;</div><div class="line">                            &lt;option value=&quot;other&quot;&gt;Other&lt;/option&gt;</div><div class="line">                        &lt;/select&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">                &lt;div class=&quot;row&quot;&gt;</div><div class="line">                    &lt;div class=&quot;col span-1-of-3&quot;&gt;</div><div class="line">                        &lt;label for=&quot;news&quot;&gt;Newsletter&lt;/label&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                    &lt;div class=&quot;col span-2-of-3&quot;&gt;</div><div class="line">                        &lt;input type=&quot;checkbox&quot; name=&quot;news&quot; id=&quot;news&quot; checked&gt; Yes, Please</div><div class="line">                    &lt;/div&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">                &lt;div class=&quot;row&quot;&gt;</div><div class="line">                    &lt;div class=&quot;col span-1-of-3&quot;&gt;</div><div class="line">                        &lt;label for=&quot;message&quot;&gt;Drop us a line&lt;/label&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                    &lt;div class=&quot;col span-2-of-3&quot;&gt;</div><div class="line">                        &lt;textarea name=&quot;message&quot; id=&quot;message&quot; placeholder=&quot;Your message&quot;&gt;&lt;/textarea&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">                &lt;div class=&quot;row&quot;&gt;</div><div class="line">                    &lt;div class=&quot;col span-1-of-3&quot;&gt;</div><div class="line">                        &lt;label&gt;&amp;nbsp;&lt;/label&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                    &lt;div class=&quot;col span-2-of-3&quot;&gt;</div><div class="line">                        &lt;input type=&quot;submit&quot; value=&quot;Send it!&quot;&gt;</div><div class="line">                    &lt;/div&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">            &lt;/form&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 script.js 新增 google map 位置</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var map = new GMaps(&#123;</div><div class="line">    div: &apos;.map&apos;,</div><div class="line">    lat: 38.7436883,</div><div class="line">    lng: -9.05,</div><div class="line">    zoom: 12</div><div class="line">&#125;);</div><div class="line"></div><div class="line">map.addMarker(&#123;</div><div class="line">    lat: 38.7436883,</div><div class="line">    lng: -9.1952226,</div><div class="line">    title: &apos;Lisbon&apos;,</div><div class="line">    infoWindow: &#123;</div><div class="line">        content: &apos;&lt;p&gt;Our Lisbon HQ&lt;/p&gt;&apos;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 style.css 新增 form + google map 樣式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">.map-box &#123;</div><div class="line">    width: 100%;</div><div class="line">    height: 560px;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.map &#123;</div><div class="line">    width: 100%;</div><div class="line">    height: 560px;</div><div class="line">    position: relative;</div><div class="line">    z-index: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.form-box &#123;</div><div class="line">    position: absolute;</div><div class="line">    width: 50%;</div><div class="line">    top: 0;</div><div class="line">    right: 0;</div><div class="line">    background-color: rgba(255, 255, 255, 0.8);</div><div class="line">    z-index: 10;</div><div class="line">    height: 560px;</div><div class="line">    padding-top: 40px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 queries.css 的 max-width: 767px 的區塊新增</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">.map-box &#123;</div><div class="line">    width: 100%;</div><div class="line">    height: auto;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.map &#123;</div><div class="line">    width: 100%;</div><div class="line">    height: 300px;</div><div class="line">    position: relative;</div><div class="line">    z-index: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.form-box &#123;</div><div class="line">    position: relative;</div><div class="line">    width: 100%;</div><div class="line">    height: auto;</div><div class="line">    padding: 30px 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2017/12/03/HTML5-CSS3-快速學習自我挑戰-Day5/" data-id="cjasetu6s000b9ufanzg4yitq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2017/12/03/HTML5-CSS3-快速學習自我挑戰-Day5/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/VincentTingSyuanWang" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.facebook.com/VincentTingSyuanWang" target="_blank">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/12/01/HTML5-CSS3-快速學習自我挑戰-Day4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">HTML5+CSS3 快速學習自我挑戰 Day4</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/03/HTML5-CSS3-快速學習自我挑戰-Day5/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/htmlcss/HtmlCssDay5.jpg)" alt="HTML5+CSS3 快速學習自我挑戰 Day5" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2017/12/03/HTML5-CSS3-快速學習自我挑戰-Day5/" class="title">HTML5+CSS3 快速學習自我挑戰 Day5</a></p>
+                            <p class="item-date"><time datetime="2017-12-03T07:11:22.000Z" itemprop="datePublished">2017-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/01/HTML5-CSS3-快速學習自我挑戰-Day4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/htmlcss/HtmlCssDay4.jpg)" alt="HTML5+CSS3 快速學習自我挑戰 Day4" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2017/12/01/HTML5-CSS3-快速學習自我挑戰-Day4/" class="title">HTML5+CSS3 快速學習自我挑戰 Day4</a></p>
+                            <p class="item-date"><time datetime="2017-12-01T10:13:49.000Z" itemprop="datePublished">2017-12-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/30/HTML5-CSS3-快速學習自我挑戰-Day3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/htmlcss/HtmlCssDay3.png)" alt="HTML5+CSS3 快速學習自我挑戰 Day3" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2017/11/30/HTML5-CSS3-快速學習自我挑戰-Day3/" class="title">HTML5+CSS3 快速學習自我挑戰 Day3</a></p>
+                            <p class="item-date"><time datetime="2017-11-30T08:55:34.000Z" itemprop="datePublished">2017-11-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/19/HTML5-CSS3-快速學習自我挑戰-Day2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/htmlcss/HtmlCssDay2.jpg)" alt="HTML5+CSS3 快速學習自我挑戰 Day2" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2017/11/19/HTML5-CSS3-快速學習自我挑戰-Day2/" class="title">HTML5+CSS3 快速學習自我挑戰 Day2</a></p>
+                            <p class="item-date"><time datetime="2017-11-19T03:59:13.000Z" itemprop="datePublished">2017-11-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/10/Nodejs-II-快速學習自我挑戰-Day2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/nodejsII/NodejsIIDay02.png)" alt="Nodejs II 快速學習自我挑戰 Day2" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2017/11/10/Nodejs-II-快速學習自我挑戰-Day2/" class="title">Nodejs II 快速學習自我挑戰 Day2</a></p>
+                            <p class="item-date"><time datetime="2017-11-10T09:32:45.000Z" itemprop="datePublished">2017-11-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/學習歷程/">學習歷程</a><span class="category-list-count">76</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React-Native</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/">UX</a><span class="tag-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CSS/" style="font-size: 12.86px;">CSS</a> <a href="/tags/Docker/" style="font-size: 15.71px;">Docker</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.29px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.57px;">Nodejs</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.14px;">React</a> <a href="/tags/React-Native/" style="font-size: 14.29px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UX/" style="font-size: 11.43px;">UX</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2017 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

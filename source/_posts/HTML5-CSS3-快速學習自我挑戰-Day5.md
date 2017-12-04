@@ -331,19 +331,174 @@ header {
 5. KEYWORDS：不要過度使用關鍵字，搜尋引擎會認為是垃圾網站且封鎖你的網站
 6. BACKLINKS：讓其它網站引用你的網站，搜尋引擎會把這個項目列入計分項目
 #### 發佈我們的網站
-1. 
+1. 三個簡單的步驟
+    - 選擇且買網域
+    - 購買網站代管
+    - 上傳我們的網站
+#### Google Analytics
+1. 網站維護
+    - 保持追蹤網站
+    - 監控使用者行為
+    - 如何：使用 Google Analytics!
+    - 做調整，讓網站越來越好
+2. 將追蹤碼放置在 index.html 的所有 scripts 下方
+#### 完成課程
+1. 現在呢？
+    - 重新設計已經完成但是設計很差的網站，
+    - 免費為當地慈善機構設計網站
+    - 參加設計競賽
+    - 開始作一些自由業工作，像是 freelancer.ocm、odesh 或 elance
+2. 別停止**學習**
+### BONUS
+#### 有效提升網站轉換率
+1. 對未來客戶建立信任感：可以提供免費的禮物給訪問者
+2. 重複你的主要行動：可以在網站上面放置強烈的 call to action 按鈕，讓使用者想點擊
+3. 抓住使用者的注意力：使用彈跳式視窗
+4. 告訴使用者效益
+5. 不要要求太多訊息
+6. 使用社交證明：使用像是 testimonial 的區塊
+7. 使用迫切性的效果：使用一些像是 now、hurry、instant 和 immediately 等字眼，讓使用者來點擊按鈕
+8. 使用稀有性：告訴使用者產品已經缺貨或是要賣光了
+#### 新增地圖到 Omnifood 網站
+1. [gmaps.js](https://hpneo.github.io/gmaps/)
+2. 在 index.html 引入 gmaps.js
+```
+<script src="http://maps.google.com/maps/api/js"></script>
+<script src="resources/js/gmaps.js"></script>
+```
+3. 在 index.html 的 form seciton 修改為兩個區塊，加入 google map
+```
+<div class="map-box">
 
+    <div class="map"></div>
 
+    <div class="form-box">
+        <div class="row">
+            <h2>We're happy to hear from you</h2>
+        </div>
+        <div class="row">
+            <form method="post" action="#" class="contact-form">
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="text" name="name" id="name" placeholder="Your name" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="email" name="email" id="email" placeholder="Your email" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="find-us">How did you find us?</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <select name="find-us" id="find-us">
+                            <option value="friends">Friends</option>
+                            <option value="search">Search Engine</option>
+                            <option value="ad">Advertisement</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="news">Newsletter</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="checkbox" name="news" id="news" checked> Yes, Please
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="message">Drop us a line</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <textarea name="message" id="message" placeholder="Your message"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label>&nbsp;</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input type="submit" value="Send it!">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+```
+4. 在 script.js 新增 google map 位置
+```
+var map = new GMaps({
+    div: '.map',
+    lat: 38.7436883,
+    lng: -9.05,
+    zoom: 12
+});
 
+map.addMarker({
+    lat: 38.7436883,
+    lng: -9.1952226,
+    title: 'Lisbon',
+    infoWindow: {
+        content: '<p>Our Lisbon HQ</p>'
+    }
+});
+```
+5. 在 style.css 新增 form + google map 樣式
+```
+.map-box {
+    width: 100%;
+    height: 560px;
+    position: relative;
+}
 
+.map {
+    width: 100%;
+    height: 560px;
+    position: relative;
+    z-index: 0;
+}
 
+.form-box {
+    position: absolute;
+    width: 50%;
+    top: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    height: 560px;
+    padding-top: 40px;
+}
+```
+6. 在 queries.css 的 max-width: 767px 的區塊新增
+```
+.map-box {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
 
+.map {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    z-index: 0;
+}
 
-
-
-
-
-
-
-
-
+.form-box {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 30px 0;
+}
+```
