@@ -4,9 +4,10 @@ date: 2016-08-30 19:17:58
 ---
 
 #### _自我介紹（Self-Introduction）_
-我叫王霆瑄（Vincent），
-來自台中，熱愛**閱讀**、**運動**和**旅行**，
-對於新鮮的事物更是愛不釋手。
+<img src="/images/profile.jpeg" width="200">
+
+&emsp;&emsp;我叫王霆瑄(Vincent)，來自台中，熱愛**閱讀**、**運動**和**旅行**，對於新鮮的事物更是愛不釋手。
+&emsp;&emsp;大學時期主修外國文學，在大二時，遇見網頁程式設計，一路踏上程式設計的旅程，在旅程中，迷上前端的平面設計、後端的雲端運算，也因為我對跨領域的嘗試，讓我立志成為一位頂尖的全端工程師。
 
 ***
 
@@ -18,11 +19,6 @@ date: 2016-08-30 19:17:58
 
 ***
 
-##### 我的誕生
-公元一九九四年，夏天。
-傍晚。細濛濛的小雨從天而降，在路燈外緣交織成一團濕淋淋的光幕。醫院內，手術房裡本是一陣沉悶的氣息，交雜著汗水，但娃娃的哭鬧聲撕裂了這陣寂靜，取而代之的是喜悅和更多的歡樂的氛圍，一個新生命的誕生，他將用雙眼來見識這個世界，用雙手去探索這個生命。
-***
-
 #### _學歷（Educational Background）_
 National Taichung University of Science and Technology（國立臺中科技大學）
 Computer Science and Information Engineering, M.S.（資訊工程研究所）
@@ -31,6 +27,23 @@ Department of Traditional Chinese Medicine, M.S.（中國醫學研究所）
 Asia University（亞洲大學）
 Department of Foreign Languages and Literature, B.A.（外國語文學系）
 ***
+
+#### _重要事紀（Life Events）_
+_2015/03/21_
+獲得亞洲大學 103 學年度「傑出成就獎」
+
+
+#### _活動參與（Participation）_
+_2016/04/15~2016/04/17_
+第18屆國際東洋醫學會學術大會 (日本沖繩)
+_2016/08/22~2016/08/26_
+CGCM Meeting 2016 全球華人中草藥科技研討會 (中央研究院)
+_2016/10/22~2016/10/23_
+JSDC 2016 (臺中科技大學)
+_2017/09/04~2017/09/06_
+DevOpsDays Taipei 2017 (臺灣大學社會科學院)
+
+
 
 #### _聯繫我（Contact Ｍe）_
 | WeChat的好友：  | LINE的好友： |
