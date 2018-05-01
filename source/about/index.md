@@ -52,4 +52,4 @@ DevOpsDays Taipei 2017 (臺灣大學社會科學院)
 | <img src="/images/wechat.png"> | <img src="/images/line.jpg"> |
 
 寫信給我：<vincent@fishboneapps.com>
-Facebook私訊敲我：[Facebook個人頁面](https://www.facebook.com/VincentTingSyuanWang)
+Facebook 私訊敲我：[Facebook個人頁面](https://www.facebook.com/VincentTingSyuanWang)
