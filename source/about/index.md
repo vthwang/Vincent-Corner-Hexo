@@ -20,26 +20,27 @@ date: 2016-08-30 19:17:58
 ***
 
 #### _學歷（Educational Background）_
-National Taichung University of Science and Technology（國立臺中科技大學）
-Computer Science and Information Engineering, M.S.（資訊工程研究所）
-China Medical University（中國醫藥大學）
+China Medical University（中國醫藥大學）- 肄業
 Department of Traditional Chinese Medicine, M.S.（中國醫學研究所）
 Asia University（亞洲大學）
 Department of Foreign Languages and Literature, B.A.（外國語文學系）
 ***
 
 #### _重要事紀（Life Events）_
+_2014/05/23_
+第八屆敦煌全國大專盃 - 進階大學組 佳作獎
 _2015/03/21_
 獲得亞洲大學 103 學年度「傑出成就獎」
-
 
 #### _活動參與（Participation）_
 _2016/04/15~2016/04/17_
 第18屆國際東洋醫學會學術大會 (日本沖繩)
+_2016/06/25_
+CTJS 2016 (臺中科技大學)
 _2016/08/22~2016/08/26_
 CGCM Meeting 2016 全球華人中草藥科技研討會 (中央研究院)
-_2016/10/22~2016/10/23_
-JSDC 2016 (臺中科技大學)
+_2016/10/29~2015/10/30_
+MOPCON 2016 行動科技年會 (高雄國際會議中心)
 _2017/09/04~2017/09/06_
 DevOpsDays Taipei 2017 (臺灣大學社會科學院)
 
