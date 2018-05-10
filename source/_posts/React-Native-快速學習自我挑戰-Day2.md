@@ -45,7 +45,7 @@ const App = () => (
         - 用來取得動態資料來源
         - 處理可能會改變的資料 (讀取資料、使用者事件...等等)
         - 知道它什麼時候要渲染到裝置上 (對資料讀取非常有幫助)
-        - 要寫更多城市
+        - 要寫更多程式
 5. Functional Component 範例
 ```
 const Header = () => {
@@ -105,7 +105,7 @@ componentWillMount () {
     - "AlbumList" 發覺到有東西要被渲染，呼叫 componentWillMount
     - "AlbumList" 開啟 HTTP 請求
     - "App"、"AlbumList" 和 "Header" 出現在螢幕上
-    - 過很幾毫秒之後，HTTP 請求傳回 JSON data
+    - 過好幾毫秒之後，HTTP 請求傳回 JSON data
 13. 要處理資料比畫面顯示還晚的問題，要用 state 的方式處理，state 由以下三步驟來完成
     - 設定預設值或是初始值
     - 讀取資料，且要告訴 Component 資料已經更新
@@ -125,7 +125,7 @@ componentWillMount () {
     - "AlbumList" 開啟 HTTP 請求
     - **"AlbumList" 的渲染方法被呼叫**
     - "App"、"AlbumList" 和 "Header" 出現在螢幕上
-    - 過很幾毫秒之後，HTTP 請求傳回 JSON data
+    - 過好幾毫秒之後，HTTP 請求傳回 JSON data
     - **叫做 "setState" 的 request handler 會更新 albums**
     - **"AlbumList" 的渲染方法被呼叫**
 18. State 的規則

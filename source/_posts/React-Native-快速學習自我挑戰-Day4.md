@@ -39,7 +39,7 @@ AppRegistry.registerComponent('auth', () => App);
 4. 將 Album 專案的 src/components/Button.js Card.js CardSection.js header.js 複製到新專案目錄的 src/components/common/ 底下
 5. 在 src/components/common 底下新增 index.js
 ```
-export * from './BUtton';
+export * from './Button';
 export * from './Card';
 export * from './CardSection';
 export * from './Header';
@@ -159,7 +159,7 @@ const styles = {
         paddingRight: 5,
         paddingLeft: 5,
         fontSize: 18,
-        lineHight: 23,
+        lineHeight: 23,
         flex: 2
     },
     labelStyle: {

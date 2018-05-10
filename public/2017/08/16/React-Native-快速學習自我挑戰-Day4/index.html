@@ -17,7 +17,7 @@
 <meta property="og:description" content="使用 Firebase 進行認證 前置作業  新增新的專案 react-native init auth 新增 src/app.js  1234567891011121314import React, &amp;#123; Component &amp;#125; from &amp;apos;react&amp;apos;;import &amp;#123; View, Text &amp;#125; from &amp;apos;react-n">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/reactNative/reactnativeday4.jpg">
-<meta property="og:updated_time" content="2017-11-03T14:58:17.000Z">
+<meta property="og:updated_time" content="2018-05-09T09:47:00.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Native 快速學習自我挑戰 Day4">
 <meta name="twitter:description" content="使用 Firebase 進行認證 前置作業  新增新的專案 react-native init auth 新增 src/app.js  1234567891011121314import React, &amp;#123; Component &amp;#125; from &amp;apos;react&amp;apos;;import &amp;#123; View, Text &amp;#125; from &amp;apos;react-n">
@@ -190,7 +190,7 @@ ga('send', 'pageview');
 <li>將 Album 專案的 src/components/Button.js Card.js CardSection.js header.js 複製到新專案目錄的 src/components/common/ 底下</li>
 <li>在 src/components/common 底下新增 index.js</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export * from &apos;./BUtton&apos;;</div><div class="line">export * from &apos;./Card&apos;;</div><div class="line">export * from &apos;./CardSection&apos;;</div><div class="line">export * from &apos;./Header&apos;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export * from &apos;./Button&apos;;</div><div class="line">export * from &apos;./Card&apos;;</div><div class="line">export * from &apos;./CardSection&apos;;</div><div class="line">export * from &apos;./Header&apos;;</div></pre></td></tr></table></figure>
 <ol start="6">
 <li>在個別檔案用元件的方式輸出<br>
 <code>export { Button };</code><br>
@@ -242,7 +242,7 @@ ga('send', 'pageview');
 <ol start="13">
 <li>在 Input.js 新增 styles</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">const styles = &#123;</div><div class="line">    inputStyle: &#123;</div><div class="line">        color: &apos;#000&apos;,</div><div class="line">        paddingRight: 5,</div><div class="line">        paddingLeft: 5,</div><div class="line">        fontSize: 18,</div><div class="line">        lineHight: 23,</div><div class="line">        flex: 2</div><div class="line">    &#125;,</div><div class="line">    labelStyle: &#123;</div><div class="line">        fontSize: 18,</div><div class="line">        paddingLeft: 20,</div><div class="line">        flex: 1</div><div class="line">    &#125;,</div><div class="line">    containerStyle: &#123;</div><div class="line">        height: 40,</div><div class="line">        flex: 1,</div><div class="line">        flexDirection: &apos;row&apos;,</div><div class="line">        alignItems: &apos;center&apos;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">const styles = &#123;</div><div class="line">    inputStyle: &#123;</div><div class="line">        color: &apos;#000&apos;,</div><div class="line">        paddingRight: 5,</div><div class="line">        paddingLeft: 5,</div><div class="line">        fontSize: 18,</div><div class="line">        lineHeight: 23,</div><div class="line">        flex: 2</div><div class="line">    &#125;,</div><div class="line">    labelStyle: &#123;</div><div class="line">        fontSize: 18,</div><div class="line">        paddingLeft: 20,</div><div class="line">        flex: 1</div><div class="line">    &#125;,</div><div class="line">    containerStyle: &#123;</div><div class="line">        height: 40,</div><div class="line">        flex: 1,</div><div class="line">        flexDirection: &apos;row&apos;,</div><div class="line">        alignItems: &apos;center&apos;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <ol start="14">
 <li>在元件中加入 styles</li>
 </ol>
@@ -283,7 +283,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/08/16/React-Native-快速學習自我挑戰-Day4/" data-id="cjgq0iltb006w4xfai0manef7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/08/16/React-Native-快速學習自我挑戰-Day4/" data-id="cjh0dovgl0059jhfaag0963hi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
