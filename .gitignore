@@ -1,2 +1,9 @@
 _config.yml
-/node_modules
+.DS_Store
+node_modules/
+tmp/
+*.log
+.idea/
+coverage/
+yarn.lock
+package-lock.json
