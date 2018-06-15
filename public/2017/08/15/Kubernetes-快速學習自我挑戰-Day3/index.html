@@ -283,7 +283,7 @@ ga('send', 'pageview');
 <li>在 Load balancer 後的典型的產品化應用應該要總是有用某種方法執行的 <strong>health checks</strong> 來確保應用的<strong>可用性</strong>和<strong>彈性</strong></li>
 <li>以下為 health checks 的範例</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">livenessProbe:</div><div class="line">    httpGet:</div><div class="line">        paht: /</div><div class="line">        port: 3000</div><div class="line">    initailDelaySeconds: 15</div><div class="line">    timeoutSeconds: 30</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">livenessProbe:</span><br><span class="line">    httpGet:</span><br><span class="line">        paht: /</span><br><span class="line">        port: 3000</span><br><span class="line">    initailDelaySeconds: 15</span><br><span class="line">    timeoutSeconds: 30</span><br></pre></td></tr></table></figure>
 <h4>Demo：Health checks</h4>
 <ol>
 <li><code>kubectl create -f deployment/helloworld-healthcheck.yml</code></li>
@@ -332,7 +332,7 @@ ga('send', 'pageview');
 <code>name: SECRET_USERNAME</code></li>
 <li>或者，也可以在檔案內提供 secrets</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">volumeMount:</div><div class="line">-name: credvolume</div><div class="line"> mountPath: /etc/creds</div><div class="line"> readOnly: true</div><div class="line">volumes:</div><div class="line">-name: credvolume</div><div class="line">secret:</div><div class="line"> secretName: db-secrets</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">volumeMount:</span><br><span class="line">-name: credvolume</span><br><span class="line"> mountPath: /etc/creds</span><br><span class="line"> readOnly: true</span><br><span class="line">volumes:</span><br><span class="line">-name: credvolume</span><br><span class="line">secret:</span><br><span class="line"> secretName: db-secrets</span><br></pre></td></tr></table></figure>
 <h4>Demo：使用 Volumes 的 Credentails</h4>
 <ol>
 <li><code>cat deployment/helloworld-secrets.yml</code></li>
@@ -390,7 +390,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/08/15/Kubernetes-快速學習自我挑戰-Day3/" data-id="cjifg6b7e0019965x99hx4get" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/08/15/Kubernetes-快速學習自我挑戰-Day3/" data-id="cjifii0hr00158d5xfvwq44jq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

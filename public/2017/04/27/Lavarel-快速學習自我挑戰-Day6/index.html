@@ -228,7 +228,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<h3>One to One Relationship (CRUD) - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="external">Eloquent Relationship 設定官方文件</a></h3>
+<h3>One to One Relationship (CRUD) - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="noopener">Eloquent Relationship 設定官方文件</a></h3>
 <ol>
 <li>安裝＋設定
 <ul>
@@ -262,7 +262,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">use App\User;</div><div class="line">use App\Address;</div><div class="line"></div><div class="line">Route::get(&apos;/insert&apos;, function()&#123;</div><div class="line"></div><div class="line">    $user = User::findOrFail(1);</div><div class="line"></div><div class="line">    $address = new Address([&apos;name&apos;=&gt;&apos;1234 Houston av NY NY 11218&apos;]);</div><div class="line"></div><div class="line">    $user-&gt;address()-&gt;save($address);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">use App\User;</span><br><span class="line">use App\Address;</span><br><span class="line"></span><br><span class="line">Route::get(&apos;/insert&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $user = User::findOrFail(1);</span><br><span class="line"></span><br><span class="line">    $address = new Address([&apos;name&apos;=&gt;&apos;1234 Houston av NY NY 11218&apos;]);</span><br><span class="line"></span><br><span class="line">    $user-&gt;address()-&gt;save($address);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li>更新資料
 <ul>
@@ -270,7 +270,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/update&apos;, function()&#123;</div><div class="line"></div><div class="line">    $address = Address::whereUserId(1)-&gt;first();</div><div class="line"></div><div class="line">    $address-&gt;name = &quot;4353 Update Av, alaska&quot;;</div><div class="line"></div><div class="line">    $address-&gt;save();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/update&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $address = Address::whereUserId(1)-&gt;first();</span><br><span class="line"></span><br><span class="line">    $address-&gt;name = &quot;4353 Update Av, alaska&quot;;</span><br><span class="line"></span><br><span class="line">    $address-&gt;save();</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>讀取資料
 <ul>
@@ -278,7 +278,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/read&apos;, function()&#123;</div><div class="line"></div><div class="line">    $user = User::findOrFail(1);</div><div class="line"></div><div class="line">    echo $user-&gt;address-&gt;name;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/read&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $user = User::findOrFail(1);</span><br><span class="line"></span><br><span class="line">    echo $user-&gt;address-&gt;name;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="6">
 <li>刪除資料
 <ul>
@@ -286,7 +286,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/delete&apos;, function()&#123;</div><div class="line"></div><div class="line">    $user = User::findOrFail(1);</div><div class="line"></div><div class="line">    $user-&gt;address()-&gt;delete();</div><div class="line"></div><div class="line">    return &quot;done&quot;;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/delete&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $user = User::findOrFail(1);</span><br><span class="line"></span><br><span class="line">    $user-&gt;address()-&gt;delete();</span><br><span class="line"></span><br><span class="line">    return &quot;done&quot;;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -294,7 +294,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/04/27/Lavarel-快速學習自我挑戰-Day6/" data-id="cjifg6b950044965xfam4p18x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/04/27/Lavarel-快速學習自我挑戰-Day6/" data-id="cjifii0ik00348d5xwhhiuwdo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

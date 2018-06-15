@@ -341,11 +341,11 @@ ga('send', 'pageview');
 <code>kubectl config set-context $CONTEXT --namespace=myspace</code></li>
 <li>接下來可以在 namespace 建立 resource limits</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">apiVersion: v1</div><div class="line">kind: ResourceQuota</div><div class="line">metadata:</div><div class="line">  name: compute-resources</div><div class="line">  namespace: myspace</div><div class="line">spec:</div><div class="line">  hard:</div><div class="line">    requests.cpu: &quot;1&quot;</div><div class="line">    requests.memory: 1Gi</div><div class="line">    limits.cpu: &quot;2&quot;</div><div class="line">    limits.memory: 2Gi</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: ResourceQuota</span><br><span class="line">metadata:</span><br><span class="line">  name: compute-resources</span><br><span class="line">  namespace: myspace</span><br><span class="line">spec:</span><br><span class="line">  hard:</span><br><span class="line">    requests.cpu: &quot;1&quot;</span><br><span class="line">    requests.memory: 1Gi</span><br><span class="line">    limits.cpu: &quot;2&quot;</span><br><span class="line">    limits.memory: 2Gi</span><br></pre></td></tr></table></figure>
 <ol start="11">
 <li>也可以建立 object limits：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">apiVersion: v1</div><div class="line">kind: ResourceQuota</div><div class="line">metadata:</div><div class="line">  name: object-counts</div><div class="line">  namespace: myspace</div><div class="line">spec:</div><div class="line">  hard:</div><div class="line">    configmaps: &quot;10&quot;</div><div class="line">    persistentvolumeclaims: &quot;4&quot;</div><div class="line">    relicationcontrollers: &quot;20&quot;</div><div class="line">    secrets: &quot;10&quot;</div><div class="line">    services: &quot;10&quot;</div><div class="line">    services.loadbalancers: &quot;2&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: ResourceQuota</span><br><span class="line">metadata:</span><br><span class="line">  name: object-counts</span><br><span class="line">  namespace: myspace</span><br><span class="line">spec:</span><br><span class="line">  hard:</span><br><span class="line">    configmaps: &quot;10&quot;</span><br><span class="line">    persistentvolumeclaims: &quot;4&quot;</span><br><span class="line">    relicationcontrollers: &quot;20&quot;</span><br><span class="line">    secrets: &quot;10&quot;</span><br><span class="line">    services: &quot;10&quot;</span><br><span class="line">    services.loadbalancers: &quot;2&quot;</span><br></pre></td></tr></table></figure>
 <h4>Demo：Namespace quotas</h4>
 <ol>
 <li><code>cat resourcequotas/resourcequota.yml</code></li>
@@ -411,7 +411,7 @@ ga('send', 'pageview');
 <li>任何 API 被稱為 <strong>not authenticated</strong> 被視為 <strong>anonymous</strong> user</li>
 <li>獨立在認證機制之外，normal users 有以下特質：
 <ul>
-<li>一個 Username (例如：user123 或 <a href="mailto:user@email.com" target="_blank" rel="external">user@email.com</a>)</li>
+<li>一個 Username (例如：user123 或 <a href="mailto:user@email.com" target="_blank" rel="noopener">user@email.com</a>)</li>
 <li>一個 UID</li>
 <li>Groups</li>
 <li>其它儲存其它資訊的 field</li>
@@ -437,7 +437,7 @@ ga('send', 'pageview');
 <li>在 Kubernetes 1.3 RBAC 還在 <strong>alpha</strong> 而且甚至被當作<strong>實驗性的</strong>
 <ul>
 <li>RBAC 是很有展望的而且會變成 <strong>stable</strong></li>
-<li>關於 ABAC/RBAC 的目前狀況，可以參照 <a href="https://kubernetes.io/docs/admin/authorization/" target="_blank" rel="external">Kubernetes Authorization</a></li>
+<li>關於 ABAC/RBAC 的目前狀況，可以參照 <a href="https://kubernetes.io/docs/admin/authorization/" target="_blank" rel="noopener">Kubernetes Authorization</a></li>
 </ul>
 </li>
 </ol>
@@ -567,7 +567,7 @@ ga('send', 'pageview');
 <li><strong>kubeadm</strong> 是一個 tool 可以為你設置 cluster</li>
 </ul>
 </li>
-<li>如果你使用某個平台且不使用任何工具，可以看看<a href="https://kubernetes.io/docs/admin/high-availability/" target="_blank" rel="external">文件</a>來自行實作</li>
+<li>如果你使用某個平台且不使用任何工具，可以看看<a href="https://kubernetes.io/docs/admin/high-availability/" target="_blank" rel="noopener">文件</a>來自行實作</li>
 </ol>
 <h4>Demo：High Availability</h4>
 <ol>
@@ -585,7 +585,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/08/29/Kubernetes-快速學習自我挑戰-Day6/" data-id="cjifg6b7h001j965x4yuv1pny" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/08/29/Kubernetes-快速學習自我挑戰-Day6/" data-id="cjifii0hv001f8d5xv21fcu6w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

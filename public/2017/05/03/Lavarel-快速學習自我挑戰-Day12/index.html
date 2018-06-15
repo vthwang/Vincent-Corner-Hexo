@@ -175,17 +175,17 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <img src="/images/learning/laravel/laravelday12.png">
 <hr>
-<h3>Sessions - <a href="https://laravel.com/docs/5.2/session" target="_blank" rel="external">Sessions 設定官方文件</a></h3>
+<h3>Sessions - <a href="https://laravel.com/docs/5.2/session" target="_blank" rel="noopener">Sessions 設定官方文件</a></h3>
 <h4>Setting and Reading Sessions</h4>
 <ol>
 <li>加到 HomeController</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$request-&gt;session()-&gt;put([&apos;edwin&apos;=&gt;&apos;master instructor&apos;]);</div><div class="line">//        session([&apos;peter&apos;=&gt;&apos;student&apos;]);  //最常用</div><div class="line"></div><div class="line">        $request-&gt;session()-&gt;get(&apos;edwin&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$request-&gt;session()-&gt;put([&apos;edwin&apos;=&gt;&apos;master instructor&apos;]);</span><br><span class="line">//        session([&apos;peter&apos;=&gt;&apos;student&apos;]);  //最常用</span><br><span class="line"></span><br><span class="line">        $request-&gt;session()-&gt;get(&apos;edwin&apos;);</span><br></pre></td></tr></table></figure>
 <h4>Global Session Function Deleting</h4>
 <ol>
 <li>新增 session</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">session([&apos;edwin2&apos;=&gt;&apos;your teacher&apos;]);</div><div class="line"></div><div class="line">return session(&apos;edwin2&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">session([&apos;edwin2&apos;=&gt;&apos;your teacher&apos;]);</span><br><span class="line"></span><br><span class="line">return session(&apos;edwin2&apos;);</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>刪除 session：<code>$request-&gt;session()-&gt;forget('edwin2');</code></li>
 <li>刪除所有 session：<code>$request-&gt;session()-&gt;flush();</code></li>
@@ -195,26 +195,26 @@ ga('send', 'pageview');
 <ol>
 <li>建立 flash data (只顯示一次的資料)</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$request-&gt;session()-&gt;flash(&apos;message&apos;, &apos;Post has been created&apos;);</div><div class="line"></div><div class="line">return $request-&gt;session()-&gt;get(&apos;message&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$request-&gt;session()-&gt;flash(&apos;message&apos;, &apos;Post has been created&apos;);</span><br><span class="line"></span><br><span class="line">return $request-&gt;session()-&gt;get(&apos;message&apos;);</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>data 保存久一點</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$request-&gt;session()-&gt;reflash();</div><div class="line">    </div><div class="line">$request-&gt;session()-&gt;keep(&apos;message&apos;);</div></pre></td></tr></table></figure>
-<h3>Sending Email / API - <a href="https://laravel.com/docs/5.2/mail" target="_blank" rel="external">Mail 設定官方文件</a></h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$request-&gt;session()-&gt;reflash();</span><br><span class="line">    </span><br><span class="line">$request-&gt;session()-&gt;keep(&apos;message&apos;);</span><br></pre></td></tr></table></figure>
+<h3>Sending Email / API - <a href="https://laravel.com/docs/5.2/mail" target="_blank" rel="noopener">Mail 設定官方文件</a></h3>
 <h4>mailgun</h4>
-<p><a href="https://www.mailgun.com/" target="_blank" rel="external">Mailgun 官方網站</a></p>
+<p><a href="https://www.mailgun.com/" target="_blank" rel="noopener">Mailgun 官方網站</a></p>
 <h4>mailgun 設定</h4>
 <ol>
 <li>設定 config/mail.php 的寄件人名稱與 mail<br>
 <code>'from' =&gt; ['address' =&gt; 'admin@pcelab.info', 'name' =&gt; 'Vincent Adler'],</code></li>
 <li>設定 .env</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MAIL_DRIVER=mailgun</div><div class="line">MAILGUN_DOMAIN=XXXXX</div><div class="line">MAILGUN_SECRET=XXXXX</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MAIL_DRIVER=mailgun</span><br><span class="line">MAILGUN_DOMAIN=XXXXX</span><br><span class="line">MAILGUN_SECRET=XXXXX</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>新增 mail 的 view (resources/views/mails/test.blade.php)</li>
 <li>新增 routes</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/&apos;, function () &#123;</div><div class="line"></div><div class="line">    $data = [</div><div class="line"></div><div class="line">        &apos;title&apos;=&gt; &apos;Hi student I hope you like the course&apos;,</div><div class="line">        &apos;content&apos;=&gt; &apos;This laravel course was created with a lot of love and dedication for you&apos;</div><div class="line"></div><div class="line">    ];</div><div class="line"></div><div class="line">    Mail::send(&apos;emails.test&apos;, $data, function($message)&#123;</div><div class="line"></div><div class="line">        $message-&gt;to(&apos;dtvgood202@gmail.com&apos;, &apos;Vincent&apos;)-&gt;subject(&apos;Hello student how are you&apos;);</div><div class="line"></div><div class="line">    &#125;);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/&apos;, function () &#123;</span><br><span class="line"></span><br><span class="line">    $data = [</span><br><span class="line"></span><br><span class="line">        &apos;title&apos;=&gt; &apos;Hi student I hope you like the course&apos;,</span><br><span class="line">        &apos;content&apos;=&gt; &apos;This laravel course was created with a lot of love and dedication for you&apos;</span><br><span class="line"></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    Mail::send(&apos;emails.test&apos;, $data, function($message)&#123;</span><br><span class="line"></span><br><span class="line">        $message-&gt;to(&apos;dtvgood202@gmail.com&apos;, &apos;Vincent&apos;)-&gt;subject(&apos;Hello student how are you&apos;);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>新增套件：<code>composer require guzzlehttp/guzzle</code></li>
 <li>SSL certification error - 修改 vendor/guzzlehttp/guzzle/src/Client.php：configureDefaults function 的 verify 改為 <code>false</code></li>
@@ -232,7 +232,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/05/03/Lavarel-快速學習自我挑戰-Day12/" data-id="cjifg6b7l001u965xg894up8b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/05/03/Lavarel-快速學習自我挑戰-Day12/" data-id="cjifii0i1001q8d5x1hd4jsvg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

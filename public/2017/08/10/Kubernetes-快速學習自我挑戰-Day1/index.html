@@ -266,12 +266,12 @@ ga('send', 'pageview');
 <ul>
 <li>使用 AWS 免費方案 (給你 t2.micro’s 750 小時/月)
 <ul>
-<li><a href="https://aws.amazon.com" target="_blank" rel="external">https://aws.amazon.com</a></li>
+<li><a href="https://aws.amazon.com" target="_blank" rel="noopener">https://aws.amazon.com</a></li>
 </ul>
 </li>
 <li>使用本地機器
 <ul>
-<li>使用 <a href="https://github.com/kubernetes/minikube" target="_blank" rel="external">minikube</a></li>
+<li>使用 <a href="https://github.com/kubernetes/minikube" target="_blank" rel="noopener">minikube</a></li>
 </ul>
 </li>
 <li>使用 Digital Ocean</li>
@@ -285,17 +285,17 @@ ga('send', 'pageview');
 <li>它可以運行在 <strong>Windows</strong>、<strong>Linux</strong> 和 <strong>MacOS</strong></li>
 <li>你會需要安裝 <strong>虛擬化軟體</strong> 才能運行 minikube
 <ul>
-<li>Virtualbox 是免費的且可以<a href="https://www.virtualbox.org/" target="_blank" rel="external">直接下載</a></li>
+<li>Virtualbox 是免費的且可以<a href="https://www.virtualbox.org/" target="_blank" rel="noopener">直接下載</a></li>
 </ul>
 </li>
-<li><a href="https://github.com/kubernetes/minikube" target="_blank" rel="external">下載 minikube</a></li>
+<li><a href="https://github.com/kubernetes/minikube" target="_blank" rel="noopener">下載 minikube</a></li>
 <li>啟動你的 cluster 只要(在 shell/terminal/powershell)輸入 <code>minikube start</code></li>
 </ol>
 <h4>安裝 minikube</h4>
 <ol>
-<li><a href="https://github.com/kubernetes/minikube/releases" target="_blank" rel="external">安裝最新版本的 minikube</a></li>
+<li><a href="https://github.com/kubernetes/minikube/releases" target="_blank" rel="noopener">安裝最新版本的 minikube</a></li>
 <li>安裝完成之後，啟動 minikube <code>minikube start</code></li>
-<li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank" rel="external">安裝 kubectl</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank" rel="noopener">安裝 kubectl</a></li>
 <li><code>chmod +x kubectl &amp;&amp; sudo mv kubectl /usr/local/bin/</code></li>
 <li><code>kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080</code></li>
 <li><code>kubectl expose development hello-minikube --type=NodePort</code></li>
@@ -318,10 +318,10 @@ ga('send', 'pageview');
 <li>Kops 只能運行在 Mac/Linux</li>
 <li>如果你使用 windows，你必須要先啟動虛擬機</li>
 <li>可以使用 Vagrant 來快速建立一個 Linux box</li>
-<li>下載 <a href="https://virtualbox.org" target="_blank" rel="external">Virtualbox</a> 和 <a href="https://vagrantup.com" target="_blank" rel="external">Vagrant</a>，兩個都需要</li>
+<li>下載 <a href="https://virtualbox.org" target="_blank" rel="noopener">Virtualbox</a> 和 <a href="https://vagrantup.com" target="_blank" rel="noopener">Vagrant</a>，兩個都需要</li>
 <li>下載完之後，建立一個新的虛擬機，然後直接在 cmd/powershell 新增以下指令</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir ubuntu</div><div class="line">cd ubuntu</div><div class="line">vagrant init ubuntu/xenial64</div><div class="line">vagrant up</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir ubuntu</span><br><span class="line">cd ubuntu</span><br><span class="line">vagrant init ubuntu/xenial64</span><br><span class="line">vagrant up</span><br></pre></td></tr></table></figure>
 <h4>準備 Kops 安裝</h4>
 <ol>
 <li>完成上面的步驟</li>
@@ -331,7 +331,7 @@ ga('send', 'pageview');
 </ol>
 <h4>為 Kops 安裝準備 AWS</h4>
 <ol>
-<li><a href="https://github.com/kubernetes/kops" target="_blank" rel="external">Kops Github</a></li>
+<li><a href="https://github.com/kubernetes/kops" target="_blank" rel="noopener">Kops Github</a></li>
 <li><code>brew update &amp;&amp; brew install kops</code></li>
 <li><code>wget https://github.com/kubernetes/kops/releases/download/1.7.0/kops-linux-amd64</code></li>
 <li><code>chmod +x kops-linux-amd64</code> 新增執行權限</li>
@@ -345,12 +345,12 @@ ga('send', 'pageview');
 <li>進入 AWS，選擇服務 IAM (Identity and Access Management)，選擇左列選單 Users，選擇 Add User，命名為 kops，下面選項 Programmatic access 要打勾，下個步驟選擇 AdministratorAccess，完成設定。</li>
 <li><code>aws configure</code></li>
 <li><code>ls -ahl ~/.aws/</code> 檢視 aws credentials</li>
-<li>設定完 IAM 之後，回到服務，選擇 S3，新增 bucket，名稱設定為 kops-state-b429b，最後一個是亂數，因為名稱要是唯一的，地區的選擇要去 <a href="http://www.cloudping.info/" target="_blank" rel="external">cloudping</a> 看哪個最快，選擇最快的就可以了，接下來直接按到完成。</li>
+<li>設定完 IAM 之後，回到服務，選擇 S3，新增 bucket，名稱設定為 kops-state-b429b，最後一個是亂數，因為名稱要是唯一的，地區的選擇要去 <a href="http://www.cloudping.info/" target="_blank" rel="noopener">cloudping</a> 看哪個最快，選擇最快的就可以了，接下來直接按到完成。</li>
 <li>接下來要設定 DNS，選擇服務 Route53，選擇 DNS management 的 Get Started Now，選擇 Create Hosted Zone，打入自己所擁有的網域，名稱設為 kubernetes，最後到自己的 Domain 主機商那邊設定 DNS。</li>
 </ol>
 <h4>使用 kops 進行 AWS Cluster 設定</h4>
 <ol>
-<li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank" rel="external">安裝 kubectl</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank" rel="noopener">安裝 kubectl</a></li>
 <li><code>curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl</code> 下載最新版的 kubectl</li>
 <li><code>chmod +x ./kubectl</code></li>
 <li><code>sudo mv ./kubectl /usr/local/bin/kubectl</code></li>
@@ -373,7 +373,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/08/10/Kubernetes-快速學習自我挑戰-Day1/" data-id="cjifg6b79000w965xlkq6y8hg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/08/10/Kubernetes-快速學習自我挑戰-Day1/" data-id="cjifii0ho000z8d5x413737l5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

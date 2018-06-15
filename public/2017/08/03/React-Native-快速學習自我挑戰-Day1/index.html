@@ -181,7 +181,7 @@ ga('send', 'pageview');
 <li>在每個作業系統安裝 dependencires</li>
 <li>針對不同編輯器安裝不同的 ESLint</li>
 <li>生成 React Native 專案</li>
-<li><a href="https://github.com/StephenGrider/ReactNativeReduxCasts" target="_blank" rel="external">課程 Repo</a></li>
+<li><a href="https://github.com/StephenGrider/ReactNativeReduxCasts" target="_blank" rel="noopener">課程 Repo</a></li>
 </ol>
 <h3>在不同的系統部署環境</h3>
 <h4>OSX 安裝流程</h4>
@@ -220,13 +220,13 @@ ga('send', 'pageview');
 <li>在專案根目錄新增檔案 <strong>.eslintrc</strong></li>
 <li>在 .eslintrc 新增以下內容</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;extends&quot;: &quot;standard&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;extends&quot;: &quot;standard&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3>向前進！</h3>
 <ol>
-<li><a href="https://rallycoding.com/blog/troubleshooting-react-native-startup/" target="_blank" rel="external">React Native 安裝疑難排解</a></li>
+<li><a href="https://rallycoding.com/blog/troubleshooting-react-native-startup/" target="_blank" rel="noopener">React Native 安裝疑難排解</a></li>
 <li>從 ios.index.js 開始，先刪除所有檔案，首先引入函式庫</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import ReactNative from &apos;react-native&apos;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import ReactNative from &apos;react-native&apos;;</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>React vs React Native
 <ul>
@@ -238,7 +238,7 @@ ga('send', 'pageview');
 </li>
 <li>創建一個 Component</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const App = () =&gt; &#123;</div><div class="line">    return (</div><div class="line">        &lt;Text&gt;Some Text&lt;/Text&gt;</div><div class="line">    );</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const App = () =&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;Text&gt;Some Text&lt;/Text&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>將套件內容讀取出來<br>
 <code>ReactNative.AppRegistry.registerComponent('albums', () =&gt; App);</code></li>
@@ -247,41 +247,41 @@ ga('send', 'pageview');
 <code>AppRegistry.registerComponent('albums', () =&gt; App);</code></li>
 <li>創建 Component 的部分可以簡化</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const App = () =&gt; (</div><div class="line">    &lt;Text&gt;Some Text&lt;/Text&gt;</div><div class="line">);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const App = () =&gt; (</span><br><span class="line">    &lt;Text&gt;Some Text&lt;/Text&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <ol start="8">
 <li>新增一個檔案 src/components/header.js</li>
 <li>在 header.js 引入函式庫</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import &#123; Text &#125; from &apos;react-native&apos;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import &#123; Text &#125; from &apos;react-native&apos;;</span><br></pre></td></tr></table></figure>
 <ol start="10">
 <li>製作 Component</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const Header = () =&gt; &#123;</div><div class="line">    return &lt;Text&gt;Albums!&lt;/Text&gt;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const Header = () =&gt; &#123;</span><br><span class="line">    return &lt;Text&gt;Albums!&lt;/Text&gt;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <ol start="11">
 <li>接下來要讓 Component 可以在 app 的其它部分使用，但是只有 root Component 才用 “AppRegistry”，在這邊我們使用<code>export default Header;</code></li>
 <li>在 root 呼叫 Component<br>
 <code>import Header from './src/components/header';</code></li>
 <li>再來直接將 Header 放在 Component 裡面</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const App = () =&gt; (</div><div class="line">    &lt;Header /&gt;</div><div class="line">);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const App = () =&gt; (</span><br><span class="line">    &lt;Header /&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <h3>處理樣式問題</h3>
 <ol>
 <li>在 header.js 新增樣式</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const styles = &#123;</div><div class="line">    textStyle: &#123;</div><div class="line">        fontSize: 20</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const styles = &#123;</span><br><span class="line">    textStyle: &#123;</span><br><span class="line">        fontSize: 20</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>將樣式加入 component</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const Header = () =&gt; &#123;</div><div class="line">    const &#123; textStyle &#125; = styles;</div><div class="line"></div><div class="line">    return &lt;Text style=&#123;textStyle&#125;&gt;Albums!&lt;/Text&gt;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const Header = () =&gt; &#123;</span><br><span class="line">    const &#123; textStyle &#125; = styles;</span><br><span class="line"></span><br><span class="line">    return &lt;Text style=&#123;textStyle&#125;&gt;Albums!&lt;/Text&gt;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>引入 view <code>import { Text, View } from 'react-native';</code></li>
 <li>新增 viewStyle</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const styles = &#123;</div><div class="line">    viewStyle: &#123;</div><div class="line">        backgroundColor: &apos;#F8F8F8&apos;</div><div class="line">    &#125;,</div><div class="line">    textStyle: &#123;</div><div class="line">        fontSize: 20</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const styles = &#123;</span><br><span class="line">    viewStyle: &#123;</span><br><span class="line">        backgroundColor: &apos;#F8F8F8&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    textStyle: &#123;</span><br><span class="line">        fontSize: 20</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>使用 viewStyle</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">const Header = () =&gt; &#123;</div><div class="line">    const &#123; textStyle, viewStyle &#125; = styles;</div><div class="line"></div><div class="line">    return (</div><div class="line">        &lt;View style=&#123;viewStyle&#125;&gt;</div><div class="line">            &lt;Text style=&#123;textStyle&#125;&gt;Albums!&lt;/Text&gt;</div><div class="line">        &lt;/View&gt;</div><div class="line">    );</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const Header = () =&gt; &#123;</span><br><span class="line">    const &#123; textStyle, viewStyle &#125; = styles;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        &lt;View style=&#123;viewStyle&#125;&gt;</span><br><span class="line">            &lt;Text style=&#123;textStyle&#125;&gt;Albums!&lt;/Text&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <ol start="6">
 <li>使用 flexbox
 <ul>
@@ -295,7 +295,7 @@ ga('send', 'pageview');
 </li>
 <li>修改 viewStyle</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">viewStyle: &#123;</div><div class="line">        backgroundColor: &apos;#F8F8F8&apos;,</div><div class="line">        justifyContent: &apos;center&apos;,</div><div class="line">        alignItems: &apos;center&apos;,</div><div class="line">        height: 60,</div><div class="line">        paddingTop: 15,</div><div class="line">        shadowColor: &apos;#000&apos;,</div><div class="line">        shadowOffset: &#123; width: 0, height: 2 &#125;,</div><div class="line">        shadowOpacity: 0.2,</div><div class="line">        elevation: 2,</div><div class="line">        position: &apos;relative&apos;</div><div class="line">    &#125;,</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">viewStyle: &#123;</span><br><span class="line">        backgroundColor: &apos;#F8F8F8&apos;,</span><br><span class="line">        justifyContent: &apos;center&apos;,</span><br><span class="line">        alignItems: &apos;center&apos;,</span><br><span class="line">        height: 60,</span><br><span class="line">        paddingTop: 15,</span><br><span class="line">        shadowColor: &apos;#000&apos;,</span><br><span class="line">        shadowOffset: &#123; width: 0, height: 2 &#125;,</span><br><span class="line">        shadowOpacity: 0.2,</span><br><span class="line">        elevation: 2,</span><br><span class="line">        position: &apos;relative&apos;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
 <h4>讓 Header 可以再使用</h4>
 <ol>
 <li>將本來文字的地方用 props 取代 <code>{props.headerText}</code></li>
@@ -309,7 +309,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/08/03/React-Native-快速學習自我挑戰-Day1/" data-id="cjifg6b9s005y965xca91k9b1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/08/03/React-Native-快速學習自我挑戰-Day1/" data-id="cjifii0jd004t8d5xa8bvkor5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

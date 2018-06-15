@@ -175,7 +175,7 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <img src="/images/learning/laravel/laravelday3.jpg">
 <hr>
-<h3>Views - <a href="https://laravel.com/docs/5.2/views" target="_blank" rel="external">Views 設定官方文件</a></h3>
+<h3>Views - <a href="https://laravel.com/docs/5.2/views" target="_blank" rel="noopener">Views 設定官方文件</a></h3>
 <p>路徑：/resources/views</p>
 <ol>
 <li>在 Controller 新增一個 function<br>
@@ -204,7 +204,7 @@ ga('send', 'pageview');
 <code>public function show_post($id, $name, $password){return view('post', compact('id','name','password'));}</code></li>
 <li>在 View 裡面使用 data</li>
 </ol>
-<h3>blade (PHP模板引擎) - <a href="https://laravel.com/docs/5.2/blade" target="_blank" rel="external">blade 設定官方文件</a></h3>
+<h3>blade (PHP模板引擎) - <a href="https://laravel.com/docs/5.2/blade" target="_blank" rel="noopener">blade 設定官方文件</a></h3>
 <p><code>!</code> + <code>tab</code> =&gt; html 模板<br>
 <code>div.container</code> + <code>tab</code> =&gt; class 為 container 的 div 容器<br>
 <code>@yield('content')</code> =&gt; 產生一個內容的區塊<br>
@@ -217,8 +217,8 @@ ga('send', 'pageview');
 <code>return view('contact', compact('people'));</code></li>
 <li>在 contact.blade.php 裡面列出人名 (blade 的函式皆以 @ 開頭)</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@if (count($people))</div><div class="line">  &lt;ul&gt;</div><div class="line">  @foreach($people as $person)</div><div class="line">      &lt;li&gt;&#123;&#123;$person&#125;&#125;&lt;/li&gt;</div><div class="line">  @endforeach</div><div class="line">  &lt;/ul&gt;</div><div class="line">@endif</div></pre></td></tr></table></figure>
-<h3>Database Migration - <a href="https://laravel.com/docs/5.2/migrations" target="_blank" rel="external">Migration 設定官方文件</a></h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@if (count($people))</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">  @foreach($people as $person)</span><br><span class="line">      &lt;li&gt;&#123;&#123;$person&#125;&#125;&lt;/li&gt;</span><br><span class="line">  @endforeach</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">@endif</span><br></pre></td></tr></table></figure>
+<h3>Database Migration - <a href="https://laravel.com/docs/5.2/migrations" target="_blank" rel="noopener">Migration 設定官方文件</a></h3>
 <p>sqlite：file based database，資料庫內容儲存於檔案裡，應用於小專案。</p>
 <ol>
 <li>先設定 .env</li>
@@ -248,7 +248,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/04/24/Lavarel-快速學習自我挑戰-Day3/" data-id="cjifg6b8z003q965xkzqk0bkq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/04/24/Lavarel-快速學習自我挑戰-Day3/" data-id="cjifii0ih002u8d5xcq2464xl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

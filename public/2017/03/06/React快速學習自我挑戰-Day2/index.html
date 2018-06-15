@@ -185,7 +185,7 @@ ga('send', 'pageview');
 <ul>
 <li>註冊 Youtube API Key。
 <ul>
-<li>前往<a href="https://console.developers.google.com" target="_blank" rel="external">Goolge開發者界面</a>。</li>
+<li>前往<a href="https://console.developers.google.com" target="_blank" rel="noopener">Goolge開發者界面</a>。</li>
 <li>點選左方選單的 Library。</li>
 <li>搜尋 Youtube，並選擇「YouTube Data API v3」。</li>
 <li>Enable 該套件。</li>
@@ -225,12 +225,12 @@ ga('send', 'pageview');
 </ol>
 <hr>
 <p>建立搜尋欄位</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const SearchBar = () =&gt; &#123;</div><div class="line">  return &lt;input /&gt;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const SearchBar = () =&gt; &#123;</span><br><span class="line">  return &lt;input /&gt;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>即時顯示值<br>
 this.state =&gt; 創建一個 term 的空值。<br>
 this.setState =&gt; 得到現在 input 裡面的值(並非直接改變)。<br>
 value={this.state.term} =&gt; 取得 this.state 的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class SearchBar extends Component &#123;</div><div class="line">  constructor(props) &#123;</div><div class="line">    super(props);</div><div class="line"></div><div class="line">    this.state = &#123; term: &apos;&apos; &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;input</div><div class="line">          value=&#123;this.state.term&#125;</div><div class="line">          onChange=&#123;event =&gt; this.setState(&#123; term: event.target.value &#125;)&#125; /&gt;</div><div class="line">        Value of the input: &#123;this.state.term&#125;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class SearchBar extends Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line"></span><br><span class="line">    this.state = &#123; term: &apos;&apos; &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          value=&#123;this.state.term&#125;</span><br><span class="line">          onChange=&#123;event =&gt; this.setState(&#123; term: event.target.value &#125;)&#125; /&gt;</span><br><span class="line">        Value of the input: &#123;this.state.term&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -238,7 +238,7 @@ value={this.state.term} =&gt; 取得 this.state 的值。</p>
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/03/06/React快速學習自我挑戰-Day2/" data-id="cjifg6ba2006s965xkh1gmj5w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/03/06/React快速學習自我挑戰-Day2/" data-id="cjifii0jw005t8d5x4vh0tikx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

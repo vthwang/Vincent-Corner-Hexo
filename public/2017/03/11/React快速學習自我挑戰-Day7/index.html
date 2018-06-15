@@ -181,15 +181,15 @@ ga('send', 'pageview');
 <li>基本上需要跟 Redux 溝通的就是 Container。</li>
 <li>下面範例中，this (就是 SearchBar) 有一個 function 叫做 onInputChange，然後把這個 function bind 到 this，然後把得到值放到下方的 onInputChange 裡面。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">constructor(props) &#123;</div><div class="line">        super(props);</div><div class="line"></div><div class="line">        this.state = &#123; term: &apos;&apos; &#125;;</div><div class="line"></div><div class="line">        this.onInputChange = this.onInputChange.bind(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    onInputChange(event) &#123;</div><div class="line">        this.setState(&#123; term: event.target.value &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line"></span><br><span class="line">        this.state = &#123; term: &apos;&apos; &#125;;</span><br><span class="line"></span><br><span class="line">        this.onInputChange = this.onInputChange.bind(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onInputChange(event) &#123;</span><br><span class="line">        this.setState(&#123; term: event.target.value &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>如果不希望 User 一直重新整理頁面，我們可以加 event handler。</li>
-<li><a href="http://openweathermap.org/forecast5" target="_blank" rel="external">open weather API</a>。
+<li><a href="http://openweathermap.org/forecast5" target="_blank" rel="noopener">open weather API</a>。
 <ul>
 <li>sign up 之後，進入 API Key 的頁面，就可以拿到 API key 囉！</li>
 </ul>
 </li>
-<li><a href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related" target="_blank" rel="external">JSON Formatter (chrome 外掛)</a>。</li>
+<li><a href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related" target="_blank" rel="noopener">JSON Formatter (chrome 外掛)</a>。</li>
 </ol>
 
         </div>
@@ -198,7 +198,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/03/11/React快速學習自我挑戰-Day7/" data-id="cjifg6ba70078965xxyyl6ajc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/03/11/React快速學習自我挑戰-Day7/" data-id="cjifii0k400688d5xng6oc0nh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

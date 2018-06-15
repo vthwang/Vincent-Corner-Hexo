@@ -182,16 +182,16 @@ ga('send', 'pageview');
 /public：css folder、javascript folder、image folder。<br>
 /resources/views：存放畫面的位置，跟 controller 保持連線。<br>
 /vendor：存放套件的地方。</p>
-<h3>Route 設定 - <a href="https://laravel.com/docs/5.2/routing" target="_blank" rel="external">路由設定官方文件</a></h3>
+<h3>Route 設定 - <a href="https://laravel.com/docs/5.2/routing" target="_blank" rel="noopener">路由設定官方文件</a></h3>
 <p><strong>修改 /app/Http/routes.php</strong><br>
 傳 id, name 兩個變數到頁面的範例。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/post/&#123;id&#125;/&#123;name&#125;&apos;, function($id, $name)&#123;</div><div class="line">    return &quot;This is post number &quot;. $id . &quot; &quot; .$name;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/post/&#123;id&#125;/&#123;name&#125;&apos;, function($id, $name)&#123;</span><br><span class="line">    return &quot;This is post number &quot;. $id . &quot; &quot; .$name;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h3>路由命名法</h3>
 <p>查詢路由狀態。<br>
 <code>php artisan route:list</code><br>
 將路由用簡短的方式命名，以下用<code>admin.home</code>來取得路由。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;admin/posts/example&apos;, array(&apos;as&apos;=&gt;&apos;admin.home&apos; ,function()&#123;</div><div class="line">    $url = route(&apos;admin.home&apos;);</div><div class="line"></div><div class="line">    return &quot;this url is &quot;. $url;</div><div class="line">&#125;));</div></pre></td></tr></table></figure>
-<h3>Controller - <a href="https://laravel.com/docs/5.2/controllers" target="_blank" rel="external">Controller 設定官方文件</a></h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;admin/posts/example&apos;, array(&apos;as&apos;=&gt;&apos;admin.home&apos; ,function()&#123;</span><br><span class="line">    $url = route(&apos;admin.home&apos;);</span><br><span class="line"></span><br><span class="line">    return &quot;this url is &quot;. $url;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<h3>Controller - <a href="https://laravel.com/docs/5.2/controllers" target="_blank" rel="noopener">Controller 設定官方文件</a></h3>
 <ol>
 <li>Controller 是用來處理來自 database 資訊的 class，然後將資料丟到 view (反之亦然)。</li>
 <li>Controller 路徑 - /app/Http/Controllers/Controller.php。</li>
@@ -234,7 +234,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/04/23/Lavarel-快速學習自我挑戰-Day2/" data-id="cjifg6b8w003n965xicyxvg05" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/04/23/Lavarel-快速學習自我挑戰-Day2/" data-id="cjifii0ic002g8d5x4i45dfg0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

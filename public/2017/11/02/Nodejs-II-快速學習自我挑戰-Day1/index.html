@@ -225,7 +225,7 @@ ga('send', 'pageview');
 <ol>
 <li>VS code 設定檔案</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;editor.fontSize&quot;: 26,</div><div class="line">  &quot;terminal.integrated.fontSize&quot;: 26,</div><div class="line">  &quot;terminal.integrated.shell.windows&quot;: &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;</div><div class="line">  &quot;editor.wordWrap&quot;: &quot;on&quot;</div><div class="line">  &quot;editor.tabSize&quot;: 2,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;editor.fontSize&quot;: 26,</span><br><span class="line">  &quot;terminal.integrated.fontSize&quot;: 26,</span><br><span class="line">  &quot;terminal.integrated.shell.windows&quot;: &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;</span><br><span class="line">  &quot;editor.wordWrap&quot;: &quot;on&quot;</span><br><span class="line">  &quot;editor.tabSize&quot;: 2,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4>什麼是 Node.js</h4>
 <ol>
 <li>什麼是 Node.js?
@@ -269,7 +269,7 @@ ga('send', 'pageview');
 </ol>
 <h4>安裝本地 MongoDB</h4>
 <ol>
-<li><a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="external">下載 MongoDB</a></li>
+<li><a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="noopener">下載 MongoDB</a></li>
 <li>安裝在 C 槽，在 mongodb 根目錄新增 data 的資料夾，在 data 的資料夾再新增 db 的資料夾。在 mongodb 根目錄新增 log，在 log 的資料夾新增檔案 <code>mongo.log</code></li>
 <li>用系統管理員打開 cmd，跳到 mongodb bin 目錄，<code>cd c:/mongodb/bin</code></li>
 <li><code>mongod --directoryperdb --dbpath C:\mongodb\data\db --logpath C:\mongodb\log\mongo.log --logappend --rest --install</code></li>
@@ -279,20 +279,20 @@ ga('send', 'pageview');
 </ol>
 <h4>註冊 mlab</h4>
 <ol>
-<li><a href="https://mlab.com/" target="_blank" rel="external">mLab</a></li>
+<li><a href="https://mlab.com/" target="_blank" rel="noopener">mLab</a></li>
 </ol>
 <h4>註冊 Heroku</h4>
 <ol>
-<li><a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a></li>
+<li><a href="https://www.heroku.com/" target="_blank" rel="noopener">Heroku</a></li>
 </ol>
 <h3>VidJot Project</h3>
 <h4>介紹</h4>
 <ol>
-<li><a href="http://www.vidjot.tech/" target="_blank" rel="external">VidJot</a></li>
+<li><a href="http://www.vidjot.tech/" target="_blank" rel="noopener">VidJot</a></li>
 </ol>
 <h4>安裝和啟動 Express</h4>
 <ol>
-<li><a href="http://expressjs.com/" target="_blank" rel="external">Express 官方網站</a></li>
+<li><a href="http://expressjs.com/" target="_blank" rel="noopener">Express 官方網站</a></li>
 <li>設定 npm 預設值
 <ul>
 <li><code>npm set init-author-name=&quot;Vincent Adler&quot;</code></li>
@@ -308,12 +308,12 @@ ga('send', 'pageview');
 <li>安裝 express <code>npm install express --save</code></li>
 <li>在根目錄新增 app.js</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">const express = require(&apos;express&apos;);</div><div class="line"></div><div class="line">const app = express();</div><div class="line"></div><div class="line">const port = 5000;</div><div class="line"></div><div class="line">app.listen(port, () =&gt; &#123;</div><div class="line">    console.log(`Server started on Port $&#123;port&#125;`);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const express = require(&apos;express&apos;);</span><br><span class="line"></span><br><span class="line">const app = express();</span><br><span class="line"></span><br><span class="line">const port = 5000;</span><br><span class="line"></span><br><span class="line">app.listen(port, () =&gt; &#123;</span><br><span class="line">    console.log(`Server started on Port $&#123;port&#125;`);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h4>基礎路由和 Nodemon</h4>
 <ol>
 <li>在 app.js 新增路由</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// Index Route</div><div class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.send(&apos;INDEX&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// About Route</div><div class="line">app.get(&apos;/about&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.send(&apos;ABOUT&apos;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Index Route</span><br><span class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    res.send(&apos;INDEX&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// About Route</span><br><span class="line">app.get(&apos;/about&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    res.send(&apos;ABOUT&apos;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>安裝 nodemon <code>npm install -g nodemon</code></li>
 <li>檢查 npm 套件安裝位置 <code>npm root -g</code></li>
@@ -321,73 +321,73 @@ ga('send', 'pageview');
 </ol>
 <h4>Express Middleware</h4>
 <ol>
-<li><a href="http://expressjs.com/en/guide/using-middleware.html" target="_blank" rel="external">Middleware 簡介</a></li>
+<li><a href="http://expressjs.com/en/guide/using-middleware.html" target="_blank" rel="noopener">Middleware 簡介</a></li>
 <li>在 app.js 新增 middleware</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">app.use(function(req, res, next) &#123;</div><div class="line">    console.log(Date.now());</div><div class="line">    next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.use(function(req, res, next) &#123;</span><br><span class="line">    console.log(Date.now());</span><br><span class="line">    next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="3">
-<li>在 middleware 放入 <a href="http://req.name" target="_blank" rel="external">req.name</a> 可以在 app.get 取得</li>
+<li>在 middleware 放入 <a href="http://req.name" target="_blank" rel="noopener">req.name</a> 可以在 app.get 取得</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">app.use(function(req, res, next) &#123;</div><div class="line">    req.name = &apos;Vincent Adler&apos;;</div><div class="line">    next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.send(req.name);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.use(function(req, res, next) &#123;</span><br><span class="line">    req.name = &apos;Vincent Adler&apos;;</span><br><span class="line">    next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    res.send(req.name);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h4>使用模板</h4>
 <ol>
-<li><a href="http://handlebarsjs.com/" target="_blank" rel="external">handlebars.js 官方網站</a></li>
-<li><a href="https://github.com/ericf/express-handlebars" target="_blank" rel="external">在 express 使用 handlebars</a></li>
-<li><a href="https://github.com/mde/ejs" target="_blank" rel="external">EJS</a></li>
+<li><a href="http://handlebarsjs.com/" target="_blank" rel="noopener">handlebars.js 官方網站</a></li>
+<li><a href="https://github.com/ericf/express-handlebars" target="_blank" rel="noopener">在 express 使用 handlebars</a></li>
+<li><a href="https://github.com/mde/ejs" target="_blank" rel="noopener">EJS</a></li>
 <li>安裝 express-handlebars <code>npm install express-handlebars --save</code></li>
 <li>引入 express-handlebars<br>
 <code>const exphbs = require('express-handlebars');</code></li>
 <li>新增 handlebars middleware</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">app.engine(&apos;handlebars&apos;, exphbs(&#123;</div><div class="line">    defaultLayout: &apos;main&apos;</div><div class="line">&#125;));</div><div class="line">app.set(&apos;view engine&apos;, &apos;handlebars&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.engine(&apos;handlebars&apos;, exphbs(&#123;</span><br><span class="line">    defaultLayout: &apos;main&apos;</span><br><span class="line">&#125;));</span><br><span class="line">app.set(&apos;view engine&apos;, &apos;handlebars&apos;);</span><br></pre></td></tr></table></figure>
 <ol start="7">
 <li>新增 views/index.handlebars <code>&lt;h1&gt;Welcome&lt;/h1&gt;</code></li>
 <li>新增 views/layouts/main.handlebars，<code>{{{body}}}</code> 會讀出被 render 的 view</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;meta name=&quot;viewport&quot;</div><div class="line">          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</div><div class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</div><div class="line">    &lt;title&gt;VidJot&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &#123;&#123;&#123;body&#125;&#125;&#125;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot;</span><br><span class="line">          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;VidJot&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &#123;&#123;&#123;body&#125;&#125;&#125;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <ol start="9">
 <li>把 app.js route 的 send 都改成 render</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.render(&apos;index&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(&apos;/about&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.render(&apos;about&apos;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    res.render(&apos;index&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.get(&apos;/about&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    res.render(&apos;about&apos;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="10">
 <li>新增 views/about.handlebars <code>&lt;h1&gt;About&lt;/h1&gt;</code></li>
 <li>讓讀取的資料變成動態</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</div><div class="line">    const title = &apos;Welcome&apos;;</div><div class="line">    res.render(&apos;index&apos;, &#123;</div><div class="line">        title: title</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    const title = &apos;Welcome&apos;;</span><br><span class="line">    res.render(&apos;index&apos;, &#123;</span><br><span class="line">        title: title</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="12">
 <li>修改 views/index.handlebars <code>&lt;h1&gt;{{title}}&lt;/h1&gt;</code></li>
 </ol>
 <h4>Bootstrap 和 Partials</h4>
 <ol>
-<li><a href="http://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank" rel="external">取得 Bootstrap 的 CDN</a></li>
+<li><a href="http://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank" rel="noopener">取得 Bootstrap 的 CDN</a></li>
 <li>在 views/layouts/main.handlebars 引入 CDN</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// CSS</div><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css&quot; integrity=&quot;sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb&quot; crossorigin=&quot;anonymous&quot;&gt;</div><div class="line"></div><div class="line">// JS</div><div class="line">&lt;script src=&quot;https://code.jquery.com/jquery-3.2.1.slim.min.js&quot; integrity=&quot;sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js&quot; integrity=&quot;sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js&quot; integrity=&quot;sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// CSS</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css&quot; integrity=&quot;sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb&quot; crossorigin=&quot;anonymous&quot;&gt;</span><br><span class="line"></span><br><span class="line">// JS</span><br><span class="line">&lt;script src=&quot;https://code.jquery.com/jquery-3.2.1.slim.min.js&quot; integrity=&quot;sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js&quot; integrity=&quot;sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js&quot; integrity=&quot;sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>在 views/layouts/main.handlebars，body 用 container 包住</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;container&quot;&gt;</div><div class="line">    &#123;&#123;&#123;body&#125;&#125;&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &#123;&#123;&#123;body&#125;&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li>新增 views/partials/_navbar.handlebars</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;nav class=&quot;navbar navbar-expand-sm navbar-dark bg-primary&quot;&gt;</div><div class="line">    &lt;div class=&quot;container&quot;&gt;</div><div class="line">        &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;VidJot&lt;/a&gt;</div><div class="line">        &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarNav&quot; aria-controls=&quot;navbarNav&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;</div><div class="line">            &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;</div><div class="line">        &lt;/button&gt;</div><div class="line">        &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarNav&quot;&gt;</div><div class="line">            &lt;ul class=&quot;navbar-nav&quot;&gt;</div><div class="line">                &lt;li class=&quot;nav-item&quot;&gt;</div><div class="line">                    &lt;a class=&quot;nav-link&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;</div><div class="line">                &lt;/li&gt;</div><div class="line">                &lt;li class=&quot;nav-item&quot;&gt;</div><div class="line">                    &lt;a class=&quot;nav-link&quot; href=&quot;/about&quot;&gt;About&lt;/a&gt;</div><div class="line">                &lt;/li&gt;</div><div class="line">            &lt;/ul&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/nav&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav class=&quot;navbar navbar-expand-sm navbar-dark bg-primary&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;VidJot&lt;/a&gt;</span><br><span class="line">        &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarNav&quot; aria-controls=&quot;navbarNav&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;</span><br><span class="line">            &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">        &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarNav&quot;&gt;</span><br><span class="line">            &lt;ul class=&quot;navbar-nav&quot;&gt;</span><br><span class="line">                &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">                    &lt;a class=&quot;nav-link&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">                    &lt;a class=&quot;nav-link&quot; href=&quot;/about&quot;&gt;About&lt;/a&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/nav&gt;</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>在 views/layouts/main.handlebars 引入 navbar partial <code>{{> _navbar}}</code></li>
 <li>包裝一下 views/index.handlebars</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;jumbotron text-center&quot;&gt;</div><div class="line">    &lt;h1 class=&quot;display-3&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">    &lt;p class=&quot;lead&quot;&gt;Jot down ideas for your next YouTube Videos&lt;/p&gt;</div><div class="line">    &lt;a href=&quot;/ideas/add&quot; class=&quot;btn btn-dark btn-lg&quot;&gt;Add Video Idea&lt;/a&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;jumbotron text-center&quot;&gt;</span><br><span class="line">    &lt;h1 class=&quot;display-3&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;p class=&quot;lead&quot;&gt;Jot down ideas for your next YouTube Videos&lt;/p&gt;</span><br><span class="line">    &lt;a href=&quot;/ideas/add&quot; class=&quot;btn btn-dark btn-lg&quot;&gt;Add Video Idea&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <ol start="7">
 <li>包裝一下 views/about.handlebars</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;About&lt;/h1&gt;</div><div class="line">&lt;p&gt;This is a Node/Express app for jotting down ideas for future Youtube videos&lt;/p&gt;</div><div class="line">&lt;p&gt;Version: 1.0.0&lt;/p&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;About&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;This is a Node/Express app for jotting down ideas for future Youtube videos&lt;/p&gt;</span><br><span class="line">&lt;p&gt;Version: 1.0.0&lt;/p&gt;</span><br></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/11/02/Nodejs-II-快速學習自我挑戰-Day1/" data-id="cjifg6b9c004p965xydzvqzvg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/11/02/Nodejs-II-快速學習自我挑戰-Day1/" data-id="cjifii0is003m8d5xj0xridk5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

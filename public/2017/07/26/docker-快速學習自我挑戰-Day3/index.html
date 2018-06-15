@@ -196,7 +196,7 @@ ga('send', 'pageview');
 </ol>
 <h4>強大的 hub：使用 Docker Hub Registry images</h4>
 <ol>
-<li><a href="https://hub.docker.com" target="_blank" rel="external">Docker Hub</a> 的基礎</li>
+<li><a href="https://hub.docker.com" target="_blank" rel="noopener">Docker Hub</a> 的基礎</li>
 <li>找到官方和其它很棒的公開 image</li>
 <li>下載 images 和 image tags 的基礎</li>
 <li>Docker Hub：container 版的 apt 套件系統</li>
@@ -259,7 +259,7 @@ ga('send', 'pageview');
 </ol>
 <h4>建立 images：運行 Docker Builds</h4>
 <ol>
-<li>新增一個 <a href="https://raw.githubusercontent.com/BretFisher/udemy-docker-mastery/master/dockerfile-sample-1/Dockerfile" target="_blank" rel="external">Dockerfile</a> 到根目錄</li>
+<li>新增一個 <a href="https://raw.githubusercontent.com/BretFisher/udemy-docker-mastery/master/dockerfile-sample-1/Dockerfile" target="_blank" rel="noopener">Dockerfile</a> 到根目錄</li>
 <li><code>docker image build -t customnginx .</code> 用 dockerfile 新建一個 image</li>
 </ol>
 <h4>建立 images：擴展官方 image</h4>
@@ -285,7 +285,7 @@ ga('send', 'pageview');
 <ol>
 <li>Dockerfile</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"># Instructions from the app developer</div><div class="line"># - you should use the &apos;node&apos; official image, with the alpine 6.x branch</div><div class="line">FROM node:6-alpine</div><div class="line"># - this app listens on port 3000, but the container should launch on port 80</div><div class="line">#  so it will respond to http://localhost:80 on your computer</div><div class="line">EXPOSE 3000</div><div class="line"># - then it should use alpine package manager to install tini: &apos;apk add --update tini&apos;</div><div class="line">RUN apk add --update tini</div><div class="line"># - then it should create directory /usr/src/app for app files with &apos;mkdir -p /usr/src/app&apos;</div><div class="line">RUN mkdir -p /usr/src/app</div><div class="line"># - Node uses a &quot;package manager&quot;, so it needs to copy in package.json file</div><div class="line">COPY package.json package.json</div><div class="line"># - then it needs to run &apos;npm install&apos; to install dependencies from that file</div><div class="line">RUN npm install &amp;&amp; npm cache clean</div><div class="line"># - to keep it clean and small, run &apos;npm cache clean --force&apos; after above</div><div class="line"># - then it needs to copy in all files from current director</div><div class="line">COPY . .</div><div class="line"># - then it needs to start container with command &apos;tini -- node ./bin/www&apos;</div><div class="line">CMD [ &quot;tini&quot;, &quot;--&quot;, &quot;node&quot;, &quot;./bin/www&quot;]</div><div class="line"># - in the end you should be using FROM, RUN, WORKDIR, COPY, EXPOSE, and CMD commands</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Instructions from the app developer</span><br><span class="line"># - you should use the &apos;node&apos; official image, with the alpine 6.x branch</span><br><span class="line">FROM node:6-alpine</span><br><span class="line"># - this app listens on port 3000, but the container should launch on port 80</span><br><span class="line">#  so it will respond to http://localhost:80 on your computer</span><br><span class="line">EXPOSE 3000</span><br><span class="line"># - then it should use alpine package manager to install tini: &apos;apk add --update tini&apos;</span><br><span class="line">RUN apk add --update tini</span><br><span class="line"># - then it should create directory /usr/src/app for app files with &apos;mkdir -p /usr/src/app&apos;</span><br><span class="line">RUN mkdir -p /usr/src/app</span><br><span class="line"># - Node uses a &quot;package manager&quot;, so it needs to copy in package.json file</span><br><span class="line">COPY package.json package.json</span><br><span class="line"># - then it needs to run &apos;npm install&apos; to install dependencies from that file</span><br><span class="line">RUN npm install &amp;&amp; npm cache clean</span><br><span class="line"># - to keep it clean and small, run &apos;npm cache clean --force&apos; after above</span><br><span class="line"># - then it needs to copy in all files from current director</span><br><span class="line">COPY . .</span><br><span class="line"># - then it needs to start container with command &apos;tini -- node ./bin/www&apos;</span><br><span class="line">CMD [ &quot;tini&quot;, &quot;--&quot;, &quot;node&quot;, &quot;./bin/www&quot;]</span><br><span class="line"># - in the end you should be using FROM, RUN, WORKDIR, COPY, EXPOSE, and CMD commands</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li><code>docker build -t testnode .</code> 使用 Dockerfile 建立 image</li>
 <li><code>docker container run --rm -p 80:3000 testnode</code> 使用 image 建立 container</li>
@@ -301,7 +301,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/07/26/docker-快速學習自我挑戰-Day3/" data-id="cjifg6bae007w965xud3th4oz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/07/26/docker-快速學習自我挑戰-Day3/" data-id="cjifii0kk006z8d5x5ieclqly" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

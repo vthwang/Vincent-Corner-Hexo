@@ -182,7 +182,7 @@ ga('send', 'pageview');
 <li><strong>AWS Plugin</strong> 可以藉由在 AWS 創建 volumes 來<strong>提供 storage</strong>，但是要在 volume 連接到 node 之前才能做</li>
 <li>這些可以使用 <strong>StorageClass object</strong> 來完成
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#storageclasses" target="_blank" rel="external">Documentation</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#storageclasses" target="_blank" rel="noopener">Documentation</a></li>
 </ul>
 </li>
 <li>使用 <strong>auto provisioned volumes</strong>，可以創建以下 yaml 檔案：
@@ -191,7 +191,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">kind: StorageClass</div><div class="line">apiVersion: storage.k8s.io/v1beta1</div><div class="line">metadata:</div><div class="line">  name: standard</div><div class="line">provisioner: kubernetes.io/aws-ebs</div><div class="line">parameters:</div><div class="line">  type: gp2</div><div class="line">  zone: us-east-1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">kind: StorageClass</span><br><span class="line">apiVersion: storage.k8s.io/v1beta1</span><br><span class="line">metadata:</span><br><span class="line">  name: standard</span><br><span class="line">provisioner: kubernetes.io/aws-ebs</span><br><span class="line">parameters:</span><br><span class="line">  type: gp2</span><br><span class="line">  zone: us-east-1</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>這樣可以創建 volume 並宣告使用 <strong>aws-ebs provisioner</strong></li>
 <li>Kubernetes 將會提供 type <strong>gp2</strong> 的 volume (一般用途 - SSD)</li>
@@ -201,7 +201,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">kind: PersistentVolumeClaim</div><div class="line">apiVersion: v1</div><div class="line">metadata:</div><div class="line">  name: myclaim</div><div class="line">  annotations:</div><div class="line">    volume.beta.kubernetes.io/storage-class: &quot;standard&quot;</div><div class="line">spec:</div><div class="line">  accessModes:</div><div class="line">    - ReadWriteOnce</div><div class="line">  resources:</div><div class="line">    requests:</div><div class="line">      storage: 8Gi</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">kind: PersistentVolumeClaim</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: myclaim</span><br><span class="line">  annotations:</span><br><span class="line">    volume.beta.kubernetes.io/storage-class: &quot;standard&quot;</span><br><span class="line">spec:</span><br><span class="line">  accessModes:</span><br><span class="line">    - ReadWriteOnce</span><br><span class="line">  resources:</span><br><span class="line">    requests:</span><br><span class="line">      storage: 8Gi</span><br></pre></td></tr></table></figure>
 <ol start="8">
 <li>最後，可以使用 volume 來啟動 pod
 <ul>
@@ -209,7 +209,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">kind: Pod</div><div class="line">apiVersion: v1</div><div class="line">metadata:</div><div class="line">  name: mypod</div><div class="line">spec:</div><div class="line">  containers:</div><div class="line">    - name: myfrontend</div><div class="line">      image: nginx</div><div class="line">      volumeMounts:</div><div class="line">      - mountPath: &quot;/var/www/html&quot;</div><div class="line">        name: mypd</div><div class="line">  volumes:</div><div class="line">    - name: mypd</div><div class="line">      persistentVolumeClaim:</div><div class="line">        claimName: myclaim</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">kind: Pod</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: mypod</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">    - name: myfrontend</span><br><span class="line">      image: nginx</span><br><span class="line">      volumeMounts:</span><br><span class="line">      - mountPath: &quot;/var/www/html&quot;</span><br><span class="line">        name: mypd</span><br><span class="line">  volumes:</span><br><span class="line">    - name: mypd</span><br><span class="line">      persistentVolumeClaim:</span><br><span class="line">        claimName: myclaim</span><br></pre></td></tr></table></figure>
 <h4>Demo：使用 Volumes 的 WordPress</h4>
 <ol>
 <li><code>cd wordpress-volumes</code></li>
@@ -220,7 +220,7 @@ ga('send', 'pageview');
 <li><code>cat wordpress-secrets.yml</code></li>
 <li><code>cat wordpress-web.yml</code></li>
 <li><code>cat wordpress-web-service.yml</code></li>
-<li><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region" target="_blank" rel="external">查詢 AWS 服務區域</a><br>
+<li><a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region" target="_blank" rel="noopener">查詢 AWS 服務區域</a><br>
 <code>aws efs create-file-system --creation-token 1 --region ap-southeast-2</code></li>
 <li>找尋 SubnetId 和 SecurityGroups<br>
 <code>aws ec2 describe-instances --region ap-southeast-2</code></li>
@@ -240,7 +240,7 @@ ga('send', 'pageview');
 <li>去 Route53 新增一個 DNS record - wordpress.<domain>，在 alias 的地方打勾，選擇剛剛建立的 LoadBalancer</domain></li>
 <li><code>kubectl edit deployment/wordpress-deployment</code> 把以下五行加到 35 行之後，把後面 env 縮排進去並刪除 -，完成之後就發現 wordpress 可以上傳圖片了</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- command:</div><div class="line">  - bash</div><div class="line">  - -c</div><div class="line">  - chown www-data:www-data /var/www/html/wp-content/uploads &amp;&amp; docker-entrypoint.sh apache2-foreground</div><div class="line">  env: </div><div class="line">  - name:</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- command:</span><br><span class="line">  - bash</span><br><span class="line">  - -c</span><br><span class="line">  - chown www-data:www-data /var/www/html/wp-content/uploads &amp;&amp; docker-entrypoint.sh apache2-foreground</span><br><span class="line">  env: </span><br><span class="line">  - name:</span><br></pre></td></tr></table></figure>
 <ol start="25">
 <li><code>kubectl get pod</code></li>
 <li>刪除所有的 pod，就會發現會全部自動重啟<br>
@@ -320,7 +320,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 <li>所有的這些技術(Heapster、InfluxDB 和 Grafana)都可以在 pods 裡面啟動</li>
-<li><strong>YAML 檔案</strong>可以在 <a href="https://github.com/kubernetes/heapster/tree/master/deploy/kube-config/influxdb" target="_blank" rel="external">Heapster 的 github repository</a> 被找到
+<li><strong>YAML 檔案</strong>可以在 <a href="https://github.com/kubernetes/heapster/tree/master/deploy/kube-config/influxdb" target="_blank" rel="noopener">Heapster 的 github repository</a> 被找到
 <ul>
 <li>在下載完 repository 之後，平台可以使用 addon system 或使用 kubectl create -f directory-with-yaml-files/ 來部署</li>
 </ul>
@@ -330,7 +330,7 @@ ga('send', 'pageview');
 <ol>
 <li><code>git clone https://github.com/kubernetes/heapster.git</code>
 <ul>
-<li>後改用 <a href="https://github.com/kubernetes/heapster/releases" target="_blank" rel="external">1.3 版本</a></li>
+<li>後改用 <a href="https://github.com/kubernetes/heapster/releases" target="_blank" rel="noopener">1.3 版本</a></li>
 </ul>
 </li>
 <li><code>cd heapster/deploy/kube-config/influxdb</code></li>
@@ -393,11 +393,11 @@ ga('send', 'pageview');
 </li>
 <li>測試 autoscaling</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">apiVersion: extensions/v1beta1</div><div class="line">kind: Deployment</div><div class="line">metadata:</div><div class="line">  name: hpa-example</div><div class="line">spec:</div><div class="line">  replicas: 3</div><div class="line">  template:</div><div class="line">    metadata:</div><div class="line">      labels:</div><div class="line">        app: hpa-example</div><div class="line">      spec:</div><div class="line">        containers:</div><div class="line">        - name: hpa-example</div><div class="line">          image: gcr.io/google_containers/hpa-example</div><div class="line">          ports:</div><div class="line">          - name: http-port</div><div class="line">            containerPort: 80</div><div class="line">          resources:</div><div class="line">            requests:</div><div class="line">              cpu: 200m</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: hpa-example</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: hpa-example</span><br><span class="line">      spec:</span><br><span class="line">        containers:</span><br><span class="line">        - name: hpa-example</span><br><span class="line">          image: gcr.io/google_containers/hpa-example</span><br><span class="line">          ports:</span><br><span class="line">          - name: http-port</span><br><span class="line">            containerPort: 80</span><br><span class="line">          resources:</span><br><span class="line">            requests:</span><br><span class="line">              cpu: 200m</span><br></pre></td></tr></table></figure>
 <ol start="8">
 <li>autoscaling specification 範例</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">apiVersion: autoscaling/v1</div><div class="line">kind: HorizontalPodAutoscaler</div><div class="line">metadata:</div><div class="line">  name: hpa-example-autoscaler</div><div class="line">spec:</div><div class="line">  scaleTargetRef:</div><div class="line">    apiVersion: extensions/v1beta1</div><div class="line">    kind: Deployment</div><div class="line">    name: hpa-example</div><div class="line">  minReplicas: 1</div><div class="line">  maxReplicas: 10</div><div class="line">  targetCPUUtilizationPercentage: 50</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: autoscaling/v1</span><br><span class="line">kind: HorizontalPodAutoscaler</span><br><span class="line">metadata:</span><br><span class="line">  name: hpa-example-autoscaler</span><br><span class="line">spec:</span><br><span class="line">  scaleTargetRef:</span><br><span class="line">    apiVersion: extensions/v1beta1</span><br><span class="line">    kind: Deployment</span><br><span class="line">    name: hpa-example</span><br><span class="line">  minReplicas: 1</span><br><span class="line">  maxReplicas: 10</span><br><span class="line">  targetCPUUtilizationPercentage: 50</span><br></pre></td></tr></table></figure>
 <h4>Demo：Autoscaling</h4>
 <ol>
 <li><code>cat autoscaling/hpa-example.yml</code></li>
@@ -420,7 +420,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" data-id="cjifg6b7g001g965x1uj0k3r6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/08/22/Kubernetes-快速學習自我挑戰-Day5/" data-id="cjifii0hu001c8d5x6r9gchr2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

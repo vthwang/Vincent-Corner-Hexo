@@ -175,7 +175,7 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <img src="/images/learning/laravel/laravelday5.jpeg">
 <hr>
-<h3>Eloquent Relationship - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="external">Eloquent Relationship 設定官方文件</a></h3>
+<h3>Eloquent Relationship - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="noopener">Eloquent Relationship 設定官方文件</a></h3>
 <ol>
 <li>One to One Relationship
 <ul>
@@ -203,7 +203,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">    Route::get(&apos;/posts&apos;, function()&#123;</div><div class="line"></div><div class="line">    $user = User::find(1);</div><div class="line"></div><div class="line">    foreach ($user-&gt;posts as $post) &#123;</div><div class="line"></div><div class="line">        echo $post-&gt;title .&quot;&lt;br&gt;&quot;; (不要使用 return，return 只能傳回一個內容)</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    Route::get(&apos;/posts&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $user = User::find(1);</span><br><span class="line"></span><br><span class="line">    foreach ($user-&gt;posts as $post) &#123;</span><br><span class="line"></span><br><span class="line">        echo $post-&gt;title .&quot;&lt;br&gt;&quot;; (不要使用 return，return 只能傳回一個內容)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li>Many to Many Relationship
 <ul>
@@ -239,7 +239,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/user/pivot&apos;, function()&#123;</div><div class="line"></div><div class="line">    $user = User::find(1);</div><div class="line"></div><div class="line">    foreach($user-&gt;roles as $role)&#123;</div><div class="line"></div><div class="line">        return $role-&gt;pivot-&gt;created_at;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/user/pivot&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $user = User::find(1);</span><br><span class="line"></span><br><span class="line">    foreach($user-&gt;roles as $role)&#123;</span><br><span class="line"></span><br><span class="line">        return $role-&gt;pivot-&gt;created_at;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="6">
 <li>Has Many Through Relation
 <ul>
@@ -263,7 +263,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/user/country&apos;, function()&#123;</div><div class="line"></div><div class="line">$country = Country::find(4);</div><div class="line"></div><div class="line">foreach ($country-&gt;posts as $post)&#123;</div><div class="line"></div><div class="line">    return $post-&gt;title;;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/user/country&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">$country = Country::find(4);</span><br><span class="line"></span><br><span class="line">foreach ($country-&gt;posts as $post)&#123;</span><br><span class="line"></span><br><span class="line">    return $post-&gt;title;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="7">
 <li>Polymorphic Relation
 <ul>
@@ -286,7 +286,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;post/&#123;id&#125;/photos&apos;, function($id)&#123;</div><div class="line"></div><div class="line">    $post = Post::find($id);</div><div class="line"></div><div class="line">        foreach($post-&gt;photos as $photo)&#123;</div><div class="line"></div><div class="line">            echo $photo-&gt;path . &quot;&lt;br&gt;&quot;;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;post/&#123;id&#125;/photos&apos;, function($id)&#123;</span><br><span class="line"></span><br><span class="line">    $post = Post::find($id);</span><br><span class="line"></span><br><span class="line">        foreach($post-&gt;photos as $photo)&#123;</span><br><span class="line"></span><br><span class="line">            echo $photo-&gt;path . &quot;&lt;br&gt;&quot;;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="8">
 <li>Reverse Polymorphic Relation
 <ul>
@@ -296,7 +296,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;photo/&#123;id&#125;/post&apos;, function($id)&#123;</div><div class="line"></div><div class="line">    $photo = Photo::findOrFail($id);</div><div class="line"></div><div class="line">    return $photo-&gt;imageable;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;photo/&#123;id&#125;/post&apos;, function($id)&#123;</span><br><span class="line"></span><br><span class="line">    $photo = Photo::findOrFail($id);</span><br><span class="line"></span><br><span class="line">    return $photo-&gt;imageable;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="9">
 <li>Many to Many Polymorphic Relation
 <ul>
@@ -343,7 +343,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/04/26/Lavarel-快速學習自我挑戰-Day5/" data-id="cjifg6b92003y965xfsdnukea" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/04/26/Lavarel-快速學習自我挑戰-Day5/" data-id="cjifii0ij00318d5xdm7gqads" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

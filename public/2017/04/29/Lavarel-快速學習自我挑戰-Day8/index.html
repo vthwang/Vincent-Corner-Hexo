@@ -175,7 +175,7 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <img src="/images/learning/laravel/laravelday8.png">
 <hr>
-<h3>Polymorphic Relationship (CRUD) - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="external">Eloquent Relationship 設定官方文件</a></h3>
+<h3>Polymorphic Relationship (CRUD) - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="noopener">Eloquent Relationship 設定官方文件</a></h3>
 <ol>
 <li>安裝＋設定
 <ul>
@@ -218,7 +218,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">use App\Staff;</div><div class="line"></div><div class="line">Route::get(&apos;/create&apos;, function()&#123;</div><div class="line"></div><div class="line">    $staff = Staff::find(1);</div><div class="line"></div><div class="line">    $staff-&gt;photos()-&gt;create([&apos;path&apos;=&gt;&apos;example.jpg&apos;]);</div><div class="line"></div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">use App\Staff;</span><br><span class="line"></span><br><span class="line">Route::get(&apos;/create&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $staff = Staff::find(1);</span><br><span class="line"></span><br><span class="line">    $staff-&gt;photos()-&gt;create([&apos;path&apos;=&gt;&apos;example.jpg&apos;]);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>讀取資料
 <ul>
@@ -226,7 +226,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/read&apos;, function()&#123;</div><div class="line"></div><div class="line">    $staff = Staff::findOrFail(1);</div><div class="line"></div><div class="line">    foreach($staff-&gt;photos as $photo)&#123;</div><div class="line"></div><div class="line">        return $photo-&gt;path;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/read&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $staff = Staff::findOrFail(1);</span><br><span class="line"></span><br><span class="line">    foreach($staff-&gt;photos as $photo)&#123;</span><br><span class="line"></span><br><span class="line">        return $photo-&gt;path;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="6">
 <li>更新資料
 <ul>
@@ -234,7 +234,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/update&apos;, function()&#123;</div><div class="line"></div><div class="line">    $staff = Staff::findOrFail(1);</div><div class="line"></div><div class="line">    $photo = $staff-&gt;photos()-&gt;whereId(1)-&gt;first();</div><div class="line"></div><div class="line">    $photo-&gt;path = &quot;Update example.jpg&quot;;</div><div class="line"></div><div class="line">    $photo-&gt;save();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/update&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $staff = Staff::findOrFail(1);</span><br><span class="line"></span><br><span class="line">    $photo = $staff-&gt;photos()-&gt;whereId(1)-&gt;first();</span><br><span class="line"></span><br><span class="line">    $photo-&gt;path = &quot;Update example.jpg&quot;;</span><br><span class="line"></span><br><span class="line">    $photo-&gt;save();</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="7">
 <li>刪除資料
 <ul>
@@ -242,7 +242,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/delete&apos;, function()&#123;</div><div class="line"></div><div class="line">    $staff = Staff::findOrFail(1);</div><div class="line"></div><div class="line">    $staff-&gt;photos()-&gt;whereId(1)-&gt;delete();</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/delete&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $staff = Staff::findOrFail(1);</span><br><span class="line"></span><br><span class="line">    $staff-&gt;photos()-&gt;whereId(1)-&gt;delete();</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="8">
 <li>Assign &amp; Unassign
 <ul>
@@ -260,7 +260,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<h3>Polymorphic Many to Many Relationship (CRUD) - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="external">Eloquent Relationship 設定官方文件</a></h3>
+<h3>Polymorphic Many to Many Relationship (CRUD) - <a href="https://laravel.com/docs/5.2/eloquent-relationships" target="_blank" rel="noopener">Eloquent Relationship 設定官方文件</a></h3>
 <ol>
 <li>安裝＋設定
 <ul>
@@ -300,7 +300,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/create&apos;, function()&#123;</div><div class="line"></div><div class="line">    $post = Post::create([&apos;name&apos;=&gt;&apos;My first post 1&apos;]);</div><div class="line"></div><div class="line">    $tag1 = Tag::find(1);</div><div class="line"></div><div class="line">    $post-&gt;tags()-&gt;save($tag1);</div><div class="line"></div><div class="line">    $video = Video::create([&apos;name&apos;=&gt;&apos;Video.mov&apos;]);</div><div class="line"></div><div class="line">    $tag2 = Tag::find(2);</div><div class="line"></div><div class="line">    $video-&gt;tags()-&gt;save($tag2);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/create&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $post = Post::create([&apos;name&apos;=&gt;&apos;My first post 1&apos;]);</span><br><span class="line"></span><br><span class="line">    $tag1 = Tag::find(1);</span><br><span class="line"></span><br><span class="line">    $post-&gt;tags()-&gt;save($tag1);</span><br><span class="line"></span><br><span class="line">    $video = Video::create([&apos;name&apos;=&gt;&apos;Video.mov&apos;]);</span><br><span class="line"></span><br><span class="line">    $tag2 = Tag::find(2);</span><br><span class="line"></span><br><span class="line">    $video-&gt;tags()-&gt;save($tag2);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>讀取資料
 <ul>
@@ -308,7 +308,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/read&apos;, function()&#123;</div><div class="line"></div><div class="line">    $post = Post::findOrFail(1);</div><div class="line"></div><div class="line">    foreach ($post-&gt;tags as $tag)&#123;</div><div class="line"></div><div class="line">        echo $tag;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/read&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $post = Post::findOrFail(1);</span><br><span class="line"></span><br><span class="line">    foreach ($post-&gt;tags as $tag)&#123;</span><br><span class="line"></span><br><span class="line">        echo $tag;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>更新資料
 <ul>
@@ -316,7 +316,7 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/update&apos;, function()&#123;</div><div class="line"></div><div class="line">//    $post = Post::findOrFail(1);</div><div class="line">//</div><div class="line">//    foreach ($post-&gt;tags as $tag)&#123;</div><div class="line">//</div><div class="line">//        return $tag-&gt;whereName(&apos;PHP&apos;)-&gt;update([&apos;name&apos;=&gt;&apos;Updated PHP&apos;]);</div><div class="line">//</div><div class="line">//    &#125;</div><div class="line"></div><div class="line">    $post = Post::findOrFail(1);</div><div class="line"></div><div class="line">    $tag = Tag::find(2);</div><div class="line"></div><div class="line">    $post-&gt;tags()-&gt;save($tag);</div><div class="line"></div><div class="line">//    $post-&gt;tags()-&gt;attach($tag);</div><div class="line">//</div><div class="line">//    $post-&gt;tags()-&gt;sync([1,2]);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/update&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">//    $post = Post::findOrFail(1);</span><br><span class="line">//</span><br><span class="line">//    foreach ($post-&gt;tags as $tag)&#123;</span><br><span class="line">//</span><br><span class="line">//        return $tag-&gt;whereName(&apos;PHP&apos;)-&gt;update([&apos;name&apos;=&gt;&apos;Updated PHP&apos;]);</span><br><span class="line">//</span><br><span class="line">//    &#125;</span><br><span class="line"></span><br><span class="line">    $post = Post::findOrFail(1);</span><br><span class="line"></span><br><span class="line">    $tag = Tag::find(2);</span><br><span class="line"></span><br><span class="line">    $post-&gt;tags()-&gt;save($tag);</span><br><span class="line"></span><br><span class="line">//    $post-&gt;tags()-&gt;attach($tag);</span><br><span class="line">//</span><br><span class="line">//    $post-&gt;tags()-&gt;sync([1,2]);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ol start="6">
 <li>刪除資料
 <ul>
@@ -324,14 +324,14 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/delete&apos;, function()&#123;</div><div class="line"></div><div class="line">    $post = Post::find(2);</div><div class="line"></div><div class="line">    foreach ($post-&gt;tags as $tag)&#123;</div><div class="line"></div><div class="line">        $tag-&gt;whereId(4)-&gt;delete();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&apos;/delete&apos;, function()&#123;</span><br><span class="line"></span><br><span class="line">    $post = Post::find(2);</span><br><span class="line"></span><br><span class="line">    foreach ($post-&gt;tags as $tag)&#123;</span><br><span class="line"></span><br><span class="line">        $tag-&gt;whereId(4)-&gt;delete();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/04/29/Lavarel-快速學習自我挑戰-Day8/" data-id="cjifg6b97004a965x7aiuh4nt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/04/29/Lavarel-快速學習自我挑戰-Day8/" data-id="cjifii0in003a8d5x2byj9dov" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

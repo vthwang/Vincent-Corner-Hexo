@@ -210,7 +210,7 @@ ga('send', 'pageview');
 </ol>
 <h4>使用 Docker Cloud 來做簡單的遠端 Swarm 管理</h4>
 <ol>
-<li><a href="https://www.youtube.com/watch?v=VJmbCioYKGg" target="_blank" rel="external">觀看此影片</a></li>
+<li><a href="https://www.youtube.com/watch?v=VJmbCioYKGg" target="_blank" rel="noopener">觀看此影片</a></li>
 </ol>
 <h4>了解 Docker Registry</h4>
 <ol>
@@ -222,9 +222,9 @@ ga('send', 'pageview');
 <li>儲存系統支援 local、S3/Azure/Alibaba/Google 雲，還有 OpenStack Swift</li>
 <li>查看以下資源：
 <ul>
-<li><a href="https://docs.docker.com/registry/configuration/" target="_blank" rel="external">使用 TLS 加密你的 Registry</a></li>
-<li><a href="https://docs.docker.com/registry/garbage-collection/" target="_blank" rel="external">透過 Garbage Collection 來進行儲存清理</a></li>
-<li><a href="https://docs.docker.com/registry/recipes/mirror/" target="_blank" rel="external">透過 “–registry-mirror” 開啟 Hub caching</a></li>
+<li><a href="https://docs.docker.com/registry/configuration/" target="_blank" rel="noopener">使用 TLS 加密你的 Registry</a></li>
+<li><a href="https://docs.docker.com/registry/garbage-collection/" target="_blank" rel="noopener">透過 Garbage Collection 來進行儲存清理</a></li>
+<li><a href="https://docs.docker.com/registry/recipes/mirror/" target="_blank" rel="noopener">透過 “–registry-mirror” 開啟 Hub caching</a></li>
 </ul>
 </li>
 </ol>
@@ -270,15 +270,15 @@ ga('send', 'pageview');
 </ol>
 <h4>安裝 Docker 自動完成</h4>
 <ol>
-<li><a href="https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/docker" target="_blank" rel="external">Oh-my-zsh</a></li>
-<li><a href="https://github.com/felixr/docker-zsh-completion" target="_blank" rel="external">docker-zsh-completion</a></li>
+<li><a href="https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/docker" target="_blank" rel="noopener">Oh-my-zsh</a></li>
+<li><a href="https://github.com/felixr/docker-zsh-completion" target="_blank" rel="noopener">docker-zsh-completion</a></li>
 </ol>
 <h4>作業：使用 TLS 和認證加密 Docker Registry</h4>
 <ol>
 <li>透過創建給 HTTPS 的 self-signed 認證和啟動 <strong>htpasswd</strong> 認證可以學習到基礎</li>
 <li>會使用 Play With Docker 來完成這個作業</li>
-<li>建議使用 <a href="http://training.play-with-docker.com/linux-registry-part2/" target="_blank" rel="external">Part 2 and 3 of &quot;Docker Registry for Linux</a> 來完成作業，或是跳回 <a href="http://training.play-with-docker.com/linux-registry-part1/" target="_blank" rel="external">Part 1</a> 且在他們的 infrastructure 上運行 container，使用他們的實際 Docker Engine 的 web-based 介面學習 <strong>PWD</strong> 怎麼運作的</li>
-<li>更多實驗請參考：<a href="http://training.play-with-docker.com/" target="_blank" rel="external">點此</a></li>
+<li>建議使用 <a href="http://training.play-with-docker.com/linux-registry-part2/" target="_blank" rel="noopener">Part 2 and 3 of &quot;Docker Registry for Linux</a> 來完成作業，或是跳回 <a href="http://training.play-with-docker.com/linux-registry-part1/" target="_blank" rel="noopener">Part 1</a> 且在他們的 infrastructure 上運行 container，使用他們的實際 Docker Engine 的 web-based 介面學習 <strong>PWD</strong> 怎麼運作的</li>
+<li>更多實驗請參考：<a href="http://training.play-with-docker.com/" target="_blank" rel="noopener">點此</a></li>
 </ol>
 <h4>跟 Swarm 一起使用 Registry</h4>
 <ol>
@@ -288,7 +288,7 @@ ga('send', 'pageview');
 <li>筆記：所有的 nodes 都要可以存取 images</li>
 <li>專業的技巧：如果可以的話，使用 hosted SaaS registry</li>
 </ol>
-<h5>使用 <a href="http://play-with-docker.com" target="_blank" rel="external">play-with-docker.com</a></h5>
+<h5>使用 <a href="http://play-with-docker.com" target="_blank" rel="noopener">play-with-docker.com</a></h5>
 <ol>
 <li><code>docker service create --name registry --publish 5000:5000 registry</code></li>
 <li>在 5000 port 的 console 後面加上 v2/_catalog 可以看到 json 格式的紀錄</li>
@@ -304,14 +304,14 @@ ga('send', 'pageview');
 </ol>
 <h4>Docker 的第三方套件</h4>
 <ol>
-<li>最流行的是：<a href="https://quay.io/" target="_blank" rel="external">Quay.io</a></li>
-<li>如果使用 <a href="https://www.docker.com/enterprise-edition#/container_management" target="_blank" rel="external">AWS</a>、<a href="https://azure.microsoft.com/en-us/services/container-registry/" target="_blank" rel="external">Azure</a>、<a href="https://cloud.google.com/container-registry/" target="_blank" rel="external">Google Cloud</a>，他們都有自己專屬的 registry</li>
-<li>如果是自建式主機，<a href="https://www.docker.com/enterprise-edition#/container_management" target="_blank" rel="external">Docker EE</a>、<a href="https://quay.io/plans/?tab=enterprise" target="_blank" rel="external">Quay Enterprise</a>、<a href="https://about.gitlab.com/2016/05/23/gitlab-container-registry/" target="_blank" rel="external">GitLab</a></li>
-<li>更多詳細的 <a href="https://github.com/veggiemonk/awesome-docker#hosting-images-registries" target="_blank" rel="external">registry 清單</a></li>
+<li>最流行的是：<a href="https://quay.io/" target="_blank" rel="noopener">Quay.io</a></li>
+<li>如果使用 <a href="https://www.docker.com/enterprise-edition#/container_management" target="_blank" rel="noopener">AWS</a>、<a href="https://azure.microsoft.com/en-us/services/container-registry/" target="_blank" rel="noopener">Azure</a>、<a href="https://cloud.google.com/container-registry/" target="_blank" rel="noopener">Google Cloud</a>，他們都有自己專屬的 registry</li>
+<li>如果是自建式主機，<a href="https://www.docker.com/enterprise-edition#/container_management" target="_blank" rel="noopener">Docker EE</a>、<a href="https://quay.io/plans/?tab=enterprise" target="_blank" rel="noopener">Quay Enterprise</a>、<a href="https://about.gitlab.com/2016/05/23/gitlab-container-registry/" target="_blank" rel="noopener">GitLab</a></li>
+<li>更多詳細的 <a href="https://github.com/veggiemonk/awesome-docker#hosting-images-registries" target="_blank" rel="noopener">registry 清單</a></li>
 </ol>
 <h3>額外的課程</h3>
 <ol>
-<li><a href="https://www.youtube.com/watch?v=ZdUcKtg84T8" target="_blank" rel="external">Journey to Docker Production: Evolving Your Infrastructure and Processes</a>
+<li><a href="https://www.youtube.com/watch?v=ZdUcKtg84T8" target="_blank" rel="noopener">Journey to Docker Production: Evolving Your Infrastructure and Processes</a>
 <ul>
 <li>What host OS should I use?</li>
 <li>What base FROM images should I use?</li>
@@ -322,11 +322,11 @@ ga('send', 'pageview');
 <li>How Docker’s Enterprise/Cloud products can help.</li>
 </ul>
 </li>
-<li><a href="https://www.youtube.com/watch?v=Qsv-q8WbIZY" target="_blank" rel="external">Everything You Thought You Already Knew About Orchestration</a></li>
-<li><a href="https://www.youtube.com/watch?v=_4QzP7uwtvI" target="_blank" rel="external">Docker tip: docker system prune and df</a></li>
-<li><a href="https://www.youtube.com/watch?v=-NeaXUGEK_g" target="_blank" rel="external">Docker 17.06 Community Edition</a>
+<li><a href="https://www.youtube.com/watch?v=Qsv-q8WbIZY" target="_blank" rel="noopener">Everything You Thought You Already Knew About Orchestration</a></li>
+<li><a href="https://www.youtube.com/watch?v=_4QzP7uwtvI" target="_blank" rel="noopener">Docker tip: docker system prune and df</a></li>
+<li><a href="https://www.youtube.com/watch?v=-NeaXUGEK_g" target="_blank" rel="noopener">Docker 17.06 Community Edition</a>
 <ul>
-<li><a href="https://github.com/docker/docker-ce/releases" target="_blank" rel="external">更詳細的 changelog</a></li>
+<li><a href="https://github.com/docker/docker-ce/releases" target="_blank" rel="noopener">更詳細的 changelog</a></li>
 </ul>
 </li>
 </ol>
@@ -339,7 +339,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2017/08/02/docker-快速學習自我挑戰-Day8/" data-id="cjifg6bao008o965xu8mkjg9d" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2017/08/02/docker-快速學習自我挑戰-Day8/" data-id="cjifii0kr007e8d5x3ih11sya" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

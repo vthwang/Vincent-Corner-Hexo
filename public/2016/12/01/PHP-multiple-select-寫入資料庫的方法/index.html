@@ -175,15 +175,15 @@ ga('send', 'pageview');
 <ol>
 <li>填入文字的頁面需要用陣列的方式傳遞資料 <code>name=&quot;item[]&quot;</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;label for=&quot;item[]&quot; class=&quot;formTitle&quot;&gt;選擇項目&lt;/label&gt;</div><div class="line">&lt;select name=&quot;item[]&quot; class=&quot;form-control selectpicker&quot; multiple&gt;</div><div class="line">  &lt;option&gt;項目一&lt;/option&gt;</div><div class="line">  &lt;option&gt;項目二&lt;/option&gt;</div><div class="line">  &lt;option&gt;項目三&lt;/option&gt;</div><div class="line">&lt;/select&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;label for=&quot;item[]&quot; class=&quot;formTitle&quot;&gt;選擇項目&lt;/label&gt;</span><br><span class="line">&lt;select name=&quot;item[]&quot; class=&quot;form-control selectpicker&quot; multiple&gt;</span><br><span class="line">  &lt;option&gt;項目一&lt;/option&gt;</span><br><span class="line">  &lt;option&gt;項目二&lt;/option&gt;</span><br><span class="line">  &lt;option&gt;項目三&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>在取得值之前，要先將取得的陣列用文字的方式顯示。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 得到 item 的值</div><div class="line">$item= $_POST[&quot;item&quot;];</div><div class="line">// 將取得的陣列用「、」分開</div><div class="line">$itemArray= implode(&quot;、&quot;, $item);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 得到 item 的值</span><br><span class="line">$item= $_POST[&quot;item&quot;];</span><br><span class="line">// 將取得的陣列用「、」分開</span><br><span class="line">$itemArray= implode(&quot;、&quot;, $item);</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>將得到的值寫入 DataTable 資料表內的 DataColumn 欄位，值為剛剛取得的陣列值 <code>$itemarray</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sql_query = INSERT INTO DataTable (`DataColumn`) VALUES (&apos;$itemarray&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql_query = INSERT INTO DataTable (`DataColumn`) VALUES (&apos;$itemarray&apos;);</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -191,7 +191,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2016/12/01/PHP-multiple-select-寫入資料庫的方法/" data-id="cjifg6b9q005s965xz8528r92" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2016/12/01/PHP-multiple-select-寫入資料庫的方法/" data-id="cjifii0ji00528d5xftuzfa7h" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
