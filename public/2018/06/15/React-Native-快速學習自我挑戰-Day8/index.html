@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>React Native 快速學習自我挑戰 Day8 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="React-Native" />
+    
+    <meta name="description" content="讓使用者到處導航 處理導航列  安裝套件 npm i --save react-native-router-flux  Router 裡面的導覽列  新增 src/Router.js  123456789101112131415import React from &amp;apos;react&amp;apos;;import &amp;#123; Scene, Router &amp;#125; from &amp;apos;re">
+<meta name="keywords" content="React-Native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native 快速學習自我挑戰 Day8">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2018/06/15/React-Native-快速學習自我挑戰-Day8/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="讓使用者到處導航 處理導航列  安裝套件 npm i --save react-native-router-flux  Router 裡面的導覽列  新增 src/Router.js  123456789101112131415import React from &amp;apos;react&amp;apos;;import &amp;#123; Scene, Router &amp;#125; from &amp;apos;re">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/reactNative/ReactNativeDay8.png">
+<meta property="og:updated_time" content="2018-06-16T13:43:59.221Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Native 快速學習自我挑戰 Day8">
+<meta name="twitter:description" content="讓使用者到處導航 處理導航列  安裝套件 npm i --save react-native-router-flux  Router 裡面的導覽列  新增 src/Router.js  123456789101112131415import React from &amp;apos;react&amp;apos;;import &amp;#123; Scene, Router &amp;#125; from &amp;apos;re">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/reactNative/ReactNativeDay8.png">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-React-Native-快速學習自我挑戰-Day8" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        React Native 快速學習自我挑戰 Day8
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2018/06/15/React-Native-快速學習自我挑戰-Day8/" class="article-date">
+    <time datetime="2018-06-15T08:37:05.000Z" itemprop="datePublished">2018-06-15</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-Native/">React-Native</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/images/learning/reactNative/ReactNativeDay8.png">
+<hr>
+<h3>讓使用者到處導航</h3>
+<h4>處理導航列</h4>
+<ol>
+<li>安裝套件<br>
+<code>npm i --save react-native-router-flux</code></li>
+</ol>
+<h4>Router 裡面的導覽列</h4>
+<ol>
+<li>新增 src/Router.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import &#123; Scene, Router &#125; from &apos;react-native-router-flux&apos;;</span><br><span class="line">import LoginForm from &apos;./components/LoginForm&apos;;</span><br><span class="line"></span><br><span class="line">const RouterComponent = () =&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;Router&gt;</span><br><span class="line">            &lt;Scene key=&quot;root&quot;&gt;</span><br><span class="line">                &lt;Scene key=&quot;logoin&quot; component=&#123;LoginForm&#125; title=&quot;Please Login&quot; /&gt;</span><br><span class="line">            &lt;/Scene&gt;</span><br><span class="line">        &lt;/Router&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default RouterComponent;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 src/App.js 將 Router 引入並使用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Router from &apos;./Router&apos;;</span><br><span class="line"></span><br><span class="line">&lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;Router /&gt;</span><br><span class="line">&lt;/Provider&gt;</span><br></pre></td></tr></table></figure>
+<h4>顯示多個 Scenes</h4>
+<ol>
+<li>新增 src/components/EmployeeList.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; View, Text &#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">class EmployeeList extends Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &lt;Text&gt;EmployList&lt;/Text&gt;</span><br><span class="line">                &lt;Text&gt;EmployList&lt;/Text&gt;</span><br><span class="line">                &lt;Text&gt;EmployList&lt;/Text&gt;</span><br><span class="line">                &lt;Text&gt;EmployList&lt;/Text&gt;</span><br><span class="line">                &lt;Text&gt;EmployList&lt;/Text&gt;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default EmployeeList;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 src/Router.js 新增 EmployeeList 的 Scene</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import EmployeeList from &apos;./components/EmployeeList&apos;;</span><br><span class="line"></span><br><span class="line">&lt;Scene key=&quot;logoin&quot; component=&#123;LoginForm&#125; title=&quot;Please Login&quot; initial/&gt;</span><br><span class="line">&lt;Scene key=&quot;employeeList&quot; component=&#123;EmployeeList&#125; title=&quot;Employees&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h4>在路由之間移動導覽列</h4>
+<ol>
+<li>在 src/Actions/index.js 使用 Router 的 Actions 功能</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Actions &#125; from &apos;react-native-router-flux&apos;;</span><br><span class="line"></span><br><span class="line">const loginUserSuccess = (dispatch, user) =&gt; &#123;</span><br><span class="line">    dispatch(&#123;</span><br><span class="line">        type: LOGIN_USER_SUCCESS,</span><br><span class="line">        payload: user</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    Actions.employeeList();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4>使用 Buckets 分類 Scenes</h4>
+<ol>
+<li>在 src/Router.js 將路由分類</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;Scene key=&quot;root&quot; hideNavBar&gt;</span><br><span class="line">    &lt;Scene key=&quot;auth&quot;&gt;</span><br><span class="line">        &lt;Scene key=&quot;logoin&quot; component=&#123;LoginForm&#125; title=&quot;Please Login&quot; initial/&gt;</span><br><span class="line">    &lt;/Scene&gt;</span><br><span class="line">    &lt;Scene key=&quot;main&quot;&gt;</span><br><span class="line">        &lt;Scene key=&quot;employeeList&quot; component=&#123;EmployeeList&#125; title=&quot;Employees&quot; /&gt;</span><br><span class="line">    &lt;/Scene&gt;</span><br><span class="line">&lt;/Scene&gt;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 src/Actions/index.js 修改 Actions</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const loginUserSuccess = (dispatch, user) =&gt; &#123;</span><br><span class="line">    dispatch(&#123;</span><br><span class="line">        type: LOGIN_USER_SUCCESS,</span><br><span class="line">        payload: user</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    Actions.main();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4>導覽列按鈕</h4>
+<ol>
+<li>修改 src/Router.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Scene key=&quot;main&quot;&gt;</span><br><span class="line">    &lt;Scene</span><br><span class="line">        rightTitle=&quot;Add&quot;</span><br><span class="line">        onRight=&#123;() =&gt; &#123; console.log(&apos;right!!!&apos;) &#125;&#125;</span><br><span class="line">        key=&quot;employeeList&quot;</span><br><span class="line">        component=&#123;EmployeeList&#125;</span><br><span class="line">        title=&quot;Employees&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">&lt;/Scene&gt;</span><br></pre></td></tr></table></figure>
+<h4>導航至 Employee Creation Form</h4>
+<ol>
+<li>新增 src/components/EmployeeCreate.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import &#123; View, Text &#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">class EmployeeCreate extends Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        return(</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &lt;Text&gt;Employee From&lt;/Text&gt;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default EmployeeCreate;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 src/Router.js 新增並連結 employeeCreate Scene</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Scene, Router, Actions &#125; from &apos;react-native-router-flux&apos;;</span><br><span class="line">import EmployeeCreate from &apos;./components/EmployeeCreate&apos;;</span><br><span class="line"></span><br><span class="line">&lt;Scene key=&quot;main&quot;&gt;</span><br><span class="line">    &lt;Scene</span><br><span class="line">        rightTitle=&quot;Add&quot;</span><br><span class="line">        onRight=&#123;() =&gt; Actions.employeeCreate() &#125;</span><br><span class="line">        key=&quot;employeeList&quot;</span><br><span class="line">        component=&#123;EmployeeList&#125;</span><br><span class="line">        title=&quot;Employees&quot;</span><br><span class="line">        initial</span><br><span class="line">    /&gt;</span><br><span class="line">    &lt;Scene key=&quot;employeeCreate&quot; component=&#123;EmployeeCreate&#125; title=&quot;Create Employee&quot; /&gt;</span><br><span class="line">&lt;/Scene&gt;</span><br></pre></td></tr></table></figure>
+<h4>建立 Employee Creation Form</h4>
+<ol>
+<li>修改 src/components/EmployeeCreate.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Card, CardSection, Input, Button &#125; from &quot;./common&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class EmployeeCreate extends Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        return(</span><br><span class="line">            &lt;Card&gt;</span><br><span class="line">                &lt;CardSection&gt;</span><br><span class="line">                    &lt;Input</span><br><span class="line">                        label=&quot;Name&quot;</span><br><span class="line">                        placeholder=&quot;Jane&quot;</span><br><span class="line">                    /&gt;</span><br><span class="line">                &lt;/CardSection&gt;</span><br><span class="line"></span><br><span class="line">                &lt;CardSection&gt;</span><br><span class="line">                    &lt;Input</span><br><span class="line">                        label=&quot;Phone&quot;</span><br><span class="line">                        placeholder=&quot;555-555-5555&quot;</span><br><span class="line">                    /&gt;</span><br><span class="line">                &lt;/CardSection&gt;</span><br><span class="line"></span><br><span class="line">                &lt;CardSection&gt;</span><br><span class="line">                &lt;/CardSection&gt;</span><br><span class="line"></span><br><span class="line">                &lt;CardSection&gt;</span><br><span class="line">                    &lt;Button&gt;</span><br><span class="line">                        Create</span><br><span class="line">                    &lt;/Button&gt;</span><br><span class="line">                &lt;/CardSection&gt;</span><br><span class="line">            &lt;/Card&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4>Employee Form Actions</h4>
+<ol>
+<li>在 src/actions/types.js 新增 EMPLOYEE_UPDATE<br>
+<code>export const EMPLOYEE_UPDATE = 'employee_update';</code></li>
+<li>新增 src/actions/EmployeeActions.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123;</span><br><span class="line">    EMPLOYEE_UPDATE</span><br><span class="line">&#125; from &apos;./types&apos;</span><br><span class="line"></span><br><span class="line">export const employeeUpdate = (&#123; prop, value &#125;) =&gt; &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        type: EMPLOYEE_UPDATE,</span><br><span class="line">        payload: &#123; prop, value &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>新增 src/reducers/EmployeeFormReducer.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import &#123;</span><br><span class="line">    EMPLOYEE_UPDATE</span><br><span class="line">&#125; from &apos;../actions/types&apos;;</span><br><span class="line"></span><br><span class="line">const INITIAL_STATE = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">export default (state = INITIAL_STATE, action) =&gt; &#123;</span><br><span class="line">    switch (action.type) &#123;</span><br><span class="line">        default:</span><br><span class="line">            return state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4>在 Reducer 的層次來處理 Form Update</h4>
+<ol>
+<li>修改 src/reducers/EmployeeFormReducer.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const INITIAL_STATE = &#123;</span><br><span class="line">    name: &apos;&apos;,</span><br><span class="line">    phone: &apos;&apos;,</span><br><span class="line">    shift: &apos;&apos;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export default (state = INITIAL_STATE, action) =&gt; &#123;</span><br><span class="line">    switch (action.type) &#123;</span><br><span class="line">        case EMPLOYEE_UPDATE:</span><br><span class="line">            // action.payload === &#123; prop: &apos;name&apos;, value: &apos;jane&apos; &#125;</span><br><span class="line">            return &#123; ...state, [action.payload.prop]: action.payload.value &#125;</span><br><span class="line">        default:</span><br><span class="line">            return state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>新增 src/actions/AuthActions.js 並將 index.js 的內容全部剪貼過去</li>
+<li>將其它 Actions 在 src/actions/index.js 輸出</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export * from &apos;./AuthActions&apos;;</span><br><span class="line">export * from &apos;./EmployeeActions&apos;;</span><br></pre></td></tr></table></figure>
+<h4>動態 Property 更新</h4>
+<ol>
+<li>修改 src/reducers/index.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import EmployeeFromReducer from &apos;./EmployeeFromReducer&apos;;</span><br><span class="line"></span><br><span class="line">export default combineReducers(&#123;</span><br><span class="line">    employeeForm: EmployeeFromReducer</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 src/components/EmployeeCreate.js 跟 Actions 做連結</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import &#123; connect &#125; from &apos;react-redux&apos;;</span><br><span class="line">import &#123; employeeUpdate &#125; from &quot;../actions&quot;;</span><br><span class="line"></span><br><span class="line">&lt;CardSection&gt;</span><br><span class="line">    &lt;Input</span><br><span class="line">        label=&quot;Name&quot;</span><br><span class="line">        placeholder=&quot;Jane&quot;</span><br><span class="line">        value=&#123;this.props.name&#125;</span><br><span class="line">        onChangeText=&#123;value =&gt; this.props.employeeUpdate(&#123; prop: &apos;name&apos;, value &#125;)&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">&lt;/CardSection&gt;</span><br><span class="line"></span><br><span class="line">&lt;CardSection&gt;</span><br><span class="line">    &lt;Input</span><br><span class="line">        label=&quot;Phone&quot;</span><br><span class="line">        placeholder=&quot;555-555-5555&quot;</span><br><span class="line">        value=&#123;this.props.phone&#125;</span><br><span class="line">        onChangeText=&#123;value =&gt; this.props.employeeUpdate(&#123; prop: &apos;phone&apos;, value &#125;)&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">&lt;/CardSection&gt;</span><br><span class="line"></span><br><span class="line">const mapStateToProps = (state) =&gt; &#123;</span><br><span class="line">    const &#123; name, phone, shift &#125; = state.employeeForm;</span><br><span class="line"></span><br><span class="line">    return &#123; name, phone, shift &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default connect(mapStateToProps, &#123; employeeUpdate &#125;)(EmployeeCreate);</span><br></pre></td></tr></table></figure>
+<h4>Picker 元件</h4>
+<ol>
+<li>修改 src/components/EmployeeCreate.js 引入 Picker 元件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Picker &#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">&lt;CardSection&gt;</span><br><span class="line">    &lt;Picker</span><br><span class="line">        style=&#123;&#123; flex: 1 &#125;&#125;</span><br><span class="line">        selectedValue=&#123;this.props.shift&#125;</span><br><span class="line">        onValueChange=&#123;value =&gt; this.props.employeeUpdate(&#123; prop: &apos;shift&apos;, value &#125;)&#125;</span><br><span class="line">    &gt;</span><br><span class="line">        &lt;Picker.Item label=&quot;Monday&quot; value=&quot;Monday&quot; /&gt;</span><br><span class="line">        &lt;Picker.Item label=&quot;Tuesday&quot; value=&quot;Tuesday&quot; /&gt;</span><br><span class="line">        &lt;Picker.Item label=&quot;Wednesday&quot; value=&quot;Wednesday&quot; /&gt;</span><br><span class="line">        &lt;Picker.Item label=&quot;Thursday&quot; value=&quot;Thursday&quot; /&gt;</span><br><span class="line">        &lt;Picker.Item label=&quot;Friday&quot; value=&quot;Friday&quot; /&gt;</span><br><span class="line">        &lt;Picker.Item label=&quot;Saturday&quot; value=&quot;Saturday&quot; /&gt;</span><br><span class="line">        &lt;Picker.Item label=&quot;Sunday&quot; value=&quot;Sunday&quot; /&gt;</span><br><span class="line">    &lt;/Picker&gt;</span><br><span class="line">&lt;/CardSection&gt;</span><br></pre></td></tr></table></figure>
+<h4>Pickers 和樣式覆蓋</h4>
+<ol>
+<li>修改 src/components/EmployeeCreate.js 新增樣式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Picker, Text &#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">&lt;CardSection style=&#123;&#123; flexDirection: &apos;column&apos; &#125;&#125;&gt;</span><br><span class="line">    &lt;Text style=&#123;styles.pickerTextStyle&#125;&gt;Shift&lt;/Text&gt;</span><br><span class="line">&lt;/CardSection&gt;</span><br><span class="line"></span><br><span class="line">const styles = &#123;</span><br><span class="line">    pickerTextStyle: &#123;</span><br><span class="line">        fontSize: 18,</span><br><span class="line">        paddingLeft: 20</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 src/components/common/CardSection.js，讓它從上一層取得樣式，陣列裡面的樣式，右邊的會覆蓋左邊的</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;View style=&#123;[styles.containerStyle, props.style]&#125;&gt;</span><br><span class="line">    &#123;props.children&#125;</span><br><span class="line">&lt;/View&gt;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2018/06/15/React-Native-快速學習自我挑戰-Day8/" data-id="cjihgemwl0070y6fazgt8vgmg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2018/06/15/React-Native-快速學習自我挑戰-Day8/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/VincentTingSyuanWang" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/06/12/React-Native-快速學習自我挑戰-Day7/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">React Native 快速學習自我挑戰 Day7</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/06/15/React-Native-快速學習自我挑戰-Day8/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/reactNative/ReactNativeDay8.png)" alt="React Native 快速學習自我挑戰 Day8" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2018/06/15/React-Native-快速學習自我挑戰-Day8/" class="title">React Native 快速學習自我挑戰 Day8</a></p>
+                            <p class="item-date"><time datetime="2018-06-15T08:37:05.000Z" itemprop="datePublished">2018-06-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/06/12/React-Native-快速學習自我挑戰-Day7/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/reactNative/ReactNativeDay7.png)" alt="React Native 快速學習自我挑戰 Day7" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2018/06/12/React-Native-快速學習自我挑戰-Day7/" class="title">React Native 快速學習自我挑戰 Day7</a></p>
+                            <p class="item-date"><time datetime="2018-06-12T01:51:47.000Z" itemprop="datePublished">2018-06-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/05/01/減重和營養快速學習自我挑戰-Day4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/weightloss/WeightLossDay4.jpg)" alt="減重和營養快速學習自我挑戰 Day4" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2018/05/01/減重和營養快速學習自我挑戰-Day4/" class="title">減重和營養快速學習自我挑戰 Day4</a></p>
+                            <p class="item-date"><time datetime="2018-05-01T03:55:18.000Z" itemprop="datePublished">2018-05-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/21/Git-Github-快速學習自我挑戰/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/git/GitDay1.jpg)" alt="Git &amp; Github 快速學習自我挑戰" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2018/04/21/Git-Github-快速學習自我挑戰/" class="title">Git &amp; Github 快速學習自我挑戰</a></p>
+                            <p class="item-date"><time datetime="2018-04-21T07:18:51.000Z" itemprop="datePublished">2018-04-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/07/減重和營養快速學習自我挑戰-Day3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/weightloss/WeightLossDay3.jpg)" alt="減重和營養快速學習自我挑戰 Day3" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2018/04/07/減重和營養快速學習自我挑戰-Day3/" class="title">減重和營養快速學習自我挑戰 Day3</a></p>
+                            <p class="item-date"><time datetime="2018-04-07T04:12:23.000Z" itemprop="datePublished">2018-04-07</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/學習歷程/">學習歷程</a><span class="category-list-count">84</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React-Native</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/">UX</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/">Weight Loss</a><span class="tag-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CSS/" style="font-size: 14.29px;">CSS</a> <a href="/tags/Docker/" style="font-size: 15.71px;">Docker</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML/" style="font-size: 14.29px;">HTML</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.29px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.57px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 11.43px;">Nutrition</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.14px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.71px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UX/" style="font-size: 12.86px;">UX</a> <a href="/tags/Weight-Loss/" style="font-size: 11.43px;">Weight Loss</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2018 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
