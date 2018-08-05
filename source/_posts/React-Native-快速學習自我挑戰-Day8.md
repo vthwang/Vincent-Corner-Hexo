@@ -24,7 +24,7 @@ const RouterComponent = () => {
     return (
         <Router>
             <Scene key="root">
-                <Scene key="logoin" component={LoginForm} title="Please Login" />
+                <Scene key="login" component={LoginForm} title="Please Login" />
             </Scene>
         </Router>
     );
