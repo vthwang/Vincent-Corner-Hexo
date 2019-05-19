@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>Docker 快速學習自我挑戰 II Day1 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Docker">
+    
+    <meta name="description" content="課前準備及目標   因為新的專案要使用 CI 和 CD，研究之後，發現應該要先學 Docker，最後的目標希望能在專案實現自動化的部署。預計使用工具為 Drone 和 Gogs 來實現 Laravel 專案的自動部署。最終的目標，當然是希望透過 Docker 讓 DevOps 更有系統性，拋開以往的手動化操作可能發生的錯誤，讓程式碼發佈更為嚴謹且穩定。 Docker 簡介  Docker">
+<meta name="keywords" content="Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 快速學習自我挑戰 II Day1">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2019/05/17/Docker-快速學習自我挑戰-II-Day1/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="課前準備及目標   因為新的專案要使用 CI 和 CD，研究之後，發現應該要先學 Docker，最後的目標希望能在專案實現自動化的部署。預計使用工具為 Drone 和 Gogs 來實現 Laravel 專案的自動部署。最終的目標，當然是希望透過 Docker 讓 DevOps 更有系統性，拋開以往的手動化操作可能發生的錯誤，讓程式碼發佈更為嚴謹且穩定。 Docker 簡介  Docker">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay01.png">
+<meta property="og:updated_time" content="2019-05-19T04:31:05.028Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker 快速學習自我挑戰 II Day1">
+<meta name="twitter:description" content="課前準備及目標   因為新的專案要使用 CI 和 CD，研究之後，發現應該要先學 Docker，最後的目標希望能在專案實現自動化的部署。預計使用工具為 Drone 和 Gogs 來實現 Laravel 專案的自動部署。最終的目標，當然是希望透過 Docker 讓 DevOps 更有系統性，拋開以往的手動化操作可能發生的錯誤，讓程式碼發佈更為嚴謹且穩定。 Docker 簡介  Docker">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay01.png">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/英文寫作/">英文寫作</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Docker-快速學習自我挑戰-II-Day1" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Docker 快速學習自我挑戰 II Day1
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2019/05/17/Docker-快速學習自我挑戰-II-Day1/" class="article-date">
+    <time datetime="2019-05-17T10:06:24.000Z" itemprop="datePublished">2019-05-17</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/images/learning/docker-2/DockerDay01.png">
+<hr>
+<h3>課前準備及目標</h3>
+<p>  因為新的專案要使用 CI 和 CD，研究之後，發現應該要先學 Docker，最後的目標希望能在專案實現自動化的部署。預計使用工具為 Drone 和 Gogs 來實現 Laravel 專案的自動部署。最終的目標，當然是希望透過 Docker 讓 DevOps 更有系統性，拋開以往的手動化操作可能發生的錯誤，讓程式碼發佈更為嚴謹且穩定。</p>
+<h3>Docker 簡介</h3>
+<ol>
+<li>Docker 比起虛擬機更加輕巧，不需要虛擬化技術。</li>
+<li>Docker 的好處
+<ul>
+<li>簡化配置</li>
+<li>程式碼流水線管理</li>
+<li>提高開發效率</li>
+<li>隔離應用</li>
+<li>整合伺服器</li>
+<li>調試能力</li>
+<li>多用戶</li>
+<li>快速部署</li>
+</ul>
+</li>
+<li>容器需要知道的兩樣工具：Docker 和 Kubernetes (k8s)</li>
+<li>Kubernetes 是容器編排工具，對容器創建、管理、調度、運維</li>
+<li>DevOps = 文化 + 過程 + 工具</li>
+</ol>
+<h3>容器技術概述</h3>
+<h4>虛擬化的優點</h4>
+<ol>
+<li>資源池：物理機器的資源分配到不同的虛擬機器裡面</li>
+<li>很容易擴展：加物理機器或是虛擬機器</li>
+<li>很容易雲化：亞馬遜 AWS，阿里雲…等</li>
+</ol>
+<h4>虛擬化的侷限性</h4>
+<ol>
+<li>每一個虛擬機都是一個完整的操作系統，要分配資源給它。當虛擬機的數量增多時，操作系統消耗的資源會變多。</li>
+</ol>
+<h4>容器解決的問題</h4>
+<ol>
+<li>解決了開發和運維之間的矛盾</li>
+<li>在開發和運維之間建立了一個橋樑，實現 DevOps 的最佳解決方案</li>
+</ol>
+<h4>容器是什麼？</h4>
+<ol>
+<li>軟體和依賴套件的標準化打包</li>
+<li>應用之間的隔離</li>
+<li>共享同一個 OS Kernal</li>
+<li>可以運行在很多主流的作業系統上</li>
+</ol>
+<h4>容器和虛擬機的區別</h4>
+<ol>
+<li>容器是 APP 層面的隔離、虛擬化是物理資源層面的隔離</li>
+<li>虛擬機和容器可以合在一起，可以在虛擬機器裡面創建容器，這是沒有衝突的。</li>
+</ol>
+<h3>環境部署</h3>
+<h4>使用 VirtualBox + Vagrant</h4>
+<ol>
+<li>為什麼不用 VMware? 因為 VMware 本身要錢，而且 Vagrant 搭配 VMware 也是要額外收錢的。</li>
+<li>安裝 <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="noopener">VirtualBox</a> 當作虛擬化工具</li>
+<li>安裝 <a href="https://www.vagrantup.com/" target="_blank" rel="noopener">Vagrant</a></li>
+<li>新增目錄 Ubuntu<br>
+<code>mkdir Ubuntu</code></li>
+<li>初始化 Vagrant 檔案 (可以在 <a href="https://app.vagrantup.com/boxes/search" target="_blank" rel="noopener">Vagrant 官網找到需要的映像檔</a>)<br>
+<code>vagrant init ubuntu/xenial64</code></li>
+<li>啟動虛擬機<br>
+<code>vagrant up</code></li>
+<li>檢查虛擬機狀態<br>
+<code>vagrant status</code></li>
+<li>停止虛擬機<br>
+<code>vagrant halt</code></li>
+<li>刪除虛擬機<br>
+<code>vagrant destroy</code></li>
+<li>連線到虛擬機<br>
+<code>vagrant ssh</code></li>
+</ol>
+<h4>Ubuntu 上安裝 Docker</h4>
+<ol>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">Ubuntu 上安裝 Docker 文檔</a></li>
+<li>如果有舊版的 Docker 透過以下指令移除<br>
+<code>sudo apt-get remove docker docker-engine docker.io containerd runc</code></li>
+<li>更新套件<br>
+<code>sudo apt-get update</code></li>
+<li>安裝 Docker 所需套件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    gnupg-agent \</span><br><span class="line">    software-properties-common</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>新增 Docker 金鑰<br>
+<code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></li>
+<li>確認金鑰<br>
+<code>sudo apt-key fingerprint 0EBFCD88</code></li>
+<li>綁定遠端 Docker Repository</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository \</span><br><span class="line">   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span><br><span class="line">   $(lsb_release -cs) \</span><br><span class="line">   stable&quot;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>安裝最新版本的 Docker CE<br>
+<code>sudo apt-get install docker-ce docker-ce-cli containerd.io</code></li>
+<li>確定 Docker 安裝完成<br>
+<code>sudo docker run hello-world</code></li>
+<li>檢查 Docker 版本<br>
+<code>sudo docker version</code></li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2019/05/17/Docker-快速學習自我挑戰-II-Day1/" data-id="cjvugc5u700000d5feqnxebxk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2019/05/17/Docker-快速學習自我挑戰-II-Day1/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/VincentTingSyuanWang" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/dtvgood202" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus-official" href="https://plus.google.com/116113761236955456663" target="_blank">
+                        <i class="icon fa fa-google-plus-official"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/06/21/React-Native-快速學習自我挑戰-Day10/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">React Native 快速學習自我挑戰 Day10</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/05/17/Docker-快速學習自我挑戰-II-Day1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/docker-2/DockerDay01.png)" alt="Docker 快速學習自我挑戰 II Day1" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2019/05/17/Docker-快速學習自我挑戰-II-Day1/" class="title">Docker 快速學習自我挑戰 II Day1</a></p>
+                            <p class="item-date"><time datetime="2019-05-17T10:06:24.000Z" itemprop="datePublished">2019-05-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/06/21/React-Native-快速學習自我挑戰-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/reactNative/ReactNativeDay10.jpg)" alt="React Native 快速學習自我挑戰 Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2018/06/21/React-Native-快速學習自我挑戰-Day10/" class="title">React Native 快速學習自我挑戰 Day10</a></p>
+                            <p class="item-date"><time datetime="2018-06-21T04:01:08.000Z" itemprop="datePublished">2018-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/06/19/React-Native-快速學習自我挑戰-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/reactNative/ReactNativeDay9.png)" alt="React Native 快速學習自我挑戰 Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2018/06/19/React-Native-快速學習自我挑戰-Day9/" class="title">React Native 快速學習自我挑戰 Day9</a></p>
+                            <p class="item-date"><time datetime="2018-06-19T09:20:04.000Z" itemprop="datePublished">2018-06-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/06/15/React-Native-快速學習自我挑戰-Day8/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/reactNative/ReactNativeDay8.png)" alt="React Native 快速學習自我挑戰 Day8" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2018/06/15/React-Native-快速學習自我挑戰-Day8/" class="title">React Native 快速學習自我挑戰 Day8</a></p>
+                            <p class="item-date"><time datetime="2018-06-15T08:37:05.000Z" itemprop="datePublished">2018-06-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/06/12/React-Native-快速學習自我挑戰-Day7/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/reactNative/ReactNativeDay7.png)" alt="React Native 快速學習自我挑戰 Day7" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2018/06/12/React-Native-快速學習自我挑戰-Day7/" class="title">React Native 快速學習自我挑戰 Day7</a></p>
+                            <p class="item-date"><time datetime="2018-06-12T01:51:47.000Z" itemprop="datePublished">2018-06-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/學習歷程/">學習歷程</a><span class="category-list-count">87</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/英文寫作/">英文寫作</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React-Native</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/">UX</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/">Weight Loss</a><span class="tag-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CSS/" style="font-size: 13.75px;">CSS</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML/" style="font-size: 13.75px;">HTML</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 13.75px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.75px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 11.25px;">Nutrition</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 16.25px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UX/" style="font-size: 12.5px;">UX</a> <a href="/tags/Weight-Loss/" style="font-size: 11.25px;">Weight Loss</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2019 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
