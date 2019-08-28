@@ -4,7 +4,7 @@ thumbnail:
   - /images/wordpress.png
 date: 2017-03-04 16:29:52
 categories: 技術分享
-tags:
+tags: WordPress
 ---
 <img src="/images/wordpress.png">
 
