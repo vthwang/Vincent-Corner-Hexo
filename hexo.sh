@@ -1,7 +1,7 @@
 #!/bin/sh
-hexo cl
-hexo g
+hexo clean
+hexo generate
 git add .
-git commit -m "update"
+git commit -m 'Site Updated: $(date +"%Y-%m-%d %T")'
 git push
-hexo d
+hexo deploy
