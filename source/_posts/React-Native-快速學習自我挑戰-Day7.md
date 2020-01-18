@@ -1,12 +1,12 @@
 ---
 title: React Native 快速學習自我挑戰 Day7
 thumbnail:
-  - /images/learning/reactNative/ReactNativeDay7.png
+  - /images/learning/reactNative/reactnativeday7.png
 date: 2018-06-12 09:51:47
 categories: 學習歷程
 tags: React-Native
 ---
-<img src="/images/learning/reactNative/ReactNativeDay7.png">
+<img src="/images/learning/reactNative/reactnativeday7.png">
 
 ***
 ### 還沒完成
