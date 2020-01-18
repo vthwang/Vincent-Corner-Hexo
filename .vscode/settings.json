@@ -1,4 +1,5 @@
 {
     "vsicons.presets.angular": false,
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "editor.tabCompletion": "on"
 }
