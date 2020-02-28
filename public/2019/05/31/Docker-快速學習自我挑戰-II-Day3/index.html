@@ -17,7 +17,7 @@
 <meta property="og:description" content="Dockerfile 語法梳理與最佳實踐 Dockerfile 語法  FROM 語法：為了安全，盡量使用官方的 Image 作為 Base Image  FROM scratch 製作 Base Image FROM centos 使用 Base Image FROM ubuntu:14.04   Label 語法：Metadata 不可少，可以理解成註釋  LABEL maintainer">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay03.png">
-<meta property="og:updated_time" content="2019-06-02T10:39:48.765Z">
+<meta property="og:updated_time" content="2020-02-28T07:04:28.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 快速學習自我挑戰 II Day3">
 <meta name="twitter:description" content="Dockerfile 語法梳理與最佳實踐 Dockerfile 語法  FROM 語法：為了安全，盡量使用官方的 Image 作為 Base Image  FROM scratch 製作 Base Image FROM centos 使用 Base Image FROM ubuntu:14.04   Label 語法：Metadata 不可少，可以理解成註釋  LABEL maintainer">
@@ -203,7 +203,7 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WORKDIR /root</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WORKDIR /test # 如果沒有會自動創建 test 目錄</span><br><span class="line">WORKDIR demo</span><br><span class="line">RUN pwd # 輸出結果是 /test/demo</span><br></pre></td></tr></table></figure>
 <ol start="5">
-<li>ADD 和 COPY 語法：大部分情況，COPY 比 ADD 好，ADD 除了 COPY 還有額外的解壓縮功能。添加遠端文件/目錄要使用 curl 或者 wget。</li>
+<li>ADD 和 COPY 語法：大部分情況，COPY 比 ADD 好，ADD 除了 COPY 的功能以外，還有額外的解壓縮功能。添加遠端文件/目錄要使用 curl 或者 wget。</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADD hello / # 將本地的檔案傳到 Image 裡面</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADD test.tar.gz / # 添加到根目錄並解壓</span><br></pre></td></tr></table></figure>
@@ -292,6 +292,7 @@ SHELL 格式</li>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def hello():</span><br><span class="line">    return &quot;hello docker&quot;</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">	  app.run()</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>安裝 python <code>sudo apt-get install -y python2.7</code></li>
+<li>安裝 python-pip <code>sudo apt-get install -y python-pip</code></li>
 <li>安裝 flask <code>pip install flask</code></li>
 <li>如果遇到 locale 問題，可以使用以下指令<br>
 <code>export LC_ALL=&quot;en_US.UTF-8&quot;</code><br>
@@ -303,7 +304,7 @@ SHELL 格式</li>
 <li>跳轉到目錄裡面，新增 Dockerfile <code>cd flask-hello-world</code></li>
 <li>新增 Dockerfile <code>vim Dockerfile</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FROM python:2.7</span><br><span class="line">LABEL maintainer=&quot;Fishboneapps&lt;vincent@fishboneapps.com&gt;&quot;</span><br><span class="line">RUN pip install flask</span><br><span class="line">COPY app.py /app/</span><br><span class="line">WORKDIR /app</span><br><span class="line">EXPOSE 5000</span><br><span class="line">CMD [&quot;python&quot;, &quot;app.py&quot;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FROM python:3.6</span><br><span class="line">LABEL maintainer=&quot;Fishboneapps&lt;vincent@fishboneapps.com&gt;&quot;</span><br><span class="line">RUN pip install flask</span><br><span class="line">COPY app.py /app/</span><br><span class="line">WORKDIR /app</span><br><span class="line">EXPOSE 5000</span><br><span class="line">CMD [&quot;python&quot;, &quot;app.py&quot;]</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li>將 Dockerfile 製作成 Image<br>
 <code>docker build -t fishboneapps/flask-hello-world .</code></li>
@@ -320,6 +321,76 @@ SHELL 格式</li>
 </ul>
 </li>
 </ol>
+<h3>容器的操作</h3>
+<h4>Docker Exec 命令</h4>
+<ol>
+<li>docker exec -it [容器id] [執行命令]<br>
+<code>docker exec -it 1f7e35f8a8b6 /bin/bash</code></li>
+<li>檢查 python 的服務<br>
+<code>ps -ef | grep python</code></li>
+<li>改成運行 python，就會看到直接進去 python 的 shell 裡面<br>
+<code>docker exec -it 1f7e35f8a8b6 python</code></li>
+<li>可以在 shell 裡面測試運行 Hello Docker，然後退出</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print (&quot;hello docker&quot;)</span><br><span class="line">exit()</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>打印出容器的 ip 地址<br>
+<code>docker exec -it 1f7e35f8a8b6 ip a</code></li>
+<li>停止容器 docker stop [容器id]<br>
+<code>docker stop 1f7e35f8a8b6</code></li>
+<li>刪除所有停止的容器<br>
+<code>docker rm $(docker ps -aq)</code></li>
+<li>建立容器並指定名稱，如果不指定名稱的話，Docker 會分配一個名字<br>
+<code>docker run -d --name=demo fishboneapps/flask-hello-world</code></li>
+<li>停止容器也可以用 name，name 是唯一的<br>
+<code>docker stop demo</code></li>
+<li>開始容器一樣也可以用 name<br>
+<code>docker start demo</code></li>
+<li>顯示容器的詳細資訊<br>
+<code>docker inspect demo</code></li>
+<li>顯示容器的 logs<br>
+<code>docker logs demo</code></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/container/" target="_blank" rel="noopener">Docker container 命令文檔</a></li>
+</ol>
+<h3>Dockerfile 實戰(2)</h3>
+<h4>壓力測試工具 - Stress</h4>
+<ol>
+<li>開啟一個 ubuntu 容器<br>
+<code>docker run -it ubuntu:18.04</code></li>
+<li>安裝 stress<br>
+<code>sudo apt-get update &amp;&amp; apt-get install -y stress</code></li>
+<li>找尋 stress 路徑<br>
+<code>which stress</code></li>
+<li>查看 stress 命令 <code>stress --help</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-v, --verbose      be verbose // 顯示更多資料</span><br><span class="line">-m, --vm N         spawn N workers spinning on malloc()/free() // 生成 worker</span><br><span class="line">    --vm-bytes B   malloc B bytes per vm worker (default is 256MB) // 分配記憶體給 worker，默認 256MB</span><br><span class="line">    --vm-stride B  touch a byte every B bytes (default is 4096)</span><br><span class="line">    --vm-hang N    sleep N secs before free (default none, 0 is inf)</span><br><span class="line">    --vm-keep      redirty memory instead of freeing and reallocating</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>測試 stress<br>
+<code>stress --vm 1 --verbose</code></li>
+<li>分配 500000M 的記憶體給 Worker 會無法分配，因為 Host 機器沒有那麼多記憶體<br>
+<code>stress --vm 1 --vm-bytes 500000M --verbose</code></li>
+<li>將以上步驟打包成 docker image，新增 Dockerfile</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM ubuntu:18.04</span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install -y stress</span><br><span class="line">ENTRYPOINT [&apos;/usr/bin/stress&apos;]</span><br><span class="line">CMD []</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>製作成 image<br>
+<code>docker build -t fishboneapps/ubuntu-stress .</code></li>
+<li>ENTRYPOINT + CMD[] 的形式，可以在啟動容器時，指定命令參數<br>
+<code>docker run -it fishboneapps/ubuntu-stress --vm 1 --verbose</code></li>
+</ol>
+<h3>容器資源限制</h3>
+<ol>
+<li>使用剛剛的 ubuntu-stress，只分配 200M 的 memory 給容器，容器會退出，因為記憶體不足<br>
+<code>docker run --memory=200M fishboneapps/ubuntu-stress --vm 1 --verbose --vm-bytes 500M</code></li>
+<li>–cpu-shares 命令，是指定容器的相對權重，開啟 3 個 terminal 進行測試
+<ul>
+<li>第一個 termianl 執行 <code>docker run --cpu-shares=10 --name=test1 fishboneapps/ubuntu-stress --cpu 1</code></li>
+<li>第二個 terminal 執行 <code>docker run --cpu-shares=5 --name=test2 fishboneapps/ubuntu-stress --cpu 1</code></li>
+<li>第三個 terminal 執行 <code>top</code> 進行監控</li>
+</ul>
+</li>
+<li>監控後會發現，cpu 的占比，test1 容器的 cpu 占比會是 test2 容器的 2 倍，總和 cpu 的使用量約為 100%</li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -327,7 +398,7 @@ SHELL 格式</li>
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2019/05/31/Docker-快速學習自我挑戰-II-Day3/" data-id="ck71wxwxb0003lyfy397cc5nj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2019/05/31/Docker-快速學習自我挑戰-II-Day3/" data-id="ck75u2lab0003ndfy452wvolk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

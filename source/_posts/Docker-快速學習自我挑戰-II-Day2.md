@@ -54,7 +54,7 @@ tags: Docker
 3. 新增一個資料夾 `mkdir hello-world`
 4. 新增一個 hello.c `vim hello.c`
 ```
-#Include<studio.h>
+#include<stdio.h>
 
 int main() {
   printf("hello docker\n");
