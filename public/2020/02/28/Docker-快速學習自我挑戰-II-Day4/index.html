@@ -17,7 +17,7 @@
 <meta property="og:description" content="Docker 網路簡介  Docker 網路  單機：Bridge Network / Host Network / None Network 多機：Overlay Network   用 Vagrant 開啟兩台機器，新增 Vagrantfile  網路基本概念  如果要跟 Web 服務器通訊，流程是，打開瀏覽器，取得服務器內容，這個過程使用的是 HTTP 協議。 傳輸網站數據，就需要理解網">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay04.jpg">
-<meta property="og:updated_time" content="2020-02-28T09:11:22.607Z">
+<meta property="og:updated_time" content="2020-02-28T13:23:04.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 快速學習自我挑戰 II Day4">
 <meta name="twitter:description" content="Docker 網路簡介  Docker 網路  單機：Bridge Network / Host Network / None Network 多機：Overlay Network   用 Vagrant 開啟兩台機器，新增 Vagrantfile  網路基本概念  如果要跟 Web 服務器通訊，流程是，打開瀏覽器，取得服務器內容，這個過程使用的是 HTTP 協議。 傳輸網站數據，就需要理解網">
@@ -258,7 +258,122 @@ ga('send', 'pageview');
 <li>透過以下指令，可以互 ping 機器<br>
 <code>sudo ip netns exec test1 ping 192.168.1.2</code><br>
 <code>sudo ip netns exec test2 ping 192.168.1.1</code></li>
-<li>以上就是容器互通的原理，用 linux Namespace的方式進行實現</li>
+<li>以上就是容器互通的原理，用 linux Namespace 的方式進行實現</li>
+</ol>
+<h3>Docker bridge0 詳解</h3>
+<ol>
+<li>停止 test2 容器並刪除<br>
+<code>docker stop test2</code><br>
+<code>docker rm test2</code></li>
+<li>列出 docker 機器的網路<br>
+<code>docker network ls</code></li>
+<li>查看 bridge 網路的內容，會發現裡面有一項是 containers，而 container 正是 test1，就會知道 test1 的網路正是連接到這個 bridge<br>
+<code>docker network inspect c6e6281b109f</code></li>
+<li>使用 <code>ip a</code> 查看虛擬機的網路列表，會輸出以下內容，裡面可以看到虛擬機的 docker0 接口用 veth 連線到容器裡面的網路</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">4: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default</span><br><span class="line">    link/ether 02:42:80:06:0b:9a brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::42:80ff:fe06:b9a/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">6: veth25ca999@if5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default</span><br><span class="line">    link/ether ee:18:e0:2f:0c:56 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">    inet6 fe80::ec18:e0ff:fe2f:c56/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>使用 <code>docker exec test1 ip a</code> 列出 test1 容器的網路，會輸出以下內容，會發現 eth0 是和上面的 veth25ca999 連在一起的</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">5: eth0@if6: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>安裝 Bridge-utils 驗證連線<br>
+<code>sudo apt-get install -y bridge-utils</code></li>
+<li>在虛擬機使用 <code>brctl show</code>，就會看到 docker0 是和 veth25ca999 連接的</li>
+<li>再開啟一個 test2 的容器<br>
+<code>docker run -d --name=test2 busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>再次檢查 bridge 的網路，就會發現多一個 test2 的容器<br>
+<code>docker network inspect bridge</code></li>
+<li>這時候再執行一次 <code>ip a</code>，就會發現多一個 veth，因為多一個容器，就需要多一條線進行連接</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">4: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default</span><br><span class="line">    link/ether 02:42:80:06:0b:9a brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::42:80ff:fe06:b9a/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">6: veth25ca999@if5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default</span><br><span class="line">    link/ether ee:18:e0:2f:0c:56 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">    inet6 fe80::ec18:e0ff:fe2f:c56/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">10: veth93b61b7@if9: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default</span><br><span class="line">    link/ether ea:ed:e9:82:86:dc brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br><span class="line">    inet6 fe80::e8ed:e9ff:fe82:86dc/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<ol start="11">
+<li>再次執行 <code>brctl show</code>，就會發現 docker0 連接兩個 veth</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">bridge name</th>
+<th style="text-align:center">bridge id</th>
+<th style="text-align:center">STP enabled</th>
+<th style="text-align:center">interfaces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">docker0</td>
+<td style="text-align:center">8000.024280060b9a</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">veth25ca999</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">veth93b61b7</td>
+</tr>
+</tbody>
+</table>
+<ol start="12">
+<li>以下圖片解釋 (1) 容器之間如何互相溝通 (2) 容器如何連接到外網</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay04-Image02.png">
+<h3>容器之間的 Link</h3>
+<ol>
+<li>停止 test2 容器並刪除<br>
+<code>docker stop test2</code><br>
+<code>docker rm test2</code></li>
+<li>再次創建 test2 容器並 link 到 test1，使用 --link 就是新增 dns 紀錄<br>
+<code>docker run -d --name=test2 --link=test1 busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>進去 test2 裡面執行命令<br>
+<code>docker exec -it test2 /bin/sh</code></li>
+<li>使用 <code>ping test1</code>，會發現可以 ping 到容器 test1</li>
+<li>link 是有方向性的，因為只在 test2 link 到 test1，所以可以在 test2 容器 ping test1 容器，但是在 test1 上面是沒有辦法直接用 <code>ping test2</code> 來 ping 到 test2 容器的</li>
+<li>再次停止 test2 容器並刪除，再次創建 test2，但是不要 link<br>
+<code>docker stop test2</code><br>
+<code>docker rm test2</code><br>
+<code>docker run -d --name=test2 busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>自己新增一個 Bridge<br>
+<code>docker network create -d bridge my-bridge</code></li>
+<li>用 <code>docker network ls</code> 就可以查看新增的 bridge</li>
+<li>用 <code>brctl show</code> 查看，就可以看到新增的 bridge</li>
+<li>新增 test3 容器，並連接到新增的 bridge<br>
+<code>docker run -d --name=test3 --network my-bridge busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>用 <code>brctl show</code> 查看，就會看到新增的 bridge 連接到 test3 容器上</li>
+<li>也可以用 <code>docker network inspect my-bridge</code> 查看新增的 bridge 連接到 test3 容器上</li>
+<li>可以將已存在的容器連接到新增的 bridge 上面<br>
+<code>docker network connect my-bridge test2</code></li>
+<li>再用 <code>docker network inspect my-bridge</code> 查看新增的 bridge 也已連接到 test2 容器上</li>
+<li>進去 test3 容器執行命令<br>
+<code>docker exec -it test3 /bin/sh</code></li>
+<li>在 test3 容器直接 ping test2，但是沒有使用 link，還是可以 ping 通，因為默認自己新增的 bridge 上的容器會自動 link<br>
+<code>ping test2</code></li>
+<li>再進入 test2 容器執行命令<br>
+<code>docker exec -it test2 /bin/sh</code></li>
+<li>嘗試 <code>ping test3</code> 可以通，但是 <code>ping test1</code> 就不能通了，因為<strong>默認自己新增的 bridge 上的容器會自動 link</strong></li>
+<li>將 test1 連接到 my-bridge，再進去 test2 容器，ping test1 就可以通了。<br>
+<code>docker network connect my-bridge test1</code><br>
+<code>docker exec -it test2 /bin/sh</code><br>
+<code>ping test1</code></li>
+</ol>
+<h3>容器端口映射</h3>
+<ol>
+<li>新增一個 nginx 的容器<br>
+<code>docker run --name web -d nginx</code></li>
+<li>查看 web 的 ip 地址<br>
+<code>docker network inspect bridge</code></li>
+<li>ping web 的容器，會發現在虛擬主機上是可以 ping 通的<br>
+<code>ping 172.17.0.4</code></li>
+<li>使用 telnet 測試網站是否可以連線，發現也可以連線<br>
+<code>telnet 172.17.0.4 80</code></li>
+<li>使用 curl 也可以把 html 頁面顯示出來，這樣就可以知道可以訪問 web 容器的 80 服務<br>
+<code>curl http://172.17.0.4</code></li>
+<li>先把 web 容器停止並刪除<br>
+<code>docker stop web</code><br>
+<code>docker rm web</code></li>
+<li>新增 web 容器，並把容器的 80 port 映射到虛擬主機的 80 port<br>
+<code>docker run --name web -d -p 80:80 nginx</code></li>
+<li>在虛擬主機上 <code>curl 127.0.0.1</code>，就會出現 html 頁面</li>
 </ol>
 
         </div>
@@ -267,7 +382,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2020/02/28/Docker-快速學習自我挑戰-II-Day4/" data-id="ck75yjbke0004ehfy3dirjtn4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2020/02/28/Docker-快速學習自我挑戰-II-Day4/" data-id="ck767j4e70006mefywqn56rek" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
