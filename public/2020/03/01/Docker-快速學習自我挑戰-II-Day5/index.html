@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>Docker 快速學習自我挑戰 II Day5 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Docker">
+    
+    <meta name="description" content="Docker 的數據持久化和數據共享  Container 是在 Image 之上去創建的，Container 可以讀寫數據，而 Image 只能夠讀取，但是 Container 裡面所寫入的數據，只會存在 Container 裡面，如果刪除 Container，寫入的數據會全部消失。但是有一種需求，資料庫的 Container 會有數據的讀寫，在這種情況下，Docker 就需要數據持久化。">
+<meta name="keywords" content="Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 快速學習自我挑戰 II Day5">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2020/03/01/Docker-快速學習自我挑戰-II-Day5/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="Docker 的數據持久化和數據共享  Container 是在 Image 之上去創建的，Container 可以讀寫數據，而 Image 只能夠讀取，但是 Container 裡面所寫入的數據，只會存在 Container 裡面，如果刪除 Container，寫入的數據會全部消失。但是有一種需求，資料庫的 Container 會有數據的讀寫，在這種情況下，Docker 就需要數據持久化。">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay05.png">
+<meta property="og:updated_time" content="2020-03-01T07:50:40.537Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker 快速學習自我挑戰 II Day5">
+<meta name="twitter:description" content="Docker 的數據持久化和數據共享  Container 是在 Image 之上去創建的，Container 可以讀寫數據，而 Image 只能夠讀取，但是 Container 裡面所寫入的數據，只會存在 Container 裡面，如果刪除 Container，寫入的數據會全部消失。但是有一種需求，資料庫的 Container 會有數據的讀寫，在這種情況下，Docker 就需要數據持久化。">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay05.png">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/英文學習/">英文學習</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Docker-快速學習自我挑戰-II-Day5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Docker 快速學習自我挑戰 II Day5
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2020/03/01/Docker-快速學習自我挑戰-II-Day5/" class="article-date">
+    <time datetime="2020-03-01T08:06:04.000Z" itemprop="datePublished">2020-03-01</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/images/learning/docker-2/DockerDay05.png">
+<hr>
+<h3>Docker 的數據持久化和數據共享</h3>
+<ol>
+<li>Container 是在 Image 之上去創建的，Container 可以讀寫數據，而 Image 只能夠讀取，但是 Container 裡面所寫入的數據，只會存在 Container 裡面，如果刪除 Container，寫入的數據會全部消失。但是有一種需求，資料庫的 Container 會有數據的讀寫，在這種情況下，Docker 就需要數據持久化。</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay05-Image01.png">
+<ol start="2">
+<li>Container 裡面會有一個 Program，把檔案寫入 File System，這些檔案會存在 Container 的 Layer 中，我們把數據的部分，額外 Mount 一個 Volume，這樣一來，數據就會被永久保存。</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay05-Image02.png">
+<ol start="3">
+<li>Docker 持久化數據的方案
+<ul>
+<li><span style="color:red"><strong>基於本地文件系統的 Volume</strong></span>。可以在執行 docker create 或是 docker run 的時，通過 -v 參數將主機目錄作為 Container 的 Volume，這部分功能便是基於本地系統的 Volume 管理。</li>
+<li><span style="color:red"><strong>基於外掛的 Volume</strong></span>。支持第三方的儲存方案，例如：AWS。</li>
+</ul>
+</li>
+<li>Volume 類型
+<ul>
+<li>受管理的 Data Volume，由 Docker 後台自動創建。</li>
+<li>綁定掛載的 Volume，具體掛載位置可由用戶指定。</li>
+</ul>
+</li>
+</ol>
+<h3>安裝 Vagrant Plugin</h3>
+<ol>
+<li>列出所有外掛<br>
+<code>vagrant plugin list</code></li>
+<li>安裝 vagrant scp<br>
+<code>vagrant plugin install vagrant-scp</code></li>
+<li>把本地資料複製到虛擬機裡面<br>
+<code>vagrant scp labs/ docker_node1:/home/vagrant/labs/</code></li>
+</ol>
+<h3>數據持久化 Data Volume</h3>
+<ol>
+<li><a href="https://github.com/docker-library/mysql/blob/c4d585301408223c27b024ce442b9bcebf0b1855/8.0/Dockerfile" target="_blank" rel="noopener">MySQL Docker file</a> 裡面有一行，<code>VOLUME /var/lib/mysql</code> 就是將數據存到虛擬主機的目錄，實現數據持久化，讓數據不會因為 Container 消失而消失</li>
+<li>創建一個 MySQL 的 Container，並使用沒有密碼的環境變數<br>
+<code>docker run -d --name mysql1 -e MYSQL_ALLOW_EMPTY_PASSWORD mysql</code></li>
+<li>這時候用 <code>docker ps</code> 查看 Container 會發現 mysql1 沒有啟動成功，使用 <code>docker logs mysql1</code> 查看，就會顯示要指定 MYSQL_ROOT_PASSWORD</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2020-03-01 02:36:05+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.19-1debian9 started.</span><br><span class="line">2020-03-01 02:36:05+00:00 [Note] [Entrypoint]: Switching to dedicated user &apos;mysql&apos;</span><br><span class="line">2020-03-01 02:36:05+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.19-1debian9 started.</span><br><span class="line">2020-03-01 02:36:06+00:00 [ERROR] [Entrypoint]: Database is uninitialized and password option is not specified</span><br><span class="line">	You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在創建 MySQL container 的同時，也會新增一個 Volume，要將該 Volume 移除<br>
+<code>docker rm mysql1</code><br>
+<code>docker volume ls</code><br>
+<code>docker volume rm [Volume id]</code></li>
+<li>再次創建一個 MySQL 的 Container<br>
+<code>docker run -d --name mysql1 -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql</code></li>
+<li>這時候我們可以去查看新增的 Volume 的細節，裡面就會看到這個 Volume 連結到本地的 /var/lib/docker/volumes/[Volume id]/_data 這個位置<br>
+<code>docker volume ls</code><br>
+<code>docker volume inspect [Volume id]</code></li>
+<li>我們在創建第二個 MySQL 的 Container<br>
+<code>docker run -d --name mysql2 -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql</code></li>
+<li>這時候再 <code>docker volume ls</code>，就會發現新增了一個新增的 Volume</li>
+<li>把 Container 停止並刪除，再查看 Container 狀態就會發現沒有任何退出或在執行的 Container 了<br>
+<code>docker stop mysql1 mysql2</code><br>
+<code>docker rm mysql1 mysql2</code><br>
+<code>docker ps -a</code></li>
+<li>使用 <code>docker volume ls</code> 查看 Volume，之前新增的都還在，但是會發現命名太複雜，我們可以自定義 Volume 名稱，先把所有的 volume 移除 <code>docker volume rm [volume1 id] [volume2 id]</code></li>
+<li>創建一個 MySQL 的 Container 並指定 Volume 名稱為 mysql，路徑為 /var/lib/mysql<br>
+<code>docker run -d -v mysql:/var/lib/mysql --name mysql1 -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql</code></li>
+<li>使用 <code>docker volume ls</code> 查看 Volume，就會看到新增的 mysql Volume</li>
+<li>為了驗證 MySQL 的數據持久，我們進去 mysql1 的 Container 新增一個新的 database</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql1 /bin/bash</span><br><span class="line">mysql -u root</span><br><span class="line">show databases;</span><br><span class="line">create database docker;</span><br><span class="line">exit;</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<ol start="14">
+<li>停止並刪除 Container<br>
+<code>docker rm -f mysql1</code></li>
+<li>創建一個新的 MySQL 的 Container，並連結到之前的 Volume<br>
+<code>docker run -d -v mysql:/var/lib/mysql --name mysql2 -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql</code></li>
+<li>進去 mysql2 的 Container 查看 databases，會發現之前新增的 Database 還存在</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql2 /bin/bash</span><br><span class="line">mysql -u root</span><br><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+<h3>數據持久化 Bind Mounting</h3>
+<ol>
+<li>Bind Mounting 就是做映射 <code>docker run -v /home/aaa:/root/aaa</code> ，可以將本地目錄和 Container 目錄做映射，如果本地目錄修改， Container 的數據內容也會修改，反之亦然</li>
+<li>新增一個 Dockerfile</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># this same shows how we can extend/change an existing official image from Docker Hub</span><br><span class="line"></span><br><span class="line">FROM nginx:latest</span><br><span class="line"># highly recommend you always pin versions for anything beyond dev/learn</span><br><span class="line"></span><br><span class="line">WORKDIR /usr/share/nginx/html</span><br><span class="line"># change working directory to root of nginx webhost</span><br><span class="line"># using WORKDIR is prefered to using &apos;RUN cd /some/path&apos;</span><br><span class="line"></span><br><span class="line">COPY index.html index.html</span><br><span class="line"></span><br><span class="line"># I don&apos;t have to specify EXPOSE or CMD because they&apos;re in my FROM</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>在同一個目錄新增 index.html</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;title&gt;hello&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;h1&gt;Hello Docker! &lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>將 Dockerfile 封裝成 Image<br>
+<code>docker build -t fishboneapps/nginx-volume-test .</code></li>
+<li>創建一個新的 Container<br>
+<code>docker run -d -p 80:80 --name web fishboneapps/nginx-volume-test</code></li>
+<li>這時候執行 curl 指令，就會得到 nginx 服務器回傳的 index.html<br>
+<code>curl 127.0.0.1</code></li>
+<li>這時候移除 web Container<br>
+<code>docker rm -f web</code></li>
+<li>再新增一個 Container 將虛擬機目錄映射到 nginx 的默認目錄<br>
+<code>docker run -d -p 80:80 -v $(pwd):/usr/share/nginx/html --name web fishboneapps/nginx-volume-test</code></li>
+<li>進入 web Container 就會發現虛擬機目錄裡面的 Dockerfile 出現在裡面，再新增一個 test.txt</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it web /bin/bash</span><br><span class="line">ls</span><br><span class="line">touch test.txt</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>在虛擬機的目錄 <code>ls</code> 就會發現剛剛在 container 裡面新增的 test.txt 存在該目錄，也就是說這兩個目錄是同步的</li>
+<li>在本地機器的 Vagrant 目錄也會出現 test.txt，因為 Vagrant 目錄與虛擬機目錄也用同樣的方式進行同步</li>
+</ol>
+<h3>開發者利器 Docker + Bind Mounting</h3>
+<ol>
+<li>開啟一個 flask 服務的 Container<br>
+<code>docker run -d -p 80:5000 -v $(pwd):/skeleton --name flask fishboneapps/flask-skeleton</code></li>
+<li>這時候透過本地的瀏覽器就可以讀取頁面(看 Vagrantfile 設置的 ip)，我使用的是 192.168.205.12<br>
+<a href="http://192.168.205.12/" target="_blank" rel="noopener">http://192.168.205.12/</a></li>
+<li>隨便打開檔案進行修改，就會發現網站會跟著變動</li>
+</ol>
+<h3>根據前面所學部署一個 WordPress</h3>
+<ol>
+<li>新增一個 MySQL 的 Container<br>
+<code>docker run -d --name mysql -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=wordpress mysql:5.7</code></li>
+<li>新增一個 WordPress 的 Container<br>
+<code>docker run -d -e WORDPRESS_DB_HOST=mysql:3306 --link mysql -p 8080:80 wordpress</code></li>
+<li>透過本地的瀏覽器就可以讀取頁面，就會看到 WordPress 的網站了</li>
+<li>但是透過這種方式來建立 docker 的服務，會很繁瑣，而且管理也較為複雜，我們想把這些整合成一個 group，Docker Compose 就是為了解決這個問題而誕生了</li>
+</ol>
+<h3>Docker Compose 是什麼</h3>
+<ol>
+<li>多 Container 的 App 太麻煩
+<ul>
+<li>要 docker build image 或是從 Docker Hub pull Image</li>
+<li>要創建多個 container</li>
+<li>要管理這些 container (啟動和刪除)</li>
+</ul>
+</li>
+<li>Docker Compose 是什麼
+<ul>
+<li>Docker Compose 是一個工具(基於 Docker 的命令列工具)</li>
+<li>這個工具可以透過 YAML 定義多 Container 的 Docker 應用</li>
+<li>通過一條命令就可以根據 YAML 文件的定義去創建或管理多個 Container</li>
+</ul>
+</li>
+<li>默認文件：docker-compose.yml，三大概念：Services, Networks, Volumes</li>
+<li>Services
+<ul>
+<li>一個 Service 代表一個 Container，這個 Container 可以從 Docker Hub Image 來創建，或是從本地的 Dockerfile build 出來的 Image 來創建</li>
+<li>Services 的啟動類似 docker run，我們可以給其指定 Network 和 Volume。</li>
+<li>以下用 docker-compose 的 service 和 docker run 產生同樣的容器</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Docker Compose</span><br><span class="line">services:</span><br><span class="line">  db:</span><br><span class="line">    image: postgres:9.4</span><br><span class="line">    volumes:</span><br><span class="line">      - &quot;db-data:/var/lib/postgresql/data&quot;</span><br><span class="line">    networks:</span><br><span class="line">      - back-tier</span><br><span class="line"># docker run</span><br><span class="line">&gt; docker run -d --network back-tier -v db-data:/var/lib/postgresql/data postgres:9.4</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>Volumes 和 Networks
+<ul>
+<li>在跟 services 一樣的級別底下會有 volumes 和 networks</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Docker Compose</span><br><span class="line">volumes:</span><br><span class="line">  db-data</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  front-tier:</span><br><span class="line">    driver: bridge</span><br><span class="line">  back-tier:</span><br><span class="line">    driver: bridge</span><br><span class="line"></span><br><span class="line"># docker volume 和 docker network</span><br><span class="line">&gt; docker volume create db-data</span><br><span class="line">&gt; docker network create -d bridge back-tier</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>新增一個 WordPress 的 docker-compose.yml</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"># docker-compose 版本</span><br><span class="line">version: &apos;3&apos;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  wordpress:</span><br><span class="line">    image: wordpress</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:80</span><br><span class="line">    environment:</span><br><span class="line">      WORDPRESS_DB_HOST: mysql</span><br><span class="line">      WORDPRESS_DB_PASSWORD: root</span><br><span class="line">    networks:</span><br><span class="line">      - my-bridge</span><br><span class="line"></span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_ROOT_PASSWORD: root</span><br><span class="line">      MYSQL_DATABASE: wordpress</span><br><span class="line">    volumes:</span><br><span class="line">      - mysql-data:/var/lib/mysql</span><br><span class="line">    networks:</span><br><span class="line">      - my-bridge</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  mysql-data:</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  my-bridge:</span><br><span class="line">    driver: bridge</span><br></pre></td></tr></table></figure>
+<h3>使用 docker-compose.yml</h3>
+<ol>
+<li>在虛擬機上安裝 docker-compose，按照<a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">官方文件</a>進行安裝</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 下載 Docker Compose</span><br><span class="line">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br><span class="line"># 給予權限</span><br><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在剛剛建立 wordpress.yml 的資料夾啟動 Container，這邊的 -f 預設就是 docker-compose.yml，可以不填<br>
+<code>docker-compose -f docker-compose.yml up</code></li>
+<li>如果執行 <code>docker-compose up</code> 之後再使用 Command + C 退出會直接停止服務，所以可以讓指令在後台執行 <code>docker-compose up -d</code>，如果想要 debug 看 log，才會使用 <code>docker-compose up</code></li>
+<li>docker-composer 相關指令
+<ul>
+<li><code>docker-compose stop</code> 會停止服務</li>
+<li><code>docker-compose down</code> 會刪除所有服務(包含 Cotainers, Images, Volumes 和 Networks)</li>
+<li><code>docker-compose start</code> 可以啟動服務</li>
+<li><code>docker-compose ps</code> 查看服務狀態</li>
+<li><code>docker-compose images</code> 查看所有 Images</li>
+<li><code>docker-compose exec</code> 對 Container 執行指令</li>
+</ul>
+</li>
+<li>docker-compose exec 和 docker exec 基本上是一樣的，執行以下指令可以直接進去 Container 裡<br>
+<code>docker-compose exec mysql bash</code><br>
+<code>docker-compose exec wordpress bash</code></li>
+<li>將 wordpress 服務停止並刪除<br>
+<code>docker-compose down</code></li>
+<li>新增 docker-compose.yml</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  redis:</span><br><span class="line">    image: redis</span><br><span class="line"></span><br><span class="line">  web:</span><br><span class="line">    build:</span><br><span class="line">      context: .</span><br><span class="line">      dockerfile: Dockerfile</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:5000</span><br><span class="line">    environment:</span><br><span class="line">      REDIS_HOST: redis</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>新增 Dockerfile</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FROM python:2.7</span><br><span class="line">LABEL maintaner=&quot;vincent@fishboneapps.com&quot;</span><br><span class="line">COPY . /app</span><br><span class="line">WORKDIR /app</span><br><span class="line">RUN pip install flask redis</span><br><span class="line">EXPOSE 5000</span><br><span class="line">CMD [ &quot;python&quot;, &quot;app.py&quot; ]</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>新增 <a href="http://app.py" target="_blank" rel="noopener">app.py</a></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from redis import Redis</span><br><span class="line">import os</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">redis = Redis(host=os.environ.get(&apos;REDIS_HOST&apos;, &apos;127.0.0.1&apos;), port=6379)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def hello():</span><br><span class="line">    redis.incr(&apos;hits&apos;)</span><br><span class="line">    return &apos;Hello Container World! I have been seen %s times and my hostname is %s.\n&apos; % (redis.get(&apos;hits&apos;),socket.gethostname())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run(host=&quot;0.0.0.0&quot;, port=5000, debug=True)</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>使用 <code>docker-compose up</code> 就可以啟動服務了，這時候打開本地的瀏覽器就可以看到 flask 的頁面了</li>
+</ol>
+<h3>水平擴展和附載均衡</h3>
+<ol>
+<li>用 docker-compose 的 --scale 啟動三個 web，但是會出現錯誤，會顯示 8080 已被佔用<br>
+<code>docker-compose up --scale= web=3 -d</code></li>
+<li>修改 docker-compose.yml 把 port 刪除</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  redis:</span><br><span class="line">    image: redis</span><br><span class="line"></span><br><span class="line">  web:</span><br><span class="line">    build:</span><br><span class="line">      context: .</span><br><span class="line">      dockerfile: Dockerfile</span><br><span class="line">    environment:</span><br><span class="line">      REDIS_HOST: redis</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>這時候在分別執行以下命令，Container 就會被啟動<br>
+<code>docker-compose up -d</code><br>
+<code>docker-compose up --scale web=3 -d</code></li>
+<li>關閉所有的 Contaienr <code>docker-compose down</code></li>
+<li>修改 docker-compose.yml，加上 loadbalancer</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  redis:</span><br><span class="line">    image: redis</span><br><span class="line"></span><br><span class="line">  web:</span><br><span class="line">    build:</span><br><span class="line">      context: .</span><br><span class="line">      dockerfile: Dockerfile</span><br><span class="line">    environment:</span><br><span class="line">      REDIS_HOST: redis</span><br><span class="line"></span><br><span class="line">  lb:</span><br><span class="line">    image: dockercloud/haproxy</span><br><span class="line">    links:</span><br><span class="line">      - web</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:80</span><br><span class="line">    volumes:</span><br><span class="line">      - /var/run/docker.sock:/var/run/docker.sock</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>啟動 docker-compose<br>
+<code>docker-compose up -d</code></li>
+<li>把網頁內容讀取出來 <code>curl 127.0.0.1:8080</code> 會返回 Container 的 id<br>
+<code>Hello Container World! I have been seen 1 times and my hostname is 5620b14f864a.</code></li>
+<li>然後把 web 服務擴展成 3 個<br>
+<code>docker-compose up --scale web=3 -d</code></li>
+<li>再把網頁內容讀出來，會發現有 3 個 Container id 會輪流出現</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Hello Container World! I have been seen 2 times and my hostname is 5620b14f864a.</span><br><span class="line">Hello Container World! I have been seen 3 times and my hostname is 923de444e90d.</span><br><span class="line">Hello Container World! I have been seen 4 times and my hostname is 1fde842de3f1.</span><br><span class="line">Hello Container World! I have been seen 5 times and my hostname is 5620b14f864a.</span><br><span class="line">Hello Container World! I have been seen 6 times and my hostname is 923de444e90d.</span><br><span class="line">Hello Container World! I have been seen 7 times and my hostname is 1fde842de3f1.</span><br><span class="line">Hello Container World! I have been seen 8 times and my hostname is 5620b14f864a.</span><br><span class="line">Hello Container World! I have been seen 9 times and my hostname is 923de444e90d.</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>我們也可以把服務擴展成 5 台<br>
+<code>docker-compose up --scale web=5 -d</code></li>
+<li>這時候直接 curl 10 次 <code>for i in `seq 10`; do curl 127.0.0.1:8080; done</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Hello Container World! I have been seen 10 times and my hostname is 5620b14f864a.</span><br><span class="line">Hello Container World! I have been seen 11 times and my hostname is 923de444e90d.</span><br><span class="line">Hello Container World! I have been seen 12 times and my hostname is 1fde842de3f1.</span><br><span class="line">Hello Container World! I have been seen 13 times and my hostname is 37c3b132c4bd.</span><br><span class="line">Hello Container World! I have been seen 14 times and my hostname is c2e3df63ddec.</span><br><span class="line">Hello Container World! I have been seen 15 times and my hostname is 5620b14f864a.</span><br><span class="line">Hello Container World! I have been seen 16 times and my hostname is 923de444e90d.</span><br><span class="line">Hello Container World! I have been seen 17 times and my hostname is 1fde842de3f1.</span><br><span class="line">Hello Container World! I have been seen 18 times and my hostname is 37c3b132c4bd.</span><br><span class="line">Hello Container World! I have been seen 19 times and my hostname is c2e3df63ddec.</span><br></pre></td></tr></table></figure>
+<ol start="12">
+<li>同樣地，也可以減少擴展<br>
+<code>docker-compose up --scale web=3 -d</code></li>
+<li>Docker Compose 是用於本地開發的一個工具，並不適合用於 Production，它就是為了方便在本地看部署的結果</li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2020/03/01/Docker-快速學習自我挑戰-II-Day5/" data-id="ck78tdep1000550fyzehb79th" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2020/03/01/Docker-快速學習自我挑戰-II-Day5/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/VincentTingSyuanWang" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/tingsyuanwang/" target="_blank">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/T_S_Wang" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/02/28/Docker-快速學習自我挑戰-II-Day4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Docker 快速學習自我挑戰 II Day4</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/01/Docker-快速學習自我挑戰-II-Day5/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/docker-2/DockerDay05.png)" alt="Docker 快速學習自我挑戰 II Day5" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2020/03/01/Docker-快速學習自我挑戰-II-Day5/" class="title">Docker 快速學習自我挑戰 II Day5</a></p>
+                            <p class="item-date"><time datetime="2020-03-01T08:06:04.000Z" itemprop="datePublished">2020-03-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/28/Docker-快速學習自我挑戰-II-Day4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/docker-2/DockerDay04.jpg)" alt="Docker 快速學習自我挑戰 II Day4" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2020/02/28/Docker-快速學習自我挑戰-II-Day4/" class="title">Docker 快速學習自我挑戰 II Day4</a></p>
+                            <p class="item-date"><time datetime="2020-02-28T07:09:54.000Z" itemprop="datePublished">2020-02-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/22/英文文法重點整理-3/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/EnglishLearning/Grammar-3.jpg)" alt="英文文法重點整理(3)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/英文學習/">英文學習</a></p>
+                            <p class="item-title"><a href="/2020/02/22/英文文法重點整理-3/" class="title">英文文法重點整理(3)</a></p>
+                            <p class="item-date"><time datetime="2020-02-22T05:33:09.000Z" itemprop="datePublished">2020-02-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/21/英文文法重點整理-2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/EnglishLearning/Grammar-2.png)" alt="英文文法重點整理(2)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/英文學習/">英文學習</a></p>
+                            <p class="item-title"><a href="/2020/02/21/英文文法重點整理-2/" class="title">英文文法重點整理(2)</a></p>
+                            <p class="item-date"><time datetime="2020-02-21T03:50:51.000Z" itemprop="datePublished">2020-02-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/01/16/英文文法重點整理-1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/EnglishLearning/Grammar-1.png)" alt="英文文法重點整理(1)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/英文學習/">英文學習</a></p>
+                            <p class="item-title"><a href="/2020/01/16/英文文法重點整理-1/" class="title">英文文法重點整理(1)</a></p>
+                            <p class="item-date"><time datetime="2020-01-16T04:00:41.000Z" itemprop="datePublished">2020-01-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/學習歷程/">學習歷程</a><span class="category-list-count">91</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/英文學習/">英文學習</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React-Native</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/">UX</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Docker/" style="font-size: 18px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 12px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 11px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 15px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 19px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 13px;">Nutrition</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17px;">React</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UX/" style="font-size: 14px;">UX</a> <a href="/tags/Weight-Loss/" style="font-size: 13px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2020 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
