@@ -17,7 +17,7 @@
 <meta property="og:description" content="容器編排 Swarm  到處使用 Container 很麻煩，為了解決這些問題，Docker Swarm 就出現了  如何管理這麼多容器？ 如何橫向擴展？ 如果容器 down 了，如何自動恢復？ 如何更新容器不影響業務？ 如何監控和追蹤這些容器？ 如何調度容器的創建？ 如何保護隱私數據？   Swarm 是集群，有集群就有節點，有節點就有角色，Swarm 總共有兩個角色，一個叫做 Manage">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay06.png">
-<meta property="og:updated_time" content="2020-03-02T12:26:52.755Z">
+<meta property="og:updated_time" content="2020-03-03T06:26:16.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 快速學習自我挑戰 II Day6">
 <meta name="twitter:description" content="容器編排 Swarm  到處使用 Container 很麻煩，為了解決這些問題，Docker Swarm 就出現了  如何管理這麼多容器？ 如何橫向擴展？ 如果容器 down 了，如何自動恢復？ 如何更新容器不影響業務？ 如何監控和追蹤這些容器？ 如何調度容器的創建？ 如何保護隱私數據？   Swarm 是集群，有集群就有節點，有節點就有角色，Swarm 總共有兩個角色，一個叫做 Manage">
@@ -358,6 +358,28 @@ ga('send', 'pageview');
 <li>可以查看 Stack Service 狀態 <code>docker stack services wordpress</code></li>
 <li>打開瀏覽器，安裝 WordPress 確定網站正常運行</li>
 </ol>
+<h3>Service 更新</h3>
+<ol>
+<li>在運行狀態下更新 Service，而 Service 是運行在 Production 環境下面的，在更新狀態下，我們要避免服務停止</li>
+<li>首先，新增一個 demo 的 Overlay 網路<br>
+<code>docker network create -d overlay demo</code></li>
+<li>新建一個 web 的 Service<br>
+<code>docker service create --name web --publish 80:5000 --network demo fishboneapps/python-hello-world:1.0</code></li>
+<li>啟動完成之後，先進行 Scale<br>
+<code>docker service scale web=2</code></li>
+<li>查看 Service 狀態<br>
+<code>docker service ps web</code></li>
+<li>檢查一下現在的服務狀態，會看到現在顯示 Hello Docker, Version 1.0<br>
+<code>curl 127.0.0.1</code></li>
+<li>在 Worker1 上進行循環 curl，讓我們查看在更新的過程中，服務是否中斷<br>
+<code>sh -c &quot;while true; do curl 127.0.0.1&amp;sleep 1; done&quot;</code></li>
+<li>使用 <code>docker service update</code> 進行更新，可以更新 Secret Key、Publish Port 和 Image 等等<br>
+<code>docker service update --image fishboneapps/python-hello-world:2.0 web</code></li>
+<li>會發現在 Workder1 上面的 curl 會自動跳成 2.0，且服務沒有中斷，這時候可以透過 <code>docker service ps web</code> 查看到服務更新的過程</li>
+<li>測試更新 Service 端口，更新端口業務一定會中斷，因為訪問都是透過 vip + 端口去實現的，如果端口改變了，vip 的端口也會改變<br>
+<code>docker service update --publish-rm 80:5000 --publish-add 8080:5000 web</code></li>
+<li>Docker Stack 沒有更新的功能，只需要修改 docker-compose.yml，然後一樣執行 deploy 就會完成更新，流程跟 Service 一樣，docker-compose.yml 會有 update_config 的參數，它會依據這個 config 進行更新</li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -365,7 +387,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2020/03/02/Docker-快速學習自我挑戰-II-Day6/" data-id="ck7afue0d00067hfy1etu1e3j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2020/03/02/Docker-快速學習自我挑戰-II-Day6/" data-id="ck7biewb700057ufy7difwmi8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

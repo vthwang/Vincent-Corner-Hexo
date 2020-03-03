@@ -268,3 +268,23 @@ secrets:
 2. 啟動 WordPress 的 Stack `docker service deploy wordpress -c=docker-compose.yml`
 3. 可以查看 Stack Service 狀態 `docker stack services wordpress`
 4. 打開瀏覽器，安裝 WordPress 確定網站正常運行
+### Service 更新
+1. 在運行狀態下更新 Service，而 Service 是運行在 Production 環境下面的，在更新狀態下，我們要避免服務停止
+2. 首先，新增一個 demo 的 Overlay 網路
+`docker network create -d overlay demo`
+3. 新建一個 web 的 Service
+`docker service create --name web --publish 80:5000 --network demo fishboneapps/python-hello-world:1.0`
+4. 啟動完成之後，先進行 Scale
+`docker service scale web=2`
+5. 查看 Service 狀態
+`docker service ps web`
+6. 檢查一下現在的服務狀態，會看到現在顯示 Hello Docker, Version 1.0
+`curl 127.0.0.1`
+7. 在 Worker1 上進行循環 curl，讓我們查看在更新的過程中，服務是否中斷
+`sh -c "while true; do curl 127.0.0.1&sleep 1; done"`
+8. 使用 `docker service update` 進行更新，可以更新 Secret Key、Publish Port 和 Image 等等
+`docker service update --image fishboneapps/python-hello-world:2.0 web`
+9. 會發現在 Workder1 上面的 curl 會自動跳成 2.0，且服務沒有中斷，這時候可以透過 `docker service ps web` 查看到服務更新的過程
+10. 測試更新 Service 端口，更新端口業務一定會中斷，因為訪問都是透過 vip + 端口去實現的，如果端口改變了，vip 的端口也會改變
+`docker service update --publish-rm 80:5000 --publish-add 8080:5000 web`
+11. Docker Stack 沒有更新的功能，只需要修改 docker-compose.yml，然後一樣執行 deploy 就會完成更新，流程跟 Service 一樣，docker-compose.yml 會有 update_config 的參數，它會依據這個 config 進行更新
