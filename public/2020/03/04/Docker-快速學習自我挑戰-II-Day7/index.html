@@ -6,10 +6,10 @@
     <title>Docker 快速學習自我挑戰 II Day7 | Vincent&#39;s Corner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Docker">
+        <meta name="keywords" content="Docker,Kubernetes">
     
     <meta name="description" content="Docker Cloud  Docker Cloud 提供容器管理，編排，部署的托管服務 Docker Cloud 的模塊  關聯雲服務 AWS、Azure 添加節點作為 Docker Host 創建服務 Service 創建 Stack Image 管理   Docker Cloud 兩種運行模式  Standard 模式：一個 Node 就是一個 Docker Host Swarm 模式：">
-<meta name="keywords" content="Docker">
+<meta name="keywords" content="Docker,Kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 快速學習自我挑戰 II Day7">
 <meta property="og:url" content="https://vincent.fishboneapps.com/2020/03/04/Docker-快速學習自我挑戰-II-Day7/index.html">
@@ -17,7 +17,7 @@
 <meta property="og:description" content="Docker Cloud  Docker Cloud 提供容器管理，編排，部署的托管服務 Docker Cloud 的模塊  關聯雲服務 AWS、Azure 添加節點作為 Docker Host 創建服務 Service 創建 Stack Image 管理   Docker Cloud 兩種運行模式  Standard 模式：一個 Node 就是一個 Docker Host Swarm 模式：">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay07.jpg">
-<meta property="og:updated_time" content="2020-03-05T09:04:42.222Z">
+<meta property="og:updated_time" content="2020-03-06T08:50:30.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 快速學習自我挑戰 II Day7">
 <meta name="twitter:description" content="Docker Cloud  Docker Cloud 提供容器管理，編排，部署的托管服務 Docker Cloud 的模塊  關聯雲服務 AWS、Azure 添加節點作為 Docker Host 創建服務 Service 創建 Stack Image 管理   Docker Cloud 兩種運行模式  Standard 模式：一個 Node 就是一個 Docker Host Swarm 模式：">
@@ -167,7 +167,7 @@ ga('send', 'pageview');
     <time datetime="2020-03-04T06:27:55.000Z" itemprop="datePublished">2020-03-04</time>
 </a>
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kubernetes/">Kubernetes</a></li></ul>
 
             </div>
         
@@ -211,12 +211,12 @@ ga('send', 'pageview');
 <ol>
 <li>進入 <a href="https://hub.docker.com/search?q=&amp;type=edition&amp;offering=enterprise" target="_blank" rel="noopener">Docker EE</a>，找尋對應作業系統的頁面</li>
 <li>我要安裝 Ubuntu 版本的，進去<a href="https://hub.docker.com/editions/enterprise/docker-ee-server-ubuntu/trial" target="_blank" rel="noopener">試用一個月填寫相關資料</a></li>
-<li>使用 Vagrantfile 安裝虛擬機，因為 Docker EE 需要更多資源，所以記憶體設定為 3GB</li>
+<li>使用 Vagrantfile 安裝虛擬機，因為 Docker EE 需要至少 4G 記憶體，所以記憶體設定為 4GB</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"># -*- mode: ruby -*-</span><br><span class="line"># vi: set ft=ruby :</span><br><span class="line"></span><br><span class="line">Vagrant.require_version &quot;&gt;= 1.6.0&quot;</span><br><span class="line"></span><br><span class="line">boxes = [</span><br><span class="line">    &#123;</span><br><span class="line">        :name =&gt; &quot;docker-ee-manager&quot;,</span><br><span class="line">        :eth1 =&gt; &quot;192.168.205.50&quot;,</span><br><span class="line">        :mem =&gt; &quot;3072&quot;,</span><br><span class="line">        :cpu =&gt; &quot;1&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        :name =&gt; &quot;docker-ee-worker&quot;,</span><br><span class="line">        :eth1 =&gt; &quot;192.168.205.60&quot;,</span><br><span class="line">        :mem =&gt; &quot;3072&quot;,</span><br><span class="line">        :cpu =&gt; &quot;1&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">Vagrant.configure(2) do |config|</span><br><span class="line"></span><br><span class="line">  config.vm.box = &quot;ubuntu/bionic64&quot;</span><br><span class="line">  boxes.each do |opts|</span><br><span class="line">    config.vm.define opts[:name] do |config|</span><br><span class="line">      config.vm.hostname = opts[:name]</span><br><span class="line">      config.vm.provider &quot;vmware_fusion&quot; do |v|</span><br><span class="line">        v.vmx[&quot;memsize&quot;] = opts[:mem]</span><br><span class="line">        v.vmx[&quot;numvcpus&quot;] = opts[:cpu]</span><br><span class="line">      end</span><br><span class="line">      config.vm.provider &quot;virtualbox&quot; do |v|</span><br><span class="line">        v.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, opts[:mem]]</span><br><span class="line">        v.customize [&quot;modifyvm&quot;, :id, &quot;--cpus&quot;, opts[:cpu]]</span><br><span class="line">      end</span><br><span class="line">      config.vm.network :private_network, ip: opts[:eth1]</span><br><span class="line">    end</span><br><span class="line">  end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"># -*- mode: ruby -*-</span><br><span class="line"># vi: set ft=ruby :</span><br><span class="line"></span><br><span class="line">Vagrant.require_version &quot;&gt;= 1.6.0&quot;</span><br><span class="line"></span><br><span class="line">boxes = [</span><br><span class="line">    &#123;</span><br><span class="line">        :name =&gt; &quot;docker-ee-manager&quot;,</span><br><span class="line">        :eth1 =&gt; &quot;192.168.205.50&quot;,</span><br><span class="line">        :mem =&gt; &quot;4096&quot;,</span><br><span class="line">        :cpu =&gt; &quot;1&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        :name =&gt; &quot;docker-ee-worker&quot;,</span><br><span class="line">        :eth1 =&gt; &quot;192.168.205.60&quot;,</span><br><span class="line">        :mem =&gt; &quot;4096&quot;,</span><br><span class="line">        :cpu =&gt; &quot;1&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">Vagrant.configure(2) do |config|</span><br><span class="line"></span><br><span class="line">  config.vm.box = &quot;ubuntu/bionic64&quot;</span><br><span class="line">  boxes.each do |opts|</span><br><span class="line">    config.vm.define opts[:name] do |config|</span><br><span class="line">      config.vm.hostname = opts[:name]</span><br><span class="line">      config.vm.provider &quot;vmware_fusion&quot; do |v|</span><br><span class="line">        v.vmx[&quot;memsize&quot;] = opts[:mem]</span><br><span class="line">        v.vmx[&quot;numvcpus&quot;] = opts[:cpu]</span><br><span class="line">      end</span><br><span class="line">      config.vm.provider &quot;virtualbox&quot; do |v|</span><br><span class="line">        v.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, opts[:mem]]</span><br><span class="line">        v.customize [&quot;modifyvm&quot;, :id, &quot;--cpus&quot;, opts[:cpu]]</span><br><span class="line">      end</span><br><span class="line">      config.vm.network :private_network, ip: opts[:eth1]</span><br><span class="line">    end</span><br><span class="line">  end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li>按照<a href="https://docs.docker.com/ee/docker-ee/ubuntu/" target="_blank" rel="noopener">文檔</a>開始安裝</li>
-<li>移除舊版本 Docker，因為沒有安裝，會顯示 No Match<br>
+<li>移除舊版本 Docker，因為沒有安裝，會顯示 Unable to locate<br>
 <code>sudo apt-get remove docker docker-engine docker-ce docker-ce-cli docker.io</code></li>
 <li>在 Manager 和 Worker 更新套件並安裝套件</li>
 </ol>
@@ -236,30 +236,31 @@ ga('send', 'pageview');
 <ol start="12">
 <li>在 Manager 和 Worker 安裝 Docker Engine</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ee docker-ee-cli containerd.io</span><br><span class="line">apt-cache madison docker-ee</span><br><span class="line">sudo apt-get install docker-ee=&lt;VERSION_STRING&gt; docker-ee-cli=&lt;VERSION_STRING&gt; containerd.io</span><br><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ee docker-ee-cli containerd.io</span><br><span class="line">apt-cache madison docker-ee</span><br></pre></td></tr></table></figure>
 <ol start="13">
 <li>在 Manager 和 Worker 查看 Docker 版本<br>
 <code>sudo docker version</code></li>
 <li>只在 Manager 節點安裝 UCP(Universal Control Plane)，需要設置後台帳號密碼</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker container run --rm -it --name ucp \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  docker/ucp:3.2.5 install \</span><br><span class="line">  --host-address &lt;node-ip-address&gt; \</span><br><span class="line">  --interactive</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker container run --rm -it --name ucp \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  docker/ucp:3.2.5 install \</span><br><span class="line">  --host-address &lt;node-ip-address&gt; \</span><br><span class="line">  --interactive</span><br><span class="line">  --pod-cidr 10.0.0.0/16</span><br></pre></td></tr></table></figure>
 <ol start="15">
-<li>安裝完成之後進入 UCP 介面，登入並上傳 License，接下來到 Node 區塊，選擇添加 node，裡面會有一串 docker-swarm 的命令，直接貼到 Worker 節點就完成連接了</li>
+<li>安裝完成之後進入 UCP 介面(<a href="https://192.168.205.50:443" target="_blank" rel="noopener">https://192.168.205.50:443</a>)，登入並上傳 License，接下來到 Node 區塊，選擇添加 node，裡面會有一串 docker-swarm 的命令，直接貼到 Worker 節點就完成連接了</li>
 <li>最後，還可以安裝 DTR (Docker Trusted Registry)，在 UCP 左上角的介面點擊 Admin &gt; Admin Setting &gt; Docker Trusted Registry，在裡面可以選擇安裝的節點，並設置外部 ip 及把 Disable TLS Verification 打勾，就會取得指令，直接進入 Workder 節點安裝</li>
 </ol>
+<img src="/images/learning/docker-2/DockerDay07-Image02.png">
 <h3>Kubernetes</h3>
 <ol>
 <li>在 Kubernetes，Manager 稱之為 Master 節點，Worker 稱為 Node 節點，Master 節點對外會提供一些接口</li>
 </ol>
-<img src="/images/learning/docker-2/DockerDay07-Image02.png">
+<img src="/images/learning/docker-2/DockerDay07-Image03.png">
 <ol start="2">
 <li>Master 節點有一個 API Server，會向外開放接口，透過 API 可以訪問 Service，Scheduler 是一個調度模塊，會控制 Container 服務要放在哪個節點，Controller 是一個控制，Container 可以做擴展和負載均衡，假設設定 Replica=2，那麼 Controller 就會維持有兩個 Container 在運行，etcd 就是一個分佈式的儲存，主要儲存整個 K8s 的狀態和配置</li>
 </ol>
-<img src="/images/learning/docker-2/DockerDay07-Image03.png">
+<img src="/images/learning/docker-2/DockerDay07-Image04.png">
 <ol start="3">
 <li>Pod 就是 Container 調度裡面的最小單位，一個 pod 就是具有相同 Namespace 的 Container 組合，Namespace 可以有 User Namespace 或是 Network Namespace，但是主要是以 Network Namespace 組合為主，Docker 是創建 Pod 所使用的 Container 技術，Kubelet 會做創建 Container、Network 和 Volume 的管理，kube-proxy 用來做端口的代理和轉發，還有服務發現和負載均衡都是透過 kube-proxy 來實現的，Fluentd 主要是做日誌的採集、儲存和查詢，同時，它還有其他插件，比方說 DNS 模塊，提供 DNS 服務，UI 就是儀表板介面，可以透過網頁的方式去查看整個 K8s 的集群，還有最重要的 Image Registry，主要會從上面去拉取 Docker 的 Image</li>
 </ol>
-<img src="/images/learning/docker-2/DockerDay07-Image04.png">
+<img src="/images/learning/docker-2/DockerDay07-Image05.png">
 <ol start="4">
 <li>安裝 K8s
 <ul>
@@ -274,16 +275,16 @@ ga('send', 'pageview');
 <code>brew install kubectl</code></li>
 <li>使用 <code>kubectl version --client</code> 測試 cubectl 是否安裝完成</li>
 <li>使用 <code>minikube start --vm-driver=virtualbox --registry-mirror=https://registry.docker-cn.com --image-mirror-country=cn --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers</code> 創建一個單節點的 k8s Cluster</li>
-<li>使用 <code>cubectl config view</code> 查看 minikube 創建的組態</li>
-<li>使用 <code>cubectl config get-contexts</code> 查看 context，在本地可以用不同的 cubectl context 連接不同的 Cluster</li>
-<li>使用 <code>cubectl clusterinfo</code> 查看 Cluster 的狀態</li>
+<li>使用 <code>kubectl config view</code> 查看 minikube 創建的組態</li>
+<li>使用 <code>kubectl config get-contexts</code> 查看 context，在本地可以用不同的 cubectl context 連接不同的 Cluster</li>
+<li>使用 <code>kubectl cluster-info</code> 查看 Cluster 的狀態</li>
 <li>使用 <code>minikube ssh</code> 可以進入用 minikube 創建的虛擬機器裡面</li>
 </ol>
 <h3>K8s 最小調度單位 Pod</h3>
 <ol>
 <li>我們不對 Container 做直接操作，因為 Pod 已經是最小單位了，一個 pod 裡面可以包含一個或多個 Container，一個 Pod 會共享一個 Namespace，假設在一個 pod 裡面啟動了兩個 Container，這個概念就像在本地啟動了兩個進程，Container 的通信可以直接透過 localhost</li>
 </ol>
-<img src="/images/learning/docker-2/DockerDay07-Image05.png">
+<img src="/images/learning/docker-2/DockerDay07-Image06.png">
 <ol start="2">
 <li>新增一個 pod_nginx.yml</li>
 </ol>
@@ -300,6 +301,89 @@ ga('send', 'pageview');
 <li>先進去 minikube 裡面 <code>minikube ssh</code> 使用 <code>ping 172.17.0.4</code> 是可以連通的，使用 <code>curl 172.17.0.4</code> 也會回傳 nginx 的網頁</li>
 <li>在 minikube 裡面 <code>ip a</code> 查詢到 ip 為 192.168.99.101，在本地機器 <code>ping 192.168.99.101</code> 也會連通，使用 <code>kubectl port-forward nginx 8080:80</code> 將 nginx 的服務對外開放，在本地就可以用 <a href="http://127.0.0.1:8080/" target="_blank" rel="noopener">http://127.0.0.1:8080/</a> 連通網站</li>
 </ol>
+<h3>ReplicaSet 和 ReplicaController</h3>
+<ol>
+<li>使用指令刪除 nginx pod<br>
+<code>kubectl delete -f pod_nginx.yml</code></li>
+<li>新增 rc_nginx.yml，我們在這個 yml 文件定義了 ReplicaSet</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: ReplicationController</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  selector:</span><br><span class="line">    app: nginx</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      name: nginx</span><br><span class="line">      labels:</span><br><span class="line">        app: nginx</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: nginx</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 80</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用 rc_nginx.yml 啟動 pod<br>
+<code>kubectl create -f rc_nginx.yml</code></li>
+<li>使用 <code>kubectl get pods</code> 查看 pod 狀態，並刪除其中一個 Container <code>kubectl delete pods [Container id]</code>，再使用 <code>kubectl get pods</code> 會看到 Cluster 自動會再啟動一個 Container</li>
+<li>可以透過 scale 的方式增加或減少 pods，並用 <code>kubectl get pods</code> 查看 pod 狀態
+<ul>
+<li>減少 <code>kubectl scale rc nginx --replicas=2</code></li>
+<li>增加 <code>kubectl scale rc nginx --replicas=4</code></li>
+</ul>
+</li>
+<li>使用 <code>kubectl get pods -o wide</code> 查看網路狀態，在 Docker Swarm 的時候，使用 vip 解決 Container 通信問題，pods 的通信在後面說</li>
+<li>使用 <code>kubectl delete -f rc_nginx.yml</code> 刪除 ReplicaController 的 pod</li>
+<li>根據 <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/" target="_blank" rel="noopener">Kubernetes ReplicaSet 文檔</a>，ReplicaSet 是用來維持 pod 數量的</li>
+<li>新增 rs_nginx.yml，我們在這個 yml 文件定義了 ReplicaSet</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: ReplicaSet</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx</span><br><span class="line">  labels:</span><br><span class="line">    tier: frontend</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      tier: frontend</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      name: nginx</span><br><span class="line">      labels:</span><br><span class="line">        tier: frontend</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: nginx</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 80</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>使用 <code>kubectl create -f rs_nginx.yml</code> 新增 pod</li>
+<li>Scale ReplicaSet<br>
+<code>kubectl scale rs nginx --replicas=2</code></li>
+</ol>
+<h3>Deployment</h3>
+<ol>
+<li>根據 <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/" target="_blank" rel="noopener">Kubernetes Deployment 文檔</a>，Deployment 為 Pods 和 ReplicaSet 提供聲明更新，如果用 Deployment 創建的 replicas，是不能個別操作或使用 delete 刪除的，一定要對 Deployment 進行操作</li>
+<li>新增 deployment_nginx.yml，定義類型為 Deployment</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-deployment</span><br><span class="line">  labels:</span><br><span class="line">    app: nginx</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: nginx</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: nginx</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: nginx:1.12.2</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 80</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>透過指令創建 deployment<br>
+<code>kubectl create -f deployment_nginx.yml</code></li>
+<li>使用 <code>kubectl get deployment</code> 查看 Deployment 啟動的狀態，使用 <code>kubectl get rs</code> 查看 ReplicaSet 的狀態，會發現 Deployment 會自動創建 REplicaSet，使用 <code>kubectl get deployment -o wide</code> 顯示更多資訊</li>
+<li>升級 Deployment<br>
+<code>kubectl set image deployment nginx-deployment nginx=nginx:1.13</code></li>
+<li>使用 <code>kubectl get deployment -o wide</code> 查看會發現 nginx 已升級為 1.13</li>
+<li>使用 <code>kubectl get rs</code> 查看 ReplicaSet 會發現會新增一個新的 ReplicaSet，且停用舊的 ReplicaSet，</li>
+<li>使用指令查看升級的版本<br>
+<code>kubectl rollout history deployment nginx-deployment</code></li>
+<li>使用 undo 指令回到上一個版本<br>
+<code>kubectl rollout undo deployment nginx-deployment</code></li>
+<li>使用升級指令回到最新版本<br>
+<code>kubectl set image deployment nginx-deployment nginx=nginx:1.13</code></li>
+<li>Deployment 提供一個方法可以將端口向外開放<br>
+<code>kubectl expose deployment nginx-deployment --type=NodePort</code></li>
+<li>實際上，它是創建了一個 Service，使用 <code>kubectl get svc</code> 查看 Service，會看到它 expose 32141 端口，那麼通過 <code>curl 192.168.99.101:32141</code> 就可以訪問 nginx 了</li>
+</ol>
+<h3>本地設定多 Cluster K8s</h3>
+<ol>
+<li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/" target="_blank" rel="noopener">K8s 設定多 Cluster 文檔</a></li>
+</ol>
+<h3>K8s 基礎網路 Network</h3>
+<ol>
+<li>新增 pod_busybox.yml</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: busybox-pod</span><br><span class="line">  labels:</span><br><span class="line">    app: busybox</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - name: busybox-container</span><br><span class="line">    image: busybox</span><br><span class="line">    command:</span><br><span class="line">      - sleep</span><br><span class="line">      - &quot;360000&quot;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>新增 pod_nginx.yml</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-pod</span><br><span class="line">  labels:</span><br><span class="line">    app: nginx</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - name: nginx-container</span><br><span class="line">    image: nginx</span><br><span class="line">    ports:</span><br><span class="line">    - name: nginx-port</span><br><span class="line">      containerPort: 80</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>把這兩個 pods 啟動<br>
+<code>kubectl create -f pod_busybox.yml</code><br>
+<code>kubectl create -f pod_nginx.yml</code></li>
+<li>查看兩個 pods 的狀態<br>
+<code>kubectl get pods -o wide</code></li>
+<li>進去 busybox 的 Shell 裡面<br>
+<code>kubectl exec -it busybox-pod sh</code></li>
+<li>Ping 另外一個 pod 是可以通的<br>
+<code>ping 172.17.0.8</code></li>
+<li>關於 Cluster 跨機器的網路通信可以參考 <a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/" target="_blank" rel="noopener">Kubernetes Network 文檔</a>，Kubernetes 對網路有以下三點基本要求
+<ul>
+<li>所有的 Container 都可以互相溝通，而且不需要 NAT</li>
+<li>所有的 Node 都可以跟所有的 Container 互相溝通，而且不需要 NAT(反之亦然)</li>
+<li>Container 看到自己的 ip 是什麼，其他人看到它也要是相同的 ip</li>
+</ul>
+</li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -307,7 +391,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2020/03/04/Docker-快速學習自我挑戰-II-Day7/" data-id="ck7eiy08d0007h2fy014xenpx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2020/03/04/Docker-快速學習自我挑戰-II-Day7/" data-id="ck7fxvpey0007qkfybvw9n68r" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -575,7 +659,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">標籤</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React-Native</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/">UX</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React-Native</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/">UX</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -585,7 +669,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">標籤雲</h3>
         <div class="widget tagcloud">
-            <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 12px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 11px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 15px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 13px;">Nutrition</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17px;">React</a> <a href="/tags/React-Native/" style="font-size: 16px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UX/" style="font-size: 14px;">UX</a> <a href="/tags/Weight-Loss/" style="font-size: 13px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+            <a href="/tags/CSS/" style="font-size: 14.55px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML/" style="font-size: 14.55px;">HTML</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 15.45px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 16.36px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UX/" style="font-size: 13.64px;">UX</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
         </div>
     </div>
 
