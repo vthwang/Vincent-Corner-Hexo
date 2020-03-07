@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>Docker 快速學習自我挑戰 II Day8 | Vincent&#39;s Corner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Kubernetes">
+    
+    <meta name="description" content="Service 簡介和演示  不要直接使用和管理 Pods，為什麼？  當我們使用 ReplicaSet 或 ReplicaController 做水平擴展 Scale 的時候，Pods 有可能會被 Terminated 當我們使用 Deployment 的時候，我們去更新 Docker Image Version，舊的 Pods 會被 Terminated，新的 Pods 會被創建   創建">
+<meta name="keywords" content="Kubernetes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 快速學習自我挑戰 II Day8">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2020/03/06/Docker-快速學習自我挑戰-II-Day8/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="Service 簡介和演示  不要直接使用和管理 Pods，為什麼？  當我們使用 ReplicaSet 或 ReplicaController 做水平擴展 Scale 的時候，Pods 有可能會被 Terminated 當我們使用 Deployment 的時候，我們去更新 Docker Image Version，舊的 Pods 會被 Terminated，新的 Pods 會被創建   創建">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay08.png">
+<meta property="og:updated_time" content="2020-03-07T09:23:50.665Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker 快速學習自我挑戰 II Day8">
+<meta name="twitter:description" content="Service 簡介和演示  不要直接使用和管理 Pods，為什麼？  當我們使用 ReplicaSet 或 ReplicaController 做水平擴展 Scale 的時候，Pods 有可能會被 Terminated 當我們使用 Deployment 的時候，我們去更新 Docker Image Version，舊的 Pods 會被 Terminated，新的 Pods 會被創建   創建">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay08.png">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">See More! Learn More! Do More!</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">首頁</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/學習歷程/">學習歷程</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/技術分享/">技術分享</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活記事/">生活記事</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/英文學習/">英文學習</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/閱讀賞析/">閱讀賞析</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">關於</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要搜尋什麼..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '頁面',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/學習歷程/">學習歷程</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Docker-快速學習自我挑戰-II-Day8" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Docker 快速學習自我挑戰 II Day8
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2020/03/06/Docker-快速學習自我挑戰-II-Day8/" class="article-date">
+    <time datetime="2020-03-06T08:53:37.000Z" itemprop="datePublished">2020-03-06</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kubernetes/">Kubernetes</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <img src="/images/learning/docker-2/DockerDay08.png">
+<hr>
+<h3>Service 簡介和演示</h3>
+<ol>
+<li>不要直接使用和管理 Pods，為什麼？
+<ul>
+<li>當我們使用 <span style="color:red"><strong>ReplicaSet</strong></span> 或 <span style="color:red"><strong>ReplicaController</strong></span> 做水平擴展 Scale 的時候，Pods 有可能會被 Terminated</li>
+<li>當我們使用 <span style="color:red"><strong>Deployment</strong></span> 的時候，我們去更新 Docker Image Version，舊的 Pods 會被 Terminated，新的 Pods 會被創建</li>
+</ul>
+</li>
+<li>創建 Service
+<ul>
+<li><code>kubectl expose</code> 命令，會給我們的 pod 創建一個 Service，供外部訪問</li>
+<li>Service 主要有三種類型，一種叫 <strong>Cluster ip</strong>(只供 Cluster 內部訪問)，一種叫 <strong>NodePort</strong>，一種叫外部的 <strong>Loadbalancer</strong></li>
+<li>另外也可以使用 <strong>DNS</strong>，但是 DNS 要 add-on</li>
+</ul>
+</li>
+<li>接續上次的 Pods，先讓 nginx 可以被外部訪問<br>
+<code>kubectl expose pods nginx-pod</code></li>
+<li>使用 <code>kubectl get svc</code> 會看到 nginx-pod 的 ip 10.104.59.208</li>
+<li>進去 minikube 的裡面，<code>curl 10.104.59.208</code>，會回傳 nginx 服務</li>
+<li>新增 deployment_python_http.yml</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: service-test</span><br><span class="line">spec:</span><br><span class="line">  replicas: 2</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: service_test_pod</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: service_test_pod</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">        - name: simple-http</span><br><span class="line">          image: python:2.7</span><br><span class="line">          imagePullPolicy: IfNotPresent</span><br><span class="line">          command: [&quot;/bin/bash&quot;]</span><br><span class="line">          args: [&quot;-c&quot;, &quot;echo \&quot;&lt;p&gt;Hello from $(hostname)&lt;/p&gt;\&quot; &gt; index.html; python -m SimpleHTTPServer 8080&quot;]</span><br><span class="line">          ports:</span><br><span class="line">          - name: http</span><br><span class="line">            containerPort: 8080</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>先進去機器 <code>minikube ssh</code> 把 python Image 先 pull 下來<br>
+<code>docker pull python:2.7</code></li>
+<li>新增 Deployment<br>
+<code>kubectl create -f deployment_python_http.yml</code></li>
+<li>進去 minikube 裡面 <code>minikube ssh</code>，分別對兩個 Pods 的 ip 執行 curl，就會回傳不同的 hostname<br>
+<code>curl 172.17.0.6:8080</code><br>
+<code>curl 172.17.0.7:8080</code></li>
+<li>使用 <code>kubectl get deployment</code> 查看 deployment 名稱，並對外開放<br>
+<code>kubectl expose deployment service-test</code></li>
+<li>使用 <code>kubectl get svc</code> 會發現新增了一個 service-test，對 service-test 多次執行 curl，會發現每次返回的 hostname 都不一定一樣，也就是說，service 會自動做負載均衡<br>
+<code>curl 10.99.229.174:8080</code></li>
+<li>我們要做不停機更新，先在 minikube 裡面不停的 curl<br>
+<code>while true; do curl 10.99.229.174:8080;done</code></li>
+<li>用編輯的方式進行更新，使用以下指令會跳出 Deployment 的 yml 檔案，修改 args 為 new version of helloworld，並儲存<br>
+<code>kubectl edit deployment service-test</code></li>
+<li>使用 <code>kubectl get pods</code> 就會看到之前兩個 Pods Terminated，而且啟動了兩個新的 Pods，但是更新過程中，還是有幾秒鐘的版本穿插的問題，因為沒有使用 Rolling Update，詳細可參考 <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/" target="_blank" rel="noopener">Rolling Update 文檔</a></li>
+</ol>
+<h3>NodePort 的 Service 以及 Label 的簡單實用</h3>
+<ol>
+<li>首先清理環境，把所有 Services 和 Pods 都刪除</li>
+<li>在 K8s 裡面，幾乎所有的資源都可以設置 label，label 的形式是一對 key 和 value 組成，label 不只可以設置一個</li>
+<li>先使用之前的 pod_nginx.yml 創建資源<br>
+<code>kubectl create -f pod_nginx.yml</code></li>
+<li>將端口開放，類型設置為 NodePort<br>
+<code>kubectl expose pods nginx-pod --type=NodePort</code></li>
+<li>使用 <code>kubectl get svc</code> 顯示 Service 的端口，再用 <code>kubectl get node -o wide</code> 顯示出 minikube 的 ip 地址，直接在本地瀏覽器輸入 <a href="http://192.168.99.101:32394/" target="_blank" rel="noopener">http://192.168.99.101:32394/</a> 就可以訪問 nginx 服務了</li>
+<li>先刪除 NodePort 的 Service<br>
+<code>kubectl delete service nginx-pod</code></li>
+<li>可以自己手動新增 Service，首先新增一個 service_nginx.yml，target port 的設置可以使用 <code>cat pod_nginx.yml</code> 打開之前新增 pod 的 yml，裡面就有定義 ports name 是 nginx port，這邊的 selector 就是創建資源的 label，可以使用 <code>kubectl get pods --show-labels</code> 查看 labels</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-service</span><br><span class="line">spec:</span><br><span class="line">  ports:</span><br><span class="line">  - port: 32333</span><br><span class="line">    nodePort: 32333</span><br><span class="line">    targetPort: nginx-port</span><br><span class="line">    protocol: TCP</span><br><span class="line">  selector:</span><br><span class="line">    app: nginx</span><br><span class="line">  type: NodePort</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>使用 <code>kubectl create -f service_nginx.yml</code> 新增 Service，並使用 <code>kubectl get svc</code> 查看服務確實啟動，到本地瀏覽器輸入 <a href="http://192.168.99.101:33333/" target="_blank" rel="noopener">http://192.168.99.101:33333/</a> 就可以訪問 nginx 服務了</li>
+<li>新增 pod_busybox.yml</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: busybox-pod</span><br><span class="line">  labels:</span><br><span class="line">    app: busybox</span><br><span class="line">spec:</span><br><span class="line">  nodeSelector:</span><br><span class="line">    hardware: good</span><br><span class="line">  containers:</span><br><span class="line">  - name: busybox-container</span><br><span class="line">    image: busybox</span><br><span class="line">    command:</span><br><span class="line">      - sleep</span><br><span class="line">      - &quot;360000&quot;</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>使用 <code>kubectl create -f pod_busybox.yml</code> 創建 Pod，但是當用 <code>kubectl get pods</code> 查看，會看到這個 Pod 顯示 Pending，使用 <code>kubectl get node --show-labels</code> 查看 node 標籤會發現沒有 hardware:good 的標籤，所以才顯示 Pending</li>
+<li>給 minikube 加上 label<br>
+<code>kubectl label node minikube hardware=good</code></li>
+<li>再使用 <code>kubectl get pods</code> 查看就會發現 busybox 的 pod 啟動了</li>
+<li>總結：ClusterIP 只能是內部訪問，所以它不能提供服務，我們可以透過 NodePort 去提供服務，但是會有幾個問題，(1) NodePort 的範圍只能是 30000-32767，(2) Expose 會在所有節點上提供給外部訪問，所以 NodePort 在實際的 Production 環境也不怎麼使用，但是可以用，在 Production 環境大家用的比較多的就是 Loadbalancer 或是 ExternalName，Loadbalancer 需要結合雲服務商去使用，ExternalName 就是使用 DNS 服務</li>
+</ol>
+<h3>kubectl 指令補全</h3>
+<ol>
+<li><code>kubectl completion zsh</code></li>
+<li>更新 zsh<br>
+<code>source &lt;(kubectl completion zsh)</code></li>
+</ol>
+<h3>使用 Kops 在 DigitalOcean 上面搭建 K8s 集群</h3>
+<ol>
+<li><a href="https://github.com/kubernetes/kops/" target="_blank" rel="noopener">Kops Github Page</a>：Kops 是用於 Production 級別的 K8s 安裝、升級和管理</li>
+<li>註冊一個域名，把以下三個 NameServer 指向 DigitalOcean
+<ul>
+<li><a href="http://ns1.digitalocean.com" target="_blank" rel="noopener">ns1.digitalocean.com</a></li>
+<li><a href="http://ns2.digitalocean.com" target="_blank" rel="noopener">ns2.digitalocean.com</a></li>
+<li><a href="http://ns3.digitalocean.com" target="_blank" rel="noopener">ns3.digitalocean.com</a></li>
+</ul>
+</li>
+<li>進入 DigitalOcean API 介面，申請一個 Personal access tokens 和一個 Spaces access keys</li>
+<li>在畫面右上角點擊 Create Space，新增一個空間，這邊的空間名是全網唯一的</li>
+<li>使用 dig 指令查看域名狀態，如果都有回傳內容，代表網域生效
+<ul>
+<li><code>dig +short pcelab.info ns</code></li>
+<li><code>dig +short pcelab.info soa</code></li>
+</ul>
+</li>
+<li>參考 <a href="https://github.com/kubernetes/kops/blob/master/docs/getting_started/digitalocean.md" target="_blank" rel="noopener">DigitalOcean 文件</a>創建 Cluster</li>
+<li>設定參數</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export KOPS_STATE_STORE=do://&lt;bucket-name&gt;</span><br><span class="line">export DIGITALOCEAN_ACCESS_TOKEN=&lt;access-token&gt;</span><br><span class="line"></span><br><span class="line">export S3_ENDPOINT=sgp1.digitaloceanspaces.com</span><br><span class="line">export S3_ACCESS_KEY_ID=&lt;access-key-id&gt;</span><br><span class="line">export S3_SECRET_ACCESS_KEY=&lt;secret-key&gt;</span><br><span class="line"></span><br><span class="line">export KOPS_FEATURE_FLAGS=&quot;AlphaAllowDO&quot;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>使用 kops 新增 Cluster 和 Master 節點<br>
+<code>kops create cluster --cloud=digitalocean --name=kops.pcelab.info --image=ubuntu-18-04-x64 --networking=weave --zones=sgp1 --ssh-public-key=~/.ssh/id_rsa.pub --node-size=s-1vcpu-1gb</code></li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2020/03/06/Docker-快速學習自我挑戰-II-Day8/" data-id="ck7hepefz00031dfy27sxeenw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2020/03/06/Docker-快速學習自我挑戰-II-Day8/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>追蹤我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/VincentTingSyuanWang" target="_blank">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/tingsyuanwang/" target="_blank">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/T_S_Wang" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/03/04/Docker-快速學習自我挑戰-II-Day7/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Docker 快速學習自我挑戰 II Day7</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/06/Docker-快速學習自我挑戰-II-Day8/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/docker-2/DockerDay08.png)" alt="Docker 快速學習自我挑戰 II Day8" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2020/03/06/Docker-快速學習自我挑戰-II-Day8/" class="title">Docker 快速學習自我挑戰 II Day8</a></p>
+                            <p class="item-date"><time datetime="2020-03-06T08:53:37.000Z" itemprop="datePublished">2020-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/04/Docker-快速學習自我挑戰-II-Day7/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/docker-2/DockerDay07.jpg)" alt="Docker 快速學習自我挑戰 II Day7" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2020/03/04/Docker-快速學習自我挑戰-II-Day7/" class="title">Docker 快速學習自我挑戰 II Day7</a></p>
+                            <p class="item-date"><time datetime="2020-03-04T06:27:55.000Z" itemprop="datePublished">2020-03-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/02/Docker-快速學習自我挑戰-II-Day6/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/docker-2/DockerDay06.png)" alt="Docker 快速學習自我挑戰 II Day6" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2020/03/02/Docker-快速學習自我挑戰-II-Day6/" class="title">Docker 快速學習自我挑戰 II Day6</a></p>
+                            <p class="item-date"><time datetime="2020-03-02T02:20:53.000Z" itemprop="datePublished">2020-03-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/01/Docker-快速學習自我挑戰-II-Day5/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/docker-2/DockerDay05.png)" alt="Docker 快速學習自我挑戰 II Day5" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2020/03/01/Docker-快速學習自我挑戰-II-Day5/" class="title">Docker 快速學習自我挑戰 II Day5</a></p>
+                            <p class="item-date"><time datetime="2020-03-01T08:06:04.000Z" itemprop="datePublished">2020-03-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/28/Docker-快速學習自我挑戰-II-Day4/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/docker-2/DockerDay04.jpg)" alt="Docker 快速學習自我挑戰 II Day4" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/學習歷程/">學習歷程</a></p>
+                            <p class="item-title"><a href="/2020/02/28/Docker-快速學習自我挑戰-II-Day4/" class="title">Docker 快速學習自我挑戰 II Day4</a></p>
+                            <p class="item-date"><time datetime="2020-02-28T07:09:54.000Z" itemprop="datePublished">2020-02-28</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/學習歷程/">學習歷程</a><span class="category-list-count">94</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技術分享/">技術分享</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活記事/">生活記事</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/英文學習/">英文學習</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/閱讀賞析/">閱讀賞析</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">彙整</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React-Native</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/">UX</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">標籤雲</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CSS/" style="font-size: 14.55px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML/" style="font-size: 14.55px;">HTML</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 15.45px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 16.36px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UX/" style="font-size: 13.64px;">UX</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">連結</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2020 Vincent Ting Syuan Wang</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
