@@ -4,12 +4,16 @@ stages:
 
 job1:
     stage: test
+    tags:
+        - hexo
     script:
         - echo "This is Job1"
         - echo "It's at test stage"
 
 job2:
     stage: build
+    tags:
+        - hexo
     script:
         - echo "This is Job2"
         - echo "It's at build stage"
