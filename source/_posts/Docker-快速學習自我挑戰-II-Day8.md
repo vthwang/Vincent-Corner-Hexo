@@ -142,3 +142,42 @@ export KOPS_FEATURE_FLAGS="AlphaAllowDO"
 ```
 8. 使用 kops 新增 Cluster 和 Master 節點
 `kops create cluster --cloud=digitalocean --name=kops.pcelab.info --image=ubuntu-18-04-x64 --networking=weave --zones=sgp1 --ssh-public-key=~/.ssh/id_rsa.pub --node-size=s-1vcpu-1gb`
+9. 驗證 Cluster
+`kops validate cluster`
+10. 查看 Node 是否生成
+`kubectl get nodes --show-labels`
+11. 進入 master 去做操作
+`ssh -i ~/.ssh/id_rsa admin@api.kops.pcelab.info`
+### 容器的基本監控
+1. 使用 `docker ps` 查看 Container，再使用 `docker top [Container id]` 就可以查看 Container 的進程，有點類似 Linux 內建的 top 功能
+2. `docker stats` 可以實時打印出後台正在運行的 Container 的系統佔用狀態，包含佔了多少內存，多少 CPU，使用 ctrl + C 可以退出
+3. 在虛擬機上面安裝 Weave Scope，並修改權限
+`sudo curl -L git.io/scope -o /usr/local/bin/scope`
+`sudo chmod a+x /usr/local/bin/scope`
+4. 啟動 Weave Scope
+`scope launch 192.168.205.10`
+5. 啟動後的畫面如下圖，進去可以去做一些操作
+
+<img src="/images/learning/docker-2/DockerDay08-Image01.png">
+
+6. 也可以同時監控兩台機器，需要在兩台機器上面都輸入以下命令
+`scope launch [機器 1 IP] [機器 2 IP]`
+### Gitlab CI 安裝
+1. 設置一台 Ubuntu 的主機，安裝過程可以參考 [Gitlab CI Runner 文檔](https://docs.gitlab.com/runner/install/linux-repository.html)
+2. 安裝 Docker
+`curl -sSL https://get.docker.com | sh`
+3. 安裝 Gitlab CI Runner
+```
+curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash 
+sudo apt-get install gitlab-ci-multi-runner -y
+```
+4. 查看是否正常運行
+`sudo gitlab-ci-multi-runner status`
+5. 設置 Docker 權限
+```
+sudo usermod -aG docker gitlab-runner
+sudo service docker restart
+sudo gitlab-ci-multi-runner restart
+```
+6. 完成之後，註冊 gitlab-runner
+`sudo gitlab-ci-multi-runner register`

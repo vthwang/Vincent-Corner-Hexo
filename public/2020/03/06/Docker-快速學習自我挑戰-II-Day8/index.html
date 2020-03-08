@@ -17,7 +17,7 @@
 <meta property="og:description" content="Service 簡介和演示  不要直接使用和管理 Pods，為什麼？  當我們使用 ReplicaSet 或 ReplicaController 做水平擴展 Scale 的時候，Pods 有可能會被 Terminated 當我們使用 Deployment 的時候，我們去更新 Docker Image Version，舊的 Pods 會被 Terminated，新的 Pods 會被創建   創建">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay08.png">
-<meta property="og:updated_time" content="2020-03-07T09:23:50.665Z">
+<meta property="og:updated_time" content="2020-03-08T09:26:25.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 快速學習自我挑戰 II Day8">
 <meta name="twitter:description" content="Service 簡介和演示  不要直接使用和管理 Pods，為什麼？  當我們使用 ReplicaSet 或 ReplicaController 做水平擴展 Scale 的時候，Pods 有可能會被 Terminated 當我們使用 Deployment 的時候，我們去更新 Docker Image Version，舊的 Pods 會被 Terminated，新的 Pods 會被創建   創建">
@@ -272,6 +272,46 @@ ga('send', 'pageview');
 <ol start="8">
 <li>使用 kops 新增 Cluster 和 Master 節點<br>
 <code>kops create cluster --cloud=digitalocean --name=kops.pcelab.info --image=ubuntu-18-04-x64 --networking=weave --zones=sgp1 --ssh-public-key=~/.ssh/id_rsa.pub --node-size=s-1vcpu-1gb</code></li>
+<li>驗證 Cluster<br>
+<code>kops validate cluster</code></li>
+<li>查看 Node 是否生成<br>
+<code>kubectl get nodes --show-labels</code></li>
+<li>進入 master 去做操作<br>
+<code>ssh -i ~/.ssh/id_rsa admin@api.kops.pcelab.info</code></li>
+</ol>
+<h3>容器的基本監控</h3>
+<ol>
+<li>使用 <code>docker ps</code> 查看 Container，再使用 <code>docker top [Container id]</code> 就可以查看 Container 的進程，有點類似 Linux 內建的 top 功能</li>
+<li><code>docker stats</code> 可以實時打印出後台正在運行的 Container 的系統佔用狀態，包含佔了多少內存，多少 CPU，使用 ctrl + C 可以退出</li>
+<li>在虛擬機上面安裝 Weave Scope，並修改權限<br>
+<code>sudo curl -L git.io/scope -o /usr/local/bin/scope</code><br>
+<code>sudo chmod a+x /usr/local/bin/scope</code></li>
+<li>啟動 Weave Scope<br>
+<code>scope launch 192.168.205.10</code></li>
+<li>啟動後的畫面如下圖，進去可以去做一些操作</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay08-Image01.png">
+<ol start="6">
+<li>也可以同時監控兩台機器，需要在兩台機器上面都輸入以下命令<br>
+<code>scope launch [機器 1 IP] [機器 2 IP]</code></li>
+</ol>
+<h3>Gitlab CI 安裝</h3>
+<ol>
+<li>設置一台 Ubuntu 的主機，安裝過程可以參考 <a href="https://docs.gitlab.com/runner/install/linux-repository.html" target="_blank" rel="noopener">Gitlab CI Runner 文檔</a></li>
+<li>安裝 Docker<br>
+<code>curl -sSL https://get.docker.com | sh</code></li>
+<li>安裝 Gitlab CI Runner</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash </span><br><span class="line">sudo apt-get install gitlab-ci-multi-runner -y</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>查看是否正常運行<br>
+<code>sudo gitlab-ci-multi-runner status</code></li>
+<li>設置 Docker 權限</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker gitlab-runner</span><br><span class="line">sudo service docker restart</span><br><span class="line">sudo gitlab-ci-multi-runner restart</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>完成之後，註冊 gitlab-runner<br>
+<code>sudo gitlab-ci-multi-runner register</code></li>
 </ol>
 
         </div>
@@ -280,7 +320,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://vincent.fishboneapps.com/2020/03/06/Docker-快速學習自我挑戰-II-Day8/" data-id="ck7hepefz00031dfy27sxeenw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://vincent.fishboneapps.com/2020/03/06/Docker-快速學習自我挑戰-II-Day8/" data-id="ck7iu19730004yjfygyq47mbj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
