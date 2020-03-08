@@ -13,9 +13,3 @@ job2:
     script:
         - echo "This is Job2"
         - echo "It's at build stage"
-
-job3:
-    stage: deploy
-    script:
-        - echo "This is Job3"
-        - echo "It's at deploy stage"
