@@ -8,28 +8,21 @@ before_script:
   - git config --global user.name "Vincent"
 
 stages:
-  - install
   - build
-
-install_packages:
-  stage: install
-  tags:
-    - hexo
-  script:
-    - npm prune
-    - npm -g install hexo
-    - npm install
-  cache:
-    key: ${CI_BUILD_REF_NAME}
-    paths:
-      - node_modules/
 
 build_job:
   stage: build
   tags:
     - hexo
   script:
+    - npm prune
+    - npm -g install hexo
     - npm install
     - hexo generate
+    - ls public
     - hexo deploy
     - echo "Deploy succssed!"
+  cache:
+    key: ${CI_BUILD_REF_NAME}
+    paths:
+      - node_modules/
