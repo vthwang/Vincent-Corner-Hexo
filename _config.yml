@@ -84,7 +84,7 @@ markdown:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@gitlab.fishboneapps.com:vincent/vincent-corner.git
+  repo: git@gitlab.fishboneapps.com:vincent/vincent-corner-docker.git
   branch: master
 
 # deploy:
