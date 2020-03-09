@@ -83,9 +83,14 @@ markdown:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: git@gitlab.fishboneapps.com:vincent/vincent-corner-docker.git
-  branch: master
+  type: rsync
+  host: 157.245.204.1
+  user: vincent
+  root: /var/www/vincent-corner
+  port: 22
+  delete: true
+  verbose: true
+  ignore_errors: false
 
 # deploy:
 #   type: ftpsync
