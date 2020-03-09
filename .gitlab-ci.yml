@@ -20,7 +20,6 @@ build_job:
     - npm install
     - hexo generate
     - cat _config.yml
-    - ls .deploy.git
     - hexo deploy
     - echo "Deploy succssed!"
   cache:
