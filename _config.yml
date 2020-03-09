@@ -86,7 +86,7 @@ deploy:
   type: rsync
   host: 157.245.204.1
   user: vincent
-  root: /var/www/vincent-corner
+  root: /var/www/vincent-corner/
   port: 22
   delete: true
   verbose: true
