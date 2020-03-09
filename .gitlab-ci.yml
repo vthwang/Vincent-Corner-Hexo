@@ -10,5 +10,7 @@ build_job:
   script:
     - npm install hexo -g
     - npm install
-    - hexo d
+    - hexo clean
+    - hexo generate
+    - hexo deploy
     - echo "Deploy succssed!"
