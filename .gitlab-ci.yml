@@ -1,18 +1,17 @@
 image: node:12.16.1
 
 stages:
-    - build
+  - build
 
 build_job:
-   stage: build
-   image: $BUILD_IMAGE
-   tags:
-        - hexo
-   cache:
+  stage: build
+  tags:
+    - hexo
+  cache:
     paths:
      - node_modules/
-   script:
-     - npm install hexo -g
-     - npm install
-     - hexo d
-     - echo "Deploy succssed!"
+  script:
+    - npm install hexo -g
+    - npm install
+    - hexo d
+    - echo "Deploy succssed!"
