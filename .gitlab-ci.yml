@@ -15,7 +15,7 @@ build_job:
   tags:
     - hexo
   script:
-    - npm prune
+    - ls ~/.ssh
     - npm -g install hexo
     - npm install
     - hexo generate
