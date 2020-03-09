@@ -17,8 +17,8 @@ build_job:
     - hexo
   script:
     - ls -al ~/.ssh
-    - npm -g install hexo
-    - npm install
+    - npm -g install hexo --no-optional
+    - npm install --no-optional
     - hexo generate
     - hexo deploy
     - echo "Deploy succssed!"
