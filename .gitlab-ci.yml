@@ -6,11 +6,23 @@ before_script:
   - chmod 700 ~/.ssh
   - git config --global user.email "vincent@fishboneapps.com"
   - git config --global user.name "Vincent"
-  - npm -g uninstall hexo
-  - npm -g install hexo
 
 stages:
+  - install
   - build
+
+install_packages:
+  stage: install
+  tags:
+    - hexo
+  script:
+    - npm prune
+    - npm -g install hexo
+    - npm install
+  cache:
+    key: ${CI_BUILD_REF_NAME}
+    paths:
+      - node_modules/
 
 build_job:
   stage: build
