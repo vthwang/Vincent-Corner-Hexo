@@ -6,6 +6,7 @@ before_script:
   - chmod 700 ~/.ssh
   - git config --global user.email "vincent@fishboneapps.com"
   - git config --global user.name "Vincent"
+  - ssh-keyscan -t rsa gitlab.fishboneapps.com >> ~/.ssh/known_hosts
 
 stages:
   - build
@@ -15,7 +16,7 @@ build_job:
   tags:
     - hexo
   script:
-    - ls ~/.ssh
+    - ls -al ~/.ssh
     - npm -g install hexo
     - npm install
     - hexo generate
