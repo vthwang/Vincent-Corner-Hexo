@@ -6,6 +6,8 @@ stages:
 build_job:
    stage: build
    image: $BUILD_IMAGE
+   tags:
+        - hexo
    cache:
     paths:
      - node_modules/
