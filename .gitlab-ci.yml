@@ -19,7 +19,7 @@ build_job:
     - npm -g install hexo
     - npm install
     - hexo generate
-    - cat _config_yml
+    - cat _config.yml
     - ls .deploy.git
     - hexo deploy
     - echo "Deploy succssed!"
