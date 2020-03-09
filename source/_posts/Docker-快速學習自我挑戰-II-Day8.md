@@ -181,3 +181,7 @@ sudo gitlab-ci-multi-runner restart
 ```
 6. 完成之後，註冊 gitlab-runner
 `sudo gitlab-ci-multi-runner register`
+### 在 Hexo 使用 Gitlab CI
+1. 
+
+

@@ -17,7 +17,6 @@ build_job:
   tags:
     - hexo
   script:
-    - ls -al ~/.ssh
     - npm -g install hexo -f --no-optional
     - npm install -f --no-optional
     - hexo clean
