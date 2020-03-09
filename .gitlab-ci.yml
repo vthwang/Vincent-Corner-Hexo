@@ -19,7 +19,8 @@ build_job:
     - npm -g install hexo
     - npm install
     - hexo generate
-    - ls public
+    - cat _config_yml
+    - ls .deploy.git
     - hexo deploy
     - echo "Deploy succssed!"
   cache:
