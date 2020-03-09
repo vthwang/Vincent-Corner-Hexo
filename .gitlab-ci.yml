@@ -7,9 +7,6 @@ build_job:
   stage: build
   tags:
     - hexo
-  cache:
-    paths:
-     - node_modules/
   script:
     - npm install hexo -g
     - npm install
