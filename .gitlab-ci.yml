@@ -4,6 +4,8 @@ before_script:
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
+  - git config --global user.email "vincent@fishboneapps.com"
+  - git config --global user.name "Vincent"
 
 stages:
   - build
@@ -17,7 +19,6 @@ build_job:
     - npm -g install hexo
     - npm install
     - hexo generate
-    - cat _config.yml
     - hexo deploy
     - echo "Deploy succssed!"
   cache:
