@@ -85,7 +85,7 @@ markdown:
 deploy:
   type: git
   repo: git@gitlab.fishboneapps.com:vincent/vincent-corner.git
-  branch: feature
+  branch: master
 
 # deploy:
 #   type: ftpsync
