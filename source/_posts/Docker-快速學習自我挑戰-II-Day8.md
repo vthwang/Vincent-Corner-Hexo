@@ -179,9 +179,40 @@ sudo usermod -aG docker gitlab-runner
 sudo service docker restart
 sudo gitlab-ci-multi-runner restart
 ```
-6. 完成之後，註冊 gitlab-runner
-`sudo gitlab-ci-multi-runner register`
 ### 在 Hexo 使用 Gitlab CI
-1. 
+1. 註冊 gitlab-runner，tag 輸入 `hexo`，executor 輸入 `docker`
+`sudo gitlab-ci-multi-runner register`
+2. 在後台 Gitlab 專案裡面選擇 Settings > CI/CD > Runner 就會看到剛剛新增的 Runner，並且選擇下面的 Variables 新增 SSH_PRIVATE_KEY，將本地的 ~/.ssh/id_rsa 的內容複製到 SSH_PRIVATE_KEY 的 Value
+3. 在 Hexo 目錄新增 .gitlab-ci.yml
+```
+before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  - ssh-keyscan -t rsa gitlab.fishboneapps.com >> ~/.ssh/known_hosts
+  ## Make sure that rsync is installed
+  - 'which rsync || ( apt-get update -y && apt-get install rsync -y)'
 
+stages:
+  - build
 
+build_job:
+  stage: build
+  tags:
+    - hexo
+  script:
+    - npm -g install hexo -f --no-optional
+    - npm install -f --no-optional
+    - hexo clean
+    - hexo generate
+    - hexo deploy
+    - echo "Deploy succssed!"
+  cache:
+    key: ${CI_BUILD_REF_NAME}
+    paths:
+      - node_modules/
+```
+4. 將更新推送到 Gitlab 之後，進去專案的 CI/CD > Pipelines 就可以查看進度
