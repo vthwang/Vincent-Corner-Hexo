@@ -18,7 +18,7 @@ build_job:
     - hexo
   script:
     - npm -g install hexo -f --no-optional
-    - npm cache clean
+    - npm cache verify
     - npm install -f --no-optional
     - hexo cl && hexo g
     - hexo deploy
