@@ -191,7 +191,6 @@ before_script:
   - ssh-add <(echo "$SSH_PRIVATE_KEY")
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
-  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   - ssh-keyscan -t rsa gitlab.fishboneapps.com >> ~/.ssh/known_hosts
   ## Make sure that rsync is installed
   - 'which rsync || ( apt-get update -y && apt-get install rsync -y)'
@@ -205,9 +204,9 @@ build_job:
     - hexo
   script:
     - npm -g install hexo -f --no-optional
+    - npm cache verify
     - npm install -f --no-optional
-    - hexo clean
-    - hexo generate
+    - hexo cl && hexo g
     - hexo deploy
     - echo "Deploy succssed!"
   cache:
