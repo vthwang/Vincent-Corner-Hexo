@@ -91,20 +91,3 @@ deploy:
   delete: true
   verbose: true
   ignore_errors: false
-
-# deploy:
-#   type: ftpsync
-#   host: 144.48.140.23
-#   user: suitupco
-#   pass: 
-#   remote: /vincent.fishboneapps.com
-#   port: 21
-#   connections: 1
-#   verbose: true
-#   ignore_errors: false
-#   delete: true
-#   ignore: [
-#     ".htaccess",
-#     ".well-known/",
-#     "google2ff9635031893967.html"
-#   ]

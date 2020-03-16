@@ -2,7 +2,6 @@ before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$SSH_PRIVATE_KEY")
-  - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
   - ssh-keyscan -t rsa gitlab.fishboneapps.com >> ~/.ssh/known_hosts
   ## Make sure that rsync is installed
@@ -16,6 +15,9 @@ build_job:
   tags:
     - hexo
   script:
+    - ls ~/.ssh
+    - cat ~/.ssh/known_hosts
+    - cat ~/.ssh/id_rsa
     - npm -g install hexo -f --no-optional
     - npm cache verify
     - npm install -f --no-optional
