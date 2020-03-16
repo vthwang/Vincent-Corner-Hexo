@@ -3,7 +3,7 @@ before_script:
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
   - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
-  - ssh-keyscan -t rsa gitlab.fishboneapps.com >> ~/.ssh/known_hosts
+  - ssh-keyscan -t rsa 157.245.204.1 >> ~/.ssh/known_hosts
   ## Make sure that rsync is installed
   - 'which rsync || ( apt-get update -y && apt-get install rsync -y)'
 
