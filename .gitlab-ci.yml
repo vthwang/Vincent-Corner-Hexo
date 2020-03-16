@@ -1,9 +1,8 @@
 before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  - eval $(ssh-agent -s)
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
-  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
   - ssh-keyscan -t rsa gitlab.fishboneapps.com >> ~/.ssh/known_hosts
   ## Make sure that rsync is installed
   - 'which rsync || ( apt-get update -y && apt-get install rsync -y)'
