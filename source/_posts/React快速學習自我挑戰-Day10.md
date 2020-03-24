@@ -3,7 +3,7 @@ title: React快速學習自我挑戰 Day10
 thumbnail:
   - /images/learning/react/reactday10.jpg
 date: 2017-03-22 10:16:50
-categories: 學習歷程
+categories: Study Note
 tags: React
 ---
 <img src="/images/learning/react/reactday10.jpg">

@@ -1,7 +1,7 @@
 ---
 title: Hello! JS! - 從零開始的React Native開發
 date: 2016-09-06 10:48:13
-categories: 生活記事
+categories: Diary
 tags:
 thumbnail:
   - /images/hellojs.jpg

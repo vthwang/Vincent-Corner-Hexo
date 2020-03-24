@@ -3,7 +3,7 @@ title: Nodejs 快速學習自我挑戰 Day10
 thumbnail:
   - /images/learning/nodejs/nodejsday10.jpg
 date: 2017-10-08 00:37:59
-categories: 學習歷程
+categories: Study Note
 tags: Nodejs
 ---
 <img src="/images/learning/nodejs/nodejsday10.jpg">

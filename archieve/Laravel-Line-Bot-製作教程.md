@@ -3,7 +3,7 @@ title: Laravel Line Bot 製作教程
 thumbnail:
   - /images/technique/LaravelLineBot.jpg
 date: 2018-06-20 19:49:17
-categories: 技術分享
+categories: Skill Share
 tags: 
     - Laravel
     - Linebot

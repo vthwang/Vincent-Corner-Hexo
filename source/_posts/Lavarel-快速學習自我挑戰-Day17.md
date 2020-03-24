@@ -3,7 +3,7 @@ title: Lavarel 快速學習自我挑戰 Day17
 thumbnail:
   - /images/learning/laravel/laravelday17.png
 date: 2017-05-27 01:21:27
-categories: 學習歷程
+categories: Study Note
 tags: Laravel
 ---
 <img src="/images/learning/laravel/laravelday17.png">

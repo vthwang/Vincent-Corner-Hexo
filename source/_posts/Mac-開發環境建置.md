@@ -3,7 +3,7 @@ title: Mac 開發環境建置
 thumbnail:
   - /images/technique/MacEnvironment.jpg
 date: 2017-09-13 21:07:44
-categories: 技術分享
+categories: Skill Share
 tags: Mac
 ---
 <img src="/images/technique/MacEnvironment.jpg">

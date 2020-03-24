@@ -3,7 +3,7 @@ title: 'In fact, life is a kind of strong'
 thumbnail:
   - /images/EnglishLearning/PottedPlant.jpg
 date: 2016-09-17 13:45:46
-categories: 英文學習
+categories: English Learning
 tags: English Writing
 ---
 <img src="/images/EnglishLearning/PottedPlant.jpg">

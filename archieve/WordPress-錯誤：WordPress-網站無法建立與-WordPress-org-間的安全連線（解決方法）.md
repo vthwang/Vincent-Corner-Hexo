@@ -3,7 +3,7 @@ title: WordPress 錯誤：WordPress 網站無法建立與 WordPress.org 間的�
 thumbnail:
   - /images/wordpress-2.png
 date: 2019-08-28 14:44:23
-categories: 技術分享
+categories: Skill Share
 tags: WordPress
 ---
 <img src="/images/wordpress-2.png">

@@ -1,7 +1,7 @@
 ---
 title: The connection of people in the age of information
 date: 2016-09-03 16:40:08
-categories: 英文學習
+categories: English Learning
 tags: English Writing
 thumbnail:
   - /images/EnglishLearning/Connection.jpg

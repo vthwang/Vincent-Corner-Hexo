@@ -3,7 +3,7 @@ title: Github Pushed Commit Delete (Redraw)
 thumbnail:
   - /images/github.jpg
 date: 2016-11-17 14:47:14
-categories: 技術分享
+categories: Skill Share
 tags:
 ---
 <img src="/images/github.jpg">

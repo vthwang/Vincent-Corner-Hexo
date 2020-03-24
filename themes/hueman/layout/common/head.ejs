@@ -7,14 +7,14 @@
         if (is_archive()) {
             title = __('index.archive');
             if (is_month()) {
-                title += ': ' + page.year + '/' + page.month;
+                title += ' - ' + page.year + '/' + page.month;
             } else if (is_year()) {
-                title += ': ' + page.year;
+                title += ' - ' + page.year;
             }
         } else if (is_category()) {
-            title = __('index.category') + page.category;
+            title = __('index.category') + ' - ' +page.category;
         } else if (is_tag()) {
-            title = __('index.tag') + page.tag;
+            title = __('index.tag') + ' - ' + page.tag;
         }
     %>
     <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>

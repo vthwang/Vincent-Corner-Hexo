@@ -3,7 +3,7 @@ title: React Native 學習筆記 Day01
 thumbnail:
   - /images/learning/react-native2/ReactNativeDay01.jpeg
 date: 2018-09-18 13:49:45
-categories: 學習歷程
+categories: Study Note
 tags: 
     - React-Native
 ---

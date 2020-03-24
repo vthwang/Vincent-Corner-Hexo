@@ -3,7 +3,7 @@ title: PHP multiple select 寫入資料庫的方法
 thumbnail:
   - /images/php_mysql_array.jpg
 date: 2016-12-01 13:48:23
-categories: 技術分享
+categories: Skill Share
 tags:
 ---
 <img src="/images/php_mysql_array.jpg">

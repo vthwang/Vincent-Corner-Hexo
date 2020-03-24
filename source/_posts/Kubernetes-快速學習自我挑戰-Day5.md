@@ -3,7 +3,7 @@ title: Kubernetes 快速學習自我挑戰 Day5
 thumbnail:
   - /images/learning/kubernetes/kubernetesday5.png
 date: 2017-08-22 00:46:53
-categories: 學習歷程
+categories: Study Note
 tags: Kubernetes
 ---
 <img src="/images/learning/kubernetes/kubernetesday5.png">

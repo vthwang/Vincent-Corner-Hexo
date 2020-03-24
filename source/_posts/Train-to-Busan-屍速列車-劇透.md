@@ -3,7 +3,7 @@ title: Train to Busan (屍速列車) - 劇透
 thumbnail:
   - /images/train_to_busan.jpg
 date: 2016-09-10 10:59:31
-categories: 閱讀賞析
+categories: Reading Note
 tags:
 ---
 <img src="/images/train_to_busan.jpg">

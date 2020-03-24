@@ -3,7 +3,7 @@ title: 在hexo使用emoji
 thumbnail:
   - /images/emoji.png
 date: 2016-09-11 10:15:30
-categories: 技術分享
+categories: Skill Share
 tags:
 ---
 <img src="/images/emoji.png">

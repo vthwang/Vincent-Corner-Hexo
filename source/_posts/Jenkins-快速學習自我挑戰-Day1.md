@@ -3,7 +3,7 @@ title: Jenkins 快速學習自我挑戰 Day1
 thumbnail:
   - /images/learning/jenkins/jenkinsday1.png
 date: 2017-09-02 23:49:25
-categories: 學習歷程
+categories: Study Note
 tags: Jenkins
 ---
 <img src="/images/learning/jenkins/jenkinsday1.png">

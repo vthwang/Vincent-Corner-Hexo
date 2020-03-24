@@ -3,7 +3,7 @@ title: Nodejs II 快速學習自我挑戰 Day1
 thumbnail:
   - /images/learning/nodejsII/NodejsIIDay01.png
 date: 2017-11-02 16:36:32
-categories: 學習歷程
+categories: Study Note
 tags: Nodejs
 ---
 <img src="/images/learning/nodejsII/NodejsIIDay01.png">

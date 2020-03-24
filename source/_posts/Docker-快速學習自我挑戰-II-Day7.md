@@ -3,7 +3,7 @@ title: Docker 快速學習自我挑戰 II Day7
 thumbnail:
   - /images/learning/docker-2/DockerDay07.jpg
 date: 2020-03-04 14:27:55
-categories: 學習歷程
+categories: Study Note
 tags:
   - Docker
   - Kubernetes

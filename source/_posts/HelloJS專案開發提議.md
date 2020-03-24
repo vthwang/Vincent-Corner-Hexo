@@ -1,7 +1,7 @@
 ---
 title: HelloJS專案開發提議
 date: 2016-08-30 20:55:48
-categories: 生活記事
+categories: Diary
 tags:
 thumbnail:
   - /images/hellojs.jpg

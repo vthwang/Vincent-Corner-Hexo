@@ -3,7 +3,7 @@ title: docker 快速學習自我挑戰 Day5
 thumbnail:
   - /images/learning/docker/dockerday5.jpg
 date: 2017-07-29 12:37:49
-categories: 學習歷程
+categories: Study Note
 tags: Docker
 ---
 <img src="/images/learning/docker/dockerday5.jpg">

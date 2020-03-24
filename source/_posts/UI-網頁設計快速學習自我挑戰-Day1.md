@@ -3,7 +3,7 @@ title: UI 網頁設計快速學習自我挑戰 Day1
 thumbnail:
   - /images/learning/ui/UIDay1.png
 date: 2017-11-09 17:30:02
-categories: 學習歷程
+categories: Study Note
 tags: 
     - UI
     - Illustrator

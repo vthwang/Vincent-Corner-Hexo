@@ -7,8 +7,8 @@ title: Vincent's Corner
 subtitle: See More! Learn More! Do More!
 description: Who knows what fantastic things around Vincent's corner?
 author: Vincent Ting Syuan Wang
-language: zh-TW
-timezone:
+language: en
+timezone: Asia/Taipei
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'

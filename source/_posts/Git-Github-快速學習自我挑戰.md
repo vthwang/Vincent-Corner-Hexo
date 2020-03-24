@@ -3,7 +3,7 @@ title: Git & Github 快速學習自我挑戰
 thumbnail:
   - /images/learning/git/GitDay1.jpg
 date: 2018-04-21 15:18:51
-categories: 學習歷程
+categories: Study Note
 tags: 
     - Git
 ---

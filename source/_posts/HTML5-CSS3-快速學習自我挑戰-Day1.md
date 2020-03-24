@@ -3,7 +3,7 @@ title: HTML5+CSS3 快速學習自我挑戰 Day1
 thumbnail:
   - /images/learning/htmlcss/HtmlCssDay1.jpg
 date: 2017-11-04 05:39:50
-categories: 學習歷程
+categories: Study Note
 tags: 
     - HTML
     - CSS

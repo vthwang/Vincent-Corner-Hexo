@@ -3,7 +3,7 @@ title: React快速學習自我挑戰 Day7
 thumbnail:
   - /images/learning/react/reactday7.png
 date: 2017-03-11 20:15:40
-categories: 學習歷程
+categories: Study Note
 tags: React
 ---
 <img src="/images/learning/react/reactday7.png">

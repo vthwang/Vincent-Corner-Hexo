@@ -3,7 +3,7 @@ title: JavaScript用AJAX的方式獲得時間
 thumbnail:
   - /images/javascript.jpg
 date: 2016-11-05 23:22:31
-categories: 技術分享
+categories: Skill Share
 tags:
 ---
 <img src="/images/javascript.jpg">

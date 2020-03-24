@@ -3,7 +3,7 @@ title: Wordpress 處理中文檔名上傳
 thumbnail:
   - /images/wordpress.png
 date: 2017-03-04 16:29:52
-categories: 技術分享
+categories: Skill Share
 tags: WordPress
 ---
 <img src="/images/wordpress.png">

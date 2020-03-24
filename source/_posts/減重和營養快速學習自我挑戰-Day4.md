@@ -3,7 +3,7 @@ title: 減重和營養快速學習自我挑戰 Day4
 thumbnail:
   - /images/learning/weightloss/WeightLossDay4.jpg
 date: 2018-05-01 11:55:18
-categories: 學習歷程
+categories: Study Note
 tags: 
     - Weight Loss
     - Nutrition

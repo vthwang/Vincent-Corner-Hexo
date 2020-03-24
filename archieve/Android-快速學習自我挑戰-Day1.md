@@ -3,7 +3,7 @@ title: Android 快速學習自我挑戰 Day1
 thumbnail:
   - /images/learning/Android/AndroidDay01.jpg
 date: 2019-01-20 00:22:04
-categories: 學習歷程
+categories: Study Note
 tags: Android
 ---
 <img src="/images/learning/Android/AndroidDay01.jpg">

@@ -1,7 +1,7 @@
 ---
 title: 華碩Win8電腦USB開機
 date: 2016-09-04 03:30:18
-categories: 技術分享
+categories: Skill Share
 tags:
 thumbnail:
   - /images/asus.png

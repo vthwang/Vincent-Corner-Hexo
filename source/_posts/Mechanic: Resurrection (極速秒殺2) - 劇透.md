@@ -1,7 +1,7 @@
 ---
 title: 'Mechanic: Resurrection (極速秒殺2) - 劇透'
 date: 2016-09-09 10:27:45
-categories: 閱讀賞析
+categories: Reading Note
 tags:
 thumbnail:
   - /images/Mechanic＿Resurrection.jpg

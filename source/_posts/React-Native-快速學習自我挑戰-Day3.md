@@ -3,7 +3,7 @@ title: React Native 快速學習自我挑戰 Day3
 thumbnail:
   - /images/learning/reactNative/reactnativeday3.jpg
 date: 2017-08-08 17:41:08
-categories: 學習歷程
+categories: Study Note
 tags: React-Native
 ---
 <img src="/images/learning/reactNative/reactnativeday3.jpg">
