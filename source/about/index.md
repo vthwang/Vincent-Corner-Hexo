@@ -3,55 +3,79 @@ title: About Me
 date: 2016-08-30 19:17:58
 ---
 
-#### _自我介紹（Self-Introduction）_
 <img src="/images/profile.jpeg" width="200">
 
-&emsp;&emsp;我叫王霆瑄(Vincent)，來自台中，熱愛**閱讀**、**運動**和**旅行**，對於新鮮的事物更是愛不釋手。
-&emsp;&emsp;大學時期主修外國文學，在大二時，遇見網頁程式設計，一路踏上程式設計的旅程，在旅程中，迷上前端的平面設計、後端的雲端運算，也因為我對跨領域的嘗試，讓我立志成為一位頂尖的全端工程師。
+<p style="text-align: justify;">
+&emsp;&emsp;Hi, My name is Vincent Ting-Syuan Wang (In chinese: 王霆瑄).<br/>
+&emsp;&emsp;Vincent is a professional backend programmer with the experience managing small tech teams. His background in foreign literature helps him solve many issues with cross-cultural communication with different teams. Moreover, he has lived in many cities and been familiar with the different programming tools between mainland China and outside China. He is also fueled by his passion for understanding algorithm. He considers himself a 'forever student', eager to both build on his academic foundations in computer science and stay in tune with the latest programming tools through using these tools on daily works.
+</p>
 
 ***
 
-##### 我的座右銘
-> 你若成功了
-&emsp;放屁都有道理
-你若失敗了
-&emsp;再有道理都是屁
+#### _Educational Background_
+**Illinois Institue of Technology** (September 2020 - Now)
+Department of **Computer Science**, M. S.
+
+**China Medical University** (September 2016 - June 2017)
+Department of **Traditional Chinese Medicine**, M.S.
+
+**Asia University, Taiwan** (September 2012 - June 2016)
+Department of **Foreign Languages and Literature**, B.A.
+Cumulative GPA: 3.92/4.00
 
 ***
 
-#### _學歷（Educational Background）_
-China Medical University（中國醫藥大學）- 肄業
-Department of Traditional Chinese Medicine, M.S.（中國醫學研究所）
-Asia University（亞洲大學）
-Department of Foreign Languages and Literature, B.A.（外國語文學系）
+#### _Experience_
+**SOHO** at _Fishbone Creative Co., Ltd._
+September 2019 - Now
+Working on E-commerce and brand image websites.
+
+**PHP Project Manager** at _ShangHai Pu-Yu Software Development Co., Ltd._
+November 2018 - August 2019 (10 months)
+Responsible for understanding clients' demands, arrange working schedule and coordinate team members to develop API for mimi-program (WeChat App) and mobile Apps.
+
+**Junior PHP Developor** at _Dotech Technology Enterprise Co., Ltd._
+August 2017 - October 2018 (1 year 2 months)
+Help clients build official website by using WordPress and PHP + Mysql. In 2018, I imported Laravel framework and Gitlab Services to our company and applied this development mode to many client's services.
+
 ***
 
-#### _重要事紀（Life Events）_
-_2014/05/23_
-第八屆敦煌全國大專盃 - 進階大學組 佳作獎
-_2015/03/21_
-獲得亞洲大學 103 學年度「傑出成就獎」
+#### _Honors and Awards_
 
-#### _活動參與（Participation）_
-_2016/04/15~2016/04/17_
-第18屆國際東洋醫學會學術大會 (日本沖繩)
-_2016/06/25_
-CTJS 2016 (臺中科技大學)
-_2016/08/22~2016/08/26_
-CGCM Meeting 2016 全球華人中草藥科技研討會 (中央研究院)
-_2016/10/29~2015/10/30_
-MOPCON 2016 行動科技年會 (高雄國際會議中心)
-_2017/09/04~2017/09/06_
-DevOpsDays Taipei 2017 (臺灣大學社會科學院)
-_2018/07/08_
-Laravel Conf 2018 (張榮發基金會)
+**Excellent Work Award of the 8th Dunhuang National College Cup , Advanced University Group**
+Date: _2014/05/23_
+**103 Semester - Outstanding Achievement Award (Technology R&D Project)**
+Date: _2015/03/21_
 
+***
 
+#### _Participations_
+**LaravelConf Taiwan 2018**
+Date: _2018/07/08_
+Location: Chang Yung-Fa Foundation
+**DevOpsDays Taipei 2017**
+Date: _2017/09/04~2017/09/06_
+Location: National Taiwan University
+**MOPCON 2016**
+Date: _2016/10/29~2016/10/30_
+Location: International Convention Center Kaohsiung
+**CGCM Meeting 2016**
+Date: _2016/08/22~2016/08/26_
+Location: Academia Sinica
+**CTJS 2016**
+Date: _2016/06/25_
+Location: National Taichung University of Science and Technology
+**International Congress of Oriental Medicine-ICOM18**
+Date: _2016/04/15~2016/04/17_
+Location: Okinawa, Japan
 
-#### _聯繫我（Contact Ｍe）_
-| WeChat的好友：  | LINE的好友： |
-|:-------------: |:---------------:|
-| <img src="/images/wechat.png"> | <img src="/images/line.jpg"> |
+***
 
-寫信給我：<vincent@fishboneapps.com>
-Facebook 私訊敲我：[Facebook個人頁面](https://www.facebook.com/VincentTingSyuanWang)
+#### _Contact Ｍe_
+
+Please feel free to get in touch and share your thoughts, ask questions, or just say hi!
+You can email me directly at
+<h5 style="text-align: center; color: purple;"> vincent@fishboneapps.com </h5>
+I look forward to hear from you.
+
+***
