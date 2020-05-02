@@ -1,5 +1,5 @@
 ---
-title: About Me
+title: ABOUT ME
 date: 2016-08-30 19:17:58
 ---
 
@@ -12,7 +12,7 @@ date: 2016-08-30 19:17:58
 
 ***
 
-#### _Educational Background_
+### _EDUCATION_
 **Illinois Institue of Technology** (September 2020 - Now)
 Department of **Computer Science**, M. S.
 
@@ -25,7 +25,7 @@ Cumulative GPA: 3.92/4.00
 
 ***
 
-#### _Experience_
+### _EXPERIENCE_
 **SOHO** at _Fishbone Creative Co., Ltd._
 September 2019 - Now
 Working on E-commerce and brand image websites.
@@ -40,7 +40,7 @@ Help clients build official website by using WordPress and PHP + Mysql. In 2018,
 
 ***
 
-#### _Honors and Awards_
+### _HONORS & AWARDS_
 
 **Excellent Work Award of the 8th Dunhuang National College Cup , Advanced University Group**
 Date: _2014/05/23_
@@ -49,7 +49,7 @@ Date: _2015/03/21_
 
 ***
 
-#### _Participations_
+### _PARTICIPATIONS_
 **LaravelConf Taiwan 2018**
 Date: _2018/07/08_
 Location: Chang Yung-Fa Foundation
@@ -71,11 +71,9 @@ Location: Okinawa, Japan
 
 ***
 
-#### _Contact Ｍe_
+### _CONTACT ME_
 
 Please feel free to get in touch and share your thoughts, ask questions, or just say hi!
 You can email me directly at
 <h5 style="text-align: center; color: purple;"> vincent@fishboneapps.com </h5>
 I look forward to hear from you.
-
-***
