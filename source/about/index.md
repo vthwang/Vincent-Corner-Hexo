@@ -41,11 +41,10 @@ Help clients build official website by using WordPress and PHP + Mysql. In 2018,
 ***
 
 ### _HONORS & AWARDS_
-
-**Excellent Work Award of the 8th Dunhuang National College Cup , Advanced University Group**
-Date: _2014/05/23_
 **103 Semester - Outstanding Achievement Award (Technology R&D Project)**
 Date: _2015/03/21_
+**Excellent Work Award of the 8th Dunhuang National College Cup , Advanced University Group**
+Date: _2014/05/23_
 
 ***
 
