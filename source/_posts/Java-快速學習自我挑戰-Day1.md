@@ -11,7 +11,7 @@ tags: Java
 ***
 ### 課前準備
 1. 問問題的技巧
-    - 盡可能地精準的問問題：貼上程式碼，加一些畫面截圖。
+    - 盡可ㄒㄩ能地精準的問問題：貼上程式碼，加一些畫面截圖。
     - 問別人沒問過的問題：在問問題之前，先找找看別人有沒有問過。
 2. 成為工程師的四個階段
     - Unconcious Incompetence (無意識的無能)：在剛開始起步的時候，你不知道你不會什麼，所以不要做長期規劃，應該要專注在基礎上面。
@@ -64,5 +64,81 @@ public class Hello {
     - 定義一個 class，**class** 關鍵字用來定義接下來的關鍵字 - Hello，Hello 在這個例子中用 {} 來定義 class 區塊。
     - 所以，定義一個 class 需要有可選擇的存取修改器，接著 class，後面再接著 {}。
     - {} 用來定義 class 的內容，任何內容在 {} 之間的都是 class 的一部分。
+#### 定義主方法
+1. 什麼是方法(method)？
+方法是一個或多個展現功能的陳述句集合，我們會使用主方法(main method)讓 Java 在運行程式的時候會去尋找它，它是任何 Java 程式碼的入口處。
+2. 你可以創建自己的方法，但是我們先創建主方法。
+```
+public class Hello {
+    public static void main(String[] args) {
+    }
+}
+```
+3. 主方法觀念
+    - **public** 是一個存取修改器，在定義 class 的時候就說過了。
+    - **static** 是一個需要瞭解其他概念才能解釋的 Java 關鍵字，現在，只要知道我們需要一個 static 讓 Java 找到我們這個方法，並運行我們即將添加的程式碼。
+    - **void** 是另外一個 Java 關鍵字，用來表示這個方法不會回傳任何東西，後面會說更多關於 void 的事情。
+    - 方法宣告裡的 () 是一個強制、而且可選擇放入一個或多個變數，這些變數會傳進去方法裡面，後面一樣會說更多。
+4. 可以在編輯器裡面嘗試運行主方法，選擇「Run 'Hello.main()'」
+
+<img src="/images/learning/java/JavaDay01-Image01.png">
+
+5. 程式碼區塊 (code block)
+程式碼區塊是用來定義一個程式碼區塊，在一個方法宣告裡面，它是必要的，我們會在裡面新增一些陳述句來執行一些任務。
+6. 在主方法裡面新增打印 Hello World
+```
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+```
+7. 陳述句 (statement)
+陳述句是一個完整可被執行的命令，而且可以包含一個或多個表達式(expression)，後面都會細說。
+#### Hello World 挑戰和常見錯誤
+1. 挑戰如何將你的名字打印出來？
+```
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, Vincent");
+    }
+}
+```
+2. 常見錯誤
+    - ';' expected，沒有加分號
+    - ')' expected，沒有加括號
+    - Illegal line end in string literal，字符串文字沒有對應結尾
+    - 如果執行之後出現錯誤，雙擊錯誤訊息可以直接跳到錯誤的那一行
+#### 變數
+1. 什麼是變數？
+    - 變數是一種儲存資料在你的電腦中的一種方式，變數可以透過我們給予變數的名稱來被存取，而電腦會處理這些變數要儲存在記憶體的哪個地方。
+    - 變數，就像名稱一樣，他的內容是可變的。
+    - 我們要做的就是告知電腦我們想用變數儲存什麼類型的資料，然後給予這個變數一個名稱。
+    - 我們可以為變數定義很多資料型態，這些被稱為資料型態(data types)，我們也可以猜到，資料型態在 Java 中也是一種關鍵字。
+    - 所以，讓我們從定義 **int** 開始，**int** 是整數(integer)的縮寫，整數就是沒有任何小數點的數字。
+    - 要定義一個變數，我們必須要指定資料型態，然後給予變數名稱，我們有時候使用一個表達式來初始化帶有值的變數。
+2. 在主方法裡面定義一個 myFirstNumber
+`int myFirstNumber = 5;`
+3. 上面這一行就是一個宣告陳述句(declaration statement)
+    - 宣告陳述句透過指出資料型態、名字、有時候設定變數的值來定義一個變數。
+    - 在上面的宣告陳述句，我們定義一個 **int**，名字叫做 **myFirstNumber**，而且值被分派或是初始化為 **5**，所以我們在宣告一個變數為 **int** 型態、名字為 **myFirstNumber**，而且分派值為 **5**。
+4. 什麼是表達式(expression)？
+表達式是評估一個值的構造，我們在後面會討論更多。
+5. 挑戰：查看第一個 **System.out.println** 陳述句，想想看如何在下面打印出 myFirstNumber 這個變數。
+```
+int myFirstNumber = 5;
+System.out.println(myFirstNumber);
+```
+6. 在 Java 中，任何被兩個雙引號放在中間的內容，都會被當作字串符文字，他的值不像變數，是不能被改變。
+`System.out.println("MyFirstNumber");`
+7. 也可以對變數做運算。
+```
+int myFirstNumber = (10 + 5) + (2 * 10);
+System.out.println(myFirstNumber);
+```
+8. Java 運算符(operators)
+    - **Java 運算符**就是利用運算符號對一個變數或值進行操作，**+, -, \*, \/** 對應加減乘除。
+    - 還有更多運算符，後面會做講解。
+
 
 
