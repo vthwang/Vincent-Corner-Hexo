@@ -1,9 +1,13 @@
-# blogs
+# Vincent's Corner
 
-##### Add photos in single page
+## Welcome to my blog
+Website: https://vincent.fishboneapps.com
+
+## Photo functions
+### Add a photo to a single page
 `<p><img src="/blogs/images/XXX.png" alt=""></p>`
 
-##### Add photo in single page's top
+### Add a photo to a single page's top
 ```
 photos:
 	- /images/asus.png
