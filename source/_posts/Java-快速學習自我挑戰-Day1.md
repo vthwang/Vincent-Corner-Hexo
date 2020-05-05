@@ -139,6 +139,7 @@ System.out.println(myFirstNumber);
 8. Java 運算符(operators)
     - **Java 運算符**就是利用運算符號對一個變數或值進行操作，**+, -, \*, \/** 對應加減乘除。
     - 還有更多運算符，後面會做講解。
+#### 開始使用表達式 (expression)
 
 
 
