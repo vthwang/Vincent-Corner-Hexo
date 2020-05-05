@@ -1,0 +1,48 @@
+name: Deploy Hexo Blog
+
+on: 
+  push:
+    branches: 
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v2
+      with:
+        path: main
+    - name: Setup node and yarn
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Install hexo dependencies
+      run: |
+        cd main
+        yarn
+        npm i -g hexo-cli 
+    - name: Generate blog
+      env:
+          TZ: Asia/Shanghai
+      run: |
+        cd main
+        hexo clean
+        hexo generate
+        ls
+    - name: Install tools for sync
+      run: |
+      'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+      mkdir -p ~/.ssh
+      chmod 700 ~/.ssh
+      echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
+      chmod 600 ~/.ssh/id_rsa
+      ssh-keyscan -t rsa 157.245.204.1 >> ~/.ssh/known_hosts
+      'which rsync || ( apt-get update -y && apt-get install rsync -y)'
+    - name: Publish to Server
+      env:
+          TZ: Asia/Shanghai
+      run: |
+        hexo deploy
+        echo "Deploy succssed!"
+
