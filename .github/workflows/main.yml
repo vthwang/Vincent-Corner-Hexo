@@ -7,42 +7,38 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: hexo build & deploy
+    runs-on: ubuntu-18.04
+
     steps:
-    - name: Checkout source
-      uses: actions/checkout@v2
+    - uses: actions/checkout@master
       with:
-        path: main
-    - name: Setup node and yarn
-      uses: actions/setup-node@v1
+        submodules: true
+    - uses: actions/setup-node@master
       with:
-        node-version: 12.x
-    - name: Install hexo dependencies
+        node-version: 8.x
+
+    - name: Installation
       run: |
-        cd main
-        yarn
-        npm i -g hexo-cli 
-    - name: Generate blog
-      env:
-          TZ: Asia/Shanghai
+        npm install
+        npm install -g hexo-cli
+
+    - name: Generate
+      run: hexo clean && hexo g
+
+    - name: Deploy
       run: |
-        cd main
-        hexo clean
-        hexo generate
-        ls
-    - name: Install tools for sync
-      run: |
-      'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-      mkdir -p ~/.ssh
-      chmod 700 ~/.ssh
-      echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
-      chmod 600 ~/.ssh/id_rsa
-      ssh-keyscan -t rsa 157.245.204.1 >> ~/.ssh/known_hosts
-      'which rsync || ( apt-get update -y && apt-get install rsync -y)'
-    - name: Publish to Server
-      env:
-          TZ: Asia/Shanghai
-      run: |
+        mkdir -p $HOME/.ssh
+        touch "$HOME/.ssh/known_hosts"
+        
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/deploy_key
+        chmod 700 $HOME/.ssh
+        chmod 600 $HOME/.ssh/deploy_key
+        chmod 600 $HOME/.ssh/known_hosts
+        eval $(ssh-agent)
+        ssh-add $HOME/.ssh/deploy_key
+        
+        ssh-keyscan 157.245.204.1 > $HOME/.ssh/known_hosts
+        
         hexo deploy
-        echo "Deploy succssed!"
 
