@@ -20,7 +20,7 @@ jobs:
 
     - name: Installation
       run: |
-        npm install
+        npm install --no-optional
         npm install -g hexo-cli
 
     - name: Generate
