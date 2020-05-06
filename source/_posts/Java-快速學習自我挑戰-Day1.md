@@ -140,6 +140,97 @@ System.out.println(myFirstNumber);
     - **Java 運算符**就是利用運算符號對一個變數或值進行操作，**+, -, \*, \/** 對應加減乘除。
     - 還有更多運算符，後面會做講解。
 #### 開始使用表達式 (expression)
+1. 挑戰：創建額外的變數，新增 **mySecondNumber**，它是 **int** 型態且指定數值為 **12**，另外新增 **myThirdNumber**，它是 **int** 型態且指定數值為 **6**。
+2. 將這些變數相加後，打印出來。
+```
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, Vincent");
 
+        int myFirstNumber = (10 + 5) + (2 * 10);
+        int mySecondNumber = 12;
+        int myThirdNumber = 6;
+        int myTotal = myFirstNumber + mySecondNumber + myThirdNumber;
 
+        System.out.println(myTotal);
+    }
+}
+```
+3. 也可以將在變數裡做其它變數的運算
+```
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, Vincent");
 
+        int myFirstNumber = (10 + 5) + (2 * 10);
+        int mySecondNumber = 12;
+        int myThirdNumber = myFirstNumber * 2;
+        int myTotal = myFirstNumber + mySecondNumber + myThirdNumber;
+
+        System.out.println(myTotal);
+    }
+}
+```
+4. 挑戰：新增一個變數 **myLastOne**，它是 **int** 型態，且希望它的值是 **1000 減掉** myTotal 當前值，最後並打印出 **myLastOne**。
+```
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, Vincent");
+
+        int myFirstNumber = (10 + 5) + (2 * 10);
+        int mySecondNumber = 12;
+        int myThirdNumber = myFirstNumber * 2;
+        int myTotal = myFirstNumber + mySecondNumber + myThirdNumber;
+
+        System.out.println(myTotal);
+
+        int myLastOne = 1000 - myTotal;
+        System.out.println(myLastOne);
+    }
+}
+```
+#### 原始型態
+1. Java 原始型態是最基本的資料型態，**int** 就是八個原始型態中的一個。
+2. 八個原始型態分別是，**boolean，byte，char，short，int，long，float 和 double**，這些就是資料操作的基本組件。
+3. Java 套包(Java Package)是用來組織你的 Java 專案的，要把這個當成是資料夾路徑，舉例來說 **com.company**，就是 **com** 底下有一個子目錄叫做 **company**，就是公司網域反過來寫。所以 company.com 會變成 com.company，後面會說到更多 Package 的東西。
+4. 創建一個新的專案，這次在第二步驟的時候，把 Create project from template 打勾，專案名稱為 ByteShortIntLong，並將 base package 改為 com.company。
+5. 包裝類(Wrapper Classes)，Java 使用包裝類的概念到八種原始型態，在 **int** 的案例中，我們可以使用 **Integer** 來向 int 執行操作。在這個例子中，我們使用 **MIN_VALUE** 和 **MAX_VALUE** 讓 Java 告訴我們 Integer 可以儲存的最大和最小的範圍。
+```
+int myMinIntValue = Integer.MIN_VALUE;
+int myMaxIntValue = Integer.MAX_VALUE;
+System.out.println("Integer Minimum Value = " + myMinIntValue);
+System.out.println("Integer Maximum Value = " + myMaxIntValue);
+```
+6. 我們在 myMaxIntValue 加 1，會發現打印出來是負數，這個就稱為溢位(overflow)，反過來也是一樣，但是反過來的狀況叫做不足位(underflow)，這些狀況電腦會直接跳回最小數或最大數，這通常不是我們想要的，所以要注意。
+```
+System.out.println("Busted Max Value = " + (myMaxIntValue + 1));
+System.out.println("Busted Min Value = " + (myMinIntValue - 1));
+```
+7. 後面會提到其它種類型的資料型態可以儲存更多資料，所以程式設計師要知道在哪種狀況下要使用哪種資料型態。
+8. 在 Java7 版本之後，如果數字比較難以閱讀的話，可以用底線分隔開，系統一樣可以讀出來。例如：`int myMaxIntText = 2_147_483_647`
+#### Byte，Short，Long 和寬度
+1. 使用和剛剛一樣的方式把 Byte 最大和最小值打印出來，通常來說，在現在電腦非常資源非常充足的情況下，使用 byte 的情況會比較少，如果考慮效能問題，這個可能是其中一個原因，它比較節省空間，速度也比較快。
+```
+byte myMinByteValue = Byte.MIN_VALUE;
+byte myMaxByteValue = Byte.MAX_VALUE;
+System.out.println("Byte Minimum Value = " + myMinByteValue);
+System.out.println("Byte Maximum Value = " + myMaxByteValue);
+```
+2. 繼續用剛剛的方法，將 Short 的最大和最小值打印出來，最大值為 32767，最小值為 -32768，所以 Byte 和 Short 有相同的溢位和不足位的問題，但是它們有不同的範圍。
+```
+short myMinShortValue = Short.MIN_VALUE;
+short myMaxShortValue = Short.MAX_VALUE;
+System.out.println("Short Minimum Value = " + myMinShortValue);
+System.out.println("Short Maximum Value = " + myMaxShortValue);
+```
+3. 原始型態的大小和寬度
+    - 一個 **Byte** 佔用 8 位元(bit)，一個位元並不是原始型態，我們有 **boolean**，但是它跟 Byte 完全不是同一件事情，後面會細說，所以一個 **Byte** 佔用 **8 位元**，我們可以說 **byte** 的寬度為 **8**。
+    - **short** 可以儲存大量數字，佔用 **16** 位元，所以寬度為 **16**。
+    - **int** 可以儲存更大量數字，佔用 **32** 位元，所以寬度為 **32**。
+    - 不同的原始型態佔用不同的記憶體大小，我們可以知道 **int** 跟 **byte** 比起來，佔用了 4 倍的記憶體。
+    - 這些數字對對你來說並不是特別相關，但是面試作為題目的時候，知道特定資料類型佔用不同的空間是有用的。
+4. Long 佔用 64 位元，是 Int 的 2 倍，在宣告 Long 的時候，如果值比 Integer 的最大值還要大的時候，需要在值後面加上 L，否則會出現錯誤，因為 Java 會把數字當成 Integer 來處理。
+```
+long bigLongLiteralValue = 2_147_483_647_123L;
+System.out.println(bigLongLiteralValue);  
+```
