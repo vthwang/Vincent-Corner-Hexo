@@ -1,8 +1,11 @@
 ---
 title: {{ title }}
+thumbnail:
+  - /images/
 date: {{ date }}
 categories: 
 tags:
-thumbnail:
-  - /images/
 ---
+<img src="/images/">
+
+***

@@ -4,7 +4,7 @@
 
 # Site
 title: Vincent's Corner
-subtitle: See More! Learn More! Do More!
+subtitle: I see, I come, I conquer.
 description: Who knows what fantastic things around Vincent's corner?
 author: Vincent Ting Syuan Wang
 language: en
@@ -35,7 +35,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 relative_link: false
 future: true
 highlight:
