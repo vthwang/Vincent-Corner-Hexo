@@ -202,3 +202,207 @@ My last string is 1050120.47
 8. 我們用的程式碼再創建 String 是沒有效率的
     - 最後一個新的 **String** 被創建，像這樣的方式是沒有效率的，而且不推薦的。後面會用 **StringBuffer**，這個就可以讓 **String** 被改變了。
     - 在我們處理 **StringBuffer**，我們需要了解類(class)，而且，後面你會遇到用這種風格(String + Value)寫的程式碼，所以用 **StringBuffer** 對你很有用。
+#### 運算符(Operators)、運算數(Operands)、表達式(Expressions)
+1. 什麼是運算符(Operator)？
+Java 的 **運算符(Operator)** 是特殊符號，用來對一個、兩個、或三個運算數執行特定的操作，最後返回結果。例如：我們用 + 運算符來相加兩個數的值。
+2. 什麼是運算數(Operand)？
+    - **運算數(Operand)**是一個專有名詞，用來描述被**運算符**操作的任何物件。
+    - 如果我們看這個陳述句(statement)：`int myVar = 15 + 12`，**+** 是**運算符**，而 **15** 和 **12** 是**運算數**，用文字表示的變數也是**運算數**。
+    - `double mySalary = hoursWorked * hourlyRate`，在這邊，**hoursWorked** 和 **hourlyRate** 都是**運算數**，而且 **\*** 是 **運算符**。
+3. 什麼是表達式(Expression)？
+    - 一個表達式是由變數、文字、回傳值的方法(還沒講到)和運算符所組成。
+    - `int myVar = 15 + 12`，**15 + 12**就是表達式，最後會回傳 **27**。
+    - `double mySalary = hoursWorked * hourlyRate`，**hoursWorked * hourlyRate** 是表達式，所以如果 **hoursWorked** 是 **10.00**，**hourlyRate** 是 **20.00**，最後這個表達式會回傳 **200.00**。
+4. 什麼是註解(Comment)？
+    - **註解**會被電腦忽略，被加到程式碼裡面是為了幫助描述某件事，**註解**是為了人而存在的。
+    - 我們用 **//** 在任何程式碼前面，或是在空白的一行，任何在 **//** 後面的內容到這一行的結尾都會被忽略。
+    - 除了可以用來描述一個程式碼的內容，**註解**也被用來暫時性地禁用程式碼。
+5. 這邊可以看到，在第三行的時候指定了 result 給 previousResult，後面 previousResult 並沒有被改變，所以就算後面 result 改變了，previousResult 在最後也不會改變。另外展示運算符 (+, -, *, /, %)。
+```
+int result = 1 + 2; // 1 + 2 = 3
+System.out.println("1 + 2 = " + result);
+int previousResult = result;
+System.out.println("previousResult = " + previousResult);
+result = result - 1; // 3 - 1 = 2;
+System.out.println("3 - 1 = " + result);
+System.out.println("previousResult = " + previousResult);
+
+result = result * 10; // 2 * 10 = 20;
+System.out.println("2 * 10 = " + result);
+
+result = result / 5; // 20 / 5 = 4
+System.out.println("20 / 5 = " + result);
+
+result = result % 3; // the remainder of (4 % 3) = 1;
+System.out.println("4 % 3 = " + result);
+------
+1 + 2 = 3
+previousResult = 3
+3 - 1 = 2
+previousResult = 3
+2 * 10 = 20
+20 / 5 = 4
+4 % 3 = 1
+```
+#### 縮寫運算符
+1. 可以用 ++, --, +=, -=, *=, /= 來進行運算的縮寫。
+```
+int result = 1;
+// result = result + 1;
+result++; // 1 + 1 = 2;
+System.out.println("1 + 1 = " + result);
+
+result--; // 2 - 1 = 1;
+System.out.println("2 - 1 = " + result);
+
+// result = result + 2;
+result += 2; // 1 + 2 = 3
+System.out.println("1 + 2 = " + result);
+
+// result = result * 10;
+result *= 10; // 3 * 10 = 30
+System.out.println("3 * 10 = " + result);
+
+// result = result / 3;
+result /= 3; // 30 / 3 = 10
+System.out.println("30 / 3 = " + result);
+
+// result = result - 2;
+result -= 2; // 10 - 2 = 8;
+System.out.println("10 - 2 = " + result);
+```
+#### if-then 陳述句(statement)
+1. **if-then** 是最基本的控制流陳述句，當特定值為 **true** 時，它告訴程式應該執行哪個區塊。
+2. 條件式邏輯(Conditonal Logic)在 Java 使用特定陳述句，讓我們當條件是 **false** 或 **true** 的時候，檢查一個條件或執行特定程式碼。
+3. 在 if 條件下，如果沒有程式碼區塊(code block)，它只會判斷後執行第一行，第二行會當成正常的程式碼運行。所以我們應該要使用程式碼區塊，程式碼區塊可以讓不只一行的程式碼運行。
+```
+boolean isAlien = false;
+if (isAlien == true)
+    System.out.println("It is not an alien!");
+    System.out.println("And I am scared of aliens");
+
+------
+And I am scared of aliens
+```
+4. 使用程式碼區塊可以讓 if 陳述句更清楚，而且可執行超過一行。
+```
+boolean isAlien = false;
+if (isAlien == false) {
+    System.out.println("It is not an alien!");
+    System.out.println("And I am scared of aliens");
+}
+
+------
+It is not an alien!
+And I am scared of aliens
+```
+#### 邏輯 AND 運算符
+1. \>, <, >=, <= 分別對應數學上的大於、小於、大於等於、小於等於，&& 雙連字號(double ampersands) 就是邏輯 AND 的意思，後面會細說單連字號(bitwise AND)和雙連字號的差別，雙連字號用在左右兩邊的表達式都是 true 的時候，該條件才成立。
+```
+int topScore = 80;
+if (topScore >= 100) {
+    System.out.println("You got the high school!");
+}
+
+int secondTopScore = 60;
+if (topScore > secondTopScore && topScore < 100) {
+    System.out.println("Greater than second top score and less than 100");
+}
+```
+2. 可以讓在 && 的旁邊兩個表達式加上 ()，可以更清楚要判斷的條件，而且輸出結果也不會改變。
+```
+if ((topScore > secondTopScore) && (topScore < 100)) {
+    System.out.println("Greater than second top score and less than 100");
+}
+```
+#### 邏輯 OR 運算符
+1. OR 運算符，只要左右其中一個表達式為 true，則結果為 true，基本用法和 AND 一致。
+```
+if ((topScore > 90) || (secondTopScore <= 90)) {
+    System.out.println("Either or both of conditions are true");
+}
+```
+2. 邏輯 AND 和邏輯 OR
+    - **AND** 運算符在 Java 中有兩種形式，**OR** 也是。
+    - **&&** 是邏輯 AND，用來執行 boolean 運算數的運算 - 檢查條件是否為 **true** 或 **false**。
+    - **&** 是一個位元運算符(bitwise operator)，用在位元等級的運算。
+    - 同樣地，**||** 是邏輯 OR，用來執行 boolean 運算數的運算 - 檢查條件是否為 **true** 或 **false**。
+    - 同樣地，**|** 是一個位元運算符(bitwise operator)，用在位元等級的運算。
+#### 分配運算符和相等運算符
+1. 第一行我們宣告了 **newValue int**，它使用了分配運算符(=)去分配 **50** 給 **newValue**。不要在 **if-then** 陳述句裡面使用**分配運算符**，而要使用相等運算符(==)。
+```
+int newValue = 50;
+if (newValue = 50) {
+    System.out.println("This is an error");
+}
+if (newValue == 50) {
+    System.out.println("This is true");
+}
+```
+2. 這邊在 if 後面使用 isCar = true 是指定 isCar 變數為 true，最後會返回 true，這個 if 條件句的內容就會被執行。
+```
+boolean isCar = false;
+if (isCar = true) {
+    System.out.println("This is not supposed to happen");
+}
+
+------
+This is not supposed to happen
+```
+3. 縮寫運算符。
+```
+if (isCar == true)
+if (isCar)
+```
+```
+if (isCar == false)
+if (!isCar)
+```
+4. NOT 運算符
+    - ! 或 NOT 被稱為邏輯補運算符 (Logical Complement Operator)
+    - 用來與 **boolean** 測試它的替代值，我們看到上面 **(isCar)** 是 **true**，再變數之前加上 **!**，就可以檢查相反的值 **false**。
+    - 推薦使用縮寫運算符 (isCar) 或 (!isCar)，第一，可以避免使用分配運算符的錯誤，第二，程式碼更為簡潔。
+#### 三元運算符 (ternary operator)
+1. 三元運算符是一個捷徑，透過給予的條件，去分配兩個值中的其中一個給一個變數。它是 **if-then-else** 陳述句的快捷版。
+```
+isCar = true;
+boolean wasCar = isCar ? true : false;
+if (wasCar) {
+    System.out.println("wasCar is true;");
+}
+```
+2. 三元運算符的使用
+    - 第一個運算數 **ageOfClient == 20**：我們要檢查的條件，它必須回傳 **true** 或 **false**。
+    - 第二個運算數 **true**：**true** 是我們分配給 **isEighteenOrOver** 的值，如果前面的條件為 **true**，則為 **true**。
+    - 第三個運算數 **false**: **false** 是我們分配給 **isEighteenOrOver** 的值，如果前面的條件為 **false**，則為 **false**。
+    - 最後會回傳 true，因為 ageOfClient == 20 是 true。
+    - 最好使用 () 會更容易閱讀。可以改寫成 `boolean isEighteenOrOver = (ageOfClient == 20) ? true : false;`
+```
+int ageOfClient = 20;
+boolean isEighteenOrOver = ageOfClient == 20 ? true : false;
+```
+#### 運算符優先級和運算符挑戰
+1. [運算符的總表](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html)
+2. [運算符的優先級](http://www.cs.bilkent.edu.tr/~guvenir/courses/CS101/op_precedence.html)
+3. 挑戰：測試你學到的**運算符**
+    - 創建一個 **double** 變數，值為 **20.00**。
+    - 創建第二個 **double** 變數，值為 **80.00**。
+    - 相加以上兩個變數，並乘以 **100.00**。
+    - 使用**餘數**運算符，將第三步驟取得的值用 **40.00** 取得餘數，我們在這堂課用係數(modulus)或餘數運算符在**整數**上，但是我們也可以把餘數用在 **double**。
+    - 創建一個 **boolean** 變數，如果**步驟四**的餘數為 **0**，則為 **true**，如果**不是 0**，則為 **false**。
+    - 輸出這個 **boolean** 值。
+    - 寫一個 **if-then** 陳述句，如果步驟五的 boolean 值不為 true，回傳 "Got some remainder"。
+4. 答案
+```
+double myFirstValue = 20.00d;
+double mySecondValue = 80.00d;
+double myValuesTotal = (myFirstValue + mySecondValue) * 100.00d;
+System.out.println("myValuesTotal = " + myValuesTotal);
+double theRemainder = myValuesTotal % 40.00d;
+System.out.println("theRemainder = " + theRemainder);
+boolean isNoRemainder = (theRemainder == 0) ? true : false;
+System.out.println("isNoRemainder = " + isNoRemainder);
+if (!isNoRemainder) {
+    System.out.println("Got some remainder");
+}
+```
