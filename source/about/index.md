@@ -13,9 +13,6 @@ Vincent is a professional backend programmer with the experience managing small 
 ***
 
 ### _EDUCATION_
-**Illinois Institue of Technology** (September 2020 - Now)
-Department of **Computer Science**, M. S.
-
 **China Medical University** (September 2016 - June 2017)
 Department of **Traditional Chinese Medicine**, M.S.
 
