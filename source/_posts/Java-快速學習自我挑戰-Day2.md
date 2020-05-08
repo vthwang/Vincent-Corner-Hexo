@@ -211,7 +211,7 @@ Java 的 **運算符(Operator)** 是特殊符號，用來對一個、兩個、�
     - `double mySalary = hoursWorked * hourlyRate`，在這邊，**hoursWorked** 和 **hourlyRate** 都是**運算數**，而且 **\*** 是 **運算符**。
 3. 什麼是表達式(Expression)？
     - 一個表達式是由變數、文字、回傳值的方法(還沒講到)和運算符所組成。
-    - `int myVar = 15 + 12`，**15 + 12**就是表達式，最後會回傳 **27**。
+    - `int myVar = 15 + 12`，**15 + 12** 就是表達式，最後會回傳 **27**。
     - `double mySalary = hoursWorked * hourlyRate`，**hoursWorked * hourlyRate** 是表達式，所以如果 **hoursWorked** 是 **10.00**，**hourlyRate** 是 **20.00**，最後這個表達式會回傳 **200.00**。
 4. 什麼是註解(Comment)？
     - **註解**會被電腦忽略，被加到程式碼裡面是為了幫助描述某件事，**註解**是為了人而存在的。

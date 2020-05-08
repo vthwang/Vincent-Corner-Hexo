@@ -3,8 +3,8 @@ menu:
     Home: /
     # Delete this row if you don't want categories in your header nav bar
     Categories:
+    Quotes: /quotes
     About: /about
-
 
 # Customize
 customize:
