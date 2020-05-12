@@ -202,12 +202,244 @@ public static double calcFeetAndInchesToCentimeters(double inches) {
     - 記住一個名稱比起記住很多名稱更容易。
     - 保持命名方法的一致性，單一名稱的方法是很常被使用的。
     - 方法多載給予程式設計師彈性去呼叫一個有不同變數型態但相似的方法。
+#### 秒和分的挑戰
+1. 題目
+    - Create a method called **getDurationString** with two parameters, first parameter **minutes** and second parameter **seconds**.
+    - You should validate that teh **first parameter minutes is >= 0**.
+    - You should validate that the **second parameter seconds is >=0 and <= 59**.
+    - The method should **return "Invalid value"** in teh method if either of the above are not true.
+    - If the **parameters are valid** then calculate how many hours minutes and seconds equal the minutes and seconds passed to this method and **return that value as string in format "XXh XXm ZZs"** where XX represents a number of hours, YY the minutes and ZZ the seconds.
+    - Create a **second method of the same name but with only one parameter seconds**.
+    - **Validate that it is >= 0, and retrun "Invalid value" if it is not true**.
+    - If it is valid, then calculate how many minutes are in the seconds value and then call the other overloaded method passing the correct minutes and seconds calculated so that it can calculate correctly.
+    - Call both methods to print values to the console.
+    - Tips:
+        - Use int or long for your number data types is probably a good idea.
+        - 1 minute = 60 seconds and 1 hour = 60 minutes or 3600 seconds.
+        - Methods should be static as we have used previously.
+    - Bonus:
+        - For the input 61 minutes output should be 01h 01m 00s, but it is ok it is 1h 1m 0s (Tip: use if-else)
+        - Create a new console project and call it SecondsAndMinutesChallenge
+2. 答案
+```
+public class Main {
 
+    public static void main(String[] args) {
+        System.out.println(getDurationString(3945));
+    }
 
+    private static String getDurationString(int minutes, int seconds) {
 
+        // 驗證分鐘是否大於 0，且秒是否介於 0-59 之間
+        if (minutes < 0 || (seconds < 0 || seconds > 59)) {
+            return "Invalid Value";
+        }
 
+        int hours = minutes / 60;
+        int remainingMinutes = minutes % 60;
 
+        String hoursString = hours + "h";
+        if (hours < 10) {
+            hoursString = "0" + hoursString;
+        }
 
+        String minutesString = minutes + "m";
+        if (minutes < 10) {
+            minutesString = "0" + minutesString;
+        }
 
+        String secondsString = seconds + "s";
+        if (seconds < 10) {
+            secondsString = "0" + secondsString;
+        }
 
+        return hoursString + " " + minutesString + " " + secondsString;
+    }
 
+    private static String getDurationString(int seconds) {
+
+        // 驗證秒是否大於 0
+        if (seconds < 0) {
+            return "Invalid Value";
+        }
+
+        int minutes = seconds / 60;
+        int remainingSeconds = seconds % 60;
+
+        return getDurationString(minutes, remainingSeconds);
+    }
+}
+```
+3. `final` 就是 constant 變數裡面的一個關鍵字，如果定義了，就不能改變它。可以將上面的程式碼改成下面這樣。
+```
+private static final String INVALID_VALUE_MESSAGE = "Invalid value";
+
+...
+if (minutes < 0 || (seconds < 0 || seconds > 59)) {
+    return INVALID_VALUE_MESSAGE;
+}
+...
+if (seconds < 0) {
+    return INVALID_VALUE_MESSAGE;
+}
+```
+#### 四個挑戰
+##### 題目一
+Write a method named area with one double parameter named radius.
+The method needs to return a double value that represents the area of a circle.
+If the parameter radius is negative then return -1.0 to represent an invalid value.
+Write another overloaded method with 2 parameters x and y (both doubles), where x and y represent the sides of a rectangle.
+The method needs to return an area of a rectangle.
+If either or both parameters is/are a negative return -1.0 to indicate an invalid value.
+For formulas and PI value please check the tips below.
+
+```
+Examples of input/output:
+* area(5.0); should return 78.53975
+* area(-1);  should return -1 since the parameter is negative
+* area(5.0, 4.0); should return 20.0 (5 * 4 = 20)
+* area(-1.0, 4.0);  should return -1 since first the parameter is negative
+```
+
+TIP: The formula for calculating the area of a rectangle is x * y.
+TIP: The formula for calculating a circle area is radius * radius * PI.
+TIP: For PI use a constant from Math class e.g. Math.PI
+NOTE: All methods need to be defined as public static like we have been doing so far in the course.
+NOTE: Do not add a main method to your solution code!
+##### 題目一(答案)
+```
+public class AreaCalculator {
+    public static double area(double radius) {
+
+        if (radius < 0) {
+            return -1;
+        }
+
+        // 計算圓面積
+        return radius * radius * Math.PI;
+    }
+
+    public static double area(double x, double y) {
+
+        if (x < 0 || y < 0) {
+            return -1;
+        }
+
+        // 計算三角形面積
+        return x * y;
+    }
+}
+```
+##### 題目二
+Write a method printYearsAndDays with parameter of type long named minutes.
+The method should not return anything (void) and it needs to calculate the years and days from the minutes parameter.
+If the parameter is less than 0, print text "Invalid Value".
+Otherwise, if the parameter is valid then it needs to print a message in the format "XX min = YY y and ZZ d".
+XX represents the original value minutes.
+YY represents the calculated years.
+ZZ represents the calculated days.
+
+```
+EXAMPLES OF INPUT/OUTPUT:
+* printYearsAndDays(525600);  → should print "525600 min = 1 y and 0 d"
+* printYearsAndDays(1051200); → should print "1051200 min = 2 y and 0 d"
+* printYearsAndDays(561600);  → should print "561600 min = 1 y and 25 d"
+```
+
+TIPS:
+- Be extra careful about spaces in the printed message.
+- Use the remainder operator
+- 1 hour = 60 minutes
+- 1 day = 24 hours
+- 1 year = 365 days
+
+NOTES
+- The printYearsAndDays method needs to be defined as public static like we have been doing so far in the course.
+- Do not add main method to solution code.
+- The solution will not be accepted if there are extra spaces
+##### 題目二(答案)
+```
+public class MinutesToYearsDaysCalculator {
+    public static void printYearsAndDays(long minutes) {
+
+        if (minutes < 0) {
+            System.out.println("Invalid Value");
+        } else {
+            // 將分鐘轉換成年和天
+            long days = minutes / 60 / 24;
+            long years = days / 365;
+            long remainingDays = days % 365;
+
+            System.out.println(minutes + " min = " + years + " y and " + remainingDays + " d");
+        }
+    }
+}
+```
+##### 題目三
+Write a method printEqual with 3 parameters of type int. The method should not return anything (void).
+If one of the parameters is less than 0, print text "Invalid Value".
+If all numbers are equal print text "All numbers are equal"
+If all numbers are different print text "All numbers are different".
+Otherwise, print "Neither all are equal or different".
+
+```
+EXAMPLES OF INPUT/OUTPUT:
+* printEqual(1, 1, 1); should print text All numbers are equal
+* printEqual(1, 1, 2); should print text Neither all are equal or different
+* printEqual(-1, -1, -1); should print text Invalid Value
+* printEqual(1, 2, 3); should print text All numbers are different
+```
+
+TIP: Be extremely careful about spaces in the printed message. 
+
+NOTES
+- The solution will not be accepted if there are extra spaces.
+- The method printEqual needs to be defined as public static like we have been doing so far in the course.
+- Do not add main method to solution code.
+##### 題目三(答案)
+```
+public class IntEqualityPrinter {
+    public static void printEqual(int first, int second, int third) {
+
+        if (first < 0 || second < 0 || third < 0) {
+            System.out.println("Invalid Value");
+        } else if (first == second && second == third) {
+            System.out.println("All numbers are equal");
+        } else if (first != second && second != third && third != first) {
+            System.out.println("All numbers are different");
+        } else {
+            System.out.println("Neither all are equal or different");
+        }
+    }
+}
+```
+##### 題目四
+The cats spend most of the day playing. In particular, they play if the temperature is between 25 and 35 (inclusive). Unless it is summer, then the upper limit is 45 (inclusive) instead of 35.
+Write a method isCatPlaying that has 2 parameters. Method needs to return true if the cat is playing, otherwise return false
+1st parameter should be of type boolean and be named summer it represents if it is summer.
+2nd parameter represents the temperature and is of type int with the name temperature.
+
+```
+EXAMPLES OF INPUT/OUTPUT:
+* isCatPlaying(true, 10); should return false since temperature is not in range 25 - 45 
+* isCatPlaying(false, 36); should return false since temperature is not in range 25 - 35 (summer parameter is false)
+* isCatPlaying(false, 35); should return true since temperature is in range 25 - 35 
+```
+
+NOTES
+- The isCatPlaying method needs to be defined as public static like we have been doing so far in the course.
+- Do not add the main method to the solution code.
+##### 題目四(答案)
+```
+public class PlayingCat {
+    
+    public static boolean isCatPlaying(boolean summer, int temperature) {
+
+        if (!summer) {
+            return temperature >= 25 && temperature <= 35;
+        } else {
+            return temperature >= 25 && temperature <= 45;
+        }
+    }
+}
+```
