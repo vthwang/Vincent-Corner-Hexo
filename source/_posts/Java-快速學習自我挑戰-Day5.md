@@ -131,6 +131,224 @@ private static void printDayOfTheWeekIf(int day) {
     }
 }
 ```
+#### 挑戰
+##### 題目一
+Write a method called printNumberInWord. The method has one parameter number which is the whole number. The method needs to print "ZERO", "ONE", "TWO", ... "NINE", "OTHER" if the int parameter number is 0, 1, 2, .... 9 or other for any other number including negative numbers. You can use if-else statement or switch statement whatever is easier for you.
+
+NOTE: Method printNumberInWord needs to be public static for now, we are only using static methods.
+NOTE: Do not add main method to solution code.
+##### 題目一(答案)
+```
+public class NumberInWord {
+    public static void printNumberInWord(int number) {
+        switch (number) {
+            case 0:
+                System.out.println("ZERO");
+                break;
+            case 1:
+                System.out.println("ONE");
+                break;
+            case 2:
+                System.out.println("TWO");
+                break;
+            case 3:
+                System.out.println("THREE");
+                break;
+            case 4:
+                System.out.println("FOUR");
+                break;
+            case 5:
+                System.out.println("FIVE");
+                break;
+            case 6:
+                System.out.println("SIX");
+                break;
+            case 7:
+                System.out.println("SEVEN");
+                break;
+            case 8:
+                System.out.println("EIGHT");
+                break;
+            case 9:
+                System.out.println("NINE");
+                break;
+
+            default:
+                System.out.println("OTHER");
+                break;
+        }
+    }
+}
+```
+#### 題目二
+Write a method isLeapYear with a parameter of type int named year. 
+The parameter needs to be greater than or equal to 1 and less than or equal to 9999.
+If the parameter is not in that range return false. 
+Otherwise, if it is in the valid range, calculate if the year is a leap year and return true if it is, otherwise return false. 
+A year is a leap year if it is divisible by 4 but not by 100, or it is divisible by 400.
+
+```
+Examples of input/output:
+* isLeapYear(-1600); →  should return false since the parameter is not in the range (1-9999)
+* isLeapYear(1600); → should return true since 1600 is a leap year
+* isLeapYear(2017); → should return false since 2017 is not a leap year
+* isLeapYear(2000); → should return true because 2000 is a leap year 
+```
+
+​NOTE:  The solution to the Leap Year coding exercise earlier in the course created the isLeapYear method. You can use that solution if you wish.
+Write another method getDaysInMonth with two parameters month and year.  ​Both of type int.
+If parameter month is < 1 or > 12 return -1. ​
+If parameter year is < 1 or > 9999 then return -1.
+This method needs to return the number of days in the month. Be careful about leap years they have 29 days in month 2 (February).
+You should check if the year is a leap year using the method isLeapYear described above.
+
+```
+Examples of input/output:
+* getDaysInMonth(1, 2020); → should return 31 since January has 31 days.
+* getDaysInMonth(2, 2020); → should return 29 since February has 29 days in a leap year and 2020 is a leap year.
+* getDaysInMonth(2, 2018); → should return 28 since February has 28 days if it's not a leap year and 2018 is not a leap year.
+* getDaysInMonth(-1, 2020); → should return -1 since the parameter month is invalid.
+* getDaysInMonth(1, -2020); → should return -1 since the parameter year is outside the range of 1 to 9999.
+```
+
+HINT: Use the switch statement.
+NOTE: Methods isLeapYear and getDaysInMonth need to be public static like we have been doing so far in the course.
+NOTE: Do not add a main method to solution code.
+#### 題目二(答案)
+```
+public class NumberOfDaysInMonth {
+    public static boolean isLeapYear(int year) {
+
+        if (year < 1 || year > 9999) {
+            return false;
+        }
+
+        int yearDividedByFour = year % 4;
+        int yearDividedByHundred = year % 100;
+        int yearDividedByFourHundred = year % 400;
+
+        return (yearDividedByFour == 0 && yearDividedByHundred == 0 && yearDividedByFourHundred == 0) || (yearDividedByFour == 0 && yearDividedByHundred != 0);
+    }
+
+    public static int getDaysInMonth(int month, int year) {
+
+        if ((month < 1 || month > 12) || (year < 1 || year > 9999)) {
+            return -1;
+        }
+
+        if (isLeapYear(year)) {
+            switch (month) {
+                case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                    return 31;
+                case 2:
+                    return 29;
+                case 4: case 6: case 9: case 11:
+                    return 30;
+            }
+        }
+
+        switch (month) {
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                return 31;
+            case 2:
+                return 28;
+            case 4: case 6: case 9: case 11:
+                return 30;
+        }
+        
+        return -1;
+    }
+}
+```
+#### For 陳述句
+1. For 迴圈又被稱為迭代(iteration)，在 increment 的地方，會根據條件執行疊加，可以一次加 1，也可以加 5，在 conditon 的地方設定條件，如果條件為 false，這個回圈(Loop) 就不會繼續執行，在 init 的地方定義起始值。另外，分號是必要的，不能省略。
+```
+for (init; condition; increment) {
+    execute line (code block)
+}
+```
+2. 下面這個程式碼會不會回傳任何東西，因為 number 永遠符合條件，這種迴圈稱為無止盡迴圈(endless loop)，很多情況下，它可能會導致程式錯誤，或是用盡記憶體。
+```
+for (int number = 100; number > 0; number += 10) {
+    System.out.println("number = " + number);
+}
+```
+3. 使用 For 迴圈查詢某一範圍的數字是否為質數，回傳的結果可以用 String.format 來避免回傳過多位數。也可以使用 break 讓程式跳離 For 迴圈。
+```
+public static void main(String[] args) {
+
+    for (int i=2; i<9; i++) {
+        System.out.println("10000 at " + i + "% interest = " + String.format("%.2f", calculateInterest(10000.0, i)));
+    }
+
+    for (int i=8; i>1; i--) {
+        System.out.println("10000 at " + i + "% interest = " + String.format("%.2f", calculateInterest(10000.0, i)));
+    }
+
+    int count = 0;
+
+    for (int i=10; i<50; i++) {
+        if (isPrime(i)) {
+            count++;
+            System.out.println("Number " + i + " is a prime number.");
+        }
+
+        if (count == 3) {
+            System.out.println("Exiting for loop");
+            break;
+        }
+    }
+}
+
+public static boolean isPrime(int n) {
+
+    if (n == 1) {
+        return false;
+    }
+
+    for (int i = 2; i <= n/2; i++) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+```
+#### 3 和 5 之和挑戰
+1. 挑戰
+    - Create a for statement using a range of numbers from **1** to **1000** inclusive.
+    - **Sum** all the numbers that can be divided with both **3** and also with **5**
+    - For those numbers that met the above conditions, print out the number.
+    - **break** out of the loop once you find **5** numbers that met the above condtions.
+    - After breaking out of the loop print the **sum** of the numbers that met the above conditions.
+    - Note: Type all code in main method
+2. 挑戰(答案)
+```
+public static void main(String[] args) {
+
+    int count = 0;
+    int sum = 0;
+
+    for (int i = 1; i <= 1000; i++) {
+        if (i % 3 == 0 && i % 5 == 0) {
+            count++;
+            sum += i;
+            System.out.println("Found number = " + i);
+        }
+
+        if (count == 5) {
+            break;
+        }
+    }
+
+    System.out.println("Sum = " + sum);
+}
+```
+
+
+
+
 
 
 
