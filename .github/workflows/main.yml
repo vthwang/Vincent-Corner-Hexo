@@ -24,6 +24,8 @@ jobs:
         npm install -g hexo-cli
 
     - name: Generate
+      env:
+        TZ: Asia/Taipei
       run: hexo clean && hexo g
 
     - name: Deploy
