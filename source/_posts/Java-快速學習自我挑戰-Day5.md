@@ -395,6 +395,12 @@ public class SumOddRange {
     }
 }
 ```
+#### while 和 do 陳述句
+1. 
+
+
+
+
 
 
 
