@@ -24,11 +24,11 @@ Cumulative GPA: 3.92/4.00
 
 ### _EXPERIENCE_
 **SOHO** at _Fishbone Creative Co., Ltd._
-September 2019 - Now
+April 2020 - Now
 Working on E-commerce and brand image websites.
 
 **PHP Project Manager** at _ShangHai Pu-Yu Software Development Co., Ltd._
-November 2018 - August 2019 (10 months)
+November 2018 - March 2020 (1 year 4 months)
 Responsible for understanding clients' demands, arrange working schedule and coordinate team members to develop API for mimi-program (WeChat App) and mobile Apps.
 
 **Junior PHP Developor** at _Dotech Technology Enterprise Co., Ltd._
