@@ -396,15 +396,68 @@ public class SumOddRange {
 }
 ```
 #### while 和 do 陳述句
-1. 
+1. while 語法，{} 裡面定義迴圈程式碼區塊，condition 的部分加上條件。
+```
+while (condition) {
 
+}
+```
+2. do-while 語法，最後的分號是必要的，{} 裡面定義迴圈程式碼區塊，do-while 至少會執行一次，然後才會檢查條件。
+```
+do {
 
+} while (condition);
+```
+3. 使用 while 寫出跟 for 陳述句一樣語法，基本上邏輯都是一樣的，有 init 起始值、condition 條件以及 increment 增加值，
+```
+// while 語法
+int count = 1;
+while (count < 5) {
+    System.out.println("count = " + count)
+    count ++;
+}
 
+// for 語法
+for (int i = 0; i < 5; i++) {
+    System.out.println("i = " + i)
+}
+```
+4. 在 while 迴圈裡面使用 **continue** 可以跳過後面的所有程式碼，使用 **break** 可以脫離迴圈。
+5. **while** 迴圈在執行程式碼之前就會先檢查條件， **do-while** 迴圈至少會將程式碼區塊執行過一次，才檢查條件，所以要小心條件，**很容易** 會進入無止盡的迴圈或是沒有執行的迴圈。
+6. **秘訣：總是檢查條件和表達式(condtions/expressions)**
+7. 
+Create a method called isEvenNumber that takes a parameter of type int.
+Its purpose is to determine if the argument passed to the method is an even number or not.
+return true if an even number, otherwise return false.
 
+Make it record the total number of even numbers it has found and break once 5 found and at the end, display the total number of even numbers found.
+8. 挑戰(答案)
+```
+public static void main(String[] args) {
+    int number = 4;
+    int finishNumber = 20;
+    int evenNumbersFound = 0;
 
+    while (number <= finishNumber) {
+        number++;
 
+        if (!isEvenNumber(number)) {
+            continue;
+        }
 
+        total += number;
+        System.out.println("Even number = " + number);
 
+        evenNumbersFound++;
+        if (evenNumbersFound == 5) {
+            break;
+        }
+    }
 
+    System.out.println("Total even numbers found = " + evenNumbersFound);
+}
 
-
+public static boolean isEvenNumber(int number) {
+    return number % 2 == 0;
+}
+```
