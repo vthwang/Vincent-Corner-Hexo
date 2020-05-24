@@ -445,7 +445,6 @@ public static void main(String[] args) {
             continue;
         }
 
-        total += number;
         System.out.println("Even number = " + number);
 
         evenNumbersFound++;
