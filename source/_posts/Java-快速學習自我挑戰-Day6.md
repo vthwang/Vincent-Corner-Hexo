@@ -326,10 +326,246 @@ public class GreatestCommonDivisor {
     }
 }
 ```
+#### 題目七
+Write a method named printFactors with one parameter of type int named number. 
+If number is < 1, the method should print "Invalid Value".
+The method should print all factors of the number. A factor of a number is an integer which divides that number wholly (i.e. without leaving a remainder).
+For example, 3 is a factor of 6 because 3 fully divides 6 without leaving a remainder. In other words 6 / 3 = 2.
 
+```
+EXAMPLE INPUT/OUTPUT:
+* printFactors(6); → should print 1 2 3 6
+* printFactors(32); → should print 1 2 4 8 16 32
+* printFactors(10); → should print 1 2 5 10
+* printFactors(-1); → should print "Invalid Value" since number is < 1
+```
 
+HINT: Use a while or for loop.
+NOTE: When printing numbers, each number can be in its own line. They don't have to be separated by a space.
+For example, the printout for printFactors(10); can be:
+1
+2
+5
+10
+NOTE: The method printFactors should be defined as public static like we have been doing so far in the course.
+NOTE: Do not add a main method to the solution code.
+#### 題目七(答案)
+```
+public class FactorPrinter {
+    public static void printFactors(int number) {
 
+        if (number < 1) {
+            System.out.println("Invalid Value");
+        }
+        
+        for (int i = 1; i <= number; i++) {
 
+            if (number % i == 0) {
+                System.out.println(i);
+            }
+        }
+    }
+}
+```
+#### 題目八
+What is the perfect number?
+A perfect number is a positive integer which is equal to the sum of its proper positive divisors.
+Proper positive divisors are positive integers that fully divide the perfect number without leaving a remainder and exclude the perfect number itself.
+For example, take the number 6:
+Its proper divisors are 1, 2, and 3 (since 6 is the value of the perfect number, it is excluded), and the sum of its proper divisors is 1 + 2 + 3 = 6. 
+Therefore, 6 is a perfect number (as well as the first perfect number).
+Write a method named isPerfectNumber with one parameter of type int named number. 
+If number is < 1, the method should return false.
+The method must calculate if the number is perfect. If the number is perfect, the method should return true; otherwise, it should return false.
 
+```
+EXAMPLE INPUT/OUTPUT:
+* isPerfectNumber(6); should return true since its proper divisors are 1, 2, 3 and the sum is 1 + 2 + 3 = 6
+* isPerfectNumber(28); should return true since its proper divisors are 1, 2, 4, 7, 14 and the sum is 1 + 2 + 4 + 7 + 14 = 28
+* isPerfectNumber(5); should return false since its only proper divisor is 1 and the sum is 1 not 5
+* isPerfectNumber(-1); should return false since the number is < 1
+```
 
+HINT: Use a while or for loop.
+HINT: Use the remainder operator.
+NOTE: The method isPerfectNumber should be defined as public static like we have been doing so far in the course.
+NOTE: Do not add a main method to the solution code.
+#### 題目八(答案)
+```
+public class PerfectNumber {
+    public static boolean isPerfectNumber(int number) {
 
+        if (number < 1) {
+            return false;
+        }
+
+        int sum = 0;
+
+        for (int i = 1; i < number; i++) {
+
+            if (number % i == 0) {
+                sum += i;
+            }
+        }
+
+        return sum == number;
+    }
+}
+```
+#### 題目九
+Write a method called numberToWords with one int parameter named number.
+The method should print out the passed number using words for the digits.
+If the number is negative, print "Invalid Value".
+To print the number as words, follow these steps:
+
+1. Extract the last digit of the given number using the remainder operator. 
+2. Convert the value of the digit found in Step 1 into a word. There are 10 possible values for that digit, those being 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. Print the corresponding word for each digit, e.g. print "Zero" if the digit is 0, "One" if the digit is 1, and so on.
+3. Remove the last digit from the number.
+4. Repeat Steps 2 through 4 until the number is 0.
+
+The logic above is correct, but in its current state, the words will be printed in reverse order. For example, if the number is 234, the logic above will produce the output "Four Three Two" instead of "Two Three Four". To overcome this problem, write a second method called reverse.
+The method reverse should have one int parameter and return the reversed number (int). For example, if the number passed is 234, then the reversed number would be 432. The method  reverse should also reverse negative numbers.
+Use the method reverse within the method numberToWords in order to print the words in the correct order.
+Another thing to keep in mind is any reversed number with leading zeroes (e.g. the reversed number for 100 is 001). The logic above for the method numberToWords will print "One", but that is incorrect. It should print "One Zero Zero". To solve this problem, write a third method called getDigitCount.
+The method getDigitCount should have one int parameter called number and return the count of the digits in that number. If the number is negative, return -1 to indicate an invalid value.
+For example, if the number has a value of 100, the method getDigitCount should return 3 since the number 100 has 3 digits (1, 0, 0).
+
+```
+Example Input/Output - getDigitCount method
+* getDigitCount(0); should return 1 since there is only 1 digit
+* getDigitCount(123); should return 3
+* getDigitCount(-12); should return -1 since the parameter is negative
+* getDigitCount(5200); should return 4 since there are 4 digits in the number
+```
+```
+Example Input/Output - reverse method
+* reverse(-121); should  return -121
+* reverse(1212); should return  2121
+* reverse(1234); should return 4321
+* reverse(100); should return 1
+```
+```
+Example Input/Output - numberToWords method
+* numberToWords(123); should print "One Two Three".
+* numberToWords(1010); should print "One Zero One Zero".
+* numberToWords(1000); should print "One Zero Zero Zero".
+* numberToWords(-12); should print "Invalid Value" since the parameter is negative.
+```
+
+HINT: Use a for loop to print zeroes after reversing the number. As seen in a previous example, 100 reversed becomes 1, but the method numberToWords should print "One Zero Zero". To get the number of zeroes, check the difference between the digit count from the original number and the reversed number. 
+NOTE: When printing words, each word can be in its own line. For example, numberToWords(123); can be:
+One
+Two
+Three
+They don't have to be separated by a space.
+NOTE: The methods numberToWords, getDigitCount, reverse should be defined as public static like we have been doing so far in the course.
+NOTE: In total, you have to write 3 methods.
+NOTE: Do not add a main method to the solution code.
+#### 題目九(答案)
+```
+public class NumberToWords {
+    public static void numberToWords(int number) {
+
+        if (number < 0) {
+            System.out.println("Invalid Value");
+        }
+
+        int remainder;
+
+        int reverseNumber = reverse(number);
+        int digitCount = getDigitCount(number);
+        int count = 0;
+        while (reverseNumber > 0) {
+
+            remainder = reverseNumber % 10;
+            switch (remainder) {
+                case 0:
+                    System.out.println("Zero");
+                    break;
+                case 1:
+                    System.out.println("One");
+                    break;
+                case 2:
+                    System.out.println("Two");
+                    break;
+                case 3:
+                    System.out.println("Three");
+                    break;
+                case 4:
+                    System.out.println("Four");
+                    break;
+                case 5:
+                    System.out.println("Five");
+                    break;
+                case 6:
+                    System.out.println("Six");
+                    break;
+                case 7:
+                    System.out.println("Seven");
+                    break;
+                case 8:
+                    System.out.println("Eight");
+                    break;
+                case 9:
+                    System.out.println("Nine");
+                    break;
+
+                default:
+                    System.out.println("Invalid Value");
+                    break;
+            }
+
+            count++;
+            reverseNumber /= 10;
+        }
+
+        if (digitCount != count) {
+            int leftZero = digitCount - count;
+            for (int i = 0; i < leftZero; i++) {
+                System.out.println("Zero");
+            }
+        }
+
+    }
+
+    public static int getDigitCount(int number) {
+
+        if (number < 0) {
+            return -1;
+        }
+
+        if (number == 0) {
+            return 1;
+        }
+
+        int count = 0;
+        while (number > 0) {
+
+            count++;
+            number /= 10;
+        }
+
+        return count;
+    }
+
+    public static int reverse(int number) {
+
+        // 123 -> 321, 100 -> 1
+        int reverseNumber = 0;
+        int remainder;
+        while (number != 0) {
+
+            remainder = number % 10;
+            if (reverseNumber != 0) {
+                reverseNumber = (reverseNumber * 10) + remainder;
+            } else {
+                reverseNumber = remainder;
+            }
+
+            number /= 10;
+        }
+
+        return reverseNumber;
+    }
+}
+```
