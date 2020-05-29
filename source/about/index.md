@@ -6,7 +6,7 @@ date: 2016-08-30 19:17:58
 <img src="/images/profile.jpeg" width="200">
 
 <p style="text-align: justify;">
-Hi, My name is Vincent Ting-Syuan Wang (In chinese: 王霆瑄).<br/>
+Hi, My name is Vincent Ting-Syuan Wang (In chinese: 王霆瑄)。<br/>
 Vincent is a professional backend programmer with the experience managing small tech teams. His background in foreign literature helps him solve many issues with cross-cultural communication with different teams. Moreover, he has lived in many cities and been familiar with the different programming tools between mainland China and outside China. He is also fueled by his passion for understanding algorithm. He considers himself a 'forever student', eager to both build on his academic foundations in computer science and stay in tune with the latest programming tools through using these tools on daily works.
 </p>
 
