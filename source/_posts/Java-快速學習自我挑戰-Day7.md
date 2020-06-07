@@ -131,6 +131,34 @@ HINT: Since the numbers 0 and 1 are not considered prime numbers, they cannot co
 NOTE: The method getLargestPrime should be defined as public static like we have been doing so far in the course.
 NOTE: Do not add a main method to the solution code.
 #### 題目二(答案)
+```
+public class LargestPrime {
+    public static int getLargestPrime(int number) {
+
+        if (number < 2) {
+            return -1;
+        }
+
+        int largestPrime = 2;
+        while (largestPrime < number) {
+
+            if (number % largestPrime != 0) {
+                largestPrime++;
+            } else {
+                number /= largestPrime;
+                largestPrime = 2;
+            }
+        }
+
+        return largestPrime;
+    }
+}
+```
+
+
+
+
+
 
 
 
