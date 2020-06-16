@@ -244,9 +244,64 @@ public class DiagonalStar {
 }
 ```
 #### 讀取用戶輸入
+1. 我們用 Scanner 來讀取用戶的輸入，用 nextLine() 將輸入讀取出來，也可以使用 nextInt() 將輸入讀取成 int，需要注意的是，在數字後面會有換行字元問題，需要再加上 nextLine() 來解決問題。
+```
+public class Main {
 
+    public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Enter your year of birth: ");
+        int YearOfBirth = scanner.nextInt();
+        scanner.nextLine(); //handle next line character(enter key)
+
+        System.out.println("Enter your name: ");
+        String name = scanner.nextLine();
+        int age = 2018 - YearOfBirth;
+
+        System.out.println("Your name is " + name + ", and you are " + age + " years old.");
+
+        scanner.close();
+    }
+}
+```
+#### 用戶輸入的問題和解決方案
+1. 如果用戶輸入負數，可以直接計算年紀是不是在合理範圍內，如果不在就返回錯誤，另外針對用戶輸入字元的話，可以用 scanner.hasNextInt() 來確定是否為數字。
+
+```
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your year of birth: ");
+
+        boolean hasNextInt = scanner.hasNextInt();
+
+        if (hasNextInt) {
+
+            int YearOfBirth = scanner.nextInt();
+            scanner.nextLine(); //handle next line character(enter key)
+
+            System.out.println("Enter your name: ");
+            String name = scanner.nextLine();
+            int age = 2018 - YearOfBirth;
+
+            if (age >= 0 && age <= 100) {
+                System.out.println("Your name is " + name + ", and you are " + age + " years old.");
+            } else {
+                System.out.println("Invalid year of birth.");
+            }
+        } else {
+            System.out.println("Unable to parse year of birth.");
+        }
+
+        scanner.close();
+    }
+}
+```
 
 
 
