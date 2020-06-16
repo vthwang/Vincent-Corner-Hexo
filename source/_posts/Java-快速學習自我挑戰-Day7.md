@@ -268,8 +268,8 @@ public class Main {
 ```
 #### 用戶輸入的問題和解決方案
 1. 如果用戶輸入負數，可以直接計算年紀是不是在合理範圍內，如果不在就返回錯誤，另外針對用戶輸入字元的話，可以用 scanner.hasNextInt() 來確定是否為數字。
-
 ```
+import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
@@ -302,7 +302,52 @@ public class Main {
     }
 }
 ```
+#### 讀取用戶輸入挑戰
+1. 挑戰
+- Read **10** numbers from the console entered by the user and print the sum of those numbers.
+- Create a **Scanner** like we did in the previous video.
+- Use the **hasNextInt()** method from the scanner to check if the user has entered an **int** value.
+- If **hasNextInt()** returns **false**, print the message "**Invalid Number**". Continue reading nutil you have read **10** numbers.
+- Before the user enters each number, print the message "**Enter number #x:**" where **x** represents the count, i.e. **1, 2, 3, 4,** etc.
+- For example, the first message printed to the user would be "**Enter number #1:**", the next "**Enter number #2:**", and so on.
+- Hint:
+    - Use a **while** loop.
+    - Use a **counter** variable for counting valid nubmers.
+    - Close the scanner after you don't need it anymore.
+    - Create a project with the name **ReadingUserInputChallenge**.
+2. 答案
+```
+import java.util.Scanner;
 
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        int counter = 1;
+        int sum = 0;
+        while (counter <= 10) {
+
+            System.out.println("Enter number #" + counter + ":");
+
+            boolean isAnInt = scanner.hasNextInt();
+            if (!isAnInt) {
+                System.out.println("Invalid Value");
+                // handle the enter character
+                scanner.nextLine();
+                continue;
+            }
+
+            sum += scanner.nextInt();
+            System.out.println("The sum of numbers: " + sum);
+            counter++;
+        }
+
+        scanner.close();
+    }
+}
+```
 
 
 
