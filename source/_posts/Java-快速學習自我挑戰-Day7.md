@@ -348,8 +348,56 @@ public class Main {
     }
 }
 ```
+#### 最小和最大挑戰
+1. 挑戰
+- Read the numbers from the console entered by the user and print the minimum and maximum number the user has entered.
+- Befroe the user enters the number, print the message "**Enter number:**".
+- If the user enters an invalid number, break out of the loop and print the minimum and maximum number.
+- Hint:
+    - Use an endless **while** loop.
+- Bonus:
+    - Create a project with the name **MinAndMaxInputChanllenge**.
+2. 答案
+```
+import java.util.Scanner;
 
+public class Main {
 
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        int Min = 0;
+        int Max = 0;
+        while (true) {
+
+            System.out.println("Enter number:");
+
+            boolean isAnInt = scanner.hasNextInt();
+            if (!isAnInt) {
+                System.out.println("Invalid Value");
+                break;
+            }
+
+            int input = scanner.nextInt();
+            if (Min == 0 && Max == 0) {
+                Min = input;
+                Max = input;
+            } else if (input > Max) {
+                Max = input;
+            } else if (input < Min) {
+                Min = input;
+            }
+
+            scanner.nextLine(); //handle input
+        }
+
+        System.out.println("The min value is " + Min + ", and the max value is " + Max);
+
+        scanner.close();
+    }
+}
+```
 
 
 
