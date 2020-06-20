@@ -466,6 +466,7 @@ public class InputCalculator {
 ```
 #### 畫畫的工作
 1. 挑戰
+
 Bob is a wall painter and he needs your help. You have to write a program that helps Bob calculate how many buckets of paint he needs to buy before going to work. Bob might also have some extra buckets at home. He also knows the area that he can cover with one bucket of paint.
 
 1. Write a method named getBucketCount with 4 parameters. The first parameter should be named width of type double. This parameter represents the width of the wall.
@@ -516,6 +517,7 @@ Do your best to help Bob.
 NOTE: Use the method Math.ceil to round the number of calculated buckets (double) then convert it into an int before returning the value from the methods.
 NOTE: All methods should be defined as public static like we have been doing so far in the course.
 NOTE: Do not add the main method to the solution code.
+
 2. 答案
 ```
 public class PaintJob {

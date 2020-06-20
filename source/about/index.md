@@ -23,8 +23,12 @@ Cumulative GPA: 3.92/4.00
 ***
 
 ### _EXPERIENCE_
+**Senior PHP Developer** at _Muki Corporation Co., Ltd._
+June 2020 - NOW
+Help enterprise transform from old-fashion development tools to modern development mode. Migrate projects from CodeIgniter to Laravel and introduce the git flow to improve the efficiency between team members.
+
 **SOHO** at _Fishbone Creative Co., Ltd._
-April 2020 - Now
+April 2020 - May 2020 (2 months)
 Working on E-commerce and brand image websites.
 
 **PHP Project Manager** at _ShangHai Pu-Yu Software Development Co., Ltd._
