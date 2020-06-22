@@ -5,6 +5,7 @@ thumbnail:
 date: 2017-03-04 16:29:52
 categories: Skill Share
 tags: WordPress
+toc: true
 ---
 <img src="/images/wordpress.png">
 

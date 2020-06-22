@@ -5,6 +5,7 @@ thumbnail:
 date: 2017-09-13 21:07:44
 categories: Skill Share
 tags: Mac
+toc: true
 ---
 <img src="/images/technique/MacEnvironment.jpg">
 

@@ -4,7 +4,8 @@ thumbnail:
   - /images/php_mysql_array.jpg
 date: 2016-12-01 13:48:23
 categories: Skill Share
-tags:
+tags: PHP
+toc: true
 ---
 <img src="/images/php_mysql_array.jpg">
 

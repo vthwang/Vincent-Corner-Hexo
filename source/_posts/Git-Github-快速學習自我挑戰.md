@@ -4,8 +4,8 @@ thumbnail:
   - /images/learning/git/GitDay1.jpg
 date: 2018-04-21 15:18:51
 categories: Study Note
-tags: 
-    - Git
+tags: Git
+toc: true
 ---
 <img src="/images/learning/git/GitDay1.jpg">
 

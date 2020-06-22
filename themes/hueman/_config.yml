@@ -11,7 +11,7 @@ customize:
     logo:
         width: 165
         height: 80
-        url: images/logo.png
+        url: ../images/logo.png
     theme_color: '#d35'
     highlight: androidstudio
     sidebar: left # sidebar position, options: left, right
@@ -26,12 +26,14 @@ customize:
 
 # Widgets
 widgets:
+    - catalog
     - recent_posts
     - category
     - archive
     - tag
     - tagcloud
     - links
+#    - google_adsense
 
 # Search
 search:
@@ -44,23 +46,45 @@ comment:
     disqus: #vincents-corner #enter disqus shortname here
     duoshuo: # enter duoshuo shortname here
     youyan: # enter youyan uid here
-    facebook: true # enter true to enable
-        # language: zh_TW
-        # comment_count: 20
-        # comment_colorscheme: light
-    isso: # enter the domain name of your own comment isso server eg. comments.example.com
-
+    facebook: true# enter true to enable
+    valine: # Valine Comment System https://github.com/xCss/Valine
+        on: # enter true to enable valine
+        appId:  # enter the leancloud application appId here
+        appKey:  # enter the leancloud application appKey here
+        notify: # enter true to enable <Mail notifier>, default: false; https://github.com/xCss/Valine/wiki/Valine-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E8%AE%BE%E7%BD%AE
+        verify: # enter true to enable <Validation code>, default: false
+        placeholder: Just Do It # enter the comment box placeholder
+        avatar: identicon # (''/mm/identicon/monsterid/wavatar/retro/hide), more to see https://valine.js.org/avatar.html
+        avatar_cdn: https://gravatar.loli.net/avatar/ # avatar CDN address, default gravatar.cat.net
+        pageSize: 10 # comments of one page
+        visitor: true # count reading numbers; If true, the numbers will also show below the title of every post
+        recordip: #false # If true, record commenter's ip, which is shown in LeanCloud pannel
 
 # Share
 share: default # options: jiathis, bdshare, addtoany, default
 
 # Plugins
 plugins:
-    fancybox: true # options: true, false
-    scrollLoading: true # options: true, false
+    lightgallery: true # options: true, false
+    justifiedgallery: true # options: true, false
     google_analytics: UA-84065024-1 # enter the tracking ID for your Google Analytics
+    google_adsense:
+      publisher_id: # enter the adsense publisher ID (pub-XXXXXXXXXXXXXXX) for your google adsense
+      ad_slot: # the id of your add unit
     baidu_analytics: # enter Baidu Analytics hash key
-    lightgallery: true
+    bing_site_verification: # enter Bing verification key here
+    statcounter:
+      sc_project: # enter statcounter project id
+      sc_invisible: # enter 1 to make statcounter invisible
+      sc_security: # enter security code
+      public: # enter true if you want a link to your public stats. Must be configured on statcouter as well.
+      on: # enter true to enable statcounter
+    mathjax: true # options: true, false
+    counter: true # for post words count and time of reading, need hexo-wordcount: https://github.com/willin/hexo-wordcount
+    cookie_consent: false
+    twitter_conversion_tracking:
+      enabled: false
+      pixel_id: ''
 
 # Miscellaneous
 miscellaneous:
@@ -68,6 +92,7 @@ miscellaneous:
         fb_app_id: 1958612367696881
         fb_admins: 'VincentTingSyuanWang'
         twitter_id:
-        google_plus:
     links:
         Facebook: https://www.facebook.com/VincentTingSyuanWang
+
+poweredby: true

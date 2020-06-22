@@ -5,6 +5,7 @@ thumbnail:
 date: 2017-04-24 15:12:12
 categories: Study Note
 tags: Laravel
+toc: true
 ---
 <img src="/images/learning/laravel/laravelday3.jpg">
 

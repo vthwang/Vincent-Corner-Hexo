@@ -5,6 +5,7 @@ thumbnail:
 date: 2017-06-12 05:25:35
 categories: Study Note
 tags: Nodejs
+toc: true
 ---
 <img src="/images/learning/nodejs/nodejsday3.jpg">
 

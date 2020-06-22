@@ -7,6 +7,7 @@ categories: Study Note
 tags: 
     - HTML
     - CSS
+toc: true
 ---
 <img src="/images/learning/htmlcss/HtmlCssDay1.jpg">
 

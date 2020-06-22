@@ -3,6 +3,7 @@ title: The connection of people in the age of information
 date: 2016-09-03 16:40:08
 categories: English Learning
 tags: English Writing
+toc: true
 thumbnail:
   - /images/EnglishLearning/Connection.jpg
 ---

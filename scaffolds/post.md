@@ -5,6 +5,7 @@ thumbnail:
 date: {{ date }}
 categories: 
 tags:
+toc: true
 ---
 <img src="/images/">
 

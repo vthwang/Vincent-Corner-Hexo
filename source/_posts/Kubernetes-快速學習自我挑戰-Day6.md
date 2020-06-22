@@ -5,6 +5,7 @@ thumbnail:
 date: 2017-08-29 09:40:46
 categories: Study Note
 tags: Kubernetes
+toc: true
 ---
 <img src="/images/learning/kubernetes/kubernetesday6.png">
 

@@ -5,6 +5,7 @@ thumbnail:
 date: 2020-06-19 01:35:23
 categories: Study Note
 tags: Java
+toc: true
 ---
 <img src="/images/learning/java/JavaDay08.png">
 

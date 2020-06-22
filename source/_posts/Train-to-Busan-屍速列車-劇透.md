@@ -5,6 +5,7 @@ thumbnail:
 date: 2016-09-10 10:59:31
 categories: Reading Note
 tags:
+toc: true
 ---
 <img src="/images/train_to_busan.jpg">
 

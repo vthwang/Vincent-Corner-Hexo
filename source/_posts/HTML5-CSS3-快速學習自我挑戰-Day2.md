@@ -7,6 +7,7 @@ categories: Study Note
 tags: 
     - HTML
     - CSS
+toc: true
     - UX
 ---
 <img src="/images/learning/htmlcss/HtmlCssDay2.jpg">
@@ -142,13 +143,15 @@ tags:
 1. 新增以下目錄結構
 ```
 - resources
-    - css
+    - CSS
+toc: true
         -img
     - js
     - img
     - data
 - vendors
-    - css
+    - CSS
+toc: true
     - js
     - fonts
 - index.html

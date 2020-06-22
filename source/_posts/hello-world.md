@@ -4,6 +4,7 @@ date: 2016-09-02 16:36:32
 categories: Skill Share
 thumbnail:
   - /images/hello_world.png
+toc: true
 ---
 <img src="/images/hello_world.png">
 

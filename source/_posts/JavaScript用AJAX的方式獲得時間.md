@@ -4,7 +4,8 @@ thumbnail:
   - /images/javascript.jpg
 date: 2016-11-05 23:22:31
 categories: Skill Share
-tags:
+tags: JavaScript
+toc: true
 ---
 <img src="/images/javascript.jpg">
 

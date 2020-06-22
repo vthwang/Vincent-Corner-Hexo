@@ -1,6 +1,7 @@
 ---
 title: ABOUT ME
 date: 2016-08-30 19:17:58
+toc: true
 ---
 
 <img src="/images/profile.jpeg" width="200">
@@ -75,5 +76,5 @@ Location: Okinawa, Japan
 
 Please feel free to get in touch and share your thoughts, ask questions, or just say hi!
 You can email me directly at
-<h5 style="text-align: center; color: purple;"> vincent@fishboneapps.com </h5>
+<p style="text-align: center; color: purple; font-size: 1.2em;"> vincent@fishboneapps.com </p>
 I look forward to hear from you.

@@ -5,6 +5,7 @@ thumbnail:
 date: 2017-03-05 21:00:59
 categories: Study Note
 tags: React
+toc: true
 ---
 <img src="/images/learning/react/react.png">
 

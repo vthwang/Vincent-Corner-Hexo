@@ -4,7 +4,9 @@ thumbnail:
   - /images/learning/reactNative/ReactNativeDay8.png
 date: 2018-06-15 16:37:05
 categories: Study Note
-tags: React-Native
+tags: React
+toc: true-Native
+toc: true
 ---
 <img src="/images/learning/reactNative/ReactNativeDay8.png">
 

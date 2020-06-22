@@ -5,6 +5,7 @@ thumbnail:
 date: 2017-09-02 23:49:25
 categories: Study Note
 tags: Jenkins
+toc: true
 ---
 <img src="/images/learning/jenkins/jenkinsday1.png">
 

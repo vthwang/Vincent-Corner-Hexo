@@ -7,6 +7,7 @@ categories: Study Note
 tags: 
     - HTML
     - CSS
+toc: true
     - UX
 ---
 <img src="/images/learning/htmlcss/HtmlCssDay4.jpg">

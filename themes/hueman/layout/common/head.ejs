@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+
+    <%- partial('pwa/index') %>
     <%
         var title = page.title;
         if (is_archive()) {
             title = __('index.archive');
             if (is_month()) {
-                title += ' - ' + page.year + '/' + page.month;
+                title += ': ' + page.year + '/' + page.month;
             } else if (is_year()) {
-                title += ' - ' + page.year;
+                title += ': ' + page.year;
             }
         } else if (is_category()) {
-            title = __('index.category') + ' - ' +page.category;
+            title = __('index.category') + ': ' + page.category;
         } else if (is_tag()) {
-            title = __('index.tag') + ' - ' + page.tag;
+            title = __('index.tag') + ': ' + page.tag;
         }
     %>
     <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
+    <% if (theme.plugins.bing_site_verification) { %>
+      <meta name="msvalidate.01" content="<%- theme.plugins.bing_site_verification %>" />
+    <% } %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <% if (page.tags) {
         var keywords = [];
@@ -25,14 +30,13 @@
             keywords.push(page.tags.data[i].name);
         }
     %>
-        <meta name="keywords" content="<%= keywords.join(',') %>" />
+    <meta name="keywords" content="<%= keywords.join(',') %>" />
     <% } %>
     <%- open_graph({
         image:          thumbnail(page),
         fb_app_id:      theme.miscellaneous.open_graph.fb_app_id,
         fb_admins:      theme.miscellaneous.open_graph.fb_admins,
         twitter_id:     theme.miscellaneous.open_graph.twitter_id,
-        google_plus:    theme.miscellaneous.open_graph.google_plus,
     }) %>
     <%- meta(page) %>
 
@@ -50,6 +54,6 @@
 
     <%- css('css/style') %>
 
-    <%- js('libs/jquery/2.0.3/jquery.min') %>
+    <%- js('libs/jquery/3.5.0/jquery.min') %>
     <%- partial('plugin/scripts', { isHead: true }) %>
 </head>

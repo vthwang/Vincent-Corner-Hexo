@@ -7,6 +7,7 @@ categories: Study Note
 tags: 
     - Weight Loss
     - Nutrition
+toc: true
 ---
 <img src="/images/learning/weightloss/WeightLossDay4.jpg">
 

@@ -4,7 +4,8 @@ thumbnail:
   - /images/github.jpg
 date: 2016-11-17 14:47:14
 categories: Skill Share
-tags:
+tags: Git
+toc: true
 ---
 <img src="/images/github.jpg">
 

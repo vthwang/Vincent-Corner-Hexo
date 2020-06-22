@@ -5,6 +5,7 @@ categories: Skill Share
 tags:
 thumbnail:
   - /images/asus.png
+toc: true
 ---
 <img src="/images/asus.png">
 

@@ -4,7 +4,8 @@ thumbnail:
   - /images/emoji.png
 date: 2016-09-11 10:15:30
 categories: Skill Share
-tags:
+tags: Hexo
+toc: true
 ---
 <img src="/images/emoji.png">
 

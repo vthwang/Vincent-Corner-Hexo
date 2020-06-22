@@ -5,6 +5,7 @@ categories: Reading Note
 tags:
 thumbnail:
   - /images/Mechanic＿Resurrection.jpg
+toc: true
 ---
 <img src="/images/Mechanic＿Resurrection.jpg">
 
