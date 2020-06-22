@@ -140,6 +140,193 @@ public class Calculator {
     }
 }
 ```
+#### 複數操作 (Complex Operation)
+1. 題目
+A complex number is a number that can be expressed in the form a + bi, where a and b are real numbers, and i is a solution of the equation x2 = −1. Because no real number satisfies this equation, i is called an imaginary number. For the complex number a + bi, a is called the real part, and b is called the imaginary part. To add or subtract two complex numbers, just add or subtract the corresponding real and imaginary parts. For instance, the sum of 5 + 3i and 4 + 2i is 9 + 5i. For another, the sum of 3 + i and –1 + 2i is 2 + 3i.
+
+Write a class with the name ComplexNumber. The class needs two fields (instance variables) with name real and imaginary of type double. It represents the Complex Number.
+
+The class needs to have one constructor. The constructor has parameters real and imaginary of type double and it needs to initialize the fields.
+
+Write the following methods (instance methods):
+
+* Method named getReal without any parameters, it needs to return the value of real field.
+* Method named getImaginary without any parameters, it needs to return the value of imaginary field.
+* Method named add with two parameters real and imaginary of type double, it needs to add parameters to fields. In other words, it needs to do a complex number add operation as described above.
+* Method named add with one parameter of type ComplexNumber. It needs to add the ComplexNumber parameter to the corresponding instance variables.
+* Method named subtract with two parameters real and imaginary of type double, it needs to subtract parameters from fields, in other words, it needs to do a complex number subtract operation as described above.
+* Method named subtract with one parameter other of type ComplexNumber. It needs to subtract the other parameter from this complex number.
+
+TEST EXAMPLE
+
+```
+→ TEST CODE:
+
+ComplexNumber one = new ComplexNumber(1.0, 1.0);
+ComplexNumber number = new ComplexNumber(2.5, -1.5);
+one.add(1,1);
+System.out.println("one.real= " + one.getReal());
+System.out.println("one.imaginary= " + one.getImaginary());
+one.subtract(number);
+System.out.println("one.real= " + one.getReal());
+System.out.println("one.imaginary= " + one.getImaginary());
+number.subtract(one);
+System.out.println("number.real= " + number.getReal());
+System.out.println("number.imaginary= " + number.getImaginary());
+
+→ OUTPUT
+
+one.real= 2.0
+one.imaginary= 2.0
+one.real= -0.5
+one.imaginary= 3.5
+number.real= 3.0
+number.imaginary= -5.0
+```
+
+NOTE: Try to avoid duplicated code.
+NOTE: All methods should be defined as public NOT public static.
+NOTE: In total, you have to write 6 methods.
+NOTE: Do not add a main method to the solution code.
+2. 答案
+```
+public class ComplexNumber {
+    
+    private double real;
+    private double imaginary;
+
+    public ComplexNumber(double real, double imaginary) {
+
+        this.real = real;
+        this.imaginary = imaginary;
+    }
+
+    public double getReal() {
+
+        return real;
+    }
+
+    public double getImaginary() {
+
+        return imaginary;
+    }
+
+    public void add(double real, double imaginary) {
+
+        this.real += real;
+        this.imaginary += imaginary;
+    }
+
+    public void add(ComplexNumber complex) {
+
+        this.real += complex.getReal();
+        this.imaginary += complex.getImaginary();
+    }
+
+    public void subtract(double real, double imaginary) {
+
+        this.real -= real;
+        this.imaginary -= imaginary;
+    }
+
+    public void subtract(ComplexNumber complex) {
+
+        this.real -= complex.getReal();
+        this.imaginary -= complex.getImaginary();
+    }
+}
+```
+#### 繼承(Inheritance)
+1. 繼承會用動物的概念來去解釋，比方說要寫一個動物的 Class，動物會有共同的東西，比方大腦，身體，腿，眼睛，但是蛇沒有腿，有些蜘蛛也沒有眼睛，所以有些東西會是共用的，共用的部分，可以使用繼承的方式來實現。首先，新增一個 Animal 的 Class。
+```
+public class Animal {
+
+    private String name;
+    private int brain;
+    private int body;
+    private int size;
+    private int weight;
+
+    public Animal(String name, int brain, int body, int size, int weight) {
+
+        this.name = name;
+        this.brain = brain;
+        this.body = body;
+        this.size = size;
+        this.weight = weight;
+    }
+
+    public void eat() {
+
+        System.out.println("Animal.eat() called");
+    }
+
+    public void move() {
+
+    }
+
+    public String getName() {
+
+        return name;
+    }
+
+    public int getBrain() {
+
+        return brain;
+    }
+
+    public int getBody() {
+
+        return body;
+    }
+
+    public int getSize() {
+
+        return size;
+    }
+
+    public int getWeight() {
+
+        return weight;
+    }
+}
+```
+2. 再新增一個 Dog 的 Class，並使用 extends 去繼承，我們可以在繼承的 Class 新增一些新的類別，比方說，牙齒、尾巴等等，使用 super() 語法繼承上面一層的 Class，如果想覆寫(Overiding)方法，可以使用 @Override。
+```
+public class Dog extends Animal {
+
+    private int eyes;
+    private int legs;
+    private int tail;
+    private int teeth;
+    private String coat;
+
+    public Dog(String name, int size, int weight, int eyes, int legs, int tail, int teeth, String coat) {
+
+        super(name, 1, 1, size, weight);
+        this.eyes = eyes;
+        this.legs = legs;
+        this.tail = tail;
+        this.teeth = teeth;
+        this.coat = coat;
+    }
+
+    private void chew() {
+
+        System.out.println("Dog.chew() called");
+    }
+
+    @Override
+    public void eat() {
+
+        System.out.println("Dog.eat() called");
+        chew();
+        super.eat();
+    }
+}
+```
+
+
 
 
 

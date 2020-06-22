@@ -478,8 +478,8 @@ Bob
 Tim
 tim@email.com
 ```
-### 挑戰
-#### 牆壁面積
+#### 挑戰
+##### 牆壁面積
 1. 題目
 Write a class with the name Wall. The class needs two fields (instance variables) with name width and height of type double.
 
@@ -585,7 +585,7 @@ public class Wall {
     }
 }
 ```
-#### 點
+##### 點
 1. 題目
 You have to represent a point in 2D space. Write a class with the name Point. The class needs two fields (instance variables) with name x and y of type int.
 
