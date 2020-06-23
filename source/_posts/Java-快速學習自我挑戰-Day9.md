@@ -326,7 +326,71 @@ public class Dog extends Animal {
     }
 }
 ```
+3. 新增 walk(), run()，但是用不同的方式呼叫 move，如果直接使用 move()，他會呼叫同個 Class 裡面的 move()，如果同個 Class 沒有 move()，就會去呼叫上層的 move()，而使用 super.move() 會直接呼叫上層的 move()。
+```
+public class Dog extends Animal {
 
+    ...
+
+    public void walk() {
+
+        System.out.println("Dog.walk() called");
+        super.move(5);
+    }
+
+    public void run() {
+
+        System.out.println("Dog.run() called");
+        move(10);
+    }
+
+    private void moveLegs(int speed) {
+        System.out.println("Dog.moveLegs called");
+    }
+    @Override
+    public void move(int speed) {
+        System.out.println("Dog.move() called");
+        moveLegs(speed);
+        super.move(speed);
+    }
+}
+```
+4. 新增一個 Fish.java，再次練習繼承的概念。
+```
+public class Fish extends Animal{
+
+    private int gills;
+    private int eyes;
+    private int fins;
+
+    public Fish(String name, int brain, int body, int size, int weight, int gills, int eyes, int fins) {
+
+        super(name, 1, 1, size, weight);
+        this.gills = gills;
+        this.eyes = eyes;
+        this.fins = fins;
+    }
+
+    private void rest() {
+
+    }
+
+    private void moveMuscles() {
+
+    }
+
+    private void moveBackFin() {
+
+    }
+
+    private void swim(int speed) {
+
+        moveMuscles();
+        moveBackFin();
+        super.move(speed);
+    }
+}
+```
 
 
 
