@@ -391,8 +391,38 @@ public class Fish extends Animal{
     }
 }
 ```
+#### Reference vs Object vs Instance vs Class
+1. 透過建房子來了解這些名詞的概念。
+    - Class 就是藍圖，使用藍圖，我們可以根據這個計畫建立很多房子。
+    - 每一個蓋的房子就是 Object，也稱為 Instance。
+    - 每一棟房子都有實體地址，也就是說，你想要告訴別人你住在哪裡，你必須給他們地址(或許寫在一張紙上)，這就稱為 Reference。
+    - 你可以複製 Reference 多少次都可以，但是你還是只有一棟房子，所以我們複製藍圖的時候，地址並不是現在要蓋的那一棟。
+    - 我們將 References 當作 parameters 傳送到 Constructors 和 Methods。
+2. 一開始創建物件，給予 blueHouse 藍色的 Reference，然後定義 anotherHouse 等於 blueHouse，這時候他們會共用一個 Object，所以當設定 anotherHouse 為黃色的時候，blueHouse 也會變成黃色，這時候再定義一個 greenHouse Reference 為 green，然後再次定義 anotherHouse 等於 greenHouse，這時候他們又會共用一個 Object，而 blueHouse 自己一個 Object，最後當 getColor() 的時候，blueHouse 就會等於黃色，而 greenHouse 和 anotherHouse 就等於綠色。
+```
+public class Main {
 
+    public static void main(String[] args) {
 
+        House blueHouse = new House("blue");
+        House anotherHouse = bluehouse;
+
+        System.out.println(blueHouse.getColor()); // blue
+        System.out.println(anotherHouse.getColor()); // blue
+
+        anotherHouse.setColor("yellow");
+        System.out.println(blueHouse.getColor()); // yellow
+        System.out.println(anotherHouse.getColor()); // yellow
+
+        House greenHouse = new House("green");
+        anotherHouse = greenHouse;
+        
+        System.out.println(blueHouse.getColor()); // yellow
+        System.out.println(greenHouse.getColor()); // green
+        System.out.println(anotherHouse.getColor()); //green
+    }
+}
+```
 
 
 
