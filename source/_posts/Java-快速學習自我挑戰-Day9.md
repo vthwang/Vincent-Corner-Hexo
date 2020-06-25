@@ -10,8 +10,9 @@ toc: true
 <img src="/images/learning/java/JavaDay09.jpg">
 
 ***
-### 挑戰
-#### 地毯花費計算器
+### 物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance
+#### 挑戰
+##### 地毯花費計算器
 1. 題目
 
 The Carpet Company has asked you to write an application that calculates the price of carpeting for rectangular rooms. To calculate the price, you multiply the area of the floor (width times length) by the price per square meter of carpet. For example, the area of the floor that is 12 meters long and 10 meters wide is 120 square meters. To cover the floor with a carpet that costs <span>$</span>8 per square meter would cost $960.
@@ -141,7 +142,7 @@ public class Calculator {
     }
 }
 ```
-#### 複數操作 (Complex Operation)
+##### 複數操作 (Complex Operation)
 1. 題目
 A complex number is a number that can be expressed in the form a + bi, where a and b are real numbers, and i is a solution of the equation x2 = −1. Because no real number satisfies this equation, i is called an imaginary number. For the complex number a + bi, a is called the real part, and b is called the imaginary part. To add or subtract two complex numbers, just add or subtract the corresponding real and imaginary parts. For instance, the sum of 5 + 3i and 4 + 2i is 9 + 5i. For another, the sum of 3 + i and –1 + 2i is 2 + 3i.
 
@@ -423,8 +424,105 @@ public class Main {
     }
 }
 ```
+#### this vs super
+1. 關鍵字 **super** 是用來呼叫上層的 Class 成員(變數和方法)，而關鍵字 **this** 是用來呼叫同一層的 Class 成員(變數和方法)，但是當 Instance 有相同的變數名稱，this 就是必要的。
+2. 注意：我們可以在 Class 裡面同時使用 this 和 super，但是 static 區域(靜態 Class 或靜態 Method)是不行的，如果想要在靜態區域做任何嘗試，都會導致編譯器錯誤。
+3. 關鍵字 **this** 很常被使用在 **Constructors** 和 **Setters**，偶而也會在 Getters 裡使用(對使用者比較容易)，下面的例子中，**this** 被使用在 **Constructors** 和 **Setters**，因為有同樣的名稱所以一定要用 this，在 Getter 中，我們沒有任何相同的參數，所以關鍵字 **this** 是選擇性的。
+```
+Class House {
 
+    private String color;
 
+    public House(String color) {
 
+        this.color = color;
+    }
+
+    public String getColor() {
+
+        return color;
+    }
+
+    public void setColor(String color) {
+
+        this.color = color;
+    }
+}
+```
+4. 關鍵字 **super** 很常跟 **method overriding** 一起使用，我們會使用 super 在當前 Class 呼叫上層 Class 同名的 Method，如果沒有使用 **super** 會導致 Recursive Call(遞歸呼叫)，意思就是他會無止盡的呼叫 Method，直到記憶體用盡，這就為什麼 **super** 是必要的。
+5. 在 Java 中，我們有 **this()** 和 **super()** 的 Call，() 被稱為 Call，因為它很像一般的 Method Call。
+6. 使用 **this()** 來呼叫一個 Constructor，這個 Constructor 是在同一個 Class 的其它 overloaded Constructor。
+7. **this()** 只能被使用在 Constructor，而且它必須用在 Constructor 的第一行陳述句，而它被用來當作 Constructor chaining 的功用，當一個 Constructor 呼叫另外一個 Constructor 可以幫助減少程式碼。
+8. 呼叫上層 Constructor 唯一的方式就是呼叫 super()，所以它也被稱為上層 Constructor
+9. Java 編譯器會自動放一個 **super()** 作為預設的 Call，而且被編譯器插入的 super 都是沒有參數的。
+10. **super()** 的 Call 一定要放在每一個 Constructor 的第一行陳述句。
+11. 即使 Abstract Classes 有 Constructors，但是你不能使用新的關鍵字來實例化 Abstract Class。
+12. Abstract Classes 仍然是一個 **super** Class，所以當有人建立一個 Concrete Class Instance，它的 Constructors 還是會執行的。
+13. 注意：一個 Constructor 可以有 **super()** 和 **this()**，但是不能同時使用這兩個關鍵字。
+14. 好的 Constructor 範例如下，第一個 Constructor 呼叫第二個，第二個 Constructor 呼叫第三個，而第三個初始化所有 Instance 變數。不管我們呼叫哪一個 Constructor，最後變數都會在第三個 Constructor 做初始化。這就是知名的 Construcor Chaining，第三個 Constructor 有責任來初始化所有變數。
+```
+class Rectangle {
+
+    private int x;
+    private int y;
+    private int width;
+    private int height;
+
+    // 1st constructor
+    public Rectangle() {
+
+        thsi(0, 0); // calls 2nd constructor
+    }
+
+    // 2nd constructor
+    public Rectangle(int width, int height) {
+
+        this(0, 0, width, height); // calls 3rd constructor
+    }
+
+    // 3rd constructor
+    public Rectangle(int x, int y, int width, int height) {
+
+        // initialize variables
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+}
+```
+15. 在範例中，我們有一個 Class Shape，它有 x 和 y 的變數，而 Class Rectangle 繼承 Class Shape 的變數並加上 width 和 height。在 Retangle 裡面，第一個 Constructor 呼叫第二個 Constructor，第二個 Constructor 呼叫了有變數 x 和 y 的上層 Constructor。上層的 Constructor 會初始化 x 和 y，而 Rectangle 的第二個 Constructor 會初始化 width 和 height 變數。在這邊我們同時有 **super()** 和 **this()** 的 Calls。
+```
+class Shape {
+
+    private int x;
+    private int y;
+
+    public Shape(int x, int y) {
+
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Rectangle extends Shape {
+
+    private int width;
+    private int height;
+
+    // 1st constructor
+    public Retangle(int x, int y) {
+
+        this(x, y, 0, 0); // calss 2nd constructor
+    }
+
+    // 2nd constructor
+    public Rectangle(int x, int y, int width, int height) {
+        super(x, y); // calls constructor from parent (Shape)
+        this.width = width;
+        this.height = height;
+    }
+}
+```
 
 
