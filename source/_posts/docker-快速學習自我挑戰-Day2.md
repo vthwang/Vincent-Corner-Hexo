@@ -15,7 +15,7 @@ toc: true
 1. 目前 17 版已經可以在 windows 上執行 docker，但有些功能不能使用，包括 Swarm Overlay、Secret...等等
 2. 可以參考以下影片
     - [Windows Containers and Docker: 101](https://www.youtube.com/watch?v=066-9yw8-7c)
-    - [Beyond \ - the path to Windows and Linux parity in Docker](https://www.youtube.com/watch?v=4ZY_4OeyJsw)
+    - [Beyond - the path to Windows and Linux parity in Docker](https://www.youtube.com/watch?v=4ZY_4OeyJsw)
     - [Docker + Microsoft - Investing in the Future of your Applications](https://www.youtube.com/watch?v=QASAqcuuzgI)
 #### 作業 - 管理多個 container
 1. Docker 小幫手 (1) [官方文件](https://docs.docker.com/) (2) `--help`
