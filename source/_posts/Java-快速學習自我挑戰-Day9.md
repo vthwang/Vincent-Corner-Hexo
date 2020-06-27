@@ -568,3 +568,92 @@ class Rectangle extends Shape {
 | 可以有不同的存取修改器(private, protected, public)。 | **一定不能**有低權限的存取修改器，但是可以較高權限的存取修改器。|
 | 可以回傳不同異常。 | **一定不能**回傳一個新的或是更廣泛的受檢異常(Checked Exception)。 |
 #### static vs Instance 方法
+1. 靜態方法(Static Method)
+    - **靜態方法** 用 **static** 修改器來表示。
+    - **靜態方法**不能直接存取 Instance 方法或是 Instance 變數。
+    - 它們通常被用在不需要 Instance 的任何資料(從 this 來的資料)的操作。
+    - 關鍵字 this 就是當前 Class 的 Instance。
+    - 在**靜態方法**，我們不能使用 **this** 關鍵字。
+    - 當你看到一個方法**不需要使用 Instance 變數**，那個變數就應該被定義為**靜態方法**。
+    - 例如：main 就是一個靜態方法，它在 JVM 啟動程式的時候就會被呼叫。
+2. Instance 方法
+    - Instance 方法屬於 Class 的 Instance。
+    - 要使用 Instance 方法，我們首先必須要使用關鍵字 **new** 初始化 Class。
+    - **Instance 方法**可以直接存取 Instance 方法和 Instance 變數。
+    - **Instance 方法**也可以直接存取靜態方法和靜態變數。
+3. 要使用 Instance 還是 static 方法？
+    - 它需要任何欄位(Instance 變數)或 Instance 方法嗎？
+        - Yes: 它可能是 <span style="color:red">**Instance 方法**</span>。
+        - No: 它可能是 <span style="color:red">**靜態方法**</span>。
+#### static vs Instance 變數
+1. 靜態變數
+    - 使用關鍵字 **static** 來宣告變數。
+    - **靜態變數**又被稱為 **static member variables**。
+    - 那個 Class 的每一個 Instance 共享相同的靜態變數。
+    - 如果那個變數被改變了，所有的 Instance 都會看到那個改變。
+    - **靜態變數**並不常常被使用，但是有時候非常有用。
+    - 例如：我們使用 **Scanner** 讀取用戶輸入，我們可以宣告 scanner 為靜態變數。
+    - 如此一來，所有的靜態方法就都可以直接讀取靜態變數。
+2. 在範例中，我們第一次定義 name 為 rex，第二次定義 name 為 fluffy，最後兩次輸出都會是 fluffy，因為靜態變數一旦被改變，會全域進行改變，所以在正常的情境下，使用 Instance 會比較合理。
+```
+class Dog {
+
+    private static String name;
+
+    public Dog(String name) {
+
+        Dog.name = name;
+    }
+
+    public void printName() {
+
+        System.out.println("name= " + name);
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Dog rex = new Dog("rex"); // Create Instance (rex)
+        Dog fluffy = new Dog("fluffy"); // Create Instance (fluffy)
+        rex.printName(); // print fluffy
+        fluffy.printName(); // print fluffy
+    }
+}
+```
+3. Instance 變數
+    - 它們不使用關鍵字 **static**。
+    - Instance 變數又被稱為 fields 或 member variables。
+    - Instance 變數屬於一個 Class 的特定 Instance。
+    - 每一個 Instance 都會有一個 Instance 變數的備份。
+    - 每一個 Instance 都會有不同的值或狀態(state)。
+    - Instance 變數代表 Instance 的 state。
+4. 在範例中我們用 Instance，所以會兩次會輸出不同的結果，每個 Instance 有自己的值和狀態，
+```
+class Dog {
+
+    private String name;
+
+    public Dog(String name) {
+
+        Dog.name = name;
+    }
+
+    public void printName() {
+
+        System.out.println("name= " + name);
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Dog rex = new Dog("rex"); // Create Instance (rex)
+        Dog fluffy = new Dog("fluffy"); // Create Instance (fluffy)
+        rex.printName(); // print rex
+        fluffy.printName(); // print fluffy
+    }
+}
+```
