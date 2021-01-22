@@ -46,7 +46,7 @@ comment:
     disqus: #vincents-corner #enter disqus shortname here
     duoshuo: # enter duoshuo shortname here
     youyan: # enter youyan uid here
-    facebook: true# enter true to enable
+    facebook: true # enter true to enable
     valine: # Valine Comment System https://github.com/xCss/Valine
         on: # enter true to enable valine
         appId:  # enter the leancloud application appId here
