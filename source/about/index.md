@@ -24,8 +24,12 @@ Cumulative GPA: 3.92/4.00
 ***
 
 ### _EXPERIENCE_
+**System Architect** at _Dotech Technology Enterprise Co., Ltd._
+Nov 2020 - NOW
+Help enterprise renew the official website and re-define old corporation identify with modern design. In the meantime, I try to abort old language and framework, and rebuild the whole company's ecosystem. I'm still doing it. If I have any progress, I will mention it in my blog in the future.
+
 **Senior PHP Developer** at _Muki Corporation Co., Ltd._
-June 2020 - NOW
+June 2020 - SEP 2020 (3 months)
 Help enterprise transform from old-fashion development tools to modern development mode. Migrate projects from CodeIgniter to Laravel and introduce the git flow to improve the efficiency between team members.
 
 **SOHO** at _Fishbone Creative Co., Ltd._
