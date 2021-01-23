@@ -18,31 +18,21 @@ toc: true
 The Carpet Company has asked you to write an application that calculates the price of carpeting for rectangular rooms. To calculate the price, you multiply the area of the floor (width times length) by the price per square meter of carpet. For example, the area of the floor that is 12 meters long and 10 meters wide is 120 square meters. To cover the floor with a carpet that costs <span>$</span>8 per square meter would cost $960.
 
 1. Write a class with the name Floor. The class needs two fields (instance variables) with name width and length of type double.
-
-The class needs to have one constructor with parameters width and length of type double and it needs to initialize the fields.
-In case the width parameter is less than 0 it needs to set the width field value to 0, in case the length parameter is less than 0 it needs to set the length field value to 0.
-
-Write the following methods (instance methods):
-
-* Method named getArea without any parameters, it needs to return the calculated area (width * length).
+    The class needs to have one constructor with parameters width and length of type double and it needs to initialize the fields.
+    In case the width parameter is less than 0 it needs to set the width field value to 0, in case the length parameter is less than 0 it needs to set the length field value to 0.
+    Write the following methods (instance methods):
+    * Method named getArea without any parameters, it needs to return the calculated area (width * length).
 
 2. Write a class with the name Carpet. The class needs one field (instance variable) with name cost of type double.
-
-The class needs to have one constructor with parameter cost of type double and it needs to initialize the field.
-
-In case the cost parameter is less than 0 it needs to set the cost field value to 0.
-
-Write the following methods (instance methods):
-
-* Method named getCost without any parameters, it needs to return the value of cost field
+    The class needs to have one constructor with parameter cost of type double and it needs to initialize the field.
+    In case the cost parameter is less than 0 it needs to set the cost field value to 0.
+    Write the following methods (instance methods):
+    * Method named getCost without any parameters, it needs to return the value of cost field
 
 3. Write a class with the name Calculator. The class needs two fields (instance variables) with name floor of type Floor and carpet of type Carpet.
-
-The class needs to have one constructor with parameters floor of type Floor and carpet of type Carpet and it needs to initialize the fields.
-
-Write the following methods (instance methods):
-
-* Method named getTotalCost without any parameters, it needs to return the calculated total cost to cover the floor with a carpet.
+    The class needs to have one constructor with parameters floor of type Floor and carpet of type Carpet and it needs to initialize the fields.
+    Write the following methods (instance methods):
+    * Method named getTotalCost without any parameters, it needs to return the calculated total cost to cover the floor with a carpet.
 
 TEST EXAMPLE
 
@@ -144,20 +134,16 @@ public class Calculator {
 ```
 ##### 複數操作 (Complex Operation)
 1. 題目
-A complex number is a number that can be expressed in the form a + bi, where a and b are real numbers, and i is a solution of the equation x2 = −1. Because no real number satisfies this equation, i is called an imaginary number. For the complex number a + bi, a is called the real part, and b is called the imaginary part. To add or subtract two complex numbers, just add or subtract the corresponding real and imaginary parts. For instance, the sum of 5 + 3i and 4 + 2i is 9 + 5i. For another, the sum of 3 + i and –1 + 2i is 2 + 3i.
-
-Write a class with the name ComplexNumber. The class needs two fields (instance variables) with name real and imaginary of type double. It represents the Complex Number.
-
-The class needs to have one constructor. The constructor has parameters real and imaginary of type double and it needs to initialize the fields.
-
-Write the following methods (instance methods):
-
-* Method named getReal without any parameters, it needs to return the value of real field.
-* Method named getImaginary without any parameters, it needs to return the value of imaginary field.
-* Method named add with two parameters real and imaginary of type double, it needs to add parameters to fields. In other words, it needs to do a complex number add operation as described above.
-* Method named add with one parameter of type ComplexNumber. It needs to add the ComplexNumber parameter to the corresponding instance variables.
-* Method named subtract with two parameters real and imaginary of type double, it needs to subtract parameters from fields, in other words, it needs to do a complex number subtract operation as described above.
-* Method named subtract with one parameter other of type ComplexNumber. It needs to subtract the other parameter from this complex number.
+    A complex number is a number that can be expressed in the form a + bi, where a and b are real numbers, and i is a solution of the equation x2 = −1. Because no real number satisfies this equation, i is called an imaginary number. For the complex number a + bi, a is called the real part, and b is called the imaginary part. To add or subtract two complex numbers, just add or subtract the corresponding real and imaginary parts. For instance, the sum of 5 + 3i and 4 + 2i is 9 + 5i. For another, the sum of 3 + i and –1 + 2i is 2 + 3i.
+    Write a class with the name ComplexNumber. The class needs two fields (instance variables) with name real and imaginary of type double. It represents the Complex Number.
+    The class needs to have one constructor. The constructor has parameters real and imaginary of type double and it needs to initialize the fields.
+    Write the following methods (instance methods):
+        * Method named getReal without any parameters, it needs to return the value of real field.
+        * Method named getImaginary without any parameters, it needs to return the value of imaginary field.
+        * Method named add with two parameters real and imaginary of type double, it needs to add parameters to fields. In other words, it needs to do a complex number add operation as described above.
+        * Method named add with one parameter of type ComplexNumber. It needs to add the ComplexNumber parameter to the corresponding instance variables.
+        * Method named subtract with two parameters real and imaginary of type double, it needs to subtract parameters from fields, in other words, it needs to do a complex number subtract operation as described above.
+        * Method named subtract with one parameter other of type ComplexNumber. It needs to subtract the other parameter from this complex number.
 
 TEST EXAMPLE
 
@@ -471,7 +457,7 @@ class Rectangle {
     // 1st constructor
     public Rectangle() {
 
-        thsi(0, 0); // calls 2nd constructor
+        this(0, 0); // calls 2nd constructor
     }
 
     // 2nd constructor
