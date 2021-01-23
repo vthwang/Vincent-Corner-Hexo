@@ -323,4 +323,193 @@ public class Main {
     }
     ```
 ### 物件導向程式設計 (OOP) - Composition, Encapsulation 和 Polymorphism
+#### Composition
+1. 在 Inheritance 的地方，我們使用了 Car 和 Vehicle 的例子，可以理解成 Car 就是 Vehicle 的一種。但是在某些情況，例如：電腦有機殼、螢幕和主機板，機殼不等於電腦；螢幕也不等於電腦；主機板也不等於電腦，我們就不用 Inheritance，用 Composition 更適合這樣的情境，同時，電腦這個 Class 還可以繼承三種 Class，而不僅僅只能 extends 一種 Class。以下用 Java 呈現電腦的範例。
+2. 新增 Motherboard.java
+```
+public class Motherboard {
+
+    private String model;
+    private String manufacturer;
+    private int ramSlots;
+    private int cardSlots;
+    private String bios;
+
+    public Motherboard(String model, String manufacturer, int ramSlots, int cardSlots, String bios) {
+        this.model = model;
+        this.manufacturer = manufacturer;
+        this.ramSlots = ramSlots;
+        this.cardSlots = cardSlots;
+        this.bios = bios;
+    }
+
+    public void loadProgram(String programName) {
+        System.out.println("Program " + programName + " is now loading...");
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public int getRamSlots() {
+        return ramSlots;
+    }
+
+    public int getCardSlots() {
+        return cardSlots;
+    }
+
+    public String getBios() {
+        return bios;
+    }
+}
+```
+3. 新增 Monitor.java
+```
+public class Monitor {
+
+    private String model;
+    private String manufacturer;
+    private int size;
+    private Resolution nativeResolution;
+
+    public Monitor(String model, String manufacturer, int size, Resolution nativeResolution) {
+        this.model = model;
+        this.manufacturer = manufacturer;
+        this.size = size;
+        this.nativeResolution = nativeResolution;
+    }
+
+    public void drawPixelAt(int x, int y, String color) {
+        System.out.println("Drawing pixel at " + x + "," + y + " in colour " + color);
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public Resolution getNativeResolution() {
+        return nativeResolution;
+    }
+}
+```
+4. 新增 Resolution.java
+```
+public class Resolution {
+    private int width;
+    private int height;
+
+    public Resolution(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+}
+```
+5. 新增 Case.java
+```
+public class Case {
+
+    private String model;
+    private String manufacturer;
+    private String powerSupply;
+    private Dimensions dimensions;
+
+    public Case(String model, String manufacturer, String powerSupply, Dimensions dimensions) {
+        this.model = model;
+        this.manufacturer = manufacturer;
+        this.powerSupply = powerSupply;
+        this.dimensions = dimensions;
+    }
+
+    public void pressPowerButton() {
+        System.out.println("Power button pressed");
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public String getPowerSupply() {
+        return powerSupply;
+    }
+
+    public Dimensions getDimensions() {
+        return dimensions;
+    }
+}
+```
+6. 新增 Dimensions.java
+```
+public class Dimensions {
+
+    private int width;
+    private int height;
+    private int depth;
+
+    public Dimensions(int width, int height, int depth) {
+        this.width = width;
+        this.height = height;
+        this.depth = depth;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+}
+```
+7. 修改 Main.java
+```
+public class Main {
+
+    public static void main(String[] args) {
+        Dimensions dimensions = new Dimensions(20, 20, 5);
+        Case theCase = new Case("220B", "Dell", "240", dimensions);
+
+        // 我們也可以使用 new 的方式來新增物件
+        Monitor theMonitor = new Monitor("27 inch Beast", "Acer", 27, new Resolution(2540, 1440));
+
+        Motherboard theMotherboard = new Motherboard("BJ-200", "Asus", 4, 6, "v2.44");
+
+        PC thePC = new PC(theCase, theMonitor, theMotherboard);
+        thePC.getMonitor().drawPixelAt(1500, 1200, "red");
+        thePC.getMotherboard().loadProgram("Windows 1.0");
+        thePC.getTheCase().pressPowerButton();
+    }
+}
+```
+8. 如何選擇 Composition 和 Inheritance？
+    - 如果你使用 Java，推薦先使用 Composition
+
 
