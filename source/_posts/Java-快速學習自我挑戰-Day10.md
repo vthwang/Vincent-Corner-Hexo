@@ -510,6 +510,176 @@ public class Main {
 }
 ```
 8. 如何選擇 Composition 和 Inheritance？
-    - 如果你使用 Java，推薦先使用 Composition
+    - 如果你使用 Java，推薦先使用 Composition，這會給你更多額外的優點和彈性，但是還是需要看你想要解決的問題來決定。
+#### 挑戰
+1. 題目
+ Create a single room of a house using composition.
+Think about the things that should be included in the room.
+Maybe physical parts of the house but furniture as well
+Add at least one method to access an object via a getter and
+then that objects public method as you saw in the previous video
+then add at least one method to hide the object e.g. not using a getter
+but to access the object used in composition within the main class
+like you saw in this video.
+2. 答案
+    1. 新增 Bedroom.java
+    ```
+    public class Bedroom {
 
+        private String name;
+        private Wall wall1;
+        private Wall wall2;
+        private Wall wall3;
+        private Wall wall4;
+        private Ceiling ceiling;
+        private Bed bed;
+        private Lamp lamp;
 
+        public Bedroom(String name, Wall wall1, Wall wall2, Wall wall3, Wall wall4, Ceiling ceiling, Bed bed, Lamp lamp) {
+            this.name = name;
+            this.wall1 = wall1;
+            this.wall2 = wall2;
+            this.wall3 = wall3;
+            this.wall4 = wall4;
+            this.ceiling = ceiling;
+            this.bed = bed;
+            this.lamp = lamp;
+        }
+
+        public Lamp getLamp() {
+            return lamp;
+        }
+
+        public void makeBed() {
+            System.out.println("Bedroom -> Making bed");
+            bed.make();
+        }
+    }
+    ```
+    2. 新增 Wall.java
+    ```
+    public class Wall {
+
+        private String direction;
+
+        public Wall(String direction) {
+            this.direction = direction;
+        }
+
+        public String getDirection() {
+            return direction;
+        }
+    }
+    ```
+    3. 新增 Ceiling.java
+    ```
+    public class Ceiling {
+
+        private int height;
+        private int paintedColor;
+
+        public Ceiling(int height, int paintedColor) {
+            this.height = height;
+            this.paintedColor = paintedColor;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public int getPaintedColor() {
+            return paintedColor;
+        }
+    }
+    ```
+    4. 新增 Bed.java
+    ```
+    public class Bed {
+
+        private String style;
+        private int pillows;
+        private int height;
+        private int sheets;
+        private int quilt;
+
+        public Bed(String style, int pillows, int height, int sheets, int quilt) {
+            this.style = style;
+            this.pillows = pillows;
+            this.height = height;
+            this.sheets = sheets;
+            this.quilt = quilt;
+        }
+
+        public void make() {
+            System.out.println("Bed -> Making");
+        }
+
+        public String getStyle() {
+            return style;
+        }
+
+        public int getPillows() {
+            return pillows;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public int getSheets() {
+            return sheets;
+        }
+
+        public int getQuilt() {
+            return quilt;
+        }
+    }
+    ```
+    5. 新增 Lamp.java
+    ```
+    public class Lamp {
+
+        private String style;
+        private boolean battery;
+        private int globRating;
+
+        public Lamp(String style, boolean battery, int globRating) {
+            this.style = style;
+            this.battery = battery;
+            this.globRating = globRating;
+        }
+
+        public void turnOn() {
+            System.out.println("Lamp -> Turning on");
+        }
+
+        public String getStyle() {
+            return style;
+        }
+
+        public boolean isBattery() {
+            return battery;
+        }
+
+        public int getGlobRating() {
+            return globRating;
+        }
+    }
+    ```
+    6. 修改 Main.java
+    ```
+    Wall wall1 = new Wall("West");
+    Wall wall2 = new Wall("East");
+    Wall wall3 = new Wall("South");
+    Wall wall4 = new Wall("North");
+
+    Ceiling ceiling = new Ceiling(12, 55);
+
+    Bed bed = new Bed("Modern", 4, 3, 2, 1);
+
+    Lamp lamp = new Lamp("Classic", false, 75);
+
+    Bedroom bedroom = new Bedroom("Vincent", wall1, wall2, wall3, wall4, ceiling, bed, lamp);
+    bedroom.makeBed();
+    bedroom.getLamp().turnOn();
+    ```
