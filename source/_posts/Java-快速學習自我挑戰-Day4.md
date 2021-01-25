@@ -1,13 +1,13 @@
 ---
 title: Java 快速學習自我挑戰 Day4
 thumbnail:
-  - /images/learning/java/JavaDay04.png
+  - /images/learning/java/JavaDay04.jpg
 date: 2020-05-11 09:50:37
 categories: Study Note
 tags: Java
 toc: true
 ---
-<img src="/images/learning/java/JavaDay04.png">
+<img src="/images/learning/java/JavaDay04.jpg">
 
 ***
 #### 題目練習

@@ -1,13 +1,13 @@
 ---
 title: Java 快速學習自我挑戰 Day8
 thumbnail:
-  - /images/learning/java/JavaDay08.png
+  - /images/learning/java/JavaDay08.jpg
 date: 2020-06-19 01:35:23
 categories: Study Note
 tags: Java
 toc: true
 ---
-<img src="/images/learning/java/JavaDay08.png">
+<img src="/images/learning/java/JavaDay08.jpg">
 
 ***
 ### 物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance

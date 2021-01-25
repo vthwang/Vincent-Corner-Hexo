@@ -1,13 +1,13 @@
 ---
 title: Java 快速學習自我挑戰 Day1
 thumbnail:
-  - /images/learning/java/JavaDay01.png
+  - /images/learning/java/JavaDay01.jpg
 date: 2020-05-02 10:13:36
 categories: Study Note
 tags: Java
 toc: true
 ---
-<img src="/images/learning/java/JavaDay01.png">
+<img src="/images/learning/java/JavaDay01.jpg">
 
 ***
 ### 課前準備
@@ -15,10 +15,10 @@ toc: true
     - 盡可能地精準的問問題：貼上程式碼，加一些畫面截圖。
     - 問別人沒問過的問題：在問問題之前，先找找看別人有沒有問過。
 2. 成為工程師的四個階段
-    - Unconcious Incompetence (無意識的無能)：在剛開始起步的時候，你不知道你不會什麼，所以不要做長期規劃，應該要專注在基礎上面。
-    - Concious Incompetence (有意識的無能)：你做一些調查，有一些基礎，知道你不會什麼，所以你意識到你需要學這些不會的技能，同時，你也意識到獲得這些技能的價值。
-    - Concious Competence (有意識的有能力)：在這個階段，你需要不斷讓自己沈浸在在練習之中，否則有些東西會開始遺忘，最重要的事，你學習的東西開始有意義。
-    - Unconcious competence (無意識的有能力)：寫程式對你來說變成第二個本能，你會覺得寫程式很簡單，你寫程式的時候不需要總是過度專注，當你在寫程式的時候，你就會知道要使用哪種算法，他是自然而來的，因為你已經瞭解它了。
+    - Unconscious Incompetence (無意識的無能)：在剛開始起步的時候，你不知道你不會什麼，所以不要做長期規劃，應該要專注在基礎上面。
+    - Conscious Incompetence (有意識的無能)：你做一些調查，有一些基礎，知道你不會什麼，所以你意識到你需要學這些不會的技能，同時，你也意識到獲得這些技能的價值。
+    - Conscious Competence (有意識的有能力)：在這個階段，你需要不斷讓自己沈浸在在練習之中，否則有些東西會開始遺忘，最重要的事，你學習的東西開始有意義。
+    - Unconscious competence (無意識的有能力)：寫程式對你來說變成第二個本能，你會覺得寫程式很簡單，你寫程式的時候不需要總是過度專注，當你在寫程式的時候，你就會知道要使用哪種算法，他是自然而來的，因為你已經瞭解它了。
 3. 總結：堅持下去，許下承諾會堅持你的訓練和練習，並且定期練習和學習。
 ### 環境部署
 1. 為什麼安裝 JDK 11？

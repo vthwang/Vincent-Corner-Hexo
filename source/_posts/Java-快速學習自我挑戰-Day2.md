@@ -1,13 +1,13 @@
 ---
 title: Java 快速學習自我挑戰 Day2
 thumbnail:
-  - /images/learning/java/JavaDay02.png
+  - /images/learning/java/JavaDay02.jpg
 date: 2020-05-06 12:48:45
 categories: Study Note
 tags: Java
 toc: true
 ---
-<img src="/images/learning/java/JavaDay02.png">
+<img src="/images/learning/java/JavaDay02.jpg">
 
 ***
 ### 第一步 - PartII

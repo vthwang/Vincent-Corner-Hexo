@@ -1,13 +1,13 @@
 ---
 title: Java 快速學習自我挑戰 Day11
 thumbnail:
-  - /images/learning/java/JavaDay11.png
+  - /images/learning/java/JavaDay11.jpg
 toc: true
 date: 2021-01-24 11:07:31
 categories: Study Note
 tags: Java
 ---
-<img src="/images/learning/java/JavaDay11.png">
+<img src="/images/learning/java/JavaDay11.jpg">
 
 ***
 ### 物件導向程式設計 (OOP) - Composition, Encapsulation 和 Polymorphism

@@ -1,13 +1,13 @@
 ---
 title: Java 快速學習自我挑戰 Day7
 thumbnail:
-  - /images/learning/java/JavaDay07.jpeg
+  - /images/learning/java/JavaDay07.jpg
 date: 2020-05-27 23:30:04
 categories: Study Note
 tags: Java
 toc: true
 ---
-<img src="/images/learning/java/JavaDay07.jpeg">
+<img src="/images/learning/java/JavaDay07.jpg">
 
 ***
 ### 控制流陳述句
