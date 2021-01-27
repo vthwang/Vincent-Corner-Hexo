@@ -176,19 +176,89 @@ public class Main {
     - 如果我們想要存取 Array 範圍外的索引，Java 會給我們 **ArrayIndexOutOfBoundsException** 的錯誤，這表示索引超出範圍。
     - 存取 Array 元素我們使用中括號 **[** 和 **]**，這就是 Array 存取運算符。
     - 例子 1
-      - `int[] array = new int[5]`
-      - 這個 Array 包含元素從 array[0] 到 array[4]。
-      - 這 **5 個元素**的索引範圍是 **0** 到 **4**。
-      - **new** 這個運算符或 Keyword 被用來創建 Array 或是初始化 Array 元素為它們的默認值。
-      - 在這個例子，當 int Array 生成的時候，會初始化為 0。
-      - 對於 **boolean** 的 Array 元素，會初始化為 **false**。
-      - 對於 String 或是 Objects 會初始化為 **null**，後面課程會說更多關於 **null** 的內容。
+        - `int[] array = new int[5]`
+        - 這個 Array 包含元素從 array[0] 到 array[4]。
+        - 這 **5 個元素**的索引範圍是 **0** 到 **4**。
+        - **new** 這個運算符或 Keyword 被用來創建 Array 或是初始化 Array 元素為它們的默認值。
+        - 在這個例子，當 int Array 生成的時候，會初始化為 0。
+        - 對於 **boolean** 的 Array 元素，會初始化為 **false**。
+        - 對於 String 或是 Objects 會初始化為 **null**，後面課程會說更多關於 **null** 的內容。
     - 例子 2
-      - `int[] myNumbers = {5, 4, 3, 2, 1};`
-      - 我們可以使用初始化區塊 **{** 和 **}** 來初始化 array 為一行，我們定義的值必須要用逗號分開。
-      - 這種初始化 Array 的方式稱為匿名 Array(Anonymous Array)。
-      - 這 **5 個元素**的索引範圍是 **0** 到 **4**。
-      - 在這個例子，Array 元素被分別初始化為 5, 4, 3, 2, 1。
+        - `int[] myNumbers = {5, 4, 3, 2, 1};`
+        - 我們可以使用初始化區塊 **{** 和 **}** 來初始化 array 為一行，我們定義的值必須要用逗號分開。
+        - 這種初始化 Array 的方式稱為匿名 Array(Anonymous Array)。
+        - 這 **5 個元素**的索引範圍是 **0** 到 **4**。
+        - 在這個例子，Array 元素被分別初始化為 5, 4, 3, 2, 1。
+    - 最常見的錯誤 1
+        - 存取超過範圍的索引，會出現 **ArrayIndexOutOfBoundsException** 的錯誤。
+        - 我們有 **5 個元素**，索引範圍是 **0** 到 **4**。
+    - 最常見的錯誤 2
+        - for 迴圈要從 0 開始
+        ```
+        int[] myArray = {10, 35, 20, 17, 18};
 
+        for (int i = 1; i < myArray.length; i++) {
+            System.out.println("value= " + myArray[i]);
+        }
+        ====
+        // 輸出的錯誤結果
+        value = 35
+        value = 20
+        value = 17
+        value = 18
+        ```
+    - 最常見的錯誤 3
+        - 在 for 迴圈錯誤使用小於等於 `i <= myArray.length;`，會導致 **ArrayIndexOutOfBoundsException**。
+        ```
+        int[] myArray = {10, 35, 20, 17, 18};
+
+        for (int i = 1; i <= myArray.length; i++) {
+            System.out.println("value= " + myArray[i]);
+        }
+        ```
+#### Reference Types 和 Value Types
+1. Array 和 String 都是 Reference Type，它會指向 Memory 的同個地方，所以如果其中一個變更了，另外一個也會跟著變更。
+2. int、double 和 boolean 都是 Value Type，換句話說，它們會保存值。
+3. 看下面這個例子，如果變更一樣指向同個 Array 的 Array，兩個 Array 都會一起變更，所以要用 new 這個 Keyword 來新增一個新的 Array，就不會有這個問題。
+```
+public class Main {
+
+    public static void main(String[] args) {
+
+        int myIntValue = 10;
+        int anotherIntValue = myIntValue;
+
+        System.out.println("myIntValue = " + myIntValue);
+        System.out.println("anotherIntValue = " + anotherIntValue);
+
+        anotherIntValue++;
+        System.out.println("myIntValue = " + myIntValue);
+        System.out.println("anotherIntValue = " + anotherIntValue);
+
+        int[] myIntArray = new int[5];
+        int[] anotherArray = myIntArray;
+
+        System.out.println("myIntArray= " + Arrays.toString(myIntArray));
+        System.out.println("anotherArray= " + Arrays.toString(anotherArray));
+
+        anotherArray[0] = 1;
+
+        System.out.println("after change myIntArray= " + Arrays.toString(myIntArray));
+        System.out.println("after change anotherArray= " + Arrays.toString(anotherArray));
+
+        anotherArray = new int[] {4, 5, 6, 7, 8};
+        modifyArray(myIntArray);
+
+        System.out.println("after modify myIntArray= " + Arrays.toString(myIntArray));
+        System.out.println("after modify anotherArray= " + Arrays.toString(anotherArray));
+    }
+
+    private static void modifyArray(int[] array) {
+
+        array[0] = 2;
+        array = new int[] {1, 2, 3, 4, 5};
+    }
+}
+```
 
 
