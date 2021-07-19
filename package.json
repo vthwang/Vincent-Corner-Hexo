@@ -1,12 +1,12 @@
 {
-  "name": "vincet-corner",
+  "name": "vincent-corner",
   "version": "1.0.0",
   "private": true,
   "hexo": {
-    "version": "5.3.0"
+    "version": "5.4.0"
   },
   "dependencies": {
-    "hexo": "^5.3.0",
+    "hexo": "^5.4.0",
     "hexo-deployer-rsync": "^1.0.0",
     "hexo-featured-image": "^0.4.3",
     "hexo-fs": "^3.1.0",
