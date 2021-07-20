@@ -34,23 +34,75 @@ toc: true
         - 變數類型決定什麼樣的值可以儲存在這個變數，還有哪邊可以使用這個變數。
         - 一旦你指定了變數的類型，你就不能改變它，它是固定的。
 4. 宣告變數的範例，在宣告變數的時候，如果是 integer 的話，初始值會是 0。
-```
-package main
-import "fmt"
+    ```
+    package main
+    import "fmt"
 
-func main() {
-    var speed int
+    func main() {
+        var speed int
 
-    fmt.Println(speed)
-}
+        fmt.Println(speed)
+    }
+    ====OUTPUT====
+    0
+    ```
+### 範例：Path Separator
+1. 你會學到三樣東西。
+    - 使用 Go 標準套件(stdlib) - path
+    - 學習如何賦值給表達式回傳的多個值
+    - 拋棄其中一個值(blank-identifier)
+2. **path** 套件提供實用的功能來處理 **url string** 路徑。
+3. 範例
+    ```
+    import (
+      "fmt"
+      "path"
+    )
 
-====OUTPUT====
-0
-```
-      
+    func main() {
+      var dir, file string
 
+      dir, file = path.Split("css/main.css")
 
+      fmt.Println("dir: ", dir)
+      fmt.Println("file: ", file)
+    }
+    ====OUTPUT====
+    dir:  css/
+    file:  main.css
+    ```
+4. 如果你想拋棄回傳回來的值，用 `_` 來賦空值
+    ```
+    import (
+      "fmt"
+      "path"
+    )
 
+    func main() {
+      var file string
 
+      _, file = path.Split("css/main.css")
 
+      fmt.Println("file: ", file)
+    }
+    ====OUTPUT====
+    file:  main.css
+    ```
+5. 你也可以使用 `:=` (short declaration) 直接將表達式回傳的值直接變成一個變數
+    ```
+    import (
+      "fmt"
+      "path"
+    )
+
+    func main() {
+      _, file := path.Split("css/main.css")
+
+      fmt.Println("file: ", file)
+    }
+    ====OUTPUT====
+    file:  main.css
+    ```
+### 什麼時候使用 short declaration
+1. 
 
