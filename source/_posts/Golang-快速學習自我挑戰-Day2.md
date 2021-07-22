@@ -91,9 +91,51 @@ toc: true
     ====OUTPUT====
     3
     ```
+### 範例：BANGER
+1. 輸入一段字，返回這一段文字的大寫，並計算文字有幾個字之後，加上同樣數量的驚嘆號。
+2. 這邊會使用到 [string package](https://pkg.go.dev/strings)，提供操作 **string** 的實用函數。
+3. 範例答案
+    ```
+    package main
 
+    import (
+      "fmt"
+      "os"
+      "strings"
+    )
 
+    func main() {
+      msg := os.Args[1]
+      l := len(msg)
 
+      s := msg + strings.Repeat("!", l)
+      s = strings.ToUpper(s)
+
+      fmt.Println(s)
+    }
+    ```
+4. 實作題目：加上 "!" 到 argument 之前，如果輸入 hey，則返回 !!!HEY!!!，這邊只能使用一次 Repeat function。
+    ```
+    package main
+
+    import (
+      "fmt"
+      "os"
+      "strings"
+    )
+
+    func main() {
+      msg := os.Args[1]
+      l := len(msg)
+      ex := strings.Repeat("!", l)
+
+      s := ex + msg + ex
+      s = strings.ToUpper(s)
+
+      fmt.Println(s)
+    }
+    ```
+### 常數(Constant)和最小量(Iota)
 
 
 
