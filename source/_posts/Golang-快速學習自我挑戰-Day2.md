@@ -135,9 +135,51 @@ toc: true
       fmt.Println(s)
     }
     ```
-### 常數(Constant)和最小量(Iota)
+### 常數(Constant)和 iota
+1. iota 是 Go 裡面的常數產生器，可以自動加 1。
+    ```
+    package main
 
+    import "fmt"
 
+    func main() {
+      const(
+        monday = iota + 1
+        tuesday
+        wednesday
+        thursday
+        friday
+        saturday
+        sunday
+      )
 
+      fmt.Println(monday, tuesday, wednesday, thursday, friday, saturday, sunday)
+    }
+    ====OUTPUT====
+    1 2 3 4 5 6 7
+    ```
+2. 可以使用 `_` 當作 blank identifier，來省略過你不需要用到的常數。
+    ```
+    package main
+
+    import "fmt"
+
+    func main() {
+      const(
+        EST = -(5 + iota)
+        _
+        MST
+        PST
+      )
+
+      fmt.Println(EST, MST, PST)
+    }
+    ====OUTPUT====
+    -5 -7 -8
+    ```
+### Golang fmt 套件備忘單
+<img src="/images/learning/golang/GoLangfmtPrintingCheatSheet.jpg">
+
+### Println vs Printf
 
 
