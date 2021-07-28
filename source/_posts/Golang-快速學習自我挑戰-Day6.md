@@ -124,12 +124,12 @@ toc: true
         return
       }
 
-      if guess < 0 {
+      if guess <= 0 {
         fmt.Println("Please pick a positive number.")
         return
       }
 
-      for turn := 0; turn < maxTurns; turn++ {
+      for turn := 1; turn < maxTurns; turn++ {
         n := rand.Intn(guess + 1)
 
         if n == guess {
@@ -140,10 +140,173 @@ toc: true
       fmt.Println("☠️ YOU LOST...Try again?")
     }
     ```
+### 建立文字查找器
+1. 建立一個簡單的文字查找器。
+    ```
+    package main
 
+    import (
+      "fmt"
+      "os"
+      "strings"
+    )
 
+    const corpus = "lazy cat jumps again and again and again"
 
+    func main() {
+      words := strings.Fields(corpus)
+      query := os.Args[1:]
 
+      for _, q := range query {
+        for i, w := range words {
+          if q == w {
+            fmt.Printf("#%-2d: %q\n", i + 1, w)
+            break
+          }
+        }
+      }
+    }
+    ```
+### Label Statement
+1. 使用 labeled statement，可以讓 nested loop 的 parent loop 直接被 break。
+    ```
+    package main
 
+    import (
+      "fmt"
+      "os"
+      "strings"
+    )
 
+    const corpus = "lazy cat jumps again and again and again"
 
+    func main() {
+      words := strings.Fields(corpus)
+      query := os.Args[1:]
+
+    queries:
+      for _, q := range query {
+        for i, w := range words {
+          if q == w {
+            fmt.Printf("#%-2d: %q\n", i + 1, w)
+            break queries
+          }
+        }
+      }
+    }
+    ```
+2. 在 label 上面新增一樣名字的變數，也不會出錯，因為變數和 label 是不一樣的東西。正常來說，在同一個 block 不能宣告同樣的名字，所以 label 和變數還有常數並沒有共享同一個 block。
+    ```
+    package main
+
+    import (
+      "fmt"
+      "os"
+      "strings"
+    )
+
+    const corpus = "lazy cat jumps again and again and again"
+
+    func main() {
+      words := strings.Fields(corpus)
+      query := os.Args[1:]
+
+      var queries string
+	    _ = queries
+
+    queries:
+      for _, q := range query {
+        for i, w := range words {
+          if q == w {
+            fmt.Printf("#%-2d: %q\n", i + 1, w)
+            break queries
+          }
+        }
+      }
+    }
+    ```
+3. 同樣地，也可以從 parent loop 直接 continue。
+    ```
+    package main
+
+    import (
+      "fmt"
+      "os"
+      "strings"
+    )
+
+    const corpus = "lazy cat jumps again and again and again"
+
+    func main() {
+      words := strings.Fields(corpus)
+      query := os.Args[1:]
+
+    queries:
+      for _, q := range query {
+        for i, w := range words {
+          if q == w {
+            fmt.Printf("#%-2d: %q\n", i + 1, w)
+            continue queries
+          }
+        }
+      }
+    }
+    ```
+### 使用 label 來中斷 switch
+1. 如果直接在 switch 裡面 break，就只會 break switch statement，下面還會繼續執行，用 label 的方式就可以讓 parent loop 直接中斷。
+    ```
+    package main
+
+    import (
+      "fmt"
+      "os"
+      "strings"
+    )
+
+    const corpus = "lazy cat jumps again and again and again"
+
+    func main() {
+      words := strings.Fields(corpus)
+      query := os.Args[1:]
+
+    queries:
+      for _, q := range query {
+        search:
+        for i, w := range words {
+          switch q {
+          case "and", "or", "the":
+            break search
+          }
+          if q == w {
+            fmt.Printf("#%-2d: %q\n", i + 1, w)
+            break queries
+          }
+        }
+      }
+    }
+    ```
+### Go 的 goto statement
+1. `goto` 語法很少使用，正常來說使用 for，break 和 continue 更好，所以只有在 `goto` 能讓程式碼變簡單才選用它。
+    ```
+    package main
+
+    import "fmt"
+
+    func main() {
+      var i int
+
+    loop:
+      if i < 3 {
+        fmt.Println("looping")
+        i++
+        goto loop
+      }
+      fmt.Println("done")
+    }
+    ```
+2. 不能在 label 裡面有定義的變數之前使用 `goto`。
+    ```
+    // Can't Work
+    goto loop
+    var i int
+    ```
