@@ -10,8 +10,8 @@ toc: true
 <img src="/images/learning/golang/GolangDay05.jpg">
 
 ***
-## 章節一
-### 在 Go 只有一種迴圈
+# 章節一
+## 在 Go 只有一種迴圈
 1. 在 Go 只有 for 迴圈，沒有 while 和 until 迴圈。
 2. for 迴圈就是重複**一段**程式碼**當**條件是 **true**。
 3. `i := 1` 是 init statement。`i <= 5` 是 condition statement，它是 bool expression，當它等於 false 的時候，迴圈結束。`i++` 是 post statement。
@@ -20,7 +20,7 @@ toc: true
       sum += i
     }
     ```
-### 如何 break 一個 for 迴圈？
+## 如何 break 一個 for 迴圈？
 1. 使用 `break` 就可以 break for 迴圈，for 的 init statement 可以在前面定義，post statement 可以放到 for 回圈的最後面，condition statement 也可以放到 for 裡面，如果不使用 `break`，那麼這個 for 迴圈就會變成無限迴圈，只能用戶手動停止。
     ```
     package main
@@ -45,7 +45,7 @@ toc: true
       fmt.Println(sum)
     }
     ```
-### 如何 continue 一個 for 迴圈？
+## 如何 continue 一個 for 迴圈？
 1. `continue` 可以離開當前的步驟，並繼續下一次的迴圈。
     ```
     package main
@@ -82,7 +82,7 @@ toc: true
     10 --> 30
     30
     ```
-### 如何建立一個乘法表？
+## 如何建立一個乘法表？
 1. 這裡會使用巢狀迴圈(nested loop)，把迴圈放在迴圈裡。乘法表範例如下。
     ```
     package main
@@ -117,7 +117,7 @@ toc: true
         4    0    4    8   12   16   20
         5    0    5   10   15   20   25
     ```
-### 如何用迴圈把 slice 跑一遍？
+## 如何用迴圈把 slice 跑一遍？
 1. 把 slice 用 for 迴圈跑一遍。
     ```
     package main
@@ -156,7 +156,7 @@ toc: true
       }
     }
     ```
-### For Range
+## For Range
 1. For Range 用來對 slice 跑迴圈是最簡單的方式，但是它不只能用在 slice，還可以用在 array, string, map 和 channel，後面會說到。這邊有用到一個進階的方法，`os.Args[1:]`，這個方法會建立一個新的 slice，然後省略掉第一個值。
     ```
     package main

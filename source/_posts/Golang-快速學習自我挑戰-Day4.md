@@ -10,8 +10,8 @@ toc: true
 <img src="/images/learning/golang/GolangDay04.jpg">
 
 ***
-## 章節一
-### Switch Statement
+# 章節一
+## Switch Statement
 1. switch statement 和 if statement 很像，但是有不同的語法。
 2. `city` 是 condition expression，它非常重要因為它控制了 case 語法的 condition。如果 city 等於 case 裡面的內容（等同於 if city == "Paris"），就會執行 case 裡面的 block。
     ```
@@ -77,7 +77,7 @@ toc: true
       fmt.Println("VIP trip?", vip)
     }
     ```
-### 什麼是 default clause
+## 什麼是 default clause
 1. 如果 switch statement 找不到相符資料的時候，就會跑 default 的地方，跟 case clause 一樣，default 也只能有一個。
     ```
     package main
@@ -126,7 +126,7 @@ toc: true
     ====OUTPUT====
     France
     ```
-### 使用很多值在一個 case condition
+## 使用很多值在一個 case condition
 1. 如果要在一個 case condition 添加很多值，只要加上 `,` 和想要的值就可以了，這個背後使用的概念就是 `if city == "Paris || city == "Lyon"`。
     ```
     package main
@@ -149,7 +149,7 @@ toc: true
       }
     }
     ```
-### 在 case condition 使用 bool expression
+## 在 case condition 使用 bool expression
 1. 這邊的 `i > 0` 的結果是 bool，所以可以跟 switch 的 true 放在一起。
     ```
     switch true {
@@ -172,7 +172,7 @@ toc: true
       fmt.Println("zero")
     }
     ```
-### fallthrough statement 是如何運作的？
+## fallthrough statement 是如何運作的？
 1. fallthrough statement 就是直接跳過 condition 檢查，直接進去下一個 case block 裡面。事實上，真實情境很少使用到 fallthrough，但是有些情況下他卻很好用。
     ```
     package main
@@ -196,7 +196,7 @@ toc: true
     ====OUTPUT====
     big positive number
     ```
-### 什麼是 short switch?
+## 什麼是 short switch?
 1. short switch 和 short if 很像。把剛剛上面的程式碼，縮減成下面的程式碼。`i := 10` 稱為 simple statement，裡面可以放置各種 simple statement，例如：`i = 10`, `i++`, `i--`，甚至可以放 func `func call()` 等等。
     ```
     switch i := 10; true {
@@ -219,7 +219,7 @@ toc: true
       fmt.Println("zero")
     }
     ```
-### 小挑戰：Parts of a Day
+## 小挑戰：Parts of a Day
 1. 題目
     ```
     如果系統時間是早上，要顯示『Good morning』。
@@ -250,7 +250,7 @@ toc: true
       }
     }
     ```
-### if vs switch，要用哪一個？
+## if vs switch，要用哪一個？
 1. 如果你有像範例一樣很難閱讀的 if statement，就要改用 switch statement。
     ```
     package main

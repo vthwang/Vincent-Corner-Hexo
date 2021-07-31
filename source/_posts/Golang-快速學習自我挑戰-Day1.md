@@ -10,10 +10,10 @@ toc: true
 <img src="/images/learning/golang/GolangDay01.jpg">
 
 ***
-## 章節一
-### 安裝 Go 環境
+# 章節一
+## 安裝 Go 環境
 1. [安裝Go環境教學](https://www.youtube.com/watch?v=1MXIGYrMk80)
-### 變數介紹
+## 變數介紹
 1. 你必須要先定義變數才能夠使用它，所以你不能直接給一個未定義的變數一個值，因為它不存在。
 2. 在 Dynamic Programming 裡面，你可以在還沒定義變數之前，直接給它值，這樣很好用，但是對後面的程式碼維護並不容易。
 3. `var speed int`
@@ -47,7 +47,7 @@ toc: true
     ====OUTPUT====
     0
     ```
-### 範例：Path Separator
+## 範例：Path Separator
 1. 你會學到三樣東西。
     - 使用 Go 標準套件(stdlib) - path
     - 學習如何賦值給表達式回傳的多個值
@@ -110,7 +110,7 @@ toc: true
     ====OUTPUT====
     file:  main.css
     ```
-### 什麼時候使用 short declaration
+## 什麼時候使用 short declaration
 1. 什麼時候使用 normal declaration?
     - 如果你不知道**初始值**，你就用 normal declaration，這是 Go 社群的傳統，建議你跟隨這個傳統，這樣大家就可以輕鬆地了解你的程式碼。
         ```
@@ -166,7 +166,7 @@ toc: true
           width, color := 50, "red" // Good, same as above
         }
         ```
-### 轉換值
+## 轉換值
 1. 型別轉換：用**另外一個型態**改變一個**值**的**型態**。
 2. 轉換型別可能形成破壞性的操作，2.5 轉換成 int 之後，會變成 2。
     ```
@@ -202,7 +202,7 @@ toc: true
     ====OUTPUT====
     250
     ```
-### 取得命令列的輸入
+## 取得命令列的輸入
 1. 要從命令列取得輸入，要用名為 os 的 Go 套件。
 2. os 套件裡面的 **Args**，當你運行 go 的時候，Go 會自動將輸入的 Arguments 變成變數。
 3. `var Args []string`，這邊要講到 slice 的概念，但是這邊的 slice 只是簡單的說，後面會有一個詳細的章節。
@@ -212,7 +212,7 @@ toc: true
         - Args[0]，儲存程式的**路徑**，它是一個暫時的路徑，ex: .../exe/main
         - Args[1]，第一個 argument，所以就是 hi
         - Args[2]，第二個 argument，所以就是 yo
-### 學習 os.Args 的基礎
+## 學習 os.Args 的基礎
 1. 執行範例，了解 os.Args 和 len 的用法。
     ```
     package main
@@ -255,7 +255,7 @@ toc: true
     3rd Argument: hey
     Number of items inside os.Args: 4
     ```
-### 命名方式（推薦）
+## 命名方式（推薦）
 1. 非慣用的命名方式。
     ```
     func Read(buffer *Buffer, inBuffer []byte) (size int, err error) {

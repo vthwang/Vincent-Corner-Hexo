@@ -10,8 +10,8 @@ toc: true
 <img src="/images/learning/golang/GolangDay06.jpg">
 
 ***
-## 章節二
-### Go 和 Randomization
+# 章節二
+## Go 和 Randomization
 1. 這邊會實作一個 Lucky number 的專案，使用者會輸入數字，然後系統會隨機產生一個數字，當使用者猜到跟系統隨機產生的數字相同，使用者勝利。
 2. 這邊會用到 [rand 的套件包](https://pkg.go.dev/math/rand)，Go 的隨機是使用假隨機(pseudo-random)，在每次執行的時候，Go 會產生一連串的已定好的數列(deterministic sequence)。
 3. `func Intn(n)` 會產生 [0, n) 之間的亂數，但是不包含 n。所以如果要取得 0-10 的變數，要使用 `Intn(11)`。
@@ -56,7 +56,7 @@ toc: true
       fmt.Println()
     }
     ```
-### 用時間 Seed 隨機數字
+## 用時間 Seed 隨機數字
 1. [查看現在的 Unix Time](https://time.is/Unix_time_now)。
 2. Time 套件的 `func Unix` 回傳的是 int，可以拿來 Seed，這邊還有一個 `func UnixNano` 可以產生 Nanoseconds，更精準所以更適合拿來 Seed。
 3. 用時間 Seed 隨機數字，這樣就可以每次產生不同的數字了。
@@ -83,7 +83,7 @@ toc: true
     7 8 0 7 0 8 10 
     5 3 4 4 6 0 2 10 
     ```
-### 寫一個 Game Logic
+## 寫一個 Game Logic
 1. 範例。
     ```
     package main
@@ -140,7 +140,7 @@ toc: true
       fmt.Println("☠️ YOU LOST...Try again?")
     }
     ```
-### 建立文字查找器
+## 建立文字查找器
 1. 建立一個簡單的文字查找器。
     ```
     package main
@@ -167,7 +167,7 @@ toc: true
       }
     }
     ```
-### Label Statement
+## Label Statement
 1. 使用 labeled statement，可以讓 nested loop 的 parent loop 直接被 break。
     ```
     package main
@@ -252,7 +252,7 @@ toc: true
       }
     }
     ```
-### 使用 label 來中斷 switch
+## 使用 label 來中斷 switch
 1. 如果直接在 switch 裡面 break，就只會 break switch statement，下面還會繼續執行，用 label 的方式就可以讓 parent loop 直接中斷。
     ```
     package main
@@ -285,7 +285,7 @@ toc: true
       }
     }
     ```
-### Go 的 goto statement
+## Go 的 goto statement
 1. `goto` 語法很少使用，正常來說使用 for，break 和 continue 更好，所以只有在 `goto` 能讓程式碼變簡單才選用它。
     ```
     package main

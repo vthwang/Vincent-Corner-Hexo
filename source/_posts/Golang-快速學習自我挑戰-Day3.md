@@ -10,8 +10,8 @@ toc: true
 <img src="/images/learning/golang/GolangDay03.jpg">
 
 ***
-## 章節一
-### IF statement
+# 章節一
+## IF statement
 1. Go 裡面的 if statement 不需要括號，直接在 if 後面輸入你的條件就可以了。
     ```
     package main
@@ -26,7 +26,7 @@ toc: true
       }
     }
     ```
-### Else 和 Else if
+## Else 和 Else if
 1. else if 是可以無限新增的，不一定要有，else 只能用一遍，但是也不一定要有。
     ```
     package main
@@ -47,7 +47,7 @@ toc: true
       }
     }
     ```
-### 小挑戰：驗證一個單一用戶
+## 小挑戰：驗證一個單一用戶
 1. 題目
     ```
     CHALLENGE #1
@@ -110,7 +110,7 @@ toc: true
       }
     }
     ```
-### 小挑戰：驗證多用戶
+## 小挑戰：驗證多用戶
 1. 題目
     ```
     CHALLENGE #2
@@ -181,7 +181,7 @@ toc: true
       }
     }
     ```
-### 什麼是 nil 值？
+## 什麼是 nil 值？
 1. **nil** 值表示的是值尚未初始化。
 2. nil 很常被用在錯誤處理，範例展示 nil 用在錯誤處理。
     ```
@@ -196,7 +196,7 @@ toc: true
     // success
     // continue...
     ```
-### 什麼是錯誤值？
+## 什麼是錯誤值？
 1. 如果 error value 是 nil，表示成功，如果有錯誤，就千萬不要用回傳的值，因為是錯誤的。所以當 function 回傳 error value，一定要處理它。
     ```
     package main
@@ -224,7 +224,7 @@ toc: true
     Converted number: 0
     Returned error value: strconv.Atoi: parsing "hahaha": invalid syntax
     ```
-### 錯誤處理範例
+## 錯誤處理範例
 1. 用 if, else 就可以簡單地做錯誤處理。
     ```
     package main
@@ -254,7 +254,7 @@ toc: true
     ====OUTPUT====
     Error: strconv.Atoi: parsing "hello": invalid syntax
     ```
-### 挑戰：轉換 Feet 為 Meter
+## 挑戰：轉換 Feet 為 Meter
 1. 題目
     ```
     ====EXECUTE====
@@ -297,7 +297,7 @@ toc: true
     ====OUTPUT====
     1000 feet is 304.8 meters.
     ```
-### 什麼是 Simple Statement(Short Statement)?
+## 什麼是 Simple Statement(Short Statement)?
 1. Short if：轉換成 short if 之後，裡面的 n 和 err 只能在這邊的 if 和接下來的 branches 使用。
     ```
     n, err := strconv.Atoi("42")
@@ -310,7 +310,7 @@ toc: true
       fmt.Println("There was no error, n is", n)
     }
     ```
-### Simple Statement 的 Scope
+## Simple Statement 的 Scope
 1. 前面有 declare 的變數，後面才能使用，也不能在 if statement 之外的地方使用。
     ```
     package main
@@ -334,7 +334,7 @@ toc: true
       }
     }
     ```
-### 有名的 Shadowing 陷阱
+## 有名的 Shadowing 陷阱
 1. Shadowing 是 Gopher 非常常陷入的陷阱。
 2. 如果在 if function 外面新增一個 n 和 err 的變數，在 if 裡面的變數，不會讓外面的變數改變，因為外面這個 n 被 if statement 的 n shadowed，所以如果要讓 if statement 裡面的值給外面讀到，要把 `:=` 改成 `=` 就可以避免 shadowed 的問題，在 vs code 上面也可以安裝插件解決這個問題。
     ```
