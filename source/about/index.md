@@ -14,9 +14,6 @@ Vincent is a professional backend programmer with the experience managing small 
 ***
 
 ### _EDUCATION_
-**China Medical University** (September 2016 - June 2017)
-Department of **Traditional Chinese Medicine**, M.S.
-
 **Asia University, Taiwan** (September 2012 - June 2016)
 Department of **Foreign Languages and Literature**, B.A.
 Cumulative GPA: 3.92/4.00
