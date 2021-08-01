@@ -65,7 +65,125 @@ toc: true
     ages[1] = -3
     ```
 ## 開始創建一個 Array
+1. 我們可以用 constant variable 來設置長度，可以用 `%#v` 完整地把 Array 印出來。
+    ```
+    package main
+
+    import "fmt"
+
+    const (
+      winter = 1
+      summer = 3
+      yearly = winter + summer
+    )
+
+    func main() {
+      var books [yearly]string
+
+      fmt.Printf("books: %T\n", books)
+      fmt.Println("books", books)
+      fmt.Printf("books: %q\n", books)
+      fmt.Printf("books: %#v\n", books)
+    }
+    ====OUTPUT====
+    books: [4]string
+    books [   ]
+    books: ["" "" "" ""]
+    books: [4]string{"", "", "", ""}
+    ```
+2. Array 可以組合 Element 的內容形成一個新的 Element，因為 Array 的 Element 就像變數。
+    ```
+    package main
+
+    import "fmt"
+
+    const (
+      winter = 1
+      summer = 3
+      yearly = winter + summer
+    )
+
+    func main() {
+      var books [yearly]string
+
+      books[0] = "Kafka's Revenge"
+      books[1] = "Stay Golden"
+      books[2] = "Everythingship"
+      books[3] = books[0] + " 2nd Edition"
+
+      fmt.Printf("books: %#v\n", books)
+    }
+    ====OUTPUT====
+    books: [4]string{"Kafka's Revenge", "Stay Golden", "Everythingship", "Kafka's Revenge 2nd Edition"}
+    ```
+## 對 Array 使用 for range
+1. 在 Array 長度的地方可以使用 `len` 是因為 `len` 會回傳 constant。
+    ```
+    package main
+
+    import "fmt"
+
+    const (
+      winter = 1
+      summer = 3
+      yearly = winter + summer
+    )
+
+    func main() {
+      var books [yearly]string
+
+      books[0] = "Kafka's Revenge"
+      books[1] = "Stay Golden"
+      books[2] = "Everythingship"
+      books[3] = books[0] + " 2nd Edition"
+
+      fmt.Printf("books: %#v\n", books)
+
+      var (
+        wBooks [winter]string
+        sBooks [summer]string
+      )
+
+      wBooks[0] = books[0]
+      //sBooks[0] = books[1]
+      //sBooks[1] = books[2]
+      //sBooks[2] = books[3]
+
+      for i := range sBooks {
+        sBooks[i] = books[i+1]
+      }
+
+      fmt.Printf("\nwinter: %#v\n", wBooks)
+      fmt.Printf("\nsummber: %#v\n", sBooks)
+
+      var published [len(books)]bool
+
+      published[0] = true
+      published[len(books) - 1] = true
+
+      fmt.Println("\nPublished Books:")
+      for i, ok := range published {
+        if ok {
+          fmt.Printf("+ %s\n", books[i])
+        }
+      }
+    }
+    ====OUTPUT====
+    books: [4]string{"Kafka's Revenge", "Stay Golden", "Everythingship", "Kafka's Revenge 2nd Edition"}
+
+    winter: [1]string{"Kafka's Revenge"}
+
+    summber: [3]string{"Stay Golden", "Everythingship", "Kafka's Revenge 2nd Edition"}
+
+    Published Books:
+    + Kafka's Revenge
+    + Kafka's Revenge 2nd Edition
+    ```
+## 什麼是 Composite Literal？
 1. 
+
+
+
 
 
 

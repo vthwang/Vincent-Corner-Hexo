@@ -40,9 +40,8 @@ Working on E-commerce and brand image websites.
 November 2018 - March 2020 (1 year 4 months)
 Responsible for understanding clients' demands, arrange working schedule and coordinate team members to develop API for mimi-program (WeChat App) and mobile Apps.
 
-**Junior PHP Developor** at _Dotech Technology Enterprise Co., Ltd._
-August 2017 - October 2018 (1 year 2 months)
-Help clients build official website by using WordPress and PHP + Mysql. In 2018, I imported Laravel framework and Gitlab Services to our company and applied this development mode to many client's services.
+**Product Manager** at _Maodou Co., Ltd._
+September 2016 - October 2018 (2 year 1 month)
 
 ***
 
