@@ -216,7 +216,68 @@ toc: true
     [...]string{"Kafka's Revenge", "Stay Golden"}
     ```
 ## 修改 Hipster's Love Bookstores 為 Array Literal
-1. 
+1. 修改內容如下。
+    ```
+    package main
+
+    import "fmt"
+
+    func main() {
+      books := [...]string{
+        "Kafka's Revenge",
+        "Stay Golden",
+        "Everythingship",
+        "Kafka's Revenge 2nd Edition",
+      }
+
+      fmt.Printf("books: %#v\n", books)
+    }
+    ====OUTPUT====
+    books: [4]string{"Kafka's Revenge", "Stay Golden", "Everythingship", "Kafka's Revenge 2nd Edition"}
+    ```
+## 小挑戰：Moodly
+1. 題目：輸入名字之後，每次都給不同的心情，要將心情存在 Array 裡面。
+2. 答案：
+    ```
+    package main
+
+    import (
+      "fmt"
+      "math/rand"
+      "os"
+      "time"
+    )
+
+    func main() {
+      args := os.Args[1:]
+      if len(args) != 1 {
+        fmt.Println("[your name]")
+        return
+      }
+
+      name := args[0]
+
+      moods := [...]string{
+        "happy 😀",
+        "good 👍",
+        "awesome 😎",
+        "sad 😔",
+        "bad 👎",
+        "terrible 😩",
+      }
+
+      rand.Seed(time.Now().UnixNano())
+      n := rand.Intn(len(moods))
+
+      fmt.Printf("%s feels %s\n", name, moods[n])
+    }
+    ```
+## 如何比較 Array Values？
+1. 型別一定要一樣才能做比較，而有一些是不能比較的，例如：function values, slices, maps 是不能夠做比較的。
+2. Go 會一個一個 Element 來做比較，如果第一個是 true，才會進行下一個比較，直到最後一個 element 都一樣，就是相同的 Array。
+3. 如果 Array 的 Element 一樣，但是順序不一樣，就是不同的 Array。
+4. `[3]int{6, 9, 3}` 和 `[2]int{6, 9}`，雖然看起來前兩個 element 一樣，但是它們是不能比較的，因為型別不同，一個是 `[3]int`，另外一個是 `[2]int`。
+## 
 
 
 
