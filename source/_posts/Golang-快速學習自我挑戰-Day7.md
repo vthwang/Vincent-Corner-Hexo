@@ -180,10 +180,43 @@ toc: true
     + Kafka's Revenge 2nd Edition
     ```
 ## 什麼是 Composite Literal？
+1. 可以同時初始化 Array 並給每個 elements 賦值。
+    ```
+    var books [4]string{
+      "Kafka's Revenge",
+      "Stay Golden",
+      "Everythingship",
+      "Kafka's Revenge 2nd Edition",
+    }
+    ```
+2. 也可以使用 short declaration。
+    ```
+    books := [4]string{
+      "Kafka's Revenge",
+      "Stay Golden",
+      "Everythingship",
+      "Kafka's Revenge 2nd Edition",
+    }
+    ```
+3. Array Literal 是 Composite Literal 的一種，Composite Literal 新增 Composite values，一個 Composite Value 是其它值的容器(container)。
+    ```
+    // Array's Type
+    [4]string
+    // element list
+    {
+      "Kafka's Revenge",
+      "Stay Golden",
+      "Everythingship",
+      "Kafka's Revenge 2nd Edition",
+    }
+    ```
+4. Elements 之間一定要用**逗號**隔開，最後一個 element 的逗號不是必須的。
+5. 使用 ellipsis([...]) 來自動取得 Array 的元素有幾個，以下面的例子來說，會新增 2 個 elements。
+    ```
+    [...]string{"Kafka's Revenge", "Stay Golden"}
+    ```
+## 修改 Hipster's Love Bookstores 為 Array Literal
 1. 
-
-
-
 
 
 
