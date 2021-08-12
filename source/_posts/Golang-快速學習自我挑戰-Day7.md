@@ -277,14 +277,37 @@ toc: true
 2. Go 會一個一個 Element 來做比較，如果第一個是 true，才會進行下一個比較，直到最後一個 element 都一樣，就是相同的 Array。
 3. 如果 Array 的 Element 一樣，但是順序不一樣，就是不同的 Array。
 4. `[3]int{6, 9, 3}` 和 `[2]int{6, 9}`，雖然看起來前兩個 element 一樣，但是它們是不能比較的，因為型別不同，一個是 `[3]int`，另外一個是 `[2]int`。
-## 
+## 你可以把 Array 指派到另外一個 Array 嗎？
+1. 你可以把 Array 指派到另外一個 Array，Go 會新增一個新的 Array 放在記憶體的不同位置，所以你可以想像成是完成不同的 Array，如果把其中的一個 Array 的 element 換掉，也不會影響另外一個 Array。在這邊你會發現這樣很沒效率，但是在小 Array 的情況下這個就不是問題了。
+2. 和比較 Array 一樣，如果型別不同，也不能指派 Array。`blue := [3]int{6, 9, 3}` 和 `red := [2]int{6, 9}`，如果執行 `blue = red`，會直接出錯。
+3. 如果型別不同，可以使用 range 的方式來將 Array 的 elements 複製到新的 Array。
+    ```
+    package main
 
+    import "fmt"
 
+    func main() {
+      prev := [3]string{
+        "Kafka's Revenge",
+        "Stay Golden",
+        "Everythingship",
+      }
 
+      var books [4]string
 
+      for i, b := range prev {
+        books[i] = b + " 2nd Ed."
+      }
 
+      books[3] = "Awesomeness"
 
+      fmt.Printf("last year:\n%#v\n", prev)
+      fmt.Printf("\nthis year:\n%#v\n", books)
+    }
+    ====OUTPUT====
+    last year:
+    [3]string{"Kafka's Revenge", "Stay Golden", "Everythingship"}
 
-
-
-
+    this year:
+    [4]string{"Kafka's Revenge 2nd Ed.", "Stay Golden 2nd Ed.", "Everythingship 2nd Ed.", "Awesomeness"}
+    ```
