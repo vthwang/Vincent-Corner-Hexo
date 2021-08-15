@@ -115,7 +115,7 @@ toc: true
       2: 1.5,
     }
     ```
-3. 如果使用 ellipse，因為指定 key 為 5，它就會知道有 6 個 elements，所以下面這個 Array 的值等於 `[6]float64{0, 0, 0, 0, 0, 1.5}`。
+3. 如果使用 ellipsis，因為指定 key 為 5，它就會知道有 6 個 elements，所以下面這個 Array 的值等於 `[6]float64{0, 0, 0, 0, 0, 1.5}`。
     ```
     rates := [...]float64{
       5: 1.5,
@@ -213,7 +213,7 @@ toc: true
 2. Array 的 element 是 unnamed variables，所以你只能用 index expression 來讀取 Array 裡面的 element。
 3. 定義 Array 的方式 `var name[length]elementType`，長度也是型別的一部分，你也可以用常數(constant)來定義長度。
 4. Array Literal 會根據不同的型別，初始化沒有被定義的 element 為 0 或是空。
-5. 可以使用 ellipse，Go 會自動根據 element 來設定 Array 的長度。
+5. 可以使用 ellipsis，Go 會自動根據 element 來設定 Array 的長度。
 6. 可以使用 keyed element 來指定 Array element 的位置。
 7. 可以使用 Multi-Dimensional Array，將 Array 儲存在一個 Array 裡面。
 8. 如果新增一個 Array，Go 會自動複製一份新的 Array 到新的記憶體位置。
