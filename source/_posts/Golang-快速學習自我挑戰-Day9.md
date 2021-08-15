@@ -178,15 +178,212 @@ toc: true
     }
     ```
 ## Slicing：來減少 Slice 吧！
-1. 
+1. Sliceable：可以被 Slice 的任意值，比方說：Array, Slice 和 String 都是 Sliceable。
+2. `newSlice := sliceable[START:STOP]`，START 就是從哪個 index 開始 slice，STOP 就是 slice 到哪個位置（範圍是 index + 1），最後回傳的會是一個新的 Slice。
+3. `msg := []string{"h", "e", "l", "l", "o"}`，`msg[0:1]` 就是 `[]string{"h"}`，`msg[4:5]` 就是 `[]string{"o"}`。如果第一個是最前面的數字，最後面跟長度一樣，就可以省略，比方說 `msg[:]` 回傳 `[]string{"h", "e", "l", "l", "o"}`。如果用 `msg[:6]` 因為沒有這麼長，會出現 `RUNTIME ERROR: Slice bounds out of range`。
+4. 可以在 slice 過後再 append element 上去，`append(msg[:4], "!")`，結果會是 `[]string{"h", "e", "l", "l", "!"}`，但是這邊原本的 Slice 也會變成 `[]string{"h", "e", "l", "l", "!"}`，後面會解釋為什麼有這樣奇怪的現象。
+5. slicing 的範例。可以使用取得長度的方式來取得位置，更加容易閱讀。被 slice 過的 Slice 也可以再次 slice，這稱為 re-slicing。slice 之後會回傳 Slice，如果用 index 的方式則會取得 element 的內容，在下面的範例是 string。
+    ```
+    package main
 
+    import (
+      "fmt"
+      s "github.com/inancgumus/prettyslice"
+    )
 
+    func main() {
+      items := []string{
+        "pacman", "mario", "tetris", "doom", "galaga", "frogger", "asteroids", "simcity", "metroid", "defender", "rayman", "tempest", "ultima",
+      }
 
+      s.MaxPerLine = 4
+      s.Show("items", items)
 
+      top3 := items[:3]
+      s.Show("top 3 items", top3)
 
+      l := len(items)
 
+      last4 := items[l-4:]
+      s.Show("last 4 items", last4)
 
+      mid := last4[1:3]
+      s.Show("mid items", mid)
 
+      fmt.Printf("slicing: %T %[1]q\n", items[2:3])
+      fmt.Printf("indexing: %T %[1]q\n", items[2])
+    }
+    ```
+## 如果使用 Slice 來新增分頁(Pagination)？
+1. 分頁的範例。如果遇到錯誤，可以使用 `printf` 來進行除錯。`Sprintf` 和 `printf` 其實很像，差別在於 `Sprintf` 回傳格式化的 String 而不是列印出來。
+    ```
+    package main
 
+    import (
+      "fmt"
+      s "github.com/inancgumus/prettyslice"
+    )
 
+    func main() {
+      items := []string{
+        "pacman", "mario", "tetris", "doom", "galaga", "frogger", "asteroids", "simcity", "metroid", "defender", "rayman", "tempest", "ultima",
+      }
 
+      const pageSize = 4
+
+      l := len(items)
+      for from := 0; from < l; from+=pageSize {
+        to := from + pageSize
+        if to > l {
+          to = l
+        }
+
+        currentPage := items[from:to]
+
+        head := fmt.Sprintf("Page #%d", (from/pageSize) + 1)
+        s.Show(head, currentPage)
+      }
+    }
+    ```
+## 什麼是 backing Array？
+1. Slice 背後有一個**隱藏的 Array**，也就是 backing Array 儲存在記憶體中，最後回傳的 Slice 會指向那個 Array，Slice 就是指向 backing Array 的一個窗戶。
+2. 使用 Slice 表達式產生的 Slice 會跟原本的 Slice 共享相同的 Array。
+3. indexing Slice 是非常快的，因為 Slice 的 backing Array 是連續的。
+4. 非空值的 Slice 會總是新增新的 Backing Array。例如新增兩個 Slice `ages := []int{35, 15, 25}` 和 `grades := []int{70, 99}`，它們兩個的 backing Array 就是分開的，總結來說，新增不一樣的 Slice，backing Array 是分開的。
+5. 後面修改 ages 也會影響到本來的 agesArray。
+    ```
+    agesArray := [3]int{35, 15, 25}
+    ages := agesArray[0:3]
+    ages[0] = 100
+    ages[2] = 50
+    ```
+6. 這邊你會發現 grades 也被改變了，而且後面的 ptr 指向的是同一個 backing Array。
+    ```
+    package main
+
+    import (
+      s "github.com/inancgumus/prettyslice"
+      "sort"
+    )
+
+    func main() {
+      grades := []float64{40, 10, 20, 50, 60, 70}
+
+      front := grades[:3]
+
+      sort.Float64s(front)
+
+      s.PrintBacking = true
+      s.MaxPerLine = 7
+      s.Show("grades", grades[:])
+      s.Show("front", front)
+    }
+    ====OUTPUT====
+    grades              (len:6  cap:6  ptr:4544)
+    ╔════╗╔════╗╔════╗╔════╗╔════╗╔════╗
+    ║ 10 ║║ 20 ║║ 40 ║║ 50 ║║ 60 ║║ 70 ║
+    ╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝
+      0     1     2     3     4     5  
+    front               (len:3  cap:6  ptr:4544)
+    ╔════╗╔════╗╔════╗+----++----++----+
+    ║ 10 ║║ 20 ║║ 40 ║| 50 || 60 || 70 |
+    ╚════╝╚════╝╚════╝+----++----++----+
+      0     1     2     3     4     5  
+    ```
+7. 這邊新增一個 newGrades 就會發現 ptr 和本來的 grades 不一樣，而 front 則跟 newGrades 共享同一個 backing Array。
+    ```
+    package main
+
+    import (
+      s "github.com/inancgumus/prettyslice"
+      "sort"
+    )
+
+    func main() {
+      grades := []float64{40, 10, 20, 50, 60, 70}
+
+      var newGrades []float64
+      newGrades = append(newGrades, grades...)
+
+      front := newGrades[:3]
+
+      sort.Float64s(front)
+
+      s.PrintBacking = true
+      s.MaxPerLine = 7
+      s.Show("grades", grades[:])
+      s.Show("newGrades", newGrades)
+      s.Show("front", front)
+    }
+    ====OUTPUT====
+    grades              (len:6  cap:6  ptr:2896)
+    ╔════╗╔════╗╔════╗╔════╗╔════╗╔════╗
+    ║ 40 ║║ 10 ║║ 20 ║║ 50 ║║ 60 ║║ 70 ║
+    ╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝
+      0     1     2     3     4     5  
+    newGrades           (len:6  cap:6  ptr:2944)
+    ╔════╗╔════╗╔════╗╔════╗╔════╗╔════╗
+    ║ 10 ║║ 20 ║║ 40 ║║ 50 ║║ 60 ║║ 70 ║
+    ╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝
+      0     1     2     3     4     5  
+    front               (len:3  cap:6  ptr:2944)
+    ╔════╗╔════╗╔════╗+----++----++----+
+    ║ 10 ║║ 20 ║║ 40 ║| 50 || 60 || 70 |
+    ╚════╝╚════╝╚════╝+----++----++----+
+      0     1     2     3     4     5  
+    ```
+8. 可以在 append 的地方直接放入 nil 的 Slice，但是那邊一定要是 Slice，所以使用 `[]float64(nil)`。同時我們新增 front2, front3，看結果你會發現一樣都被排序了，因為它們共享相同的 backing Array。
+    ```
+    package main
+
+    import (
+      s "github.com/inancgumus/prettyslice"
+      "sort"
+    )
+
+    func main() {
+      grades := []float64{40, 10, 20, 50, 60, 70}
+
+      newGrades := append([]float64(nil), grades...)
+
+      front := newGrades[:3]
+      front2 := front[:3]
+      front3 := front2
+
+      sort.Float64s(front)
+
+      s.PrintBacking = true
+      s.MaxPerLine = 7
+      s.Show("grades", grades[:])
+      s.Show("newGrades", newGrades)
+      s.Show("front", front)
+      s.Show("front2", front2)
+      s.Show("front3", front3)
+    }
+    ====OUTPUT====
+     grades              (len:6  cap:6  ptr:4544)
+    ╔════╗╔════╗╔════╗╔════╗╔════╗╔════╗
+    ║ 40 ║║ 10 ║║ 20 ║║ 50 ║║ 60 ║║ 70 ║
+    ╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝
+      0     1     2     3     4     5  
+    newGrades           (len:6  cap:6  ptr:4592)
+    ╔════╗╔════╗╔════╗╔════╗╔════╗╔════╗
+    ║ 10 ║║ 20 ║║ 40 ║║ 50 ║║ 60 ║║ 70 ║
+    ╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝
+      0     1     2     3     4     5  
+    front               (len:3  cap:6  ptr:4592)
+    ╔════╗╔════╗╔════╗+----++----++----+
+    ║ 10 ║║ 20 ║║ 40 ║| 50 || 60 || 70 |
+    ╚════╝╚════╝╚════╝+----++----++----+
+      0     1     2     3     4     5  
+    front2              (len:3  cap:6  ptr:4592)
+    ╔════╗╔════╗╔════╗+----++----++----+
+    ║ 10 ║║ 20 ║║ 40 ║| 50 || 60 || 70 |
+    ╚════╝╚════╝╚════╝+----++----++----+
+      0     1     2     3     4     5  
+    front3              (len:3  cap:6  ptr:4592)
+    ╔════╗╔════╗╔════╗+----++----++----+
+    ║ 10 ║║ 20 ║║ 40 ║| 50 || 60 || 70 |
+    ╚════╝╚════╝╚════╝+----++----++----+
+      0     1     2     3     4     5  
+    ```
