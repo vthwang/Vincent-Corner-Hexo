@@ -10,7 +10,7 @@ toc: true
 <img src="/images/learning/golang/GolangDay10.jpg">
 
 ***
-# 第五章
+# 第五章：Slices 和 Internal
 ## 什麼是 Slice header？
 1. 如果一個 Slice 沒有儲存任何 elements，那它裡面包含什麼？Slice 裡面包含記憶體位置用來指向 backing Array。
 2. Slice header 裡面包含三個內容，Pointer(記憶體位置)、Length(長度) 和 Capacity(空間大小，儲存記憶體實際佔用的大小，你可以使用 `cap()` 來取得 Capacity 的值)。

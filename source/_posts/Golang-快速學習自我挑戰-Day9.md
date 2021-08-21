@@ -10,7 +10,7 @@ toc: true
 <img src="/images/learning/golang/GolangDay09.jpg">
 
 ***
-# 章節五
+# 第五章：Slices 和 Internal
 ## 章節介紹
 1. Slice 是動態的 Array。
 2. 這個章節會學習到的內容。
