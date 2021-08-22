@@ -14,6 +14,9 @@ Vincent is a professional backend programmer with the experience managing small 
 ***
 
 ### _EDUCATION_
+**China Medical University** (September 2016 - June 2017)
+Department of **Traditional Chinese Medicine**, M.S.
+
 **Asia University, Taiwan** (September 2012 - June 2016)
 Department of **Foreign Languages and Literature**, B.A.
 Cumulative GPA: 3.92/4.00
@@ -37,8 +40,9 @@ Working on E-commerce and brand image websites.
 November 2018 - March 2020 (1 year 4 months)
 Responsible for understanding clients' demands, arrange working schedule and coordinate team members to develop API for mimi-program (WeChat App) and mobile Apps.
 
-**Product Manager** at _Maodou Co., Ltd._
-September 2016 - October 2018 (2 year 1 month)
+**Junior PHP Developer** at _Dotech Technology Enterprise Co., Ltd._
+August 2017 - October 2018 (1 year 2 months)
+Help clients build official website by using WordPress and PHP + Mysql. In 2018, I imported Laravel framework and Gitlab Services to our company and applied this development mode to many client's services.
 
 ***
 

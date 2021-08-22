@@ -224,13 +224,168 @@ toc: true
     ```
 # 第十章：Maps 和 Internal
 ## 創建一個英文和土耳其語的 dictionary
-1. 
+1. Maps 允許我們**更快**使用 unique key 去存取資料。
+2. 先使用一般的方式來做查詢，裡面就會有 O(n) 的演算法，在資料越來越多的情況下，速度就會大幅下降。
+    ```
+    package main
 
+    import (
+      "fmt"
+      "os"
+    )
 
+    func main() {
+      args := os.Args[1:]
+      if len(args) != 1 {
+        fmt.Println("[english word] -> [turkish word]")
+        return
+      }
+      query := args[0]
 
+      english := []string{"good", "great", "perfect"}
+      turkish := []string{"iyi", "harika", "mükemmel"}
 
+      for i, w := range english {
+        if query == w {
+          fmt.Printf("%q means %q\n", w, turkish[i])
+          return
+        }
+      }
+      fmt.Printf("%q not found\n", query)
+    }
+    ```
+3. Key 和 Value 的型別不需要相同，他們可以不同。一個 Map key 必須要是可以比較的型別，比方說：`map[int]bool` int 就是可以比較的型別，而如果 `map[[]float64]bool` []float64 就是不能比較的型別，Slice、Map 和 function values 都是不能比較的型別。另外不要使用 float 型別當作 Map key，因為結果會不準確。如果新增 Map 的話，Map 裡面有重複的 key 就會覆蓋，如果沒有重複的 key 就會新增。在取得 Map 的時候，可以增加第二個參數，來確定 Map 裡面是否有資料，如果有資料就會回傳 true。另外 Map 是用來快速查找的，不要用 loop 來取得資料，如果想要用 loop，Slice 會是更好的選項。從 Go 1.12 版本之後，Map 會自動排序，所以 Map 可以進行比較。
+    ```
+    package main
 
+    import (
+      "fmt"
+      "os"
+    )
 
+    func main() {
+      args := os.Args[1:]
+      if len(args) != 1 {
+        fmt.Println("[english word] -> [turkish word]")
+        return
+      }
+      query := args[0]
 
+      dict := map[string]string{
+        "good": "kötü",
+        "great": "harika",
+        "perfect": "mükemmel",
+      }
+      dict["good"] = "iyi"
+      dict["up"] = "yukarı"
+      dict["down"] = "aşağı"
+      dict["mistake"] = ""
 
+      copied := map[string]string{"down":"aşağı", "good":"iyi", "great":"harika", "mistake":"", "perfect":"mükemmel", "up":"yukarı"}
 
+      first := fmt.Sprintf("%s", dict)
+      second := fmt.Sprintf("%s", copied)
+
+      if first == second {
+        fmt.Println("Maps are equal.")
+      }
+
+      if value, ok := dict[query]; ok {
+        fmt.Printf("%q means %#v\n", query, value)
+        return
+      }
+      fmt.Printf("%q not found\n", query)
+
+      fmt.Printf("# of keys: %d\n", len(dict))
+    }
+    ```
+## Map Internal：Map 實際在後面是如何運作的？
+1. Map Header 跟 Slice 一樣，你新增之後，它會一樣指向同一個記憶體位置，所以如果改了其中一個的 value，兩個都會改。跟 Slice 不同的地方是，Map 只有包含記憶體的位址，然後會指向一個 Map Header，這個 Header 裡面包含了很多複雜且可以移動部分的資料類型。
+    ```
+    package main
+
+    import (
+      "fmt"
+      "os"
+    )
+
+    func main() {
+      args := os.Args[1:]
+      if len(args) != 1 {
+        fmt.Println("[english word] -> [turkish word]")
+        return
+      }
+      query := args[0]
+
+      dict := map[string]string{
+        "good": "iyi",
+        "great": "harika",
+        "perfect": "mükemmel",
+      }
+
+      turkish := dict
+      turkish["good"] = "güzel"
+      dict["great"] = "kusursuz"
+      fmt.Printf("english: %q\nturkish: %q\n", dict, turkish)
+
+      if value, ok := dict[query]; ok {
+        fmt.Printf("%q means %#v\n", query, value)
+        return
+      }
+      fmt.Printf("%q not found\n", query)
+
+      fmt.Printf("# of keys: %d\n", len(dict))
+    }
+    ====OUTPUT====
+    english: map["good":"güzel" "great":"kusursuz" "perfect":"mükemmel"]
+    turkish: map["good":"güzel" "great":"kusursuz" "perfect":"mükemmel"]
+    "perfect" means "mükemmel"
+    ```
+2. 使用 make() 複製 Map，第二個參數指定的 length 就是個指示，讓 Go 知道什麼時候去增加 Map 更合適，但是實際的 Map 長度會是 0。delete(mapValue, key) 可以刪除指定 Map 的 key，而且你可以重複一直使用 delete() 不管 key 存在與否。如果使用 `dict = nil` 來刪除 Map 裡面所有的 key，看起來是刪除了，事實上他只是指向別的位置，Map 並沒有真正消失，要用 for loop 來刪除才能真正刪除。下面的範例，將土耳其語再翻譯回去英文，用 make() 來實現。
+    ```
+    package main
+
+    import (
+      "fmt"
+      "os"
+    )
+
+    func main() {
+      args := os.Args[1:]
+      if len(args) != 1 {
+        fmt.Println("[english word] -> [turkish word]")
+        return
+      }
+      query := args[0]
+
+      dict := map[string]string{
+        "good": "iyi",
+        "great": "harika",
+        "perfect": "mükemmel",
+        "awesome": "mükemmel",
+      }
+      
+      // delete all
+      // for k := range dict {
+      // 	delete(dict, k)
+      // }
+
+      turkish := make(map[string]string, len(dict))
+      for k, v := range dict {
+        turkish[v] = k
+      }
+
+      if value, ok := turkish[query]; ok {
+        fmt.Printf("%q means %#v\n", query, value)
+        return
+      }
+
+      if value, ok := dict[query]; ok {
+        fmt.Printf("%q means %#v\n", query, value)
+        return
+      }
+      fmt.Printf("%q not found\n", query)
+
+      fmt.Printf("# of keys: %d\n", len(dict))
+    }
+    ```
