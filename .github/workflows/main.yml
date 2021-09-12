@@ -40,7 +40,7 @@ jobs:
         eval $(ssh-agent)
         ssh-add $HOME/.ssh/deploy_key
         
-        ssh-keyscan 157.245.204.1 > $HOME/.ssh/known_hosts
+        ssh-keyscan 178.128.59.243 > $HOME/.ssh/known_hosts
         
         hexo deploy
 
