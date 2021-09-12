@@ -14,6 +14,9 @@ Vincent is a professional backend programmer with the experience managing small 
 ***
 
 ### _EDUCATION_
+**Syracuse University** (August 2021 - NOW)
+Department of **Computer Science**, M.S.
+
 **China Medical University** (September 2016 - June 2017)
 Department of **Traditional Chinese Medicine**, M.S.
 

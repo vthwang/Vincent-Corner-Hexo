@@ -85,9 +85,9 @@ markdown:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: rsync
-  host: 157.245.204.1
+  host: 178.128.59.243
   user: vincent
-  root: /var/www/vincent-corner/
+  root: /var/www/VincentCorner/
   port: 22
   delete: true
   verbose: true
