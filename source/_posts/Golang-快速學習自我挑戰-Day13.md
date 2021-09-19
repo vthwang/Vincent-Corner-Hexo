@@ -373,12 +373,3 @@ toc: true
       return p
     }
     ```
-## 什麼是 Pointer？
-1. 
-
-
-
-
-
-
-
