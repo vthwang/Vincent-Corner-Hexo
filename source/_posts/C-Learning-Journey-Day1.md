@@ -32,6 +32,30 @@ tags: C++
 5. The second difference between them is Compiler just translate it and it won't execute. However, Interpreter will translate as well as execute.
 6. The third difference between them is after Compile compile the file, you can execute whenever you want. However, Interpreter need to translate every time they run. So if n times you are executing then n times translation will be done.
 7. Compiling Programs are faster because they're independent as a separate program, but Interpreter Language is easy to write.
+# Section 4: Compiler and IDE Setup
+## Practice C++ online Compiler
+1. [Online compiler link](https://www.onlinegdb.com/online_c++_compiler).
+2. You can use the following code to test.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    int main()
+    {
+        int x, y, z;
+        
+        cout << "Enter 2 numbers";
+        cin >> x >> y;
+        z = x + y;
+        cout << "Sum is " << z;
+
+        return 0;
+    }
+    ```
+## Setup Xcode
+1. Install Xcode in the App Store.
+2. New Project -> set name and start working. Left sidebar has a start button to run the code.
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
