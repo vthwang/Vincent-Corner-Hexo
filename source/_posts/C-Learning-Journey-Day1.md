@@ -32,6 +32,51 @@ tags: C++
 5. The second difference between them is Compiler just translate it and it won't execute. However, Interpreter will translate as well as execute.
 6. The third difference between them is after Compile compile the file, you can execute whenever you want. However, Interpreter need to translate every time they run. So if n times you are executing then n times translation will be done.
 7. Compiling Programs are faster because they're independent as a separate program, but Interpreter Language is easy to write.
+# Section 3: Program Development
+## Programming paradigms/Methodologies
+1. Programming Paradigm
+    - Monolithic Programming: Write everything in only one file.
+    - Modular / Procedural Programming: Remove the duplicated code and make function to reuse these code. One benefit is you can share the functions with other projects and other programmers. Second, team work can work, functions can be developed individually. Modular programming has data. In C language, you can group data using structure and process data in functions.
+    - Object-oriented Programming: Put the data and functions related to these data together and defined as a class.
+    - Aspect-oriented/Component Assembly Programming: Talk in the OOP section.
+## What is an Algorithm
+1. Algorithm: You can write the Pseudo-code to perform the algorithm.
+2. Program: You need to follow the syntax to write the program.
+3. Example: find average of list of elements.
+    - Algorithm
+    ```
+    Algorithm Average(List, n)
+    {
+        sum <- o;
+        for each element x in List
+        Begin
+            sum <- sum + x;
+        End;
+        avg <- sum / n;
+        return avg;
+    }
+    ```
+    - Program
+    ```
+    float Average(int L{}, int n)
+    {
+        float sum = 0.0;
+        for (i = 0; i < n; i++)
+        {
+            sum = sum + L{i};
+        }
+        float avg = sum / n;
+        return avg;
+    }
+    ```
+## What is a FlowChart
+1. FlowChart is used for showing the flow of control of a program.
+## Steps for Program Development and Execution
+1. Editing
+2. Compiling
+3. LKinking Library
+4. Loading
+5. Execution: Stack of memory is used for variable creation and code section of memory is used for program itself. Heap of memory is used for dynamic memory allocation.
 # Section 4: Compiler and IDE Setup
 ## Practice C++ online Compiler
 1. [Online compiler link](https://www.onlinegdb.com/online_c++_compiler).
@@ -56,6 +101,8 @@ tags: C++
 ## Setup Xcode
 1. Install Xcode in the App Store.
 2. New Project -> set name and start working. Left sidebar has a start button to run the code.
+# Section 5
+## Skeleton of C++ Program
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
