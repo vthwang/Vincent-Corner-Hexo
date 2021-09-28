@@ -103,6 +103,56 @@ tags: C++
 2. New Project -> set name and start working. Left sidebar has a start button to run the code.
 # Section 5
 ## Skeleton of C++ Program
+1. iostream is a library. int is the main function return type. `cout` can print value on the screen. If you don't want to use `using namespace std;`, you need to add std in front of cout as `std::cout`.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    int main()
+    {
+        cout << "Hello World";
+
+        return 0;
+    }
+    ```
+## Writing My First Program
+1. Every program has three elements: Input, Process, Output.
+2. Add two number's program.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    int main()
+    {
+        int a, b, c;
+        cout << "Enter 2 number";
+        cin >> a >> b;
+        c = a + b;
+        cout << "Addition is " << c;
+        return 0;
+    }
+    ```
+3. Get the name and give welcome message. Use `getline` to get the whole line stead of a word.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    int main()
+    {
+        string name;
+
+        cout << "May I know your name";
+        getline(cin, name);
+
+        cout << "Welcome Mr. Miss" << name;
+        
+        return 0;
+    }
+    ```
+
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
