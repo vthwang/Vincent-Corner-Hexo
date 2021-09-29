@@ -127,10 +127,10 @@ tags: C++
     int main()
     {
         int a, b, c;
-        cout << "Enter 2 number";
+        cout << "Enter 2 numbers";
         cin >> a >> b;
         c = a + b;
-        cout << "Addition is " << c;
+        cout << "Sum is " << c;
         return 0;
     }
     ```
@@ -147,22 +147,178 @@ tags: C++
         cout << "May I know your name";
         getline(cin, name);
 
-        cout << "Welcome Mr. Miss" << name;
+        cout << "Hello " << name;
         
         return 0;
     }
     ```
+## Why Data Types
+1. Data
+    - Numeric
+        - Integer
+        - Floating
+    - Character/Alphabetic
+        - String
+## Primitive Data Types
+1. Data Types
+    - Primitive
+        - Integral
+            - int
+            - char
+        - Bool
+        - Floating Point
+            - float
+            - double
+    - UserDefined
+        - enum
+        - structure
+        - union
+        - class
+    - Derived
+        - Array
+        - Pointer
+        - Reference
+2. Data Type Size
+    | Data Type | Size | Range |
+    | :---: | :---: | :---: |
+    | int | 2 or 4 | -32768 to 32676 |
+    | float | 4 | $-3.4\times10^{-38}$ to $3.4\times10^{38}$ |
+    | double | 8 | $-1.7\times10^{-308}$ to $1.7\times10^{308}$ |
+    | char | 1 | -128 to 127 |
+    | bool | undefined | true/false |
+3. Modifier
+    - unsigned
+        - unsigned integer, range is 0-65535
+        - unsigned char, range is 0-255
+    - long
+        - long int, 4 bytes / 8 bytes
+        - long double, 10 bytes
+## Variables
+1. You must declare variable before you use it.
+2. If you want to declare float, better to add f after the decimal number.
+3. Allowed and not-allowed variables.
+    - √ int x1;
+    - x int 1x;
+    - √ int rollno;
+    - x int roll no;
+    - √ int roll_no;
+    - √ int rollNo;
+    - √ int RollNo;
+## Arithmetic Operators and Expressions
+1. Arithmetic - +, -, *, /, %
+    - % gets the remainder of two numbers.
+    - We can't perform % on the float number.
+    - We can perform % to **char**, using ASCII code do the calculation.
+2. Relational - <, <=, >, >=, ==
+3. Logical - &&, ||, !
+4. Bitwise - &, |, ~, ^
+5. Increment/Decrement - ++, --
+6. Assignment - =
+## Operator Precedence & Expressions
+1. Highest precedence will calculate first.
+    | Operator | Assumed Precedence |
+    | :---: | :---: |
+    | ( ) | 3 |
+    | *, /, % | 2 |
+    | +, - | 1 |
+## Program using Expression
+1. Calculate Triangle Area.
+    ```
+    #include <iostream>
 
+    using namespace std;
+
+    int main()
+    {
+        float b, h, a;
+        cout << "Enter base & height";
+        cin >> b >> h;
+
+        a = (b * h) / 2;
+        cout << "Area is " << a;
+    }
+    ```
+## Practice Problem: Sum of First N Natural Numbers
+1. Formula: n * (n + 1) / 2
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    int main()
+    {
+        int n, sum;
+        cout << "Enter n";
+        cin >> n;
+        sum = n * (n + 1) / 2;
+        cout << "Sum is " << sum;
+        return 0;
+    }
+    ```
+## Practice Problem: Roots of Quadratic Equations
+1. Formula: 
+    - $ax^2 + bx + c = 0$
+    - $r = \frac{-b\pm\sqrt{b^2-4ac}}{2a}$
+2. Program
+    ```
+    #include <iostream>
+    #include <cmath>
+
+    using namespace std;
+
+    int main()
+    {
+        float a, b, c, r1, r2;
+        cout << "Enter a, b, c";
+        cin >> a >> b >> c;
+        r1 = (-b + sqrt( b * b - 4 * a * c)) / (2 * a);
+        r2 = (-b - sqrt( b * b - 4 * a * c)) / (2 * a);
+        cout << "Roots are " << r1 << " " << r2;
+        return 0;
+    }
+    ====EXECUTE====
+    4 8 4
+    ====OUTPUT====
+    Roots are -1 -1
+    ```
+## Demo - Expression
+1. Find the circle area.
+    ```
+    #include <iostream>
+    #include <cmath>
+
+    using namespace std;
+
+    int main()
+    {
+        float r, area;
+        cout << "Enter Radius";
+        cin >> r;
+        area = 3.1425f * r * r;
+        cout << "Area is " << area << endl;
+        
+        return 0;
+    }
+    ```
+2. Find the speed.
+    ```
+    #include <iostream>
+    #include <cmath>
+
+    using namespace std;
+
+    int main()
+    {
+        int u, v, a;
+        float speed;
+        cout << "Enter 3 numbers";
+        cin >> u >> v >> a;
+        speed = (v * v - u * u) / (2 * a);
+        cout << "Speed is " << speed << endl;
+
+        return 0;
+    }
+    ```
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
-
-
-
-
-
-
-
-
-
-
