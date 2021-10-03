@@ -101,7 +101,7 @@ tags: C++
 ## Setup Xcode
 1. Install Xcode in the App Store.
 2. New Project -> set name and start working. Left sidebar has a start button to run the code.
-# Section 5
+# Section 5: C++ Basics
 ## Skeleton of C++ Program
 1. iostream is a library. int is the main function return type. `cout` can print value on the screen. If you don't want to use `using namespace std;`, you need to add std in front of cout as `std::cout`.
     ```

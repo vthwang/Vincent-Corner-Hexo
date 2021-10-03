@@ -10,7 +10,7 @@ tags: C++
 <img src="/images/learning/cplusplus/CPlusPlusDay02.jpg">
 
 ***
-# Section 5
+# Section 5: C++ Basics
 ## Compound Assignment
 1. +=, -=, *=, /=, %=.
 2. &=, |=, <<=, >>=.
@@ -63,6 +63,91 @@ tags: C++
     // x = 6, y = 10, z = 60
     z = ++x * y;
     ```
+## Overflow
+1. Overflow is if a value is more than the capacity, it will take the values from the beginning. For example, `char x = 127;`, `x++;`, then the x will become -128.
+## Bitwise Operators
+1. & and.
+2. | or.
+3. ^ X-OR.
+4. ~ not.
+5. << shift left.
+6. \>\> shift right.
+7. Example.
+    ```
+    int x = 11, y = 7, z;
+
+    // 00001011 & 00000111 = 00000011 (3)
+    z = x & y;
+    cout << z << endl;
+
+    // 00001011 | 00000111 = 00001111 (15)
+    z = x | y;
+
+    // 00001011 ^ 00000111 = 00001100 (12)
+    z = x | y;
+    cout << z << endl;
+    ```
+8. Shift example. If x shift i left `x << i`, the result is $x*2^i$. On the contrary, if x shift i right `x >> i`, the result is $\frac{x}{2^i}$.
+    ```
+    char x = 20, y;
+
+    // 00010100 -> 00101000 (40)
+    y = x << 1;
+    cout << int(y) << endl;
+
+    // 00010100 -> 00001010 (10)
+    y = x >> 1;
+    cout << int(y) << endl;
+    ```
+## Enum and Typedef
+1. If you have a set of words, you want to use them efficiently. You can use enum to make these words as the constant numbers. You can even assign the number to the constant. If you don't assign the number, enum will add one from the previous one to the current word. Here is the example.
+    ```
+    enum day {mon = 1, tue = 7, wed, thu = 10, fri, sat, sun};
+    enum dept {cs = 1, it, ec, mech};
+
+    int main()
+    {
+        dept  dep = cs;
+
+        cout << dep << endl;
+
+        cout << mon << endl;
+        cout << tue << endl;
+        cout << wed << endl;
+        cout << thu << endl;
+        cout << fri << endl;
+        cout << sat << endl;
+        cout << sun << endl;
+
+        return 0;
+    }
+    ====OUTPUT====
+    1
+    1
+    7
+    8
+    10
+    11
+    12
+    13
+    ```
+2. typedef is used for making variable readable. You can define the variables by yourself. For example, you can know m1 means marks and it is int type.
+    ```
+    typedef int marks;
+
+    int main()
+    {
+        marks m1, m2;
+
+        m1 = 50;
+        m2 = 90;
+
+        return 0;
+    }
+    ```
+
+
+
 
 
 # Disclaimer
