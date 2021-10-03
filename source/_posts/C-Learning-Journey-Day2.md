@@ -145,10 +145,151 @@ tags: C++
         return 0;
     }
     ```
+# Section 6
+## Conditional Statement - if
+1. Relational Operators
+    - <
+    - <=
+    - \>
+    - \>=
+    - ==
+    - !=
+## Practice Problem: Finding Maximum of 2 Numbers
+1. Example.
+    ```
+    #include <iostream>
 
+    using namespace std;
 
+    int main()
+    {
+        int x, y;
+        cout << "Enter 2 numbers" << endl;
+        cin >> x >> y;
 
+        if (x > y) {
+            cout << "Max is " << x << endl;
+        } else {
+            cout << "Max is " << y << endl;
+        }
 
+        return 0;
+    }
+    ```
+## Logical Operators
+1. && AND
+2. || OR
+3. ! NOT
+## Nested if
+1. Example: Find the max of 3 numbers.
+    ```
+    int a,b, c;
+    cout << "Enter 3 numbers";
+    cin >> a >> b >> c;
+    
+    if (a > b && a > c) {
+        cout << a;
+    } else if (b > c) {
+        cout << b;
+    } else {
+        cout << c;
+    }
+    ```
+## else if ladder
+1. Example
+    ```
+    int day;
+    cout << "Enter day number";
+    cin >> day;
+    if (day == 1) {
+        cout << "sun";
+    } else if (day == 2) {
+        cout << "mon";
+    } else if (day == 3) {
+        cout << "tue";
+    } else if (day == 4) {
+        cout << "wed";
+    } else if (day == 5) {
+        cout << "thu";
+    } else if (day == 6) {
+        cout << "fri";
+    } else if (day == 7) {
+        cout << "sat";
+    } else {
+        cout << "Invalid Day Input";
+    }
+    ```
+## short circuit
+1. If the logical operator is AND in the statement and the first one is false, the second condition will not be executed since the result will always be false. If the logical operator is OR in the statement and the first one is true, the second condition will not be executed since the result will always be true.
+    ```
+    int a = 15, b = 7, i = 6;
+    if (a < b && ++i <= b) {
+
+    }
+    cout << i << endl;
+    ====OUTPUT====
+    6
+    ```
+## Dynamic Declaration
+1. The variables inside the if block will be removed from the memory after the statement is executed. After the C++ 17, you can declare the variable in the IF statement if you don't want to use it after you ran the if code block.
+    ```
+    int a;
+    if (int k = exp; k < a) {
+        expression;
+    }
+    ```
+2. For loop is as same as the IF statement.
+    ```
+    for (int i = 0; i < 10; i ++) {
+        expression;
+    }
+    // The following line can't be executed.
+    // cout << i;
+    ```
+3. You can put the variable inside another code block, then the variable can't be read outside the code block.
+    ```
+    int a = 10, b = 5;
+
+    {
+        int c = a + b;
+        if (c > 10) {
+        }
+    }
+    
+    // The following line can't be executed.
+    cout << c << endl;
+    ```
+## Switch Case = Branch and Control
+1. Example. Using Switch is faster than if else ladder, it jumps to the case directly.
+    ```
+    int day;
+    cout << "Enter day number";
+    cin >> day;
+
+    switch (day) {
+        case 1:
+            cout << "sun";
+            break;
+        case 2:
+            cout << "mon";
+            break;
+        case 3:
+            cout << "tue";
+            break;
+        case 4:
+            cout << "wed";
+            break;
+        case 5:
+            cout << "thu";
+            break;
+        case 6:
+            cout << "fri";
+            break;
+        case 7:
+            cout << "sat";
+            break;
+    }
+    ```
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
