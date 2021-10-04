@@ -259,7 +259,7 @@ tags: C++
     // The following line can't be executed.
     cout << c << endl;
     ```
-## Switch Case = Branch and Control
+## Switch Case - Branch and Control
 1. Example. Using Switch is faster than if else ladder, it jumps to the case directly.
     ```
     int day;
