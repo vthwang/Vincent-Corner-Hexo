@@ -62,6 +62,42 @@ tags: C++
     }
     ```
 3. for each
+## Infinite loop
+1. You can skip condition in the for and define the initialization and condition somewhere else.
+    ```
+    int i = 0;
+    for (;;)
+    {
+        cout << i << " Hello\n";
+        i++;
+        if (i > 10)
+            break;
+    }
+    ```
+## Multiplication Table
+1. Example.
+    ```
+    int n, i;
+    cout << "Enter n";
+    cin >> n;
+    for (i = 1; i <= 10; i++) {
+        cout << n << " x " << i << " = " << n * i << endl;
+    }
+    ```
+## Find GDC of 2 numbers
+1. Example.
+    ```
+    int m, n;
+    cout << "Enter 2 numbers";
+    cin >> m >> n;
+    while (m != n) {
+        if (m > n)
+            m -= n;
+        else
+            n -= m;
+    }
+    cout << "GCD is " << m << endl;
+    ```
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
