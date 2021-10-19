@@ -149,6 +149,188 @@ tags:
     12
     0x7ffee33ae828 0x7ffee33ae828
     ```
+# Section 10: String
+## Introduction
+1. There are two ways to represent the String.
+    - Using char Array
+    - class string
+2. Declaring and Initializing String
+    - `char x = 'A';`
+    - `char S[10] = "Hello";`
+    - `char S[] = {'H', 'e', 'l', 'l', 'o', '\0'};`
+    - `char S[] = {65, 66, 67, 68, '\n'};`
+    - `char * S = "Hello";`
+3. If you put the letters after `\0`, those letters won't show.
+    ```
+    char H[] = {'H', 'e', 'l', 'l', 'o', '\0', 'p', 'p', 'p'};
+    cout << H << endl;
+    char S[] = {65, 66, 67, 68, 69, 0, 70, 71};
+    cout << S << endl;
+    ====OUTPUT====
+    Hello
+    ABCDE
+    ```
+## Reading and Writing String
+1. You can use `cin.get()` and `cin.getline()` to write a string.
+2. If you try to get two string using `cin.getline()`, remember to use `cin.ignore()` to avoid the second cin get extra content from the first cin.
+    ```
+    char s[100];
+    char s2[100];
+
+    cout << "Enter your Name ";
+    cin.get(s, 100);
+
+    cout << "Welcome " << s << endl;
+
+    cin.ignore();
+
+    cout << "Enter your Name Again ";
+    cin.get(s2, 100);
+
+    cout << "Welcome " << s2 << endl;
+    ```
+## String Functions - Length, Concatenate and Copy
+1. `strlen(str1);` to get the length of string.
+    ```
+    #include <iostream>
+    #include <cstring>
+
+    using namespace std;
+
+    int main()
+    {
+        char *s;
+
+        cout << "Enter a String ";
+        cin.getline(s, 100);
+
+        cout << "Length " << strlen(s) << endl;
+
+        return 0;
+    }
+    ====OUTPUT====
+    Enter a String Hello World
+    Length 11
+    ```
+2. `strcat(destination, source);` concatenates two words.
+    ```
+    char S1[20] = "Good";
+    char S2[10] = "Mourning";
+
+    strcat(S1, S2);
+
+    cout << S1 << endl;
+    ====OUTPUT====
+    GoodMourning
+    ```
+3. `strncat(destination, source, length);` concatenates two words with certain length.
+    ```
+    char S1[20] = "Good";
+    char S2[10] = "Mourning";
+
+    strncat(S1, S2, 3);
+
+    cout << S1 << endl;
+    ====OUTPUT====
+    GoodMou
+    ```
+4. `strcpy(destination, source);` copies source string to destination string.
+    ```
+    char S1[20] = "Good";
+    char S2[10] = "";
+
+    strcpy(S2, S1);
+
+    cout << S2 << endl;
+    ====OUTPUT====
+    Good
+    ```
+5. `strncpy(destination, source, length);` copies source string to destination string with certain length.
+    ```
+    char S1[20] = "Good";
+    char S2[10] = "";
+
+    strncpy(S2, S1, 2);
+
+    cout << S2 << endl;
+    ====OUTPUT====
+    Go
+    ```
+## String Function - Substring and Compare
+1. `strstr(main, sub);` can substring with certain string, it returns the string from sub to the rest of main string.
+    ```
+    char S1[20] = "Programming";
+    char S2[10] = "gram";
+
+    cout << strstr(S1, S2) << endl;
+    ====OUTPUT====
+    gramming
+    ```
+2. If you use `strstr` in the sub string which is not in the main string, it returns null.
+    ```
+    char S1[20] = "Programming";
+    char S2[10] = "k";
+
+    if (strstr(S1, S2) != NULL)
+        cout << strstr(S1, S2) << endl;
+    else
+        cout << "Not Found" << endl;
+    ====OUTPUT====
+    Not Found
+    ```
+3. The function of `strchr(main, char);` is as same as `strstr`, the only difference is the second parameter is char type.
+4. `strrchr(main, char);` can return the string count from the right hand side.
+    ```
+    char S1[20] = "Programming";
+
+    cout << strchr(S1, 'g') << endl;
+    cout << strrchr(S1, 'g') << endl;
+    ====OUTPUT====
+    gramming
+    g
+    ```
+5. `strcmp(str1, str2)` will return 0 when the two strings are the same. It will return positive number if str1 is greater than str2, and vice versa.
+    ```
+    char s1[20] = "minor";
+    char s2[20] = "elder";
+
+    cout << strcmp(s1, s2) << endl;
+    ====OUTPUT====
+    8
+    ```
+## String Functions - Tokenizer and To Integer
+1. `strtol(str1, NULL, base)` means string to long. `strtof(str1, NULL)` means string to float.
+    ```
+    char s1[10] = "235";
+    char s2[10] = "54.78";
+
+    long int x = strtol(s1, NULL, 10);
+    float y= strtof(s2, NULL);
+
+    cout << x + 10 << endl << y - 5 << endl;
+    ====OUTPUT====
+    245
+    49.78
+    ```
+2. `strtok(str1, "=;")` tokenize a string base on the symbols.
+    ```
+    char s1[20] = "x=10;y=20;z=35";
+
+    char *token = strtok(s1, "=;");
+
+    while (token != NULL)
+    {
+        cout << token << endl;
+        token = strtok(NULL, "=;");
+    }
+    ====OUTPUT====
+    x
+    10
+    y
+    20
+    z
+    35
+    ```
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
