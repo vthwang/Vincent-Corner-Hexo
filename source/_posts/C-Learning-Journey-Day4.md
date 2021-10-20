@@ -4,8 +4,8 @@ thumbnail:
   - /images/learning/cplusplus/CPlusPlusDay04.jpg
 toc: true
 date: 2021-10-10 19:22:24
-categories:
-tags:
+categories: Study Note
+tags: C++
 ---
 <img src="/images/learning/cplusplus/CPlusPlusDay04.jpg">
 
