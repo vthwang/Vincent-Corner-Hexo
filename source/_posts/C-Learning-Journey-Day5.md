@@ -306,8 +306,119 @@ tags: C++
     YADOT
     TODAY
     ```
+## Find Length of a String
+1. There are two ways to find the length of a string, use `str[i] != '\0'` or iterator.
+    ```
+    string str = "test";
 
+    int count = 0;
 
+    for (int i = 0; str[i] != '\0'; i++) {
+        count++;
+    }
+
+    cout << count << endl;
+
+    int iteratorCount = 0;
+
+    string::iterator it;
+    for (it = str.begin(); it != str.end(); it++) {
+        iteratorCount++;
+    }
+
+    cout << iteratorCount << endl;
+    ====OUTPUT====
+    4
+    4
+    ```
+## Practice Problem: Change Cases of Letters
+1. Change to lowercase example.
+    ```
+    string str = "WELCOmE";
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] >= 65 && str[i] <= 90) {
+            str[i] += 32;
+        }
+    }
+
+    cout << str << endl;
+    ====OUTPUT====
+    welcome
+    ```
+2. Change to uppercase example.
+    ```
+    string str = "welcome5";
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] >= 97 && str[i] <= 122) {
+            str[i] -= 32;
+        }
+    }
+
+    cout << str << endl;
+    ```
+## Practice Problem: Count Vowels and Words in a String
+1. Example.
+    ```
+    string str = "how Many wOrds";
+    int vowels = 0, consonant = 0, space = 0;
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U' || str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u')
+            vowels++;
+        else if (str[i] == ' ')
+            space++;
+        else
+            consonant++;
+    }
+
+    cout << "Vowels " << vowels << endl;
+    cout << "Consonants " << consonant << endl;
+    cout << "Words " << space + 1 << endl;
+    ====OUTPUT====
+    Vowels 3
+    Consonants 9
+    Words 3
+    ```
+## Practice Problem: Checking Palindrome
+1. Example.
+    ```
+    string str = "MADAM";
+    string rev = "";
+
+    int len = (int) str.length();
+
+    rev.resize(len);
+
+    for (int i = 0, j = len - 1; i < len; i++, j--) {
+        rev[i] = str[j];
+    }
+    rev[len] = '\0';
+
+    cout << rev << endl;
+
+    if (str.compare(rev) == 0)
+        cout << "Palindrome" << endl;
+    else
+        cout << "Not a Palindrome" << endl;
+    ====OUTPUT====
+    MADAM
+    Palindrome
+    ```
+## Practice Problem: Find username from email address
+1. Example.
+    ```
+    string email = "john123@gmail.com";
+
+    int i = (int) email.find('@');
+
+    string uname = email.substr(0, i);
+
+    cout << "User Name is " << uname << endl;
+    ====OUTPUT====
+    User Name is john123
+    ```
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
