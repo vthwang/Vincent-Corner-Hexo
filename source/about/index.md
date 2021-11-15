@@ -28,7 +28,7 @@ Cumulative GPA: 3.92/4.00
 
 ### _EXPERIENCE_
 **System Architect** at _Dotech Technology Co., Ltd._
-Sep 2020 - NOW
+Sep 2020 - Oct 2021 (1 year 1 month)
 Help enterprise renew the official website and re-define old corporation identify with modern design. In the meantime, I try to abort old language and framework, and rebuild the whole company's ecosystem. I'm still doing it. If I have any progress, I will mention it in my blog in the future.
 
 **Senior PHP Developer** at _Muki Corporation Co., Ltd._
