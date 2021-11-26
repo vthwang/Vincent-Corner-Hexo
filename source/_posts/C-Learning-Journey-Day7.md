@@ -326,6 +326,140 @@ tags: C++
         return 0;
     }
     ```
+## All Types of Functions in a Class
+1. A complete Class example.
+    ```
+    class Rectangle
+    {
+    private:
+        int length;
+        int breadth;
+    public:
+        // Constructor
+        Rectangle();
+        Rectangle(int l, int b);
+        Rectangle(Rectangle &r);
+        // Mutator
+        void setLength(int l);
+        void setBreadth(int b);
+        // Accessor
+        int getLength();
+        int getBreadth();
+        // Facilitators
+        int area();
+        int perimeter();
+        bool isSquare();
+        // Destructor
+        ~Rectangle();
+    };
+    ```
+## Scope Resolution Operator
+1. The best practice in C++ should use function outside the class, inline function should only have simple logic.
+2. Complete Example
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    class Rectangle
+    {
+    private:
+        int length;
+        int breadth;
+    public:
+        // Constructor
+        Rectangle();
+        Rectangle(int l, int b);
+        Rectangle(Rectangle &r);
+        // Mutator
+        void setLength(int l);
+        void setBreadth(int b);
+        // Accessor
+        int getLength() { return length; };
+        int getBreadth() { return breadth; };
+        // Facilitators
+        int area();
+        int perimeter();
+        bool isSquare();
+        // Destructor
+        ~Rectangle();
+    };
+
+    int main()
+    {
+        Rectangle r1(10, 10);
+        cout << "Area " << r1.area() << endl;
+        if (r1.isSquare())
+                cout << "Yes" << endl;
+
+        return 0;
+    }
+
+    Rectangle::Rectangle()
+    {
+        length = 1;
+        breadth = 1;
+    }
+
+    Rectangle::Rectangle(int l, int b)
+    {
+        length = l;
+        breadth = b;
+    }
+
+    Rectangle::Rectangle(Rectangle &r)
+    {
+        length = r.length;
+        breadth = r.breadth;
+    }
+
+    void Rectangle::setLength(int l)
+    {
+        length = l;
+    }
+
+    void Rectangle::setBreadth(int b)
+    {
+        breadth = b;
+    }
+
+    int Rectangle::area()
+    {
+        return length * breadth;
+    }
+
+    int Rectangle::perimeter()
+    {
+        return 2 * (length + breadth);
+    }
+
+    bool Rectangle::isSquare()
+    {
+        return length == breadth;
+    }
+
+    Rectangle::~Rectangle()
+    {
+        cout << "Rectangle Destroyed";
+    }
+    ====OUTPUT====
+    Area 100
+    Yes
+    Rectangle Destroyed
+    ```
+## Inline Functions
+1. If you put your code inline in the class, machine will generate your code inside the main. If your code isn't inline, the code will be generated outside the main. Moreover, you can add `inline` keyword in front of the function, machine will generate your code inside the main even if you put your function outside the class.
+## This pointer
+1. If the class private variables' name are as same as the class input of a function, we can use `this->variable_name` to point to the class private variables.
+    ```
+    Rectangle::Rectangle(int length, int breadth)
+    {
+        this->length = length;
+        this->breadth = breadth;
+    }
+    ```
+## Struct v.s. Class
+1. The only difference between Struct and Class is everything in the Struct are public by default. And, everything in the Class are private by default.
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
