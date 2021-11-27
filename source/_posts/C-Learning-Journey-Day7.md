@@ -150,7 +150,7 @@ tags: C++
                 length = 0;
         }
 
-        void setBreath(int b)
+        void setBreadth(int b)
         {
             if (b >= 0)
                 breadth = b;
@@ -183,7 +183,7 @@ tags: C++
     {
         Rectangle r;
         r.setLength(10);
-        r.setBreath(-5);
+        r.setBreadth(-5);
         cout << r.area() << endl;
         cout << "Length is " << r.getLength() << endl;
         cout << "Breadth is " << r.getBreadth() << endl;
@@ -223,7 +223,7 @@ tags: C++
         Rectangle(int l, int b)
         {
             setLength(l);
-            setBreath(b);
+            setBreadth(b);
         }
 
         Rectangle(Rectangle &r)
@@ -240,7 +240,7 @@ tags: C++
                 length = 0;
         }
 
-        void setBreath(int b)
+        void setBreadth(int b)
         {
             if (b >= 0)
                 breadth = b;
@@ -289,7 +289,7 @@ tags: C++
     Rectangle(int l = 0, int b = 0)
     {
         setLength(l);
-        setBreath(b);
+        setBreadth(b);
     }
     ```
 ## Deep Copy Constructor
