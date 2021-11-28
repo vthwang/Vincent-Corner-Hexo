@@ -245,9 +245,157 @@ tags: C++
     150
     50
     ```
+## Constructors in Inheritance
+1. When you call a derived class, it will call the default constructor of the base class first and then call  the constructor of the derived class.
+2. Example.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    class Base
+    {
+    public:
+        Base() { cout << "Non-param Base" << endl; }
+        Base(int x) { cout << "Param of Base " << x << endl; }
+    };
+
+    class Derived : public Base
+    {
+    public:
+        Derived() { cout << "Non-param Derived" << endl; }
+        Derived(int y) { cout << "Param of Derived " << y << endl; }
+        Derived(int x, int y) : Base(x)
+        {
+            cout << "Param of Derived " << y << endl;
+        }
+    };
+
+    int main()
+    {
+        Derived d;
+        Derived d2(10);
+        Derived d3(5, 10);
+
+        return 0;
+    }
+    ====OUTPUT====
+    Non-param Base
+    Non-param Derived
+    Non-param Base
+    Param of Derived 10
+    Param of Base 5
+    Param of Derived 10
+    ```
+## isA and hasA
+1. There are two ways for a class: A class can be derived(isA). Object of a class can be used(hasA).
+## Access Specifiers
+1. When you create an object of a class, you cannot access all members except public members.
+2. When you want to call the variables of the base class in the derived class, you can only access the protected and public members.
+## Types of Inheritance
+1. Simple/Single: Cuboid inheritance from Rectangle.
+2. Hierarchical: Rectangle, Circle and Quadrilateral inheritance from Shape.
+3. Multilevel: Cylinder inheritance from Circle, Circle inheritance from Point.
+4. Multiple: Smart Phone inheritance from Phone and Camera.
+5. Hybrid: mix hierarchical and multilevel or multiple. D inheritance from B and C, B and C inheritance from A.
+    ```
+    class A
+    {
+      ...
+    };
+    class B : virtual public A
+    {
+      ...
+    };
+    class C : virtual public A
+    {
+      ...
+    };
+    class D : public B, public C
+    {
+      ...
+    };
+    ```
+## Ways of Inheritance
+1. If you inheritance publicly, you can access all the members except the private member. If you inheritance protected class, the public and protected members become protected in child class.
+2. If you inheritance privately, the public and protected members become private in child class. Thus, you can access those members in the child class, but you can't access them in the grandchild members since they are private in the child class.
+## Generalization and Specialization
+1. Something is existing, then you are deriving something from that one and defining a new class. It's specialization.
+2. The child classes are existing, then you are defining a base class for them. It's Generalization.
+
+# Section 15: Base Class Pointer Derived Class Object
+## Base Class Pointer Derived Class Object
+1. You can only call the base class functions when you initiate the pointer with base class.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    class Base
+    {
+    public:
+        void fun1();
+        void fun2();
+        void fun3();
+    };
+
+    class Derived : public Base
+    {
+    public:
+        void fun4();
+        void fun5();
+    };
+
+    int main()
+    {
+        Base *p;
+        p = new Derived();
+        p->fun1();
+        p->fun2();
+        p->fun3();
+        // p->fun4(); // Can't Work
+        // p->fun5(); // Can't Work
+        
+        return 0;
+    }
+    ```
+2. Example: you can only create a pointer of a base class to point to the child class. If we define the base class is Rectangle and derived class is cuboid, you want to initialize `Cuboid *ptr = &r;` which would get the error message. Because you can't say Rectangle is Cuboid which fits the real world rule.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    class Base
+    {
+    public:
+        void fun1()
+        {
+            cout << "fun1 of Base" << endl;
+        }
+    };
+
+    class Derived : public Base
+    {
+    public:
+        void fun2()
+        {
+            cout << "fun2 of Derived" << endl;
+        }
+    };
+
+    int main()
+    {
+        Derived d;
+        Base *ptr = & d;
+        ptr->fun1();
+        
+        // Can't work
+        // Base b;
+        // Derived *ptr = &b;
+
+        return 0;
+    }
+    ```
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
-
-
-
