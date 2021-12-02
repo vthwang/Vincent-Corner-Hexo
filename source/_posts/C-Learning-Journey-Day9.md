@@ -164,6 +164,115 @@ tags: C++
 3. When you use pure virtual functions in the base class, they are the abstract class.
 4. If you make a class as abstract class, you can't initialize it. For example, `Car c;` is not allowed.
 5. If the sub-class didn't overwrite the virtual functions from the base class, the sbu-class will also become abstract class.
+# Section 17: Friend and Static Members / Inner Classes
+## Friend Function and Classes
+1. Friend function is a global function outside function which can access all the members of a class.
+2. When you declare the friend function, you need to add the class name before calling the class as friend.
+3. Example.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    class Your;
+    class My
+    {
+    private: int a;
+    protected: int b;
+    public: int c;
+        friend Your;
+    };
+
+    class Your
+    {
+    public:
+        My m;
+        void fun()
+        {
+            m.a = 10;
+            m.b = 10;
+            m.c = 10;
+        }
+    };
+    ```
+## Static Members
+1. Static variables are static data members of a class belongs to a class that doesn't belong to an object, and all the objects can share it.
+2. When you declare a static members inside the class, that data member must also be declared outside the class using scope resolution.
+3. You can access the static members by object or class.
+4. Static member functions can access only static data members of a class.
+5. Example:
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    class Test
+    {
+    public:
+        int a;
+        static int count;
+
+        Test()
+        {
+            a = 10;
+            count ++;
+        }
+
+        static int getCount()
+        {
+            // a++; // invalid
+            return count;
+        }
+    };
+
+    int Test::count = 0;
+
+    int main()
+    {
+        Test t1, t2;
+        cout << t1.count << endl;
+        cout << t2.count << endl;
+        t1.count = 25;
+        cout << t2.count << endl;
+        cout << Test::count << endl;
+
+        cout << Test::getCount() << endl;
+        cout << t1.getCount() << endl;
+
+        return 0;
+    }
+    ====OUTPUT====
+    2
+    2
+    25
+    25
+    25
+    25
+    ```
+## Inner / Nested Class
+1. Inner Class can access the members of the outer class if they are static.
+2. Outer Class can access all the members of the inner class and create a object of the inner class.
+3. Example.
+    ```
+    class Outer
+    {
+    public:
+        void fun()
+        {
+            i.display();
+        }
+
+        class Inner
+        {
+        public:
+            void display()
+            {
+                cout << "Display of Inner" << endl;
+            }
+        };
+        Inner i;
+    };
+    ```
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
