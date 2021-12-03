@@ -273,6 +273,172 @@ tags: C++
         Inner i;
     };
     ```
+# Section 18: Exception Handling
+## Exception Handling
+1. Error types and solutions.
+    - Syntax Error - Compiler
+    - Logical Error - Debugger
+    - Runtime Error -  Caused by (1) bad input (2) problem with resources, using Exception to solve.
+## Exception Handling Construct
+1. Example.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    int main()
+    {
+        int a = 10, b = 0, c;
+
+        try
+        {
+            if (b == 0)
+                throw 20;
+            c = a / b;
+            cout << c;
+        }
+        catch (int e)
+        {
+            cout << "Divided by zero " << "error code " << e << endl;
+        }
+
+        cout << "Bye" << endl;
+
+        return 0;
+    }
+    ====OUTPUT====
+    Divided by zero error code 20
+    Bye
+    ```
+## Throw and Catch Between Functions
+1. Error can also be implemented by if else, but the most powerful thing in try catch function is that you can throw the error from other functions.
+2. Example.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    int division(int x, int y)
+    {
+        if (y == 0)
+            throw 1;
+        else
+            return x / y;
+    }
+
+    int main()
+    {
+        int a = 10, b = 0, c;
+
+        try
+        {
+            c = division(a, b);
+            cout << c << endl;
+        }
+        catch (int e)
+        {
+            cout << "Divided by zero " << "error code " << e << endl;
+        }
+
+        cout << "Bye" << endl;
+
+        return 0;
+    }
+    ====OUTPUT====
+    Divided by zero error code 20
+    Bye
+    ```
+## All About Throw
+1. You can throw anything, such as int, float, string, etc.
+2. You can define your own Exception class. Example.
+    ```
+    class MyException : exception
+    {
+    };
+    ```
+2. Using `throw` after the function to declare the throw type.
+    ```
+    int division(int x, int y) throw (int)
+    {
+        if (y == 0)
+            throw 10;
+        return x / y;
+    }
+    ```
+## All About Catch
+1. You can have multiple catch blocks. `...` means catch all, but it can only use in the last block. If you use `...` in the first catch block, it will catch all of errors in the first block.
+    ```
+    try
+    {
+      ... int
+      ... float
+      ... myException
+    }
+    catch(int e)
+    {
+
+    }
+    catch(myException e)
+    {
+
+    }
+    catch(...)
+    {
+
+    }
+    ```
+2. Try catch can do nesting.
+    ```
+    try
+    {
+        try
+        {
+            
+        }
+        catch (int e)
+        {
+            
+        }
+    }
+    catch (int e)
+    {
+        
+    }
+    ```
+3. If you write your own Exception class, the child class must put before the base class. Here is an example.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    class MyException1
+    {
+        
+    };
+
+    class MyException2 : public MyException1
+    {
+        
+    };
+
+    int main()
+    {
+        try
+        {
+            
+        }
+        catch (MyException2 e)
+        {
+            
+        }
+        catch (MyException1 e)
+        {
+
+        }
+
+        return 0;
+    }
+    ```
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
