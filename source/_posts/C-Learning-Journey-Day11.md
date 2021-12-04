@@ -152,6 +152,38 @@ tags: C++
     125.731000
     1.257310e+02
     ```
+3. Other Manipulators: `set()`, `left`, `right`, `ws`.
+# Section 23: STL
+## Why STL
+1. STL = Standard Template Library.
+2. Storing the collection of values, you need data structure.
+3. You want to save data in efficient time and space, you need STL.
+## Types of Data Structures
+1. Data Structures.
+    - Array
+    - Singly LinkedList
+    - Doubly LinkedList
+    - Stack
+    - Queue
+    - Deque
+    - Priority Queue
+    - map
+    - set
+## STL Classes
+1. STL has the following classes.
+    - Algorithms: search(), sort(), binary-search(), reverse(), concat(), copy(), union(), intersection(), merge(), Heap().
+    - Containers(Contain collection of data)
+        - vector(self-managed array, it can resize the length of array automatically): push_back(), pop_back(), insert(), remove(), size(), empty().
+        - list(doubly linkedList): push_front(), pop_front(), push_back(), pop_back(), insert(), remove(), size(), empty(), front(), back().
+        - forward_list(singly linkedList): push_front(), pop_front(), push_back(), pop_back(), insert(), remove(), size(), empty(), front(), back().
+        - deque: push_front(), pop_front(), push_back(), pop_back(), insert(), remove(), size(), empty(), front(), back().
+        - priority_queue(max heap): push(), pop(), empty(), size().
+        - stack(LIFO)
+        - set(unique element)
+        - multiset(allow duplicate)
+        - map(Hashtable): It can store `<key, value>` pair. It has to contain unique keys.
+        - muttimap: keys can be duplicated, but same key value map can't be here.
+    - Iterators
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
