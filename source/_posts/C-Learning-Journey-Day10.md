@@ -3,7 +3,7 @@ title: C++ Learning Journey Day10
 thumbnail:
   - /images/learning/cplusplus/CPlusPlusDay10.jpg
 toc: true
-date: 2021-12-03 00:21:07
+date: 2021-12-02 00:21:07
 categories: Study Note
 tags: C++
 ---
