@@ -184,6 +184,148 @@ tags: C++
         - map(Hashtable): It can store `<key, value>` pair. It has to contain unique keys.
         - muttimap: keys can be duplicated, but same key value map can't be here.
     - Iterators
+2. You can focus on add and remove data, here is an example.
+    ```
+    #include <iostream>
+    #include<vector>
+
+    using namespace std;
+
+    int main()
+    {
+        vector<int> v = { 10, 20, 40, 90 }; // default size is 16
+        v.push_back(25);
+        v.push_back(70);
+        v.pop_back();
+
+        for (int x : v)
+            cout << x << " ";
+
+        cout << endl;
+
+        vector<int>::iterator itr;
+        for (itr = v.begin(); itr != v.end(); itr++)
+            cout << *itr << " ";
+        
+        return 0;
+    }
+    ```
+3. If you change the iterator's data, you will change the data directly.
+    ```
+    #include <iostream>
+    #include<vector>
+
+    using namespace std;
+
+    int main()
+    {
+        vector<int> v = { 2, 4, 6, 8, 10 }; // default size is 16
+        v.push_back(20);
+        v.push_back(30);
+
+        cout << "using Iterator" << endl;
+        vector<int>::iterator itr;
+        for (itr = v.begin(); itr != v.end(); itr++)
+            cout << ++*itr << " ";
+
+        cout << endl;
+
+        for (int x : v)
+            cout << x << " ";
+
+        return 0;
+    }
+    ====OUTPUT====
+    using Iterator
+    3 5 7 9 11 21 31 
+    3 5 7 9 11 21 31 
+    ```
+4. You can change vector to list or forward_list.
+    ```
+    #include <iostream>
+    #include<forward_list>
+
+    using namespace std;
+
+    int main()
+    {
+        forward_list<int> v = { 2, 4, 6, 8, 10 }; // default size is 16
+        v.push_front(20);
+        v.push_front(30);
+
+        cout << "using Iterator" << endl;
+        forward_list<int>::iterator itr;
+        for (itr = v.begin(); itr != v.end(); itr++)
+            cout << ++*itr << " ";
+
+        cout << endl;
+
+        for (int x : v)
+            cout << x << " ";
+
+        return 0;
+    }
+    ```
+5. You can not change set value and it use `insert` to add data.
+    ```
+    #include <iostream>
+    #include<set>
+
+    using namespace std;
+
+    int main()
+    {
+        set<int> v = { 2, 4, 6, 8, 10 }; // default size is 16
+        v.insert(20);
+        v.insert(30);
+
+        cout << "using Iterator" << endl;
+        set<int>::iterator itr;
+        for (itr = v.begin(); itr != v.end(); itr++)
+            cout << *itr << " ";
+
+        cout << endl;
+
+        for (int x : v)
+            cout << x << " ";
+
+        return 0;
+    }
+    ```
+## Map Classes
+1. Example.
+    ```
+    #include <iostream>
+    #include<map>
+
+    using namespace std;
+
+    int main()
+    {
+        map<int, string> m;
+        m.insert(pair<int, string>(1, "john"));
+        m.insert(pair<int, string>(2, "Ravi"));
+        m.insert(pair<int, string>(3, "Khan"));
+
+        map<int, string>::iterator itr;
+        for (itr = m.begin(); itr != m.end(); itr++) {
+            cout << itr->first << " " << itr->second << endl;
+        }
+
+        map<int, string>::iterator itr1;
+        itr1 = m.find(2);
+        cout << "Value found is ";
+        cout << itr1->first << " " << itr1->second << endl;
+
+
+        return 0;
+    }
+    ====OUTPUT====
+    1 john
+    2 Ravi
+    3 Khan
+    Value found is 2 Ravi
+    ```
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
