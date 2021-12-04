@@ -232,6 +232,126 @@ tags: C++
     First
     Second
     ```
+# Section 21: Destructor and Virtual Destructors
+## Destructor
+1. Constructor is used for initialization purpose. The other usage of constructor is allocating the resources. Destructor is used for allocating resources and releasing the resources.
+2. You can have multiple constructor, but you can only have one destructor.
+3. Example.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    class Demo
+    {
+        int *p;
+    public:
+        Demo()
+        {
+            p = new int[10];
+            cout << "Constructor of Demo" << endl;
+        }
+        ~Demo()
+        {
+            delete []p;
+            cout << "Destructor of Demo" << endl;
+        }
+    };
+
+    void fun()
+    {
+        Demo *p = new Demo();
+        delete p;
+    }
+
+    int main()
+    {
+        fun();
+        return 0;
+    }
+    ```
+## Virtual Destructor
+1. Using inheritance, the derived class destructor is called first and then the base destructor is called. Here is an example.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    class Base
+    {
+    public:
+        Base() { cout << "Constructor of Base" << endl; }
+        ~Base()
+        {
+            cout << "Destructor of Base" << endl;
+        }
+    };
+
+    class Derived : public Base
+    {
+    public:
+        Derived() { cout << "Constructor of Derived" << endl; }
+        ~Derived()
+        {
+            cout << "Destructor of Derived" << endl;
+        }
+    };
+
+    void fun()
+    {
+        Derived d;
+    }
+
+    int main()
+    {
+        fun();
+        return 0;
+    }
+    ====OUTPUT====
+    Constructor of Base
+    Constructor of Derived
+    Destructor of Derived
+    Destructor of Base
+    ```
+2. If you use `Base *p = new Derived;` to initialize the class, you will call the destructor of the Base class when you delete the object. Therefore, you need to use `virtual ~Base()` in the Base class to call the Derived class destructor.
+    ```
+    #include <iostream>
+
+    using namespace std;
+
+    class Base
+    {
+    public:
+        virtual ~Base()
+        {
+            cout << "Destructor of Base" << endl;
+        }
+    };
+
+    class Derived : public Base
+    {
+    public:
+        ~Derived()
+        {
+            cout << "Destructor of Derived" << endl;
+        }
+    };
+
+    void fun()
+    {
+        Base *p = new Derived();
+        delete p;
+    }
+
+    int main()
+    {
+        fun();
+        return 0;
+    }
+    ====OUTPUT====
+    Destructor of Derived
+    Destructor of Base
+    ```
 
 # Disclaimer
 > I took this course from Udemy, which is [Learn C++ Programming -Beginner to Advance- Deep Dive in C++](https://www.udemy.com/course/cpp-deep-dive). I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.
