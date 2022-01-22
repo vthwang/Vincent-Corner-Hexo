@@ -18,10 +18,10 @@ customize:
     thumbnail: true # enable posts thumbnail, options: true, false
     favicon: images/vincent.ico
     social_links: # for more icons, please see http://fontawesome.io/icons/#brand
-        facebook-official: https://www.facebook.com/VincentTingSyuanWang
-        linkedin-square: https://www.linkedin.com/in/tingsyuanwang/
-        twitter: https://twitter.com/T_S_Wang
-        #instagram: https://www.facebook.com/VincentTingSyuanWang
+        facebook-official: https://www.facebook.com/twang443
+        linkedin-square: https://www.linkedin.com/in/twang443
+        twitter: https://twitter.com/twang443
+        instagram: https://www.instagram.com/twang443
         github: https://github.com/TingSyuanWang
 
 # Widgets
