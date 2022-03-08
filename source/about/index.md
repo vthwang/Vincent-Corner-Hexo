@@ -28,8 +28,8 @@ Cumulative GPA: 3.92/4.00
 
 ### _EXPERIENCE_
 **Software Engineer** at _IC3 Network Co., Ltd._
-Location: Paris, France (Remote)
 Jan 2022 - NOW
+Location: Paris, France (Remote)
 Use Golang as the main development language. Running the apps on the Kubernetes.
 
 **System Architect** at _Dotech Technology Co., Ltd._
