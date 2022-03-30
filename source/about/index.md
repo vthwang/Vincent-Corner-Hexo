@@ -93,5 +93,7 @@ Location: Okinawa, Japan
 
 Please feel free to get in touch and share your thoughts, ask questions, or just say hi!
 You can email me directly at
-<p style="text-align: center; color: purple; font-size: 1.2em;"> vincent@fishboneapps.com </p>
+<p style="text-align: center; color: purple; font-size: 1.2em;"> <a href="mailto:vincent@fishboneapps.com">vincent@fishboneapps.com</a> </p>
+If you want to contact me with the job opportunity, please email me at
+<p style="text-align: center; color: purple; font-size: 1.2em;"> <a href="mailto:tingsuan.wang@gmail.com">tingsuan.wang@gmail.com</a> </p>
 I look forward to hear from you.
