@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Java 快速學習自我挑戰 Day1 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Java" />
+    
+    <meta name="description" content="課前準備  問問題的技巧  盡可能地精準的問問題：貼上程式碼，加一些畫面截圖。 問別人沒問過的問題：在問問題之前，先找找看別人有沒有問過。   成為工程師的四個階段  Unconscious Incompetence (無意識的無能)：在剛開始起步的時候，你不知道你不會什麼，所以不要做長期規劃，應該要專注在基礎上面。 Conscious Incompetence (有意識的無能)：你做一些調查">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 快速學習自我挑戰 Day1">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2020/05/01/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day1/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="課前準備  問問題的技巧  盡可能地精準的問問題：貼上程式碼，加一些畫面截圖。 問別人沒問過的問題：在問問題之前，先找找看別人有沒有問過。   成為工程師的四個階段  Unconscious Incompetence (無意識的無能)：在剛開始起步的時候，你不知道你不會什麼，所以不要做長期規劃，應該要專注在基礎上面。 Conscious Incompetence (有意識的無能)：你做一些調查">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay01.jpg">
+<meta property="article:published_time" content="2020-05-02T02:13:36.000Z">
+<meta property="article:modified_time" content="2021-01-25T08:23:41.568Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay01.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Java-快速學習自我挑戰-Day1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Java 快速學習自我挑戰 Day1
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/05/01/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day1/" class="article-date">
+         <time datetime="2020-05-02T02:13:36.000Z" itemprop="datePublished">2020-05-02</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">3.5k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">13 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/java/JavaDay01.jpg">
+<hr>
+<h3 id="課前準備">課前準備</h3>
+<ol>
+<li>問問題的技巧
+<ul>
+<li>盡可能地精準的問問題：貼上程式碼，加一些畫面截圖。</li>
+<li>問別人沒問過的問題：在問問題之前，先找找看別人有沒有問過。</li>
+</ul>
+</li>
+<li>成為工程師的四個階段
+<ul>
+<li>Unconscious Incompetence (無意識的無能)：在剛開始起步的時候，你不知道你不會什麼，所以不要做長期規劃，應該要專注在基礎上面。</li>
+<li>Conscious Incompetence (有意識的無能)：你做一些調查，有一些基礎，知道你不會什麼，所以你意識到你需要學這些不會的技能，同時，你也意識到獲得這些技能的價值。</li>
+<li>Conscious Competence (有意識的有能力)：在這個階段，你需要不斷讓自己沈浸在在練習之中，否則有些東西會開始遺忘，最重要的事，你學習的東西開始有意義。</li>
+<li>Unconscious competence (無意識的有能力)：寫程式對你來說變成第二個本能，你會覺得寫程式很簡單，你寫程式的時候不需要總是過度專注，當你在寫程式的時候，你就會知道要使用哪種算法，他是自然而來的，因為你已經瞭解它了。</li>
+</ul>
+</li>
+<li>總結：堅持下去，許下承諾會堅持你的訓練和練習，並且定期練習和學習。</li>
+</ol>
+<h3 id="環境部署-2">環境部署</h3>
+<ol>
+<li>為什麼安裝 JDK 11？<br>
+現行版本已經到 JDK 14，但是 JDK 11 是 LTS 版本，安全性更新會持續到 2026 年，目前大公司都持續使用這個版本，下個 LTS 版本為 JDK 17，預計 2021 年 9 月發佈。</li>
+<li>如何選擇正確的 JDK Vendor 和 JVM (Java Virtual Machine)？
+<ul>
+<li>Hotspot JVM 是最常用來部署的 JVM，OpenJ9 是 JVM 另外一個替代方案，OpenJ9 是開源的，佔用記憶體較少，而且比很多典型的應用還要更快。</li>
+<li>Amazon Corretto 有免費技術支援，專注在 LTS 版本，還大量被使用在 Amazon 的生產環境服務器，而且 Amazon 把他們開發的程式碼在貢獻回去給 OpenJDK。</li>
+<li>對學生來說，哪個版本更好？<a target="_blank" rel="noopener" href="https://adoptopenjdk.net/">AdoptJDK</a> 是一個不錯的選擇，因為它安裝很容易；<a target="_blank" rel="noopener" href="https://aws.amazon.com/corretto/">Amazon Corretto</a> 是另外一個不錯的選擇。</li>
+</ul>
+</li>
+</ol>
+<h4 id="安裝-JDK-Java-Development-Kit">安裝 JDK (Java Development Kit)</h4>
+<ol>
+<li>下載 <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html">Amazon Corretto</a>。</li>
+<li>安裝完成之後，在命令行執行 <code>java -version</code>，就會跳出 Java 的版本。</li>
+<li>安裝的路徑會在 /Library/Java/JavaVirtualMachines。</li>
+</ol>
+<h4 id="安裝-IntelliJ-IDEA">安裝 IntelliJ IDEA</h4>
+<ol>
+<li>下載 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download/#section=mac">IntelliJ IDEA</a>。</li>
+<li>直接雙擊進行安裝，所有設定都用預設的。</li>
+</ol>
+<h4 id="設定-IntelliJ-IDEA">設定 IntelliJ IDEA</h4>
+<ol>
+<li>進去編輯器之前，點擊右下角的 Configure -&gt; Structure for New Projects，選擇 Project Settings -&gt; Project -&gt; Project JDK -&gt; 選擇 Corretto JDK。</li>
+<li>選擇左邊列的 Platform Settings -&gt; SDKs，將原本的 11 修改為 Corretto-11，以後有多種版本的 SDK 做切換時，名稱不會搞混，點選確認後回到選擇專案視窗。</li>
+<li>再次點擊右下角的 Configure -&gt; Preferences -&gt; Editor -&gt; General -&gt; Auto Import，將以下兩個選項打勾
+<ul>
+<li>Add unambiguous imports on the fly</li>
+<li>Optimize imports on the fly (for current project)</li>
+</ul>
+</li>
+<li>選擇 Preferences -&gt; Editor -&gt; General -&gt; Code Folding，將以下四個選項取消勾選
+<ul>
+<li>General -&gt; Imports</li>
+<li>Java -&gt; One-line methods</li>
+<li>Java -&gt; “Closures” (anonymous classes implementing one method, before Java 8)</li>
+<li>Java -&gt; Generic constructor and method parameters</li>
+</ul>
+</li>
+</ol>
+<h3 id="第一步">第一步</h3>
+<h4 id="介紹">介紹</h4>
+<ol>
+<li>這個部分會做一個 Hello World 專案，並介紹 Java 關鍵字、變數、資料型態、主方法、表達式、運算符、原始型別、字符串。</li>
+</ol>
+<h4 id="Hello-World-專案">Hello World 專案</h4>
+<ol>
+<li>選擇 Create New Project，選擇 Java，不勾選任何東西，選擇下一步，不使用任何 Template，選擇下一步，創建資料夾名稱 HelloWorld，最後選擇完成。</li>
+<li>在 src 的資料夾按右鍵，選擇 New -&gt; Java Class，輸入 Hello 來新增 Class。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class Hello &#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Java Class 的觀念
+<ul>
+<li>Java 的程式有關鍵字 (Keywords)，每一個都有個別的意義，而且有時候需要在特定順序下使用。</li>
+<li>藉由使用一些特定規則、使用關鍵字組合來撰寫 Java 程式，這些組合在一起就是一個 Java 程式。</li>
+<li>關鍵字是字母大小敏感的，public、Public 和 PUBLIC 是不一樣的。</li>
+<li><strong>public</strong> 和 <strong>class</strong> 是兩個 Java 關鍵字，它們有不同的意思。</li>
+<li><strong>public</strong> 關鍵字是存取修改器 (access modifier)，存取修改器可以讓我們定義範圍，或是哪些其它地方的程式碼或甚至其他人的程式碼可以存取這個程式碼。</li>
+<li>現在我們使用 public 來提供完整的存取權限。</li>
+<li>定義一個 class，<strong>class</strong> 關鍵字用來定義接下來的關鍵字 - Hello，Hello 在這個例子中用 {} 來定義 class 區塊。</li>
+<li>所以，定義一個 class 需要有可選擇的存取修改器，接著 class，後面再接著 {}。</li>
+<li>{} 用來定義 class 的內容，任何內容在 {} 之間的都是 class 的一部分。</li>
+</ul>
+</li>
+</ol>
+<h4 id="定義主方法">定義主方法</h4>
+<ol>
+<li>什麼是方法(method)？<br>
+方法是一個或多個展現功能的陳述句集合，我們會使用主方法(main method)讓 Java 在運行程式的時候會去尋找它，它是任何 Java 程式碼的入口處。</li>
+<li>你可以創建自己的方法，但是我們先創建主方法。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class Hello &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>主方法觀念
+<ul>
+<li><strong>public</strong> 是一個存取修改器，在定義 class 的時候就說過了。</li>
+<li><strong>static</strong> 是一個需要瞭解其他概念才能解釋的 Java 關鍵字，現在，只要知道我們需要一個 static 讓 Java 找到我們這個方法，並運行我們即將添加的程式碼。</li>
+<li><strong>void</strong> 是另外一個 Java 關鍵字，用來表示這個方法不會回傳任何東西，後面會說更多關於 void 的事情。</li>
+<li>方法宣告裡的 () 是一個強制、而且可選擇放入一個或多個變數，這些變數會傳進去方法裡面，後面一樣會說更多。</li>
+</ul>
+</li>
+<li>可以在編輯器裡面嘗試運行主方法，選擇「Run ‘Hello.main()’」</li>
+</ol>
+<img src="/images/learning/java/JavaDay01-Image01.png">
+<ol start="5">
+<li>程式碼區塊 (code block)<br>
+程式碼區塊是用來定義一個程式碼區塊，在一個方法宣告裡面，它是必要的，我們會在裡面新增一些陳述句來執行一些任務。</li>
+<li>在主方法裡面新增打印 Hello World</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Hello &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Hello World&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>陳述句 (statement)<br>
+陳述句是一個完整可被執行的命令，而且可以包含一個或多個表達式(expression)，後面都會細說。</li>
+</ol>
+<h4 id="Hello-World-挑戰和常見錯誤">Hello World 挑戰和常見錯誤</h4>
+<ol>
+<li>挑戰如何將你的名字打印出來？</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Hello &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Hello, Vincent&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>常見錯誤
+<ul>
+<li>‘;’ expected，沒有加分號</li>
+<li>‘)’ expected，沒有加括號</li>
+<li>Illegal line end in string literal，字符串文字沒有對應結尾</li>
+<li>如果執行之後出現錯誤，雙擊錯誤訊息可以直接跳到錯誤的那一行</li>
+</ul>
+</li>
+</ol>
+<h4 id="變數">變數</h4>
+<ol>
+<li>什麼是變數？
+<ul>
+<li>變數是一種儲存資料在你的電腦中的一種方式，變數可以透過我們給予變數的名稱來被存取，而電腦會處理這些變數要儲存在記憶體的哪個地方。</li>
+<li>變數，就像名稱一樣，他的內容是可變的。</li>
+<li>我們要做的就是告知電腦我們想用變數儲存什麼類型的資料，然後給予這個變數一個名稱。</li>
+<li>我們可以為變數定義很多資料型態，這些被稱為資料型態(data types)，我們也可以猜到，資料型態在 Java 中也是一種關鍵字。</li>
+<li>所以，讓我們從定義 <strong>int</strong> 開始，<strong>int</strong> 是整數(integer)的縮寫，整數就是沒有任何小數點的數字。</li>
+<li>要定義一個變數，我們必須要指定資料型態，然後給予變數名稱，我們有時候使用一個表達式來初始化帶有值的變數。</li>
+</ul>
+</li>
+<li>在主方法裡面定義一個 myFirstNumber<br>
+<code>int myFirstNumber = 5;</code></li>
+<li>上面這一行就是一個宣告陳述句(declaration statement)
+<ul>
+<li>宣告陳述句透過指出資料型態、名字、有時候設定變數的值來定義一個變數。</li>
+<li>在上面的宣告陳述句，我們定義一個 <strong>int</strong>，名字叫做 <strong>myFirstNumber</strong>，而且值被分派或是初始化為 <strong>5</strong>，所以我們在宣告一個變數為 <strong>int</strong> 型態、名字為 <strong>myFirstNumber</strong>，而且分派值為 <strong>5</strong>。</li>
+</ul>
+</li>
+<li>什麼是表達式(expression)？<br>
+表達式是評估一個值的構造，我們在後面會討論更多。</li>
+<li>挑戰：查看第一個 <strong>System.out.println</strong> 陳述句，想想看如何在下面打印出 myFirstNumber 這個變數。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int myFirstNumber = 5;</span><br><span class="line">System.out.println(myFirstNumber);</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 Java 中，任何被兩個雙引號放在中間的內容，都會被當作字串符文字，他的值不像變數，是不能被改變。<br>
+<code>System.out.println(&quot;MyFirstNumber&quot;);</code></li>
+<li>也可以對變數做運算。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int myFirstNumber = (10 + 5) + (2 * 10);</span><br><span class="line">System.out.println(myFirstNumber);</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>Java 運算符(operators)
+<ul>
+<li><strong>Java 運算符</strong>就是利用運算符號對一個變數或值進行操作，<strong>+, -, *, /</strong> 對應加減乘除。</li>
+<li>還有更多運算符，後面會做講解。</li>
+</ul>
+</li>
+</ol>
+<h4 id="開始使用表達式-expression">開始使用表達式 (expression)</h4>
+<ol>
+<li>挑戰：創建額外的變數，新增 <strong>mySecondNumber</strong>，它是 <strong>int</strong> 型態且指定數值為 <strong>12</strong>，另外新增 <strong>myThirdNumber</strong>，它是 <strong>int</strong> 型態且指定數值為 <strong>6</strong>。</li>
+<li>將這些變數相加後，打印出來。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Hello &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Hello, Vincent&quot;);</span><br><span class="line"></span><br><span class="line">        int myFirstNumber = (10 + 5) + (2 * 10);</span><br><span class="line">        int mySecondNumber = 12;</span><br><span class="line">        int myThirdNumber = 6;</span><br><span class="line">        int myTotal = myFirstNumber + mySecondNumber + myThirdNumber;</span><br><span class="line"></span><br><span class="line">        System.out.println(myTotal);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>也可以將在變數裡做其它變數的運算</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Hello &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Hello, Vincent&quot;);</span><br><span class="line"></span><br><span class="line">        int myFirstNumber = (10 + 5) + (2 * 10);</span><br><span class="line">        int mySecondNumber = 12;</span><br><span class="line">        int myThirdNumber = myFirstNumber * 2;</span><br><span class="line">        int myTotal = myFirstNumber + mySecondNumber + myThirdNumber;</span><br><span class="line"></span><br><span class="line">        System.out.println(myTotal);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>挑戰：新增一個變數 <strong>myLastOne</strong>，它是 <strong>int</strong> 型態，且希望它的值是 <strong>1000 減掉</strong> myTotal 當前值，最後並打印出 <strong>myLastOne</strong>。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Hello &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Hello, Vincent&quot;);</span><br><span class="line"></span><br><span class="line">        int myFirstNumber = (10 + 5) + (2 * 10);</span><br><span class="line">        int mySecondNumber = 12;</span><br><span class="line">        int myThirdNumber = myFirstNumber * 2;</span><br><span class="line">        int myTotal = myFirstNumber + mySecondNumber + myThirdNumber;</span><br><span class="line"></span><br><span class="line">        System.out.println(myTotal);</span><br><span class="line"></span><br><span class="line">        int myLastOne = 1000 - myTotal;</span><br><span class="line">        System.out.println(myLastOne);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="原始型態">原始型態</h4>
+<ol>
+<li>Java 原始型態是最基本的資料型態，<strong>int</strong> 就是八個原始型態中的一個。</li>
+<li>八個原始型態分別是，<strong>boolean，byte，char，short，int，long，float 和 double</strong>，這些就是資料操作的基本組件。</li>
+<li>Java 套包(Java Package)是用來組織你的 Java 專案的，要把這個當成是資料夾路徑，舉例來說 <strong>com.company</strong>，就是 <strong>com</strong> 底下有一個子目錄叫做 <strong>company</strong>，就是公司網域反過來寫。所以 <a target="_blank" rel="noopener" href="http://company.com">company.com</a> 會變成 com.company，後面會說到更多 Package 的東西。</li>
+<li>創建一個新的專案，這次在第二步驟的時候，把 Create project from template 打勾，專案名稱為 ByteShortIntLong，並將 base package 改為 com.company。</li>
+<li>包裝類(Wrapper Classes)，Java 使用包裝類的概念到八種原始型態，在 <strong>int</strong> 的案例中，我們可以使用 <strong>Integer</strong> 來向 int 執行操作。在這個例子中，我們使用 <strong>MIN_VALUE</strong> 和 <strong>MAX_VALUE</strong> 讓 Java 告訴我們 Integer 可以儲存的最大和最小的範圍。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int myMinIntValue = Integer.MIN_VALUE;</span><br><span class="line">int myMaxIntValue = Integer.MAX_VALUE;</span><br><span class="line">System.out.println(&quot;Integer Minimum Value = &quot; + myMinIntValue);</span><br><span class="line">System.out.println(&quot;Integer Maximum Value = &quot; + myMaxIntValue);</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>我們在 myMaxIntValue 加 1，會發現打印出來是負數，這個就稱為溢位(overflow)，反過來也是一樣，但是反過來的狀況叫做不足位(underflow)，這些狀況電腦會直接跳回最小數或最大數，這通常不是我們想要的，所以要注意。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(&quot;Busted Max Value = &quot; + (myMaxIntValue + 1));</span><br><span class="line">System.out.println(&quot;Busted Min Value = &quot; + (myMinIntValue - 1));</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>後面會提到其它種類型的資料型態可以儲存更多資料，所以程式設計師要知道在哪種狀況下要使用哪種資料型態。</li>
+<li>在 Java7 版本之後，如果數字比較難以閱讀的話，可以用底線分隔開，系統一樣可以讀出來。例如：<code>int myMaxIntText = 2_147_483_647</code></li>
+</ol>
+<h4 id="Byte，Short，Long-和寬度">Byte，Short，Long 和寬度</h4>
+<ol>
+<li>使用和剛剛一樣的方式把 Byte 最大和最小值打印出來，通常來說，在現在電腦非常資源非常充足的情況下，使用 byte 的情況會比較少，如果考慮效能問題，這個可能是其中一個原因，它比較節省空間，速度也比較快。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">byte myMinByteValue = Byte.MIN_VALUE;</span><br><span class="line">byte myMaxByteValue = Byte.MAX_VALUE;</span><br><span class="line">System.out.println(&quot;Byte Minimum Value = &quot; + myMinByteValue);</span><br><span class="line">System.out.println(&quot;Byte Maximum Value = &quot; + myMaxByteValue);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>繼續用剛剛的方法，將 Short 的最大和最小值打印出來，最大值為 32767，最小值為 -32768，所以 Byte 和 Short 有相同的溢位和不足位的問題，但是它們有不同的範圍。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">short myMinShortValue = Short.MIN_VALUE;</span><br><span class="line">short myMaxShortValue = Short.MAX_VALUE;</span><br><span class="line">System.out.println(&quot;Short Minimum Value = &quot; + myMinShortValue);</span><br><span class="line">System.out.println(&quot;Short Maximum Value = &quot; + myMaxShortValue);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>原始型態的大小和寬度
+<ul>
+<li>一個 <strong>Byte</strong> 佔用 8 位元(bit)，一個位元並不是原始型態，我們有 <strong>boolean</strong>，但是它跟 Byte 完全不是同一件事情，後面會細說，所以一個 <strong>Byte</strong> 佔用 <strong>8 位元</strong>，我們可以說 <strong>byte</strong> 的寬度為 <strong>8</strong>。</li>
+<li><strong>short</strong> 可以儲存大量數字，佔用 <strong>16</strong> 位元，所以寬度為 <strong>16</strong>。</li>
+<li><strong>int</strong> 可以儲存更大量數字，佔用 <strong>32</strong> 位元，所以寬度為 <strong>32</strong>。</li>
+<li>不同的原始型態佔用不同的記憶體大小，我們可以知道 <strong>int</strong> 跟 <strong>byte</strong> 比起來，佔用了 4 倍的記憶體。</li>
+<li>這些數字對對你來說並不是特別相關，但是面試作為題目的時候，知道特定資料類型佔用不同的空間是有用的。</li>
+</ul>
+</li>
+<li>Long 佔用 64 位元，是 Int 的 2 倍，在宣告 Long 的時候，如果值比 Integer 的最大值還要大的時候，需要在值後面加上 L，否則會出現錯誤，因為 Java 會把數字當成 Integer 來處理。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">long bigLongLiteralValue = 2_147_483_647_123L;</span><br><span class="line">System.out.println(bigLongLiteralValue);  </span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2020/05/01/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day1/" data-id="cl1d3lef0003wdytlazao4oag" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Java 快速學習自我挑戰 Day1",
+        "image": "https://vincent.fishboneapps.com/images/learning/java/JavaDay01.jpg",
+        "keywords": "Java",
+        "genre": "Study Note",
+        "datePublished": "2020-05-02",
+        "dateCreated": "2020-05-02",
+        "dateModified": "2021-01-25",
+        "url": "https://vincent.fishboneapps.com/2020/05/01/Java-快速學習自我挑戰-Day1/",
+        "description": "
+
+課前準備
+
+問問題的技巧
+
+盡可能地精準的問問題：貼上程式碼，加一些畫面截圖。
+問別人沒問過的問題：在問問題之前，先找找看別人有沒有問過。
+
+
+成為工程師的四個階段
+
+Unconscious Incompetence (無意識的無能)：在剛開始起步的時候，你不知道你不會什麼，所以不要做長期規劃，應該要專注在基礎上面。
+Conscious Incompetence (有意識的無能)：你做一些調查",
+        "wordCount": 1086
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2020/05/01/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day1/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/05/06/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day2/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java 快速學習自我挑戰 Day2
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/03/06/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day8/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Docker 快速學習自我挑戰 II Day8</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AA%B2%E5%89%8D%E6%BA%96%E5%82%99"><span class="toc-number">1.</span> <span class="toc-text">課前準備</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%92%B0%E5%A2%83%E9%83%A8%E7%BD%B2-2"><span class="toc-number">2.</span> <span class="toc-text">環境部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-JDK-Java-Development-Kit"><span class="toc-number">2.1.</span> <span class="toc-text">安裝 JDK (Java Development Kit)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-IntelliJ-IDEA"><span class="toc-number">2.2.</span> <span class="toc-text">安裝 IntelliJ IDEA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-IntelliJ-IDEA"><span class="toc-number">2.3.</span> <span class="toc-text">設定 IntelliJ IDEA</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">3.</span> <span class="toc-text">第一步</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8B%E7%B4%B9"><span class="toc-number">3.1.</span> <span class="toc-text">介紹</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hello-World-%E5%B0%88%E6%A1%88"><span class="toc-number">3.2.</span> <span class="toc-text">Hello World 專案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E7%BE%A9%E4%B8%BB%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.</span> <span class="toc-text">定義主方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hello-World-%E6%8C%91%E6%88%B0%E5%92%8C%E5%B8%B8%E8%A6%8B%E9%8C%AF%E8%AA%A4"><span class="toc-number">3.4.</span> <span class="toc-text">Hello World 挑戰和常見錯誤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%8A%E6%95%B8"><span class="toc-number">3.5.</span> <span class="toc-text">變數</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%96%8B%E5%A7%8B%E4%BD%BF%E7%94%A8%E8%A1%A8%E9%81%94%E5%BC%8F-expression"><span class="toc-number">3.6.</span> <span class="toc-text">開始使用表達式 (expression)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E5%9E%8B%E6%85%8B"><span class="toc-number">3.7.</span> <span class="toc-text">原始型態</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Byte%EF%BC%8CShort%EF%BC%8CLong-%E5%92%8C%E5%AF%AC%E5%BA%A6"><span class="toc-number">3.8.</span> <span class="toc-text">Byte，Short，Long 和寬度</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Lavarel 快速學習自我挑戰 Day19 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Laravel" />
+    
+    <meta name="description" content="Application 留言功能 Part II 顯示留言  在 admin&#x2F;posts&#x2F;index view 新增文章連結 &lt;td&gt;&lt;a href&#x3D;&quot;&amp;#123;&amp;#123;&quot; &amp;#123;&amp;#123;route(&#39;home.post&#39;, $post-&gt;id)&quot; &amp;#125;&amp;#125;&amp;#125;&amp;#125;&quot;&gt;view post&lt;&#x2F;a&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lavarel 快速學習自我挑戰 Day19">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2017/05/28/Lavarel-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day19/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="Application 留言功能 Part II 顯示留言  在 admin&#x2F;posts&#x2F;index view 新增文章連結 &lt;td&gt;&lt;a href&#x3D;&quot;&amp;#123;&amp;#123;&quot; &amp;#123;&amp;#123;route(&#39;home.post&#39;, $post-&gt;id)&quot; &amp;#125;&amp;#125;&amp;#125;&amp;#125;&quot;&gt;view post&lt;&#x2F;a&amp;g">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/laravel/laravelday19.jpg">
+<meta property="article:published_time" content="2017-05-28T16:58:12.000Z">
+<meta property="article:modified_time" content="2020-06-22T17:14:53.699Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Laravel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/laravel/laravelday19.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Lavarel-快速學習自我挑戰-Day19" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Lavarel 快速學習自我挑戰 Day19
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2017/05/28/Lavarel-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day19/" class="article-date">
+         <time datetime="2017-05-28T16:58:12.000Z" itemprop="datePublished">2017-05-29</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Laravel/" rel="tag">Laravel</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">1k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">5 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/laravel/laravelday19.jpg">
+<hr>
+<h3 id="Application-留言功能-Part-II">Application 留言功能 Part II</h3>
+<h4 id="顯示留言">顯示留言</h4>
+<ol>
+<li>在 admin/posts/index view 新增文章連結<br>
+<code>&lt;td&gt;&lt;a href=&quot;&#123;&#123;" &#123;&#123;route('home.post', $post->id)" &#125;&#125;&#125;&#125;&quot;&gt;view post&lt;/a&gt;&lt;/td&gt;</code></li>
+<li>在 admin/posts/index view 新增評論連結<br>
+<code>&lt;td&gt;&lt;a href=&quot;&#123;&#123;" &#123;&#123;route('admin.comments.show', $post->id)" &#125;&#125;&#125;&#125;&quot;&gt;View Comments&lt;/a&gt;&lt;/td&gt;</code></li>
+<li>新增 admin/comments/show view</li>
+<li>在 PostCommentsController 新增 show function</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public function show($id)</span><br><span class="line">&#123;   </span><br><span class="line">    $post = POST::findOrfail($id);</span><br><span class="line">    </span><br><span class="line">    $comments = $post-&gt;comments;</span><br><span class="line">    </span><br><span class="line">    return view(&#x27;admin.comments.show&#x27;, compact(&#x27;comments&#x27;));   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改 Post model</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public function comments()&#123;</span><br><span class="line"></span><br><span class="line">    return $this-&gt;hasMany(&#x27;App\Comment&#x27;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在文章中顯示留言">在文章中顯示留言</h4>
+<ol>
+<li>新增 Auth 到留言區塊，讓登入的使用者才可以留言</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@if(Auth::check())</span><br><span class="line">@endif</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 AdminPostsController 的 post function</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public function post($id)&#123;</span><br><span class="line"></span><br><span class="line">    $post = Post::findOrFail($id);</span><br><span class="line"></span><br><span class="line">    $comments = $post-&gt;comments()-&gt;whereIsActive(1)-&gt;get();</span><br><span class="line"></span><br><span class="line">    return view(&#x27;post&#x27;, compact(&#x27;post&#x27;, &#x27;comments&#x27;));</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>新增 posted comments 到 post view</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@if(count($comments) &gt; 0)</span><br><span class="line">    @foreach($comments as $comment)</span><br><span class="line">        &lt;div class=&quot;media&quot;&gt;</span><br><span class="line">            &lt;a class=&quot;pull-left&quot; href=&quot;#&quot;&gt;</span><br><span class="line">                &lt;img height=&quot;64&quot; class=&quot;media-object&quot; src=&quot;&#123;&#123;$comment-&gt;photo&#125;&#125;&quot; alt=&quot;&quot;&gt;</span><br><span class="line">            &lt;/a&gt;</span><br><span class="line">            &lt;div class=&quot;media-body&quot;&gt;</span><br><span class="line">                &lt;h4 class=&quot;media-heading&quot;&gt;&#123;&#123;$comment-&gt;author&#125;&#125;</span><br><span class="line">                    &lt;small&gt;&#123;&#123;$comment-&gt;created_at-&gt;diffForHumans()&#125;&#125;&lt;/small&gt;</span><br><span class="line">                &lt;/h4&gt;</span><br><span class="line">            &#123;&#123;$comment-&gt;body&#125;&#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    @endforeach</span><br><span class="line">@endif</span><br></pre></td></tr></table></figure>
+<h4 id="回覆留言功能">回覆留言功能</h4>
+<ol>
+<li>新增 routes</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Route::group([&#x27;middleware&#x27;=&gt;&#x27;auth&#x27;], function() &#123;</span><br><span class="line">    </span><br><span class="line">    Route::post(&#x27;comment/reply&#x27;, &#x27;CommentRepliesController@createdReply&#x27;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 CommentRepliesController 新增 CreateReply function</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public function createReply(Request $request)&#123;</span><br><span class="line"></span><br><span class="line">    $user = Auth::user();</span><br><span class="line"></span><br><span class="line">    $data = [</span><br><span class="line"></span><br><span class="line">        &#x27;post_id&#x27; =&gt; $request-&gt;post_id,</span><br><span class="line">        &#x27;author&#x27; =&gt; $user-&gt;name,</span><br><span class="line">        &#x27;email&#x27; =&gt; $user-&gt;email,</span><br><span class="line">        &#x27;photo&#x27; =&gt; $user-&gt;photo-&gt;file,</span><br><span class="line">        &#x27;body&#x27; =&gt; $request-&gt;body</span><br><span class="line"></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    CommentReply::create($data);</span><br><span class="line"></span><br><span class="line">    $request-&gt;session()-&gt;flash(&#x27;reply_message&#x27;, &#x27;Your reply has been submitted and is waiting moderation&#x27;);</span><br><span class="line"></span><br><span class="line">    return redirect()-&gt;back();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 CommentReply model 新增 <code>'photo'</code> 讓欄位可寫入</li>
+<li>新增 reply comment 到 post view</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">@if(count($comment-&gt;replies) &gt; 0)</span><br><span class="line"></span><br><span class="line">    @foreach($comment-&gt;replies as $reply)</span><br><span class="line"></span><br><span class="line">            &lt;!-- Nested Comment --&gt;</span><br><span class="line">            &lt;div class=&quot;media&quot;&gt;</span><br><span class="line">                &lt;a class=&quot;pull-left&quot; href=&quot;#&quot;&gt;</span><br><span class="line">                    &lt;img height=&quot;64&quot; class=&quot;media-object&quot; src=&quot;&#123;&#123;$reply-&gt;photo&#125;&#125;&quot; alt=&quot;&quot;&gt;</span><br><span class="line">                &lt;/a&gt;</span><br><span class="line">                &lt;div class=&quot;media-body&quot;&gt;</span><br><span class="line">                    &lt;h4 class=&quot;media-heading&quot;&gt;&#123;&#123;$reply-&gt;author&#125;&#125;</span><br><span class="line">                        &lt;small&gt;&#123;&#123;$reply-&gt;created_at-&gt;diffForHumans()&#125;&#125;&lt;/small&gt;</span><br><span class="line">                    &lt;/h4&gt;</span><br><span class="line">                    &lt;p&gt;&#123;&#123;$reply-&gt;body&#125;&#125;&lt;/p&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                &#123;!! Form::open([&#x27;method&#x27;=&gt;&#x27;POST&#x27;, &#x27;action&#x27;=&gt;&#x27;CommentRepliesController@createReply&#x27;]) !!&#125;</span><br><span class="line"></span><br><span class="line">                    &lt;input type=&quot;hidden&quot; name=&quot;comment_id&quot; value=&quot;&#123;&#123;$comment-&gt;id&#125;&#125;&quot;&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                        &#123;!! Form::label(&#x27;body&#x27;, &#x27;Body:&#x27;) !!&#125;</span><br><span class="line">                        &#123;!! Form::text(&#x27;body&#x27;, null, [&#x27;class&#x27;=&gt;&#x27;form-control&#x27;, &#x27;rows&#x27;=&gt;1]) !!&#125;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &#123;&#123;csrf_field()&#125;&#125;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                        &#123;!! Form::submit(&#x27;submit&#x27;, [&#x27;class&#x27;=&gt;&#x27;btn btn-primary&#x27;]) !!&#125;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                &#123;!! Form::close() !!&#125;</span><br><span class="line"></span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;!-- End Nested Comment --&gt;</span><br><span class="line"></span><br><span class="line">    @endforeach</span><br><span class="line"></span><br><span class="line">@endif</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 layouts.blog-post view 生成 script 區塊<br>
+<code>@yield('scripts')</code></li>
+<li>新增 div</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;comment-reply-container&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;button class=&quot;toggle-reply btn btn-primary pull-right&quot;&gt;Reply&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class=&quot;comment-reply&quot;&gt;</span><br><span class="line">    /* Nested Comment*/</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>在 resources/assets/scss/app.css 修改樣式，新增 <code>.comment-reply &#123;display: none;&#125;</code>，並用<code>gulp</code>編譯。</li>
+<li>新增 scripts 區塊</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@section(&#x27;scripts&#x27;)</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line"></span><br><span class="line">        $(&quot;.comment-reply-container .toggle-reply&quot;).click(function()&#123;</span><br><span class="line"></span><br><span class="line">            $(this).next().slideToggle(&quot;slow&quot;);</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">@stop</span><br></pre></td></tr></table></figure>
+<h4 id="在主管理介面顯示回覆">在主管理介面顯示回覆</h4>
+<ol>
+<li>複製 comments/show view 到 comments/replies/show view，將 comment 改為 reply。</li>
+<li>在 admin/comments/index view 新增<br>
+<code>&lt;td&gt;&lt;a href=&quot;&#123;&#123;" &#123;&#123;route('admin.comments.replies.show', $comment->id)" &#125;&#125;&#125;&#125;&quot;&gt;View Replies&lt;/a&gt;&lt;/td&gt;</code></li>
+<li>在 CommentRepliesController 新增 show function</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public function show($id)</span><br><span class="line">&#123;</span><br><span class="line">    $comment = Comment::findOrFail($id);</span><br><span class="line"></span><br><span class="line">    $replies = $comment-&gt;replies;</span><br><span class="line"></span><br><span class="line">    return view(&#x27;admin.comments.replies.show&#x27;, compact(&#x27;replies&#x27;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 CommentRepliesController 新增 update function</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public function update(Request $request, $id)</span><br><span class="line">&#123;</span><br><span class="line">    CommentReply::findOrFail($id)-&gt;update($request-&gt;all());</span><br><span class="line"></span><br><span class="line">    return redirect()-&gt;back();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改 post view</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@if($reply-&gt;is_active == 1)</span><br><span class="line">    /*nested comment*/</span><br><span class="line">    @else</span><br><span class="line">    &lt;h1 class=&quot;text-center&quot;&gt;No Relies&lt;/h1&gt;</span><br><span class="line">@endif</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 CommentRepliesController 新增 destroy function</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public function destroy($id)</span><br><span class="line">&#123;</span><br><span class="line">    CommentReply::findOrFail($id)-&gt;delete();</span><br><span class="line">    </span><br><span class="line">    redirect()-&gt;back();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2017/05/28/Lavarel-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day19/" data-id="cl1d3lefu006ndytle1u47e4d" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Lavarel 快速學習自我挑戰 Day19",
+        "image": "https://vincent.fishboneapps.com/images/learning/laravel/laravelday19.jpg",
+        "keywords": "Laravel",
+        "genre": "Study Note",
+        "datePublished": "2017-05-29",
+        "dateCreated": "2017-05-29",
+        "dateModified": "2020-06-23",
+        "url": "https://vincent.fishboneapps.com/2017/05/28/Lavarel-快速學習自我挑戰-Day19/",
+        "description": "
+
+Application 留言功能 Part II
+顯示留言
+
+在 admin/posts/index view 新增文章連結
+&lt;td&gt;&lt;a href=&quot;&#123;&#123;" &#123;&#123;route('home.post', $post->id)" &#125;&#125;&#125;&#125;&quot;&gt;view post&lt;/a&g",
+        "wordCount": 1419
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2017/05/28/Lavarel-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day19/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/30/Lavarel-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day20/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Lavarel 快速學習自我挑戰 Day20
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/05/28/Lavarel-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day18/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Lavarel 快速學習自我挑戰 Day18</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Application-%E7%95%99%E8%A8%80%E5%8A%9F%E8%83%BD-Part-II"><span class="toc-number">1.</span> <span class="toc-text">Application 留言功能 Part II</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%AF%E7%A4%BA%E7%95%99%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">顯示留言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E9%A1%AF%E7%A4%BA%E7%95%99%E8%A8%80"><span class="toc-number">1.2.</span> <span class="toc-text">在文章中顯示留言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E8%A6%86%E7%95%99%E8%A8%80%E5%8A%9F%E8%83%BD"><span class="toc-number">1.3.</span> <span class="toc-text">回覆留言功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E4%B8%BB%E7%AE%A1%E7%90%86%E4%BB%8B%E9%9D%A2%E9%A1%AF%E7%A4%BA%E5%9B%9E%E8%A6%86"><span class="toc-number">1.4.</span> <span class="toc-text">在主管理介面顯示回覆</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

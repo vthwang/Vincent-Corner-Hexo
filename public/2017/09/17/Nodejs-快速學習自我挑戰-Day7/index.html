@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Nodejs 快速學習自我挑戰 Day7 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Nodejs" />
+    
+    <meta name="description" content="MongoDB，Mongoose 和 REST APIs (Todo API) 安裝 Postman  Postman 官網  Resource Creation Endpoint - POST &#x2F;todos  新增 server&#x2F;db&#x2F;mongoose.js  123456var mongoose &#x3D; require(&amp;#x27;mongoose&amp;#x27;);mongoose.Promis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs 快速學習自我挑戰 Day7">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2017/09/17/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day7/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="MongoDB，Mongoose 和 REST APIs (Todo API) 安裝 Postman  Postman 官網  Resource Creation Endpoint - POST &#x2F;todos  新增 server&#x2F;db&#x2F;mongoose.js  123456var mongoose &#x3D; require(&amp;#x27;mongoose&amp;#x27;);mongoose.Promis">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/nodejs/nodejsday7.png">
+<meta property="article:published_time" content="2017-09-17T11:56:53.000Z">
+<meta property="article:modified_time" content="2020-06-22T17:15:24.880Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Nodejs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/nodejs/nodejsday7.png">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Nodejs-快速學習自我挑戰-Day7" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Nodejs 快速學習自我挑戰 Day7
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2017/09/17/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day7/" class="article-date">
+         <time datetime="2017-09-17T11:56:53.000Z" itemprop="datePublished">2017-09-17</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Nodejs/" rel="tag">Nodejs</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">1.3k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">7 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/nodejs/nodejsday7.png">
+<hr>
+<h3 id="MongoDB，Mongoose-和-REST-APIs-Todo-API-2">MongoDB，Mongoose 和 REST APIs (Todo API)</h3>
+<h4 id="安裝-Postman">安裝 Postman</h4>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.getpostman.com/">Postman 官網</a></li>
+</ol>
+<h4 id="Resource-Creation-Endpoint-POST-todos">Resource Creation Endpoint - POST /todos</h4>
+<ol>
+<li>新增 server/db/mongoose.js</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require(&#x27;mongoose&#x27;);</span><br><span class="line"></span><br><span class="line">mongoose.Promise = global.Promise;</span><br><span class="line">mongoose.connect(&#x27;mongodb://localhost:27017/TodoApp&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;mongoose&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>新增 server/models/todo.js</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require(&#x27;mongoose&#x27;);</span><br><span class="line"></span><br><span class="line">var Todo = mongoose.model(&#x27;Todo&#x27;, &#123;</span><br><span class="line">    text: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        required: true,</span><br><span class="line">        minlength: 1,</span><br><span class="line">        trim: true</span><br><span class="line">    &#125;,</span><br><span class="line">    completed: &#123;</span><br><span class="line">        type: Boolean,</span><br><span class="line">        default: false</span><br><span class="line">    &#125;,</span><br><span class="line">    completedAt: &#123;</span><br><span class="line">        type: Number,</span><br><span class="line">        default: null</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;Todo&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>新增 server/models/user.js</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require(&#x27;mongoose&#x27;);</span><br><span class="line"></span><br><span class="line">var User = mongoose.model(&#x27;User&#x27;, &#123;</span><br><span class="line">    email: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        required: true,</span><br><span class="line">        trim: true,</span><br><span class="line">        minlength: 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;User&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>剛剛把 server/server.js 的資料都搬到了其它資料夾，所以檔案簡化為</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var &#123;mongoose&#125;  = require(&#x27;./db/mongoose&#x27;);</span><br><span class="line">var &#123;Todo&#125; = require(&#x27;./models/todo&#x27;);</span><br><span class="line">var &#123;User&#125; = require(&#x27;./models/user&#x27;);</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>安裝 body-parse 可以把 JSON 轉換為 object<br>
+<code>npm i express@4.14.0 body-parser@1.15.2 --save</code></li>
+<li>在 server/server.js 引入 Library</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&#x27;express&#x27;);</span><br><span class="line">var bodyParser = require(&#x27;body-parser&#x27;);</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>使用 express</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var app = express();</span><br><span class="line"></span><br><span class="line">app.use(bodyParser.json());</span><br><span class="line"></span><br><span class="line">app.post(&#x27;/todos&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">    console.log(req.body);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000, () =&gt; &#123;</span><br><span class="line">    console.log(&#x27;Started on port 3000&#x27;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>在 Postman 新增 Post <code>http://localhost/todos</code>，選擇 Body，選擇 raw，選擇 JSON，並送出 Post</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;text&quot;: &quot;This is from postman&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>在 console 就會看到傳進去的資料</li>
+<li><a target="_blank" rel="noopener" href="https://httpstatuses.com/">HTTP Status Codes：確認 HTTP 狀態碼</a></li>
+<li>修改 app.post，如果 OK 就寫入 MongoDB，並回傳 OK 的訊息，如果有問題就回傳 error。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.post(&#x27;/todos&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">    var todo = new Todo(&#123;</span><br><span class="line">        text: req.body.text</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    todo.save().then((doc) =&gt; &#123;</span><br><span class="line">        res.send(doc);</span><br><span class="line">    &#125;, (e) =&gt; &#123;</span><br><span class="line">        res.status(400).send(e);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="測試-POST-todos">測試 POST /todos</h4>
+<ol>
+<li><code>npm i expect@1.20.2 mocha@3.0.2 nodemon@1.10.2 supertest@2.0.0 --save-dev</code></li>
+<li>把 server/server.js 輸出<br>
+<code>module.exports = &#123;app&#125;;</code></li>
+<li>新增 server/tests/server.test.js</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">const expect = require(&#x27;expect&#x27;);</span><br><span class="line">const request = require(&#x27;supertest&#x27;);</span><br><span class="line"></span><br><span class="line">const &#123;app&#125; = require(&#x27;./../server&#x27;);</span><br><span class="line">const &#123;Todo&#125; = require(&#x27;./../models/todo&#x27;);</span><br><span class="line"></span><br><span class="line">beforeEach((done) =&gt; &#123;</span><br><span class="line">    Todo.remove(&#123;&#125;).then(() =&gt; done());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">describe(&#x27;POST /todos&#x27;, () =&gt; &#123;</span><br><span class="line">    it(&#x27;should create a new todo&#x27;, (done) =&gt; &#123;</span><br><span class="line">        var text = &#x27;Test todo text&#x27;;</span><br><span class="line"></span><br><span class="line">        request(app)</span><br><span class="line">            .post(&#x27;/todos&#x27;)</span><br><span class="line">            .send(&#123;text&#125;)</span><br><span class="line">            .expect(200)</span><br><span class="line">            .expect((res) =&gt; &#123;</span><br><span class="line">                expect(res.body.text).toBe(text);</span><br><span class="line">            &#125;)</span><br><span class="line">            .end((err, res) =&gt; &#123;</span><br><span class="line">                if (err) &#123;</span><br><span class="line">                    return done(err);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                Todo.find().then((todos) =&gt; &#123;</span><br><span class="line">                    expect(todos.length).toBe(1);</span><br><span class="line">                    expect(todos[0].text).toBe(text);</span><br><span class="line">                    done();</span><br><span class="line">                &#125;).catch((e) =&gt; done(e));</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    it(&#x27;should not create todo with invalid body data&#x27;, (done) =&gt; &#123;</span><br><span class="line">        request(app)</span><br><span class="line">            .post(&#x27;/todos&#x27;)</span><br><span class="line">            .send(&#123;&#125;)</span><br><span class="line">            .expect(400)</span><br><span class="line">            .end((err, res) =&gt; &#123;</span><br><span class="line">                if (err) &#123;</span><br><span class="line">                    return done(err);</span><br><span class="line">                &#125;</span><br><span class="line">                Todo.find().then((todos) =&gt; &#123;</span><br><span class="line">                    expect(todos.length).toBe(0);</span><br><span class="line">                    done();</span><br><span class="line">                &#125;).catch((e) =&gt; done(e));</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="List-Resources-GET-todos">List Resources - GET /todos</h4>
+<ol>
+<li>在 server/server.js 新增 GET</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.get(&#x27;/todos&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">    Todo.find().then((todos) =&gt; &#123;</span><br><span class="line">        res.send(&#123;todos&#125;);</span><br><span class="line">    &#125;, (e) =&gt; &#123;</span><br><span class="line">        res.status(400).send(e);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>node server/server.js</code></li>
+<li>去 Postman 測試
+<ul>
+<li>新增 GET <a target="_blank" rel="noopener" href="http://localhost:3000/todos">http://localhost:3000/todos</a></li>
+<li>右方 save as，新增一個新的 collection，Todo App，把指令加進去</li>
+<li>再新增 POST <a target="_blank" rel="noopener" href="http://localhost:3000/todos%EF%BC%8C%E9%81%B8">http://localhost:3000/todos，選</a> raw，JSON，並寫入資料</li>
+<li>也加入新的 collection</li>
+</ul>
+</li>
+</ol>
+<h4 id="測試-GET-todos">測試 GET /todos</h4>
+<ol>
+<li>修改 server/tests/server.test.js</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const todos = [&#123;</span><br><span class="line">    text: &#x27;First test todo&#x27;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">    text: &#x27;Second test todo&#x27;</span><br><span class="line">&#125;];</span><br><span class="line">// 在測試每一筆的時候，插入兩筆</span><br><span class="line">beforeEach((done) =&gt; &#123;</span><br><span class="line">    Todo.remove(&#123;&#125;).then(() =&gt; &#123;</span><br><span class="line">        return Todo.insertMany(todos);</span><br><span class="line">    &#125;).then(() =&gt; done());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>第一個測試直接找 {text}<br>
+<code>Todo.find(&#123;text&#125;).then((todos) =&gt; &#123;</code></li>
+<li>第二個測試改為兩筆<br>
+<code>expect(todos.length).toBe(2);</code></li>
+<li>新增 GET 測試</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">describe(&#x27;GET /todos&#x27;, () =&gt; &#123;</span><br><span class="line">    it(&#x27;should get all todos&#x27;, (done) =&gt; &#123;</span><br><span class="line">        request(app)</span><br><span class="line">            .get(&#x27;/todos&#x27;)</span><br><span class="line">            .expect(200)</span><br><span class="line">            .expect((res) =&gt; &#123;</span><br><span class="line">                expect(res.body.todos.length).toBe(2);</span><br><span class="line">            &#125;)</span><br><span class="line">            .end(done);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="Mongoose-Queries-和-ID-Validation">Mongoose Queries 和 ID Validation</h4>
+<ol>
+<li>新增 playground/mongoose-queries.js</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">const &#123;ObjectID&#125; = require(&#x27;mongodb&#x27;);</span><br><span class="line"></span><br><span class="line">const &#123;mongoose&#125; = require(&#x27;./../server/db/mongoose&#x27;);</span><br><span class="line">const &#123;Todo&#125; = require(&#x27;./../server/models/todo&#x27;);</span><br><span class="line">const &#123;User&#125; = require(&#x27;./../server/models/user&#x27;);</span><br><span class="line"></span><br><span class="line">var id = &#x27;59be9ceb9e82d91c669205a611&#x27;;</span><br><span class="line"></span><br><span class="line">if (!ObjectID.isValid(id)) &#123;</span><br><span class="line">    console.log(&#x27;ID not valid&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Todo.find(&#123;</span><br><span class="line">    _id: id</span><br><span class="line">&#125;).then((todos) =&gt; &#123;</span><br><span class="line">    console.log(&#x27;Todos&#x27;, todos);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Todo.findOne(&#123;</span><br><span class="line">    _id: id</span><br><span class="line">&#125;).then((todo) =&gt; &#123;</span><br><span class="line">    console.log(&#x27;Todo&#x27;, todo);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Todo.findById(id).then((todo) =&gt; &#123;</span><br><span class="line">    if (!todo) &#123;</span><br><span class="line">        return console.log(&#x27;Id not found&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#x27;Todo by id&#x27;, todo);</span><br><span class="line">&#125;).catch((e) =&gt; console.log(e));</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>nodemon playground/mongoose-queries.js</code></li>
+<li>新增 query user</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User.findById(&#x27;59be61a5c4e4cea95cfe65ea&#x27;).then((user) =&gt; &#123;</span><br><span class="line">    if (!user) &#123;</span><br><span class="line">        return console.log(&#x27;Unable to find user&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    console.log(JSON.stringify(user, undefined, 2));</span><br><span class="line">&#125;, (e) =&gt; &#123;</span><br><span class="line">    console.log(e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="取得-individual-Resource-GET-todos-id">取得 individual Resource - GET /todos/:id</h4>
+<ol>
+<li>取得資料的思路</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Valid id using isValid</span><br><span class="line">    // 404 - send back empty send</span><br><span class="line"></span><br><span class="line">// findById</span><br><span class="line">    // success</span><br><span class="line">        // if todo - send it back</span><br><span class="line">        // if no todo - send back 404 with empty body</span><br><span class="line">    // error</span><br><span class="line">        // 400 - and send empty body back</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>引入 ObjectId<br>
+<code>var &#123;ObjectID&#125; = require('mongodb');</code></li>
+<li>取得 id</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">app.get(&#x27;/todos/:id&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">    var id = req.params.id;</span><br><span class="line"></span><br><span class="line">    if (!ObjectID.isValid(id)) &#123;</span><br><span class="line">        return res.status(404).send();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Todo.findById(id).then((todo) =&gt; &#123;</span><br><span class="line">        if (!todo) &#123;</span><br><span class="line">            return res.status(404).send();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        res.send(&#123;todo&#125;);</span><br><span class="line">    &#125;).catch((e) =&gt; &#123;</span><br><span class="line">        res.status(400).send();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="測試-GET-todos-id">測試 GET /todos/:id</h4>
+<ol>
+<li>在 server/tests/server.test.js 引入 ObjectId<br>
+<code>const &#123;ObjectID&#125; = require('mongodb');</code></li>
+<li>在傳入的陣列新增 id</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const todos = [&#123;</span><br><span class="line">    _id: new ObjectID(),</span><br><span class="line">    text: &#x27;First test todo&#x27;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">    _id: new ObjectID(),</span><br><span class="line">    text: &#x27;Second test todo&#x27;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>寫測試</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">describe(&#x27;GET /todo/:id&#x27;, () =&gt; &#123;</span><br><span class="line">    it(&#x27;should return todo doc&#x27;, (done) =&gt; &#123;</span><br><span class="line">        request(app)</span><br><span class="line">            .get(`/todos/$&#123;todos[0]._id.toHexString()&#125;`)</span><br><span class="line">            .expect(200)</span><br><span class="line">            .expect((res) =&gt; &#123;</span><br><span class="line">                expect(res.body.todo.text).toBe(todos[0].text);</span><br><span class="line">            &#125;)</span><br><span class="line">            .end(done);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    it(&#x27;should return 404 if todo not found&#x27;, (done) =&gt; &#123;</span><br><span class="line">        var hexId = new ObjectID().toHexString();</span><br><span class="line"></span><br><span class="line">        request(app)</span><br><span class="line">            .get(`/todos/$&#123;hexId&#125;`)</span><br><span class="line">            .expect(404)</span><br><span class="line">            .end(done);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    it(&#x27;should return 404 for non-object ids&#x27;, (done) =&gt; &#123;</span><br><span class="line">        request(app)</span><br><span class="line">            .get(&#x27;/todos/123abc&#x27;)</span><br><span class="line">            .expect(404)</span><br><span class="line">            .end(done);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2017/09/17/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day7/" data-id="cl1d3legq008tdytld80h8z40" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Nodejs 快速學習自我挑戰 Day7",
+        "image": "https://vincent.fishboneapps.com/images/learning/nodejs/nodejsday7.png",
+        "keywords": "Nodejs",
+        "genre": "Study Note",
+        "datePublished": "2017-09-17",
+        "dateCreated": "2017-09-17",
+        "dateModified": "2020-06-23",
+        "url": "https://vincent.fishboneapps.com/2017/09/17/Nodejs-快速學習自我挑戰-Day7/",
+        "description": "
+
+MongoDB，Mongoose 和 REST APIs (Todo API)
+安裝 Postman
+
+Postman 官網
+
+Resource Creation Endpoint - POST /todos
+
+新增 server/db/mongoose.js
+
+123456var mongoose = require(&#x27;mongoose&#x27;);mongoose.Promis",
+        "wordCount": 2245
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2017/09/17/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day7/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/09/18/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day8/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Nodejs 快速學習自我挑戰 Day8
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/09/15/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day6/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Nodejs 快速學習自我挑戰 Day6</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB%EF%BC%8CMongoose-%E5%92%8C-REST-APIs-Todo-API-2"><span class="toc-number">1.</span> <span class="toc-text">MongoDB，Mongoose 和 REST APIs (Todo API)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Postman"><span class="toc-number">1.1.</span> <span class="toc-text">安裝 Postman</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resource-Creation-Endpoint-POST-todos"><span class="toc-number">1.2.</span> <span class="toc-text">Resource Creation Endpoint - POST &#x2F;todos</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%AC%E8%A9%A6-POST-todos"><span class="toc-number">1.3.</span> <span class="toc-text">測試 POST &#x2F;todos</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List-Resources-GET-todos"><span class="toc-number">1.4.</span> <span class="toc-text">List Resources - GET &#x2F;todos</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%AC%E8%A9%A6-GET-todos"><span class="toc-number">1.5.</span> <span class="toc-text">測試 GET &#x2F;todos</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mongoose-Queries-%E5%92%8C-ID-Validation"><span class="toc-number">1.6.</span> <span class="toc-text">Mongoose Queries 和 ID Validation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E5%BE%97-individual-Resource-GET-todos-id"><span class="toc-number">1.7.</span> <span class="toc-text">取得 individual Resource - GET &#x2F;todos&#x2F;:id</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%AC%E8%A9%A6-GET-todos-id"><span class="toc-number">1.8.</span> <span class="toc-text">測試 GET &#x2F;todos&#x2F;:id</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

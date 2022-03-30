@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Java 快速學習自我挑戰 Day11 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Java" />
+    
+    <meta name="description" content="物件導向程式設計 (OOP) - Composition, Encapsulation 和 Polymorphism Encapsulation  Encapsulation 是一個允許你對正在創建的 Objects 裡面的特定 Components 做限制存取的機制。 它可以用來屏蔽其它 Class 的存取，保持內部工作正常，且可以讓你修改內容的時候避免損壞。 用一個範例來了解 Encaps">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 快速學習自我挑戰 Day11">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2021/01/23/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day11/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="物件導向程式設計 (OOP) - Composition, Encapsulation 和 Polymorphism Encapsulation  Encapsulation 是一個允許你對正在創建的 Objects 裡面的特定 Components 做限制存取的機制。 它可以用來屏蔽其它 Class 的存取，保持內部工作正常，且可以讓你修改內容的時候避免損壞。 用一個範例來了解 Encaps">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay11.jpg">
+<meta property="article:published_time" content="2021-01-24T03:07:31.000Z">
+<meta property="article:modified_time" content="2021-01-25T08:24:42.396Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay11.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Java-快速學習自我挑戰-Day11" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Java 快速學習自我挑戰 Day11
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2021/01/23/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day11/" class="article-date">
+         <time datetime="2021-01-24T03:07:31.000Z" itemprop="datePublished">2021-01-24</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">3k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">17 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/java/JavaDay11.jpg">
+<hr>
+<h3 id="物件導向程式設計-OOP-Composition-Encapsulation-和-Polymorphism-2">物件導向程式設計 (OOP) - Composition, Encapsulation 和 Polymorphism</h3>
+<h4 id="Encapsulation">Encapsulation</h4>
+<ol>
+<li>Encapsulation 是一個允許你對正在創建的 Objects 裡面的特定 Components 做限制存取的機制。</li>
+<li>它可以用來屏蔽其它 Class 的存取，保持內部工作正常，且可以讓你修改內容的時候避免損壞。</li>
+<li>用一個範例來了解 Encapsulation
+<ol>
+<li>新增 Player.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Player &#123;</span><br><span class="line"></span><br><span class="line">    public String name;</span><br><span class="line">    public int health;</span><br><span class="line">    public String weapon;</span><br><span class="line"></span><br><span class="line">    public void loseHealth(int damage) &#123;</span><br><span class="line">        this.health = this.health - damage;</span><br><span class="line">        if (this.health &lt;= 0) &#123;</span><br><span class="line">            System.out.println(&quot;Player knocked out&quot;);</span><br><span class="line">            // Reduce number of lives remaining for the player</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int healthRemaining() &#123;</span><br><span class="line">        return this.health;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 Main.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Player player = new Player();</span><br><span class="line">player.name = &quot;Vincent&quot;;</span><br><span class="line">player.health = 20;</span><br><span class="line">player.weapon = &quot;Sword&quot;;</span><br><span class="line"></span><br><span class="line">int damage = 10;</span><br><span class="line">player.loseHealth(damage);</span><br><span class="line">System.out.println(&quot;Remaining health = &quot; + player.healthRemaining());</span><br><span class="line"></span><br><span class="line">damage = 11;</span><br><span class="line">player.health = 200;</span><br><span class="line">player.loseHealth(damage);</span><br><span class="line">System.out.println(&quot;Remaining health = &quot; + player.healthRemaining());</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>這時候，如果把 Player.java 裡面的 <code>public String name;</code> 改成 <code>public String fullName</code>，整個程式碼就會出錯。</li>
+<li>新增一個 EnhancedPlayer.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class EnhancedPlayer &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private int health = 100;</span><br><span class="line">    private String weapon;</span><br><span class="line"></span><br><span class="line">    public EnhancedPlayer(String name, int health, String weapon) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        if (health &gt; 0 &amp;&amp; health &lt;= 100) &#123;</span><br><span class="line">            this.health = health;</span><br><span class="line">        &#125;</span><br><span class="line">        this.weapon = weapon;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void loseHealth(int damage) &#123;</span><br><span class="line">        this.health = this.health - damage;</span><br><span class="line">        if (this.health &lt;= 0) &#123;</span><br><span class="line">            System.out.println(&quot;Player knocked out&quot;);</span><br><span class="line">            // Reduce number of lives remaining for the player</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getHealth() &#123;</span><br><span class="line">        return health;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改 Main.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EnhancedPlayer player = new EnhancedPlayer(&quot;Vincent&quot;, 200, &quot;Sword&quot;);</span><br><span class="line">System.out.println(&quot;Initial health is &quot; + player.getHealth());</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>就算把 health 改成 hitPoints，運作仍然正常。</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class EnhancedPlayer &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private int hitPoints = 100;</span><br><span class="line">    private String weapon;</span><br><span class="line"></span><br><span class="line">    public EnhancedPlayer(String name, int health, String weapon) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        if (health &gt; 0 &amp;&amp; health &lt;= 100) &#123;</span><br><span class="line">            this.hitPoints = health;</span><br><span class="line">        &#125;</span><br><span class="line">        this.weapon = weapon;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void loseHealth(int damage) &#123;</span><br><span class="line">        this.hitPoints = this.hitPoints - damage;</span><br><span class="line">        if (this.hitPoints &lt;= 0) &#123;</span><br><span class="line">            System.out.println(&quot;Player knocked out&quot;);</span><br><span class="line">            // Reduce number of lives remaining for the player</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getHealth() &#123;</span><br><span class="line">        return hitPoints;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Encapsulation-挑戰">Encapsulation 挑戰</h4>
+<ol>
+<li>題目<br>
+Create a class and demonstrate proper encapsulation techniques<br>
+the class will be called Printer<br>
+It will simulate a real Computer Printer<br>
+It should have fields for the toner Level, number of pages printed, and<br>
+also whether its a duplex printer (capable of printing on both sides of the paper).<br>
+Add methods to fill up the toner (up to a maximum of 100%), another method to<br>
+simulate printing a page (which should increase the number of pages printed).<br>
+Decide on the scope, whether to use constructors, and anything lese you think is needed.</li>
+<li>答案
+<ol>
+<li>新增 Printer.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class Printer &#123;</span><br><span class="line"></span><br><span class="line">    private int tonerLevel = -1;</span><br><span class="line">    private int pagesPrinted = 0;</span><br><span class="line">    private boolean duplex;</span><br><span class="line"></span><br><span class="line">    public Printer(int tonerLevel, boolean duplex) &#123;</span><br><span class="line">        if (tonerLevel &gt; -1 &amp;&amp; tonerLevel &lt;= 100) &#123;</span><br><span class="line">            this.tonerLevel = tonerLevel;</span><br><span class="line">        &#125;</span><br><span class="line">        this.duplex = duplex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int addToner(int tonerAmount) &#123;</span><br><span class="line">        if (tonerAmount &gt; 0 &amp;&amp; tonerAmount &lt;= 100) &#123;</span><br><span class="line">            if (tonerLevel + tonerAmount &gt; 100) &#123;</span><br><span class="line">                return -1;</span><br><span class="line">            &#125;</span><br><span class="line">            return tonerLevel += tonerAmount;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int printPages(int pages) &#123;</span><br><span class="line">        int pagesToPrint = pages;</span><br><span class="line">        if (duplex) &#123;</span><br><span class="line">            System.out.println(&quot;Printing in duplex mode&quot;);</span><br><span class="line">            pagesToPrint = (pages / 2) + (pages % 2);</span><br><span class="line">        &#125;</span><br><span class="line">        pagesPrinted += pagesToPrint;</span><br><span class="line">        return pagesToPrint;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getPagesPrinted() &#123;</span><br><span class="line">        return pagesPrinted;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 Main.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Printer printer = new Printer(50, true);</span><br><span class="line">System.out.println(printer.addToner(50));</span><br><span class="line">System.out.println(&quot;initial page count = &quot; + printer.getPagesPrinted());</span><br><span class="line">int pagesPrinted = printer.printPages(4);</span><br><span class="line">System.out.println(&quot;Pages printed was &quot; + pagesPrinted + &quot; new total print count for printer = &quot; + printer.getPagesPrinted());</span><br><span class="line">pagesPrinted = printer.printPages(2);</span><br><span class="line">System.out.println(&quot;Pages printed was &quot; + pagesPrinted + &quot; new total print count for printer = &quot; + printer.getPagesPrinted());</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Polymorphism">Polymorphism</h3>
+<ol>
+<li>在 Main.java 新增很多 Class</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">class Movie &#123;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public Movie(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String plot() &#123;</span><br><span class="line">        return &quot;No plot here&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Jaws extends Movie &#123;</span><br><span class="line">    public Jaws() &#123;</span><br><span class="line">        super(&quot;Jaws&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String plot() &#123;</span><br><span class="line">        return &quot;A shark eats lots of people&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class IndependenceDay extends Movie &#123;</span><br><span class="line">    public IndependenceDay() &#123;</span><br><span class="line">        super(&quot;Independence Day&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String plot() &#123;</span><br><span class="line">        return &quot;Aliens attempt to take over planet earth&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MazeRunner extends Movie &#123;</span><br><span class="line"></span><br><span class="line">    public MazeRunner() &#123;</span><br><span class="line">        super(&quot;Maze Runner&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String plot() &#123;</span><br><span class="line">        return &quot;Kids try and escape a maze.&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class StarWars extends Movie &#123;</span><br><span class="line"></span><br><span class="line">    public StarWars() &#123;</span><br><span class="line">        super(&quot;Star Wars&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String plot() &#123;</span><br><span class="line">        return &quot;Imperial Forces try to take over the universe&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Forgettable extends Movie &#123;</span><br><span class="line"></span><br><span class="line">    public Forgettable() &#123;</span><br><span class="line">        super(&quot;Forgettable&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // No plot method</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 Main.java 最主要的內容來展示 Polymorphism</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        for (int i = 1; i &lt; 11; i++) &#123;</span><br><span class="line">            Movie movie = randomMovie();</span><br><span class="line">            System.out.println(&quot;Movie #&quot; + i + &quot; : &quot; + movie.getName() + &quot;\n&quot; + &quot;Plot: &quot; + movie.plot() + &quot;\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Movie randomMovie() &#123;</span><br><span class="line">        int randomNumber = (int) (Math.random() * 5) + 1;</span><br><span class="line">        System.out.println(&quot;Random number generated was: &quot; + randomNumber);</span><br><span class="line">        switch (randomNumber) &#123;</span><br><span class="line">            case 1:</span><br><span class="line">                return new Jaws();</span><br><span class="line">            case 2:</span><br><span class="line">                return new IndependenceDay();</span><br><span class="line">            case 3:</span><br><span class="line">                return new MazeRunner();</span><br><span class="line">            case 4:</span><br><span class="line">                return new StarWars();</span><br><span class="line">            case 5:</span><br><span class="line">                return new Forgettable();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Polymorphism-挑戰">Polymorphism 挑戰</h4>
+<ol>
+<li>
+<p>題目<br>
+We are going to go back to the car analogy.<br>
+Crate a base class called Car<br>
+It should have a few fields that would be appropriate for a generic car class.<br>
+engine, cylinders, wheels, etc.<br>
+Constructor should initialize cylinders (number of) and name, and set wheels to 4<br>
+and engine to true. Cylinders and names would be passed parameters.<br>
+Create appropriate getters<br>
+Create some methods like startEngine, accelerate, and brake<br>
+show a message for each in the base class<br>
+Now create 3 sub classes for your favorite vehicles.<br>
+Override the appropriate methods to demonstrate polymorphism in use.<br>
+put all classes in the one java file (this one).</p>
+</li>
+<li>
+<p>答案</p>
+<ol>
+<li>新增 Class 到 Main.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">class Car &#123;</span><br><span class="line">    private boolean engine;</span><br><span class="line">    private int cylinders;</span><br><span class="line">    private String name;</span><br><span class="line">    private int wheels;</span><br><span class="line"></span><br><span class="line">    public Car(int cylinders, String name) &#123;</span><br><span class="line">        this.engine = true;</span><br><span class="line">        this.cylinders = cylinders;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.wheels = 4;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String startEngine() &#123;</span><br><span class="line">        return &quot;Car -&gt; startEngine()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String accelerate() &#123;</span><br><span class="line">        return &quot;Car -&gt; accelerate()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String brake() &#123;</span><br><span class="line">        return &quot;Car -&gt; brake()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getCylinders() &#123;</span><br><span class="line">        return cylinders;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Mitsubishi extends Car &#123;</span><br><span class="line"></span><br><span class="line">    public Mitsubishi(int cylinders, String name) &#123;</span><br><span class="line">        super(cylinders, name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String startEngine() &#123;</span><br><span class="line">        return &quot;Mitsubishi -&gt; startEngine()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String accelerate() &#123;</span><br><span class="line">        return &quot;Mitsubishi -&gt; accelerate()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String brake() &#123;</span><br><span class="line">        return &quot;Mitsubishi -&gt; brake()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Holden extends Car &#123;</span><br><span class="line"></span><br><span class="line">    public Holden(int cylinders, String name) &#123;</span><br><span class="line">        super(cylinders, name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String startEngine() &#123;</span><br><span class="line">        return &quot;Holden -&gt; startEngine()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String accelerate() &#123;</span><br><span class="line">        return &quot;Holden -&gt; accelerate()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String brake() &#123;</span><br><span class="line">        return &quot;Holden -&gt; brake()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Ford extends Car &#123;</span><br><span class="line"></span><br><span class="line">    public Ford(int cylinders, String name) &#123;</span><br><span class="line">        super(cylinders, name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String startEngine() &#123;</span><br><span class="line">        return &quot;Ford -&gt; startEngine()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String accelerate() &#123;</span><br><span class="line">        return &quot;Ford -&gt; accelerate()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String brake() &#123;</span><br><span class="line">        return &quot;Ford -&gt; brake()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改 Main.java 的主要內容</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">      Car car = new Car(8, &quot;Base Car&quot;);</span><br><span class="line">        System.out.println(car.startEngine());</span><br><span class="line">        System.out.println(car.accelerate());</span><br><span class="line">        System.out.println(car.brake());</span><br><span class="line"></span><br><span class="line">        Mitsubishi mitsubishi = new Mitsubishi(6, &quot;Outlander VRX 4WD&quot;);</span><br><span class="line">        System.out.println(mitsubishi.startEngine());</span><br><span class="line">        System.out.println(mitsubishi.accelerate());</span><br><span class="line">        System.out.println(mitsubishi.brake());</span><br><span class="line"></span><br><span class="line">        Ford ford = new Ford(6, &quot;Ford Falcon&quot;);</span><br><span class="line">        System.out.println(ford.startEngine());</span><br><span class="line">        System.out.println(ford.accelerate());</span><br><span class="line">        System.out.println(ford.brake());</span><br><span class="line"></span><br><span class="line">        Holden holden = new Holden(6, &quot;Holden Commodore&quot;);</span><br><span class="line">        System.out.println(holden.startEngine());</span><br><span class="line">        System.out.println(holden.accelerate());</span><br><span class="line">        System.out.println(holden.brake());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>可以使用內建語法 getClass().getSimpleName() 來取得 Class 的名稱</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Mitsubishi extends Car &#123;</span><br><span class="line"></span><br><span class="line">    public Mitsubishi(int cylinders, String name) &#123;</span><br><span class="line">        super(cylinders, name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String startEngine() &#123;</span><br><span class="line">        return getClass().getSimpleName() + &quot; -&gt; startEngine()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String accelerate() &#123;</span><br><span class="line">        return getClass().getSimpleName() + &quot; -&gt; accelerate()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String brake() &#123;</span><br><span class="line">        return getClass().getSimpleName() + &quot; -&gt; brake()&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="OOP-終極挑戰">OOP 終極挑戰</h4>
+<ol>
+<li>題目<br>
+The purpose of this application is to help a company called Bill’s Burgers manage the process of selling their hamburgers. And in order to match Bill’s menu, you will need to create three(3) classes, Hamburger, DeluxeBurger, and HealthyBurger.<br>
+For the base Hamburger class, there will need to be four variables to represent the four basic ingredients of the hamburger, name, meat, price, and breadRollType. The price variable should be of type double, while the other three are of type String. A constructor will be needed to accept these four values as parameters when creating a new hamburger.<br>
+There will also need to be separate variables for four(4) possible additions to the hamburger. Those should be declared with these names: addition1Name, addition1Price, addition2Name, addition2Price, addition3Name, addition3Price, addition4Name, and addition4Price. The name variables should be of type String and the price variables should be of type double.<br>
+Five(5) methods are also needed inside the Hamburger class. Four(4) for adding up to four additions to the hamburger and one(1) for printing out an itemized listing of the final hamburger with addons, if any, and the total price. Remember that a name and price must be accepted as parameters in the first four methods so that the price of the hamburger is adjusted accordingly. These methods should be named addHamburgerAddition1, addHamburgerAddition2, addHamburgerAddition3, addHamburgerAddition4, and itemizeHamburger. The first four methods do not return values, but the last method does return the total price of the hamburger of type double, which includes the base price of the hamburger plus any additional items.<br>
+For the second class, DeluxeBurger, there are no additional member variables, and the constructor accepts no parameters. Instead, the constructor creates a deluxe burger with all the fixings and chips and a drink for a base price of $19.10. The constructor can be configured in any way, as long as chips and drink are added for the total price just mentioned. In this class, the four(4) methods defined in the Hamburger class for including additional toppings must each be overridden so that a message is printed stating that no additional items can be added to a deluxe burger.<br>
+And for the third class, HealthyBurger, there will be four(4) additional member variables called healthyExtra1Name, healthyExtra1Price, healthyExtra2Name, and healthyExtra2Price. The names are type String and the prices are type double. The constructor for this class accepts two(2) parameters for meat and price. Those are set in the constructor along with an appropriate name for the type of burger.<br>
+Two methods, addHealthyAddition1 and addHealthyAddition2 should be created that each accept a name and price for the addition, allowing for up to two(2) addons to the basic healthy burger. And finally the itemizeHamburger method created in the Hamburger class should be overridden to generate a message appropriate to the type of burger along with any addons. The method also returns the total price of the healthy burger of type double.<br>
+Example input: <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Hamburger hamburger = new Hamburger(&quot;Basic&quot;, &quot;Sausage&quot;, 3.56, &quot;White&quot;);</span><br><span class="line">hamburger.addHamburgerAddition1(&quot;Tomato&quot;, 0.27);</span><br><span class="line">hamburger.addHamburgerAddition2(&quot;Lettuce&quot;, 0.75);</span><br><span class="line">hamburger.addHamburgerAddition3(&quot;Cheese&quot;, 1.13);</span><br><span class="line">System.out.println(&quot;Total Burger price is &quot; + hamburger.itemizeHamburger());</span><br><span class="line"></span><br><span class="line">HealthyBurger healthyBurger = new HealthyBurger(&quot;Bacon&quot;, 5.67);</span><br><span class="line">healthyBurger.addHamburgerAddition1(&quot;Egg&quot;, 5.43);</span><br><span class="line">healthyBurger.addHealthyAddition1(&quot;Lentils&quot;, 3.41);</span><br><span class="line">System.out.println(&quot;Total Healthy Burger price is  &quot; + healthyBurger.itemizeHamburger());</span><br><span class="line"></span><br><span class="line">DeluxeBurger db = new DeluxeBurger();</span><br><span class="line">db.addHamburgerAddition3(&quot;Should not do this&quot;, 50.53);</span><br><span class="line">System.out.println(&quot;Total Deluxe Burger price is &quot; + db.itemizeHamburger());</span><br></pre></td></tr></table></figure>
+Example output: <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Basic hamburger on a White roll with Sausage, price is 3.56</span><br><span class="line">Added Tomato for an extra 0.27</span><br><span class="line">Added Lettuce for an extra 0.75</span><br><span class="line">Added Cheese for an extra 1.13</span><br><span class="line">Total Burger price is 5.71</span><br><span class="line">Healthy hamburger on a Brown rye roll with Bacon, price is 5.67</span><br><span class="line">Added Egg for an extra 5.43</span><br><span class="line">Added Lentils for an extra 3.41</span><br><span class="line">Total Healthy Burger price is  14.51</span><br><span class="line">Cannot not add additional items to a deluxe burger</span><br><span class="line">Deluxe hamburger on a White roll with Sausage &amp; Bacon, price is 14.54</span><br><span class="line">Added Chips for an extra 2.75</span><br><span class="line">Added Drink for an extra 1.81</span><br><span class="line">Total Deluxe Burger price is 19.10</span><br></pre></td></tr></table></figure>
+</li>
+<li>答案
+<ol>
+<li>新增 Hamburger.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">public class Hamburger &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private String meat;</span><br><span class="line">    private double price;</span><br><span class="line">    private String breadRollType;</span><br><span class="line"></span><br><span class="line">    private String addition1Name;</span><br><span class="line">    private double addition1Price;</span><br><span class="line"></span><br><span class="line">    private String addition2Name;</span><br><span class="line">    private double addition2Price;</span><br><span class="line"></span><br><span class="line">    private String addition3Name;</span><br><span class="line">    private double addition3Price;</span><br><span class="line"></span><br><span class="line">    private String addition4Name;</span><br><span class="line">    private double addition4Price;</span><br><span class="line"></span><br><span class="line">    public Hamburger(String name, String meat, double price, String breadRollType) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.meat = meat;</span><br><span class="line">        this.price = price;</span><br><span class="line">        this.breadRollType = breadRollType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void addHamburgerAddition1(String name, double price) &#123;</span><br><span class="line">        this.addition1Name = name;</span><br><span class="line">        this.addition1Price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void addHamburgerAddition2(String name, double price) &#123;</span><br><span class="line">        this.addition2Name = name;</span><br><span class="line">        this.addition2Price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void addHamburgerAddition3(String name, double price) &#123;</span><br><span class="line">        this.addition3Name = name;</span><br><span class="line">        this.addition3Price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void addHamburgerAddition4(String name, double price) &#123;</span><br><span class="line">        this.addition4Name = name;</span><br><span class="line">        this.addition4Price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double itemizeHamburger() &#123;</span><br><span class="line">        double hamburgerPrice = this.price;</span><br><span class="line">        System.out.println(this.name + &quot; hamburger on a &quot; + this.breadRollType + &quot; roll with &quot; + this.meat + &quot;, price is &quot; + this.price);</span><br><span class="line">        if (this.addition1Name != null) &#123;</span><br><span class="line">            hamburgerPrice += this.addition1Price;</span><br><span class="line">            System.out.println(&quot;Added &quot; + this.addition1Name + &quot; for an extra &quot; + this.addition1Price);</span><br><span class="line">        &#125;</span><br><span class="line">        if (this.addition2Name != null) &#123;</span><br><span class="line">            hamburgerPrice += this.addition2Price;</span><br><span class="line">            System.out.println(&quot;Added &quot; + this.addition2Name + &quot; for an extra &quot; + this.addition2Price);</span><br><span class="line">        &#125;</span><br><span class="line">        if (this.addition3Name != null) &#123;</span><br><span class="line">            hamburgerPrice += this.addition3Price;</span><br><span class="line">            System.out.println(&quot;Added &quot; + this.addition3Name + &quot; for an extra &quot; + this.addition3Price);</span><br><span class="line">        &#125;</span><br><span class="line">        if (this.addition4Name != null) &#123;</span><br><span class="line">            hamburgerPrice += this.addition4Price;</span><br><span class="line">            System.out.println(&quot;Added &quot; + this.addition4Name + &quot; for an extra &quot; + this.addition4Price);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return hamburgerPrice;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>新增 DeluxeBurger.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class DeluxeBurger extends Hamburger &#123;</span><br><span class="line">    public DeluxeBurger() &#123;</span><br><span class="line">        super(&quot;Deluxe&quot;, &quot;Sausage &amp; Bacon&quot;, 14.54, &quot;White&quot;);</span><br><span class="line">        super.addHamburgerAddition1(&quot;Chips&quot;, 2.75);</span><br><span class="line">        super.addHamburgerAddition2(&quot;Drink&quot;, 1.81);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void addHamburgerAddition1(String addition1Name, double addition1Price) &#123;</span><br><span class="line">        System.out.println(&quot;Cannot not add additional items to a deluxe burger&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void addHamburgerAddition2(String addition2Name, double addition2Price) &#123;</span><br><span class="line">        System.out.println(&quot;Cannot not add additional items to a deluxe burger&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void addHamburgerAddition3(String addition3Name, double addition3Price) &#123;</span><br><span class="line">        System.out.println(&quot;Cannot not add additional items to a deluxe burger&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void addHamburgerAddition4(String addition4Name, double addition4Price) &#123;</span><br><span class="line">        System.out.println(&quot;Cannot not add additional items to a deluxe burger&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>新增 HealthyBurger.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class HealthyBurger extends Hamburger &#123;</span><br><span class="line">    private String healthyExtra1Name;</span><br><span class="line">    private double healthyExtra1Price;</span><br><span class="line"></span><br><span class="line">    private String healthyExtra2Name;</span><br><span class="line">    private double healthyExtra2Price;</span><br><span class="line"></span><br><span class="line">    public HealthyBurger(String meat, double price) &#123;</span><br><span class="line">        super(&quot;Healthy&quot;, meat, price, &quot;Brown rye&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void addHealthyAddition1(String name, double price) &#123;</span><br><span class="line">        this.healthyExtra1Name = name;</span><br><span class="line">        this.healthyExtra1Price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void addHealthyAddition2(String name, double price) &#123;</span><br><span class="line">        this.healthyExtra2Name = name;</span><br><span class="line">        this.healthyExtra2Price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public double itemizeHamburger() &#123;</span><br><span class="line">        double hamburgerPrice = super.itemizeHamburger();</span><br><span class="line">        if (this.healthyExtra1Name != null) &#123;</span><br><span class="line">            hamburgerPrice += this.healthyExtra1Price;</span><br><span class="line">            System.out.println(&quot;Added &quot; + this.healthyExtra1Name + &quot; for an extra &quot; + this.healthyExtra1Price);</span><br><span class="line">        &#125;</span><br><span class="line">        if (this.healthyExtra2Name != null) &#123;</span><br><span class="line">            hamburgerPrice += this.healthyExtra2Price;</span><br><span class="line">            System.out.println(&quot;Added &quot; + this.healthyExtra2Name + &quot; for an extra &quot; + this.healthyExtra2Price);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return hamburgerPrice;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>修改 Main.java</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Hamburger hamburger = new Hamburger(&quot;Basic&quot;, &quot;Sausage&quot;, 3.56, &quot;White&quot;);</span><br><span class="line">        hamburger.addHamburgerAddition1(&quot;Tomato&quot;, 0.27);</span><br><span class="line">        hamburger.addHamburgerAddition2(&quot;Lettuce&quot;, 0.75);</span><br><span class="line">        hamburger.addHamburgerAddition3(&quot;Cheese&quot;, 1.13);</span><br><span class="line">        System.out.println(&quot;Total Burger price is &quot; + hamburger.itemizeHamburger());</span><br><span class="line"></span><br><span class="line">        HealthyBurger healthyBurger = new HealthyBurger(&quot;Bacon&quot;, 5.67);</span><br><span class="line">        healthyBurger.addHamburgerAddition1(&quot;Egg&quot;, 5.43);</span><br><span class="line">        healthyBurger.addHealthyAddition1(&quot;Lentils&quot;, 3.41);</span><br><span class="line">        System.out.println(&quot;Total Healthy Burger price is  &quot; + healthyBurger.itemizeHamburger());</span><br><span class="line"></span><br><span class="line">        DeluxeBurger db = new DeluxeBurger();</span><br><span class="line">        db.addHamburgerAddition3(&quot;Should not do this&quot;, 50.53);</span><br><span class="line">        System.out.println(&quot;Total Deluxe Burger price is &quot; + db.itemizeHamburger());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2021/01/23/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day11/" data-id="cl1d3lef20042dytl90ck09i5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Java 快速學習自我挑戰 Day11",
+        "image": "https://vincent.fishboneapps.com/images/learning/java/JavaDay11.jpg",
+        "keywords": "Java",
+        "genre": "Study Note",
+        "datePublished": "2021-01-24",
+        "dateCreated": "2021-01-24",
+        "dateModified": "2021-01-25",
+        "url": "https://vincent.fishboneapps.com/2021/01/23/Java-快速學習自我挑戰-Day11/",
+        "description": "
+
+物件導向程式設計 (OOP) - Composition, Encapsulation 和 Polymorphism
+Encapsulation
+
+Encapsulation 是一個允許你對正在創建的 Objects 裡面的特定 Components 做限制存取的機制。
+它可以用來屏蔽其它 Class 的存取，保持內部工作正常，且可以讓你修改內容的時候避免損壞。
+用一個範例來了解 Encaps",
+        "wordCount": 5531
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2021/01/23/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day11/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2021/01/25/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day12/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java 快速學習自我挑戰 Day12
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2021/01/22/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day10/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java 快速學習自我挑戰 Day10</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88-OOP-Composition-Encapsulation-%E5%92%8C-Polymorphism-2"><span class="toc-number">1.</span> <span class="toc-text">物件導向程式設計 (OOP) - Composition, Encapsulation 和 Polymorphism</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Encapsulation"><span class="toc-number">1.1.</span> <span class="toc-text">Encapsulation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Encapsulation-%E6%8C%91%E6%88%B0"><span class="toc-number">1.2.</span> <span class="toc-text">Encapsulation 挑戰</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Polymorphism"><span class="toc-number">2.</span> <span class="toc-text">Polymorphism</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Polymorphism-%E6%8C%91%E6%88%B0"><span class="toc-number">2.1.</span> <span class="toc-text">Polymorphism 挑戰</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OOP-%E7%B5%82%E6%A5%B5%E6%8C%91%E6%88%B0"><span class="toc-number">2.2.</span> <span class="toc-text">OOP 終極挑戰</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

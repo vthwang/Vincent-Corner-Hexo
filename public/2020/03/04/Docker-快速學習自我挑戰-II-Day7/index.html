@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Docker 快速學習自我挑戰 II Day7 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Docker,Kubernetes" />
+    
+    <meta name="description" content="Docker Cloud  Docker Cloud 提供容器管理，編排，部署的托管服務 Docker Cloud 的模塊  關聯雲服務 AWS、Azure 添加節點作為 Docker Host 創建服務 Service 創建 Stack Image 管理   Docker Cloud 兩種運行模式  Standard 模式：一個 Node 就是一個 Docker Host Swarm 模式：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 快速學習自我挑戰 II Day7">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2020/03/04/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day7/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="Docker Cloud  Docker Cloud 提供容器管理，編排，部署的托管服務 Docker Cloud 的模塊  關聯雲服務 AWS、Azure 添加節點作為 Docker Host 創建服務 Service 創建 Stack Image 管理   Docker Cloud 兩種運行模式  Standard 模式：一個 Node 就是一個 Docker Host Swarm 模式：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay07.jpg">
+<meta property="article:published_time" content="2020-03-04T06:27:55.000Z">
+<meta property="article:modified_time" content="2020-06-22T17:12:32.377Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Kubernetes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay07.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Docker-快速學習自我挑戰-II-Day7" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Docker 快速學習自我挑戰 II Day7
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/03/04/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day7/" class="article-date">
+         <time datetime="2020-03-04T06:27:55.000Z" itemprop="datePublished">2020-03-04</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>, <a class="tag-link-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">2.7k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">12 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/docker-2/DockerDay07.jpg">
+<hr>
+<h3 id="Docker-Cloud">Docker Cloud</h3>
+<ol>
+<li>Docker Cloud 提供容器管理，編排，部署的托管服務</li>
+<li>Docker Cloud 的模塊
+<ul>
+<li>關聯雲服務 AWS、Azure</li>
+<li>添加節點作為 Docker Host</li>
+<li>創建服務 Service</li>
+<li>創建 Stack</li>
+<li>Image 管理</li>
+</ul>
+</li>
+<li>Docker Cloud 兩種運行模式
+<ul>
+<li>Standard 模式：一個 Node 就是一個 Docker Host</li>
+<li>Swarm 模式：多個 Node 組成的 Swarm Cluster</li>
+</ul>
+</li>
+</ol>
+<h3 id="Docker-Cloud-自動-Build-Docker-Image">Docker Cloud 自動 Build Docker Image</h3>
+<ol>
+<li>在 <a target="_blank" rel="noopener" href="https://hub.docker.com/">Docker Hub</a> 新增一個 Repository 並關聯到 Github 帳戶，並綁定 Repository</li>
+<li>在 Build 頁面選擇要 build 的 Repository，其餘設定如下圖，最後選擇 Save and Build</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay07-Image01.png">
+<ol start="3">
+<li>儲存之後，Docker Cloud 會自動 build，這時候可以修改 Repository 內容和新增 Release，這些操作都會觸發 Docker Cloud 自動 build 的流程，如此一來就實現 Docker Autobuild 的功能</li>
+</ol>
+<h3 id="Docker-Cloud-的-CI-CD">Docker Cloud 的 CI &amp; CD</h3>
+<ol>
+<li>把 Repository 下載下來之後，進行修改，並 push 到 Github 之後，再 pull request，系統會自動進行測試，測試完成之後，就可以進行 merge request(合併分支的人就可以參考測試的結果，選擇是否合併分支)，最後 Docker Cloud 會自動 build 並發佈到網站上，這樣就是一整套 CI &amp; CD</li>
+</ol>
+<h3 id="Docker-企業版本地安裝">Docker 企業版本地安裝</h3>
+<ol>
+<li>進入 <a target="_blank" rel="noopener" href="https://hub.docker.com/search?q=&amp;type=edition&amp;offering=enterprise">Docker EE</a>，找尋對應作業系統的頁面</li>
+<li>我要安裝 Ubuntu 版本的，進去<a target="_blank" rel="noopener" href="https://hub.docker.com/editions/enterprise/docker-ee-server-ubuntu/trial">試用一個月填寫相關資料</a></li>
+<li>使用 Vagrantfile 安裝虛擬機，因為 Docker EE 需要至少 4G 記憶體，所以記憶體設定為 4GB</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"># -*- mode: ruby -*-</span><br><span class="line"># vi: set ft=ruby :</span><br><span class="line"></span><br><span class="line">Vagrant.require_version &quot;&gt;= 1.6.0&quot;</span><br><span class="line"></span><br><span class="line">boxes = [</span><br><span class="line">    &#123;</span><br><span class="line">        :name =&gt; &quot;docker-ee-manager&quot;,</span><br><span class="line">        :eth1 =&gt; &quot;192.168.205.50&quot;,</span><br><span class="line">        :mem =&gt; &quot;4096&quot;,</span><br><span class="line">        :cpu =&gt; &quot;1&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        :name =&gt; &quot;docker-ee-worker&quot;,</span><br><span class="line">        :eth1 =&gt; &quot;192.168.205.60&quot;,</span><br><span class="line">        :mem =&gt; &quot;4096&quot;,</span><br><span class="line">        :cpu =&gt; &quot;1&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">Vagrant.configure(2) do |config|</span><br><span class="line"></span><br><span class="line">  config.vm.box = &quot;ubuntu/bionic64&quot;</span><br><span class="line">  boxes.each do |opts|</span><br><span class="line">    config.vm.define opts[:name] do |config|</span><br><span class="line">      config.vm.hostname = opts[:name]</span><br><span class="line">      config.vm.provider &quot;vmware_fusion&quot; do |v|</span><br><span class="line">        v.vmx[&quot;memsize&quot;] = opts[:mem]</span><br><span class="line">        v.vmx[&quot;numvcpus&quot;] = opts[:cpu]</span><br><span class="line">      end</span><br><span class="line">      config.vm.provider &quot;virtualbox&quot; do |v|</span><br><span class="line">        v.customize [&quot;modifyvm&quot;, :id, &quot;--memory&quot;, opts[:mem]]</span><br><span class="line">        v.customize [&quot;modifyvm&quot;, :id, &quot;--cpus&quot;, opts[:cpu]]</span><br><span class="line">      end</span><br><span class="line">      config.vm.network :private_network, ip: opts[:eth1]</span><br><span class="line">    end</span><br><span class="line">  end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>按照<a target="_blank" rel="noopener" href="https://docs.docker.com/ee/docker-ee/ubuntu/">文檔</a>開始安裝</li>
+<li>移除舊版本 Docker，因為沒有安裝，會顯示 Unable to locate<br>
+<code>sudo apt-get remove docker docker-engine docker-ce docker-ce-cli docker.io</code></li>
+<li>在 Manager 和 Worker 更新套件並安裝套件</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    software-properties-common</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>在 Manager 和 Worker 設置 Repository - 設置 Docker EE URL，這個 URL 會在申請一個月試用的頁面右下角取得<br>
+<code>DOCKER_EE_URL=&quot;&lt;DOCKER-EE-URL&gt;&quot;</code></li>
+<li>在 Manager 和 Worker 設置 Docker EE 版本<br>
+<code>DOCKER_EE_VERSION=19.03</code></li>
+<li>在 Manager 和 Worker 添加官方的 GPG key<br>
+<code>curl -fsSL &quot;$&#123;DOCKER_EE_URL&#125;/ubuntu/gpg&quot; | sudo apt-key add -</code></li>
+<li>在 Manager 和 Worker 驗證 Key 的指紋為 <code>DD91 1E99 5A64 A202 E859 07D6 BC14 F10B 6D08 5F96</code><br>
+<code>sudo apt-key fingerprint 6D085F96</code></li>
+<li>在 Manager 和 Worker 設置 Repository</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository \</span><br><span class="line">   &quot;deb [arch=$(dpkg --print-architecture)] $DOCKER_EE_URL/ubuntu \</span><br><span class="line">   $(lsb_release -cs) \</span><br><span class="line">   stable-$DOCKER_EE_VERSION&quot;</span><br></pre></td></tr></table></figure>
+<ol start="12">
+<li>在 Manager 和 Worker 安裝 Docker Engine</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ee docker-ee-cli containerd.io</span><br><span class="line">apt-cache madison docker-ee</span><br></pre></td></tr></table></figure>
+<ol start="13">
+<li>在 Manager 和 Worker 查看 Docker 版本<br>
+<code>sudo docker version</code></li>
+<li>只在 Manager 節點安裝 UCP(Universal Control Plane)，需要設置後台帳號密碼</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker container run --rm -it --name ucp \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  docker/ucp:3.2.5 install \</span><br><span class="line">  --host-address &lt;node-ip-address&gt; \</span><br><span class="line">  --interactive</span><br><span class="line">  --pod-cidr 10.0.0.0/16</span><br></pre></td></tr></table></figure>
+<ol start="15">
+<li>安裝完成之後進入 UCP 介面(<a target="_blank" rel="noopener" href="https://192.168.205.50:443">https://192.168.205.50:443</a>)，登入並上傳 License，接下來到 Node 區塊，選擇添加 node，裡面會有一串 docker-swarm 的命令，直接貼到 Worker 節點就完成連接了</li>
+<li>最後，還可以安裝 DTR (Docker Trusted Registry)，在 UCP 左上角的介面點擊 Admin &gt; Admin Setting &gt; Docker Trusted Registry，在裡面可以選擇安裝的節點，並設置外部 ip 及把 Disable TLS Verification 打勾，就會取得指令，直接進入 Workder 節點安裝</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay07-Image02.png">
+<h3 id="Kubernetes">Kubernetes</h3>
+<ol>
+<li>在 Kubernetes，Manager 稱之為 Master 節點，Worker 稱為 Node 節點，Master 節點對外會提供一些接口</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay07-Image03.png">
+<ol start="2">
+<li>Master 節點有一個 API Server，會向外開放接口，透過 API 可以訪問 Service，Scheduler 是一個調度模塊，會控制 Container 服務要放在哪個節點，Controller 是一個控制，Container 可以做擴展和負載均衡，假設設定 Replica=2，那麼 Controller 就會維持有兩個 Container 在運行，etcd 就是一個分佈式的儲存，主要儲存整個 K8s 的狀態和配置</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay07-Image04.png">
+<ol start="3">
+<li>Pod 就是 Container 調度裡面的最小單位，一個 pod 就是具有相同 Namespace 的 Container 組合，Namespace 可以有 User Namespace 或是 Network Namespace，但是主要是以 Network Namespace 組合為主，Docker 是創建 Pod 所使用的 Container 技術，Kubelet 會做創建 Container、Network 和 Volume 的管理，kube-proxy 用來做端口的代理和轉發，還有服務發現和負載均衡都是透過 kube-proxy 來實現的，Fluentd 主要是做日誌的採集、儲存和查詢，同時，它還有其他插件，比方說 DNS 模塊，提供 DNS 服務，UI 就是儀表板介面，可以透過網頁的方式去查看整個 K8s 的集群，還有最重要的 Image Registry，主要會從上面去拉取 Docker 的 Image</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay07-Image05.png">
+<ol start="4">
+<li>安裝 K8s
+<ul>
+<li>單節點的 K8s - <a target="_blank" rel="noopener" href="https://github.com/kubernetes/minikube">minikube</a></li>
+<li>多節點的 K8s - <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kubeadm">kubeadm</a></li>
+<li>雲端版的 K8s - <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops">kops</a></li>
+<li>企業版的 k8s - <a target="_blank" rel="noopener" href="https://coreos.com/tectonic/">tectonic</a> - 如果節點少於 10 個是免費的</li>
+<li>k8s 的雲端實驗室 - <a target="_blank" rel="noopener" href="https://labs.play-with-k8s.com/">Play with Kubernetes</a></li>
+</ul>
+</li>
+<li>先安裝 k8s 命令行，按照<a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-macos">安裝文件</a>操作<br>
+<code>brew install kubectl</code></li>
+<li>使用 <code>kubectl version --client</code> 測試 cubectl 是否安裝完成</li>
+<li>使用 <code>minikube start --vm-driver=virtualbox --registry-mirror=https://registry.docker-cn.com --image-mirror-country=cn --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers</code> 創建一個單節點的 k8s Cluster</li>
+<li>使用 <code>kubectl config view</code> 查看 minikube 創建的組態</li>
+<li>使用 <code>kubectl config get-contexts</code> 查看 context，在本地可以用不同的 cubectl context 連接不同的 Cluster</li>
+<li>使用 <code>kubectl cluster-info</code> 查看 Cluster 的狀態</li>
+<li>使用 <code>minikube ssh</code> 可以進入用 minikube 創建的虛擬機器裡面</li>
+</ol>
+<h3 id="K8s-最小調度單位-Pod">K8s 最小調度單位 Pod</h3>
+<ol>
+<li>我們不對 Container 做直接操作，因為 Pod 已經是最小單位了，一個 pod 裡面可以包含一個或多個 Container，一個 Pod 會共享一個 Namespace，假設在一個 pod 裡面啟動了兩個 Container，這個概念就像在本地啟動了兩個進程，Container 的通信可以直接透過 localhost</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay07-Image06.png">
+<ol start="2">
+<li>新增一個 pod_nginx.yml</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 指定版本</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx</span><br><span class="line">  labels:</span><br><span class="line">    app: nginx</span><br><span class="line">// 定義的 Container</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - name: nginx</span><br><span class="line">    image: nginx</span><br><span class="line">    ports:</span><br><span class="line">    - containerPort: 80</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用 <code>kubectl create -f pod_nginx.yml</code> 新增 pod，使用 <code>kubectl delete -f pod_nginx.yml</code> 刪除 pod</li>
+<li>使用 <code>kubectl get pods</code> 查看 pod 狀態，會看到有一個 nginx 的 pod 在運行</li>
+<li>使用 <code>kubectl get pods -o wide</code> 查看更詳細的資訊，會有 ip 和 Node</li>
+<li>使用 <code>minikube ssh</code> 就可以進去虛擬機器裡面，再用 <code>docker ps</code> 就可以看到裡面運行的 Contaienr</li>
+<li>使用 <code>docker network ls</code> 查看網路，並查看 brige 網路 <code>docker network inspect [Network id]</code>，就可以看到 nginx Container 的 ip 為 172.17.0.4</li>
+<li>使用 <code>kubectl get pods -o wide</code> 會發現 ip 也是 172.17.0.4</li>
+<li>也可以直接使用 <code>kubectl exec -it nginx sh</code> 進入到 Container 裡面，但是如果 pod 裡面有兩個 Container 以上，它預設會進入第一個 Container，指令裡面有一個 -c 可以指定進去哪個 Container</li>
+<li>使用 <code>kubectl describe pods nginx</code> 也可以查看 nginx pod 的詳細資訊，包含 ip 地址、Container、Namespace 和端口號等等</li>
+<li>先進去 minikube 裡面 <code>minikube ssh</code> 使用 <code>ping 172.17.0.4</code> 是可以連通的，使用 <code>curl 172.17.0.4</code> 也會回傳 nginx 的網頁</li>
+<li>在 minikube 裡面 <code>ip a</code> 查詢到 ip 為 192.168.99.101，在本地機器 <code>ping 192.168.99.101</code> 也會連通，使用 <code>kubectl port-forward nginx 8080:80</code> 將 nginx 的服務對外開放，在本地就可以用 <a target="_blank" rel="noopener" href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a> 連通網站</li>
+</ol>
+<h3 id="ReplicaSet-和-ReplicaController">ReplicaSet 和 ReplicaController</h3>
+<ol>
+<li>使用指令刪除 nginx pod<br>
+<code>kubectl delete -f pod_nginx.yml</code></li>
+<li>新增 rc_nginx.yml，我們在這個 yml 文件定義了 ReplicaSet</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: ReplicationController</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  selector:</span><br><span class="line">    app: nginx</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      name: nginx</span><br><span class="line">      labels:</span><br><span class="line">        app: nginx</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: nginx</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 80</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用 rc_nginx.yml 啟動 pod<br>
+<code>kubectl create -f rc_nginx.yml</code></li>
+<li>使用 <code>kubectl get pods</code> 查看 pod 狀態，並刪除其中一個 Container <code>kubectl delete pods [Container id]</code>，再使用 <code>kubectl get pods</code> 會看到 Cluster 自動會再啟動一個 Container</li>
+<li>可以透過 scale 的方式增加或減少 pods，並用 <code>kubectl get pods</code> 查看 pod 狀態
+<ul>
+<li>減少 <code>kubectl scale rc nginx --replicas=2</code></li>
+<li>增加 <code>kubectl scale rc nginx --replicas=4</code></li>
+</ul>
+</li>
+<li>使用 <code>kubectl get pods -o wide</code> 查看網路狀態，在 Docker Swarm 的時候，使用 vip 解決 Container 通信問題，pods 的通信在後面說</li>
+<li>使用 <code>kubectl delete -f rc_nginx.yml</code> 刪除 ReplicaController 的 pod</li>
+<li>根據 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/">Kubernetes ReplicaSet 文檔</a>，ReplicaSet 是用來維持 pod 數量的</li>
+<li>新增 rs_nginx.yml，我們在這個 yml 文件定義了 ReplicaSet</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: ReplicaSet</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx</span><br><span class="line">  labels:</span><br><span class="line">    tier: frontend</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      tier: frontend</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      name: nginx</span><br><span class="line">      labels:</span><br><span class="line">        tier: frontend</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: nginx</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 80</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>使用 <code>kubectl create -f rs_nginx.yml</code> 新增 pod</li>
+<li>Scale ReplicaSet<br>
+<code>kubectl scale rs nginx --replicas=2</code></li>
+</ol>
+<h3 id="Deployment">Deployment</h3>
+<ol>
+<li>根據 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Kubernetes Deployment 文檔</a>，Deployment 為 Pods 和 ReplicaSet 提供聲明更新，如果用 Deployment 創建的 replicas，是不能個別操作或使用 delete 刪除的，一定要對 Deployment 進行操作</li>
+<li>新增 deployment_nginx.yml，定義類型為 Deployment</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-deployment</span><br><span class="line">  labels:</span><br><span class="line">    app: nginx</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: nginx</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: nginx</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: nginx:1.12.2</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 80</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>透過指令創建 deployment<br>
+<code>kubectl create -f deployment_nginx.yml</code></li>
+<li>使用 <code>kubectl get deployment</code> 查看 Deployment 啟動的狀態，使用 <code>kubectl get rs</code> 查看 ReplicaSet 的狀態，會發現 Deployment 會自動創建 REplicaSet，使用 <code>kubectl get deployment -o wide</code> 顯示更多資訊</li>
+<li>升級 Deployment<br>
+<code>kubectl set image deployment nginx-deployment nginx=nginx:1.13</code></li>
+<li>使用 <code>kubectl get deployment -o wide</code> 查看會發現 nginx 已升級為 1.13</li>
+<li>使用 <code>kubectl get rs</code> 查看 ReplicaSet 會發現會新增一個新的 ReplicaSet，且停用舊的 ReplicaSet，</li>
+<li>使用指令查看升級的版本<br>
+<code>kubectl rollout history deployment nginx-deployment</code></li>
+<li>使用 undo 指令回到上一個版本<br>
+<code>kubectl rollout undo deployment nginx-deployment</code></li>
+<li>使用升級指令回到最新版本<br>
+<code>kubectl set image deployment nginx-deployment nginx=nginx:1.13</code></li>
+<li>Deployment 提供一個方法可以將端口向外開放<br>
+<code>kubectl expose deployment nginx-deployment --type=NodePort</code></li>
+<li>實際上，它是創建了一個 Service，使用 <code>kubectl get svc</code> 查看 Service，會看到它 expose 32141 端口，那麼通過 <code>curl 192.168.99.101:32141</code> 就可以訪問 nginx 了</li>
+</ol>
+<h3 id="本地設定多-Cluster-K8s">本地設定多 Cluster K8s</h3>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/">K8s 設定多 Cluster 文檔</a></li>
+</ol>
+<h3 id="K8s-基礎網路-Network">K8s 基礎網路 Network</h3>
+<ol>
+<li>新增 pod_busybox.yml</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: busybox-pod</span><br><span class="line">  labels:</span><br><span class="line">    app: busybox</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - name: busybox-container</span><br><span class="line">    image: busybox</span><br><span class="line">    command:</span><br><span class="line">      - sleep</span><br><span class="line">      - &quot;360000&quot;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>新增 pod_nginx.yml</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-pod</span><br><span class="line">  labels:</span><br><span class="line">    app: nginx</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - name: nginx-container</span><br><span class="line">    image: nginx</span><br><span class="line">    ports:</span><br><span class="line">    - name: nginx-port</span><br><span class="line">      containerPort: 80</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>把這兩個 pods 啟動<br>
+<code>kubectl create -f pod_busybox.yml</code><br>
+<code>kubectl create -f pod_nginx.yml</code></li>
+<li>查看兩個 pods 的狀態<br>
+<code>kubectl get pods -o wide</code></li>
+<li>進去 busybox 的 Shell 裡面<br>
+<code>kubectl exec -it busybox-pod sh</code></li>
+<li>Ping 另外一個 pod 是可以通的<br>
+<code>ping 172.17.0.8</code></li>
+<li>關於 Cluster 跨機器的網路通信可以參考 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/cluster-administration/networking/">Kubernetes Network 文檔</a>，Kubernetes 對網路有以下三點基本要求
+<ul>
+<li>所有的 Container 都可以互相溝通，而且不需要 NAT</li>
+<li>所有的 Node 都可以跟所有的 Container 互相溝通，而且不需要 NAT(反之亦然)</li>
+<li>Container 看到自己的 ip 是什麼，其他人看到它也要是相同的 ip</li>
+</ul>
+</li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2020/03/04/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day7/" data-id="cl1d3leea001idytlcvkm09wg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Docker 快速學習自我挑戰 II Day7",
+        "image": "https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay07.jpg",
+        "keywords": "Docker Kubernetes",
+        "genre": "Study Note",
+        "datePublished": "2020-03-04",
+        "dateCreated": "2020-03-04",
+        "dateModified": "2020-06-23",
+        "url": "https://vincent.fishboneapps.com/2020/03/04/Docker-快速學習自我挑戰-II-Day7/",
+        "description": "
+
+Docker Cloud
+
+Docker Cloud 提供容器管理，編排，部署的托管服務
+Docker Cloud 的模塊
+
+關聯雲服務 AWS、Azure
+添加節點作為 Docker Host
+創建服務 Service
+創建 Stack
+Image 管理
+
+
+Docker Cloud 兩種運行模式
+
+Standard 模式：一個 Node 就是一個 Docker Host
+Swarm 模式：",
+        "wordCount": 1857
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2020/03/04/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day7/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/03/06/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day8/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Docker 快速學習自我挑戰 II Day8
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/03/01/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day6/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Docker 快速學習自我挑戰 II Day6</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Cloud"><span class="toc-number">1.</span> <span class="toc-text">Docker Cloud</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Cloud-%E8%87%AA%E5%8B%95-Build-Docker-Image"><span class="toc-number">2.</span> <span class="toc-text">Docker Cloud 自動 Build Docker Image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Cloud-%E7%9A%84-CI-CD"><span class="toc-number">3.</span> <span class="toc-text">Docker Cloud 的 CI &amp; CD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-%E4%BC%81%E6%A5%AD%E7%89%88%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%9D"><span class="toc-number">4.</span> <span class="toc-text">Docker 企業版本地安裝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes"><span class="toc-number">5.</span> <span class="toc-text">Kubernetes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#K8s-%E6%9C%80%E5%B0%8F%E8%AA%BF%E5%BA%A6%E5%96%AE%E4%BD%8D-Pod"><span class="toc-number">6.</span> <span class="toc-text">K8s 最小調度單位 Pod</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReplicaSet-%E5%92%8C-ReplicaController"><span class="toc-number">7.</span> <span class="toc-text">ReplicaSet 和 ReplicaController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment"><span class="toc-number">8.</span> <span class="toc-text">Deployment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E8%A8%AD%E5%AE%9A%E5%A4%9A-Cluster-K8s"><span class="toc-number">9.</span> <span class="toc-text">本地設定多 Cluster K8s</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#K8s-%E5%9F%BA%E7%A4%8E%E7%B6%B2%E8%B7%AF-Network"><span class="toc-number">10.</span> <span class="toc-text">K8s 基礎網路 Network</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

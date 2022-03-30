@@ -27,17 +27,17 @@ Cumulative GPA: 3.92/4.00
 ***
 
 ### _EXPERIENCE_
-**Software Engineer** at _IC3 Network Co., Ltd._
-Jan 2022 - NOW
+**Senior Software Engineer** at _IC3 Network Co., Ltd._
+Jan 2022 - Present
 Location: Paris, France (Remote)
 Use Golang as the main development language. Running the apps on the Kubernetes.
 
-**System Architect** at _Dotech Technology Co., Ltd._
-Sep 2020 - Oct 2021 (1 year 1 month)
+**Senior Software Engineer** at _Dotech Technology Co., Ltd._
+Sep 2020 - Oct 2021 (1 year 2 months)
 Location: Taichung, Taiwan
 Help enterprise renew the official website and re-define old corporation identify with modern design. In the meantime, I aborted old language and framework, and rebuilt the whole company's ecosystem. Also, I built PTS (Project Tracking System) and use OKR as the main architecture to improve teams working efficiency. Overall, company's project progress increase 50% than before compared without this system.
 
-**Senior PHP Developer** at _Muki Corporation Co., Ltd._
+**Senior Software Engineer** at _Muki Corporation Co., Ltd._
 June 2020 - Aug 2020 (3 months)
 Location: Taichung, Taiwan
 Help enterprise transform from old-fashion development tools to modern development mode. Migrate projects from CodeIgniter to Laravel and introduce the git flow to improve the efficiency between team members.
@@ -47,14 +47,14 @@ Location: Taichung, Taiwan
 April 2020 - May 2020 (2 months)
 Working on E-commerce and brand image websites.
 
-**PHP Project Manager** at _ShangHai Pu-Yu Software Development Co., Ltd._
+**Project Manager** at _Shanghai Pu-Yu Software Development Co., Ltd._
 Location: Shanghai, China
-November 2018 - March 2020 (1 year 4 months)
+November 2018 - March 2020 (1 year 5 months)
 Responsible for understanding clients' demands, arrange working schedule and coordinate team members to develop API for mimi-program (WeChat App) and mobile Apps.
 
-**Junior PHP Developer** at _Dotech Technology Enterprise Co., Ltd._
-Location: Taichung, Taiwan
-August 2017 - October 2018 (1 year 2 months)
+**Junior Software Developer** at _Shanghai Pu-Yu Software Development Co., Ltd._
+Location: Shanghai, China
+August 2017 - October 2018 (1 year 3 months)
 Help clients build official website by using WordPress and PHP + Mysql. In 2018, I imported Laravel framework and Gitlab Services to our company and applied this development mode to many client's services.
 
 ***

@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Docker 快速學習自我挑戰 II Day4 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Docker" />
+    
+    <meta name="description" content="Docker 網路簡介  Docker 網路  單機：Bridge Network &#x2F; Host Network &#x2F; None Network 多機：Overlay Network   用 Vagrant 開啟兩台機器，新增 Vagrantfile  網路基本概念  如果要跟 Web 服務器通訊，流程是，打開瀏覽器，取得服務器內容，這個過程使用的是 HTTP 協議。 傳輸網站數據，就需要理解網">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 快速學習自我挑戰 II Day4">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2020/02/28/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day4/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="Docker 網路簡介  Docker 網路  單機：Bridge Network &#x2F; Host Network &#x2F; None Network 多機：Overlay Network   用 Vagrant 開啟兩台機器，新增 Vagrantfile  網路基本概念  如果要跟 Web 服務器通訊，流程是，打開瀏覽器，取得服務器內容，這個過程使用的是 HTTP 協議。 傳輸網站數據，就需要理解網">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay04.jpg">
+<meta property="article:published_time" content="2020-02-28T07:09:54.000Z">
+<meta property="article:modified_time" content="2020-06-22T17:12:20.057Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay04.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Docker-快速學習自我挑戰-II-Day4" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Docker 快速學習自我挑戰 II Day4
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/02/28/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day4/" class="article-date">
+         <time datetime="2020-02-28T07:09:54.000Z" itemprop="datePublished">2020-02-28</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">3.7k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">17 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/docker-2/DockerDay04.jpg">
+<hr>
+<h3 id="Docker-網路簡介">Docker 網路簡介</h3>
+<ol>
+<li>Docker 網路
+<ul>
+<li>單機：Bridge Network / Host Network / None Network</li>
+<li>多機：Overlay Network</li>
+</ul>
+</li>
+<li>用 Vagrant 開啟兩台機器，新增 Vagrantfile</li>
+</ol>
+<h3 id="網路基本概念">網路基本概念</h3>
+<ol>
+<li>如果要跟 Web 服務器通訊，流程是，打開瀏覽器，取得服務器內容，這個過程使用的是 HTTP 協議。</li>
+<li>傳輸網站數據，就需要理解網路的分層，TCP/IP 協議如下圖，傳輸層(Transport Layer)裡面，TCP 協議是可靠的協議，而 UDP 協議是不可靠的，而 HTTP 協議就屬於應用層(Application Layer)，主要是用來傳輸數據的。</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay04-Image01.jpg">
+<ol start="3">
+<li>路由基本就像是交通一樣，他會選一條路徑進行資料傳輸。</li>
+<li>Public IP 和 Private IP
+<ul>
+<li>Public IP：全球資訊網裡的唯一標示，可以訪問。</li>
+<li>Private IP：不可以在全球資訊網裡面使用，僅供內部企業使用。</li>
+</ul>
+</li>
+<li>網路轉換地址 NAT：NAT 會記住內部地址和端口號，並轉換成外部地址和端口號才將數據傳送到全球資訊網，然後在全球資訊網的查詢結果，會返回到 NAT，NAT 會再將外部地址和端口號轉換回內部地址和端口號，並將數據回傳給該電腦。</li>
+<li>Ping 和 Telnet
+<ul>
+<li>ping：ping 使用的是 ICMP 協議，可以驗證 IP 的可達性，但是如果沒有回應，並不一定是該 ip 的機器沒有啟動，有可能機器有防火牆或是其他路由器的原因。</li>
+<li>telnet：檢查服務的可用性。</li>
+</ul>
+</li>
+<li>安裝 <a target="_blank" rel="noopener" href="https://www.wireshark.org/">Wireshark</a>，可以查看網路數據包。</li>
+</ol>
+<h3 id="Linux-網路命名空間">Linux 網路命名空間</h3>
+<ol>
+<li>進入 node1 執行以下命令<br>
+<code>docker run -d --name=test1 busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>進入 busybox<br>
+<code>docker exec -it test1 /bin/sh</code></li>
+<li>在 busybox 裡面執行 <code>ip a</code>，會看到容器有自己的 ip</li>
+<li>新增一個新容器<br>
+<code>docker run -d --name=test2 busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>執行 <code>docker exec test2 ip a</code>，就會發現容器 test2 有自己的 ip，而且 test1 和 test2 可以互相 ping 通的。</li>
+</ol>
+<h4 id="Linux-Namespace-實作">Linux Namespace 實作</h4>
+<ol>
+<li>查看 Namespace 列表<br>
+<code>sudo ip netns list</code></li>
+<li>刪除 Namespace<br>
+<code>sudo ip netns delete test1</code></li>
+<li>新增 Namespace<br>
+<code>sudo ip netns add test1</code></li>
+<li>查看 Namespace ip，查看之後會發現，(1) 它沒有 ip 地址。(2) 它的狀態是 DOWN 的，沒有運行起來。<br>
+<code>sudo ip netns exec test1 ip a</code></li>
+<li>把 test1 啟動<br>
+<code>sudo ip netns exec test1 ip link set dev lo up</code></li>
+<li>透過以下指令查看會發現 mode 變成 unknown，因為只有單一端口是沒有辦法啟動的<br>
+<code>sudo ip netns exec test1 ip link</code></li>
+<li>新增一個可以連線的虛擬連線與端口<br>
+<code>sudo ip link add veth-test1 type veth peer name veth-test2</code></li>
+<li>透過 <code>ip link</code> 查看端口就會發現新增了兩個端口，但是狀態都是 DOWN 且沒有 ip 地址</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">9: veth-test2@veth-test1: &lt;BROADCAST,MULTICAST,M-DOWN&gt; mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether 6e:4f:90:eb:c8:a8 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">10: veth-test1@veth-test2: &lt;BROADCAST,MULTICAST,M-DOWN&gt; mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether be:85:ba:89:b9:08 brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>將 veth-test1 添加到 test1 的 Namespace 裡<br>
+<code>sudo ip link set veth-test1 netns test1</code></li>
+<li>查看 test1 的 Namespace 端口就會發現 10 號端口被加上去<br>
+<code>sudo ip netns exec test1 ip link</code></li>
+<li>在本地查看 <code>ip link</code>，就會發現 10 不見了，因為已經添加到 test1 的 Namespace 裡面</li>
+<li>把端口也加到 test2，查看後就會發現 9 被添加到 test2 的 Namespace 裡面<br>
+<code>sudo ip link set veth-test2 netns test2</code><br>
+<code>sudo ip netns exec test2 ip link</code></li>
+<li>將 ip 分配給端口<br>
+<code>sudo ip netns exec test1 ip addr add 192.168.1.1/24 dev veth-test1</code><br>
+<code>sudo ip netns exec test2 ip addr add 192.168.1.2/24 dev veth-test2</code></li>
+<li>啟動端口<br>
+<code>sudo ip netns exec test1 ip link set dev veth-test1 up</code><br>
+<code>sudo ip netns exec test2 ip link set dev veth-test2 up</code></li>
+<li>執行以下命令，就會看到 ip<br>
+<code>sudo ip netns exec test1 ip a</code></li>
+<li>透過以下指令，可以互 ping 機器<br>
+<code>sudo ip netns exec test1 ping 192.168.1.2</code><br>
+<code>sudo ip netns exec test2 ping 192.168.1.1</code></li>
+<li>以上就是容器互通的原理，用 linux Namespace 的方式進行實現</li>
+</ol>
+<h3 id="Docker-bridge0-詳解">Docker bridge0 詳解</h3>
+<ol>
+<li>停止 test2 容器並刪除<br>
+<code>docker stop test2</code><br>
+<code>docker rm test2</code></li>
+<li>列出 docker 機器的網路<br>
+<code>docker network ls</code></li>
+<li>查看 bridge 網路的內容，會發現裡面有一項是 containers，而 container 正是 test1，就會知道 test1 的網路正是連接到這個 bridge<br>
+<code>docker network inspect c6e6281b109f</code></li>
+<li>使用 <code>ip a</code> 查看虛擬機的網路列表，會輸出以下內容，裡面可以看到虛擬機的 docker0 接口用 veth 連線到容器裡面的網路</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">4: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default</span><br><span class="line">    link/ether 02:42:80:06:0b:9a brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::42:80ff:fe06:b9a/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">6: veth25ca999@if5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default</span><br><span class="line">    link/ether ee:18:e0:2f:0c:56 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">    inet6 fe80::ec18:e0ff:fe2f:c56/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>使用 <code>docker exec test1 ip a</code> 列出 test1 容器的網路，會輸出以下內容，會發現 eth0 是和上面的 veth25ca999 連在一起的</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">5: eth0@if6: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 1500 qdisc noqueue</span><br><span class="line">    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>安裝 Bridge-utils 驗證連線<br>
+<code>sudo apt-get install -y bridge-utils</code></li>
+<li>在虛擬機使用 <code>brctl show</code>，就會看到 docker0 是和 veth25ca999 連接的</li>
+<li>再開啟一個 test2 的容器<br>
+<code>docker run -d --name=test2 busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>再次檢查 bridge 的網路，就會發現多一個 test2 的容器<br>
+<code>docker network inspect bridge</code></li>
+<li>這時候再執行一次 <code>ip a</code>，就會發現多一個 veth，因為多一個容器，就需要多一條線進行連接</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">4: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default</span><br><span class="line">    link/ether 02:42:80:06:0b:9a brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::42:80ff:fe06:b9a/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">6: veth25ca999@if5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default</span><br><span class="line">    link/ether ee:18:e0:2f:0c:56 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">    inet6 fe80::ec18:e0ff:fe2f:c56/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">10: veth93b61b7@if9: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default</span><br><span class="line">    link/ether ea:ed:e9:82:86:dc brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br><span class="line">    inet6 fe80::e8ed:e9ff:fe82:86dc/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<ol start="11">
+<li>再次執行 <code>brctl show</code>，就會發現 docker0 連接兩個 veth</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">bridge name</th>
+<th style="text-align:center">bridge id</th>
+<th style="text-align:center">STP enabled</th>
+<th style="text-align:center">interfaces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">docker0</td>
+<td style="text-align:center">8000.024280060b9a</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">veth25ca999</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">veth93b61b7</td>
+</tr>
+</tbody>
+</table>
+<ol start="12">
+<li>以下圖片解釋 (1) 容器之間如何互相溝通 (2) 容器如何連接到外網</li>
+</ol>
+<img src="/images/learning/docker-2/DockerDay04-Image02.png">
+<h3 id="容器之間的-Link">容器之間的 Link</h3>
+<ol>
+<li>停止 test2 容器並刪除<br>
+<code>docker stop test2</code><br>
+<code>docker rm test2</code></li>
+<li>再次創建 test2 容器並 link 到 test1，使用 --link 就是新增 dns 紀錄<br>
+<code>docker run -d --name=test2 --link=test1 busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>進去 test2 裡面執行命令<br>
+<code>docker exec -it test2 /bin/sh</code></li>
+<li>使用 <code>ping test1</code>，會發現可以 ping 到容器 test1</li>
+<li>link 是有方向性的，因為只在 test2 link 到 test1，所以可以在 test2 容器 ping test1 容器，但是在 test1 上面是沒有辦法直接用 <code>ping test2</code> 來 ping 到 test2 容器的</li>
+<li>再次停止 test2 容器並刪除，再次創建 test2，但是不要 link<br>
+<code>docker stop test2</code><br>
+<code>docker rm test2</code><br>
+<code>docker run -d --name=test2 busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>自己新增一個 Bridge<br>
+<code>docker network create -d bridge my-bridge</code></li>
+<li>用 <code>docker network ls</code> 就可以查看新增的 bridge</li>
+<li>用 <code>brctl show</code> 查看，就可以看到新增的 bridge</li>
+<li>新增 test3 容器，並連接到新增的 bridge<br>
+<code>docker run -d --name=test3 --network my-bridge busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>用 <code>brctl show</code> 查看，就會看到新增的 bridge 連接到 test3 容器上</li>
+<li>也可以用 <code>docker network inspect my-bridge</code> 查看新增的 bridge 連接到 test3 容器上</li>
+<li>可以將已存在的容器連接到新增的 bridge 上面<br>
+<code>docker network connect my-bridge test2</code></li>
+<li>再用 <code>docker network inspect my-bridge</code> 查看新增的 bridge 也已連接到 test2 容器上</li>
+<li>進去 test3 容器執行命令<br>
+<code>docker exec -it test3 /bin/sh</code></li>
+<li>在 test3 容器直接 ping test2，但是沒有使用 link，還是可以 ping 通，因為默認自己新增的 bridge 上的容器會自動 link<br>
+<code>ping test2</code></li>
+<li>再進入 test2 容器執行命令<br>
+<code>docker exec -it test2 /bin/sh</code></li>
+<li>嘗試 <code>ping test3</code> 可以通，但是 <code>ping test1</code> 就不能通了，因為<strong>默認自己新增的 bridge 上的容器會自動 link</strong></li>
+<li>將 test1 連接到 my-bridge，再進去 test2 容器，ping test1 就可以通了。<br>
+<code>docker network connect my-bridge test1</code><br>
+<code>docker exec -it test2 /bin/sh</code><br>
+<code>ping test1</code></li>
+</ol>
+<h3 id="容器端口映射">容器端口映射</h3>
+<ol>
+<li>新增一個 nginx 的容器<br>
+<code>docker run --name web -d nginx</code></li>
+<li>查看 web 的 ip 地址<br>
+<code>docker network inspect bridge</code></li>
+<li>ping web 的容器，會發現在虛擬主機上是可以 ping 通的<br>
+<code>ping 172.17.0.4</code></li>
+<li>使用 telnet 測試網站是否可以連線，發現也可以連線<br>
+<code>telnet 172.17.0.4 80</code></li>
+<li>使用 curl 也可以把 html 頁面顯示出來，這樣就可以知道可以訪問 web 容器的 80 服務<br>
+<code>curl http://172.17.0.4</code></li>
+<li>先把 web 容器停止並刪除<br>
+<code>docker stop web</code><br>
+<code>docker rm web</code></li>
+<li>新增 web 容器，並把容器的 80 port 映射到虛擬主機的 80 port<br>
+<code>docker run --name web -d -p 80:80 nginx</code></li>
+<li>在虛擬主機上 <code>curl 127.0.0.1</code>，就會出現 html 頁面</li>
+</ol>
+<h3 id="容器網路的-host-和-none">容器網路的 host 和 none</h3>
+<h4 id="none">none</h4>
+<ol>
+<li>新增 test1 容器並將網路連接到 none<br>
+<code>docker run -d --name=test1 --network none busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>查看 none，會發現 none 連接到 test1 容器，而它沒有 MAC 地址和 ip 地址<br>
+<code>docker network inspect none</code></li>
+<li>進去 test1 容器查看 ip，會發現除了 localhost 沒有其他網路接口，所以除了使用 exec 的方式，其它方法都不能訪問到這個容器<br>
+<code>docker exec -it test1 ip a</code></li>
+<li>基本上不會用到 none 這個網路，這個網路可能是用來放置一些安全性較高的密碼，只能透過本地進行訪問。</li>
+</ol>
+<h4 id="host">host</h4>
+<ol>
+<li>停止並刪除 test1，再新增一個 test1 容器並將網路連接到 host<br>
+<code>docker stop test1</code><br>
+<code>docker rm test1</code><br>
+<code>docker run -d --name=test1 --network host busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>查看 host，會發現 host 連接到 test1 容器，而它一樣沒有 MAC 地址和 ip 地址<br>
+<code>docker network inspect host</code></li>
+<li>進去 test1 容器查看 ip，會發現裡面的接口會和虛擬主機的網路配置一樣<br>
+<code>docker exec -it test1 ip a</code></li>
+<li>host 網路會跟虛擬主機上的網路共享一個網路，這種方式創建的容器，端口可能會有衝突</li>
+</ol>
+<h3 id="多容器複雜應用的部署">多容器複雜應用的部署</h3>
+<ol>
+<li>建立一個 redis 容器，這邊不使用 -p 6379:6379，因為 redis 不需要被外界訪問<br>
+<code>docker run -d --name redis redis</code></li>
+<li>將根目錄下的文件進行打包<br>
+<code>docker build -t fishboneapps/flask-redis .</code></li>
+<li>將 image 啟動成容器<br>
+<code>docker run -d --link redis --name flask-redis -e REDIS_HOST=redis fishboneapps/flash-redis</code></li>
+<li>進去 flask-redis 容器查看環境變量，就會發現裡面有 REDIS_HOST=redis，這樣一來就可以直接 ping redis 容器<br>
+<code>docker exec -it flask-redis /bin/bash</code><br>
+<code>env</code><br>
+<code>ping redis</code></li>
+<li>在容器裡面就可以直接執行 flask 的網頁<br>
+<code>curl 127.0.0.1:5000</code></li>
+<li>因為 5000 端口沒有映射到虛擬機器上，所以要把 flask-redis 停掉刪除並重新新增容器<br>
+<code>docker stop flask-redis</code><br>
+<code>docker rm flask-redis</code><br>
+<code>docker run -d -p 5000:5000 --link redis --name flask-redis -e REDIS_HOST=redis fishboneapps/flash-redis</code></li>
+<li>這時候再去 curl，就會發現次數還是繼續累加，因為 redis 容器沒有關閉<br>
+<code>curl 127.0.0.1:5000</code></li>
+<li>啟動容器的時候，可以給容器設定環境變數 <code>-e</code><br>
+<code>docker run -d --name test1 -e Fishboneapps=vincent busybox /bin/sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>檢查容器的環境變量，就會看到上面設置的環境變量<br>
+<code>docker exec -it test1 env</code></li>
+</ol>
+<h3 id="Overlay-和-Underlay-的通信解釋">Overlay 和 Underlay 的通信解釋</h3>
+<ol>
+<li>在兩台機器上面分別部署兩個 Docker 需要用 XLAN 將 Docker 傳出來的網路數據包封裝到虛擬主機的數據包上。而在這個情境下，在虛擬主機傳送的數據包底層就會有該虛擬主機要傳遞的來源和目的 ip，這個數據包就稱為 Underlay；而這個數據包上面就會放入 Docker 所要傳送的數據包，這個數據包就稱為 Overlay。Docker 通信的邏輯如下圖：<br>
+<img src="/images/learning/docker-2/DockerDay04-Image03.png"></li>
+</ol>
+<h3 id="Docker-Overlay-網路和-etcd-實現多機容器通信">Docker Overlay 網路和 etcd 實現多機容器通信</h3>
+<ol>
+<li>在 node1 上安裝 etcd<br>
+<code>wget https://github.com/coreos/etcd/releases/download/v3.0.12/etcd-v3.0.12-linux-amd64.tar.gz</code><br>
+<code>tar zxvf etcd-v3.0.12-linux-amd64.tar.gz</code><br>
+<code>cd etcd-v3.0.12-linux-amd64</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nohup ./etcd --name docker-node1 --initial-advertise-peer-urls http://192.168.205.10:2380 \</span><br><span class="line">--listen-peer-urls http://192.168.205.10:2380 \</span><br><span class="line">--listen-client-urls http://192.168.205.10:2379,http://127.0.0.1:2379 \</span><br><span class="line">--advertise-client-urls http://192.168.205.10:2379 \</span><br><span class="line">--initial-cluster-token etcd-cluster \</span><br><span class="line">--initial-cluster docker-node1=http://192.168.205.10:2380,docker-node2=http://192.168.205.11:2380 \</span><br><span class="line">--initial-cluster-state new&amp;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 node2 上安裝 etcd<br>
+<code>wget https://github.com/coreos/etcd/releases/download/v3.0.12/etcd-v3.0.12-linux-amd64.tar.gz</code><br>
+<code>tar zxvf etcd-v3.0.12-linux-amd64.tar.gz</code><br>
+<code>cd etcd-v3.0.12-linux-amd64</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nohup ./etcd --name docker-node2 --initial-advertise-peer-urls http://192.168.205.11:2380 \</span><br><span class="line">--listen-peer-urls http://192.168.205.11:2380 \</span><br><span class="line">--listen-client-urls http://192.168.205.11:2379,http://127.0.0.1:2379 \</span><br><span class="line">--advertise-client-urls http://192.168.205.11:2379 \</span><br><span class="line">--initial-cluster-token etcd-cluster \</span><br><span class="line">--initial-cluster docker-node1=http://192.168.205.10:2380,docker-node2=http://192.168.205.11:2380 \</span><br><span class="line">--initial-cluster-state new&amp;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 node1 和 node2 的 etcd 目錄底下檢查 cluster 狀態，確認是否 healthy<br>
+<code>./etcdctl cluster-health</code></li>
+<li>在 node1 上重啟 Docker 服務<br>
+<code>sudo service docker stop</code><br>
+<code>sudo /usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --cluster-store=etcd://192.168.205.10:2379 --cluster-advertise=192.168.205.10:2375&amp;</code></li>
+<li>在 node2 上重啟 Docker 服務<br>
+<code>sudo service docker stop</code><br>
+<code>sudo /usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --cluster-store=etcd://192.168.205.11:2379 --cluster-advertise=192.168.205.11:2375&amp;</code></li>
+<li>在 node1 上創建一個 overlay 的 network<br>
+<code>docker network create -d overlay demo</code></li>
+<li>在 node1 和 node2 上面執行 <code>docker network ls</code> 都會看到 demo，因為 demo 會從 node1 同步到 node2</li>
+<li>使用以下指令查看同步的內容</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./etcdctl ls /docker/nodes //查看節點</span><br><span class="line">./etcdctl ls /docker/network/v1.0/network //可以看到回傳的 id 和 docker network 上一樣</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>在 node1 上創建使用 demo 網路的機器<br>
+<code>sudo docker run -d --name test1 --net demo busybox sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>在 node2 上創建使用 demo 網路的機器<br>
+<code>sudo docker run -d --name test2 --net demo busybox sh -c &quot;while true; do sleep 3600; done&quot;</code></li>
+<li>在 node1 上直接 ping test2 的容器，不管是 ping ip 或是容器名稱都可以連通<br>
+<code>docker exec test1 ping 10.0.0.3</code><br>
+<code>docker exec test1 ping test2</code></li>
+<li>查看 test1 容器的網路 <code>docker exec test1 ip a</code>，就會發現結構如下圖， 會有兩個網路，gwbridge 是連接實體外部網路，而 overlay 的網路 ovnet 是負責容器溝通的內部網路<br>
+<img src="/images/learning/docker-2/DockerDay04-Image04.png"></li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2020/02/28/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day4/" data-id="cl1d3lee70018dytl5mhcd9ne" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Docker 快速學習自我挑戰 II Day4",
+        "image": "https://vincent.fishboneapps.com/images/learning/docker-2/DockerDay04.jpg",
+        "keywords": "Docker",
+        "genre": "Study Note",
+        "datePublished": "2020-02-28",
+        "dateCreated": "2020-02-28",
+        "dateModified": "2020-06-23",
+        "url": "https://vincent.fishboneapps.com/2020/02/28/Docker-快速學習自我挑戰-II-Day4/",
+        "description": "
+
+Docker 網路簡介
+
+Docker 網路
+
+單機：Bridge Network / Host Network / None Network
+多機：Overlay Network
+
+
+用 Vagrant 開啟兩台機器，新增 Vagrantfile
+
+網路基本概念
+
+如果要跟 Web 服務器通訊，流程是，打開瀏覽器，取得服務器內容，這個過程使用的是 HTTP 協議。
+傳輸網站數據，就需要理解網",
+        "wordCount": 1502
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2020/02/28/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day4/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/03/01/Docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-II-Day5/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Docker 快速學習自我挑戰 II Day5
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/02/22/%E8%8B%B1%E6%96%87%E6%96%87%E6%B3%95%E9%87%8D%E9%BB%9E%E6%95%B4%E7%90%86-3/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">英文文法重點整理(3)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-%E7%B6%B2%E8%B7%AF%E7%B0%A1%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Docker 網路簡介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B6%B2%E8%B7%AF%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">網路基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-%E7%B6%B2%E8%B7%AF%E5%91%BD%E5%90%8D%E7%A9%BA%E9%96%93"><span class="toc-number">3.</span> <span class="toc-text">Linux 網路命名空間</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux-Namespace-%E5%AF%A6%E4%BD%9C"><span class="toc-number">3.1.</span> <span class="toc-text">Linux Namespace 實作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-bridge0-%E8%A9%B3%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">Docker bridge0 詳解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E4%B9%8B%E9%96%93%E7%9A%84-Link"><span class="toc-number">5.</span> <span class="toc-text">容器之間的 Link</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84"><span class="toc-number">6.</span> <span class="toc-text">容器端口映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%B6%B2%E8%B7%AF%E7%9A%84-host-%E5%92%8C-none"><span class="toc-number">7.</span> <span class="toc-text">容器網路的 host 和 none</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#none"><span class="toc-number">7.1.</span> <span class="toc-text">none</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#host"><span class="toc-number">7.2.</span> <span class="toc-text">host</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%AE%B9%E5%99%A8%E8%A4%87%E9%9B%9C%E6%87%89%E7%94%A8%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-number">8.</span> <span class="toc-text">多容器複雜應用的部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Overlay-%E5%92%8C-Underlay-%E7%9A%84%E9%80%9A%E4%BF%A1%E8%A7%A3%E9%87%8B"><span class="toc-number">9.</span> <span class="toc-text">Overlay 和 Underlay 的通信解釋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Overlay-%E7%B6%B2%E8%B7%AF%E5%92%8C-etcd-%E5%AF%A6%E7%8F%BE%E5%A4%9A%E6%A9%9F%E5%AE%B9%E5%99%A8%E9%80%9A%E4%BF%A1"><span class="toc-number">10.</span> <span class="toc-text">Docker Overlay 網路和 etcd 實現多機容器通信</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

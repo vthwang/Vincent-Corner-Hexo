@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Golang 快速學習自我挑戰 Day14 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Golang" />
+    
+    <meta name="description" content="Section14: Methods: OOP with Go Methods：Enhance types with additional behavior  Methods  Value Receivers Pointer Receivers Non-Struct Methods   Interface  Type Assertion Type Switch Empty Interface">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang 快速學習自我挑戰 Day14">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="Section14: Methods: OOP with Go Methods：Enhance types with additional behavior  Methods  Value Receivers Pointer Receivers Non-Struct Methods   Interface  Type Assertion Type Switch Empty Interface">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/golang/GolangDay14.jpg">
+<meta property="article:published_time" content="2021-12-10T13:20:08.000Z">
+<meta property="article:modified_time" content="2021-12-26T04:39:55.947Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Golang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/golang/GolangDay14.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Golang-快速學習自我挑戰-Day14" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Golang 快速學習自我挑戰 Day14
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="article-date">
+         <time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Golang/" rel="tag">Golang</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">3.2k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">19 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/golang/GolangDay14.jpg">
+<hr>
+<h1>Section14: Methods: OOP with Go</h1>
+<h2 id="Methods：Enhance-types-with-additional-behavior">Methods：Enhance types with additional behavior</h2>
+<ol>
+<li>Methods
+<ul>
+<li>Value Receivers</li>
+<li>Pointer Receivers</li>
+<li>Non-Struct Methods</li>
+</ul>
+</li>
+<li>Interface
+<ul>
+<li>Type Assertion</li>
+<li>Type Switch</li>
+<li>Empty Interface</li>
+<li>Promoted Methods</li>
+</ul>
+</li>
+<li>Famous Interfaces
+<ul>
+<li>Stringer</li>
+<li>Marshaler</li>
+<li>Unmarshaler</li>
+<li>Reflection</li>
+<li>io.Reader</li>
+</ul>
+</li>
+<li>The book has data but it doesn’t have any behavior. Suppose we have <code>printbook()</code> and <code>discount(book, ratio)</code> two methods. Both of methods take book values and their primary purpose is to work with books. Here we can combine the data and behavior together. Go will pass the value of a book automatically to these methods. (b book) is called “receiver”. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">type book struct &#123;</span><br><span class="line">    title string</span><br><span class="line">    price float64</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (b book) print book() &#123;</span><br><span class="line">    fmt.Printf(&quot;...&quot;, b.title, b.price)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>You cannot create a function with the same name in the same <strong>package</strong>. However, each type can have its own namespace. The same method name does not cause a conflict with another type.</li>
+<li>Here is a convention. We use <code>b</code> for a <code>book</code>, <code>g</code> for a <code>game</code> and <code>gt</code> for a <code>gameType</code>.</li>
+<li>The dot operator selects a name(func, method, field, …) from a namespace(from a package or type).</li>
+<li>Example
+<ul>
+<li>book.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type book struct &#123;</span><br><span class="line">    title string</span><br><span class="line">    price float64</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (b book) print() &#123;</span><br><span class="line">    fmt.Printf(&quot;%-15s: $%.2f\n&quot;, b.title, b.price)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>game.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type game struct &#123;</span><br><span class="line">    title string</span><br><span class="line">    price float64</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (g game) print() &#123;</span><br><span class="line">    fmt.Printf(&quot;%-15s: $%.2f\n&quot;, g.title, g.price)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    mobydick := book&#123;</span><br><span class="line">        title: &quot;moby dick&quot;,</span><br><span class="line">        price: 10,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    minecraft := game&#123;</span><br><span class="line">        title: &quot;minecraft&quot;,</span><br><span class="line">        price: 20,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    tetris := game&#123;</span><br><span class="line">        title: &quot;tetris&quot;,</span><br><span class="line">        price: 5,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mobydick.print()</span><br><span class="line">    minecraft.print()</span><br><span class="line">    tetris.print()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Pointer-Receiver-Change-the-received-value">Pointer Receiver: Change the received value</h2>
+<ol>
+<li>Behind the scenes, a method is a function with a receiver as the first parameter. Both <code>book.print(mobydick)</code> and <code>mobydick.print()</code> pass the mobidick to <code>print()</code>, former one manually pass it and latter one automatically pass it.</li>
+<li>Methods v.s. Funcs: A method is a function that takes a receiver as teh first argument. There is only one difference between a method and a function. A method belongs to a <strong>type</strong>; A function belongs to a <strong>package</strong>.</li>
+<li>Using pointer to change the struct original value.
+<ul>
+<li>game.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func (g *game) discount(ratio float64) &#123;</span><br><span class="line">    g.price *= 1 - ratio</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// When a method has a pointer receiver, Go can take its address automatically.</span><br><span class="line">minecraft.discount(.5)</span><br></pre></td></tr></table></figure>
+</li>
+<li>If one of the method use pointer receiver, it’s better to use pointer in all other methods.</li>
+<li>Using pointer is faster in some situations. You can use <code>time</code> to check the execution time between using pointer and not using pointer.
+<ul>
+<li>huge.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type huge struct &#123;</span><br><span class="line">    games [1000000]game</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (h *huge) addr() &#123;</span><br><span class="line">    fmt.Printf(&quot;%p\n&quot;, &amp;h)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    var h huge</span><br><span class="line">    for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">        h.addr()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">====EXECUTE====</span><br><span class="line">time go run .</span><br><span class="line">====OUTPUT====</span><br><span class="line">0xc0017f2000</span><br><span class="line">0xc0017f2010</span><br><span class="line">0xc0017f2018</span><br><span class="line">0xc0017f2020</span><br><span class="line">0xc0017f2028</span><br><span class="line">0xc0017f2030</span><br><span class="line">0xc0017f2038</span><br><span class="line">0xc0017f2040</span><br><span class="line">0xc0017f2048</span><br><span class="line">0xc0017f2050</span><br><span class="line">go run .  0.20s user 0.25s system 133% cpu 0.336 total</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Non-Structs-Attach-methods-to-almost-any-type">Non-Structs: Attach methods to almost any type</h2>
+<ol>
+<li>Unlike other OOP language, go doesn’t have classes. The methods can be attached to almost any type. It doesn’t have to be a struct type. Don’t use pointer in the last two items, because they already carry a pointer with themselves.
+<ul>
+<li>int, string, float64… (primitive types)</li>
+<li>array, struct</li>
+<li>slice, map, chan</li>
+<li>func</li>
+</ul>
+</li>
+<li>A slice of game pointers without methods
+<ul>
+<li><code>[]*game</code></li>
+<li><code>&amp;minecraft&#123;...&#125;</code></li>
+<li><code>&amp;tetris&#123;...&#125;</code></li>
+</ul>
+</li>
+<li>Example:
+<ul>
+<li>list.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type list []*game</span><br><span class="line"></span><br><span class="line">func (l list) print() &#123;</span><br><span class="line">    if len(l) == 0 &#123;</span><br><span class="line">        fmt.Println(&quot;Sorry. We&#x27;re waiting for delivery 🚚.&quot;)</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, it := range l &#123;</span><br><span class="line">        it.print()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    var (</span><br><span class="line">        minecraft = game&#123;title: &quot;minecraft&quot;, price: 20&#125;</span><br><span class="line">        tetris    = game&#123;title: &quot;tetris&quot;, price: 5&#125;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    var items []*game</span><br><span class="line">    items = append(items, &amp;minecraft, &amp;tetris)</span><br><span class="line"></span><br><span class="line">    my := list(items)</span><br><span class="line"></span><br><span class="line">    my = nil</span><br><span class="line"></span><br><span class="line">    my.print()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1>Section15: Interfaces: Implicit OOP Way</h1>
+<h2 id="Interfaces-Be-dynamic">Interfaces: Be dynamic</h2>
+<ol>
+<li>All the non-interface types are concrete types.</li>
+<li>convention: “-er” suffix. “printer” is an interface type. In the interface, it only describes the <strong>expected behavior</strong>(methods). In this case, printer only needs a printing behavior and it doesn’t care where the behavior comes from. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type printer interface &#123;</span><br><span class="line">    print()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>Example.
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    var (</span><br><span class="line">        mobydick  = book&#123;title: &quot;moby dick&quot;, price: 10&#125;</span><br><span class="line">        minecraft = game&#123;title: &quot;minecraft&quot;, price: 20&#125;</span><br><span class="line">        tetris    = game&#123;title: &quot;tetris&quot;, price: 5&#125;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    var store list</span><br><span class="line">    store = append(store, &amp;mobydick, &amp;minecraft, &amp;tetris)</span><br><span class="line">    store.print()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>list.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">// an abstract type, a protocol, a contract.</span><br><span class="line">// no implementation</span><br><span class="line">type printer interface &#123;</span><br><span class="line">    print()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type list []printer</span><br><span class="line"></span><br><span class="line">func (l list) print() &#123;</span><br><span class="line">    if len(l) == 0 &#123;</span><br><span class="line">        fmt.Println(&quot;Sorry. We&#x27;re waiting for delivery 🚚.&quot;)</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, it := range l &#123;</span><br><span class="line">        fmt.Printf(&quot;(%-10T) --&gt; &quot;, it)</span><br><span class="line">        it.print()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Type-Assertion-Extract-the-dynamic-value">Type Assertion: Extract the dynamic value!</h2>
+<ol>
+<li>The wrapped value inside that interface value is called a dynamic value, because this value can change in the runtime. The type inside the interface is called a dynamic type, because the type can also change in the runtime.</li>
+<li>Example.
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    var (</span><br><span class="line">        mobydick  = book&#123;title: &quot;moby dick&quot;, price: 10&#125;</span><br><span class="line">        minecraft = game&#123;title: &quot;minecraft&quot;, price: 20&#125;</span><br><span class="line">        tetris    = game&#123;title: &quot;tetris&quot;, price: 5&#125;</span><br><span class="line">        yoda      = toy&#123;title: &quot;yoda&quot;, price: 150&#125;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    var store list</span><br><span class="line">    store = append(store, &amp;mobydick, &amp;minecraft, &amp;tetris, &amp;yoda)</span><br><span class="line"></span><br><span class="line">    store.discount(.5)</span><br><span class="line"></span><br><span class="line">    store.print()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>toy.go (copy from game.go)</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type toy struct &#123;</span><br><span class="line">    title string</span><br><span class="line">    price money</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (t *toy) print() &#123;</span><br><span class="line">    fmt.Printf(&quot;%-15s: %s\n&quot;, t.title, t.price.string())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (t *toy) discount(ratio float64) &#123;</span><br><span class="line">    t.price *= money(1 - ratio)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>list.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">// an abstract type, a protocol, a contract.</span><br><span class="line">// no implementation</span><br><span class="line">type printer interface &#123;</span><br><span class="line">    print()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type list []printer</span><br><span class="line"></span><br><span class="line">func (l list) print() &#123;</span><br><span class="line">    if len(l) == 0 &#123;</span><br><span class="line">        fmt.Println(&quot;Sorry. We&#x27;re waiting for delivery 🚚.&quot;)</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, it := range l &#123;</span><br><span class="line">        fmt.Printf(&quot;(%-10T) --&gt; &quot;, it)</span><br><span class="line">        it.print()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (l list) discount(ratio float64) &#123;</span><br><span class="line">    type discounter interface &#123;</span><br><span class="line">        discount(float64)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, it := range l &#123;</span><br><span class="line">        //g, ok := it.(discounter)</span><br><span class="line">        //fmt.Printf(&quot;%T game? %v\n&quot;, it, ok)</span><br><span class="line">        //if !ok &#123;</span><br><span class="line">        //	continue</span><br><span class="line">        //&#125;</span><br><span class="line">        //g.discount(ratio)</span><br><span class="line">        if it, ok := it.(discounter); ok &#123;</span><br><span class="line">            it.discount(ratio)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Empty-Interface-Represent-any-type-of-value">Empty Interface: Represent any type of value</h2>
+<ol>
+<li><code>interface&#123;&#125;</code> says nothing. It wraps other types in a hidden place.</li>
+<li>When you have the slice of empty interface, unlike the single interface, you need to use loop to save it. Here is an example. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    nums := []int&#123;1, 2, 3&#125;</span><br><span class="line"></span><br><span class="line">    var any interface&#123;&#125;</span><br><span class="line">    any = nums</span><br><span class="line"></span><br><span class="line">    _ = len(any.([]int))</span><br><span class="line"></span><br><span class="line">    var many []interface&#123;&#125;</span><br><span class="line"></span><br><span class="line">    for _, n := range nums &#123;</span><br><span class="line">        many = append(many, n)</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(many)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>Using empty interface may let your programs become brittle and hard to maintain, so do not use it unless really necessary. Example.
+<ul>
+<li>book.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;strconv&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type book struct &#123;</span><br><span class="line">    title     string</span><br><span class="line">    price     money</span><br><span class="line">    published interface&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (b book) print() &#123;</span><br><span class="line">    p := format(b.published)</span><br><span class="line">    fmt.Printf(&quot;%-15s: %s - (%v)\n&quot;, b.title, b.price.string(), p)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func format(v interface&#123;&#125;) string &#123;</span><br><span class="line">    if v == nil &#123;</span><br><span class="line">        return &quot;unknown&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var t int</span><br><span class="line">    if v, ok := v.(int); ok &#123;</span><br><span class="line">        t = v</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if v, ok := v.(string); ok &#123;</span><br><span class="line">        t, _ = strconv.Atoi(v)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    u := time.Unix(int64(t), 0)</span><br><span class="line">    return u.String()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    store := list&#123;</span><br><span class="line">        book&#123;title: &quot;moby dick&quot;, price: 10, published: 118281600&#125;,</span><br><span class="line">        book&#123;title: &quot;odyssey&quot;, price: 10, published: &quot;733622400&quot;&#125;,</span><br><span class="line">        book&#123;title: &quot;hobbit&quot;, price: 10&#125;,</span><br><span class="line">        &amp;game&#123;title: &quot;minecraft&quot;, price: 20&#125;,</span><br><span class="line">        &amp;game&#123;title: &quot;tetris&quot;, price: 5&#125;,</span><br><span class="line">        puzzle&#123;title: &quot;rubik&#x27;s cube&quot;, price: 5&#125;,</span><br><span class="line">        &amp;toy&#123;title: &quot;yoda&quot;, price: 150&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    store.print()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Type-Switch-Detect-and-extract-multiple-values">Type Switch: Detect and extract multiple values</h2>
+<ol>
+<li>Type switch detects and extracts the dynamic value from an interface value.</li>
+<li>Example.
+<ul>
+<li>Rewrite book.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func format(v interface&#123;&#125;) string &#123;</span><br><span class="line">    var t int</span><br><span class="line"></span><br><span class="line">    switch v := v.(type) &#123;</span><br><span class="line">    case int:</span><br><span class="line">        t = v</span><br><span class="line">    case string:</span><br><span class="line">        t, _ = strconv.Atoi(v)</span><br><span class="line">    default:</span><br><span class="line">        return &quot;unknown&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const layout = &quot;2006/01&quot;</span><br><span class="line"></span><br><span class="line">    u := time.Unix(int64(t), 0)</span><br><span class="line">    return u.Format(layout)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Promoted-Methods-Let’s-make-a-little-bit-of-refactoring">Promoted Methods: Let’s make a little bit of refactoring</h2>
+<ol>
+<li>Example.
+<ul>
+<li>product.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type product struct &#123;</span><br><span class="line">    title string</span><br><span class="line">    price money</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (p *product) print() &#123;</span><br><span class="line">    fmt.Printf(&quot;%-15s: %s\n&quot;, p.title, p.price.string())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (p *product) discount(ratio float64) &#123;</span><br><span class="line">    p.price *= money(1 - ratio)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>book.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;strconv&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type book struct &#123;</span><br><span class="line">    product</span><br><span class="line">    published interface&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (b *book) print() &#123;</span><br><span class="line">    b.product.print()</span><br><span class="line">    p := format(b.published)</span><br><span class="line">    fmt.Printf(&quot;\t - (%v)\n&quot;, p)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func format(v interface&#123;&#125;) string &#123;</span><br><span class="line">    var t int</span><br><span class="line"></span><br><span class="line">    switch v := v.(type) &#123;</span><br><span class="line">    case int:</span><br><span class="line">        t = v</span><br><span class="line">    case string:</span><br><span class="line">        t, _ = strconv.Atoi(v)</span><br><span class="line">    default:</span><br><span class="line">        return &quot;unknown&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const layout = &quot;2006/01&quot;</span><br><span class="line"></span><br><span class="line">    u := time.Unix(int64(t), 0)</span><br><span class="line">    return u.Format(layout)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>game.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">type game struct &#123;</span><br><span class="line">    product</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>puzzle.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">type puzzle struct &#123;</span><br><span class="line">    product</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>toy.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">type toy struct &#123;</span><br><span class="line">    product</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>list.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">// an abstract type, a protocol, a contract.</span><br><span class="line">// no implementation</span><br><span class="line">type item interface &#123;</span><br><span class="line">    print()</span><br><span class="line">    discount(ratio float64)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type list []item</span><br><span class="line"></span><br><span class="line">func (l list) print() &#123;</span><br><span class="line">    if len(l) == 0 &#123;</span><br><span class="line">        fmt.Println(&quot;Sorry. We&#x27;re waiting for delivery 🚚.&quot;)</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, it := range l &#123;</span><br><span class="line">        fmt.Printf(&quot;(%-10T) --&gt; &quot;, it)</span><br><span class="line">        it.print()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (l list) discount(ratio float64) &#123;</span><br><span class="line">    type discounter interface &#123;</span><br><span class="line">        discount(float64)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, it := range l &#123;</span><br><span class="line">        it.discount(ratio)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1>Section16: Interfaces; Marshaler, Sorter, and so on</h1>
+<h2 id="Don’t-interface-everything">Don’t interface everything!</h2>
+<ol>
+<li>Prefer to work directly with concrete types.
+<ul>
+<li>Leads to a simple and easy to understand code.</li>
+<li>Abstractions (interfaces) can unnecessarily complicate your code.</li>
+</ul>
+</li>
+<li>Separating responsibilities is critical.
+<ul>
+<li><strong>Timestamp</strong> type can represent, store, and print a UNIX timestamp.</li>
+</ul>
+</li>
+<li>When a type <strong>anonymously embeds</strong> a type, it can use the methods of the embedded type as its own.
+<ul>
+<li><strong>Timestamp</strong> embeds a <strong>time.Time</strong>.</li>
+<li>So you can call the methods of the <strong>time.Time</strong> through a timestamp value.</li>
+</ul>
+</li>
+<li>Example
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    l := list&#123;</span><br><span class="line">        &#123;title: &quot;moby dick&quot;, price: 10, released: toTimestamp(118281600)&#125;,</span><br><span class="line">        &#123;title: &quot;odyssey&quot;, price: 15, released: toTimestamp(&quot;733622400&quot;)&#125;,</span><br><span class="line">        &#123;title: &quot;hobbit&quot;, price: 25&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    l.discount(.5)</span><br><span class="line">    l.print()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>timestamp.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;strconv&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type timestamp struct &#123;</span><br><span class="line">    time.Time</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (ts timestamp) string() string &#123;</span><br><span class="line">    if ts.IsZero() &#123;</span><br><span class="line">        return &quot;unknown&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const layout = &quot;2006/01&quot;</span><br><span class="line">    return ts.Format(layout)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func toTimestamp(v interface&#123;&#125;) (ts timestamp) &#123;</span><br><span class="line">    var t int</span><br><span class="line"></span><br><span class="line">    switch v := v.(type) &#123;</span><br><span class="line">    case int:</span><br><span class="line">        t = v</span><br><span class="line">    case string:</span><br><span class="line">        t, _ = strconv.Atoi(v)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ts.Time = time.Unix(int64(t), 0)</span><br><span class="line">    return ts</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>product.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type product struct &#123;</span><br><span class="line">    title    string</span><br><span class="line">    price    money</span><br><span class="line">    released timestamp</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (p *product) print() &#123;</span><br><span class="line">    fmt.Printf(&quot;%s: %s (%s)\n&quot;, p.title, p.price.string(), p.released.string())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (p *product) discount(ratio float64) &#123;</span><br><span class="line">    p.price *= money(1 - ratio)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>list.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">// an abstract type, a protocol, a contract.</span><br><span class="line">// no implementation</span><br><span class="line">type item interface &#123;</span><br><span class="line">    print()</span><br><span class="line">    discount(ratio float64)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type list []*product</span><br><span class="line"></span><br><span class="line">func (l list) print() &#123;</span><br><span class="line">    if len(l) == 0 &#123;</span><br><span class="line">        fmt.Println(&quot;Sorry. We&#x27;re waiting for delivery 🚚.&quot;)</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, p := range l &#123;</span><br><span class="line">        p.print()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (l list) discount(ratio float64) &#123;</span><br><span class="line">    type discounter interface &#123;</span><br><span class="line">        discount(float64)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, p := range l &#123;</span><br><span class="line">        p.discount(ratio)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Stringer-Grant-a-type-the-ability-to-represent-itself-as-a-string">Stringer: Grant a type the ability to represent itself as a string</h2>
+<ol>
+<li>fmt.Stringer <strong>has one method: String()</strong>.
+<ul>
+<li>That returns a <strong>string</strong>.</li>
+<li>It is better to be an fmt.Stringer instead of printing directly.</li>
+</ul>
+</li>
+<li><strong>Implement the String()</strong> on a type and the type can represent itself as a <strong>string</strong>.
+<ul>
+<li>Bonus: The functions in the <strong>fmt package</strong> can print your type.</li>
+<li>They use <strong>type assertion</strong> to detect if a type implements a <strong>String()</strong> method.</li>
+</ul>
+</li>
+<li><strong>strings.Builder</strong> can <strong>efficiently</strong> combine multiple string values.</li>
+<li>Example.
+<ul>
+<li>money.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type money float64</span><br><span class="line"></span><br><span class="line">func (m money) String() string &#123;</span><br><span class="line">    return fmt.Sprintf(&quot;$%.2f&quot;, m)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>timestamp.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;strconv&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type timestamp struct &#123;</span><br><span class="line">    time.Time</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (ts timestamp) String() string &#123;</span><br><span class="line">    if ts.IsZero() &#123;</span><br><span class="line">        return &quot;unknown&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const layout = &quot;2006/01&quot;</span><br><span class="line">    return ts.Format(layout)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func toTimestamp(v interface&#123;&#125;) (ts timestamp) &#123;</span><br><span class="line">    var t int</span><br><span class="line"></span><br><span class="line">    switch v := v.(type) &#123;</span><br><span class="line">    case int:</span><br><span class="line">        t = v</span><br><span class="line">    case string:</span><br><span class="line">        t, _ = strconv.Atoi(v)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ts.Time = time.Unix(int64(t), 0)</span><br><span class="line">    return ts</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>product.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type product struct &#123;</span><br><span class="line">    title    string</span><br><span class="line">    price    money</span><br><span class="line">    released timestamp</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (p *product) String() string &#123;</span><br><span class="line">    return fmt.Sprintf(&quot;%s: %s (%s)&quot;, p.title, p.price, p.released)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (p *product) discount(ratio float64) &#123;</span><br><span class="line">    p.price *= money(1 - ratio)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>list.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;strings&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type item interface &#123;</span><br><span class="line">    print()</span><br><span class="line">    discount(ratio float64)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type list []*product</span><br><span class="line"></span><br><span class="line">func (l list) String() string &#123;</span><br><span class="line">    if len(l) == 0 &#123;</span><br><span class="line">        return &quot;Sorry. We&#x27;re waiting for delivery 🚚.\n&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var str strings.Builder</span><br><span class="line">    for _, p := range l &#123;</span><br><span class="line">        str.WriteString(&quot;* &quot;)</span><br><span class="line">        str.WriteString(p.String())</span><br><span class="line">        str.WriteRune(&#x27;\n&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">    return str.String()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (l list) discount(ratio float64) &#123;</span><br><span class="line">    type discounter interface &#123;</span><br><span class="line">        discount(float64)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, p := range l &#123;</span><br><span class="line">        p.discount(ratio)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    l := list&#123;</span><br><span class="line">        &#123;title: &quot;moby dick&quot;, price: 10, released: toTimestamp(118281600)&#125;,</span><br><span class="line">        &#123;title: &quot;odyssey&quot;, price: 15, released: toTimestamp(&quot;733622400&quot;)&#125;,</span><br><span class="line">        &#123;title: &quot;hobbit&quot;, price: 25&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    l.discount(.5)</span><br><span class="line">    fmt.Print(l)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Sorter-let-a-type-know-how-to-sort-itself">Sorter: let a type know how to sort itself</h2>
+<ol>
+<li>sort.Sort() <strong>can sort any type that implements the sort.Interface</strong>.</li>
+<li>sort.Interface has three methods: Len(), Less(), Swap()
+<ul>
+<li>Len() returns the length of a collection.</li>
+<li>Less(i, j) should return <strong>true</strong> when an element comes before another one.</li>
+<li>Swap(i, j)s the elements when the Less() return <strong>true</strong>.</li>
+</ul>
+</li>
+<li>sort.Reverse() can reverse sort a type that satisfies the sort.Interface.</li>
+<li>You can customize the sorting:
+<ul>
+<li><strong>Either</strong> by implementing the sort.Interface methods or by <strong>anonymously embedding</strong> a type that already satisfies the sort.Interface and adding a Less() method.</li>
+</ul>
+</li>
+<li><strong>Anonymous embedding</strong> means <strong>auto-forwarding</strong> method calls to an embedded type.
+<ul>
+<li>Check out the source-code for detail.</li>
+</ul>
+</li>
+<li>Example.
+<ul>
+<li>list.go, add the following three lines to the bottom of list.go. It implements the sort interface methods.</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func (l list) Len() int           &#123; return len(l) &#125;</span><br><span class="line">func (l list) Less(i, j int) bool &#123; return l[i].title &lt; l[j].title &#125;</span><br><span class="line">func (l list) Swap(i, j int)      &#123; l[i], l[j] = l[j], l[i] &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;sort&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    l := list&#123;</span><br><span class="line">        &#123;title: &quot;moby dick&quot;, price: 10, released: toTimestamp(118281600)&#125;,</span><br><span class="line">        &#123;title: &quot;odyssey&quot;, price: 15, released: toTimestamp(&quot;733622400&quot;)&#125;,</span><br><span class="line">        &#123;title: &quot;hobbit&quot;, price: 25&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sort.Sort(l)</span><br><span class="line"></span><br><span class="line">    l.discount(.5)</span><br><span class="line">    fmt.Print(l)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>Custom sort example.
+<ul>
+<li>list.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">type byRelease struct &#123;</span><br><span class="line">    list</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (br byRelease) Less(i, j int) bool &#123;</span><br><span class="line">    return br.list[i].released.Before(br.list[j].released.Time)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func byReleaseDate(l list) sort.Interface &#123;</span><br><span class="line">    return &amp;byRelease&#123;l&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Marshalers-Customize-JSON-encoding-and-decoding-of-a-type">Marshalers: Customize JSON encoding and decoding of a type</h2>
+<ol>
+<li>json.Marsahl() and json.MarsahllIndent() can only encode primitive types.
+<ul>
+<li>Custom types can tell the encoder how to encode.</li>
+<li>To do that satisfy the json.Marshaler interface.</li>
+</ul>
+</li>
+<li>json.Unmarshal() can only decode primitive types.
+<ul>
+<li>Custom types can tell the decoder how to decode.</li>
+<li>To do that satisfy the json.Unmarshal interface.</li>
+</ul>
+</li>
+<li>strconv.AppendInt() can append an <strong>int</strong> value to a <strong>[]byte</strong>.
+<ul>
+<li>There are several other functions in the <strong>strconv package</strong> for other primitive types as well.</li>
+<li>Do not make unnecessary <strong>string &lt;-&gt; []byte</strong> conversions.</li>
+</ul>
+</li>
+<li>log.Fatal(0 can print the given error message and terminate the program.
+<ul>
+<li>Use it only from the <strong>main()</strong>. Do not use it in other functions.</li>
+<li><strong>main()</strong> is should be the main driver of a program.</li>
+</ul>
+</li>
+<li>Marshal Example.
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;encoding/json&quot;</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;log&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    l := list&#123;</span><br><span class="line">        &#123;Title: &quot;moby dick&quot;, Price: 10, Released: toTimestamp(118281600)&#125;,</span><br><span class="line">        &#123;Title: &quot;odyssey&quot;, Price: 15, Released: toTimestamp(&quot;733622400&quot;)&#125;,</span><br><span class="line">        &#123;Title: &quot;hobbit&quot;, Price: 25&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    data, err := json.MarshalIndent(l, &quot;&quot;, &quot; &quot;)</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(string(data))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>timestamp.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func (ts timestamp) MarshalJSON() (data []byte, _ error) &#123;</span><br><span class="line">    // ts -&gt; integer -&gt; ts.Unix() -&gt; integer</span><br><span class="line">    // data &lt;- integer -&gt; strconv.AppendInt(data, integer, 10)</span><br><span class="line">    return strconv.AppendInt(data, ts.Unix(), 10), nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>Unmarshal Example.
+<ul>
+<li>main.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;encoding/json&quot;</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;log&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">const data = `[</span><br><span class="line">&#123;</span><br><span class="line">&quot;Title&quot;: &quot;moby dick&quot;,</span><br><span class="line">&quot;Price&quot;: 10,</span><br><span class="line">&quot;Released&quot;: 118281600</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">&quot;Title&quot;: &quot;odyssey&quot;,</span><br><span class="line">&quot;Price&quot;: 15,</span><br><span class="line">&quot;Released&quot;: 733622400</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">&quot;Title&quot;: &quot;hobbit&quot;,</span><br><span class="line">&quot;Price&quot;: 25,</span><br><span class="line">&quot;Released&quot;: -62135596800</span><br><span class="line">&#125;</span><br><span class="line">]`</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    var l list</span><br><span class="line">    err := json.Unmarshal([]byte(data), &amp;l)</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Print(l)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>timestamp.go</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func (ts *timestamp) UnmarshalJSON(data []byte) error &#123;</span><br><span class="line">    *ts = toTimestamp(string(data))</span><br><span class="line">    return nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" data-id="cl1d3leel002ddytl8my0eia9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Golang 快速學習自我挑戰 Day14",
+        "image": "https://vincent.fishboneapps.com/images/learning/golang/GolangDay14.jpg",
+        "keywords": "Golang",
+        "genre": "Study Note",
+        "datePublished": "2021-12-10",
+        "dateCreated": "2021-12-10",
+        "dateModified": "2021-12-26",
+        "url": "https://vincent.fishboneapps.com/2021/12/10/Golang-快速學習自我挑戰-Day14/",
+        "description": "
+
+Section14: Methods: OOP with Go
+Methods：Enhance types with additional behavior
+
+Methods
+
+Value Receivers
+Pointer Receivers
+Non-Struct Methods
+
+
+Interface
+
+Type Assertion
+Type Switch
+Empty Interface
+",
+        "wordCount": 5348
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2021/12/04/C-Learning-Journey-Day12/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">C++ Learning Journey Day12</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Section14: Methods: OOP with Go</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Methods%EF%BC%9AEnhance-types-with-additional-behavior"><span class="toc-number">1.1.</span> <span class="toc-text">Methods：Enhance types with additional behavior</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pointer-Receiver-Change-the-received-value"><span class="toc-number">1.2.</span> <span class="toc-text">Pointer Receiver: Change the received value</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-Structs-Attach-methods-to-almost-any-type"><span class="toc-number">1.3.</span> <span class="toc-text">Non-Structs: Attach methods to almost any type</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">Section15: Interfaces: Implicit OOP Way</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Interfaces-Be-dynamic"><span class="toc-number">2.1.</span> <span class="toc-text">Interfaces: Be dynamic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Assertion-Extract-the-dynamic-value"><span class="toc-number">2.2.</span> <span class="toc-text">Type Assertion: Extract the dynamic value!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Empty-Interface-Represent-any-type-of-value"><span class="toc-number">2.3.</span> <span class="toc-text">Empty Interface: Represent any type of value</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Switch-Detect-and-extract-multiple-values"><span class="toc-number">2.4.</span> <span class="toc-text">Type Switch: Detect and extract multiple values</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promoted-Methods-Let%E2%80%99s-make-a-little-bit-of-refactoring"><span class="toc-number">2.5.</span> <span class="toc-text">Promoted Methods: Let’s make a little bit of refactoring</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">Section16: Interfaces; Marshaler, Sorter, and so on</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Don%E2%80%99t-interface-everything"><span class="toc-number">3.1.</span> <span class="toc-text">Don’t interface everything!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stringer-Grant-a-type-the-ability-to-represent-itself-as-a-string"><span class="toc-number">3.2.</span> <span class="toc-text">Stringer: Grant a type the ability to represent itself as a string</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sorter-let-a-type-know-how-to-sort-itself"><span class="toc-number">3.3.</span> <span class="toc-text">Sorter: let a type know how to sort itself</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Marshalers-Customize-JSON-encoding-and-decoding-of-a-type"><span class="toc-number">3.4.</span> <span class="toc-text">Marshalers: Customize JSON encoding and decoding of a type</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

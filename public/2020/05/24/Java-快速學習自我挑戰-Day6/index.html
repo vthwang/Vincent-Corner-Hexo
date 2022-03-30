@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Java 快速學習自我挑戰 Day6 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Java" />
+    
+    <meta name="description" content="控制流陳述句 數字和挑戰  Write a method with the name sumDigits that has one int parameter called number. If parameter is &gt;&#x3D; 10 then the method should process the number and return sum of all digits, otherw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 快速學習自我挑戰 Day6">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2020/05/24/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day6/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="控制流陳述句 數字和挑戰  Write a method with the name sumDigits that has one int parameter called number. If parameter is &gt;&#x3D; 10 then the method should process the number and return sum of all digits, otherw">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay06.jpg">
+<meta property="article:published_time" content="2020-05-24T07:10:49.000Z">
+<meta property="article:modified_time" content="2021-01-25T08:24:11.970Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay06.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Java-快速學習自我挑戰-Day6" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Java 快速學習自我挑戰 Day6
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/05/24/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day6/" class="article-date">
+         <time datetime="2020-05-24T07:10:49.000Z" itemprop="datePublished">2020-05-24</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">3.3k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">20 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/java/JavaDay06.jpg">
+<hr>
+<h3 id="控制流陳述句">控制流陳述句</h3>
+<h4 id="數字和挑戰">數字和挑戰</h4>
+<ul>
+<li>Write a method with the name <strong>sumDigits</strong> that has one <strong>int</strong> parameter called <strong>number</strong>.</li>
+<li>If parameter is <strong>&gt;= 10</strong> then the method should process the number and return <strong>sum of all digits</strong>, otherwise return <strong>-1</strong> to indicate an invalid value.</li>
+<li>The number from <strong>0-9</strong> have 1 digit so we don’t want to process them, also we don’t want to process negative numbers, so also return <strong>-1</strong> for negative numbers.</li>
+<li>For example calling the method <strong>sumDigits(125)</strong> should return <strong>8</strong> since <strong>1 + 2 + 5 = 8</strong>.</li>
+<li>Calling the method <strong>sumDigit(1)</strong> should return <strong>-1</strong> as per requirements described above.</li>
+<li>Add some code to the main method to test out the <strong>sumDigits</strong> method to determine that it is working correctly for valid and invalid values passed as arguments.</li>
+<li>Hint
+<ul>
+<li>Use <strong>n % 10</strong> to extract the least-significant digit.</li>
+<li>Use <strong>n = n /10</strong> to discard the least-significant digit.</li>
+<li>The method needs to be static like other methods so far in the course.</li>
+</ul>
+</li>
+<li>Tip
+<ul>
+<li>Create a project with the name <strong>DigitSumChallenge</strong>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="數字和挑戰-解答">數字和挑戰(解答)</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    </span><br><span class="line">    System.out.println(sumDigits(125));</span><br><span class="line">    System.out.println(sumDigits(-125));</span><br><span class="line">    System.out.println(sumDigits(5));</span><br><span class="line">    System.out.println(sumDigits(23123));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static int sumDigits(int number) &#123;</span><br><span class="line"></span><br><span class="line">    if (number &lt; 10) &#123;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int sum = 0;</span><br><span class="line"></span><br><span class="line">    while (number &gt; 0) &#123;</span><br><span class="line">        int digit = number % 10;</span><br><span class="line">        sum += digit;</span><br><span class="line">        number /= 10;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="題目一-4">題目一</h4>
+<p>Write a method called isPalindrome with one int parameter called number.<br>
+The method needs to return a boolean.<br>
+It should return true if the number is a palindrome number otherwise it should return false.<br>
+Check the tips below for more info about palindromes.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example Input/Output</span><br><span class="line">isPalindrome(-1221); → should return true</span><br><span class="line">isPalindrome(707); → should return true</span><br><span class="line">isPalindrome(11212); → should return false because reverse is 21211 and that is not equal to 11212.</span><br></pre></td></tr></table></figure>
+<p>Tip: What is a Palindrome number?  A palindrome number is a number which when reversed is equal to the original number. For example: 121, 12321, 1001 etc.<br>
+Tip: Logic to check a palindrome number<br>
+Find the the reverse of the given number. Store it in some variable say reverse. Compare the number with reverse.<br>
+If both are the the same then the number is a palindrome otherwise it is not.<br>
+Tip: Logic to reverse a number<br>
+Declare and initialize another variable to store the reverse of a number, for example reverse = 0.</p>
+<p>Extract the last digit of the given number by performing the modulo division (remainder).<br>
+Store the last digit to some variable say lastDigit = num % 10.<br>
+Increase the place value of reverse by one.<br>
+To increase place value multiply the reverse variable by 10 e.g. reverse = reverse * 10.<br>
+Add lastDigit to reverse.<br>
+Since the last digit of the number is processed, remove the last digit of num. To remove the last digit divide number by 10.<br>
+Repeat steps until number is not equal to (or greater than) zero.</p>
+<p>A while loop would be good for this coding exercise.</p>
+<p>Tip: Be careful with negative numbers. They can also be palindrome numbers.<br>
+Tip: Be careful with reversing a number, you will need a parameter for comparing a reversed number with the starting number (parameter).</p>
+<p>NOTE: The method isPalindrome needs to be defined as public static like we have been doing</p>
+<h4 id="題目一-答案-3">題目一(答案)</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class NumberPalindrome &#123;</span><br><span class="line">    public static boolean isPalindrome(int number) &#123;</span><br><span class="line"></span><br><span class="line">        int reverse = 0;</span><br><span class="line">        int originalNumber = number;</span><br><span class="line"></span><br><span class="line">        while (number != 0) &#123;</span><br><span class="line"></span><br><span class="line">            reverse *= 10;</span><br><span class="line">            int lastDigit = number % 10;</span><br><span class="line">            reverse += lastDigit;</span><br><span class="line">            number /= 10;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return originalNumber == reverse;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="題目二-4">題目二</h4>
+<p>Write a method named sumFirstAndLastDigit with one parameter of type int called number.<br>
+The method needs to find the first and the last digit of the parameter number passed to the method, using a loop and return the sum of the first and the last digit of that number.<br>
+If the number is negative then the method needs to return -1 to indicate an invalid value.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example input/output</span><br><span class="line">* sumFirstAndLastDigit(252); → should return 4, the first digit is 2 and the last is 2 which gives us 2+2 and the sum is 4.</span><br><span class="line">* sumFirstAndLastDigit(257); → should return 9, the first digit is 2 and the last is 7 which gives us 2+7 and the sum is 9.</span><br><span class="line">* sumFirstAndLastDigit(0); → should return 0, the first digit and the last digit is 0 since we only have 1 digit, which gives us 0+0 and the sum is 0.</span><br><span class="line">* sumFirstAndLastDigit(5); → should return 10, the first digit and the last digit is 5 since we only have 1 digit, which gives us 5+5 and the sum is 10.</span><br><span class="line">* sumFirstAndLastDigit(-10); → should return -1, since the parameter is negative and needs to be positive.</span><br></pre></td></tr></table></figure>
+<p>NOTE: The method sumFirstAndLastDigit needs to be defined as public static like we have been doing so far in the course.<br>
+NOTE: Do not add a main method to solution code.</p>
+<h4 id="題目二-答案-3">題目二(答案)</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class FirstLastDigitSum &#123;</span><br><span class="line">    public static int sumFirstAndLastDigit(int number) &#123;</span><br><span class="line"></span><br><span class="line">        if (number &lt; 0) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int lastDigit = number % 10;</span><br><span class="line">        int firstDigit = 0;</span><br><span class="line"></span><br><span class="line">        while (number &gt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            if (number &lt; 10) &#123;</span><br><span class="line">                firstDigit = number;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            number /= 10;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return lastDigit + firstDigit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="題目三-3">題目三</h4>
+<p>Write a method named getEvenDigitSum with one parameter of type int called number.<br>
+The method should return the sum of the even digits within the number.<br>
+If the number is negative, the method should return -1 to indicate an invalid value.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EXAMPLE INPUT/OUTPUT:</span><br><span class="line">* getEvenDigitSum(123456789); → should return 20 since 2 + 4 + 6 + 8 = 20</span><br><span class="line">* getEvenDigitSum(252); → should return 4 since 2 + 2 = 4</span><br><span class="line">* getEvenDigitSum(-22); → should return -1 since the number is negative</span><br></pre></td></tr></table></figure>
+<p>NOTE: The method getEvenDigitSum should be defined as public static like we have been doing so far in the course.<br>
+NOTE: Do not add a main method to the solution code.</p>
+<h4 id="題目三-答案-2">題目三(答案)</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class EvenDigitSum &#123;</span><br><span class="line">    public static int getEvenDigitSum(int number) &#123;</span><br><span class="line"></span><br><span class="line">        if (number &lt; 0) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int sum = 0;</span><br><span class="line"></span><br><span class="line">        while (number &gt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            int remainder = number % 10;</span><br><span class="line"></span><br><span class="line">            if (remainder % 2 == 0) &#123;</span><br><span class="line">                sum += remainder;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            number /= 10;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="題目四-3">題目四</h4>
+<p>Write a method named hasSharedDigit with two parameters of type int.<br>
+Each number should be within the range of 10 (inclusive) - 99 (inclusive). If one of the numbers is not within the range, the method should return false.<br>
+The method should return true if there is a digit that appears in both numbers, such as 2 in 12 and 23; otherwise, the method should return false.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EXAMPLE INPUT/OUTPUT:</span><br><span class="line">* hasSharedDigit(12, 23); → should return true since the digit 2 appears in both numbers</span><br><span class="line">* hasSharedDigit(9, 99); → should return false since 9 is not within the range of 10-99</span><br><span class="line">* hasSharedDigit(15, 55); → should return true since the digit 5 appears in both numbers</span><br></pre></td></tr></table></figure>
+<p>NOTE: The method hasSharedDigit should be defined as public static like we have been doing so far in the course.<br>
+NOTE: Do not add a main method to the solution code.</p>
+<h4 id="題目四-答案-3">題目四(答案)</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class SharedDigit &#123;</span><br><span class="line">    public static boolean hasSharedDigit(int firstNumber, int secondNumber) &#123;</span><br><span class="line"></span><br><span class="line">        if (firstNumber &lt; 10 || firstNumber &gt; 99 || secondNumber &lt; 10 || secondNumber &gt; 99) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int firstNumberLastDigit = firstNumber % 10;</span><br><span class="line">        int firstNumberFirstDigit = firstNumber / 10;</span><br><span class="line"></span><br><span class="line">        int secondNumberLastDigit = secondNumber % 10;</span><br><span class="line">        int secondNumberFirstDigit = secondNumber / 10;</span><br><span class="line"></span><br><span class="line">        return firstNumberLastDigit == secondNumberLastDigit || firstNumberLastDigit == secondNumberFirstDigit || firstNumberFirstDigit == secondNumberLastDigit || firstNumberFirstDigit == secondNumberFirstDigit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="題目五-2">題目五</h4>
+<p>Write a method named hasSameLastDigit with three parameters of type int.<br>
+Each number should be within the range of 10 (inclusive) - 1000 (inclusive). If one of the numbers is not within the range, the method should return false.<br>
+The method should return true if at least two of the numbers share the same rightmost digit; otherwise, it should return false.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EXAMPLE INPUT/OUTPUT:</span><br><span class="line">* hasSameLastDigit (41, 22, 71); → should return true since 1 is the rightmost digit in numbers 41 and 71</span><br><span class="line">* hasSameLastDigit (23, 32, 42); → should return true since 2 is the rightmost digit in numbers 32 and 42</span><br><span class="line">* hasSameLastDigit (9, 99, 999); → should return false since 9 is not within the range of 10-1000</span><br></pre></td></tr></table></figure>
+<p>Write another method named isValid with one parameter of type int.<br>
+The method needs to return true if the number parameter is in range of 10(inclusive) - 1000(inclusive), otherwise return false.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EXAMPLE INPUT/OUTPUT</span><br><span class="line">* isValid(10); → should return true since 10 is within the range of 10-1000</span><br><span class="line">* isValid(468); → should return true since 468 is within the range of 10-1000</span><br><span class="line">* isValid(1051); → should return false since 1051 is not within the range of 10-1000</span><br></pre></td></tr></table></figure>
+<p>NOTE: All methods need to be defined as public static as we have been doing so far in the course.<br>
+NOTE: Do not add a main method to the solution code.</p>
+<h4 id="題目五-答案-2">題目五(答案)</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class LastDigitChecker &#123;</span><br><span class="line">    public static boolean hasSameLastDigit(int firstNumber, int secondNumber, int thirdNumber) &#123;</span><br><span class="line"></span><br><span class="line">        if (!isValid(firstNumber) || !isValid(secondNumber) || !isValid(thirdNumber)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int firstNumberLastDigit = firstNumber % 10;</span><br><span class="line">        int secondNumberLastDigit = secondNumber % 10;</span><br><span class="line">        int thirdNumberLastDigit = thirdNumber % 10;</span><br><span class="line"></span><br><span class="line">        return firstNumberLastDigit == secondNumberLastDigit || secondNumberLastDigit == thirdNumberLastDigit || thirdNumberLastDigit == firstNumberLastDigit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static boolean isValid(int number) &#123;</span><br><span class="line"></span><br><span class="line">        return number &gt;= 10 &amp;&amp; number &lt;= 1000;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="題目六-2">題目六</h4>
+<p>Write a method named getGreatestCommonDivisor with two parameters of type int named first and second.<br>
+If one of the parameters is &lt; 10, the method should return -1 to indicate an invalid value.<br>
+The method should return the greatest common divisor of the two numbers (int).<br>
+The greatest common divisor is the largest positive integer that can fully divide each of the integers (i.e. without leaving a remainder).</p>
+<p>For example 12 and 30:<br>
+12 can be divided by 1, 2, 3, 4, 6, 12<br>
+30 can be divided by 1, 2, 3, 5, 6, 10, 15, 30</p>
+<p>The greatest common divisor is 6 since both 12 and 30 can be divided by 6, and there is no resulting remainder.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXAMPLE INPUT/OUTPUT:</span><br><span class="line">* getGreatestCommonDivisor(25, 15); should return 5 since both can be divided by 5 without a remainder</span><br><span class="line">* getGreatestCommonDivisor(12, 30); should return 6 since both can be divided by 6 without a remainder</span><br><span class="line">* getGreatestCommonDivisor(9, 18); should return -1 since the first parameter is &lt; 10</span><br><span class="line">* getGreatestCommonDivisor(81, 153); should return 9 since both can be divided by 9 without a remainder</span><br></pre></td></tr></table></figure>
+<p>HINT: Use a while or a for loop and check if both numbers can be divided without a remainder.<br>
+HINT: Find the minimum of the two numbers.<br>
+NOTE: The method getGreatestCommonDivisor should be defined as public static like we have been doing so far in the course.<br>
+NOTE: Do not add a main method to the solution code.</p>
+<h4 id="題目六-答案-2">題目六(答案)</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class GreatestCommonDivisor &#123;</span><br><span class="line">    public static int getGreatestCommonDivisor(int first, int second) &#123;</span><br><span class="line"></span><br><span class="line">        if (first &lt; 10 || second &lt; 10) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int largeNumber = 0;</span><br><span class="line">        int smallNumber = 0;</span><br><span class="line"></span><br><span class="line">        // 找出兩數中哪個數字大</span><br><span class="line">        if (first &gt; second) &#123;</span><br><span class="line">            largeNumber = first;</span><br><span class="line">            smallNumber = second;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            largeNumber = second;</span><br><span class="line">            smallNumber = first;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 找出數字小的因數，拿去給大數字除，如果可以整除，表示它也是大數的因數，也就是他們的共同最大公因數</span><br><span class="line">        int i = smallNumber;</span><br><span class="line">        int greatestCommonDivisor = 0;</span><br><span class="line">        while (i &gt;= 1) &#123;</span><br><span class="line"></span><br><span class="line">            if (smallNumber % i == 0 &amp;&amp; largeNumber % i == 0) &#123;</span><br><span class="line">                greatestCommonDivisor = i;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return greatestCommonDivisor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="題目七-2">題目七</h4>
+<p>Write a method named printFactors with one parameter of type int named number.<br>
+If number is &lt; 1, the method should print “Invalid Value”.<br>
+The method should print all factors of the number. A factor of a number is an integer which divides that number wholly (i.e. without leaving a remainder).<br>
+For example, 3 is a factor of 6 because 3 fully divides 6 without leaving a remainder. In other words 6 / 3 = 2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXAMPLE INPUT/OUTPUT:</span><br><span class="line">* printFactors(6); → should print 1 2 3 6</span><br><span class="line">* printFactors(32); → should print 1 2 4 8 16 32</span><br><span class="line">* printFactors(10); → should print 1 2 5 10</span><br><span class="line">* printFactors(-1); → should print &quot;Invalid Value&quot; since number is &lt; 1</span><br></pre></td></tr></table></figure>
+<p>HINT: Use a while or for loop.<br>
+NOTE: When printing numbers, each number can be in its own line. They don’t have to be separated by a space.<br>
+For example, the printout for printFactors(10); can be:<br>
+1<br>
+2<br>
+5<br>
+10<br>
+NOTE: The method printFactors should be defined as public static like we have been doing so far in the course.<br>
+NOTE: Do not add a main method to the solution code.</p>
+<h4 id="題目七-答案-2">題目七(答案)</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class FactorPrinter &#123;</span><br><span class="line">    public static void printFactors(int number) &#123;</span><br><span class="line"></span><br><span class="line">        if (number &lt; 1) &#123;</span><br><span class="line">            System.out.println(&quot;Invalid Value&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for (int i = 1; i &lt;= number; i++) &#123;</span><br><span class="line"></span><br><span class="line">            if (number % i == 0) &#123;</span><br><span class="line">                System.out.println(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="題目八">題目八</h4>
+<p>What is the perfect number?<br>
+A perfect number is a positive integer which is equal to the sum of its proper positive divisors.<br>
+Proper positive divisors are positive integers that fully divide the perfect number without leaving a remainder and exclude the perfect number itself.<br>
+For example, take the number 6:<br>
+Its proper divisors are 1, 2, and 3 (since 6 is the value of the perfect number, it is excluded), and the sum of its proper divisors is 1 + 2 + 3 = 6.<br>
+Therefore, 6 is a perfect number (as well as the first perfect number).<br>
+Write a method named isPerfectNumber with one parameter of type int named number.<br>
+If number is &lt; 1, the method should return false.<br>
+The method must calculate if the number is perfect. If the number is perfect, the method should return true; otherwise, it should return false.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXAMPLE INPUT/OUTPUT:</span><br><span class="line">* isPerfectNumber(6); should return true since its proper divisors are 1, 2, 3 and the sum is 1 + 2 + 3 = 6</span><br><span class="line">* isPerfectNumber(28); should return true since its proper divisors are 1, 2, 4, 7, 14 and the sum is 1 + 2 + 4 + 7 + 14 = 28</span><br><span class="line">* isPerfectNumber(5); should return false since its only proper divisor is 1 and the sum is 1 not 5</span><br><span class="line">* isPerfectNumber(-1); should return false since the number is &lt; 1</span><br></pre></td></tr></table></figure>
+<p>HINT: Use a while or for loop.<br>
+HINT: Use the remainder operator.<br>
+NOTE: The method isPerfectNumber should be defined as public static like we have been doing so far in the course.<br>
+NOTE: Do not add a main method to the solution code.</p>
+<h4 id="題目八-答案">題目八(答案)</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class PerfectNumber &#123;</span><br><span class="line">    public static boolean isPerfectNumber(int number) &#123;</span><br><span class="line"></span><br><span class="line">        if (number &lt; 1) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int sum = 0;</span><br><span class="line"></span><br><span class="line">        for (int i = 1; i &lt; number; i++) &#123;</span><br><span class="line"></span><br><span class="line">            if (number % i == 0) &#123;</span><br><span class="line">                sum += i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return sum == number;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="題目九">題目九</h4>
+<p>Write a method called numberToWords with one int parameter named number.<br>
+The method should print out the passed number using words for the digits.<br>
+If the number is negative, print “Invalid Value”.<br>
+To print the number as words, follow these steps:</p>
+<ol>
+<li>Extract the last digit of the given number using the remainder operator.</li>
+<li>Convert the value of the digit found in Step 1 into a word. There are 10 possible values for that digit, those being 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. Print the corresponding word for each digit, e.g. print “Zero” if the digit is 0, “One” if the digit is 1, and so on.</li>
+<li>Remove the last digit from the number.</li>
+<li>Repeat Steps 2 through 4 until the number is 0.</li>
+</ol>
+<p>The logic above is correct, but in its current state, the words will be printed in reverse order. For example, if the number is 234, the logic above will produce the output “Four Three Two” instead of “Two Three Four”. To overcome this problem, write a second method called reverse.<br>
+The method reverse should have one int parameter and return the reversed number (int). For example, if the number passed is 234, then the reversed number would be 432. The method  reverse should also reverse negative numbers.<br>
+Use the method reverse within the method numberToWords in order to print the words in the correct order.<br>
+Another thing to keep in mind is any reversed number with leading zeroes (e.g. the reversed number for 100 is 001). The logic above for the method numberToWords will print “One”, but that is incorrect. It should print “One Zero Zero”. To solve this problem, write a third method called getDigitCount.<br>
+The method getDigitCount should have one int parameter called number and return the count of the digits in that number. If the number is negative, return -1 to indicate an invalid value.<br>
+For example, if the number has a value of 100, the method getDigitCount should return 3 since the number 100 has 3 digits (1, 0, 0).</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example Input/Output - getDigitCount method</span><br><span class="line">* getDigitCount(0); should return 1 since there is only 1 digit</span><br><span class="line">* getDigitCount(123); should return 3</span><br><span class="line">* getDigitCount(-12); should return -1 since the parameter is negative</span><br><span class="line">* getDigitCount(5200); should return 4 since there are 4 digits in the number</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example Input/Output - reverse method</span><br><span class="line">* reverse(-121); should  return -121</span><br><span class="line">* reverse(1212); should return  2121</span><br><span class="line">* reverse(1234); should return 4321</span><br><span class="line">* reverse(100); should return 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example Input/Output - numberToWords method</span><br><span class="line">* numberToWords(123); should print &quot;One Two Three&quot;.</span><br><span class="line">* numberToWords(1010); should print &quot;One Zero One Zero&quot;.</span><br><span class="line">* numberToWords(1000); should print &quot;One Zero Zero Zero&quot;.</span><br><span class="line">* numberToWords(-12); should print &quot;Invalid Value&quot; since the parameter is negative.</span><br></pre></td></tr></table></figure>
+<p>HINT: Use a for loop to print zeroes after reversing the number. As seen in a previous example, 100 reversed becomes 1, but the method numberToWords should print “One Zero Zero”. To get the number of zeroes, check the difference between the digit count from the original number and the reversed number.<br>
+NOTE: When printing words, each word can be in its own line. For example, numberToWords(123); can be:<br>
+One<br>
+Two<br>
+Three<br>
+They don’t have to be separated by a space.<br>
+NOTE: The methods numberToWords, getDigitCount, reverse should be defined as public static like we have been doing so far in the course.<br>
+NOTE: In total, you have to write 3 methods.<br>
+NOTE: Do not add a main method to the solution code.</p>
+<h4 id="題目九-答案">題目九(答案)</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">public class NumberToWords &#123;</span><br><span class="line">    public static void numberToWords(int number) &#123;</span><br><span class="line"></span><br><span class="line">        if (number &lt; 0) &#123;</span><br><span class="line">            System.out.println(&quot;Invalid Value&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int remainder;</span><br><span class="line"></span><br><span class="line">        int reverseNumber = reverse(number);</span><br><span class="line">        int digitCount = getDigitCount(number);</span><br><span class="line">        int count = 0;</span><br><span class="line">        while (reverseNumber &gt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            remainder = reverseNumber % 10;</span><br><span class="line">            switch (remainder) &#123;</span><br><span class="line">                case 0:</span><br><span class="line">                    System.out.println(&quot;Zero&quot;);</span><br><span class="line">                    break;</span><br><span class="line">                case 1:</span><br><span class="line">                    System.out.println(&quot;One&quot;);</span><br><span class="line">                    break;</span><br><span class="line">                case 2:</span><br><span class="line">                    System.out.println(&quot;Two&quot;);</span><br><span class="line">                    break;</span><br><span class="line">                case 3:</span><br><span class="line">                    System.out.println(&quot;Three&quot;);</span><br><span class="line">                    break;</span><br><span class="line">                case 4:</span><br><span class="line">                    System.out.println(&quot;Four&quot;);</span><br><span class="line">                    break;</span><br><span class="line">                case 5:</span><br><span class="line">                    System.out.println(&quot;Five&quot;);</span><br><span class="line">                    break;</span><br><span class="line">                case 6:</span><br><span class="line">                    System.out.println(&quot;Six&quot;);</span><br><span class="line">                    break;</span><br><span class="line">                case 7:</span><br><span class="line">                    System.out.println(&quot;Seven&quot;);</span><br><span class="line">                    break;</span><br><span class="line">                case 8:</span><br><span class="line">                    System.out.println(&quot;Eight&quot;);</span><br><span class="line">                    break;</span><br><span class="line">                case 9:</span><br><span class="line">                    System.out.println(&quot;Nine&quot;);</span><br><span class="line">                    break;</span><br><span class="line"></span><br><span class="line">                default:</span><br><span class="line">                    System.out.println(&quot;Invalid Value&quot;);</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            count++;</span><br><span class="line">            reverseNumber /= 10;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (digitCount != count) &#123;</span><br><span class="line">            int leftZero = digitCount - count;</span><br><span class="line">            for (int i = 0; i &lt; leftZero; i++) &#123;</span><br><span class="line">                System.out.println(&quot;Zero&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static int getDigitCount(int number) &#123;</span><br><span class="line"></span><br><span class="line">        if (number &lt; 0) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (number == 0) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int count = 0;</span><br><span class="line">        while (number &gt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            count++;</span><br><span class="line">            number /= 10;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static int reverse(int number) &#123;</span><br><span class="line"></span><br><span class="line">        // 123 -&gt; 321, 100 -&gt; 1</span><br><span class="line">        int reverseNumber = 0;</span><br><span class="line">        int remainder;</span><br><span class="line">        while (number != 0) &#123;</span><br><span class="line"></span><br><span class="line">            remainder = number % 10;</span><br><span class="line">            if (reverseNumber != 0) &#123;</span><br><span class="line">                reverseNumber = (reverseNumber * 10) + remainder;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                reverseNumber = remainder;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            number /= 10;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return reverseNumber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2020/05/24/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day6/" data-id="cl1d3lef9004pdytlctb64ezx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Java 快速學習自我挑戰 Day6",
+        "image": "https://vincent.fishboneapps.com/images/learning/java/JavaDay06.jpg",
+        "keywords": "Java",
+        "genre": "Study Note",
+        "datePublished": "2020-05-24",
+        "dateCreated": "2020-05-24",
+        "dateModified": "2021-01-25",
+        "url": "https://vincent.fishboneapps.com/2020/05/24/Java-快速學習自我挑戰-Day6/",
+        "description": "
+
+控制流陳述句
+數字和挑戰
+
+Write a method with the name sumDigits that has one int parameter called number.
+If parameter is &gt;= 10 then the method should process the number and return sum of all digits, otherw",
+        "wordCount": 5791
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2020/05/24/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day6/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/05/27/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day7/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java 快速學習自我挑戰 Day7
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/05/15/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day5/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java 快速學習自我挑戰 Day5</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81%E9%99%B3%E8%BF%B0%E5%8F%A5"><span class="toc-number">1.</span> <span class="toc-text">控制流陳述句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B8%E5%AD%97%E5%92%8C%E6%8C%91%E6%88%B0"><span class="toc-number">1.1.</span> <span class="toc-text">數字和挑戰</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B8%E5%AD%97%E5%92%8C%E6%8C%91%E6%88%B0-%E8%A7%A3%E7%AD%94"><span class="toc-number">1.2.</span> <span class="toc-text">數字和挑戰(解答)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%B8%80-4"><span class="toc-number">1.3.</span> <span class="toc-text">題目一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%B8%80-%E7%AD%94%E6%A1%88-3"><span class="toc-number">1.4.</span> <span class="toc-text">題目一(答案)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%BA%8C-4"><span class="toc-number">1.5.</span> <span class="toc-text">題目二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%BA%8C-%E7%AD%94%E6%A1%88-3"><span class="toc-number">1.6.</span> <span class="toc-text">題目二(答案)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%B8%89-3"><span class="toc-number">1.7.</span> <span class="toc-text">題目三</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%B8%89-%E7%AD%94%E6%A1%88-2"><span class="toc-number">1.8.</span> <span class="toc-text">題目三(答案)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E5%9B%9B-3"><span class="toc-number">1.9.</span> <span class="toc-text">題目四</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E5%9B%9B-%E7%AD%94%E6%A1%88-3"><span class="toc-number">1.10.</span> <span class="toc-text">題目四(答案)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%BA%94-2"><span class="toc-number">1.11.</span> <span class="toc-text">題目五</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%BA%94-%E7%AD%94%E6%A1%88-2"><span class="toc-number">1.12.</span> <span class="toc-text">題目五(答案)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E5%85%AD-2"><span class="toc-number">1.13.</span> <span class="toc-text">題目六</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E5%85%AD-%E7%AD%94%E6%A1%88-2"><span class="toc-number">1.14.</span> <span class="toc-text">題目六(答案)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%B8%83-2"><span class="toc-number">1.15.</span> <span class="toc-text">題目七</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%B8%83-%E7%AD%94%E6%A1%88-2"><span class="toc-number">1.16.</span> <span class="toc-text">題目七(答案)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E5%85%AB"><span class="toc-number">1.17.</span> <span class="toc-text">題目八</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E5%85%AB-%E7%AD%94%E6%A1%88"><span class="toc-number">1.18.</span> <span class="toc-text">題目八(答案)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%B9%9D"><span class="toc-number">1.19.</span> <span class="toc-text">題目九</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%E4%B9%9D-%E7%AD%94%E6%A1%88"><span class="toc-number">1.20.</span> <span class="toc-text">題目九(答案)</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

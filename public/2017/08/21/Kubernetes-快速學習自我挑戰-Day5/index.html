@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Kubernetes 快速學習自我挑戰 Day5 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Kubernetes" />
+    
+    <meta name="description" content="進階的主題 Volumes Autoprovisioning  Kubernetes plugins 可以提供 storage AWS Plugin 可以藉由在 AWS 創建 volumes 來提供 storage，但是要在 volume 連接到 node 之前才能做 這些可以使用 StorageClass object 來完成  Documentation   使用 auto provisi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kubernetes 快速學習自我挑戰 Day5">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2017/08/21/Kubernetes-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day5/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="進階的主題 Volumes Autoprovisioning  Kubernetes plugins 可以提供 storage AWS Plugin 可以藉由在 AWS 創建 volumes 來提供 storage，但是要在 volume 連接到 node 之前才能做 這些可以使用 StorageClass object 來完成  Documentation   使用 auto provisi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/kubernetes/kubernetesday5.png">
+<meta property="article:published_time" content="2017-08-21T16:46:53.000Z">
+<meta property="article:modified_time" content="2020-06-22T17:14:41.694Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Kubernetes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/kubernetes/kubernetesday5.png">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Kubernetes-快速學習自我挑戰-Day5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Kubernetes 快速學習自我挑戰 Day5
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2017/08/21/Kubernetes-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day5/" class="article-date">
+         <time datetime="2017-08-21T16:46:53.000Z" itemprop="datePublished">2017-08-22</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">1.7k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">7 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/kubernetes/kubernetesday5.png">
+<hr>
+<h3 id="進階的主題-2">進階的主題</h3>
+<h4 id="Volumes-Autoprovisioning">Volumes Autoprovisioning</h4>
+<ol>
+<li>Kubernetes plugins 可以<strong>提供 storage</strong></li>
+<li><strong>AWS Plugin</strong> 可以藉由在 AWS 創建 volumes 來<strong>提供 storage</strong>，但是要在 volume 連接到 node 之前才能做</li>
+<li>這些可以使用 <strong>StorageClass object</strong> 來完成
+<ul>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#storageclasses">Documentation</a></li>
+</ul>
+</li>
+<li>使用 <strong>auto provisioned volumes</strong>，可以創建以下 yaml 檔案：
+<ul>
+<li>storage.yml</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">kind: StorageClass</span><br><span class="line">apiVersion: storage.k8s.io/v1beta1</span><br><span class="line">metadata:</span><br><span class="line">  name: standard</span><br><span class="line">provisioner: kubernetes.io/aws-ebs</span><br><span class="line">parameters:</span><br><span class="line">  type: gp2</span><br><span class="line">  zone: us-east-1</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>這樣可以創建 volume 並宣告使用 <strong>aws-ebs provisioner</strong></li>
+<li>Kubernetes 將會提供 type <strong>gp2</strong> 的 volume (一般用途 - SSD)</li>
+<li>接下來，可以創建 volume 並宣告和指定容量
+<ul>
+<li>my-volume.claim.yml</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">kind: PersistentVolumeClaim</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: myclaim</span><br><span class="line">  annotations:</span><br><span class="line">    volume.beta.kubernetes.io/storage-class: &quot;standard&quot;</span><br><span class="line">spec:</span><br><span class="line">  accessModes:</span><br><span class="line">    - ReadWriteOnce</span><br><span class="line">  resources:</span><br><span class="line">    requests:</span><br><span class="line">      storage: 8Gi</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>最後，可以使用 volume 來啟動 pod
+<ul>
+<li>my-pod.yml</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">kind: Pod</span><br><span class="line">apiVersion: v1</span><br><span class="line">metadata:</span><br><span class="line">  name: mypod</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">    - name: myfrontend</span><br><span class="line">      image: nginx</span><br><span class="line">      volumeMounts:</span><br><span class="line">      - mountPath: &quot;/var/www/html&quot;</span><br><span class="line">        name: mypd</span><br><span class="line">  volumes:</span><br><span class="line">    - name: mypd</span><br><span class="line">      persistentVolumeClaim:</span><br><span class="line">        claimName: myclaim</span><br></pre></td></tr></table></figure>
+<h4 id="Demo：使用-Volumes-的-WordPress">Demo：使用 Volumes 的 WordPress</h4>
+<ol>
+<li><code>cd wordpress-volumes</code></li>
+<li><code>cat storage.yml</code></li>
+<li><code>cat pv-claim.yml</code></li>
+<li><code>cat wordpress-db.yml</code></li>
+<li><code>cat wordpress-db-service.yml</code></li>
+<li><code>cat wordpress-secrets.yml</code></li>
+<li><code>cat wordpress-web.yml</code></li>
+<li><code>cat wordpress-web-service.yml</code></li>
+<li><a target="_blank" rel="noopener" href="http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">查詢 AWS 服務區域</a><br>
+<code>aws efs create-file-system --creation-token 1 --region ap-southeast-2</code></li>
+<li>找尋 SubnetId 和 SecurityGroups<br>
+<code>aws ec2 describe-instances --region ap-southeast-2</code></li>
+<li><code>aws efs create-mount-target --file-system-id fs-518f6c68 --subnet-id subnet-5ed8c73a --security-groups sg-5154a737 --region ap-southeast-2</code></li>
+<li>修改倒數第二行的 server<br>
+<code>vim wordpress-web.yml</code></li>
+<li><code>kubectl create -f storage.yml</code></li>
+<li><code>kubectl create -f pv-claim.yml</code></li>
+<li><code>kubectl create -f wordpress-secrets.yml</code></li>
+<li><code>kubectl create -f wordpress-db.yml</code></li>
+<li><code>kubectl create -f wordpress-db-service.yml</code></li>
+<li><code>kubectl get pvc</code></li>
+<li><code>kubectl get pod</code></li>
+<li><code>kubectl describe pod wordpress-db-8n665</code></li>
+<li><code>kubectl create -f wordpress-web.yml</code></li>
+<li><code>kubectl create -f wordpress-web-service.yml</code></li>
+<li>去 Route53 新增一個 DNS record - wordpress.<domain>，在 alias 的地方打勾，選擇剛剛建立的 LoadBalancer</li>
+<li><code>kubectl edit deployment/wordpress-deployment</code> 把以下五行加到 35 行之後，把後面 env 縮排進去並刪除 -，完成之後就發現 wordpress 可以上傳圖片了</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- command:</span><br><span class="line">  - bash</span><br><span class="line">  - -c</span><br><span class="line">  - chown www-data:www-data /var/www/html/wp-content/uploads &amp;&amp; docker-entrypoint.sh apache2-foreground</span><br><span class="line">  env: </span><br><span class="line">  - name: </span><br></pre></td></tr></table></figure>
+<ol start="25">
+<li><code>kubectl get pod</code></li>
+<li>刪除所有的 pod，就會發現會全部自動重啟<br>
+<code>kubectl delete pod wordpress-db-5cgvm</code><br>
+<code>kubectl delete pod/wordpress-deployment-1534735485-71kjs</code><br>
+<code>kubectl delete pod wordpress-deployment-1534735485-j74hb</code></li>
+<li><code>kubectl get pod</code>，再一次 get pod 就會發現 pod 全部重啟了</li>
+<li><code>kubectl logs wordpress-deployment-1534735485-0wtxq</code></li>
+<li><code>kubectl exec wordpress-deployment-1534735485-0wtxq -i -t -- bash</code></li>
+<li><code>ls -ahl -R wp-content/uploads/</code> 會發現檔案都還在</li>
+</ol>
+<h4 id="Pet-Sets">Pet Sets</h4>
+<ol>
+<li>Pet Sets 是從 Kubernetes 1.3 之後開始的<strong>新功能</strong></li>
+<li>要執行 <strong>stateful application</strong> 需要：
+<ul>
+<li>一個<strong>穩定的 pod hostname</strong>(取代 podname-randomstring)
+<ul>
+<li>當一個 pod 有很多 instances，podname 需要有索引(例如：podname-1、podname-2、podname-3)</li>
+</ul>
+</li>
+<li>一個 <strong>stateful app</strong> 需要基於序號數(podname-<strong>x</strong>)或 hostname 的<strong>多個</strong>有 volumes 的 <strong>pods</strong>
+<ul>
+<li>目前<strong>刪除</strong>和/或<strong>擴展</strong>一個 <strong>PetSet down</strong>不會刪除跟 PetSet 有關連的 Volume</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一個 PetSet 允許 stateful app 使用 <strong>DNS</strong> 找尋其它<strong>同伴</strong>
+<ul>
+<li>Cassandra clusters、ElasticSearch clusters 使用 <strong>DNS</strong> 來找到其它 cluster 的 members</li>
+<li>在 Pet Set 之中<strong>一個</strong>運行中的 <strong>node</strong> 叫做 <strong>一個 Pet</strong> (例如：Cassandra 中的一個 node)</li>
+<li>舉例來說： 在 Kubernetes 上使用 Pet Sets 的五個 cassandra nodes，可以命名為 cassandra-1 到 cassandra-5</li>
+<li>如果不使用 Pet Sets，可以用取得一個動態 hostname 的方式，而這個方式不能夠使用在設定檔，因為設定檔可以隨時修改名字</li>
+</ul>
+</li>
+<li>一個 PetSet 也允許 stateful app <strong>排序啟動和關閉的 pets</strong>：
+<ul>
+<li>取代隨機終止一個 Pet (app 中的一個 instance)，你會知道哪一個會不見</li>
+<li>當在可以關閉之前，第一次需要從一個 node <strong>倒出</strong>資料的時候，這很有用</li>
+</ul>
+</li>
+<li>在 PetSets 依然還很多<strong>未來工作</strong>需要完成</li>
+</ol>
+<h4 id="Daemon-Sets">Daemon Sets</h4>
+<ol>
+<li>Daemon Sets 確保 Kubernetes cluster 的<strong>每一個 node</strong> 運行相同的 pod 資源
+<ul>
+<li>如果你想要<strong>確保</strong>特定 pod 運行在每一個 Kubernetes node，這個非常有用</li>
+</ul>
+</li>
+<li>當一個 node <strong>被新增</strong>到 cluster，新的 pod 就會<strong>自動</strong>被啟動</li>
+<li>同樣地，當一個 node <strong>被移除</strong>，pod 將不會在其它 node 進行<strong>再排程</strong></li>
+<li>典型的<strong>應用例子</strong>
+<ul>
+<li>Logging aggregators</li>
+<li>Monitoring</li>
+<li>Load Balancers / Reverse Proxies / API Gateways</li>
+<li>運行一個 daemon 在每一個 physical instance 只需要一個 instance</li>
+</ul>
+</li>
+</ol>
+<h4 id="監控資源用量">監控資源用量</h4>
+<ol>
+<li>Heapster 能夠<strong>監控 Container Cluster</strong> 和<strong>效能分析</strong></li>
+<li>它提供了 Kubernetes 的監控平台</li>
+<li>它是必要的，如果想要在 Kubernetes 使用 <strong>pod auto-scaling</strong></li>
+<li>Heapster <strong>透過 REST endpoint</strong> 輸出 cluster metrics</li>
+<li>可以與 Heapster 使用<strong>不同的後端</strong>
+<ul>
+<li>範例會使用 InfluxDB，但是其它像是 Google Cloud Monitoring/Logging 和 Kafka 也是可以的</li>
+</ul>
+</li>
+<li><strong>Visualizations</strong> (圖像) 可以使用 Grafana 表現
+<ul>
+<li>Kubernetes 儀表板只要 monitoring 啟動就可以顯示圖表</li>
+</ul>
+</li>
+<li>所有的這些技術(Heapster、InfluxDB 和 Grafana)都可以在 pods 裡面啟動</li>
+<li><strong>YAML 檔案</strong>可以在 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/heapster/tree/master/deploy/kube-config/influxdb">Heapster 的 github repository</a> 被找到
+<ul>
+<li>在下載完 repository 之後，平台可以使用 addon system 或使用 kubectl create -f directory-with-yaml-files/ 來部署</li>
+</ul>
+</li>
+</ol>
+<h4 id="Demo：監控資源用量">Demo：監控資源用量</h4>
+<ol>
+<li><code>git clone https://github.com/kubernetes/heapster.git</code>
+<ul>
+<li>後改用 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/heapster/releases">1.3 版本</a></li>
+</ul>
+</li>
+<li><code>cd heapster/deploy/kube-config/influxdb</code></li>
+<li><code>vim grafana.yaml</code>
+<ul>
+<li>把這行註解掉 <code>kubernetes.io/cluster-service: 'true'</code></li>
+</ul>
+</li>
+<li><code>vim heapster.yaml</code>
+<ul>
+<li>把這行註解掉 <code>kubernetes.io/cluster-service: 'true'</code></li>
+</ul>
+</li>
+<li><code>vim influxdb.yaml</code>
+<ul>
+<li>把這行註解掉 <code>kubernetes.io/cluster-service: 'true'</code></li>
+</ul>
+</li>
+<li><code>cd ..</code></li>
+<li><code>kubectl create -f influxdb</code></li>
+<li><code>kubectl create -f kubernetes-course/deployment/helloworld.yml</code></li>
+<li><code>minikube service monitoring-grafana --namespace=kube-system --url</code></li>
+<li>進去 Grafana 之後，選擇左列選單，選擇 Sign In，然後就可以選擇 cluster 或是 pod 觀看目前的狀態</li>
+</ol>
+<h4 id="Autoscaling">Autoscaling</h4>
+<ol>
+<li>Kubernetes 可以基於 metrics 來<strong>自動 scale pods</strong></li>
+<li>Kubernetes 可以自動 scale 一個 Deployment、Replication Controller 或 ReplicaSet</li>
+<li>在 Kubernetes 1.3 版本後，<strong>根據 CPU 用量 scaling</strong> 是可以使用的
+<ul>
+<li>有 alpha 的支持，基於 metrics 的 application 是可用的 (像是每秒取得或平均請求延遲)
+<ul>
+<li>要啟動這個，cluster 必須要設 env 變數裡面的 ENABLE_CUSTOM_METRICS 為 true 來啟動</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Autoscaling 會對目標 pods <strong>定期取得</strong>用量
+<ul>
+<li><strong>預設是 30 秒</strong>，可以在啟動 controller-manager 使用 <code>--horizontal-pod-autoscaler-sync-period</code> 來修改</li>
+</ul>
+</li>
+<li>Autoscaling 會使用監控工具 <strong>heapster</strong> 來收集它們的 metrics 和決定如何 scaling
+<ul>
+<li>Heapster 必須要在 autoscaling work 之前安裝並運行</li>
+</ul>
+</li>
+<li><strong>例子</strong>
+<ul>
+<li>運行一個 <strong>200m</strong> 的 <strong>CPU 資源</strong>請求的 <strong>pod</strong> 並在 <strong>pod</strong> 運行一個 <strong>deployment</strong></li>
+<li>200m = 200 millicpu (或是 200 millicores)</li>
+<li>200m = 0.2 也就是運行 node 的 CPU 核心的 20%
+<ul>
+<li>如果 node 是雙核心，它還是只有單核心的 20%</li>
+</ul>
+</li>
+<li>可以採用 CPU 用量為 50% 的 autoscaling (也就是 100m)</li>
+<li>水平 Pod Autoscaling 可以增加/減少 pods 來維持目標 CPU 用量為 50%(或是 100m/在 pod 裡面一個核心10%)</li>
+</ul>
+</li>
+<li>測試 autoscaling</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: extensions/v1beta1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: hpa-example</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: hpa-example</span><br><span class="line">      spec:</span><br><span class="line">        containers:</span><br><span class="line">        - name: hpa-example</span><br><span class="line">          image: gcr.io/google_containers/hpa-example</span><br><span class="line">          ports:</span><br><span class="line">          - name: http-port</span><br><span class="line">            containerPort: 80</span><br><span class="line">          resources:</span><br><span class="line">            requests:</span><br><span class="line">              cpu: 200m</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>autoscaling specification 範例</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: autoscaling/v1</span><br><span class="line">kind: HorizontalPodAutoscaler</span><br><span class="line">metadata:</span><br><span class="line">  name: hpa-example-autoscaler</span><br><span class="line">spec:</span><br><span class="line">  scaleTargetRef:</span><br><span class="line">    apiVersion: extensions/v1beta1</span><br><span class="line">    kind: Deployment</span><br><span class="line">    name: hpa-example</span><br><span class="line">  minReplicas: 1</span><br><span class="line">  maxReplicas: 10</span><br><span class="line">  targetCPUUtilizationPercentage: 50</span><br></pre></td></tr></table></figure>
+<h4 id="Demo：Autoscaling">Demo：Autoscaling</h4>
+<ol>
+<li><code>cat autoscaling/hpa-example.yml</code></li>
+<li><code>minikube stop</code></li>
+<li><code>minikube start --extra-config kubelet.EnableCustomMetrics=true</code></li>
+<li><code>kubectl create -f autoscaling/hpa-example.yml</code></li>
+<li><code>kubectl get hpa</code></li>
+<li><code>kubectl run -i --tty load-generator --image=busybox /bin/sh</code></li>
+<li><code>wget http://hpa-example.default.svc.cluster.local:31001</code></li>
+<li><code>cat index.html</code></li>
+<li><code>rm index.html</code></li>
+<li><code>while true; do wget -q -O- http://hpa-example.default.svc.cluster.local:31001; done</code></li>
+<li><code>kubectl get pod</code>，這時候可以看出他會建立很多個</li>
+<li><code>kubectl get hpa</code> 觀看使用狀態</li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2017/08/21/Kubernetes-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day5/" data-id="cl1d3lefk005kdytl2018754u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Kubernetes 快速學習自我挑戰 Day5",
+        "image": "https://vincent.fishboneapps.com/images/learning/kubernetes/kubernetesday5.png",
+        "keywords": "Kubernetes",
+        "genre": "Study Note",
+        "datePublished": "2017-08-22",
+        "dateCreated": "2017-08-22",
+        "dateModified": "2020-06-23",
+        "url": "https://vincent.fishboneapps.com/2017/08/21/Kubernetes-快速學習自我挑戰-Day5/",
+        "description": "
+
+進階的主題
+Volumes Autoprovisioning
+
+Kubernetes plugins 可以提供 storage
+AWS Plugin 可以藉由在 AWS 創建 volumes 來提供 storage，但是要在 volume 連接到 node 之前才能做
+這些可以使用 StorageClass object 來完成
+
+Documentation
+
+
+使用 auto provisi",
+        "wordCount": 979
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2017/08/21/Kubernetes-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day5/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/08/28/Kubernetes-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day6/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Kubernetes 快速學習自我挑戰 Day6
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/08/20/Kubernetes-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Kubernetes 快速學習自我挑戰 Day4</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%B2%E9%9A%8E%E7%9A%84%E4%B8%BB%E9%A1%8C-2"><span class="toc-number">1.</span> <span class="toc-text">進階的主題</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Volumes-Autoprovisioning"><span class="toc-number">1.1.</span> <span class="toc-text">Volumes Autoprovisioning</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Demo%EF%BC%9A%E4%BD%BF%E7%94%A8-Volumes-%E7%9A%84-WordPress"><span class="toc-number">1.2.</span> <span class="toc-text">Demo：使用 Volumes 的 WordPress</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pet-Sets"><span class="toc-number">1.3.</span> <span class="toc-text">Pet Sets</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Daemon-Sets"><span class="toc-number">1.4.</span> <span class="toc-text">Daemon Sets</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%A3%E6%8E%A7%E8%B3%87%E6%BA%90%E7%94%A8%E9%87%8F"><span class="toc-number">1.5.</span> <span class="toc-text">監控資源用量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Demo%EF%BC%9A%E7%9B%A3%E6%8E%A7%E8%B3%87%E6%BA%90%E7%94%A8%E9%87%8F"><span class="toc-number">1.6.</span> <span class="toc-text">Demo：監控資源用量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Autoscaling"><span class="toc-number">1.7.</span> <span class="toc-text">Autoscaling</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Demo%EF%BC%9AAutoscaling"><span class="toc-number">1.8.</span> <span class="toc-text">Demo：Autoscaling</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

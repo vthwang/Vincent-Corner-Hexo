@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Java 快速學習自我挑戰 Day9 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Java" />
+    
+    <meta name="description" content="物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance 挑戰 地毯花費計算器  題目  The Carpet Company has asked you to write an application that calculates the price of carpeting for rectangular rooms. To calcula">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 快速學習自我挑戰 Day9">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2020/06/21/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day9/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance 挑戰 地毯花費計算器  題目  The Carpet Company has asked you to write an application that calculates the price of carpeting for rectangular rooms. To calcula">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay09.jpg">
+<meta property="article:published_time" content="2020-06-22T00:43:52.000Z">
+<meta property="article:modified_time" content="2021-01-22T14:09:05.637Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay09.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Java-快速學習自我挑戰-Day9" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Java 快速學習自我挑戰 Day9
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/06/21/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day9/" class="article-date">
+         <time datetime="2020-06-22T00:43:52.000Z" itemprop="datePublished">2020-06-22</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">4.7k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">21 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/java/JavaDay09.jpg">
+<hr>
+<h3 id="物件導向程式設計-OOP-Classes-Constructors-和-Inheritance-3">物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance</h3>
+<h4 id="挑戰-4">挑戰</h4>
+<h5 id="地毯花費計算器">地毯花費計算器</h5>
+<ol>
+<li>題目</li>
+</ol>
+<p>The Carpet Company has asked you to write an application that calculates the price of carpeting for rectangular rooms. To calculate the price, you multiply the area of the floor (width times length) by the price per square meter of carpet. For example, the area of the floor that is 12 meters long and 10 meters wide is 120 square meters. To cover the floor with a carpet that costs <span>$</span>8 per square meter would cost $960.</p>
+<ol>
+<li>
+<p>Write a class with the name Floor. The class needs two fields (instance variables) with name width and length of type double.<br>
+The class needs to have one constructor with parameters width and length of type double and it needs to initialize the fields.<br>
+In case the width parameter is less than 0 it needs to set the width field value to 0, in case the length parameter is less than 0 it needs to set the length field value to 0.<br>
+Write the following methods (instance methods):</p>
+<ul>
+<li>Method named getArea without any parameters, it needs to return the calculated area (width * length).</li>
+</ul>
+</li>
+<li>
+<p>Write a class with the name Carpet. The class needs one field (instance variable) with name cost of type double.<br>
+The class needs to have one constructor with parameter cost of type double and it needs to initialize the field.<br>
+In case the cost parameter is less than 0 it needs to set the cost field value to 0.<br>
+Write the following methods (instance methods):</p>
+<ul>
+<li>Method named getCost without any parameters, it needs to return the value of cost field</li>
+</ul>
+</li>
+<li>
+<p>Write a class with the name Calculator. The class needs two fields (instance variables) with name floor of type Floor and carpet of type Carpet.<br>
+The class needs to have one constructor with parameters floor of type Floor and carpet of type Carpet and it needs to initialize the fields.<br>
+Write the following methods (instance methods):</p>
+<ul>
+<li>Method named getTotalCost without any parameters, it needs to return the calculated total cost to cover the floor with a carpet.</li>
+</ul>
+</li>
+</ol>
+<p>TEST EXAMPLE</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">→ TEST CODE:</span><br><span class="line"></span><br><span class="line">Carpet carpet = new Carpet(3.5);</span><br><span class="line">Floor floor = new Floor(2.75, 4.0);</span><br><span class="line">Calculator calculator = new Calculator(floor, carpet);</span><br><span class="line">System.out.println(&quot;total= &quot; + calculator.getTotalCost());</span><br><span class="line">carpet = new Carpet(1.5);</span><br><span class="line">floor = new Floor(5.4, 4.5);</span><br><span class="line">calculator = new Calculator(floor, carpet);</span><br><span class="line">System.out.println(&quot;total= &quot; + calculator.getTotalCost());</span><br><span class="line"></span><br><span class="line">→ OUTPUT</span><br><span class="line"></span><br><span class="line">total= 38.5</span><br><span class="line">total= 36.45</span><br></pre></td></tr></table></figure>
+<p>NOTE: All methods should be defined as public NOT public static.<br>
+NOTE: In total, you have to write 3 classes.<br>
+NOTE: Do not add a main method to the solution code.<br>
+2. 答案<br>
+Floor.java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class Floor &#123;</span><br><span class="line">    </span><br><span class="line">    private double width;</span><br><span class="line">    private double length;</span><br><span class="line"></span><br><span class="line">    public Floor(double width, double length) &#123;</span><br><span class="line"></span><br><span class="line">        if (width &lt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            this.width = 0;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            this.width = width;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (length &lt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            this.length = 0;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            this.length = length;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getArea() &#123;</span><br><span class="line"></span><br><span class="line">        return this.width * this.length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Carpet.java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Carpet &#123;</span><br><span class="line">    </span><br><span class="line">    private double cost;</span><br><span class="line"></span><br><span class="line">    public Carpet(double cost) &#123;</span><br><span class="line"></span><br><span class="line">        if (cost &lt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            this.cost = 0;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            this.cost = cost;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getCost() &#123;</span><br><span class="line"></span><br><span class="line">        return this.cost;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Calculator.java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Calculator &#123;</span><br><span class="line">    </span><br><span class="line">    private Floor floor;</span><br><span class="line">    private Carpet carpet;</span><br><span class="line"></span><br><span class="line">    public Calculator(Floor floor, Carpet carpet) &#123;</span><br><span class="line"></span><br><span class="line">        this.floor = floor;</span><br><span class="line">        this.carpet = carpet;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getTotalCost() &#123;</span><br><span class="line"></span><br><span class="line">        return floor.getArea() * carpet.getCost();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="複數操作-Complex-Operation">複數操作 (Complex Operation)</h5>
+<ol>
+<li>題目<br>
+A complex number is a number that can be expressed in the form a + bi, where a and b are real numbers, and i is a solution of the equation x2 = −1. Because no real number satisfies this equation, i is called an imaginary number. For the complex number a + bi, a is called the real part, and b is called the imaginary part. To add or subtract two complex numbers, just add or subtract the corresponding real and imaginary parts. For instance, the sum of 5 + 3i and 4 + 2i is 9 + 5i. For another, the sum of 3 + i and –1 + 2i is 2 + 3i.<br>
+Write a class with the name ComplexNumber. The class needs two fields (instance variables) with name real and imaginary of type double. It represents the Complex Number.<br>
+The class needs to have one constructor. The constructor has parameters real and imaginary of type double and it needs to initialize the fields.<br>
+Write the following methods (instance methods):<br>
+* Method named getReal without any parameters, it needs to return the value of real field.<br>
+* Method named getImaginary without any parameters, it needs to return the value of imaginary field.<br>
+* Method named add with two parameters real and imaginary of type double, it needs to add parameters to fields. In other words, it needs to do a complex number add operation as described above.<br>
+* Method named add with one parameter of type ComplexNumber. It needs to add the ComplexNumber parameter to the corresponding instance variables.<br>
+* Method named subtract with two parameters real and imaginary of type double, it needs to subtract parameters from fields, in other words, it needs to do a complex number subtract operation as described above.<br>
+* Method named subtract with one parameter other of type ComplexNumber. It needs to subtract the other parameter from this complex number.</li>
+</ol>
+<p>TEST EXAMPLE</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">→ TEST CODE:</span><br><span class="line"></span><br><span class="line">ComplexNumber one = new ComplexNumber(1.0, 1.0);</span><br><span class="line">ComplexNumber number = new ComplexNumber(2.5, -1.5);</span><br><span class="line">one.add(1,1);</span><br><span class="line">System.out.println(&quot;one.real= &quot; + one.getReal());</span><br><span class="line">System.out.println(&quot;one.imaginary= &quot; + one.getImaginary());</span><br><span class="line">one.subtract(number);</span><br><span class="line">System.out.println(&quot;one.real= &quot; + one.getReal());</span><br><span class="line">System.out.println(&quot;one.imaginary= &quot; + one.getImaginary());</span><br><span class="line">number.subtract(one);</span><br><span class="line">System.out.println(&quot;number.real= &quot; + number.getReal());</span><br><span class="line">System.out.println(&quot;number.imaginary= &quot; + number.getImaginary());</span><br><span class="line"></span><br><span class="line">→ OUTPUT</span><br><span class="line"></span><br><span class="line">one.real= 2.0</span><br><span class="line">one.imaginary= 2.0</span><br><span class="line">one.real= -0.5</span><br><span class="line">one.imaginary= 3.5</span><br><span class="line">number.real= 3.0</span><br><span class="line">number.imaginary= -5.0</span><br></pre></td></tr></table></figure>
+<p>NOTE: Try to avoid duplicated code.<br>
+NOTE: All methods should be defined as public NOT public static.<br>
+NOTE: In total, you have to write 6 methods.<br>
+NOTE: Do not add a main method to the solution code.<br>
+2. 答案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public class ComplexNumber &#123;</span><br><span class="line">    </span><br><span class="line">    private double real;</span><br><span class="line">    private double imaginary;</span><br><span class="line"></span><br><span class="line">    public ComplexNumber(double real, double imaginary) &#123;</span><br><span class="line"></span><br><span class="line">        this.real = real;</span><br><span class="line">        this.imaginary = imaginary;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getReal() &#123;</span><br><span class="line"></span><br><span class="line">        return real;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getImaginary() &#123;</span><br><span class="line"></span><br><span class="line">        return imaginary;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void add(double real, double imaginary) &#123;</span><br><span class="line"></span><br><span class="line">        this.real += real;</span><br><span class="line">        this.imaginary += imaginary;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void add(ComplexNumber complex) &#123;</span><br><span class="line"></span><br><span class="line">        this.real += complex.getReal();</span><br><span class="line">        this.imaginary += complex.getImaginary();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void subtract(double real, double imaginary) &#123;</span><br><span class="line"></span><br><span class="line">        this.real -= real;</span><br><span class="line">        this.imaginary -= imaginary;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void subtract(ComplexNumber complex) &#123;</span><br><span class="line"></span><br><span class="line">        this.real -= complex.getReal();</span><br><span class="line">        this.imaginary -= complex.getImaginary();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="繼承-Inheritance">繼承(Inheritance)</h4>
+<ol>
+<li>繼承會用動物的概念來去解釋，比方說要寫一個動物的 Class，動物會有共同的東西，比方大腦，身體，腿，眼睛，但是蛇沒有腿，有些蜘蛛也沒有眼睛，所以有些東西會是共用的，共用的部分，可以使用繼承的方式來實現。首先，新增一個 Animal 的 Class。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">public class Animal &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private int brain;</span><br><span class="line">    private int body;</span><br><span class="line">    private int size;</span><br><span class="line">    private int weight;</span><br><span class="line"></span><br><span class="line">    public Animal(String name, int brain, int body, int size, int weight) &#123;</span><br><span class="line"></span><br><span class="line">        this.name = name;</span><br><span class="line">        this.brain = brain;</span><br><span class="line">        this.body = body;</span><br><span class="line">        this.size = size;</span><br><span class="line">        this.weight = weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void eat() &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;Animal.eat() called&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void move() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line"></span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getBrain() &#123;</span><br><span class="line"></span><br><span class="line">        return brain;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getBody() &#123;</span><br><span class="line"></span><br><span class="line">        return body;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getSize() &#123;</span><br><span class="line"></span><br><span class="line">        return size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getWeight() &#123;</span><br><span class="line"></span><br><span class="line">        return weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>再新增一個 Dog 的 Class，並使用 extends 去繼承，我們可以在繼承的 Class 新增一些新的類別，比方說，牙齒、尾巴等等，使用 super() 語法繼承上面一層的 Class，如果想覆寫(Overiding)方法，可以使用 @Override。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class Dog extends Animal &#123;</span><br><span class="line"></span><br><span class="line">    private int eyes;</span><br><span class="line">    private int legs;</span><br><span class="line">    private int tail;</span><br><span class="line">    private int teeth;</span><br><span class="line">    private String coat;</span><br><span class="line"></span><br><span class="line">    public Dog(String name, int size, int weight, int eyes, int legs, int tail, int teeth, String coat) &#123;</span><br><span class="line"></span><br><span class="line">        super(name, 1, 1, size, weight);</span><br><span class="line">        this.eyes = eyes;</span><br><span class="line">        this.legs = legs;</span><br><span class="line">        this.tail = tail;</span><br><span class="line">        this.teeth = teeth;</span><br><span class="line">        this.coat = coat;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void chew() &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;Dog.chew() called&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void eat() &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;Dog.eat() called&quot;);</span><br><span class="line">        chew();</span><br><span class="line">        super.eat();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>新增 walk(), run()，但是用不同的方式呼叫 move，如果直接使用 move()，他會呼叫同個 Class 裡面的 move()，如果同個 Class 沒有 move()，就會去呼叫上層的 move()，而使用 super.move() 會直接呼叫上層的 move()。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Dog extends Animal &#123;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    public void walk() &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;Dog.walk() called&quot;);</span><br><span class="line">        super.move(5);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void run() &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;Dog.run() called&quot;);</span><br><span class="line">        move(10);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void moveLegs(int speed) &#123;</span><br><span class="line">        System.out.println(&quot;Dog.moveLegs called&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void move(int speed) &#123;</span><br><span class="line">        System.out.println(&quot;Dog.move() called&quot;);</span><br><span class="line">        moveLegs(speed);</span><br><span class="line">        super.move(speed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>新增一個 Fish.java，再次練習繼承的概念。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class Fish extends Animal&#123;</span><br><span class="line"></span><br><span class="line">    private int gills;</span><br><span class="line">    private int eyes;</span><br><span class="line">    private int fins;</span><br><span class="line"></span><br><span class="line">    public Fish(String name, int brain, int body, int size, int weight, int gills, int eyes, int fins) &#123;</span><br><span class="line"></span><br><span class="line">        super(name, 1, 1, size, weight);</span><br><span class="line">        this.gills = gills;</span><br><span class="line">        this.eyes = eyes;</span><br><span class="line">        this.fins = fins;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void rest() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void moveMuscles() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void moveBackFin() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void swim(int speed) &#123;</span><br><span class="line"></span><br><span class="line">        moveMuscles();</span><br><span class="line">        moveBackFin();</span><br><span class="line">        super.move(speed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Reference-vs-Object-vs-Instance-vs-Class">Reference vs Object vs Instance vs Class</h4>
+<ol>
+<li>透過建房子來了解這些名詞的概念。
+<ul>
+<li>Class 就是藍圖，使用藍圖，我們可以根據這個計畫建立很多房子。</li>
+<li>每一個蓋的房子就是 Object，也稱為 Instance。</li>
+<li>每一棟房子都有實體地址，也就是說，你想要告訴別人你住在哪裡，你必須給他們地址(或許寫在一張紙上)，這就稱為 Reference。</li>
+<li>你可以複製 Reference 多少次都可以，但是你還是只有一棟房子，所以我們複製藍圖的時候，地址並不是現在要蓋的那一棟。</li>
+<li>我們將 References 當作 parameters 傳送到 Constructors 和 Methods。</li>
+</ul>
+</li>
+<li>一開始創建物件，給予 blueHouse 藍色的 Reference，然後定義 anotherHouse 等於 blueHouse，這時候他們會共用一個 Object，所以當設定 anotherHouse 為黃色的時候，blueHouse 也會變成黃色，這時候再定義一個 greenHouse Reference 為 green，然後再次定義 anotherHouse 等於 greenHouse，這時候他們又會共用一個 Object，而 blueHouse 自己一個 Object，最後當 getColor() 的時候，blueHouse 就會等於黃色，而 greenHouse 和 anotherHouse 就等於綠色。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        House blueHouse = new House(&quot;blue&quot;);</span><br><span class="line">        House anotherHouse = bluehouse;</span><br><span class="line"></span><br><span class="line">        System.out.println(blueHouse.getColor()); // blue</span><br><span class="line">        System.out.println(anotherHouse.getColor()); // blue</span><br><span class="line"></span><br><span class="line">        anotherHouse.setColor(&quot;yellow&quot;);</span><br><span class="line">        System.out.println(blueHouse.getColor()); // yellow</span><br><span class="line">        System.out.println(anotherHouse.getColor()); // yellow</span><br><span class="line"></span><br><span class="line">        House greenHouse = new House(&quot;green&quot;);</span><br><span class="line">        anotherHouse = greenHouse;</span><br><span class="line">        </span><br><span class="line">        System.out.println(blueHouse.getColor()); // yellow</span><br><span class="line">        System.out.println(greenHouse.getColor()); // green</span><br><span class="line">        System.out.println(anotherHouse.getColor()); //green</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="this-vs-super">this vs super</h4>
+<ol>
+<li>關鍵字 <strong>super</strong> 是用來呼叫上層的 Class 成員(變數和方法)，而關鍵字 <strong>this</strong> 是用來呼叫同一層的 Class 成員(變數和方法)，但是當 Instance 有相同的變數名稱，this 就是必要的。</li>
+<li>注意：我們可以在 Class 裡面同時使用 this 和 super，但是 static 區域(靜態 Class 或靜態 Method)是不行的，如果想要在靜態區域做任何嘗試，都會導致編譯器錯誤。</li>
+<li>關鍵字 <strong>this</strong> 很常被使用在 <strong>Constructors</strong> 和 <strong>Setters</strong>，偶而也會在 Getters 裡使用(對使用者比較容易)，下面的例子中，<strong>this</strong> 被使用在 <strong>Constructors</strong> 和 <strong>Setters</strong>，因為有同樣的名稱所以一定要用 this，在 Getter 中，我們沒有任何相同的參數，所以關鍵字 <strong>this</strong> 是選擇性的。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Class House &#123;</span><br><span class="line"></span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public House(String color) &#123;</span><br><span class="line"></span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getColor() &#123;</span><br><span class="line"></span><br><span class="line">        return color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setColor(String color) &#123;</span><br><span class="line"></span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>關鍵字 <strong>super</strong> 很常跟 <strong>method overriding</strong> 一起使用，我們會使用 super 在當前 Class 呼叫上層 Class 同名的 Method，如果沒有使用 <strong>super</strong> 會導致 Recursive Call(遞歸呼叫)，意思就是他會無止盡的呼叫 Method，直到記憶體用盡，這就為什麼 <strong>super</strong> 是必要的。</li>
+<li>在 Java 中，我們有 <strong>this()</strong> 和 <strong>super()</strong> 的 Call，() 被稱為 Call，因為它很像一般的 Method Call。</li>
+<li>使用 <strong>this()</strong> 來呼叫一個 Constructor，這個 Constructor 是在同一個 Class 的其它 overloaded Constructor。</li>
+<li><strong>this()</strong> 只能被使用在 Constructor，而且它必須用在 Constructor 的第一行陳述句，而它被用來當作 Constructor chaining 的功用，當一個 Constructor 呼叫另外一個 Constructor 可以幫助減少程式碼。</li>
+<li>呼叫上層 Constructor 唯一的方式就是呼叫 super()，所以它也被稱為上層 Constructor</li>
+<li>Java 編譯器會自動放一個 <strong>super()</strong> 作為預設的 Call，而且被編譯器插入的 super 都是沒有參數的。</li>
+<li><strong>super()</strong> 的 Call 一定要放在每一個 Constructor 的第一行陳述句。</li>
+<li>即使 Abstract Classes 有 Constructors，但是你不能使用新的關鍵字來實例化 Abstract Class。</li>
+<li>Abstract Classes 仍然是一個 <strong>super</strong> Class，所以當有人建立一個 Concrete Class Instance，它的 Constructors 還是會執行的。</li>
+<li>注意：一個 Constructor 可以有 <strong>super()</strong> 和 <strong>this()</strong>，但是不能同時使用這兩個關鍵字。</li>
+<li>好的 Constructor 範例如下，第一個 Constructor 呼叫第二個，第二個 Constructor 呼叫第三個，而第三個初始化所有 Instance 變數。不管我們呼叫哪一個 Constructor，最後變數都會在第三個 Constructor 做初始化。這就是知名的 Construcor Chaining，第三個 Constructor 有責任來初始化所有變數。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Rectangle &#123;</span><br><span class="line"></span><br><span class="line">    private int x;</span><br><span class="line">    private int y;</span><br><span class="line">    private int width;</span><br><span class="line">    private int height;</span><br><span class="line"></span><br><span class="line">    // 1st constructor</span><br><span class="line">    public Rectangle() &#123;</span><br><span class="line"></span><br><span class="line">        this(0, 0); // calls 2nd constructor</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 2nd constructor</span><br><span class="line">    public Rectangle(int width, int height) &#123;</span><br><span class="line"></span><br><span class="line">        this(0, 0, width, height); // calls 3rd constructor</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 3rd constructor</span><br><span class="line">    public Rectangle(int x, int y, int width, int height) &#123;</span><br><span class="line"></span><br><span class="line">        // initialize variables</span><br><span class="line">        this.x = x;</span><br><span class="line">        this.y = y;</span><br><span class="line">        this.width = width;</span><br><span class="line">        this.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="15">
+<li>在範例中，我們有一個 Class Shape，它有 x 和 y 的變數，而 Class Rectangle 繼承 Class Shape 的變數並加上 width 和 height。在 Retangle 裡面，第一個 Constructor 呼叫第二個 Constructor，第二個 Constructor 呼叫了有變數 x 和 y 的上層 Constructor。上層的 Constructor 會初始化 x 和 y，而 Rectangle 的第二個 Constructor 會初始化 width 和 height 變數。在這邊我們同時有 <strong>super()</strong> 和 <strong>this()</strong> 的 Calls。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Shape &#123;</span><br><span class="line"></span><br><span class="line">    private int x;</span><br><span class="line">    private int y;</span><br><span class="line"></span><br><span class="line">    public Shape(int x, int y) &#123;</span><br><span class="line"></span><br><span class="line">        this.x = x;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Rectangle extends Shape &#123;</span><br><span class="line"></span><br><span class="line">    private int width;</span><br><span class="line">    private int height;</span><br><span class="line"></span><br><span class="line">    // 1st constructor</span><br><span class="line">    public Retangle(int x, int y) &#123;</span><br><span class="line"></span><br><span class="line">        this(x, y, 0, 0); // calss 2nd constructor</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 2nd constructor</span><br><span class="line">    public Rectangle(int x, int y, int width, int height) &#123;</span><br><span class="line">        super(x, y); // calls constructor from parent (Shape)</span><br><span class="line">        this.width = width;</span><br><span class="line">        this.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="方法過載-Method-Overloading-vs-方法覆寫-Method-Overriding-回顧">方法過載(Method Overloading) vs 方法覆寫(Method Overriding) 回顧</h4>
+<ol>
+<li>方法過載
+<ul>
+<li>方法過載就是在同一個 Class 放入好幾個<strong>相同名字</strong>的方法，但是這些方法有<strong>不同的變數</strong>。</li>
+<li>這些方法回傳的值型態可以不一樣也可以一樣，這種方法可以讓我們<strong>重複使用</strong>相同的方法。</li>
+<li>方法過載<strong>很好使用</strong>，因為它減少了重複的程式碼，而且我們可以不用記住很多種方法的名稱。</li>
+<li><strong>方法過載</strong>跟<strong>多態性(Polymorphism)</strong> 無關，但是 Java 開發者常常把方法過載當作 Compile Time Polymorphism。</li>
+<li>換句話說，編譯器決定哪個方法被呼叫是根據方法名稱、回傳型態和參數列表。</li>
+<li>我們可以過載 <strong>static</strong> 和 <strong>Instance</strong> 方法。</li>
+<li>通常來說，<strong>過載</strong>只會發生在同一個 Class，但是在下層 Class 的同一種方法也可以被當作<strong>過載</strong>。</li>
+<li>這是因為<strong>下層 Class 繼承</strong>從上層 Class 的一個方法，並在下層 Class 使用這個方法來過載的另一個方法。</li>
+<li>如果以下兩個原則被達成，方法會被視為過載
+<ul>
+<li>方法有兩個相同的名稱。</li>
+<li>方法有不同的變數。</li>
+</ul>
+</li>
+<li>如果方法達到以上兩個原則，它們可能或可能不會
+<ul>
+<li>有不同的變數回傳型態。</li>
+<li>有不同的存取修改器(Access Modifier)。</li>
+<li>回傳受檢查或未檢查過的異常(Exception)。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>方法覆寫
+<ul>
+<li>方法覆寫就是有一個在下層 Class 的方法已經存在上層有相同方法(相同名稱、相同參數)的 Class。</li>
+<li>透過擴展(Extending)上層 Class，下層 Class 會取得上層 Class 所有的方法(這些方法又被稱為衍生方法(Derived Method))。</li>
+<li>方法覆寫又被稱為 <strong>運行多態(Runtime Polymorphism)</strong> 或<strong>動態方法分配(Dynamic Method Dispatch)</strong>，因為在運行時是透過 JVM 來決定哪個方法被呼叫。</li>
+<li>當我們<strong>覆寫</strong>方法時，會建議放 <strong>@override</strong> 在方法前面，這是一個註解，當編譯器看到註解發現我們沒有跟隨覆寫的規則時，就會顯示錯誤給我們。</li>
+<li>我們不能<strong>覆寫 static</strong>，<strong>只能</strong>覆寫 <strong>Instance</strong> 方法。</li>
+<li>如果以下原則被達成，方法會被視為覆寫
+<ul>
+<li>它有相同名字和相同參數。</li>
+<li>下層的回傳型態要和上層回傳型態相同。</li>
+<li>它不同有較低層級的存取修改器(Access Modifier)。</li>
+<li>例如：上層方法是 protected，下層方法使用 private 是不允許的，但是使用 public 是允許的。</li>
+</ul>
+</li>
+<li>關於方法覆寫還有一些<strong>很重要的點</strong>
+<ul>
+<li><strong>只有繼承的方法才可以被覆寫</strong>，換句話說，方法只能在下層被覆寫。</li>
+<li><strong>Constructors 和 private 方法不能被覆寫</strong>。</li>
+<li>方法是 final 也不能被覆寫。</li>
+<li>下層 Class 使用 <strong>super.methodName()</strong> 來呼叫上層要被覆寫的方法。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>回顧</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>方法過載</strong></th>
+<th style="text-align:left"><strong>方法覆寫</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">提供重新使用一個有同名字的方法。</td>
+<td style="text-align:left">用來覆寫一個從上層繼層的 Class 的行為。</td>
+</tr>
+<tr>
+<td style="text-align:left">通常都在同一個 Class，但是有時侯也可以在下層 Class。</td>
+<td style="text-align:left"><strong>一定要在兩個</strong>有上層-下層或 IS-A 關係的 Classes 裡面。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>一定要有</strong>不同參數。</td>
+<td style="text-align:left"><strong>一定要有</strong>相同參數和相同名稱。</td>
+</tr>
+<tr>
+<td style="text-align:left">可以有不同的回傳型態。</td>
+<td style="text-align:left">一定要有相同的回傳型態或是協變(covariant)的回傳型態(下層)。</td>
+</tr>
+<tr>
+<td style="text-align:left">可以有不同的存取修改器(private, protected, public)。</td>
+<td style="text-align:left"><strong>一定不能</strong>有低權限的存取修改器，但是可以較高權限的存取修改器。</td>
+</tr>
+<tr>
+<td style="text-align:left">可以回傳不同異常。</td>
+<td style="text-align:left"><strong>一定不能</strong>回傳一個新的或是更廣泛的受檢異常(Checked Exception)。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="static-vs-Instance-方法">static vs Instance 方法</h4>
+<ol>
+<li>靜態方法(Static Method)
+<ul>
+<li><strong>靜態方法</strong> 用 <strong>static</strong> 修改器來表示。</li>
+<li><strong>靜態方法</strong>不能直接存取 Instance 方法或是 Instance 變數。</li>
+<li>它們通常被用在不需要 Instance 的任何資料(從 this 來的資料)的操作。</li>
+<li>關鍵字 this 就是當前 Class 的 Instance。</li>
+<li>在<strong>靜態方法</strong>，我們不能使用 <strong>this</strong> 關鍵字。</li>
+<li>當你看到一個方法<strong>不需要使用 Instance 變數</strong>，那個變數就應該被定義為<strong>靜態方法</strong>。</li>
+<li>例如：main 就是一個靜態方法，它在 JVM 啟動程式的時候就會被呼叫。</li>
+</ul>
+</li>
+<li>Instance 方法
+<ul>
+<li>Instance 方法屬於 Class 的 Instance。</li>
+<li>要使用 Instance 方法，我們首先必須要使用關鍵字 <strong>new</strong> 初始化 Class。</li>
+<li><strong>Instance 方法</strong>可以直接存取 Instance 方法和 Instance 變數。</li>
+<li><strong>Instance 方法</strong>也可以直接存取靜態方法和靜態變數。</li>
+</ul>
+</li>
+<li>要使用 Instance 還是 static 方法？
+<ul>
+<li>它需要任何欄位(Instance 變數)或 Instance 方法嗎？
+<ul>
+<li>Yes: 它可能是 <span style="color:red"><strong>Instance 方法</strong></span>。</li>
+<li>No: 它可能是 <span style="color:red"><strong>靜態方法</strong></span>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="static-vs-Instance-變數">static vs Instance 變數</h4>
+<ol>
+<li>靜態變數
+<ul>
+<li>使用關鍵字 <strong>static</strong> 來宣告變數。</li>
+<li><strong>靜態變數</strong>又被稱為 <strong>static member variables</strong>。</li>
+<li>那個 Class 的每一個 Instance 共享相同的靜態變數。</li>
+<li>如果那個變數被改變了，所有的 Instance 都會看到那個改變。</li>
+<li><strong>靜態變數</strong>並不常常被使用，但是有時候非常有用。</li>
+<li>例如：我們使用 <strong>Scanner</strong> 讀取用戶輸入，我們可以宣告 scanner 為靜態變數。</li>
+<li>如此一來，所有的靜態方法就都可以直接讀取靜態變數。</li>
+</ul>
+</li>
+<li>在範例中，我們第一次定義 name 為 rex，第二次定義 name 為 fluffy，最後兩次輸出都會是 fluffy，因為靜態變數一旦被改變，會全域進行改變，所以在正常的情境下，使用 Instance 會比較合理。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Dog &#123;</span><br><span class="line"></span><br><span class="line">    private static String name;</span><br><span class="line"></span><br><span class="line">    public Dog(String name) &#123;</span><br><span class="line"></span><br><span class="line">        Dog.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void printName() &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;name= &quot; + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Dog rex = new Dog(&quot;rex&quot;); // Create Instance (rex)</span><br><span class="line">        Dog fluffy = new Dog(&quot;fluffy&quot;); // Create Instance (fluffy)</span><br><span class="line">        rex.printName(); // print fluffy</span><br><span class="line">        fluffy.printName(); // print fluffy</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Instance 變數
+<ul>
+<li>它們不使用關鍵字 <strong>static</strong>。</li>
+<li>Instance 變數又被稱為 fields 或 member variables。</li>
+<li>Instance 變數屬於一個 Class 的特定 Instance。</li>
+<li>每一個 Instance 都會有一個 Instance 變數的備份。</li>
+<li>每一個 Instance 都會有不同的值或狀態(state)。</li>
+<li>Instance 變數代表 Instance 的 state。</li>
+</ul>
+</li>
+<li>在範例中我們用 Instance，所以會兩次會輸出不同的結果，每個 Instance 有自己的值和狀態，</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Dog &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public Dog(String name) &#123;</span><br><span class="line"></span><br><span class="line">        Dog.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void printName() &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;name= &quot; + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Dog rex = new Dog(&quot;rex&quot;); // Create Instance (rex)</span><br><span class="line">        Dog fluffy = new Dog(&quot;fluffy&quot;); // Create Instance (fluffy)</span><br><span class="line">        rex.printName(); // print rex</span><br><span class="line">        fluffy.printName(); // print fluffy</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2020/06/21/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day9/" data-id="cl1d3lefc004ydytl8854g87e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Java 快速學習自我挑戰 Day9",
+        "image": "https://vincent.fishboneapps.com/images/learning/java/JavaDay09.jpg",
+        "keywords": "Java",
+        "genre": "Study Note",
+        "datePublished": "2020-06-22",
+        "dateCreated": "2020-06-22",
+        "dateModified": "2021-01-22",
+        "url": "https://vincent.fishboneapps.com/2020/06/21/Java-快速學習自我挑戰-Day9/",
+        "description": "
+
+物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance
+挑戰
+地毯花費計算器
+
+題目
+
+The Carpet Company has asked you to write an application that calculates the price of carpeting for rectangular rooms. To calcula",
+        "wordCount": 4240
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2020/06/21/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day9/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2021/01/22/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day10/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java 快速學習自我挑戰 Day10
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/06/18/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day8/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java 快速學習自我挑戰 Day8</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88-OOP-Classes-Constructors-%E5%92%8C-Inheritance-3"><span class="toc-number">1.</span> <span class="toc-text">物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%91%E6%88%B0-4"><span class="toc-number">1.1.</span> <span class="toc-text">挑戰</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%B0%E6%AF%AF%E8%8A%B1%E8%B2%BB%E8%A8%88%E7%AE%97%E5%99%A8"><span class="toc-number">1.1.1.</span> <span class="toc-text">地毯花費計算器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A4%87%E6%95%B8%E6%93%8D%E4%BD%9C-Complex-Operation"><span class="toc-number">1.1.2.</span> <span class="toc-text">複數操作 (Complex Operation)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B9%BC%E6%89%BF-Inheritance"><span class="toc-number">1.2.</span> <span class="toc-text">繼承(Inheritance)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference-vs-Object-vs-Instance-vs-Class"><span class="toc-number">1.3.</span> <span class="toc-text">Reference vs Object vs Instance vs Class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#this-vs-super"><span class="toc-number">1.4.</span> <span class="toc-text">this vs super</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%81%8E%E8%BC%89-Method-Overloading-vs-%E6%96%B9%E6%B3%95%E8%A6%86%E5%AF%AB-Method-Overriding-%E5%9B%9E%E9%A1%A7"><span class="toc-number">1.5.</span> <span class="toc-text">方法過載(Method Overloading) vs 方法覆寫(Method Overriding) 回顧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#static-vs-Instance-%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">static vs Instance 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#static-vs-Instance-%E8%AE%8A%E6%95%B8"><span class="toc-number">1.7.</span> <span class="toc-text">static vs Instance 變數</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

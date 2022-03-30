@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Java 快速學習自我挑戰 Day2 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Java" />
+    
+    <meta name="description" content="第一步 - PartII Java 型態轉換(Java Casting)  Casting 就是將數字從一個型態轉為另一個型態，我們將我們想要的型態放到 () 裡面，像這樣：(byte) (myMinByteValue &#x2F; 2) 其它語言也有型態轉換，這不是 Java 獨有的功能。 如果不指定型態，Java 會默認為 Integer。  原始型態挑戰  挑戰：創建一個 byte 變數並設為有效">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 快速學習自我挑戰 Day2">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2020/05/06/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day2/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="第一步 - PartII Java 型態轉換(Java Casting)  Casting 就是將數字從一個型態轉為另一個型態，我們將我們想要的型態放到 () 裡面，像這樣：(byte) (myMinByteValue &#x2F; 2) 其它語言也有型態轉換，這不是 Java 獨有的功能。 如果不指定型態，Java 會默認為 Integer。  原始型態挑戰  挑戰：創建一個 byte 變數並設為有效">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay02.jpg">
+<meta property="article:published_time" content="2020-05-06T04:48:45.000Z">
+<meta property="article:modified_time" content="2021-01-25T08:23:53.950Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay02.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Java-快速學習自我挑戰-Day2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Java 快速學習自我挑戰 Day2
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/05/06/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day2/" class="article-date">
+         <time datetime="2020-05-06T04:48:45.000Z" itemprop="datePublished">2020-05-06</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">4.4k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">18 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/java/JavaDay02.jpg">
+<hr>
+<h3 id="第一步-PartII">第一步 - PartII</h3>
+<h4 id="Java-型態轉換-Java-Casting">Java 型態轉換(Java Casting)</h4>
+<ol>
+<li>Casting 就是將數字從一個型態轉為另一個型態，我們將我們想要的型態放到 () 裡面，像這樣：<code>(byte) (myMinByteValue / 2)</code></li>
+<li>其它語言也有型態轉換，這不是 Java 獨有的功能。</li>
+<li>如果不指定型態，Java 會默認為 Integer。</li>
+</ol>
+<h4 id="原始型態挑戰">原始型態挑戰</h4>
+<ol>
+<li>挑戰：創建一個 <strong>byte</strong> 變數並設為有效的 <strong>byte</strong> 數字，再創建一個 <strong>short</strong> 和 <strong>int</strong>，也同樣設為有效的 <strong>short</strong> 和 <strong>int</strong> 數字，最後，再創建一個 <strong>long</strong> 的變數等於 50000 + 10 * (byte 值 + short 值 + integer 值)。</li>
+<li>整體來說，Integer 是最好的原始型態，就算你使用 Long，你會看到 Java 為你解決了很多複雜的問題，你不需要對 Long 做型態轉換，因為 Long 會接受 Integer (最大的 Integer 一定可以放進去 Long 裡面)，</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        byte byteValue = 10;</span><br><span class="line">        short shortValue = 20;</span><br><span class="line">        int intValue = 50;</span><br><span class="line">        long longTotal = 50000L + 10L * (byteValue + shortValue + intValue);</span><br><span class="line">        System.out.println(longTotal);</span><br><span class="line"></span><br><span class="line">        short shortTotal = (short) (1000 + 10 * (byteValue + shortValue + intValue));</span><br><span class="line">        System.out.println(shortTotal);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="原始型態的浮點數和倍精度浮點數-float-double">原始型態的浮點數和倍精度浮點數(float &amp; double)</h4>
+<ol>
+<li>不像整數，浮點數有小數點，<strong>3.14159</strong> 就是一個浮點數。</li>
+<li>浮點數又稱為實數(real number)，當我們在計算需要精度更高的時候，我們就會用浮點數。</li>
+<li>精度 (precision) 指的是被型態佔用的格式和數量，單精度佔用 32 位元(也就是寬度 32)，雙精度佔用 64 位元(也就是寬度 64)。</li>
+<li><strong>浮點數</strong> 的範圍是 <strong>1.4E-45</strong> 到 <strong>3.4028235E+38</strong>，而<strong>雙精度</strong>更精確，範圍是 <strong>4.9E-324</strong> 到 <strong>1.7976931348623157E+308</strong>。透過以下程式碼可以驗證原始型態的範圍。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">float myMinFloatValue = Float.MIN_VALUE;</span><br><span class="line">float myMaxFloatValue = Float.MAX_VALUE;</span><br><span class="line">System.out.println(&quot;Float minimum value = &quot; + myMinFloatValue);</span><br><span class="line">System.out.println(&quot;Float maximum value = &quot; + myMaxFloatValue);</span><br><span class="line"></span><br><span class="line">double myMinDoubleValue = Double.MIN_VALUE;</span><br><span class="line">double myMaxDoubleValue = Double.MAX_VALUE;</span><br><span class="line">System.out.println(&quot;Double minimum value = &quot; + myMinDoubleValue);</span><br><span class="line">System.out.println(&quot;Double maximum value = &quot; + myMaxDoubleValue);</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>我們定義三個變數，發現如果新增一個 float 的變數，會出現錯誤，是因為在浮點數，默認為 double，所以在後面加一個 f 宣告為 float 就不會出現錯誤。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int myIntValue = 5;</span><br><span class="line">float myFloatValue = 5.25f;</span><br><span class="line">double myDoubleValue = 5.25;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>挑戰：前面用 type casting 將 <strong>byte</strong> 和 <strong>short</strong> 轉換為 <strong>int</strong>，你想想要怎麼對 <strong>float</strong> 做轉換來消除錯誤呢？<br>
+直接在前面加上 (float) 做型態轉換。<br>
+<code>float myFloatValue = (float) 5.25;</code></li>
+<li>現在不推薦使用 float，double 浮點數才是首選的浮點數型態，而且不推薦使用 type casting，直接在後面加上 f 是更簡單的做法。</li>
+</ol>
+<h4 id="浮點數精度和一個挑戰">浮點數精度和一個挑戰</h4>
+<ol>
+<li>直接將這些變數打印出來，會發現 float 和 double 打印出來的都是 5.0，因為是浮點數。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int myIntValue = 5;</span><br><span class="line">float myFloatValue = 5f;</span><br><span class="line">double myDoubleValue = 5d;</span><br><span class="line">System.out.println(&quot;MyIntValue = &quot; + myIntValue);</span><br><span class="line">System.out.println(&quot;myFloatValue = &quot; + myFloatValue);</span><br><span class="line">System.out.println(&quot;myDoubleValue = &quot; + myDoubleValue);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>對這些變數做運算，int 會出現 2，因為它是整數，剩下的打印出 2.5，因為浮點數可以計算小數點，所以會得到比較精準的答案。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int myIntValue = 5 / 2;</span><br><span class="line">float myFloatValue = 5f / 2f;</span><br><span class="line">double myDoubleValue = 5d / 2d;</span><br><span class="line">System.out.println(&quot;MyIntValue = &quot; + myIntValue);</span><br><span class="line">System.out.println(&quot;myFloatValue = &quot; + myFloatValue);</span><br><span class="line">System.out.println(&quot;myDoubleValue = &quot; + myDoubleValue);</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">MyIntValue = 2</span><br><span class="line">myFloatValue = 2.5</span><br><span class="line">myDoubleValue = 2.5</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>這時候再改除以 3，在這邊就可以看到 double 比 float 還要更精準。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int myIntValue = 5 / 3;</span><br><span class="line">float myFloatValue = 5f / 3f;</span><br><span class="line">double myDoubleValue = 5d / 3d;</span><br><span class="line">System.out.println(&quot;MyIntValue = &quot; + myIntValue);</span><br><span class="line">System.out.println(&quot;myFloatValue = &quot; + myFloatValue);</span><br><span class="line">System.out.println(&quot;myDoubleValue = &quot; + myDoubleValue);</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">MyIntValue = 1</span><br><span class="line">myFloatValue = 1.6666666</span><br><span class="line">myDoubleValue = 1.6666666666666667</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>也可以不用 d，直接在數字後面加上 .00 對 Java 來說就會是 double 的浮點數。<br>
+<code>double myDoubleValue = 5.00 / 3.00;</code></li>
+<li>為什麼使用 double?
+<ul>
+<li>在現代的電腦，相同的 double 數值比 float 數值還要快。</li>
+<li>Java 庫裡面，特定的數學函式時常用有一種特定寫法來處理 double 而不是 float，而且結果都是回傳 double 的。</li>
+<li>它更精確，而且可以處理更大量的數字。</li>
+<li>在現實世界中，很多庫都用 double，也正因為如此，如果你不指定資料型態為 d 或 f，Java 會默認 double 是浮點數的資料型態。</li>
+</ul>
+</li>
+<li>挑戰：將磅轉換為公斤
+<ul>
+<li>步驟一：創建一個適合的變數儲存磅，並讓它轉換為公斤。</li>
+<li>步驟二：計算結果。例如：公斤數根據磅的變數來計算，再創建一個適合的變數儲存公斤。</li>
+<li>步驟三：打印出結果。</li>
+<li>提示：<strong>1</strong> 磅等於 <strong>0.45359237</strong> 公斤。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">double numberOfPounds = 200d;</span><br><span class="line">double convertedKilograms = numberOfPounds * 0.45359237d;</span><br><span class="line">System.out.println(&quot;Converted kilograms = &quot; + convertedKilograms);</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>double 一樣也可以用 _ 來分隔，讓閱讀更容易。<br>
+<code>double anotherNumber = 3_000_000.4_567_890d;</code></li>
+<li>重點整理
+<ul>
+<li>整理來說，<strong>float</strong> 和 <strong>double</strong> 對一般浮點數操作都是很棒的，但是兩者對需要精確計算的地方並不好，這是因為浮點數儲存的限制，並不是 Java 的問題。</li>
+<li>Java 有一個 class 叫做 <strong>BigDecimal</strong> 可以克服這個的問題，我們後面會講到，但是要記得像是貨幣的計算，需要精度非常準確的計算，浮點數是不能使用的。</li>
+</ul>
+</li>
+</ol>
+<h4 id="原始型態-Char-和-Boolean">原始型態 Char 和 Boolean</h4>
+<ol>
+<li>char 只能儲存一個字元(character)，什麼情況下會用到這種原始型態，像是遊戲裡面會記錄使用者最後打入的按鍵。</li>
+<li>一個 <strong>char</strong> 佔用 2 位元組，也就是 16 位元，因此他的寬度為 16，它不是<strong>1 位元組</strong>的原因是它允許儲存一個 Unicode 字母。</li>
+<li><strong>Unicode</strong> 是一種國際編碼標準，用在不同語言和腳本中，每一個字母、數字和符號都有獨一無二的數值可以用在不同的平台和程式。</li>
+<li>在英文字母中，只有 A-Z 26 個字母，也就是說只要 26 個字元就能表示整個英文字母，但是其它語言需要更多字元，通常是多很多。</li>
+<li><strong>Unicode</strong> 允許我們使用 <strong>2 位元組</strong>來表示這些語言，<strong>char</strong> 在記憶體中可以表示 <strong>65535</strong> 個不同型態字元中的其中一個。</li>
+<li>可以去 <a target="_blank" rel="noopener" href="https://unicode-table.com/">Unicode Table</a> 查看 Unicode 的表，可以用 \u 表示 Unicode。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char myChar = &#x27;D&#x27;;</span><br><span class="line">char myUnicodeChar = &#x27;\u0044&#x27;;</span><br><span class="line">System.out.println(myChar);</span><br><span class="line">System.out.println(myUnicodeChar);</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>也可以測試將著作權的符號打印出來。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char myCopyrightChar = &#x27;\u00A9&#x27;;</span><br><span class="line">System.out.println(myCopyrightChar);</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>布林(Boolean)原始型態：布林值允許兩種選擇，<strong>True</strong> 或 <strong>False</strong>，<strong>Yes</strong> 或 <strong>No</strong>，<strong>1</strong> 或 <strong>0</strong>，在 Java 裡，<strong>boolean</strong> 原始型態只能設定成兩種值，<strong>true</strong> 和 <strong>false</strong>，它們非常有用，而且會常常在寫程式的時候用到。</li>
+<li>我們可以用 boolean 定義變數為布林，如果要知道顧客年紀是否超過 21 歲，可以將變數命名為 isCustomerOverTwentyOne，這很直覺也很好追蹤，後面會說到更多命名變數，類和方法。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">boolean myTrueBooleanValue = true;</span><br><span class="line">boolean myFalseBooleanValue = false;</span><br><span class="line"></span><br><span class="line">boolean isCustomerOverTwentyOne = true;</span><br></pre></td></tr></table></figure>
+<h4 id="原始型態回顧和字串-String-原始型態">原始型態回顧和字串(String)原始型態</h4>
+<ol>
+<li>八個原始型態的回顧
+<ul>
+<li>全部：byte、short、int、long、float、double、char、boolean</li>
+<li>最常用：int、double、boolean</li>
+</ul>
+</li>
+<li>String
+<ul>
+<li><strong>String</strong> 是 Java 的一種資料型態，它不是<strong>原始型態</strong>，它其實是一個類(Class)，但是它在 Java 有點被偏愛，所以它比一般類更好使用，你可以用跟一般類不一樣的方式對待它。</li>
+<li><strong>String</strong> 是一串字元，上面講到 <strong>Char</strong> 只能放一個字元(或是 Unicode 字元)，而 <strong>String</strong> 可以放入一連串的字元，技術上來說，它的 <strong>MAX_VALUE</strong> 可以放入 <strong>21.4 億</strong>的 <strong>int</strong>，這是很大量的字元。</li>
+</ul>
+</li>
+<li>String 可以對自己加上內容，然後打印出來，Unicode 也是可以的。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String myString = &quot;This is a string&quot;;</span><br><span class="line">System.out.println(&quot;My string is equal to &quot; + myString);</span><br><span class="line">myString = myString + &quot;, and this is more.&quot;;</span><br><span class="line">System.out.println(&quot;My string is equal to &quot; + myString);</span><br><span class="line">myString = myString + &quot; \u00A9 2020&quot;;</span><br><span class="line">System.out.println(&quot;My string is equal to &quot; + myString);</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">My string is equal to This is a string</span><br><span class="line">My string is equal to This is a string, and this is more.</span><br><span class="line">My string is equal to This is a string, and this is more. © 2020</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>String 裡面的數字會被當成文字處理，並沒有辦法做數學的計算。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String numberString = &quot;250.55&quot;;</span><br><span class="line">numberString = numberString + &quot;49.95&quot;;</span><br><span class="line">System.out.println(numberString);</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">250.5549.95</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>就算在 String 後面加上數字型態的數字，最後還是會當作文字處理。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String lastString = &quot;10&quot;;</span><br><span class="line">int myInt = 50;</span><br><span class="line">lastString = lastString + myInt;</span><br><span class="line">System.out.println(&quot;My last string is &quot; + lastString);</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">My last string is 1050</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>就算用 double，還是一樣會當文字處理。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">double doubleNumber = 120.47d;</span><br><span class="line">lastString = lastString + doubleNumber;</span><br><span class="line">System.out.println(&quot;My last string is &quot; + lastString);</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">My last string is 1050120.47</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>Java 的 String 是不可變的(Immutable)
+<ul>
+<li>當我說可以刪除 <strong>String</strong>，嚴格上來說是不正確的，因為 Java 的 <strong>String</strong> 是不可變的，所以說，你在創建 String 之後是不能改變 <strong>String</strong> 的，取而代之的，新的 <strong>String</strong> 是再次創建的。</li>
+<li>所以在上面這個例子，lastSting 不是附加上 <strong>120.47</strong> 這個值，而是新 <strong>String</strong> 被創建了，這個新 <strong>String</strong> 包含之前的 <strong>lastString</strong> 加上用文字表示的 double 值 <strong>120.47</strong>。</li>
+<li>結果是一樣的，<strong>lastString</strong> 有正確的值，然而，新的 <strong>String</strong> 被創建，而舊的被拋棄。</li>
+<li>不要擔心覺得這個不合理，後面會細說，在這邊，我想特別強調 <strong>String</strong> 是 Immutable (不可變的)。</li>
+</ul>
+</li>
+<li>我們用的程式碼再創建 String 是沒有效率的
+<ul>
+<li>最後一個新的 <strong>String</strong> 被創建，像這樣的方式是沒有效率的，而且不推薦的。後面會用 <strong>StringBuffer</strong>，這個就可以讓 <strong>String</strong> 被改變了。</li>
+<li>在我們處理 <strong>StringBuffer</strong>，我們需要了解類(class)，而且，後面你會遇到用這種風格(String + Value)寫的程式碼，所以用 <strong>StringBuffer</strong> 對你很有用。</li>
+</ul>
+</li>
+</ol>
+<h4 id="運算符-Operators-、運算數-Operands-、表達式-Expressions">運算符(Operators)、運算數(Operands)、表達式(Expressions)</h4>
+<ol>
+<li>什麼是運算符(Operator)？<br>
+Java 的 <strong>運算符(Operator)</strong> 是特殊符號，用來對一個、兩個、或三個運算數執行特定的操作，最後返回結果。例如：我們用 + 運算符來相加兩個數的值。</li>
+<li>什麼是運算數(Operand)？
+<ul>
+<li><strong>運算數(Operand)<strong>是一個專有名詞，用來描述被</strong>運算符</strong>操作的任何物件。</li>
+<li>如果我們看這個陳述句(statement)：<code>int myVar = 15 + 12</code>，<strong>+</strong> 是<strong>運算符</strong>，而 <strong>15</strong> 和 <strong>12</strong> 是<strong>運算數</strong>，用文字表示的變數也是<strong>運算數</strong>。</li>
+<li><code>double mySalary = hoursWorked * hourlyRate</code>，在這邊，<strong>hoursWorked</strong> 和 <strong>hourlyRate</strong> 都是<strong>運算數</strong>，而且 <strong>*</strong> 是 <strong>運算符</strong>。</li>
+</ul>
+</li>
+<li>什麼是表達式(Expression)？
+<ul>
+<li>一個表達式是由變數、文字、回傳值的方法(還沒講到)和運算符所組成。</li>
+<li><code>int myVar = 15 + 12</code>，<strong>15 + 12</strong> 就是表達式，最後會回傳 <strong>27</strong>。</li>
+<li><code>double mySalary = hoursWorked * hourlyRate</code>，<strong>hoursWorked * hourlyRate</strong> 是表達式，所以如果 <strong>hoursWorked</strong> 是 <strong>10.00</strong>，<strong>hourlyRate</strong> 是 <strong>20.00</strong>，最後這個表達式會回傳 <strong>200.00</strong>。</li>
+</ul>
+</li>
+<li>什麼是註解(Comment)？
+<ul>
+<li><strong>註解</strong>會被電腦忽略，被加到程式碼裡面是為了幫助描述某件事，<strong>註解</strong>是為了人而存在的。</li>
+<li>我們用 <strong>//</strong> 在任何程式碼前面，或是在空白的一行，任何在 <strong>//</strong> 後面的內容到這一行的結尾都會被忽略。</li>
+<li>除了可以用來描述一個程式碼的內容，<strong>註解</strong>也被用來暫時性地禁用程式碼。</li>
+</ul>
+</li>
+<li>這邊可以看到，在第三行的時候指定了 result 給 previousResult，後面 previousResult 並沒有被改變，所以就算後面 result 改變了，previousResult 在最後也不會改變。另外展示運算符 (+, -, *, /, %)。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">int result = 1 + 2; // 1 + 2 = 3</span><br><span class="line">System.out.println(&quot;1 + 2 = &quot; + result);</span><br><span class="line">int previousResult = result;</span><br><span class="line">System.out.println(&quot;previousResult = &quot; + previousResult);</span><br><span class="line">result = result - 1; // 3 - 1 = 2;</span><br><span class="line">System.out.println(&quot;3 - 1 = &quot; + result);</span><br><span class="line">System.out.println(&quot;previousResult = &quot; + previousResult);</span><br><span class="line"></span><br><span class="line">result = result * 10; // 2 * 10 = 20;</span><br><span class="line">System.out.println(&quot;2 * 10 = &quot; + result);</span><br><span class="line"></span><br><span class="line">result = result / 5; // 20 / 5 = 4</span><br><span class="line">System.out.println(&quot;20 / 5 = &quot; + result);</span><br><span class="line"></span><br><span class="line">result = result % 3; // the remainder of (4 % 3) = 1;</span><br><span class="line">System.out.println(&quot;4 % 3 = &quot; + result);</span><br><span class="line">------</span><br><span class="line">1 + 2 = 3</span><br><span class="line">previousResult = 3</span><br><span class="line">3 - 1 = 2</span><br><span class="line">previousResult = 3</span><br><span class="line">2 * 10 = 20</span><br><span class="line">20 / 5 = 4</span><br><span class="line">4 % 3 = 1</span><br></pre></td></tr></table></figure>
+<h4 id="縮寫運算符">縮寫運算符</h4>
+<ol>
+<li>可以用 ++, --, +=, -=, *=, /= 來進行運算的縮寫。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">int result = 1;</span><br><span class="line">// result = result + 1;</span><br><span class="line">result++; // 1 + 1 = 2;</span><br><span class="line">System.out.println(&quot;1 + 1 = &quot; + result);</span><br><span class="line"></span><br><span class="line">result--; // 2 - 1 = 1;</span><br><span class="line">System.out.println(&quot;2 - 1 = &quot; + result);</span><br><span class="line"></span><br><span class="line">// result = result + 2;</span><br><span class="line">result += 2; // 1 + 2 = 3</span><br><span class="line">System.out.println(&quot;1 + 2 = &quot; + result);</span><br><span class="line"></span><br><span class="line">// result = result * 10;</span><br><span class="line">result *= 10; // 3 * 10 = 30</span><br><span class="line">System.out.println(&quot;3 * 10 = &quot; + result);</span><br><span class="line"></span><br><span class="line">// result = result / 3;</span><br><span class="line">result /= 3; // 30 / 3 = 10</span><br><span class="line">System.out.println(&quot;30 / 3 = &quot; + result);</span><br><span class="line"></span><br><span class="line">// result = result - 2;</span><br><span class="line">result -= 2; // 10 - 2 = 8;</span><br><span class="line">System.out.println(&quot;10 - 2 = &quot; + result);</span><br></pre></td></tr></table></figure>
+<h4 id="if-then-陳述句-statement">if-then 陳述句(statement)</h4>
+<ol>
+<li><strong>if-then</strong> 是最基本的控制流陳述句，當特定值為 <strong>true</strong> 時，它告訴程式應該執行哪個區塊。</li>
+<li>條件式邏輯(Conditonal Logic)在 Java 使用特定陳述句，讓我們當條件是 <strong>false</strong> 或 <strong>true</strong> 的時候，檢查一個條件或執行特定程式碼。</li>
+<li>在 if 條件下，如果沒有程式碼區塊(code block)，它只會判斷後執行第一行，第二行會當成正常的程式碼運行。所以我們應該要使用程式碼區塊，程式碼區塊可以讓不只一行的程式碼運行。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">boolean isAlien = false;</span><br><span class="line">if (isAlien == true)</span><br><span class="line">    System.out.println(&quot;It is not an alien!&quot;);</span><br><span class="line">    System.out.println(&quot;And I am scared of aliens&quot;);</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">And I am scared of aliens</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>使用程式碼區塊可以讓 if 陳述句更清楚，而且可執行超過一行。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">boolean isAlien = false;</span><br><span class="line">if (isAlien == false) &#123;</span><br><span class="line">    System.out.println(&quot;It is not an alien!&quot;);</span><br><span class="line">    System.out.println(&quot;And I am scared of aliens&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">It is not an alien!</span><br><span class="line">And I am scared of aliens</span><br></pre></td></tr></table></figure>
+<h4 id="邏輯-AND-運算符">邏輯 AND 運算符</h4>
+<ol>
+<li>&gt;, &lt;, &gt;=, &lt;= 分別對應數學上的大於、小於、大於等於、小於等於，&amp;&amp; 雙連字號(double ampersands) 就是邏輯 AND 的意思，後面會細說單連字號(bitwise AND)和雙連字號的差別，雙連字號用在左右兩邊的表達式都是 true 的時候，該條件才成立。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int topScore = 80;</span><br><span class="line">if (topScore &gt;= 100) &#123;</span><br><span class="line">    System.out.println(&quot;You got the high school!&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int secondTopScore = 60;</span><br><span class="line">if (topScore &gt; secondTopScore &amp;&amp; topScore &lt; 100) &#123;</span><br><span class="line">    System.out.println(&quot;Greater than second top score and less than 100&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>可以讓在 &amp;&amp; 的旁邊兩個表達式加上 ()，可以更清楚要判斷的條件，而且輸出結果也不會改變。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ((topScore &gt; secondTopScore) &amp;&amp; (topScore &lt; 100)) &#123;</span><br><span class="line">    System.out.println(&quot;Greater than second top score and less than 100&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="邏輯-OR-運算符">邏輯 OR 運算符</h4>
+<ol>
+<li>OR 運算符，只要左右其中一個表達式為 true，則結果為 true，基本用法和 AND 一致。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ((topScore &gt; 90) || (secondTopScore &lt;= 90)) &#123;</span><br><span class="line">    System.out.println(&quot;Either or both of conditions are true&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>邏輯 AND 和邏輯 OR
+<ul>
+<li><strong>AND</strong> 運算符在 Java 中有兩種形式，<strong>OR</strong> 也是。</li>
+<li><strong>&amp;&amp;</strong> 是邏輯 AND，用來執行 boolean 運算數的運算 - 檢查條件是否為 <strong>true</strong> 或 <strong>false</strong>。</li>
+<li><strong>&amp;</strong> 是一個位元運算符(bitwise operator)，用在位元等級的運算。</li>
+<li>同樣地，<strong>||</strong> 是邏輯 OR，用來執行 boolean 運算數的運算 - 檢查條件是否為 <strong>true</strong> 或 <strong>false</strong>。</li>
+<li>同樣地，<strong>|</strong> 是一個位元運算符(bitwise operator)，用在位元等級的運算。</li>
+</ul>
+</li>
+</ol>
+<h4 id="分配運算符和相等運算符">分配運算符和相等運算符</h4>
+<ol>
+<li>第一行我們宣告了 <strong>newValue int</strong>，它使用了分配運算符(=)去分配 <strong>50</strong> 給 <strong>newValue</strong>。不要在 <strong>if-then</strong> 陳述句裡面使用<strong>分配運算符</strong>，而要使用相等運算符(==)。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int newValue = 50;</span><br><span class="line">if (newValue = 50) &#123;</span><br><span class="line">    System.out.println(&quot;This is an error&quot;);</span><br><span class="line">&#125;</span><br><span class="line">if (newValue == 50) &#123;</span><br><span class="line">    System.out.println(&quot;This is true&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>這邊在 if 後面使用 isCar = true 是指定 isCar 變數為 true，最後會返回 true，這個 if 條件句的內容就會被執行。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">boolean isCar = false;</span><br><span class="line">if (isCar = true) &#123;</span><br><span class="line">    System.out.println(&quot;This is not supposed to happen&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">This is not supposed to happen</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>縮寫運算符。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (isCar == true)</span><br><span class="line">if (isCar)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (isCar == false)</span><br><span class="line">if (!isCar)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>NOT 運算符
+<ul>
+<li>! 或 NOT 被稱為邏輯補運算符 (Logical Complement Operator)</li>
+<li>用來與 <strong>boolean</strong> 測試它的替代值，我們看到上面 <strong>(isCar)</strong> 是 <strong>true</strong>，再變數之前加上 <strong>!</strong>，就可以檢查相反的值 <strong>false</strong>。</li>
+<li>推薦使用縮寫運算符 (isCar) 或 (!isCar)，第一，可以避免使用分配運算符的錯誤，第二，程式碼更為簡潔。</li>
+</ul>
+</li>
+</ol>
+<h4 id="三元運算符-ternary-operator">三元運算符 (ternary operator)</h4>
+<ol>
+<li>三元運算符是一個捷徑，透過給予的條件，去分配兩個值中的其中一個給一個變數。它是 <strong>if-then-else</strong> 陳述句的快捷版。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">isCar = true;</span><br><span class="line">boolean wasCar = isCar ? true : false;</span><br><span class="line">if (wasCar) &#123;</span><br><span class="line">    System.out.println(&quot;wasCar is true;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>三元運算符的使用
+<ul>
+<li>第一個運算數 <strong>ageOfClient == 20</strong>：我們要檢查的條件，它必須回傳 <strong>true</strong> 或 <strong>false</strong>。</li>
+<li>第二個運算數 <strong>true</strong>：<strong>true</strong> 是我們分配給 <strong>isEighteenOrOver</strong> 的值，如果前面的條件為 <strong>true</strong>，則為 <strong>true</strong>。</li>
+<li>第三個運算數 <strong>false</strong>: <strong>false</strong> 是我們分配給 <strong>isEighteenOrOver</strong> 的值，如果前面的條件為 <strong>false</strong>，則為 <strong>false</strong>。</li>
+<li>最後會回傳 true，因為 ageOfClient == 20 是 true。</li>
+<li>最好使用 () 會更容易閱讀。可以改寫成 <code>boolean isEighteenOrOver = (ageOfClient == 20) ? true : false;</code></li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int ageOfClient = 20;</span><br><span class="line">boolean isEighteenOrOver = ageOfClient == 20 ? true : false;</span><br></pre></td></tr></table></figure>
+<h4 id="運算符優先級和運算符挑戰">運算符優先級和運算符挑戰</h4>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html">運算符的總表</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cs.bilkent.edu.tr/~guvenir/courses/CS101/op_precedence.html">運算符的優先級</a></li>
+<li>挑戰：測試你學到的<strong>運算符</strong>
+<ul>
+<li>創建一個 <strong>double</strong> 變數，值為 <strong>20.00</strong>。</li>
+<li>創建第二個 <strong>double</strong> 變數，值為 <strong>80.00</strong>。</li>
+<li>相加以上兩個變數，並乘以 <strong>100.00</strong>。</li>
+<li>使用<strong>餘數</strong>運算符，將第三步驟取得的值用 <strong>40.00</strong> 取得餘數，我們在這堂課用係數(modulus)或餘數運算符在<strong>整數</strong>上，但是我們也可以把餘數用在 <strong>double</strong>。</li>
+<li>創建一個 <strong>boolean</strong> 變數，如果<strong>步驟四</strong>的餘數為 <strong>0</strong>，則為 <strong>true</strong>，如果<strong>不是 0</strong>，則為 <strong>false</strong>。</li>
+<li>輸出這個 <strong>boolean</strong> 值。</li>
+<li>寫一個 <strong>if-then</strong> 陳述句，如果步驟五的 boolean 值不為 true，回傳 “Got some remainder”。</li>
+</ul>
+</li>
+<li>答案</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">double myFirstValue = 20.00d;</span><br><span class="line">double mySecondValue = 80.00d;</span><br><span class="line">double myValuesTotal = (myFirstValue + mySecondValue) * 100.00d;</span><br><span class="line">System.out.println(&quot;myValuesTotal = &quot; + myValuesTotal);</span><br><span class="line">double theRemainder = myValuesTotal % 40.00d;</span><br><span class="line">System.out.println(&quot;theRemainder = &quot; + theRemainder);</span><br><span class="line">boolean isNoRemainder = (theRemainder == 0) ? true : false;</span><br><span class="line">System.out.println(&quot;isNoRemainder = &quot; + isNoRemainder);</span><br><span class="line">if (!isNoRemainder) &#123;</span><br><span class="line">    System.out.println(&quot;Got some remainder&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2020/05/06/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day2/" data-id="cl1d3lef6004ddytl65ooffvb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Java 快速學習自我挑戰 Day2",
+        "image": "https://vincent.fishboneapps.com/images/learning/java/JavaDay02.jpg",
+        "keywords": "Java",
+        "genre": "Study Note",
+        "datePublished": "2020-05-06",
+        "dateCreated": "2020-05-06",
+        "dateModified": "2021-01-25",
+        "url": "https://vincent.fishboneapps.com/2020/05/06/Java-快速學習自我挑戰-Day2/",
+        "description": "
+
+第一步 - PartII
+Java 型態轉換(Java Casting)
+
+Casting 就是將數字從一個型態轉為另一個型態，我們將我們想要的型態放到 () 裡面，像這樣：(byte) (myMinByteValue / 2)
+其它語言也有型態轉換，這不是 Java 獨有的功能。
+如果不指定型態，Java 會默認為 Integer。
+
+原始型態挑戰
+
+挑戰：創建一個 byte 變數並設為有效",
+        "wordCount": 1978
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2020/05/06/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day2/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/05/08/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java 快速學習自我挑戰 Day3
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/05/01/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day1/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java 快速學習自我挑戰 Day1</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-PartII"><span class="toc-number">1.</span> <span class="toc-text">第一步 - PartII</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-%E5%9E%8B%E6%85%8B%E8%BD%89%E6%8F%9B-Java-Casting"><span class="toc-number">1.1.</span> <span class="toc-text">Java 型態轉換(Java Casting)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E5%9E%8B%E6%85%8B%E6%8C%91%E6%88%B0"><span class="toc-number">1.2.</span> <span class="toc-text">原始型態挑戰</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E5%9E%8B%E6%85%8B%E7%9A%84%E6%B5%AE%E9%BB%9E%E6%95%B8%E5%92%8C%E5%80%8D%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8-float-double"><span class="toc-number">1.3.</span> <span class="toc-text">原始型態的浮點數和倍精度浮點數(float &amp; double)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E9%BB%9E%E6%95%B8%E7%B2%BE%E5%BA%A6%E5%92%8C%E4%B8%80%E5%80%8B%E6%8C%91%E6%88%B0"><span class="toc-number">1.4.</span> <span class="toc-text">浮點數精度和一個挑戰</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E5%9E%8B%E6%85%8B-Char-%E5%92%8C-Boolean"><span class="toc-number">1.5.</span> <span class="toc-text">原始型態 Char 和 Boolean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E5%9E%8B%E6%85%8B%E5%9B%9E%E9%A1%A7%E5%92%8C%E5%AD%97%E4%B8%B2-String-%E5%8E%9F%E5%A7%8B%E5%9E%8B%E6%85%8B"><span class="toc-number">1.6.</span> <span class="toc-text">原始型態回顧和字串(String)原始型態</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8B%E7%AE%97%E7%AC%A6-Operators-%E3%80%81%E9%81%8B%E7%AE%97%E6%95%B8-Operands-%E3%80%81%E8%A1%A8%E9%81%94%E5%BC%8F-Expressions"><span class="toc-number">1.7.</span> <span class="toc-text">運算符(Operators)、運算數(Operands)、表達式(Expressions)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B8%AE%E5%AF%AB%E9%81%8B%E7%AE%97%E7%AC%A6"><span class="toc-number">1.8.</span> <span class="toc-text">縮寫運算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#if-then-%E9%99%B3%E8%BF%B0%E5%8F%A5-statement"><span class="toc-number">1.9.</span> <span class="toc-text">if-then 陳述句(statement)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%8F%E8%BC%AF-AND-%E9%81%8B%E7%AE%97%E7%AC%A6"><span class="toc-number">1.10.</span> <span class="toc-text">邏輯 AND 運算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%8F%E8%BC%AF-OR-%E9%81%8B%E7%AE%97%E7%AC%A6"><span class="toc-number">1.11.</span> <span class="toc-text">邏輯 OR 運算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%85%8D%E9%81%8B%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9B%B8%E7%AD%89%E9%81%8B%E7%AE%97%E7%AC%A6"><span class="toc-number">1.12.</span> <span class="toc-text">分配運算符和相等運算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E5%85%83%E9%81%8B%E7%AE%97%E7%AC%A6-ternary-operator"><span class="toc-number">1.13.</span> <span class="toc-text">三元運算符 (ternary operator)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8B%E7%AE%97%E7%AC%A6%E5%84%AA%E5%85%88%E7%B4%9A%E5%92%8C%E9%81%8B%E7%AE%97%E7%AC%A6%E6%8C%91%E6%88%B0"><span class="toc-number">1.14.</span> <span class="toc-text">運算符優先級和運算符挑戰</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>C++ Learning Journey Day4 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="C++" />
+    
+    <meta name="description" content="Section 9: Pointers Introduction  Two types of variables.  data variable. For example, int x &#x3D; 10;. address variable. For example, int *p; p &#x3D; &amp;x;   Example 1234567&#x2F;&#x2F; x, value 10, address 200&#x2F;20">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ Learning Journey Day4">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2021/10/10/C-Learning-Journey-Day4/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="Section 9: Pointers Introduction  Two types of variables.  data variable. For example, int x &#x3D; 10;. address variable. For example, int *p; p &#x3D; &amp;x;   Example 1234567&#x2F;&#x2F; x, value 10, address 200&#x2F;20">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/cplusplus/CPlusPlusDay04.jpg">
+<meta property="article:published_time" content="2021-10-10T11:22:24.000Z">
+<meta property="article:modified_time" content="2021-10-19T22:41:16.922Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/cplusplus/CPlusPlusDay04.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-C-Learning-Journey-Day4" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        C++ Learning Journey Day4
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2021/10/10/C-Learning-Journey-Day4/" class="article-date">
+         <time datetime="2021-10-10T11:22:24.000Z" itemprop="datePublished">2021-10-10</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">1.5k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">9 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/cplusplus/CPlusPlusDay04.jpg">
+<hr>
+<h1>Section 9: Pointers</h1>
+<h2 id="Introduction-2">Introduction</h2>
+<ol>
+<li>Two types of variables.
+<ul>
+<li>data variable. For example, <code>int x = 10;</code>.</li>
+<li>address variable. For example, <code>int *p; p = &amp;x;</code></li>
+</ul>
+</li>
+<li>Example <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// x, value 10, address 200/201</span><br><span class="line">// p, value 10, address 300/301</span><br><span class="line">cout &lt;&lt; x; // 10</span><br><span class="line">cout &lt;&lt; &amp;x; // 200</span><br><span class="line">cout &lt;&lt; p; // 200</span><br><span class="line">cout &amp;p; // 300</span><br><span class="line">cout &lt;&lt; *p. // 10</span><br></pre></td></tr></table></figure>
+</li>
+<li>Three things about pointer.
+<ul>
+<li>declaration <code>int *p;</code>.</li>
+<li>initialization <code>p = &amp;x;</code>.</li>
+<li>dereferencing <code>cout &lt;&lt; *p;</code>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="Why-pointers">Why pointers?</h2>
+<ol>
+<li>You can only access a file by pointer. Also, access network connection can only be done by pointer. The keyboard, monitor and printer are all needed it.</li>
+<li>Java and most of programming languages without pointer can’t access the hardware directly. For example, Java need to use JVM to access hardwares using C runtime.</li>
+</ol>
+<h2 id="Heap-Memory-Allocation">Heap Memory Allocation</h2>
+<ol>
+<li>When you initiate <code>int *p</code>, p will created in the stack of memory. Then, if you new array, the array will created in the heap of memory and p will point to the array in the heap. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int A[5] = &#123;1, 2, 3, 4, 5&#125;;</span><br><span class="line">int *p;</span><br><span class="line">p = new int[5];</span><br></pre></td></tr></table></figure>
+</li>
+<li>When you want to delete a pointer variable p, you should not use <code>p = NULL;</code>. The p won’t be deleted, p just point to null. You should use <code>delete []p;</code>. If you really want to make p point to nothing, you should use <code>p = nullptr;</code>.</li>
+<li>You can access general array by using <code>A[2]</code>, you can also access pointer array by using <code>p[2]</code>. It’s the benefit.</li>
+</ol>
+<h2 id="Pointer-Arithmetic">Pointer Arithmetic</h2>
+<ol>
+<li><code>p++;</code>, ++ means move to next location instead of add one. For example, if the pointer is float, it will move 4 bytes.</li>
+<li><code>p--;</code>, – means move backward.</li>
+<li><code>p = p + 2;</code>, it will move forward by two elements.</li>
+<li><code>p = p - 2;</code>, it can move backward.</li>
+<li><code>d = q - p</code>, it can know the distance between two elements. For example, <code>p = 200</code>, <code>q = 206</code>, and the type of p and q is int. The d will be 3, because it will divide 6 by 2 bytes and you know the distance between the q and p is 3 elements. On the contrary, if you do <code>p - q</code>, it will get the -3. You can know q is farther than p.</li>
+<li>Print values by many ways. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int A[5]&#123;2, 4, 6, 8, 10&#125;;</span><br><span class="line">int *p = A;</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    // cout &lt;&lt; A[i] &lt;&lt; endl;</span><br><span class="line">    // cout &lt;&lt; i[A] &lt;&lt; endl;</span><br><span class="line">    // cout &lt;&lt; *(A + i) &lt;&lt; endl;</span><br><span class="line">    // cout &lt;&lt; A + i &lt;&lt; endl; // print the address</span><br><span class="line">    // cout &lt;&lt; p + i &lt;&lt; endl; // print the address</span><br><span class="line">    // cout &lt;&lt; *(p + i) &lt;&lt; endl;</span><br><span class="line">    // cout &lt;&lt; p[i] &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; *p &lt;&lt; endl;</span><br><span class="line">    p++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>Print distance example. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int A[5]&#123;2, 4, 6, 8, 10&#125;;</span><br><span class="line">int *p = A, *q = &amp;A[4];</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; p - q;</span><br><span class="line">====OUTPUT====</span><br><span class="line">-4</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Problems-using-Pointers">Problems using Pointers</h2>
+<ol>
+<li>Uninitialized pointer.
+<ul>
+<li>There are three ways to initialize the pointer.</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int x = 10;</span><br><span class="line">int *p;</span><br><span class="line">1) p = &amp;x;</span><br><span class="line">2) p = (int *) 0x5638;</span><br><span class="line">3) p = new int[5];</span><br><span class="line">// Runtime error - Using uninitialized pointer</span><br><span class="line">cout &lt;&lt; *p;</span><br></pre></td></tr></table></figure>
+</li>
+<li>Memory leak.
+<ul>
+<li>If you don’t want to use p anymore, and you don’t delete the p by using <code>delete []p</code>. It will cause memory leak.</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int *p = new int[5];</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">p = NULL;</span><br></pre></td></tr></table></figure>
+</li>
+<li>Dangling pointer <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  int *p = new int[5];</span><br><span class="line">  .</span><br><span class="line">  .</span><br><span class="line">  .</span><br><span class="line">  fun(P);</span><br><span class="line">  // cause the error, since p is deleted in the function.</span><br><span class="line">  cout &lt;&lt; *p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void func(int *q) &#123;</span><br><span class="line">  .</span><br><span class="line">  .</span><br><span class="line">  .</span><br><span class="line">  delete []q;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Reference">Reference</h2>
+<ol>
+<li>Reference doesn’t consume any memory at all. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">main() &#123;</span><br><span class="line">  int x = 10;</span><br><span class="line">  int &amp;y = x; // reference, x is l-value of x</span><br><span class="line">  // Error: cannot initialize without value.</span><br><span class="line">  // int &amp;y;</span><br><span class="line"></span><br><span class="line">  x++;</span><br><span class="line">  y++;</span><br><span class="line">  cout &lt;&lt; x; // 12</span><br><span class="line">  cout &lt;&lt; y; // 12</span><br><span class="line"></span><br><span class="line">  int a;</span><br><span class="line">  a = x; // x is r-value and the data of x.</span><br><span class="line">  x = 25; // x is l-value and the address of x.</span><br><span class="line">  // Error: y can&#x27;t be referencing any other variable at all.</span><br><span class="line">  // &amp;y = a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>Reference Example. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int x = 10;</span><br><span class="line">int &amp;y = x;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; x &lt;&lt; endl;</span><br><span class="line">y++;</span><br><span class="line">x++;</span><br><span class="line">cout &lt;&lt; x &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; &amp;x &lt;&lt; &quot; &quot; &lt;&lt; &amp;y &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">10</span><br><span class="line">12</span><br><span class="line">0x7ffee33ae828 0x7ffee33ae828</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1>Section 10: String</h1>
+<h2 id="Introduction-3">Introduction</h2>
+<ol>
+<li>There are two ways to represent the String.
+<ul>
+<li>Using char Array</li>
+<li>class string</li>
+</ul>
+</li>
+<li>Declaring and Initializing String
+<ul>
+<li><code>char x = 'A';</code></li>
+<li><code>char S[10] = &quot;Hello&quot;;</code></li>
+<li><code>char S[] = &#123;'H', 'e', 'l', 'l', 'o', '\0'&#125;;</code></li>
+<li><code>char S[] = &#123;65, 66, 67, 68, '\n'&#125;;</code></li>
+<li><code>char * S = &quot;Hello&quot;;</code></li>
+</ul>
+</li>
+<li>If you put the letters after <code>\0</code>, those letters won’t show. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">char H[] = &#123;&#x27;H&#x27;, &#x27;e&#x27;, &#x27;l&#x27;, &#x27;l&#x27;, &#x27;o&#x27;, &#x27;\0&#x27;, &#x27;p&#x27;, &#x27;p&#x27;, &#x27;p&#x27;&#125;;</span><br><span class="line">cout &lt;&lt; H &lt;&lt; endl;</span><br><span class="line">char S[] = &#123;65, 66, 67, 68, 69, 0, 70, 71&#125;;</span><br><span class="line">cout &lt;&lt; S &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">Hello</span><br><span class="line">ABCDE</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Reading-and-Writing-String">Reading and Writing String</h2>
+<ol>
+<li>You can use <code>cin.get()</code> and <code>cin.getline()</code> to write a string.</li>
+<li>If you try to get two string using <code>cin.getline()</code>, remember to use <code>cin.ignore()</code> to avoid the second cin get extra content from the first cin. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">char s[100];</span><br><span class="line">char s2[100];</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; &quot;Enter your Name &quot;;</span><br><span class="line">cin.get(s, 100);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; &quot;Welcome &quot; &lt;&lt; s &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">cin.ignore();</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; &quot;Enter your Name Again &quot;;</span><br><span class="line">cin.get(s2, 100);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; &quot;Welcome &quot; &lt;&lt; s2 &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="String-Functions-Length-Concatenate-and-Copy">String Functions - Length, Concatenate and Copy</h2>
+<ol>
+<li><code>strlen(str1);</code> to get the length of string. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    char *s;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; &quot;Enter a String &quot;;</span><br><span class="line">    cin.getline(s, 100);</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; &quot;Length &quot; &lt;&lt; strlen(s) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">====OUTPUT====</span><br><span class="line">Enter a String Hello World</span><br><span class="line">Length 11</span><br></pre></td></tr></table></figure>
+</li>
+<li><code>strcat(destination, source);</code> concatenates two words. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">char S1[20] = &quot;Good&quot;;</span><br><span class="line">char S2[10] = &quot;Mourning&quot;;</span><br><span class="line"></span><br><span class="line">strcat(S1, S2);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; S1 &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">GoodMourning</span><br></pre></td></tr></table></figure>
+</li>
+<li><code>strncat(destination, source, length);</code> concatenates two words with certain length. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">char S1[20] = &quot;Good&quot;;</span><br><span class="line">char S2[10] = &quot;Mourning&quot;;</span><br><span class="line"></span><br><span class="line">strncat(S1, S2, 3);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; S1 &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">GoodMou</span><br></pre></td></tr></table></figure>
+</li>
+<li><code>strcpy(destination, source);</code> copies source string to destination string. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">char S1[20] = &quot;Good&quot;;</span><br><span class="line">char S2[10] = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">strcpy(S2, S1);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; S2 &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">Good</span><br></pre></td></tr></table></figure>
+</li>
+<li><code>strncpy(destination, source, length);</code> copies source string to destination string with certain length. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">char S1[20] = &quot;Good&quot;;</span><br><span class="line">char S2[10] = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">strncpy(S2, S1, 2);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; S2 &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">Go</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="String-Function-Substring-and-Compare">String Function - Substring and Compare</h2>
+<ol>
+<li><code>strstr(main, sub);</code> can substring with certain string, it returns the string from sub to the rest of main string. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">char S1[20] = &quot;Programming&quot;;</span><br><span class="line">char S2[10] = &quot;gram&quot;;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; strstr(S1, S2) &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">gramming</span><br></pre></td></tr></table></figure>
+</li>
+<li>If you use <code>strstr</code> in the sub string which is not in the main string, it returns null. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">char S1[20] = &quot;Programming&quot;;</span><br><span class="line">char S2[10] = &quot;k&quot;;</span><br><span class="line"></span><br><span class="line">if (strstr(S1, S2) != NULL)</span><br><span class="line">    cout &lt;&lt; strstr(S1, S2) &lt;&lt; endl;</span><br><span class="line">else</span><br><span class="line">    cout &lt;&lt; &quot;Not Found&quot; &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">Not Found</span><br></pre></td></tr></table></figure>
+</li>
+<li>The function of <code>strchr(main, char);</code> is as same as <code>strstr</code>, the only difference is the second parameter is char type.</li>
+<li><code>strrchr(main, char);</code> can return the string count from the right hand side. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">char S1[20] = &quot;Programming&quot;;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; strchr(S1, &#x27;g&#x27;) &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; strrchr(S1, &#x27;g&#x27;) &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">gramming</span><br><span class="line">g</span><br></pre></td></tr></table></figure>
+</li>
+<li><code>strcmp(str1, str2)</code> will return 0 when the two strings are the same. It will return positive number if str1 is greater than str2, and vice versa. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">char s1[20] = &quot;minor&quot;;</span><br><span class="line">char s2[20] = &quot;elder&quot;;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; strcmp(s1, s2) &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="String-Functions-Tokenizer-and-To-Integer">String Functions - Tokenizer and To Integer</h2>
+<ol>
+<li><code>strtol(str1, NULL, base)</code> means string to long. <code>strtof(str1, NULL)</code> means string to float. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">char s1[10] = &quot;235&quot;;</span><br><span class="line">char s2[10] = &quot;54.78&quot;;</span><br><span class="line"></span><br><span class="line">long int x = strtol(s1, NULL, 10);</span><br><span class="line">float y= strtof(s2, NULL);</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; x + 10 &lt;&lt; endl &lt;&lt; y - 5 &lt;&lt; endl;</span><br><span class="line">====OUTPUT====</span><br><span class="line">245</span><br><span class="line">49.78</span><br></pre></td></tr></table></figure>
+</li>
+<li><code>strtok(str1, &quot;=;&quot;)</code> tokenize a string base on the symbols. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">char s1[20] = &quot;x=10;y=20;z=35&quot;;</span><br><span class="line"></span><br><span class="line">char *token = strtok(s1, &quot;=;&quot;);</span><br><span class="line"></span><br><span class="line">while (token != NULL)</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; token &lt;&lt; endl;</span><br><span class="line">    token = strtok(NULL, &quot;=;&quot;);</span><br><span class="line">&#125;</span><br><span class="line">====OUTPUT====</span><br><span class="line">x</span><br><span class="line">10</span><br><span class="line">y</span><br><span class="line">20</span><br><span class="line">z</span><br><span class="line">35</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1>Disclaimer</h1>
+<blockquote>
+<p>I took this course from Udemy, which is <a target="_blank" rel="noopener" href="https://www.udemy.com/course/cpp-deep-dive">Learn C++ Programming -Beginner to Advance- Deep Dive in C++</a>. I only took some notes of this amazing course for my personal future uses and share my thoughts with my peers. If you like it, you should take the course from Udemy too.</p>
+</blockquote>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2021/10/10/C-Learning-Journey-Day4/" data-id="cl1d3ledv000edytl131l1rf5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "C++ Learning Journey Day4",
+        "image": "https://vincent.fishboneapps.com/images/learning/cplusplus/CPlusPlusDay04.jpg",
+        "keywords": "C++",
+        "genre": "Study Note",
+        "datePublished": "2021-10-10",
+        "dateCreated": "2021-10-10",
+        "dateModified": "2021-10-20",
+        "url": "https://vincent.fishboneapps.com/2021/10/10/C-Learning-Journey-Day4/",
+        "description": "
+
+Section 9: Pointers
+Introduction
+
+Two types of variables.
+
+data variable. For example, int x = 10;.
+address variable. For example, int *p; p = &amp;x;
+
+
+Example 1234567// x, value 10, address 200/20",
+        "wordCount": 1822
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2021/10/10/C-Learning-Journey-Day4/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2021/10/19/C-Learning-Journey-Day5/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            C++ Learning Journey Day5
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2021/10/03/C-Learning-Journey-Day3/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">C++ Learning Journey Day3</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Section 9: Pointers</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-2"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-pointers"><span class="toc-number">1.2.</span> <span class="toc-text">Why pointers?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Heap-Memory-Allocation"><span class="toc-number">1.3.</span> <span class="toc-text">Heap Memory Allocation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pointer-Arithmetic"><span class="toc-number">1.4.</span> <span class="toc-text">Pointer Arithmetic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problems-using-Pointers"><span class="toc-number">1.5.</span> <span class="toc-text">Problems using Pointers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">1.6.</span> <span class="toc-text">Reference</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">Section 10: String</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-3"><span class="toc-number">2.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reading-and-Writing-String"><span class="toc-number">2.2.</span> <span class="toc-text">Reading and Writing String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-Functions-Length-Concatenate-and-Copy"><span class="toc-number">2.3.</span> <span class="toc-text">String Functions - Length, Concatenate and Copy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-Function-Substring-and-Compare"><span class="toc-number">2.4.</span> <span class="toc-text">String Function - Substring and Compare</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-Functions-Tokenizer-and-To-Integer"><span class="toc-number">2.5.</span> <span class="toc-text">String Functions - Tokenizer and To Integer</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">Disclaimer</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

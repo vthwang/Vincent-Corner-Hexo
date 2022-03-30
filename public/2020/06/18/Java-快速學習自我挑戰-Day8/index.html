@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Java 快速學習自我挑戰 Day8 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Java" />
+    
+    <meta name="description" content="物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance Classes  真實世界的物件有兩種特徵，狀態(State)和行為(Behavior)，在物件導向程式裡面，同樣也有狀態和行為。Class 則是用來創建物件的模板，前面我們使用的都是原始資料型態(Primtive Data Type)，可以用的非常有限，而使用 Class 可以自定義資料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 快速學習自我挑戰 Day8">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2020/06/18/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day8/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance Classes  真實世界的物件有兩種特徵，狀態(State)和行為(Behavior)，在物件導向程式裡面，同樣也有狀態和行為。Class 則是用來創建物件的模板，前面我們使用的都是原始資料型態(Primtive Data Type)，可以用的非常有限，而使用 Class 可以自定義資料">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay08.jpg">
+<meta property="article:published_time" content="2020-06-18T17:35:23.000Z">
+<meta property="article:modified_time" content="2021-01-25T08:24:26.377Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/java/JavaDay08.jpg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Java-快速學習自我挑戰-Day8" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Java 快速學習自我挑戰 Day8
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/06/18/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day8/" class="article-date">
+         <time datetime="2020-06-18T17:35:23.000Z" itemprop="datePublished">2020-06-19</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">3.2k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">18 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/java/JavaDay08.jpg">
+<hr>
+<h3 id="物件導向程式設計-OOP-Classes-Constructors-和-Inheritance-2">物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance</h3>
+<h4 id="Classes">Classes</h4>
+<ol>
+<li>真實世界的物件有兩種特徵，狀態(State)和行為(Behavior)，在物件導向程式裡面，同樣也有狀態和行為。Class 則是用來創建物件的模板，前面我們使用的都是原始資料型態(Primtive Data Type)，可以用的非常有限，而使用 Class 可以自定義資料型態，雖然在真實意義上這麼說，並不是很準確，但是我們可以知道 Class 能夠有強力的用戶自定義資料型態。</li>
+<li>在 src 目錄底下點選右鍵，New &gt; Java Class 新增 Car。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Car &#123;</span><br><span class="line"></span><br><span class="line">    private int doors;</span><br><span class="line">    private int wheels;</span><br><span class="line">    private String model;</span><br><span class="line">    private String engine;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public void setModel(String model) &#123;</span><br><span class="line"></span><br><span class="line">        String validModel = model.toLowerCase();</span><br><span class="line"></span><br><span class="line">        if (validModel.equals(&quot;carrera&quot;) || validModel.equals(&quot;commodore&quot;)) &#123;</span><br><span class="line"></span><br><span class="line">            this.model = model;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            this.model = &quot;Unknown&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getModel() &#123;</span><br><span class="line"></span><br><span class="line">        return this.model;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>在 Main 引入 class 並使用。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Car porsche = new Car();</span><br><span class="line">        Car holden = new Car();</span><br><span class="line"></span><br><span class="line">        porsche.setModel(&quot;Carrera&quot;);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;Model is &quot; + porsche.getModel());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="加總計算機">加總計算機</h4>
+<ol>
+<li>挑戰<br>
+Write a class with the name SimpleCalculator. The class needs two fields (instance variables) with names firstNumber and secondNumber both of type double.</li>
+</ol>
+<p>Write the following methods (instance methods):</p>
+<ul>
+<li>Method named getFirstNumber without any parameters, it needs to return the value of firstNumber field.</li>
+<li>Method named getSecondNumber without any parameters, it needs to return the value of secondNumber field.</li>
+<li>Method named setFirstNumber with one parameter of type double, it needs to set the value of the firstNumber field.</li>
+<li>Method named setSecondNumber with one parameter of type double, it needs to set the value of the secondNumberfield.</li>
+<li>Method named getAdditionResult without any parameters, it needs to return the result of adding the field values of firstNumber and secondNumber.</li>
+<li>Method named getSubtractionResult without any parameters, it needs to return the result of subtracting the field values of secondNumber from the firstNumber.</li>
+<li>Method named getMultiplicationResult without any parameters, it needs to return the result of multiplying the field values of firstNumber and secondNumber.</li>
+<li>Method named getDivisionResult without any parameters it needs to return the result of dividing the field values of firstNumber by the secondNumber. In case the value of secondNumber is 0 then return 0.</li>
+</ul>
+<p>TEST EXAMPLE</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">TEST CODE:</span><br><span class="line"></span><br><span class="line">SimpleCalculator calculator = new SimpleCalculator();</span><br><span class="line">calculator.setFirstNumber(5.0);</span><br><span class="line">calculator.setSecondNumber(4);</span><br><span class="line">System.out.println(&quot;add= &quot; + calculator.getAdditionResult());</span><br><span class="line">System.out.println(&quot;subtract= &quot; + calculator.getSubtractionResult());</span><br><span class="line">calculator.setFirstNumber(5.25);</span><br><span class="line">calculator.setSecondNumber(0);</span><br><span class="line">System.out.println(&quot;multiply= &quot; + calculator.getMultiplicationResult());</span><br><span class="line">System.out.println(&quot;divide= &quot; + calculator.getDivisionResult());</span><br><span class="line"></span><br><span class="line">OUTPUT</span><br><span class="line"></span><br><span class="line">add= 9.0</span><br><span class="line">subtract= 1.0</span><br><span class="line">multiply= 0.0</span><br><span class="line">divide= 0.0</span><br></pre></td></tr></table></figure>
+<p>TIPS:</p>
+<ul>
+<li>add= 9.0 is printed because 5.0 + 4 is 9.0</li>
+<li>subtract= 1.0 is printed because 5.0 - 4 is 1.0</li>
+<li>multiply= 0.0 is printed because 5.25 * 0 is 0.0</li>
+<li>divide= 0.0 is printed because secondNumber is set to 0</li>
+</ul>
+<p>NOTE: All methods should be defined as public NOT public static.<br>
+NOTE: In total, you have to write 8 methods.<br>
+NOTE: Do not add the main method to the solution code.<br>
+2. 答案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">public class SimpleCalculator &#123;</span><br><span class="line">    private double firstNumber;</span><br><span class="line">    private double secondNumber;</span><br><span class="line"></span><br><span class="line">    public double getFirstNumber() &#123;</span><br><span class="line"></span><br><span class="line">        return this.firstNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getSecondNumber() &#123;</span><br><span class="line"></span><br><span class="line">        return this.secondNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setFirstNumber(double firstNumber) &#123;</span><br><span class="line"></span><br><span class="line">        this.firstNumber = firstNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setSecondNumber(double secondNumber) &#123;</span><br><span class="line"></span><br><span class="line">        this.secondNumber = secondNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getAdditionResult() &#123;</span><br><span class="line"></span><br><span class="line">        return this.firstNumber + this.secondNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getSubtractionResult() &#123;</span><br><span class="line"></span><br><span class="line">        return this.firstNumber - this.secondNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getMultiplicationResult() &#123;</span><br><span class="line"></span><br><span class="line">        return this.firstNumber * this.secondNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getDivisionResult() &#123;</span><br><span class="line"></span><br><span class="line">        if (this.secondNumber == 0) &#123;</span><br><span class="line"></span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return this.firstNumber / this.secondNumber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Person">Person</h4>
+<ol>
+<li>挑戰<br>
+Write a class with the name Person. The class needs three fields (instance variables) with the names firstName, lastName of type String and age of type int.</li>
+</ol>
+<p>Write the following methods (instance methods):</p>
+<ul>
+<li>Method named getFirstName without any parameters, it needs to return the value of the firstName field.</li>
+<li>Method named getLastName without any parameters, it needs to return the value of the lastName field.</li>
+<li>Method named getAge without any parameters, it needs to return the value of the age field.</li>
+<li>Method named setFirstName with one parameter of type String, it needs to set the value of the firstName field.</li>
+<li>Method named setLastName with one parameter of type String, it needs to set the value of the lastName field.</li>
+<li>Method named setAge with one parameter of type int, it needs to set the value of the age field. If the parameter is less than 0 or greater than 100, it needs to set the age field value to 0.</li>
+<li>Method named isTeen without any parameters, it needs to return true if the value of the age field is greater than 12 and less than 20, otherwise, return false.</li>
+<li>Method named getFullName without any parameters, it needs to return the full name of the person.
+<ul>
+<li>In case both firstName and lastName fields are empty, Strings return an empty String.</li>
+<li>In case lastName is an empty String, return firstName.</li>
+<li>In case firstName is an empty String, return lastName.</li>
+</ul>
+</li>
+</ul>
+<p>To check if s String is empty, use the method isEmpty from the String class. For example, firstName.isEmpty() returns true if the String is empty or in other words, when the String does not contain any characters.</p>
+<p>TEST EXAMPLE</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">TEST CODE:</span><br><span class="line"></span><br><span class="line">Person person = new Person();</span><br><span class="line">person.setFirstName(&quot;&quot;);   // firstName is set to empty string</span><br><span class="line">person.setLastName(&quot;&quot;);    // lastName is set to empty string</span><br><span class="line">person.setAge(10);</span><br><span class="line">System.out.println(&quot;fullName= &quot; + person.getFullName());</span><br><span class="line">System.out.println(&quot;teen= &quot; + person.isTeen());</span><br><span class="line">person.setFirstName(&quot;John&quot;);    // firstName is set to John</span><br><span class="line">person.setAge(18);</span><br><span class="line">System.out.println(&quot;fullName= &quot; + person.getFullName());</span><br><span class="line">System.out.println(&quot;teen= &quot; + person.isTeen());</span><br><span class="line">person.setLastName(&quot;Smith&quot;);    // lastName is set to Smith</span><br><span class="line">System.out.println(&quot;fullName= &quot; + person.getFullName());</span><br><span class="line"></span><br><span class="line">OUTPUT</span><br><span class="line"></span><br><span class="line">fullName=</span><br><span class="line">teen= false</span><br><span class="line">fullName= John</span><br><span class="line">teen= true</span><br><span class="line">fullName= John Smith</span><br></pre></td></tr></table></figure>
+<p>NOTE: All methods should be defined as public NOT public static.<br>
+NOTE: In total, you have to write 8 methods.<br>
+NOTE: Do not add the main method to the solution code.<br>
+2. 答案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line">    private String firstName;</span><br><span class="line">    private String lastName;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getFirstName() &#123;</span><br><span class="line"></span><br><span class="line">        return this.firstName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getLastName() &#123;</span><br><span class="line"></span><br><span class="line">        return this.lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line"></span><br><span class="line">        return this.age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setFirstName(String firstName) &#123;</span><br><span class="line"></span><br><span class="line">        this.firstName = firstName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setLastName(String lastName) &#123;</span><br><span class="line"></span><br><span class="line">        this.lastName = lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line"></span><br><span class="line">        if (age &lt; 0 || age &gt; 100) &#123;</span><br><span class="line"></span><br><span class="line">            this.age = 0;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            this.age = age;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean isTeen() &#123;</span><br><span class="line"></span><br><span class="line">        return this.age &gt; 12 &amp;&amp; this.age &lt; 20;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getFullName() &#123;</span><br><span class="line"></span><br><span class="line">        if (this.firstName.isEmpty() &amp;&amp; this.lastName.isEmpty()) &#123;</span><br><span class="line"></span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125; else if (this.lastName.isEmpty()) &#123;</span><br><span class="line"></span><br><span class="line">            return this.firstName;</span><br><span class="line">        &#125; else if (this.firstName.isEmpty()) &#123;</span><br><span class="line"></span><br><span class="line">            return this.lastName;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            return this.firstName + &quot; &quot; + this.lastName;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Constructors-2">Constructors</h4>
+<ol>
+<li>挑戰<br>
+Create a new class for a bank account.<br>
+Create fields for the account number, balance, customer name, email and phone number.</li>
+</ol>
+<p>Create getters and setters for each field<br>
+Create two additional methods<br>
+1. To allow the customer to deposit funds (this should increment the balance field).<br>
+2. To allow the customer to withdraw funds. This should deduct from the balance field, but not allow the withdrawal to complete if their are insufficient funds.<br>
+You will want to create various code in the Main class (the one created bu IntelliJ) to confirm your code is working.<br>
+Add some System.out.println’s in the two methods above as well.<br>
+2. 答案</p>
+<ul>
+<li>新增一個 Account 的 Java Class，然後新增變數</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Account &#123;</span><br><span class="line"></span><br><span class="line">    private String number;</span><br><span class="line">    private double balance;</span><br><span class="line">    private String customerName;</span><br><span class="line">    private String customerEmailAddress;</span><br><span class="line">    private String customerPhoneNumber;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然後使用 IntelliJ 自動生成 getter 和 setter，點選選單 Code &gt; Generate &gt; 選擇所有變數，就會自動產生 getter 和 setter，最後再將 deposit 和 withdrawal 的功能加上去就完成了</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public class Account &#123;</span><br><span class="line"></span><br><span class="line">    private String number;</span><br><span class="line">    private double balance;</span><br><span class="line">    private String customerName;</span><br><span class="line">    private String customerEmailAddress;</span><br><span class="line">    private String customerPhoneNumber;</span><br><span class="line"></span><br><span class="line">    public void deposit(double depositAmount) &#123;</span><br><span class="line"></span><br><span class="line">        this.balance += depositAmount;</span><br><span class="line">        System.out.println(&quot;Deposit of &quot; + depositAmount + &quot; made. New balance is &quot; + this.balance);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void withdrawal(double withdrawalAmount) &#123;</span><br><span class="line"></span><br><span class="line">        if (this.balance - withdrawalAmount &lt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            System.out.println(&quot;Only &quot; + this.balance + &quot; available. Withdrawal not processed.&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            this.balance -= withdrawalAmount;</span><br><span class="line">            System.out.println(&quot;Withdrawal of &quot; + withdrawalAmount + &quot; processed. Remaining = &quot; + this.balance);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getNumber() &#123;</span><br><span class="line">        return number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setNumber(String number) &#123;</span><br><span class="line">        this.number = number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getBalance() &#123;</span><br><span class="line">        return balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setBalance(double balance) &#123;</span><br><span class="line">        this.balance = balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getCustomerName() &#123;</span><br><span class="line">        return customerName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCustomerName(String customerName) &#123;</span><br><span class="line">        this.customerName = customerName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getCustomerEmailAddress() &#123;</span><br><span class="line">        return customerEmailAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCustomerEmailAddress(String customerEmailAddress) &#123;</span><br><span class="line">        this.customerEmailAddress = customerEmailAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getCustomerPhoneNumber() &#123;</span><br><span class="line">        return customerPhoneNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCustomerPhoneNumber(String customerPhoneNumber) &#123;</span><br><span class="line">        this.customerPhoneNumber = customerPhoneNumber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 Main Java Class 進行測試</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Account bobsAccount = new Account();</span><br><span class="line">        bobsAccount.withdrawal(100.0);</span><br><span class="line"></span><br><span class="line">        bobsAccount.deposit(50.0);</span><br><span class="line">        bobsAccount.withdrawal(100.0);</span><br><span class="line">        bobsAccount.deposit(51.0);</span><br><span class="line">        bobsAccount.withdrawal(100.0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>在上面，我們並沒有定義預設值，我們可以在 Class 裡面使用 Constructor 定義預設值。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public Account(String number, double balance, String customerName, String customerEmailAddress, String customerPhoneNumber) &#123;</span><br><span class="line"></span><br><span class="line">    System.out.println(&quot;Account with constructor parameters called.&quot;);</span><br><span class="line">    this.number = number;</span><br><span class="line">    this.balance = balance;</span><br><span class="line">    this.customerName = customerName;</span><br><span class="line">    this.customerEmailAddress = customerEmailAddress;</span><br><span class="line">    this.customerPhoneNumber = customerPhoneNumber;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>定義完成之後，我們可以在 Main 的地方，在創建物件的時候就呼叫 Constructor。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Account bobsAccount = new Account(&quot;12345&quot;, 0.00, &quot;Bob Brown&quot;, &quot;myemail@bob.com&quot;, &quot;(087) 123-4567&quot;);</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>Constructor 可以 overloaded，可以在空的 Constructor 裡面呼叫別的 Constructor。然後這個 this 的呼叫動作一定要在第一行，否則無法執行。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public Account() &#123;</span><br><span class="line"></span><br><span class="line">      // 一定要在第一行</span><br><span class="line">      this(&quot;56789&quot;, 2.50, &quot;Default name&quot;, &quot;Default address&quot;, &quot;Default phone&quot;);</span><br><span class="line">      System.out.println(&quot;Empty constructor called&quot;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>千萬不要在 Constructor 裡面呼叫 setter，因為這樣可以確保值是被初始化的。</li>
+<li>假設我們需要設定一個 Constructor，有兩個預設值，其他的要根據傳入的值去設定，我們會選擇重複使用主要的 Constructor。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Account(String customerName, String customerEmailAddress, String customerPhoneNumber) &#123;</span><br><span class="line"></span><br><span class="line">    this(&quot;9999&quot;, 100.55, customerName, customerEmailAddress, customerPhoneNumber);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>挑戰<br>
+Create a new class VipCustomer.<br>
+It should have 3 fields name, credit limit, and email address.<br>
+Create 3 constructors.<br>
+1st constructor empty should call the constructor with 3 parameters with default values.<br>
+2nd constructor should pass on the 2 values it receives and add a default value for the 3rd.<br>
+3rd constructor should save all fields.<br>
+Create getters only for this using code generation of Intellij as setters won’t be needed test and confirm it works.</li>
+<li>答案</li>
+</ol>
+<ul>
+<li>新增一個 VipCustomer 的 Class</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class VipCustomer &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private double creditLimit;</span><br><span class="line">    private String emailAddress;</span><br><span class="line"></span><br><span class="line">    public VipCustomer() &#123;</span><br><span class="line"></span><br><span class="line">        this(&quot;Default Name&quot;, 300.0, &quot;default@email.com&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public VipCustomer(String name, double creditLimit) &#123;</span><br><span class="line"></span><br><span class="line">        this(name, creditLimit, &quot;unknown@email.com&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public VipCustomer(String name, double creditLimit, String emailAddress) &#123;</span><br><span class="line"></span><br><span class="line">        this.name = name;</span><br><span class="line">        this.creditLimit = creditLimit;</span><br><span class="line">        this.emailAddress = emailAddress;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line"></span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getCreditLimit() &#123;</span><br><span class="line"></span><br><span class="line">        return creditLimit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getEmailAddress() &#123;</span><br><span class="line"></span><br><span class="line">        return emailAddress;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 Main 確定是否確實執行 Constructor</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">VipCustomer person1 = new VipCustomer();</span><br><span class="line">System.out.println(person1.getName());</span><br><span class="line"></span><br><span class="line">VipCustomer person2 = new VipCustomer(&quot;Bob&quot;, 2500.0);</span><br><span class="line">System.out.println(person2.getName());</span><br><span class="line"></span><br><span class="line">VipCustomer person3 = new VipCustomer(&quot;Tim&quot;, 100.0, &quot;tim@email.com&quot;);</span><br><span class="line">System.out.println(person3.getName());</span><br><span class="line">System.out.println(person3.getEmailAddress());</span><br><span class="line"></span><br><span class="line">===== OUTPUT =====</span><br><span class="line">Default Name</span><br><span class="line">Bob</span><br><span class="line">Tim</span><br><span class="line">tim@email.com</span><br></pre></td></tr></table></figure>
+<h4 id="挑戰-3">挑戰</h4>
+<h5 id="牆壁面積">牆壁面積</h5>
+<ol>
+<li>題目<br>
+Write a class with the name Wall. The class needs two fields (instance variables) with name width and height of type double.</li>
+</ol>
+<p>The class needs to have two constructors. The first constructor does not have any parameters (no-arg constructor). The second constructor has parameters width and height of type double and it needs to initialize the fields. In case the width is less than 0 it needs to set the width field value to 0, in case the height parameter is less than 0 it needs to set the height field value to 0.</p>
+<p>Write the following methods (instance methods):</p>
+<ul>
+<li>Method named getWidth without any parameters, it needs to return the value of width field.</li>
+<li>Method named getHeight without any parameters, it needs to return the value of height field.</li>
+<li>Method named setWidth with one parameter of type double, it needs to set the value of the width field. If the parameter is less than 0 it needs to set the width field value to 0.</li>
+<li>Method named setHeight with one parameter of type double, it needs to set the value of the height field. If the parameter is less than 0 it needs to set the height field value to 0.</li>
+<li>Method named getArea without any parameters, it needs to return the area of the wall.</li>
+</ul>
+<p>TEST EXAMPLE</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">→ TEST CODE:</span><br><span class="line"></span><br><span class="line">1 Wall wall = new Wall(5,4);</span><br><span class="line">2 System.out.println(&quot;area= &quot; + wall.getArea());</span><br><span class="line">3 </span><br><span class="line">4 wall.setHeight(-1.5);</span><br><span class="line">5 System.out.println(&quot;width= &quot; + wall.getWidth());</span><br><span class="line">6 System.out.println(&quot;height= &quot; + wall.getHeight());</span><br><span class="line">7 System.out.println(&quot;area= &quot; + wall.getArea());</span><br><span class="line"></span><br><span class="line">→ OUTPUT:</span><br><span class="line"></span><br><span class="line">area= 20.0</span><br><span class="line">width= 5.0</span><br><span class="line">height= 0.0</span><br><span class="line">area= 0.0</span><br></pre></td></tr></table></figure>
+<p>NOTE: All methods should be defined as public NOT public static.<br>
+NOTE: In total, you have to write 5 methods and 2 constructors.<br>
+NOTE: Do not add a main method to the solution code.<br>
+2. 答案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public class Wall &#123;</span><br><span class="line">    </span><br><span class="line">    private double width;</span><br><span class="line">    private double height;</span><br><span class="line"></span><br><span class="line">    public Wall() &#123;</span><br><span class="line"></span><br><span class="line">        this(0.0, 0.0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Wall(double width, double height) &#123;</span><br><span class="line"></span><br><span class="line">        if (width &lt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            this.width = 0;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            this.width = width;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (height &lt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            this.height = 0;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            this.height = height;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getWidth() &#123;</span><br><span class="line"></span><br><span class="line">        return width;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getHeight() &#123;</span><br><span class="line"></span><br><span class="line">        return height;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setWidth(double width) &#123;</span><br><span class="line"></span><br><span class="line">        if (width &lt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            this.width = 0;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            this.width = width;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setHeight(double height) &#123;</span><br><span class="line"></span><br><span class="line">        if (height &lt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            this.height = 0;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            this.height = height;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getArea() &#123;</span><br><span class="line"></span><br><span class="line">        return this.width * this.height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="點">點</h5>
+<ol>
+<li>題目<br>
+You have to represent a point in 2D space. Write a class with the name Point. The class needs two fields (instance variables) with name x and y of type int.</li>
+</ol>
+<p>The class needs to have two constructors. The first constructor does not have any parameters (no-arg constructor). The second constructor has parameters x and y of type int and it needs to initialize the fields.</p>
+<p>Write the following methods (instance methods):</p>
+<ul>
+<li>Method named getX without any parameters, it needs to return the value of x field.</li>
+<li>Method named getY without any parameters, it needs to return the value of y field.</li>
+<li>Method named setX with one parameter of type int, it needs to set the value of the x field.</li>
+<li>Method named setY with one parameter of type int, it needs to set the value of the y field.</li>
+<li>Method named distance without any parameters, it needs to return the distance between this Point and Point 0,0 as double.</li>
+<li>Method named distance with two parameters x, y both of type int, it needs to return the distance between this Point and Point x,y as double.</li>
+<li>Method named distance with parameter another of type Point, it needs to return the distance between this Point and another Point as double.</li>
+</ul>
+<p>How to find the distance between two points?To find a distance between points A(xA,yA) and B(xB,yB), we use the formula:<br>
+d(A,B)=√ (xB − xA) * (xB - xA) + (yB − yA) * (yB - yA)<br>
+Where √ represents square root.</p>
+<p>TEST EXAMPLE</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">→ TEST CODE:</span><br><span class="line"></span><br><span class="line">Point first = new Point(6, 5);</span><br><span class="line">Point second = new Point(3, 1);</span><br><span class="line">System.out.println(&quot;distance(0,0)= &quot; + first.distance());</span><br><span class="line">System.out.println(&quot;distance(second)= &quot; + first.distance(second));</span><br><span class="line">System.out.println(&quot;distance(2,2)= &quot; + first.distance(2, 2));</span><br><span class="line">Point point = new Point();</span><br><span class="line">System.out.println(&quot;distance()= &quot; + point.distance());</span><br><span class="line"></span><br><span class="line">OUTPUT</span><br><span class="line"></span><br><span class="line">distance(0,0)= 7.810249675906654</span><br><span class="line">distance(second)= 5.0</span><br><span class="line">distance(2,2)= 5.0</span><br><span class="line">distance()= 0.0</span><br></pre></td></tr></table></figure>
+<p>NOTE: Use Math.sqrt to calculate the square root √.<br>
+NOTE: Try to avoid duplicated code.<br>
+NOTE: All methods should be defined as public NOT public static.<br>
+NOTE: In total, you have to write 7 methods.<br>
+NOTE: Do not add a main method to the solution code.<br>
+2. 答案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class Point &#123;</span><br><span class="line">    private int x;</span><br><span class="line">    private int y;</span><br><span class="line"></span><br><span class="line">    public Point() &#123;</span><br><span class="line"></span><br><span class="line">        this(0, 0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Point(int x, int y) &#123;</span><br><span class="line"></span><br><span class="line">        this.x = x;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getX() &#123;</span><br><span class="line"></span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getY() &#123;</span><br><span class="line"></span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(int x) &#123;</span><br><span class="line"></span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(int y) &#123;</span><br><span class="line"></span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double distance() &#123;</span><br><span class="line"></span><br><span class="line">        return distance(0, 0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double distance(int xB, int yB) &#123;</span><br><span class="line"></span><br><span class="line">        return Math.sqrt((double) ((xB - this.x) * (xB - this.x) + (yB - this.y) * (yB - this.y)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double distance(Point z) &#123;</span><br><span class="line"></span><br><span class="line">        return distance(z.x, z.y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2020/06/18/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day8/" data-id="cl1d3lefb004vdytlffit0lrj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Java 快速學習自我挑戰 Day8",
+        "image": "https://vincent.fishboneapps.com/images/learning/java/JavaDay08.jpg",
+        "keywords": "Java",
+        "genre": "Study Note",
+        "datePublished": "2020-06-19",
+        "dateCreated": "2020-06-19",
+        "dateModified": "2021-01-25",
+        "url": "https://vincent.fishboneapps.com/2020/06/18/Java-快速學習自我挑戰-Day8/",
+        "description": "
+
+物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance
+Classes
+
+真實世界的物件有兩種特徵，狀態(State)和行為(Behavior)，在物件導向程式裡面，同樣也有狀態和行為。Class 則是用來創建物件的模板，前面我們使用的都是原始資料型態(Primtive Data Type)，可以用的非常有限，而使用 Class 可以自定義資料",
+        "wordCount": 4685
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2020/06/18/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day8/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/06/21/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day9/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Java 快速學習自我挑戰 Day9
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/05/27/Java-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day7/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Java 快速學習自我挑戰 Day7</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88-OOP-Classes-Constructors-%E5%92%8C-Inheritance-2"><span class="toc-number">1.</span> <span class="toc-text">物件導向程式設計 (OOP) - Classes, Constructors 和 Inheritance</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Classes"><span class="toc-number">1.1.</span> <span class="toc-text">Classes</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E7%B8%BD%E8%A8%88%E7%AE%97%E6%A9%9F"><span class="toc-number">1.2.</span> <span class="toc-text">加總計算機</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Person"><span class="toc-number">1.3.</span> <span class="toc-text">Person</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Constructors-2"><span class="toc-number">1.4.</span> <span class="toc-text">Constructors</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%91%E6%88%B0-3"><span class="toc-number">1.5.</span> <span class="toc-text">挑戰</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%86%E5%A3%81%E9%9D%A2%E7%A9%8D"><span class="toc-number">1.5.1.</span> <span class="toc-text">牆壁面積</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%BB%9E"><span class="toc-number">1.5.2.</span> <span class="toc-text">點</span></a></li></ol></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

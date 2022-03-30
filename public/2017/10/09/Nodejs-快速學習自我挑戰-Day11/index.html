@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Nodejs 快速學習自我挑戰 Day11 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Nodejs" />
+    
+    <meta name="description" content="使用 Socket.io 的即時 Web Apps Broadcasting Events  刪除 server&#x2F;server.js 和 public&#x2F;js&#x2F;index.js 的 socket.emit 在 server&#x2F;server.js 新增 io.emit  12345678socket.on(&amp;#x27;createMessage&amp;#x27;, (message) &#x3D;&gt; &amp;#12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs 快速學習自我挑戰 Day11">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2017/10/09/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day11/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="使用 Socket.io 的即時 Web Apps Broadcasting Events  刪除 server&#x2F;server.js 和 public&#x2F;js&#x2F;index.js 的 socket.emit 在 server&#x2F;server.js 新增 io.emit  12345678socket.on(&amp;#x27;createMessage&amp;#x27;, (message) &#x3D;&gt; &amp;#12">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/nodejs/nodejsday11.jpeg">
+<meta property="article:published_time" content="2017-10-09T23:12:56.000Z">
+<meta property="article:modified_time" content="2020-06-22T17:15:24.880Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Nodejs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/nodejs/nodejsday11.jpeg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Nodejs-快速學習自我挑戰-Day11" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Nodejs 快速學習自我挑戰 Day11
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2017/10/09/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day11/" class="article-date">
+         <time datetime="2017-10-09T23:12:56.000Z" itemprop="datePublished">2017-10-10</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Nodejs/" rel="tag">Nodejs</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">2.2k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">13 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/nodejs/nodejsday11.jpeg">
+<hr>
+<h3 id="使用-Socket-io-的即時-Web-Apps-2">使用 <a target="_blank" rel="noopener" href="http://Socket.io">Socket.io</a> 的即時 Web Apps</h3>
+<h4 id="Broadcasting-Events">Broadcasting Events</h4>
+<ol>
+<li>刪除 server/server.js 和 public/js/index.js 的 socket.emit</li>
+<li>在 server/server.js 新增 io.emit</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">socket.on(&#x27;createMessage&#x27;, (message) =&gt; &#123;</span><br><span class="line">    console.log(&#x27;createMessage&#x27;, message);</span><br><span class="line">    io.emit(&#x27;newMessage&#x27;, &#123;</span><br><span class="line">        from: message.from,</span><br><span class="line">        text: message.text,</span><br><span class="line">        CreatedAt: new Date().getTime()</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><code>git push heroku master</code></li>
+<li>在 server/server.js 新增兩種 emit，如果 connect 就傳送歡迎，如果有新用戶進來，就 broadcast 新用戶加入</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">socket.emit(&#x27;newMessage&#x27;, &#123;</span><br><span class="line">    from: &#x27;Admin&#x27;,</span><br><span class="line">    text: &#x27;Welcome to the chat app&#x27;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">socket.broadcast.emit(&#x27;newMessage&#x27;, &#123;</span><br><span class="line">    from: &#x27;Admin&#x27;,</span><br><span class="line">    text: &#x27;New user joined&#x27;,</span><br><span class="line">    createdAt: new Date().getTime()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="訊息產生器和測試">訊息產生器和測試</h4>
+<ol>
+<li>新增 server/utils/message.js</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var generateMessage = (from, text) =&gt; &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        from,</span><br><span class="line">        text,</span><br><span class="line">        createdAt: new Date().getTime()</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;generateMessage&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>npm install expect mocha --save-dev</code></li>
+<li>修改 package.json</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;test&quot;: &quot;mocha server/**/*.test.js&quot;,</span><br><span class="line">&quot;test-watch&quot;: &quot;nodemon --exec &#x27;npm test&#x27;&quot;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>新增 server/utils/message.test.js</li>
+<li><code>npm test</code></li>
+<li>修改 server/utils/message.test.js</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var expect = require(&#x27;expect&#x27;);</span><br><span class="line"></span><br><span class="line">var &#123;generateMessage&#125; = require(&#x27;./message&#x27;);</span><br><span class="line"></span><br><span class="line">describe(&#x27;generateMessage&#x27;, () =&gt; &#123;</span><br><span class="line">    it(&#x27;should generate correct message object&#x27;, () =&gt; &#123;</span><br><span class="line">        var from = &#x27;Jen&#x27;;</span><br><span class="line">        var text = &#x27;Some message&#x27;;</span><br><span class="line">        var message = generateMessage(from, text);</span><br><span class="line"></span><br><span class="line">        expect(typeof message.createdAt).toBe(&#x27;number&#x27;);</span><br><span class="line">        expect(message).toMatchObject(&#123;from, text&#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>在 server/server.js 引入 <code>const &#123;generateMessage&#125; = require('./utils/message');</code></li>
+<li>將 server/server.js 的 object 換成 function</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">socket.emit(&#x27;newMessage&#x27;, generateMessage(&#x27;Admin&#x27;, &#x27;Welcome to the chat app&#x27;));</span><br><span class="line"></span><br><span class="line">socket.broadcast.emit(&#x27;newMessage&#x27;, generateMessage(&#x27;Admin&#x27;, &#x27;New user joined&#x27;));</span><br><span class="line"></span><br><span class="line">io.emit(&#x27;newMessage&#x27;, generateMessage(message.from, message.text));</span><br></pre></td></tr></table></figure>
+<h4 id="Event-Acknowledgements">Event Acknowledgements</h4>
+<ol>
+<li>在 public/js/index.js 新增 emit</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">socket.emit(&#x27;createMessage&#x27;, &#123;</span><br><span class="line">    from: &#x27;Frank&#x27;,</span><br><span class="line">    test: &#x27;Hi&#x27;</span><br><span class="line">&#125;, function (data) &#123;</span><br><span class="line">    console.log(&#x27;Got it&#x27;, data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 server/server.js 新增 callback function</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">socket.on(&#x27;createMessage&#x27;, (message, callback) =&gt; &#123;</span><br><span class="line">    console.log(&#x27;createMessage&#x27;, message);</span><br><span class="line">    io.emit(&#x27;newMessage&#x27;, generateMessage(message.from, message.text));</span><br><span class="line">    callback(&#x27;This is from the server&#x27;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="訊息表單和-jQuery">訊息表單和 jQuery</h4>
+<ol>
+<li><a target="_blank" rel="noopener" href="http://jquery.com/download/">下載最新版的 jQuery</a></li>
+<li>放到 public/js/libs/jquery.js</li>
+<li>在 public/index.html 引入 <code>&lt;script src=&quot;/js/libs/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;</code></li>
+<li>在 public/index.html 新增 form</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form id=&quot;message-form&quot;&gt;</span><br><span class="line">    &lt;input name=&quot;message&quot; type=&quot;text&quot; placeholder=&quot;Message&quot; /&gt;</span><br><span class="line">    &lt;button&gt;Send&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 public/js/index.js 新增 jQuery 來取得 form 傳出來的訊息</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">jQuery(&#x27;#message-form&#x27;).on(&#x27;submit&#x27;, function (e) &#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line"></span><br><span class="line">    socket.emit(&#x27;createMessage&#x27;, &#123;</span><br><span class="line">        from: &#x27;User&#x27;,</span><br><span class="line">        text: jQuery(&#x27;[name=message]&#x27;).val()</span><br><span class="line">    &#125;, function () &#123;</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 public/index.html 新增 <code>&lt;ol id=&quot;messages&quot;&gt;&lt;/ol&gt;</code> 讓傳出得的訊息 console 在頁面上</li>
+<li>在 public/js/index.js 將取得的文字用 jQuery 創建元素並顯示在前端</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">socket.on(&#x27;newMessage&#x27;, function (message) &#123;</span><br><span class="line">    console.log(&#x27;newMessage&#x27;, message);</span><br><span class="line">    var li = jQuery(&#x27;&lt;li&gt;&lt;/li&gt;&#x27;);</span><br><span class="line">    li.text(`$&#123;message.from&#125;: $&#123;message.text&#125;`);</span><br><span class="line"></span><br><span class="line">    jQuery(&#x27;#messages&#x27;).append(li);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li><code>git push heroku master</code></li>
+</ol>
+<h4 id="Geolocation">Geolocation</h4>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation">Geolocation 官方文件</a></li>
+<li>在 public/index.html 新增 button<br>
+<code>&lt;button id=&quot;send-location&quot;&gt;Send Location&lt;/button&gt;</code></li>
+<li>在 public/js/index.js 新增 click 事件，當點擊時傳送出 location 的資訊</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var locationButton = jQuery(&#x27;#send-location&#x27;);</span><br><span class="line">locationButton.on(&#x27;click&#x27;, function () &#123;</span><br><span class="line">    if (!navigator.geolocation) &#123;</span><br><span class="line">        return alert(&#x27;Geolocation not supported by your browser&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    navigator.geolocation.getCurrentPosition(function (position) &#123;</span><br><span class="line">        socket.emit(&#x27;createLocationMessage&#x27;, &#123;</span><br><span class="line">            latitude: position.coords.latitude,</span><br><span class="line">            longitude: position.coords.longitude</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;, function () &#123;</span><br><span class="line">        alert(&#x27;Unable to fetch location&#x27;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 server/server.js 新增 newMessage 把訊息傳到前端頁面</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socket.on(&#x27;createLocationMessage&#x27;, (coords) =&gt; &#123;</span><br><span class="line">    io.emit(&#x27;newMessage&#x27;, generateMessage(&#x27;Admin&#x27;, `$&#123;coords.latitude&#125;, $&#123;coords.longitude&#125;`));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 server/server.js 新增新的 message，讓 locaiton 可以超連結</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socket.on(&#x27;createLocationMessage&#x27;, (coords) =&gt; &#123;</span><br><span class="line">    io.emit(&#x27;newLocationMessage&#x27;, generateLocationMessage(&#x27;Admin&#x27;, coords.latitude, coords.longitude));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>在 server/utils/message.js 新增 generateLocationMessage 並 export</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var generateLocationMessage = (from, latitude, longitude) =&gt; &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        from,</span><br><span class="line">        url: `https://www.google.com/maps?q=$&#123;latitude&#125;,$&#123;longitude&#125;`,</span><br><span class="line">        createdAt: new Date().getTime()</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;generateMessage, generateLocationMessage&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>在 public/js/index.js 將取得的 location 傳送到前端頁面</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">socket.on(&#x27;newLocationMessage&#x27;, function (message) &#123;</span><br><span class="line">    var li = jQuery(&#x27;&lt;li&gt;&lt;/li&gt;&#x27;);</span><br><span class="line">    var a = jQuery(&#x27;&lt;a target=&quot;_blank&quot;&gt;My current location&lt;/a&gt;&#x27;);</span><br><span class="line"></span><br><span class="line">    li.text(`$&#123;message.from&#125;: `);</span><br><span class="line">    a.attr(&#x27;href&#x27;, message.url);</span><br><span class="line">    li.append(a);</span><br><span class="line">    jQuery(&#x27;#messages&#x27;).append(li);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>在 server/utils/message.test.js 測試 generateLocationMessage 可以運作</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">describe(&#x27;generateLocationMessage&#x27;, () =&gt; &#123;</span><br><span class="line">    it(&#x27;should generate correct location object&#x27;, () =&gt; &#123;</span><br><span class="line">        var from = &#x27;Deb&#x27;;</span><br><span class="line">        var latitude = 15;</span><br><span class="line">        var longitude = 19;</span><br><span class="line">        var url = &#x27;https://www.google.com/maps?q=15,19&#x27;;</span><br><span class="line">        var message = generateLocationMessage(from, latitude, longitude);</span><br><span class="line"></span><br><span class="line">        expect(typeof message.createdAt).toBe(&#x27;number&#x27;);</span><br><span class="line">        expect(message).toMatchObject(&#123;from, url&#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li><code>git push heroku master</code></li>
+</ol>
+<h4 id="裝飾聊天頁面">裝飾聊天頁面</h4>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/andrewjmead/4783dec59ba2d1e5bcf3e1c301c5858d">樣式</a></li>
+<li>新增 public/css/styles.css</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">button,button:hover&#123;border:none;color:#fff;padding:10px&#125;.chat__messages,.chat__sidebar ul&#123;list-style-type:none&#125;*&#123;box-sizing:border-box;margin:0;padding:0;font-family:HelveticaNeue-Light,&quot;Helvetica Neue Light&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Lucida Grande&quot;,sans-serif;font-weight:300;font-size:.95rem&#125;li,ul&#123;list-style-position:inside&#125;h3&#123;font-weight:600;text-align:center;font-size:1.5rem&#125;button&#123;background:#265f82;cursor:pointer;transition:background .3s ease&#125;button:hover&#123;background:#1F4C69&#125;button:disabled&#123;cursor:default;background:#698ea5&#125;.centered-form&#123;display:flex;align-items:center;height:100vh;width:100vw;justify-content:center;background:-moz-linear-gradient(125deg,rgba(39,107,130,1) 0,rgba(49,84,129,1) 100%);background:-webkit-gradient(linear,left top,right bottom,color-stop(0,rgba(49,84,129,1)),color-stop(100%,rgba(39,107,130,1)));background:-webkit-linear-gradient(125deg,rgba(39,107,130,1) 0,rgba(49,84,129,1) 100%);background:-o-linear-gradient(125deg,rgba(39,107,130,1) 0,rgba(49,84,129,1) 100%);background:-ms-linear-gradient(125deg,rgba(39,107,130,1) 0,rgba(49,84,129,1) 100%);background:linear-gradient(325deg,rgba(39,107,130,1) 0,rgba(49,84,129,1) 100%)&#125;.centered-form__form&#123;background:rgba(250,250,250,.9);border:1px solid #e1e1e1;border-radius:5px;padding:0 20px;margin:20px;width:230px&#125;.form-field&#123;margin:20px 0&#125;.form-field&gt;*&#123;width:100%&#125;.form-field label&#123;display:block;margin-bottom:7px&#125;.form-field input,.form-field select&#123;border:1px solid #e1e1e1;padding:10px&#125;.chat&#123;display:flex&#125;.chat__sidebar&#123;overflow-y:scroll;width:260px;height:100vh;background:-moz-linear-gradient(125deg,rgba(39,107,130,1) 0,rgba(49,84,129,1) 100%);background:-webkit-gradient(linear,left top,right bottom,color-stop(0,rgba(49,84,129,1)),color-stop(100%,rgba(39,107,130,1)));background:-webkit-linear-gradient(125deg,rgba(39,107,130,1) 0,rgba(49,84,129,1) 100%);background:-o-linear-gradient(125deg,rgba(39,107,130,1) 0,rgba(49,84,129,1) 100%);background:-ms-linear-gradient(125deg,rgba(39,107,130,1) 0,rgba(49,84,129,1) 100%);background:linear-gradient(325deg,rgba(39,107,130,1) 0,rgba(49,84,129,1) 100%)&#125;.chat__footer,.chat__sidebar li&#123;background:#e6eaee;padding:10px&#125;.chat__sidebar h3&#123;color:#e6eaee;margin:10px 20px;text-align:left&#125;.chat__sidebar li&#123;border:1px solid #e1e1e1;border-radius:5px;margin:10px&#125;.chat__main&#123;display:flex;flex-direction:column;height:100vh;width:100%&#125;.chat__messages&#123;flex-grow:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;padding:10px&#125;.chat__footer&#123;display:flex;flex-shrink:0&#125;.chat__footer form&#123;flex-grow:1;display:flex&#125;.chat__footer form *&#123;margin-right:10px&#125;.chat__footer input&#123;border:none;padding:10px;flex-grow:1&#125;.message&#123;padding:10px&#125;.message__title&#123;display:flex;margin-bottom:5px&#125;.message__title h4&#123;font-weight:600;margin-right:10px&#125;.message__title span&#123;color:#999&#125;@media (max-width:600px)&#123;*&#123;font-size:1rem&#125;.chat__sidebar&#123;display:none&#125;.chat__footer&#123;flex-direction:column&#125;.chat__footer form&#123;margin-bottom:10px&#125;.chat__footer button&#123;margin-right:0&#125;&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 public/index.html 引入 <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/styles.css&quot;&gt;</code></li>
+<li>在 public/index.html 加入樣式</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;body class=&quot;body&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class=&quot;chat__sidebar&quot;&gt;</span><br><span class="line">        &lt;h3&gt;People&lt;/h3&gt;</span><br><span class="line">        &lt;div id=&quot;users&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class=&quot;chat__main&quot;&gt;</span><br><span class="line">        &lt;ol id=&quot;messages&quot; class=&quot;chat__messages&quot;&gt;&lt;/ol&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div class=&quot;chat__footer&quot;&gt;</span><br><span class="line">            &lt;form id=&quot;message-form&quot;&gt;</span><br><span class="line">                &lt;input name=&quot;message&quot; type=&quot;text&quot; placeholder=&quot;Message&quot; autofocus autocomplete=&quot;off&quot; /&gt;</span><br><span class="line">                &lt;button&gt;Send&lt;/button&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">            &lt;button id=&quot;send-location&quot;&gt;Send Location&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script src=&quot;/socket.io/socket.io.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;/js/libs/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;/js/index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 server/server.js 把 callback 改為空值</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">socket.on(&#x27;createMessage&#x27;, (message, callback) =&gt; &#123;</span><br><span class="line">    console.log(&#x27;createMessage&#x27;, message);</span><br><span class="line">    io.emit(&#x27;newMessage&#x27;, generateMessage(message.from, message.text));</span><br><span class="line">    callback(&#x27;&#x27;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改 public/js/index.js 用 jQuery 取得值，然後送到 server</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">jQuery(&#x27;#message-form&#x27;).on(&#x27;submit&#x27;, function (e) &#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line"></span><br><span class="line">    var messageTextbox = jQuery(&#x27;[name=message]&#x27;);</span><br><span class="line"></span><br><span class="line">    socket.emit(&#x27;createMessage&#x27;, &#123;</span><br><span class="line">        from: &#x27;User&#x27;,</span><br><span class="line">        text: messageTextbox.val()</span><br><span class="line">    &#125;, function () &#123;</span><br><span class="line">        messageTextbox.val(&#x27;&#x27;)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>修改 public/js/index.js 當送出的時候把按鈕變成無法點擊，完成之後就移除無法點擊的效果</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">locationButton.on(&#x27;click&#x27;, function () &#123;</span><br><span class="line">    if (!navigator.geolocation) &#123;</span><br><span class="line">        return alert(&#x27;Geolocation not supported by your browser&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    locationButton.attr(&#x27;disabled&#x27;, &#x27;disabled&#x27;).text(&#x27;Sending location...&#x27;);</span><br><span class="line"></span><br><span class="line">    navigator.geolocation.getCurrentPosition(function (position) &#123;</span><br><span class="line">        locationButton.removeAttr(&#x27;disabled&#x27;).text(&#x27;Send location&#x27;);</span><br><span class="line">        socket.emit(&#x27;createLocationMessage&#x27;, &#123;</span><br><span class="line">            latitude: position.coords.latitude,</span><br><span class="line">            longitude: position.coords.longitude</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;, function () &#123;</span><br><span class="line">        locationButton.removeAttr(&#x27;disabled&#x27;).text(&#x27;Send location&#x27;);</span><br><span class="line">        alert(&#x27;Unable to fetch location&#x27;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="Timestamps-和使用-Moment-格式化">Timestamps 和使用 Moment 格式化</h4>
+<ol>
+<li><code>npm i moment --save</code></li>
+<li><a target="_blank" rel="noopener" href="http://momentjs.com/">Momentjs 官方網站</a></li>
+<li>新增 playground/time.js 測試 moment.js</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var moment = require(&#x27;moment&#x27;);</span><br><span class="line"></span><br><span class="line">var date = moment();</span><br><span class="line">date.add(1, &#x27;years&#x27;).subtract(9, &#x27;months&#x27;);</span><br><span class="line">console.log(date.format(&#x27;MMM Do, YYYY&#x27;));</span><br><span class="line">console.log(date.format(&#x27;h:mm a&#x27;));</span><br></pre></td></tr></table></figure>
+<h4 id="Printing-Message-Timestamps">Printing Message Timestamps</h4>
+<ol>
+<li>修改 server/utils/message.js，引入 moment，然後將 createdAt 改為 moment().valueOf();</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var moment = require(&#x27;moment&#x27;);</span><br><span class="line"></span><br><span class="line">createdAt: moment().valueOf()</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>npm test</code>，確定測試可以通過</li>
+<li>從 node_modules/moment/moment.js 複製檔案到 public/js/libs/moment.js</li>
+<li>在 public/index.html 引入 <code>&lt;script src=&quot;/js/libs/moment.js&quot;&gt;&lt;/script&gt;</code></li>
+<li>讓訊息送出時，同時顯示時間</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var formattedTime = moment(message.createdAt).format(&#x27;h:mm a&#x27;);</span><br><span class="line"></span><br><span class="line">li.text(`$&#123;message.from&#125; $&#123;formattedTime&#125;: $&#123;message.text&#125;`);</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2017/10/09/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day11/" data-id="cl1d3legg0089dytl6kd86m6c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Nodejs 快速學習自我挑戰 Day11",
+        "image": "https://vincent.fishboneapps.com/images/learning/nodejs/nodejsday11.jpeg",
+        "keywords": "Nodejs",
+        "genre": "Study Note",
+        "datePublished": "2017-10-10",
+        "dateCreated": "2017-10-10",
+        "dateModified": "2020-06-23",
+        "url": "https://vincent.fishboneapps.com/2017/10/09/Nodejs-快速學習自我挑戰-Day11/",
+        "description": "
+
+使用 Socket.io 的即時 Web Apps
+Broadcasting Events
+
+刪除 server/server.js 和 public/js/index.js 的 socket.emit
+在 server/server.js 新增 io.emit
+
+12345678socket.on(&#x27;createMessage&#x27;, (message) =&gt; &#12",
+        "wordCount": 1765
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2017/10/09/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day11/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/10/13/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day12/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Nodejs 快速學習自我挑戰 Day12
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/10/07/Nodejs-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day10/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Nodejs 快速學習自我挑戰 Day10</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Socket-io-%E7%9A%84%E5%8D%B3%E6%99%82-Web-Apps-2"><span class="toc-number">1.</span> <span class="toc-text">使用 Socket.io 的即時 Web Apps</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Broadcasting-Events"><span class="toc-number">1.1.</span> <span class="toc-text">Broadcasting Events</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A8%8A%E6%81%AF%E7%94%A2%E7%94%9F%E5%99%A8%E5%92%8C%E6%B8%AC%E8%A9%A6"><span class="toc-number">1.2.</span> <span class="toc-text">訊息產生器和測試</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Event-Acknowledgements"><span class="toc-number">1.3.</span> <span class="toc-text">Event Acknowledgements</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A8%8A%E6%81%AF%E8%A1%A8%E5%96%AE%E5%92%8C-jQuery"><span class="toc-number">1.4.</span> <span class="toc-text">訊息表單和 jQuery</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Geolocation"><span class="toc-number">1.5.</span> <span class="toc-text">Geolocation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A3%9D%E9%A3%BE%E8%81%8A%E5%A4%A9%E9%A0%81%E9%9D%A2"><span class="toc-number">1.6.</span> <span class="toc-text">裝飾聊天頁面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Timestamps-%E5%92%8C%E4%BD%BF%E7%94%A8-Moment-%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-number">1.7.</span> <span class="toc-text">Timestamps 和使用 Moment 格式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Printing-Message-Timestamps"><span class="toc-number">1.8.</span> <span class="toc-text">Printing Message Timestamps</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

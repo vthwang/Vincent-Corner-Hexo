@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>docker 快速學習自我挑戰 Day3 | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Docker" />
+    
+    <meta name="description" content="如何找到且使用 container images 什麼是 image (什麼不是)？ 章節簡介  關於 images，container 的基礎要件 什麼是 image (什麼不是) 使用 Docker Hub 註冊 管理本地 image cache 建立自己的 image  什麼是 image (什麼不是)  App binaries and dependencies image data">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker 快速學習自我挑戰 Day3">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2017/07/26/docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day3/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="如何找到且使用 container images 什麼是 image (什麼不是)？ 章節簡介  關於 images，container 的基礎要件 什麼是 image (什麼不是) 使用 Docker Hub 註冊 管理本地 image cache 建立自己的 image  什麼是 image (什麼不是)  App binaries and dependencies image data">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/learning/docker/dockerday3.png">
+<meta property="article:published_time" content="2017-07-26T13:34:35.000Z">
+<meta property="article:modified_time" content="2020-06-22T17:12:20.057Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/learning/docker/dockerday3.png">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Study-Note/">Study Note</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-docker-快速學習自我挑戰-Day3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        docker 快速學習自我挑戰 Day3
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2017/07/26/docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day3/" class="article-date">
+         <time datetime="2017-07-26T13:34:35.000Z" itemprop="datePublished">2017-07-26</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">1.4k</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">6 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/learning/docker/dockerday3.png">
+<hr>
+<h3 id="如何找到且使用-container-images">如何找到且使用 container images</h3>
+<h4 id="什麼是-image-什麼不是-？">什麼是 image (什麼不是)？</h4>
+<h5 id="章節簡介">章節簡介</h5>
+<ol>
+<li>關於 images，container 的基礎要件</li>
+<li>什麼是 image (什麼不是)</li>
+<li>使用 Docker Hub 註冊</li>
+<li>管理本地 image cache</li>
+<li>建立自己的 image</li>
+</ol>
+<h5 id="什麼是-image-什麼不是">什麼是 image (什麼不是)</h5>
+<ol>
+<li>App binaries and dependencies</li>
+<li>image data 的元數據和如何使用 image</li>
+<li>官方定義：「image 是根目錄系統變化的有序集合，而且對 container runtime 的使用有相應的執行參數」</li>
+<li>不是完整的操作系統，沒有核心、核心模組(例如：drivers)</li>
+<li>小的跟一個檔案(app binary)一樣，就像 Go 語言的 static binary</li>
+<li>大的跟帶有 apt、Apache、PHP和更多被安裝軟體的 Ubuntu 一樣</li>
+</ol>
+<h4 id="強大的-hub：使用-Docker-Hub-Registry-images">強大的 hub：使用 Docker Hub Registry images</h4>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://hub.docker.com">Docker Hub</a> 的基礎</li>
+<li>找到官方和其它很棒的公開 image</li>
+<li>下載 images 和 image tags 的基礎</li>
+<li>Docker Hub：container 版的 apt 套件系統</li>
+<li>官方 image 和如何使用它</li>
+<li>如何辨別好的公開 image</li>
+<li>使用不同 base 的 image，像是 Debian 或 Alpine</li>
+</ol>
+<h4 id="Images-和他們的-Layers：找出-Image-Cache">Images 和他們的 Layers：找出 Image Cache</h4>
+<ol>
+<li>Image layers</li>
+<li>Union file system：顯示出一系列 file system 的改變，跟實際的系統一樣</li>
+<li><code>history</code> 和 <code>inspect</code>：了解 image 如何構成</li>
+<li>copy on write：container 如何在 image 上執行</li>
+<li>Image 是由 file system changes 和 metadata 組成的</li>
+<li>每一層都被獨一無二的被辨識而且只存在 host 一次</li>
+<li>這樣的模式可以省下 host 的空間和 push/pull 的傳送時間</li>
+<li>Container 只是在 image 上層的一個單一 read/write 層</li>
+<li><code>docker image history</code> 和 <code>inspect</code> 可以幫助我們了解這些資訊</li>
+</ol>
+<h4 id="Image-Tagging-和推送到-Docker-Hub">Image Tagging 和推送到 Docker Hub</h4>
+<ol>
+<li>學習前必須要會的：
+<ul>
+<li>了解 container 和 image</li>
+<li>了解 image layer 的基礎</li>
+<li>了解 Docker Hub 的基礎</li>
+</ul>
+</li>
+<li>這個章節要學的
+<ul>
+<li>都在講 image tags</li>
+<li>如何上傳到 Docker Hub</li>
+<li>Image ID vs. Tag</li>
+</ul>
+</li>
+<li><code>cat .docker/config.json</code> 確認已認證登入</li>
+<li><code>docker image tag nginx tingsyuanwang/nginx</code> 給 image tag 到 Docker Hub 的帳戶</li>
+<li><code>docker image push tingsyuanwang/nginx</code> 推送到自己的 Docker Hub</li>
+<li><code>docker image tag tingsyuanwang/nginx tingsyuanwang/nginx:testing</code> 給定名為 testing 的 tag</li>
+<li><code>docker image push tingsyuanwang/nginx:testing</code> 上傳 image，實際上不會全部上傳，只上傳 tag</li>
+<li>回顧
+<ul>
+<li>適時的 tagging images</li>
+<li>給 image tag 是為了要上傳到 Docker Hub</li>
+<li>Tagging 是如何和 image ID 做關聯的</li>
+<li>Latest Tag 只是預設標籤，並不代表最新</li>
+<li>從 Docker cli 登入 Docker Hub</li>
+<li>如何創建私有的 Docker Hub images</li>
+</ul>
+</li>
+</ol>
+<h4 id="建立-images：Dockerfile-的基礎">建立 images：Dockerfile 的基礎</h4>
+<ol>
+<li><code>docker build -f some-dockerfile</code> 創建 Dockerfile</li>
+<li><code>ENV NGINX_VERSION 1.13.1-1~stretch</code> 這邊的 ENV 是用來設定環境變數，這是對建立或運行 container 去設定 key 和 value 的主要方法</li>
+<li><code>&amp;&amp;</code> 是為了確保這些指令可以符合進一個單一 layer</li>
+<li><code>RUN ln -sf /dev/stdout /var/log/nginx/access.log \</code> 這行是關於 log 記錄檔，container 只要確保所有我們想要抓的資訊都有在 stdout 的 log 記錄檔案裡面，docker engine 本身就有 logging drivers 可以去控制 host 上所有 containers 的 logs</li>
+<li><code>EXPOSE 80 443</code> 預設來說，container 裡面沒有 TCP 或 UDP port 是開啟的，除非在這邊定義，<code>EXPOSE</code> 指令並不會讓 host 上的 port 開啟，要在執行 <code>docker run -p</code> 的時候設定 host 的 port</li>
+<li><code>CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]</code> <code>CMD</code>是必填參數，這是最後的指令，且在每次開啟、重啟或暫停新的 container 都會執行的命令</li>
+</ol>
+<h4 id="建立-images：運行-Docker-Builds">建立 images：運行 Docker Builds</h4>
+<ol>
+<li>新增一個 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/BretFisher/udemy-docker-mastery/master/dockerfile-sample-1/Dockerfile">Dockerfile</a> 到根目錄</li>
+<li><code>docker image build -t customnginx .</code> 用 dockerfile 新建一個 image</li>
+</ol>
+<h4 id="建立-images：擴展官方-image">建立 images：擴展官方 image</h4>
+<ol>
+<li><code>WORKDIR /usr/share/nginx/html</code> 這個就是在跑 <code>cd</code> 的語法</li>
+<li><code>COPY index.html index.html</code> 複製本地檔案到 docker container 裡面</li>
+<li><code>docker image build -t nginx-with-html .</code> 執行檔案</li>
+<li><code>docker container run -p 80:80 --rm nginx-with-html</code> 用剛剛建立出來的 image 來執行</li>
+</ol>
+<h4 id="作業：建立自己的-Dockerfile-且使用它運行-container">作業：建立自己的 Dockerfile 且使用它運行 container</h4>
+<ol>
+<li>Dockerfiles 是 process workflow 和藝術組合而成的</li>
+<li>使用已存在的 Node.js app 並把它 docker 化</li>
+<li>製作 Dockerfile，建立它，測試它，上傳它，(刪除它)，並運行它</li>
+<li>預期這樣的過程是反覆的，很少能夠一次就完成它的</li>
+<li>細節都在 <code>dockerfile-assignment-1/Dockerfile</code></li>
+<li>使用官方 <strong>node</strong> 6.x image 的 alpine 版本</li>
+<li>預期結果會呈現在 <code>http://localhost</code> 的網頁</li>
+<li>標籤並推送到自己的 Docker Hub</li>
+<li>從本機的 cache 移除 image，並從 Hub 重新運行一次</li>
+</ol>
+<h4 id="解答：建立自己的-Dockerfile-且使用它運行-container">解答：建立自己的 Dockerfile 且使用它運行 container</h4>
+<ol>
+<li>Dockerfile</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Instructions from the app developer</span><br><span class="line"># - you should use the &#x27;node&#x27; official image, with the alpine 6.x branch</span><br><span class="line">FROM node:6-alpine</span><br><span class="line"># - this app listens on port 3000, but the container should launch on port 80</span><br><span class="line">#  so it will respond to http://localhost:80 on your computer</span><br><span class="line">EXPOSE 3000</span><br><span class="line"># - then it should use alpine package manager to install tini: &#x27;apk add --update tini&#x27;</span><br><span class="line">RUN apk add --update tini</span><br><span class="line"># - then it should create directory /usr/src/app for app files with &#x27;mkdir -p /usr/src/app&#x27;</span><br><span class="line">RUN mkdir -p /usr/src/app</span><br><span class="line"># - Node uses a &quot;package manager&quot;, so it needs to copy in package.json file</span><br><span class="line">COPY package.json package.json</span><br><span class="line"># - then it needs to run &#x27;npm install&#x27; to install dependencies from that file</span><br><span class="line">RUN npm install &amp;&amp; npm cache clean</span><br><span class="line"># - to keep it clean and small, run &#x27;npm cache clean --force&#x27; after above</span><br><span class="line"># - then it needs to copy in all files from current director</span><br><span class="line">COPY . .</span><br><span class="line"># - then it needs to start container with command &#x27;tini -- node ./bin/www&#x27;</span><br><span class="line">CMD [ &quot;tini&quot;, &quot;--&quot;, &quot;node&quot;, &quot;./bin/www&quot;]</span><br><span class="line"># - in the end you should be using FROM, RUN, WORKDIR, COPY, EXPOSE, and CMD commands</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>docker build -t testnode .</code> 使用 Dockerfile 建立 image</li>
+<li><code>docker container run --rm -p 80:3000 testnode</code> 使用 image 建立 container</li>
+<li><code>docker tag testnode tingsyuanwang/testing-node</code> 修改 tag</li>
+<li><code>docker push tingsyuanwang/testing-node</code> 將檔案推送到 Docker Hub</li>
+<li><code>docker image rm tingsyuanwang/testing-node</code> 將本地端的 node image 移除</li>
+<li><code>docker container run --rm -p 80:3000 tingsyuanwang/testing-node</code> 運行 container 讓 docker 自動從遠端抓回來</li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2017/07/26/docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day3/" data-id="cl1d3lehn00bidytl63cuejw4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "docker 快速學習自我挑戰 Day3",
+        "image": "https://vincent.fishboneapps.com/images/learning/docker/dockerday3.png",
+        "keywords": "Docker",
+        "genre": "Study Note",
+        "datePublished": "2017-07-26",
+        "dateCreated": "2017-07-26",
+        "dateModified": "2020-06-23",
+        "url": "https://vincent.fishboneapps.com/2017/07/26/docker-快速學習自我挑戰-Day3/",
+        "description": "
+
+如何找到且使用 container images
+什麼是 image (什麼不是)？
+章節簡介
+
+關於 images，container 的基礎要件
+什麼是 image (什麼不是)
+使用 Docker Hub 註冊
+管理本地 image cache
+建立自己的 image
+
+什麼是 image (什麼不是)
+
+App binaries and dependencies
+image data ",
+        "wordCount": 606
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2017/07/26/docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day3/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/07/28/docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day4/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            docker 快速學習自我挑戰 Day4
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/07/24/docker-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day2/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">docker 快速學習自我挑戰 Day2</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E4%B8%94%E4%BD%BF%E7%94%A8-container-images"><span class="toc-number">1.</span> <span class="toc-text">如何找到且使用 container images</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-image-%E4%BB%80%E9%BA%BC%E4%B8%8D%E6%98%AF-%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">什麼是 image (什麼不是)？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AB%A0%E7%AF%80%E7%B0%A1%E4%BB%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">章節簡介</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-image-%E4%BB%80%E9%BA%BC%E4%B8%8D%E6%98%AF"><span class="toc-number">1.1.2.</span> <span class="toc-text">什麼是 image (什麼不是)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B7%E5%A4%A7%E7%9A%84-hub%EF%BC%9A%E4%BD%BF%E7%94%A8-Docker-Hub-Registry-images"><span class="toc-number">1.2.</span> <span class="toc-text">強大的 hub：使用 Docker Hub Registry images</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Images-%E5%92%8C%E4%BB%96%E5%80%91%E7%9A%84-Layers%EF%BC%9A%E6%89%BE%E5%87%BA-Image-Cache"><span class="toc-number">1.3.</span> <span class="toc-text">Images 和他們的 Layers：找出 Image Cache</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Image-Tagging-%E5%92%8C%E6%8E%A8%E9%80%81%E5%88%B0-Docker-Hub"><span class="toc-number">1.4.</span> <span class="toc-text">Image Tagging 和推送到 Docker Hub</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B-images%EF%BC%9ADockerfile-%E7%9A%84%E5%9F%BA%E7%A4%8E"><span class="toc-number">1.5.</span> <span class="toc-text">建立 images：Dockerfile 的基礎</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B-images%EF%BC%9A%E9%81%8B%E8%A1%8C-Docker-Builds"><span class="toc-number">1.6.</span> <span class="toc-text">建立 images：運行 Docker Builds</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B-images%EF%BC%9A%E6%93%B4%E5%B1%95%E5%AE%98%E6%96%B9-image"><span class="toc-number">1.7.</span> <span class="toc-text">建立 images：擴展官方 image</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E6%A5%AD%EF%BC%9A%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84-Dockerfile-%E4%B8%94%E4%BD%BF%E7%94%A8%E5%AE%83%E9%81%8B%E8%A1%8C-container"><span class="toc-number">1.8.</span> <span class="toc-text">作業：建立自己的 Dockerfile 且使用它運行 container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94%EF%BC%9A%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84-Dockerfile-%E4%B8%94%E4%BD%BF%E7%94%A8%E5%AE%83%E9%81%8B%E8%A1%8C-container"><span class="toc-number">1.9.</span> <span class="toc-text">解答：建立自己的 Dockerfile 且使用它運行 container</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/01/C-Learning-Journey-Day10/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay10.jpg)" alt="C++ Learning Journey Day10" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/01/C-Learning-Journey-Day10/" class="title">C++ Learning Journey Day10</a></p>
+                            <p class="item-date"><time datetime="2021-12-01T16:21:07.000Z" itemprop="datePublished">2021-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/11/27/C-Learning-Journey-Day9/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay09.jpg)" alt="C++ Learning Journey Day9" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/11/27/C-Learning-Journey-Day9/" class="title">C++ Learning Journey Day9</a></p>
+                            <p class="item-date"><time datetime="2021-11-27T11:51:58.000Z" itemprop="datePublished">2021-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/VincentTingSyuanWang">Facebook</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
