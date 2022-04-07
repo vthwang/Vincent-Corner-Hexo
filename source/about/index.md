@@ -8,13 +8,17 @@ toc: true
 
 <p style="text-align: justify;">
 Hi, I'm Ting-Hsuan Wang (Chinese: 王霆瑄). Welcome to my profile.
-
+</p>
+<p style="text-align: justify;">
 The intersection of technology and social good is my passion. Coming with 5 years of professional Software Development (Software Engineering) experience at many companies, I have a verifiable history of contributing directly to company growth and expansion throughout my career. Also, I have worked for many different countries enterprises, the English Literature background led me fit in multi-culture teams quickly.
-
+</p>
+<p style="text-align: justify;">
 For example, I have helped many small enterprises transform from old framework to new framework which enhanced the launch period from two weeks to every week, or even less. Generally, it increases the development speed by 50%. Also, I've also introduced CI/CD and developed E2E tests that keeps the services online with 99.99% availability. These are just some examples of the successful deliveries I've made that have directly impacted business' bottom lines.
-
+</p>
+<p style="text-align: justify;">
 I am currently pursuing my Masters in Computer Science from Syracuse University and will graduate in Dec 2023. I am seeking summer intern opportunities for software development. If you are a recruiter or know someone who is actively hiring, please reach out to me.
-
+</p>
+<p style="text-align: justify;">
 My core skills:
 Domains: Git, Github Action(CI/CD), Linux, Backend Engineering, Software Development, REST APIs
 Languages: PHP, Go, Java, JavaScript, SQL, NoSQL, C/C++
