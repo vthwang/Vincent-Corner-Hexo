@@ -9,14 +9,14 @@ toc: true
 <p style="text-align: justify;">
 Hi, I'm Ting-Hsuan Wang (Chinese: 王霆瑄). Welcome to my profile.
 
-The intersection of technology and social good is my passion. Coming with 5 years of professional Software Development (Software Engineering) experience at many companies, I have a verifiable history of contributing directly to company growth and expansion throughout my career.
+The intersection of technology and social good is my passion. Coming with 5 years of professional Software Development (Software Engineering) experience at many companies, I have a verifiable history of contributing directly to company growth and expansion throughout my career. Also, I have worked for many different countries enterprises, the English Literature background led me fit in multi-culture teams quickly.
 
 For example, I have helped many small enterprises transform from old framework to new framework which enhanced the launch period from two weeks to every week, or even less. Generally, it increases the development speed by 50%. Also, I've also introduced CI/CD and developed E2E tests that keeps the services online with 99.99% availability. These are just some examples of the successful deliveries I've made that have directly impacted business' bottom lines.
 
 I am currently pursuing my Masters in Computer Science from Syracuse University and will graduate in Dec 2023. I am seeking summer intern opportunities for software development. If you are a recruiter or know someone who is actively hiring, please reach out to me.
 
 My core skills:
-Domains: Git, Github Action(CI/CD), Linux, Backend Engineering, Software Development, REST APIs, CI/CD
+Domains: Git, Github Action(CI/CD), Linux, Backend Engineering, Software Development, REST APIs
 Languages: PHP, Go, Java, JavaScript, SQL, NoSQL, C/C++
 Frameworks: Laravel, WordPress, gin, Hexo
 Database: MySQL, MariaDB, PostgreSQL, MongoDB, Redis
@@ -44,14 +44,24 @@ Cumulative GPA: 3.92/4.00
 **Senior Software Engineer** at _IC3 Network Co., Ltd._
 Jan 2022 - Present
 Paris, France (Remote)
-- **Murmurations**: Designed and implemented a microservice with Go and Kubernetes, which helps validate store profiles against schemas and provides API for later aggregation. Currently, it has validated more than 10K store profiles. Examined company search API response time implemented with the full-text search mechanism in MongoDB, and combined it with Elasticsearch to rewrite the implementation in Go, ultimately increasing the speed **by 53%**. Architected a continuous build-test-deployment (CI/CD) system using GitHub Actions to support weekly releases and out-of-cycle releases, increasing development efficiency **by 30%**. Also, add newman E2E tests, make sure the service works as expected. If not, rollback automatically.
+- Designed and implemented a microservice with Go and Kubernetes.
+    - Validate store profiles against schemas and provides API for later aggregation. Validating more than 10K store profiles.
+- Examined company search API response time implemented with the full-text search mechanism in MongoDB, and combined it with Elasticsearch to rewrite the implementation in Go.
+    - Increasing the speed **by 53%**.
+- Architected a continuous build-test-deployment (CI/CD) system using GitHub Actions to support weekly releases and out-of-cycle releases.
+    - Increasing development efficiency **by 30%**.
+- Add newman E2E tests, make sure the service works as expected. If not, rollback automatically.
+    - Keeping the services online with **99.99%** availability.
 
 **Senior Software Engineer** at _Dotech Technology Co., Ltd._
 Sep 2020 - Oct 2021 (1 year 2 months)
 Taichung, Taiwan
-- **BI & SAP (GongCha, Taiwan)**: Moved the services from DigitalOcean to AWS and connected the ERP central system with SAP by using RFC(remote function call). Also, we cooperated with Korean engineers and added a BI module in ERP for beverage shops, which increased company's revenue **by 20\%** that year.
-- **Project Tracking System**: Led a team with a frontend engineer and two backend engineers to develop company's internal system. I imported OKR concept into this system and increased the numbers of features and bug fixed **by 70%**.
-- **Corporation Identity Transformation**: Led a team with a designer and a programmer to upgrade company's official website and related design document. Successfully attract **2 large companies** to sign the contract.
+- Moved the services from DigitalOcean to AWS and connected the ERP central system with SAP by using RFC(remote function call). Also, we cooperated with Korean engineers and added a BI module in ERP for beverage shops.
+    - Increased company’s revenue **by 20%** that year.
+- Led a team with a frontend engineer and two backend engineers to develop the Project Tracking System, and I imported OKR concept into this system.
+    - Increasing the numbers of features and bug fixed **by 70%**.
+- Led a team with a designer and a programmer to upgrade company’s official website and related design document.
+    - Successfully attracted **2 large companies** to sign the contract.
 
 **Senior Software Engineer** at _Muki Corporation Co., Ltd._
 June 2020 - Aug 2020 (3 months)
@@ -61,16 +71,17 @@ Taichung, Taiwan
 **SOHO** at _Fishbone Creative Co., Ltd._
 Taichung, Taiwan
 April 2020 - May 2020 (2 months)
-- **GladLess**: Using Laravel to build the complete functions for E-commerce. There are two platforms for user and manager respectively. Management platform includes permission management, merchandise management, SKU management, order management, storage management. User platform includes shopping cart, order, payment, review, refund, coupon.
+- Using Laravel to build the complete functions for E-commerce. There are two platforms for user and manager respectively. Management platform includes permission management, merchandise management, SKU management, order management, storage management. User platform includes shopping cart, order, payment, review, refund, coupon.
 
 **Project Manager** at _Shanghai Pu-Yu Software Development Co., Ltd._
 Shanghai, China
 November 2018 - March 2020 (1 year 5 months)
-- **ERP Integration**: Led 5 people to integrate Ordering system and storage system with ERP system. As a leader, I made a detailed and particular schedule for the timeline and endeavored to users’ demands mining. Provided technical supports in functional continuous iteration and upgrading.
-- **Online Ordering System**: Docked with store POS system, and multiple delivery and payment companies, Built a complete online to offline (O2O) ordering system.
+- Led 5 people to integrate Ordering system and storage system with ERP system. As a leader, I made a detailed and particular schedule for the timeline and endeavored to users demands mining. Provided technical supports in functional continuous iteration and upgrading.
+- Built a complete online to offline (O2O) ordering system and docked with store POS system, multiple delivery and payment companies.
+
 **Junior Software Developer**
 August 2017 - October 2018 (1 year 3 months)
-- **FitnessFactory**: Modernized the official website and made a complete CMS with Laravel framework.
+- Modernized FitnessFactory’s official website and made a complete CMS with Laravel framework.
 
 ***
 
