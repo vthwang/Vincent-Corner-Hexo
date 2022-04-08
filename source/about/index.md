@@ -19,13 +19,13 @@ For example, I have helped many small enterprises transform from old framework t
 I am currently pursuing my Masters in Computer Science from Syracuse University and will graduate in Dec 2023. I am seeking summer intern opportunities for software development. If you are a recruiter or know someone who is actively hiring, please reach out to me.
 </p>
 <p style="text-align: justify;">
-My core skills:
-Domains: Git, Github Action(CI/CD), Linux, Backend Engineering, Software Development, REST APIs
-Languages: PHP, Go, Java, JavaScript, SQL, NoSQL, C/C++
-Frameworks: Laravel, WordPress, gin, Hexo
-Database: MySQL, MariaDB, PostgreSQL, MongoDB, Redis
-DevOps: Docker, Kubernetes, LNMP, DigitalOcean, Alibaba Cloud
-Web Development: HTML, CSS, jQuery
+My core skills:<br>
+Domains: Git, Github Action(CI/CD), Linux, Backend Engineering, Software Development, REST APIs<br>
+Languages: PHP, Go, Java, JavaScript, SQL, NoSQL, C/C++<br>
+Frameworks: Laravel, WordPress, gin, Hexo<br>
+Database: MySQL, MariaDB, PostgreSQL, MongoDB, Redis<br>
+DevOps: Docker, Kubernetes, LNMP, DigitalOcean, Alibaba Cloud<br>
+Web Development: HTML, CSS, jQuery<br>
 Tools: Webpack, ESLint, Package Manager(npm, yarn)
 </p>
 
