@@ -54,7 +54,7 @@ Paris, France (Remote)
     - Increasing the speed **by 53%**.
 - Architected a continuous build-test-deployment (CI/CD) system using GitHub Actions to support weekly releases and out-of-cycle releases.
     - Increasing development efficiency **by 30%**.
-- Add newman E2E tests, make sure the service works as expected. If not, rollback automatically.
+- Added newman E2E tests, make sure the service works as expected. If not, rollback automatically.
     - Keeping the services online with **99.99%** availability.
 
 **Senior Software Engineer** at _Dotech Technology Co., Ltd._
