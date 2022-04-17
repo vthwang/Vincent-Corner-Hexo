@@ -77,13 +77,13 @@ Taichung, Taiwan
 April 2020 - May 2020 (2 months)
 - Using Laravel to build the complete functions for E-commerce. There are two platforms for user and manager respectively. Management platform includes permission management, merchandise management, SKU management, order management, storage management. User platform includes shopping cart, order, payment, review, refund, coupon.
 
-**Project Manager** at _Shanghai Pu-Yu Software Development Co., Ltd._
+**Software Engineering Manager** at _Shanghai Pu-Yu Software Development Co., Ltd._
 Shanghai, China
 November 2018 - March 2020 (1 year 5 months)
 - Led 5 people to integrate Ordering system and storage system with ERP system. As a leader, I made a detailed and particular schedule for the timeline and endeavored to users demands mining. Provided technical supports in functional continuous iteration and upgrading.
 - Built a complete online to offline (O2O) ordering system and docked with store POS system, multiple delivery and payment companies.
 
-**Junior Software Developer**
+**Junior Software Engineer**
 August 2017 - October 2018 (1 year 3 months)
 - Modernized FitnessFactory’s official website and made a complete CMS with Laravel framework.
 
