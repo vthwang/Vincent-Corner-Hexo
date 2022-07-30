@@ -31,5 +31,11 @@ tags: Mac
     - `git config --global commit.gpgsign true`
 3. Install [gpgtools](https://gpgtools.org/) to save the paraphrase.
     - `brew install --cask gpg-suite`
+# Setup gpg variables
+1. Edit config file.
+    - `sudo vim ~/.zshrc`
+    - Add `export GPG_TTY=$(tty)` to the end of file.
+3. Update config file.
+    - `source ~/.zshrc`
 # Sign commit
 1. `git commit -s -m 'your commit'`
