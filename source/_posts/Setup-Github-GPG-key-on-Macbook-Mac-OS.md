@@ -35,7 +35,13 @@ tags: Mac
 1. Edit config file.
     - `sudo vim ~/.zshrc`
     - Add `export GPG_TTY=$(tty)` to the end of file.
-3. Update config file.
+2. Update config file.
     - `source ~/.zshrc`
+# Setup gpg timeout
+1. `sudo vim ~/.gnupg/gpg-agent.conf`
+```
+default-cache-ttl 34560000
+max-cache-ttl 34560000
+```
 # Sign commit
 1. `git commit -s -m 'your commit'`
