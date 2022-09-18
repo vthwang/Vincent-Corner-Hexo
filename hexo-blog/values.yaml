@@ -1,0 +1,5 @@
+name: vincent-corner-hexo
+image: ""
+replica: 2
+service:
+  port: 80

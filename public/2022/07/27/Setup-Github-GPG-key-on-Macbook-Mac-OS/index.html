@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Setup Github GPG key on Macbook (Mac OS) | Vincent&#39;s Corner</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Mac" />
+    
+    <meta name="description" content="Create gpg key  Install gpg command.  brew install gnupg   Create gpg key and keep press enter to use the default setting. In the last step, set up a paraphrase(password).  gpg --full-generate-key">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setup Github GPG key on Macbook (Mac OS)">
+<meta property="og:url" content="https://vincent.fishboneapps.com/2022/07/27/Setup-Github-GPG-key-on-Macbook-Mac-OS/index.html">
+<meta property="og:site_name" content="Vincent&#39;s Corner">
+<meta property="og:description" content="Create gpg key  Install gpg command.  brew install gnupg   Create gpg key and keep press enter to use the default setting. In the last step, set up a paraphrase(password).  gpg --full-generate-key">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vincent.fishboneapps.com/images/gpg.jpeg">
+<meta property="article:published_time" content="2022-07-27T06:19:10.000Z">
+<meta property="article:modified_time" content="2022-08-06T19:39:22.919Z">
+<meta property="article:author" content="Vincent Ting Hsuan Wang">
+<meta property="article:tag" content="Mac">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vincent.fishboneapps.com/images/gpg.jpeg">
+<meta property="fb:admins" content="VincentTingSyuanWang">
+<meta property="fb:app_id" content="1958612367696881">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/vincent.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-84065024-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/English-Learning/">English Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading-Note/">Reading Note</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Skill-Share/">Skill Share</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Study-Note/">Study Note</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/quotes">Quotes</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Skill-Share/">Skill Share</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Setup-Github-GPG-key-on-Macbook-Mac-OS" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Setup Github GPG key on Macbook (Mac OS)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2022/07/27/Setup-Github-GPG-key-on-Macbook-Mac-OS/" class="article-date">
+         <time datetime="2022-07-27T06:19:10.000Z" itemprop="datePublished">2022-07-27</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Mac/" rel="tag">Mac</a>
+    </div>
+
+                
+
+                
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">Symbols count in article: </span>
+      <span class="post-count">162</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">Reading time: </span>
+      <span class="post-count">1 mins. </span>
+   </div>
+
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/images/gpg.jpeg">
+<hr>
+<h1>Create gpg key</h1>
+<ol>
+<li>Install gpg command.
+<ul>
+<li><code>brew install gnupg</code></li>
+</ul>
+</li>
+<li>Create gpg key and keep press enter to use the default setting. In the last step, set up a paraphrase(password).
+<ul>
+<li><code>gpg --full-generate-key</code></li>
+</ul>
+</li>
+<li>Check your gpg key.
+<ul>
+<li><code>gpg --list-secret-keys --keyid-format=long</code></li>
+</ul>
+</li>
+<li>Copy the <code>A111111111A11A11</code> part.
+<ul>
+<li>Example: <code>ed25519/A111111111A11A11</code></li>
+</ul>
+</li>
+<li>Export gpg key.
+<ul>
+<li><code>gpg --armor --export A111111111A11A11</code></li>
+</ul>
+</li>
+</ol>
+<h1>Setup gpg in Github</h1>
+<ol>
+<li>Setting -&gt; SSH and GPG keys -&gt; New GPG key.</li>
+<li>Paste the export from the previous step.</li>
+</ol>
+<h1>Git setting</h1>
+<ol>
+<li>Tell git your sign key.
+<ul>
+<li><code>git config --global user.signingkey A111111111A11A11</code></li>
+</ul>
+</li>
+<li>Force git to sign commits.
+<ul>
+<li><code>git config --global commit.gpgsign true</code></li>
+</ul>
+</li>
+<li>Install <a target="_blank" rel="noopener" href="https://gpgtools.org/">gpgtools</a> to save the paraphrase.
+<ul>
+<li><code>brew install --cask gpg-suite</code></li>
+</ul>
+</li>
+</ol>
+<h1>Setup gpg variables</h1>
+<ol>
+<li>Edit config file.
+<ul>
+<li><code>sudo vim ~/.zshrc</code></li>
+<li>Add <code>export GPG_TTY=$(tty)</code> to the end of file.</li>
+</ul>
+</li>
+<li>Update config file.
+<ul>
+<li><code>source ~/.zshrc</code></li>
+</ul>
+</li>
+</ol>
+<h1>Setup gpg timeout</h1>
+<ol>
+<li><code>sudo vim ~/.gnupg/gpg-agent.conf</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">default-cache-ttl 34560000</span><br><span class="line">max-cache-ttl 34560000</span><br></pre></td></tr></table></figure>
+<h1>Sign commit</h1>
+<ol>
+<li><code>git commit -s -m 'your commit'</code></li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://vincent.fishboneapps.com/2022/07/27/Setup-Github-GPG-key-on-Macbook-Mac-OS/" data-id="cl87onrhy00batl2o67cyco05" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Vincent Ting Hsuan Wang"
+        },
+        "headline": "Setup Github GPG key on Macbook (Mac OS)",
+        "image": "https://vincent.fishboneapps.com/images/gpg.jpeg",
+        "keywords": "Mac",
+        "genre": "Skill Share",
+        "datePublished": "2022-07-27",
+        "dateCreated": "2022-07-27",
+        "dateModified": "2022-08-07",
+        "url": "https://vincent.fishboneapps.com/2022/07/27/Setup-Github-GPG-key-on-Macbook-Mac-OS/",
+        "description": "
+
+Create gpg key
+
+Install gpg command.
+
+brew install gnupg
+
+
+Create gpg key and keep press enter to use the default setting. In the last step, set up a paraphrase(password).
+
+gpg --full-generate-key
+
+",
+        "wordCount": 122
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+      
+    <div class="fb-comments" data-width="100%" data-href="https://vincent.fishboneapps.com/2022/07/27/Setup-Github-GPG-key-on-Macbook-Mac-OS/" data-num-posts="5"></div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook-official" href="https://www.facebook.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook-official"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin-square" href="https://www.linkedin.com/in/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin-square"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/twang443" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/TingSyuanWang" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2022/07/26/Mac-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE-2022/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Mac 開發環境建置 2022</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Create gpg key</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">Setup gpg in Github</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">Git setting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">Setup gpg variables</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">Setup gpg timeout</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">Sign commit</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/07/27/Setup-Github-GPG-key-on-Macbook-Mac-OS/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/gpg.jpeg)" alt="Setup Github GPG key on Macbook (Mac OS)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Skill-Share/">Skill Share</a></p>
+                            <p class="item-title"><a href="/2022/07/27/Setup-Github-GPG-key-on-Macbook-Mac-OS/" class="title">Setup Github GPG key on Macbook (Mac OS)</a></p>
+                            <p class="item-date"><time datetime="2022-07-27T06:19:10.000Z" itemprop="datePublished">2022-07-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/07/26/Mac-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE-2022/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/technique/MacEnvironment.jpg)" alt="Mac 開發環境建置 2022" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Skill-Share/">Skill Share</a></p>
+                            <p class="item-title"><a href="/2022/07/26/Mac-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE-2022/" class="title">Mac 開發環境建置 2022</a></p>
+                            <p class="item-date"><time datetime="2022-07-26T14:06:57.000Z" itemprop="datePublished">2022-07-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/golang/GolangDay14.jpg)" alt="Golang 快速學習自我挑戰 Day14" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Golang-%E5%BF%AB%E9%80%9F%E5%AD%B8%E7%BF%92%E8%87%AA%E6%88%91%E6%8C%91%E6%88%B0-Day14/" class="title">Golang 快速學習自我挑戰 Day14</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T13:20:08.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/04/C-Learning-Journey-Day12/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay12.jpg)" alt="C++ Learning Journey Day12" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/04/C-Learning-Journey-Day12/" class="title">C++ Learning Journey Day12</a></p>
+                            <p class="item-date"><time datetime="2021-12-04T07:43:26.000Z" itemprop="datePublished">2021-12-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/03/C-Learning-Journey-Day11/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/learning/cplusplus/CPlusPlusDay11.jpg)" alt="C++ Learning Journey Day11" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study-Note/">Study Note</a></p>
+                            <p class="item-title"><a href="/2021/12/03/C-Learning-Journey-Day11/" class="title">C++ Learning Journey Day11</a></p>
+                            <p class="item-date"><time datetime="2021-12-03T12:46:32.000Z" itemprop="datePublished">2021-12-03</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English-Learning/">English Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading-Note/">Reading Note</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Skill-Share/">Skill Share</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Note/">Study Note</a><span class="category-list-count">134</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Grammer/" rel="tag">English Grammer</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Writing/" rel="tag">English Writing</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Illustrator/" rel="tag">Illustrator</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nutrition/" rel="tag">Nutrition</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Productivity/" rel="tag">Productivity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/" rel="tag">React-Native</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/" rel="tag">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weight-Loss/" rel="tag">Weight Loss</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 16.36px;">C++</a> <a href="/tags/CSS/" style="font-size: 13.64px;">CSS</a> <a href="/tags/Docker/" style="font-size: 19.09px;">Docker</a> <a href="/tags/English-Grammer/" style="font-size: 11.82px;">English Grammer</a> <a href="/tags/English-Writing/" style="font-size: 10.91px;">English Writing</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Golang/" style="font-size: 18.18px;">Golang</a> <a href="/tags/HTML/" style="font-size: 13.64px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Illustrator/" style="font-size: 10px;">Illustrator</a> <a href="/tags/Java/" style="font-size: 18.18px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Kubernetes/" style="font-size: 14.55px;">Kubernetes</a> <a href="/tags/Laravel/" style="font-size: 20px;">Laravel</a> <a href="/tags/Mac/" style="font-size: 11.82px;">Mac</a> <a href="/tags/Nodejs/" style="font-size: 18.18px;">Nodejs</a> <a href="/tags/Nutrition/" style="font-size: 12.73px;">Nutrition</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Productivity/" style="font-size: 10px;">Productivity</a> <a href="/tags/React/" style="font-size: 17.27px;">React</a> <a href="/tags/React-Native/" style="font-size: 15.45px;">React-Native</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Weight-Loss/" style="font-size: 12.73px;">Weight Loss</a> <a href="/tags/WordPress/" style="font-size: 10px;">WordPress</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kalasearch.cn">最優雅的搜尋引擎-卡拉搜索</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016-2022 Vincent Ting Hsuan Wang</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v9.0&appId=1958612367696881";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

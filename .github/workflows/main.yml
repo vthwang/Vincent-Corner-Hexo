@@ -1,4 +1,4 @@
-name: Deploy Hexo Blog
+name: Deploy
 
 on: 
   push:
@@ -7,40 +7,35 @@ on:
 
 jobs:
   build:
-    name: hexo build & deploy
-    runs-on: ubuntu-20.04
-
+    name: Build
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-      with:
-        submodules: true
-    - uses: actions/setup-node@master
-      with:
-        node-version: 12.x
+      - uses: actions/checkout@v3
 
-    - name: Installation
-      run: |
-        npm install
-        npm install -g hexo-cli
+      - name: Login to DockerHub
+        uses: docker/login-action@v2.0.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Generate
-      env:
-        TZ: Asia/Taipei
-      run: hexo clean && hexo g
+      - name: Publish docker images
+        run: make docker-push
 
-    - name: Deploy
-      run: |
-        mkdir -p $HOME/.ssh
-        touch "$HOME/.ssh/known_hosts"
-        
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/deploy_key
-        chmod 700 $HOME/.ssh
-        chmod 600 $HOME/.ssh/deploy_key
-        chmod 600 $HOME/.ssh/known_hosts
-        eval $(ssh-agent)
-        ssh-add $HOME/.ssh/deploy_key
-        
-        ssh-keyscan 178.128.59.243 > $HOME/.ssh/known_hosts
-        
-        hexo deploy
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Save DigitalOcean kubeconfig with short-lived credentials
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 k8s-lineworld
+
+      - name: Restart deployment
+        run: make deploy
 
