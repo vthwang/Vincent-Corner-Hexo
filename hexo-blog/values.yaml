@@ -1,6 +1,6 @@
 name: hexo-vincent-corner
 url: vincent.fishboneapps.com
-image: fishboneapps/hexo-vincent-corner
+image: ""
 tag: ""
 replica: 1
 service:
