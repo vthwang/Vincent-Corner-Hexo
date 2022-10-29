@@ -4,7 +4,6 @@ update:
 	git push
 
 TAG ?= $(shell git rev-parse --short ${GITHUB_SHA})$(and $(shell git status -s),latest)
-IMAGE = fishboneapps/vincent-corner-hexo
 
 docker-build:
 	docker build -f Dockerfile -t $(IMAGE) .
@@ -17,4 +16,4 @@ docker-push: docker-tag
 	docker push $(IMAGE):$(TAG)
 
 deploy:
-	helm upgrade vincent-corner-hexo ./hexo-blog --set image=$(IMAGE):$(TAG) --install --atomic
+	helm upgrade vincent-corner-hexo ./hexo-blog --set tag=$(TAG) --install --atomic

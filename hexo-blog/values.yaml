@@ -1,5 +1,7 @@
-name: vincent-corner-hexo
-image: ""
-replica: 2
+name: hexo-vincent-corner
+url: vincent.fishboneapps.com
+image: fishboneapps/hexo-vincent-corner
+tag: ""
+replica: 1
 service:
   port: 80

@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: {{ .Values.name }}
-          image: {{ .Values.image }}
+          image: {{ .Values.image }}:{{ .Values.tag }}
