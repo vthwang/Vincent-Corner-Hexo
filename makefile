@@ -17,4 +17,4 @@ docker-push: docker-tag
 	docker push $(IMAGE):$(TAG)
 
 deploy:
-	helm upgrade vincent-corner-hexo ./hexo-blog --set image=$(IMAGE),tag=$(TAG) --install --atomic
+	helm upgrade hexo-vincent-corner ./hexo-blog --set image=$(IMAGE),tag=$(TAG) --install --atomic
