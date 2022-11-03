@@ -6,6 +6,5 @@ tmp/
 .vscode/
 coverage/
 yarn.lock
-package-lock.json
 .deploy_git/
 db.json
