@@ -1,10 +1,10 @@
+TAG=$(shell git rev-parse --short ${GITHUB_SHA})
+IMAGE = fishboneapps/hexo-vincent-corner
+
 update:
 	git add .
 	git commit -s -m "Site Updated: $(shell date +"%Y-%m-%d %T")"
 	git push
-
-TAG ?= $(shell git rev-parse --short ${GITHUB_SHA})$(and $(shell git status -s))
-IMAGE = fishboneapps/hexo-vincent-corner
 
 docker-build:
 	docker buildx build --platform linux/amd64 -f Dockerfile -t $(IMAGE) .

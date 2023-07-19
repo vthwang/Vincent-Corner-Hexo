@@ -6,7 +6,7 @@
 title: Vincent's Corner
 subtitle: I see, I come, I conquer.
 description: Who knows what fantastic things around Vincent's corner?
-author: Vincent Ting Hsuan Wang
+author: Vincent Wang
 language: en
 timezone: Asia/Taipei
 
@@ -46,7 +46,7 @@ highlight:
   tab_replace:
 
 # Category & Tag
-default_category: 生活隨筆
+default_category: Study Note
 category_map:
 tag_map:
 
@@ -80,15 +80,3 @@ markdown:
     - markdown-it-sub
     - markdown-it-abbr
     - markdown-it-emoji
-
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: rsync
-  host: 178.128.59.243
-  user: vincent
-  root: /var/www/VincentCorner/
-  port: 22
-  delete: true
-  verbose: true
-  ignore_errors: false

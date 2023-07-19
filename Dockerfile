@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:16.18-alpine AS assets-build
+FROM --platform=linux/amd64 node:lts-alpine AS assets-build
 
 RUN npm install hexo-cli -g
 
@@ -8,5 +8,5 @@ COPY . /var/www/html/
 RUN npm ci
 RUN hexo generate
 
-FROM --platform=linux/amd64 nginx:1.23-alpine
+FROM --platform=linux/amd64 nginx:stable-alpine
 COPY --from=assets-build /var/www/html/public /usr/share/nginx/html
