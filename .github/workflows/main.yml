@@ -1,41 +1,40 @@
 name: Deploy
 
-on: 
+on:
   push:
-    branches: 
+    branches:
       - main
 
 jobs:
   build:
-    name: Build
+    name: 🛠️ Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Login to DockerHub
-        uses: docker/login-action@v2.0.0
+      - name: 🐳 Login to DockerHub
+        uses: docker/login-action@v2.2.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Publish docker images
-        run: make docker-push
+      - name: 🚀 Publish docker images
+        run: make push
 
   deploy:
-    name: Deploy
+    name: 🚀 Deploy
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install doctl
+      - name: 🔧 Install doctl
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
-      - name: Save DigitalOcean kubeconfig with short-lived credentials
+      - name: 💾 Save DigitalOcean kubeconfig with short-lived credentials
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 lineworld
 
-      - name: Restart deployment
+      - name: 🔄 Restart deployment
         run: make deploy
-
