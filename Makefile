@@ -6,13 +6,13 @@ update:
 	git commit -s -m "Site Updated: $(shell date +"%Y-%m-%d %T")"
 	git push
 
-docker-build:
+build:
 	docker buildx build --platform linux/amd64 -f Dockerfile -t $(IMAGE) .
 
-docker-tag: docker-build
+tag: build
 	docker tag $(IMAGE) $(IMAGE):$(TAG)
 
-docker-push: docker-tag
+push: tag
 	docker push $(IMAGE):latest
 	docker push $(IMAGE):$(TAG)
 
